@@ -716,7 +716,7 @@ splashImg.onload = () => {
 };
 
 function splashAnimGlow(){
-  if(!splashReady || splashOverlay.classList.contains('hidden')) return;
+  if(!splashReady) return;
   const t = performance.now()/2000;
   const pos = t % 1;
   const W = splashGlowCanvas.width, H = splashGlowCanvas.height;
