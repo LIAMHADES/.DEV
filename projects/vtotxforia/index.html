@@ -428,8 +428,8 @@
         <line x1="12" y1="18" x2="12" y2="22"></line>
         <line x1="9" y1="22" x2="15" y2="22"></line>
       </svg>
-      <svg class="orb-icon orb-icon-stop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="10" height="10" rx="1.5"></rect>
+      <svg class="orb-icon orb-icon-stop" viewBox="0 0 24 24" fill="currentColor">
+        <rect x="7" y="7" width="10" height="10" rx="2"></rect>
       </svg>
     </button>
   </div>
@@ -442,9 +442,9 @@
 
   <div class="controls-row">
     <select id="modelSelect">
-      <option value="Xenova/whisper-base" selected>MODELO: BASE</option>
-      <option value="Xenova/whisper-small">MODELO: SMALL</option>
-      <option value="Xenova/whisper-medium">MODELO: MEDIUM</option>
+      <option value="Xenova/whisper-base" selected>MODELO: SMALL</option>
+      <option value="Xenova/whisper-small">MODELO: MEDIUM</option>
+      <option value="Xenova/whisper-medium">MODELO: BIG</option>
     </select>
     <div class="lang-wrap">
       <input type="text" id="langSelect" placeholder="IDIOMA (escribe o elige…)" autocomplete="off">
@@ -1174,6 +1174,7 @@ clearBtn.addEventListener('click', () => { transcriptBox.value=''; updateCharCou
 
 renderHistory();
 updateCharCount();
+ensureModel().catch(err => console.error('[VtoTXforIA] Auto-load error:', err));
 </script>
 
 </body>
