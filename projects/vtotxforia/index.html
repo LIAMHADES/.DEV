@@ -823,7 +823,8 @@ function drawGrid(){
   if(orbRecording && orbAnalyser && orbDataArray){
     orbAnalyser.getByteFrequencyData(orbDataArray);
     for(let c = 0; c < COLS; c++){
-      const idx = Math.floor(c / COLS * orbDataArray.length * 0.55);
+      const t = c / COLS;
+      const idx = Math.floor((1 - Math.cos(t * Math.PI * 2)) / 2 * orbDataArray.length * 0.55);
       heights[c] = Math.round((orbDataArray[idx] || 0) / 255 * ROWS * 0.7);
     }
   }
