@@ -61,7 +61,7 @@
     --c-cyan-soft:#E8F2FC;
   }
 
-  *, *::before, *::after{ box-sizing:border-box; transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+  *, *::before, *::after{ box-sizing:border-box; }
 
   body.splash-active{ display:block; }
   body{
@@ -720,8 +720,9 @@ splashImg.onload = () => {
 };
 
 let glowStartTime = 0;
+let glowRunning = true;
 function splashAnimGlow(){
-  if(!splashReady) return;
+  if(!splashReady || !glowRunning) return;
   const now = performance.now();
   if(!glowStartTime) glowStartTime = now;
   const elapsed = now - glowStartTime;
@@ -772,6 +773,7 @@ function closeSplash(){
     document.body.style.overflow = '';
     document.body.style.height = '';
     splashLogoContainer.classList.add('header-mode');
+    glowRunning = false;
     ensureModel().catch(() => {
       modelSelect.disabled = false;
       loadModelBtn.disabled = false;
