@@ -344,11 +344,12 @@
   .marquee-strip{
     width:100%; max-width:760px; overflow:hidden; margin-top:24px;
     border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-    padding:10px 0;
+    padding:10px 0; contain:layout;
   }
   .marquee-track{
-    display:flex; width:max-content;
+    display:inline-flex;
     animation: marquee-scroll 26s linear infinite;
+    will-change: transform;
   }
   .marquee-track span{
     font-family:var(--font-display);
