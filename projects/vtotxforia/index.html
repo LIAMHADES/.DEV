@@ -711,7 +711,7 @@ splashImg.onload = () => {
   splashLogoCanvas.style.filter = 'contrast(1.6) saturate(1.9)';
   splashReady = true;
   splashGlowCanvas.style.opacity = '0';
-  setTimeout(() => splashAnimGlow(), 750);
+  setTimeout(() => splashAnimGlow(), 500);
 
   document.addEventListener('click', closeSplash, { once:true });
   document.addEventListener('keydown', closeSplash, { once:true });
