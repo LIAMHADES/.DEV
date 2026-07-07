@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Dictado por voz en el navegador con Whisper WASM. Sin servidor, 100% local, el audio nunca sale de tu ordenador." />
+  <meta name="theme-color" content="#000000" />
+  <title>VtoTXforIA — Dictado por voz en el navegador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family:'d3f87553ddbe'; src:url('resources/TIPOGRAFIAS/d3f87553ddbe/d3f87553ddbe.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'7a891ef4e8b5'; src:url('resources/TIPOGRAFIAS/7a891ef4e8b5/7a891ef4e8b5.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'cfc3b01d375e'; src:url('resources/TIPOGRAFIAS/cfc3b01d375e/cfc3b01d375e.ttf') format('truetype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'0469b409a388'; src:url('resources/TIPOGRAFIAS/0469b409a388/0469b409a388.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+  :root{
+    font-size:14px;
+    --c-bright:  #A0D8F1;
+    --c-mid:     #4A90D9;
+    --c-shadow:  #002244;
+    --c-glow:    #7FC1ED;
+    --c-dim:     #00102B;
+    --c-cyan-soft: #000D1A;
+
+    --bg:        #000000;
+    --bg-panel:  #040408;
+    --bg-panel-2:#010104;
+    --border:    #0F1A2E;
+    --text:      #D0DCE8;
+    --text-muted:#587090;
+    --danger:    #ff4444;
+
+    --radius-md: 14px;
+
+    --t-wave-interval: 2000ms;
+    --t-glitch-step: 70ms;
+    --t-dot-blink: 550ms;
+
+    --ease-standard: cubic-bezier(.16,1,.3,1);
+
+    --font-body:    "d3f87553ddbe", "7a891ef4e8b5", "Segoe UI", "Inter", system-ui, -apple-system, sans-serif;
+
+    --font-mono:    "JetBrains Mono", "Consolas", ui-monospace, monospace;
+    --font-display: "Press Start 2P", "Obviously Narrow Black", "JetBrains Mono", monospace;
+    --font-elegant: "Source Serif 4", Georgia, serif;
+  }
+  [data-theme="light"]{
+    --bg:        #F5F7FA;
+    --bg-panel:  #FFFFFF;
+    --bg-panel-2:#EDF1F5;
+    --border:    #D0D8E0;
+    --text:      #0D1117;
+    --text-muted:#3A4A5E;
+    --c-bright:  #4A9FD8;
+    --c-mid:     #1A6DB5;
+    --c-shadow:  #0A3D66;
+    --c-glow:    #3D8ED4;
+    --c-dim:     #D8E8F4;
+    --c-cyan-soft:#E8F2FC;
+  }
+
+  *, *::before, *::after{ box-sizing:border-box; transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+
+  body.splash-active{ display:block; }
+  body{
+    margin:0;
+    min-height:100vh;
+    overflow-y:scroll; scrollbar-gutter:stable;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:17px;
+    font-variant-ligatures:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:50px 20px 80px;
+    transition: background 0.2s, color 0.2s, padding 0.6s var(--ease-standard);
+  }
+
+  /* ============ SCROLLBARS ============ */
+  body{ scrollbar-width:thin; scrollbar-color:var(--c-mid) transparent; }
+  ::-webkit-scrollbar{ width:7px; height:7px; }
+  ::-webkit-scrollbar-track{ background:transparent; }
+  ::-webkit-scrollbar-thumb{
+    background:color-mix(in srgb, var(--c-mid) 45%, transparent);
+    border:1px solid color-mix(in srgb, var(--c-mid) 20%, transparent);
+    border-radius:5px;
+  }
+  ::-webkit-scrollbar-thumb:hover{
+    background:color-mix(in srgb, var(--c-bright) 60%, transparent);
+    border-color:color-mix(in srgb, var(--c-bright) 35%, transparent);
+  }
+  ::-webkit-scrollbar-corner{ background:transparent; }
+
+  .transcript-box::-webkit-scrollbar{ width:6px; }
+  .transcript-box::-webkit-scrollbar-thumb{ background:color-mix(in srgb, var(--c-mid) 30%, transparent); border-radius:4px; border:none; }
+  .transcript-box::-webkit-scrollbar-thumb:hover{ background:color-mix(in srgb, var(--c-bright) 45%, transparent); }
+
+  .lang-dropdown::-webkit-scrollbar{ width:5px; }
+  .lang-dropdown::-webkit-scrollbar-thumb{ background:color-mix(in srgb, var(--c-mid) 25%, transparent); border-radius:3px; border:none; }
+  .lang-dropdown::-webkit-scrollbar-thumb:hover{ background:color-mix(in srgb, var(--c-bright) 40%, transparent); }
+
+  #pageContent{
+    width:100%; max-width:960px; margin:0 auto;
+    display:flex; flex-direction:column; align-items:center;
+  }
+
+/* ============ SPLASH ============ */
+  #splashOverlay{
+    position:fixed; inset:0; z-index:999;
+    background:var(--bg);
+    pointer-events:none;
+    opacity:1;
+    transition:opacity 1.8s ease;
+  }
+  #splashOverlay.faded{ opacity:0; }
+  #splashOverlay.hidden{ display:none; }
+  #splashLogoContainer{
+    position:relative; z-index:1000;
+    width:100%; max-width:100vw; margin:0 auto;
+    height:100dvh;
+    overflow:hidden;
+    transition:height 2s cubic-bezier(.1,.8,.25,1);
+  }
+  #splashLogoContainer.collapsed{ height:90px; }
+  #splashLogoContainer canvas{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:contain; object-position:50% 25%;
+    transform:scale(1.0);
+  }
+  #splashGlowCanvas{ z-index:1; filter:blur(8px); pointer-events:none; }
+  #splashLogoCanvas{ z-index:2; mix-blend-mode:screen; }
+  .splash-sub{
+    position:absolute; left:50%; transform:translateX(-50%); bottom:28%;
+    font-family:var(--font-display);
+    font-size:clamp(0.85rem, 2.2vw, 1.05rem); letter-spacing:0.24em; color:var(--c-mid);
+    text-transform:uppercase; opacity:1; text-align:center; white-space:nowrap; z-index:5;
+    pointer-events:none;
+    transition:opacity 0.6s var(--ease-standard);
+  }
+  .splash-hint{
+    position:absolute; bottom:80px; left:50%; transform:translateX(-50%);
+    font-family:var(--font-body);
+    font-size:0.95rem; letter-spacing:0.08em; color:var(--text-muted);
+    opacity:1; text-align:center; z-index:5; pointer-events:none;
+    transition:opacity 0.6s var(--ease-standard);
+  }
+  #splashLogoContainer.collapsed .splash-sub,
+  #splashLogoContainer.collapsed .splash-hint{
+    opacity:0;
+  }
+
+  /* ============ HEADER ============ */
+  header{ width:100%; max-width:760px; text-align:center; margin-bottom:28px; }
+  .logo-row{ display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:10px; }
+
+  #splashLogoContainer.header-mode{
+    position:relative !important; left:auto !important; top:auto !important;
+    transform:none !important; width:min(36.1vw,456px); flex-shrink:0;
+  }
+  .rec-dot{ width:8px; height:8px; border-radius:50%; background:var(--c-bright); visibility:hidden; }
+  .rec-dot.active{ visibility:visible; }
+
+  .tagline{ color:var(--text-muted); font-size:1rem; margin-top:10px; line-height:1.6; max-width:620px; margin-left:auto; margin-right:auto; font-family:var(--font-elegant); }
+
+  .badge-row{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:16px; }
+  .badge{ font-family:var(--font-display); font-size:0.7rem; line-height:1.6; letter-spacing:0.03em; color:var(--text-muted); }
+  .badge-dot{ font-family:var(--font-display); font-size:0.8rem; color:var(--text-muted); opacity:0.4; }
+
+  .theme-toggle{
+    position:fixed; top:18px; right:18px;
+    background:var(--bg-panel); border:1px solid var(--border); color:var(--c-bright);
+    font-family:var(--font-body); font-size:0.9rem; font-weight:700; padding:8px 14px; cursor:pointer;
+  }
+  .theme-toggle:hover{ border-color:var(--c-bright); color:var(--c-bright); }
+
+  .notice{
+    max-width:760px; width:100%;
+    background:var(--bg-panel); border:1px solid var(--border); border-left:3px solid var(--c-mid);
+    padding:16px 20px; font-size:0.95rem; color:var(--text-muted); line-height:1.7; margin-bottom:28px; font-family:var(--font-elegant);
+  }
+  .notice strong{ color:var(--text); font-weight:600; font-family:var(--font-elegant); }
+
+  /* distorted-link: linea bajo el texto que se contrae al hover, color pasa a --c-glow (patron tomado de synchronized_studio) */
+  .distorted-link{
+    position:relative; color:var(--c-mid); text-decoration:none;
+    transition:color 0.2s ease;
+  }
+  .distorted-link::after{
+    content:''; position:absolute; left:0; bottom:-1px; width:100%; height:1px;
+    background:var(--c-mid); transform-origin:right; transform:scaleX(1);
+    transition:transform 0.35s ease, background-color 0.35s ease;
+  }
+  .distorted-link:hover{ color:var(--c-glow); }
+  .distorted-link:hover::after{ transform:scaleX(0); background:var(--c-glow); }
+
+  /* ============ MAIN PANEL ============ */
+  main{
+    width:100%; max-width:760px;
+    background:var(--bg-panel); border:1px solid var(--border);
+    padding:36px 28px; display:flex; flex-direction:column; align-items:center; gap:24px;
+  }
+
+  .orb-wrap{ position:relative; width:100%; max-width:600px; aspect-ratio:600/250; display:flex; align-items:center; justify-content:center; }
+  #orbCanvas{ position:absolute; inset:0; width:100%; height:100%; will-change:transform; }
+  .orb-btn{
+    position:relative; z-index:2;
+    width:80px; height:80px; border-radius:50%; border:none; cursor:pointer;
+    background: radial-gradient(circle at 35% 30%, var(--c-glow), var(--c-mid) 60%, var(--c-shadow) 100%);
+    background-size:200% 200%;
+    display:flex; align-items:center; justify-content:center; color:var(--bg);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, border-radius 0.4s ease, box-shadow 0.4s ease;
+  }
+  .orb-btn:hover{ transform:scale(1.04); }
+  .orb-btn:active{ transform:scale(0.96); }
+  .orb-icon{ position:absolute; width:30px; height:30px; }
+
+  .status-line{
+    display:flex; align-items:center; gap:10px;
+    font-size:0.95rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted);
+    min-height:1.2em; padding:0 4px;
+    transition: color 0.2s, gap 0.25s;
+  }
+  .status-dot{ width:7px; height:7px; border-radius:50%; background:var(--text-muted); flex-shrink:0; }
+  .status-spinner{
+    display:none; width:18px; height:18px; flex-shrink:0;
+    border:2px solid transparent; border-top-color:var(--c-bright); border-radius:50%;
+    animation: spinnerRotate 0.7s linear infinite;
+    filter:drop-shadow(0 0 6px var(--c-glow));
+  }
+  @keyframes spinnerRotate{ to{ transform:rotate(360deg); } }
+  .status-line.st-transcribing .status-dot{ display:none; }
+  .status-line.st-transcribing .status-spinner{ display:block; }
+  .status-line.st-loading .status-dot{ background:var(--c-mid); }
+  .status-line.st-loading .status-spinner{ display:block; border-top-color:var(--c-mid); filter:none; }
+  .status-line.st-recording{ color:var(--danger); }
+  .status-line.st-recording .status-dot{ background:var(--danger); }
+  .status-line.st-transcribing{ color:var(--c-bright); gap:12px; }
+  .status-line.st-loading{ color:var(--c-mid); }
+  .status-line.st-ready .status-dot{ background:var(--c-bright); }
+
+  @keyframes scanGlow{
+    0%{ border-color:var(--c-mid); box-shadow:0 0 8px color-mix(in srgb, var(--c-mid) 15%, transparent); }
+    50%{ border-color:var(--c-bright); box-shadow:0 0 30px color-mix(in srgb, var(--c-bright) 30%, transparent), inset 0 0 30px color-mix(in srgb, var(--c-bright) 8%, transparent); }
+    100%{ border-color:var(--c-mid); box-shadow:0 0 8px color-mix(in srgb, var(--c-mid) 15%, transparent); }
+  }
+  @keyframes shimmer{
+    0%{ background-position:-200% 0; }
+    100%{ background-position:200% 0; }
+  }
+  .transcript-box:disabled{
+    border-color:var(--c-mid);
+    background:
+      linear-gradient(90deg, transparent 0%, transparent 35%, color-mix(in srgb, var(--c-bright) 6%, transparent) 50%, transparent 65%, transparent 100%) 0 0 / 200% 100%,
+      var(--bg-panel-2);
+    animation: scanGlow 1.8s ease-in-out infinite, shimmer 2.4s ease-in-out infinite;
+    cursor:wait;
+  }
+
+  .controls-row{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center; }
+  select{
+    background:var(--bg-panel-2); border:1px solid var(--border); color:var(--text);
+    font-family:var(--font-body); font-size:1rem; padding:9px 14px; cursor:pointer;
+  }
+  .lang-wrap{ position:relative; width:210px; }
+  #langSelect{
+    width:100%; background:var(--bg-panel-2); border:1px solid var(--border); color:var(--text);
+    font-family:var(--font-body); font-size:1rem; font-weight:700; padding:9px 14px; outline:none;
+  }
+  #langSelect:focus{ border-color:var(--c-mid); }
+  #langSelect::placeholder{ color:var(--text-muted); font-weight:400; }
+  .lang-dropdown{
+    position:absolute; top:100%; left:0; right:0; z-index:50;
+    background:var(--bg-panel); border:1px solid var(--border); border-top:none;
+    max-height:240px; overflow-y:auto; display:none;
+  }
+  .lang-dropdown.open{ display:block; }
+  .lang-dropdown-item{
+    padding:8px 14px; cursor:pointer;
+    font-family:var(--font-body); font-size:0.95rem; font-weight:700; color:var(--text);
+    transition: background 0.1s, color 0.2s ease, border-color 0.2s ease;
+  }
+  .lang-dropdown-item:hover,
+  .lang-dropdown-item.highlighted{ background:var(--c-cyan-soft); color:var(--c-bright); }
+  .load-model-btn{
+    background:transparent; border:1px solid var(--border); color:var(--c-mid);
+    font-family:var(--font-body); font-size:0.95rem; font-weight:700; padding:9px 16px; cursor:pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s ease;
+  }
+  .load-model-btn:hover{ border-color:var(--c-mid); background:var(--c-cyan-soft); }
+  .load-model-btn:disabled{ opacity:0.5; cursor:not-allowed; }
+
+  .progress-bar{ width:100%; max-width:480px; height:3px; background:var(--border); display:none; }
+  .progress-bar.active{ display:block; }
+  .progress-bar-fill{ height:100%; width:0%; background:var(--c-mid); transition:width 0.2s ease; }
+
+  .transcript-box{
+    width:100%; min-height:140px; background:var(--bg-panel-2); border:1px solid var(--border);
+    padding:18px; font-size:1.15rem; line-height:1.7; color:var(--text); resize:vertical; font-family:var(--font-elegant);
+  }
+  .transcript-box:focus{ outline:1px solid var(--c-mid); }
+  .transcript-box::placeholder{ color:var(--text-muted); }
+
+  .transcript-actions{ width:100%; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
+  .char-count{ font-size:0.9rem; color:var(--text-muted); }
+
+  .btn{
+    font-family:var(--font-body); font-size:0.98rem; font-weight:700; padding:10px 18px;
+    border:1px solid var(--border); background:var(--bg-panel-2); color:var(--text); cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  .btn:hover{ border-color:var(--c-mid); color:var(--c-mid); }
+  .btn.primary{ background:var(--c-mid); border:none; color:var(--bg); }
+  .btn.primary:hover{ filter:brightness(1.1); color:var(--bg); }
+  .btn:disabled{ opacity:0.4; cursor:not-allowed; }
+
+  .history-section{ width:100%; max-width:760px; margin-top:28px; }
+  .history-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+  .history-header h2{ font-family:var(--font-display); font-size:0.85rem; line-height:1.6; text-transform:uppercase; letter-spacing:0.03em; color:var(--text-muted); margin:0; font-weight:400; }
+  .history-empty{ color:var(--text-muted); font-size:1rem; text-align:center; padding:24px; border:1px dashed var(--border); }
+  .history-list{ display:flex; flex-direction:column; gap:8px; }
+  .history-item{ background:var(--bg-panel); border:1px solid var(--border); padding:12px 14px; display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+  .history-item-text{ font-size:1rem; color:var(--text); line-height:1.5; flex:1; white-space:pre-wrap; font-family:var(--font-elegant); }
+  .history-item-meta{ font-size:0.82rem; color:var(--text-muted); margin-bottom:4px; font-family:var(--font-elegant); }
+  .history-item-actions{ display:flex; gap:6px; flex-shrink:0; }
+  .icon-btn{ background:transparent; border:none; color:var(--text-muted); cursor:pointer; font-size:0.92rem; font-weight:700; padding:5px 8px; font-family:var(--font-body); transition:color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease; }
+  .icon-btn:hover{ color:var(--c-bright); transform:scale(1.1); text-shadow:0 0 10px var(--c-glow); }
+  .icon-btn:active{ transform:scale(0.93); }
+
+  footer{ max-width:760px; width:100%; text-align:center; margin-top:40px; color:var(--text-muted); font-size:0.92rem; line-height:1.8; font-family:var(--font-display); }
+  footer a{ color:var(--c-mid); text-decoration:none; transition:color 0.2s ease; }
+  footer a:hover{ color:var(--c-glow); }
+
+  /* marquee: franja de specs tecnicas en bucle continuo, detalle de personalidad tomado de synchronized_studio */
+  .marquee-strip{
+    width:100%; max-width:760px; overflow:hidden; margin-top:24px;
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    padding:10px 0;
+  }
+  .marquee-track{
+    display:flex; width:max-content;
+    animation: marquee-scroll 26s linear infinite;
+  }
+  .marquee-track span{
+    font-family:var(--font-display);
+    font-size:0.92rem; letter-spacing:0.05em; color:var(--text-muted);
+    white-space:nowrap; padding:0 28px;
+  }
+  .marquee-track span::before{ content:'◆'; color:var(--c-mid); margin-right:28px; font-size:0.5rem; vertical-align:middle; }
+  @keyframes marquee-scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  @keyframes splashDotGlow{
+    0%,2%{ transform:scale(1); box-shadow:none; }
+    3%{ transform:scale(1.065); box-shadow:0 0 2.3px 1.65px rgba(255,255,255,0.65); }
+    38%{ transform:scale(1.065); box-shadow:0 0 2.3px 1.65px rgba(255,255,255,0.65); }
+    40%{ transform:scale(1); box-shadow:none; }
+    100%{ transform:scale(1); box-shadow:none; }
+  }
+  @keyframes headerDotGlow{
+    0%,2%{ filter:brightness(1); }
+    3%{ filter:brightness(2.5); }
+    38%{ filter:brightness(2.5); }
+    40%{ filter:brightness(1); }
+    100%{ filter:brightness(1); }
+  }
+  @keyframes headerGlitchFlicker{
+    0%{ filter:brightness(1); }
+    25%{ filter:brightness(10); }
+    50%{ filter:brightness(1); }
+    75%{ filter:brightness(10); }
+    100%{ filter:brightness(1); }
+  }
+  /* (headerLogoDots animations removed) */
+
+  @media (prefers-reduced-motion: reduce){
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+</style>
+</head>
+<body class="splash-active">
+
+<div id="splashOverlay"></div>
+
+<div id="pageContent">
+<div id="splashLogoContainer">
+  <canvas id="splashGlowCanvas"></canvas>
+  <canvas id="splashLogoCanvas"></canvas>
+  <div class="splash-sub" id="splashSub">V O I C E  .  T O  .  T E X T  .  F O R  .  I A</div>
+  <div class="splash-hint" id="splashHint">[ CLICK &middot; O CUALQUIER TECLA &middot; PARA CONTINUAR ]</div>
+</div>
+<button class="theme-toggle" id="themeToggle">TEMA</button>
+<header>
+  <div class="logo-row">
+    <span class="rec-dot" id="recDot"></span>
+  </div>
+  <p class="tagline">Dictado por voz directamente en el navegador. Sin servidor, sin subir audio a ningún sitio — la transcripción corre en tu propio ordenador.</p>
+  <div class="badge-row">
+    <span class="badge">WHISPER LOCAL (WASM)</span>
+    <span class="badge-dot">·</span>
+    <span class="badge">SIN BACKEND</span>
+    <span class="badge-dot">·</span>
+    <span class="badge">SIN DATOS ENVIADOS</span>
+  </div>
+</header>
+
+<div class="notice">
+  <strong>Esto es una demo standalone</strong>, no la app completa. Aquí grabas, transcribes y copias el texto manualmente.
+  La <strong>app de escritorio</strong> hace algo que un navegador no puede: con un <strong>Botón del teclado</strong> configurable
+  y pega el texto automáticamente donde estabas escribiendo.
+</div>
+
+<main>
+  <div class="orb-wrap" id="orbWrap">
+    <canvas id="orbCanvas" width="600" height="250"></canvas>
+    <button class="orb-btn" id="orbBtn" aria-label="Grabar">
+      <svg class="orb-icon orb-icon-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+        <path d="M19 10v1a7 7 0 0 1-14 0v-1"></path>
+        <line x1="12" y1="18" x2="12" y2="22"></line>
+        <line x1="9" y1="22" x2="15" y2="22"></line>
+      </svg>
+      <svg class="orb-icon orb-icon-stop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="7" y="7" width="10" height="10" rx="1.5"></rect>
+      </svg>
+    </button>
+  </div>
+
+  <div class="status-line st-ready" id="statusLine">
+    <span class="status-dot"></span>
+    <span class="status-spinner" id="statusSpinner"></span>
+    <span id="statusText">Modelo no cargado</span>
+  </div>
+
+  <div class="controls-row">
+    <select id="modelSelect">
+      <option value="Xenova/whisper-base" selected>MODELO: BASE</option>
+      <option value="Xenova/whisper-small">MODELO: SMALL</option>
+      <option value="Xenova/whisper-medium">MODELO: MEDIUM</option>
+    </select>
+    <div class="lang-wrap">
+      <input type="text" id="langSelect" placeholder="IDIOMA (escribe o elige…)" autocomplete="off">
+      <div class="lang-dropdown" id="langDropdown"></div>
+    </div>
+    <button class="load-model-btn" id="loadModelBtn">CARGAR MODELO</button>
+  </div>
+
+  <div class="progress-bar" id="progressBar"><div class="progress-bar-fill" id="progressBarFill"></div></div>
+
+  <textarea class="transcript-box" id="transcriptBox" placeholder="Tu transcripción aparecerá aquí. Puedes editarla libremente antes de copiarla."></textarea>
+
+  <div class="transcript-actions">
+    <span class="char-count" id="charCount">0 CARACTERES</span>
+    <div style="display:flex; gap:8px;">
+      <button class="btn" id="clearBtn">LIMPIAR</button>
+      <button class="btn primary" id="copyBtn">COPIAR TEXTO</button>
+    </div>
+  </div>
+</main>
+
+<section class="history-section">
+  <div class="history-header">
+    <h2>Historial de esta sesión</h2>
+    <button class="icon-btn" id="clearHistoryBtn">BORRAR TODO</button>
+  </div>
+  <div id="historyList">
+    <div class="history-empty" id="historyEmpty">Todavía no hay transcripciones en esta sesión.</div>
+    <div class="history-list" id="historyItems"></div>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>WHISPER · TINY / BASE</span><span>100% BROWSER-SIDE</span><span>NO BACKEND</span><span>NO DATA SENT</span><span>V2TX4IA</span>
+    <span>WHISPER · TINY / BASE</span><span>100% BROWSER-SIDE</span><span>NO BACKEND</span><span>NO DATA SENT</span><span>V2TX4IA</span>
+  </div>
+</div>
+
+<footer>
+  Todo el procesamiento ocurre en tu navegador — el audio nunca sale de tu ordenador.<br />
+  El historial se guarda solo en este navegador (localStorage) y se pierde si limpias los datos del sitio.<br />
+  Parte del ecosistema de herramientas de <strong>VtoTXforIA</strong> — versión de escritorio disponible en el repositorio del proyecto.
+</footer>
+</div>
+
+<script type="module">
+import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2';
+env.allowLocalModels = false;
+
+/* ===================== COLOR ENGINE (puerto de _blend de la app original) ===================== */
+function hexToRgb(hex){
+  const h = hex.replace('#','');
+  return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)];
+}
+function blend(fg, bg, alpha){
+  const [fr,fg_,fb] = hexToRgb(fg);
+  const [br,bgg,bb] = hexToRgb(bg);
+  const r = Math.round(br + (fr-br)*alpha);
+  const g = Math.round(bgg + (fg_-bgg)*alpha);
+  const b = Math.round(bb + (fb-bb)*alpha);
+  return `rgb(${r},${g},${b})`;
+}
+function cssVar(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+/* ===================== DOT-MATRIX FONT (patrón 5x7) ===================== */
+const FONT_5X7 = {
+  'V':['10001','10001','10001','10001','01010','01010','00100'],
+  '2':['01110','10001','00001','00010','00100','01000','11111'],
+  'T':['11111','00100','00100','00100','00100','00100','00100'],
+  'X':['10001','01010','00100','00100','00100','01010','10001'],
+  '4':['00010','00110','01010','10010','11111','00010','00010'],
+  'I':['01110','00100','00100','00100','00100','00100','01110'],
+  'A':['01110','10001','10001','11111','10001','10001','10001'],
+};
+const LOGO_TEXT = ['V','2','T','X','4','I','A'];
+
+class DotMatrix{
+  constructor(canvas, {dotR, dotSpacing, letterSpacing, scale=1}){
+    this.canvas = canvas;
+    this.ctx = canvas.getContext('2d');
+    this.dotR = dotR; this.dotSpacing = dotSpacing; this.letterSpacing = letterSpacing;
+    this.scale = scale;
+    this.dots = [];
+    this._buildDots();
+    this.wavePhase = 0;
+    this.lastWave = performance.now();
+    this.glitchActive = false;
+    this.glitchStep = 0;
+    this._resizeCanvas();
+  }
+
+  _buildDots(){
+    let xOffset = 0;
+    LOGO_TEXT.forEach((ch) => {
+      const pattern = FONT_5X7[ch];
+      for(let row=0; row<7; row++){
+        for(let col=0; col<5; col++){
+          if(pattern[row][col] === '1'){
+            const band = row <= 1 ? 'bright' : (row <= 4 ? 'mid' : 'shadow');
+            this.dots.push({
+              x: xOffset + col*this.dotSpacing,
+              y: row*this.dotSpacing,
+              band,
+              alpha: 0,
+              targetAlpha: 1,
+              waveFlash: 0,
+              waveDelay: 0,
+            });
+          }
+        }
+      }
+      xOffset += this.letterSpacing;
+    });
+    this.width = xOffset - this.letterSpacing + 5*this.dotSpacing;
+    this.height = 7*this.dotSpacing;
+    this.minX = 0;
+  }
+
+  _resizeCanvas(){
+    const w = this.width * this.scale;
+    const h = this.height * this.scale;
+    this.canvas.width = w * devicePixelRatio;
+    this.canvas.height = h * devicePixelRatio;
+    this.canvas.style.width = w+'px';
+    this.canvas.style.height = h+'px';
+    this.ctx.scale(devicePixelRatio * this.scale, devicePixelRatio * this.scale);
+  }
+
+  playEntry(){
+    const dim = cssVar('--c-dim');
+    this.dots.forEach(d => {
+      d.alpha = 0;
+      d.entryDelay = (d.x - this.minX) / this.dotSpacing * 16;
+      d.entryStart = null;
+    });
+    this._entryPlaying = true;
+    this._entryStartTime = performance.now();
+  }
+
+  triggerGlitch(){
+    this.glitchActive = true;
+    this.glitchStep = 0;
+    this._glitchLast = performance.now();
+  }
+
+  render(now){
+    const ctx = this.ctx;
+    ctx.clearRect(0,0,this.width,this.height);
+
+    const bright = cssVar('--c-bright');
+    const mid = cssVar('--c-mid');
+    const shadow = cssVar('--c-shadow');
+    const dim = cssVar('--c-dim');
+    const glow = cssVar('--c-glow');
+    const bandColor = { bright, mid, shadow };
+
+    if(this._entryPlaying){
+      const elapsed = now - this._entryStartTime;
+      this.dots.forEach(d => {
+        if(elapsed >= d.entryDelay){
+          if(d.entryStart === null) d.entryStart = now;
+          const fadeElapsed = now - d.entryStart;
+          d.alpha = Math.min(1, fadeElapsed / 190);
+        }
+      });
+      if(this.dots.every(d => d.alpha >= 1)) this._entryPlaying = false;
+    }
+
+    if(now - this.lastWave > (this.waveInterval || 2400)){
+      this.lastWave = now;
+      this.dots.forEach(d => {
+        d.waveDelay = (d.x - this.minX) * 1.8 + Math.random()*95;
+        d.waveStart = now;
+        d.waveFired = false;
+      });
+    }
+
+    if(this.glitchActive){
+      const stepElapsed = now - this._glitchLast;
+      if(stepElapsed > 35){
+        this._glitchLast = now;
+        this.glitchStep++;
+        this.dots.forEach(d => { d._glitchOn = Math.random() < 0.45; });
+        if(this.glitchStep >= 8) this.glitchActive = false;
+      }
+    }
+
+    this.dots.forEach(d => {
+      let baseColor = bandColor[d.band];
+      let effAlpha = 0.06 + d.alpha * 0.94;
+      let color = blend(baseColor, dim, effAlpha);
+
+      if(d.waveStart !== undefined){
+        const sinceWave = now - d.waveStart;
+        if(sinceWave >= d.waveDelay && sinceWave <= d.waveDelay + 190){
+          const waveT = 1 - (sinceWave - d.waveDelay)/190;
+          color = blend(glow, color.startsWith('rgb') ? baseColor : color, Math.max(0, waveT));
+        }
+      }
+
+      if(this.glitchActive && d._glitchOn && this.glitchStep % 2 === 1){
+        color = '#FFFFFF';
+      }
+
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, this.dotR, 0, Math.PI*2);
+      ctx.fill();
+    });
+  }
+}
+
+/* ======== SIEMPRE ARRIBA ======== */
+if('scrollRestoration' in history) history.scrollRestoration='manual';
+window.scrollTo(0,0);
+
+/* ===================== SPLASH — imagen PNG del logo coloreada dinamicamente + glow con barrido diagonal (tecnica de splash_glow_test.html) ===================== */
+const splashOverlay = document.getElementById('splashOverlay');
+const splashLogoContainer = document.getElementById('splashLogoContainer');
+const splashLogoCanvas = document.getElementById('splashLogoCanvas');
+const splashLogoCtx = splashLogoCanvas.getContext('2d');
+const splashGlowCanvas = document.getElementById('splashGlowCanvas');
+const splashGlowCtx = splashGlowCanvas.getContext('2d');
+const splashSub = document.getElementById('splashSub');
+const splashHint = document.getElementById('splashHint');
+const pageContent = document.getElementById('pageContent');
+
+let splashReady = false, splashAnimating = false, splashClosing = false;
+const splashImg = new Image();
+splashImg.src = 'logo_glow.png';
+
+splashImg.onerror = () => {
+  splashOverlay.classList.add('hidden');
+  document.body.classList.remove('splash-active');
+  splashLogoContainer.classList.add('header-mode');
+  ensureModel().catch(() => {});
+};
+splashImg.onload = () => {
+  const W = splashImg.width, H = splashImg.height;
+  splashLogoCanvas.width = splashGlowCanvas.width = W;
+  splashLogoCanvas.height = splashGlowCanvas.height = H;
+
+  splashLogoCtx.drawImage(splashImg, 0, 0, W, H);
+
+  const oc = document.createElement('canvas').getContext('2d');
+  oc.canvas.width = W; oc.canvas.height = H;
+  const og = oc.createLinearGradient(0, 0, 0, H);
+  og.addColorStop(0.0, cssVar('--c-bright'));
+  og.addColorStop(0.4, cssVar('--c-mid'));
+  og.addColorStop(1.0, cssVar('--c-shadow'));
+  oc.fillStyle = og; oc.fillRect(0, 0, W, H);
+
+  splashLogoCtx.globalCompositeOperation = 'color';
+  splashLogoCtx.drawImage(oc.canvas, 0, 0);
+  splashLogoCtx.globalCompositeOperation = 'source-over';
+
+  splashLogoCtx.globalCompositeOperation = 'destination-in';
+  splashLogoCtx.drawImage(splashImg, 0, 0, W, H);
+  splashLogoCtx.globalCompositeOperation = 'source-over';
+
+  splashLogoCanvas.style.filter = 'contrast(1.6) saturate(1.9)';
+  splashReady = true;
+  splashAnimGlow();
+
+  document.addEventListener('click', closeSplash, { once:true });
+  document.addEventListener('keydown', closeSplash, { once:true });
+  setTimeout(closeSplash, 7000);
+};
+
+function splashAnimGlow(){
+  if(!splashReady || splashOverlay.classList.contains('hidden')) return;
+  const t = performance.now()/2000;
+  const pos = t % 1;
+  const W = splashGlowCanvas.width, H = splashGlowCanvas.height;
+  splashGlowCtx.clearRect(0, 0, W, H);
+  splashGlowCtx.save();
+  splashGlowCtx.filter = 'blur(8px)';
+  splashGlowCtx.drawImage(splashImg, 0, 0, W, H);
+  splashGlowCtx.globalCompositeOperation = 'source-in';
+  splashGlowCtx.translate(W/2, H/2);
+  splashGlowCtx.rotate(30 * Math.PI / 180);
+  const totalWidth = W * 1.5;
+  const peak = pos * W * 2.0 - W;
+  const sx = peak - totalWidth/2;
+  const gr = splashGlowCtx.createLinearGradient(sx, 0, sx + totalWidth, 0);
+  gr.addColorStop(0, 'transparent');
+  gr.addColorStop(0.08, 'rgba(255,255,255,0)');
+  gr.addColorStop(0.18, 'rgba(255,255,255,0.06)');
+  gr.addColorStop(0.28, 'rgba(255,255,255,0.2)');
+  gr.addColorStop(0.38, 'rgba(255,255,255,0.5)');
+  gr.addColorStop(0.45, 'rgba(255,255,255,0.8)');
+  gr.addColorStop(0.50, 'rgba(255,255,255,1)');
+  gr.addColorStop(0.55, 'rgba(255,255,255,0.8)');
+  gr.addColorStop(0.62, 'rgba(255,255,255,0.5)');
+  gr.addColorStop(0.72, 'rgba(255,255,255,0.2)');
+  gr.addColorStop(0.82, 'rgba(255,255,255,0.06)');
+  gr.addColorStop(0.92, 'rgba(255,255,255,0)');
+  gr.addColorStop(1, 'transparent');
+  splashGlowCtx.fillStyle = gr;
+  splashGlowCtx.fillRect(-3000, -3000, 6000, 6000);
+  splashGlowCtx.restore();
+  requestAnimationFrame(splashAnimGlow);
+}
+
+function closeSplash(){
+  if(splashClosing || !splashReady) return;
+  splashClosing = true;
+
+  splashOverlay.classList.add('faded');
+  splashLogoContainer.classList.add('collapsed');
+
+  setTimeout(() => {
+    splashOverlay.classList.add('hidden');
+    document.body.classList.remove('splash-active');
+    document.body.style.overflow = '';
+    document.body.style.height = '';
+    splashLogoContainer.classList.add('header-mode');
+    ensureModel().catch(() => {
+      modelSelect.disabled = false;
+      loadModelBtn.disabled = false;
+      setStatus('st-ready', 'Error al cargar modelo — pulsa "CARGAR MODELO"');
+    });
+  }, 2200);
+}
+
+/* (scanTextToDots moved to comparativa.html — not needed here) */
+
+/* ===================== THEME TOGGLE ===================== */
+const themeToggle = document.getElementById('themeToggle');
+function refreshBright(){ cachedBright = cssVar('--c-bright'); }
+themeToggle.addEventListener('click', () => {
+  const root = document.documentElement;
+  const current = root.getAttribute('data-theme');
+  const next = current === 'light' ? 'dark' : 'light';
+  root.setAttribute('data-theme', next);
+  themeToggle.textContent = next === 'light' ? 'TEMA' : 'TEMA';
+  setTimeout(refreshBright, 200);
+});
+
+/* ===================== ORB GRID (audio-reactive) ===================== */
+const orbCanvas = document.getElementById('orbCanvas');
+const orbCtx = orbCanvas.getContext('2d');
+const orbBtn = document.getElementById('orbBtn');
+const orbWrap = document.getElementById('orbWrap');
+
+let orbRecording = false;
+let orbAnalyser = null;
+let orbDataArray = null;
+let silenceTimer = null;
+let silenceStart = null;
+const SILENCE_MS = 10000;
+const SILENCE_THRESHOLD = 15;
+
+let cachedBright = cssVar('--c-bright');
+const W = 600, H = 250;
+const HALF = 300;
+const COLS = 24, ROWS = 20;
+const D_RADIUS = 1.9;
+const X_STEP = HALF / COLS, Y_STEP = H / ROWS;
+
+function drawGrid(){
+  orbCtx.clearRect(0, 0, W, H);
+
+  const bright = cachedBright;
+
+  let heights = [];
+  if(orbRecording && orbAnalyser && orbDataArray){
+    orbAnalyser.getByteFrequencyData(orbDataArray);
+    for(let c = 0; c < COLS; c++){
+      const idx = Math.floor(c / COLS * orbDataArray.length * 0.55);
+      heights[c] = Math.round((orbDataArray[idx] || 0) / 255 * ROWS * 0.7);
+    }
+  }
+
+  function drawHalf(offsetX, reverse){
+    for(let c = 0; c < COLS; c++){
+      const src = reverse ? COLS - 1 - c : c;
+      const h = heights[src] || 0;
+      for(let r = 0; r < ROWS; r++){
+        const x = offsetX + c * X_STEP + X_STEP / 2;
+        const y = H - (r * Y_STEP + Y_STEP / 2);
+
+        if(orbRecording && r < h){
+          const t = r / ROWS;
+          orbCtx.fillStyle = `rgba(56, 189, 248, ${1 - t * 0.35})`;
+          orbCtx.shadowBlur = 6;
+          orbCtx.shadowColor = bright;
+        } else {
+          orbCtx.fillStyle = 'rgba(160, 216, 241, 0.035)';
+          orbCtx.shadowBlur = 0;
+        }
+
+        orbCtx.beginPath();
+        orbCtx.arc(x, y, D_RADIUS, 0, Math.PI * 2);
+        orbCtx.fill();
+      }
+    }
+  }
+
+  drawHalf(0, true);
+  drawHalf(HALF, false);
+
+  orbCtx.shadowBlur = 0;
+
+  if(orbRecording) requestAnimationFrame(drawGrid);
+}
+drawGrid();
+
+/* ===================== STATUS ===================== */
+const statusLine = document.getElementById('statusLine');
+const statusText = document.getElementById('statusText');
+const recDot = document.getElementById('recDot');
+
+let blinkInterval = null;
+let transcribeDotsInterval = null;
+function setStatus(mode, text){
+  statusLine.classList.remove('st-recording','st-transcribing','st-loading','st-ready');
+  statusLine.classList.add(mode);
+  statusText.textContent = text;
+}
+function startTranscribeDots(){
+  let dots = 0;
+  transcribeDotsInterval = setInterval(() => {
+    dots = (dots + 1) % 4;
+    statusText.textContent = 'Transcribiendo' + '.'.repeat(dots);
+  }, 400);
+}
+function stopTranscribeDots(){
+  if(transcribeDotsInterval){ clearInterval(transcribeDotsInterval); transcribeDotsInterval = null; }
+}
+
+function startBlink(){
+  recDot.classList.add('active');
+  let visible = true;
+  blinkInterval = setInterval(() => {
+    visible = !visible;
+    recDot.style.visibility = visible ? 'visible' : 'hidden';
+  }, 550);
+}
+function stopBlink(){
+  clearInterval(blinkInterval);
+  recDot.classList.remove('active');
+  recDot.style.visibility = 'hidden';
+}
+
+/* ===================== WAVEFORM (3 modes) ===================== */
+
+
+/* ===================== MODEL LOADING ===================== */
+const transcriptBox = document.getElementById('transcriptBox');
+const charCount = document.getElementById('charCount');
+const copyBtn = document.getElementById('copyBtn');
+const clearBtn = document.getElementById('clearBtn');
+const modelSelect = document.getElementById('modelSelect');
+const langSelect = document.getElementById('langSelect');
+const loadModelBtn = document.getElementById('loadModelBtn');
+const progressBar = document.getElementById('progressBar');
+const progressBarFill = document.getElementById('progressBarFill');
+const historyEmpty = document.getElementById('historyEmpty');
+const historyItems = document.getElementById('historyItems');
+const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+const langDropdown = document.getElementById('langDropdown');
+
+const LANGUAGES = [
+  ['spanish', 'ESPAÑOL'],
+  ['english', 'INGLÉS'],
+  ['french', 'FRANCÉS'],
+  ['portuguese', 'PORTUGUÉS'],
+  ['italian', 'ITALIANO'],
+  ['german', 'ALEMÁN'],
+  ['chinese', 'CHINO'],
+  ['japanese', 'JAPONÉS'],
+  ['arabic', 'ÁRABE'],
+  ['russian', 'RUSO'],
+  ['dutch', 'NEERLANDÉS'],
+  ['korean', 'COREANO'],
+];
+function buildLangDropdown(filter){
+  const q = (filter||'').toLowerCase();
+  const items = LANGUAGES.filter(([v]) => !q || v.includes(q));
+  langDropdown.innerHTML = items.map(([val,label]) =>
+    `<div class="lang-dropdown-item" data-value="${val}">${label}</div>`
+  ).join('');
+}
+function showLangDropdown(){ if(langDropdown.children.length) langDropdown.classList.add('open'); }
+function hideLangDropdown(){ langDropdown.classList.remove('open'); }
+langSelect.addEventListener('input', () => {
+  buildLangDropdown(langSelect.value);
+  showLangDropdown();
+});
+langSelect.addEventListener('focus', () => {
+  buildLangDropdown(langSelect.value);
+  showLangDropdown();
+});
+langSelect.addEventListener('blur', () => setTimeout(hideLangDropdown, 150));
+langDropdown.addEventListener('mousedown', e => {
+  const item = e.target.closest('.lang-dropdown-item');
+  if(!item) return;
+  langSelect.value = item.dataset.value;
+  hideLangDropdown();
+});
+buildLangDropdown('');
+
+let transcriber = null;
+let modelReady = false;
+let mediaRecorder = null;
+let audioChunks = [];
+let audioContext = null;
+let isRecording = false;
+
+const HISTORY_KEY = 'vtotxforia_web_history';
+
+function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]'); }catch{ return []; } }
+function saveHistory(list){ localStorage.setItem(HISTORY_KEY, JSON.stringify(list.slice(0,25))); }
+function escapeHtml(str){ const div = document.createElement('div'); div.textContent = str; return div.innerHTML; }
+
+function renderHistory(){
+  const list = loadHistory();
+  if(list.length === 0){
+    historyEmpty.style.display = 'block';
+    historyItems.innerHTML = '';
+    return;
+  }
+  historyEmpty.style.display = 'none';
+  historyItems.innerHTML = list.map((item, i) => `
+    <div class="history-item">
+      <div style="flex:1">
+        <div class="history-item-meta">${new Date(item.ts).toLocaleTimeString('es-ES')} · ${item.lang}</div>
+        <div class="history-item-text">${escapeHtml(item.text)}</div>
+      </div>
+      <div class="history-item-actions">
+        <button class="icon-btn" data-copy="${i}">COPIAR</button>
+        <button class="icon-btn" data-del="${i}">✕</button>
+      </div>
+    </div>
+  `).join('');
+  historyItems.querySelectorAll('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', () => navigator.clipboard.writeText(loadHistory()[+btn.dataset.copy].text));
+  });
+  historyItems.querySelectorAll('[data-del]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const list = loadHistory();
+      list.splice(+btn.dataset.del, 1);
+      saveHistory(list);
+      renderHistory();
+    });
+  });
+}
+
+function addToHistory(text, lang){
+  if(!text.trim()) return;
+  const list = loadHistory();
+  list.unshift({ text, lang, ts: Date.now() });
+  saveHistory(list);
+  renderHistory();
+}
+
+clearHistoryBtn.addEventListener('click', () => { saveHistory([]); renderHistory(); });
+
+async function ensureModel(){
+  if(modelReady) return;
+  const modelId = modelSelect.value;
+  loadModelBtn.disabled = true;
+  modelSelect.disabled = true;
+  progressBar.classList.add('active');
+  setStatus('st-loading', 'Cargando modelo…');
+
+  transcriber = await pipeline('automatic-speech-recognition', modelId, {
+    progress_callback: (data) => {
+      if(data.status === 'progress' && data.total){
+        progressBarFill.style.width = Math.round((data.loaded/data.total)*100) + '%';
+      }
+    }
+  });
+
+  modelReady = true;
+  progressBar.classList.remove('active');
+  modelSelect.disabled = false;
+  loadModelBtn.textContent = 'MODELO CARGADO ✓';
+  setStatus('st-ready', 'Listo para grabar');
+}
+
+loadModelBtn.addEventListener('click', () => {
+  ensureModel().catch(err => {
+    console.error('[VtoTXforIA] Error cargando modelo:', err);
+    modelSelect.disabled = false;
+    loadModelBtn.disabled = false;
+    setStatus('st-ready', 'Error cargando el modelo — revisa consola (F12)');
+  });
+});
+
+modelSelect.addEventListener('change', () => {
+  modelReady = false; transcriber = null;
+  loadModelBtn.disabled = false; modelSelect.disabled = false;
+  loadModelBtn.textContent = 'CARGAR MODELO';
+  setStatus('st-ready', 'Modelo no cargado');
+});
+
+/* ===================== RECORDING ===================== */
+async function startRecording(){
+  await ensureModel();
+
+  const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+  audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  const source = audioContext.createMediaStreamSource(stream);
+
+  orbAnalyser = audioContext.createAnalyser();
+  orbAnalyser.fftSize = 128;
+  orbAnalyser.smoothingTimeConstant = 0.7;
+  orbDataArray = new Uint8Array(orbAnalyser.frequencyBinCount);
+  source.connect(orbAnalyser);
+
+  audioChunks = [];
+  mediaRecorder = new MediaRecorder(stream);
+  mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+  mediaRecorder.onstop = async () => {
+    stream.getTracks().forEach(t => t.stop());
+    await transcribeRecording();
+  };
+  mediaRecorder.start();
+
+  silenceStart = null;
+  silenceTimer = setInterval(() => {
+    if(!orbAnalyser) return;
+    const d = new Uint8Array(orbAnalyser.frequencyBinCount);
+    orbAnalyser.getByteFrequencyData(d);
+    const avg = d.reduce((a, b) => a + b, 0) / d.length;
+    if(avg < SILENCE_THRESHOLD){
+      if(silenceStart === null) silenceStart = Date.now();
+      else if(Date.now() - silenceStart > SILENCE_MS) stopRecording();
+    } else {
+      silenceStart = null;
+    }
+  }, 500);
+
+  isRecording = true;
+  orbRecording = true;
+  drawGrid();
+  startBlink();
+  setStatus('st-recording', 'Grabando — pulsa para parar');
+}
+
+function stopRecording(){
+  if(mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+  isRecording = false;
+  orbRecording = false;
+  if(silenceTimer){ clearInterval(silenceTimer); silenceTimer = null; }
+  silenceStart = null;
+  orbAnalyser = null;
+  orbDataArray = null;
+  if(audioContext) audioContext.close();
+  stopBlink();
+  transcriptBox.placeholder = 'Transcribiendo…';
+  transcriptBox.disabled = true;
+  setStatus('st-transcribing', 'Transcribiendo…');
+  startTranscribeDots();
+}
+
+async function transcribeRecording(){
+  let decodeCtx = null;
+  try{
+    const blob = new Blob(audioChunks, { type:'audio/webm' });
+    const arrayBuffer = await blob.arrayBuffer();
+    decodeCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const decoded = await decodeCtx.decodeAudioData(arrayBuffer.slice(0));
+    const resampled = await resampleTo16k(decoded);
+
+    const lang = langSelect.value.trim();
+    const whisperOpts = { task:'transcribe' };
+    if(lang) whisperOpts.language = lang;
+    const result = await transcriber(resampled, whisperOpts);
+    const text = (result?.text || '').trim();
+
+    const existing = transcriptBox.value.trim();
+    transcriptBox.value = existing ? existing + '\n' + text : text;
+    updateCharCount();
+    addToHistory(text, lang);
+  }catch(err){
+    console.error('[VtoTXforIA] Error transcribiendo:', err);
+    transcriptBox.value += '\n[Error al transcribir — revisa la consola (F12) e inténtalo de nuevo]';
+  }finally{
+    stopTranscribeDots();
+    if(decodeCtx) decodeCtx.close();
+    transcriptBox.placeholder = 'Escribe o pega aquí…';
+    transcriptBox.disabled = false;
+    setStatus('st-ready', 'Listo para grabar');
+  }
+}
+
+async function resampleTo16k(audioBuffer){
+  const targetRate = 16000;
+  if(audioBuffer.sampleRate === targetRate) return audioBuffer.getChannelData(0);
+  const offlineCtx = new OfflineAudioContext(1, Math.ceil(audioBuffer.duration*targetRate), targetRate);
+  const src = offlineCtx.createBufferSource();
+  src.buffer = audioBuffer;
+  src.connect(offlineCtx.destination);
+  src.start();
+  const rendered = await offlineCtx.startRendering();
+  return rendered.getChannelData(0);
+}
+
+orbBtn.addEventListener('click', async () => {
+  if(!isRecording){
+    try{ await startRecording(); }
+    catch(err){
+      console.error('[VtoTXforIA] Error accediendo al micrófono:', err);
+      setStatus('st-ready', 'No se pudo acceder al micrófono — revisa permisos');
+    }
+  } else {
+    stopRecording();
+  }
+});
+
+function updateCharCount(){ charCount.textContent = `${transcriptBox.value.length} CARACTERES`; }
+transcriptBox.addEventListener('input', updateCharCount);
+
+copyBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(transcriptBox.value);
+  copyBtn.textContent = 'COPIADO ✓';
+  setTimeout(() => copyBtn.textContent = 'COPIAR TEXTO', 1400);
+});
+
+clearBtn.addEventListener('click', () => { transcriptBox.value=''; updateCharCount(); });
+
+renderHistory();
+updateCharCount();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONIX — Stands NFC para Negocios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Cormorant:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* Fondos */
+  --bg:#080705;
+  --surface:#0f0d0a;
+  --surface2:#181410;
+  --surface3:#201a13;
+
+  /* Cobre */
+  --copper:#B85420;
+  --copper-warm:#E8A044;
+  --copper-light:#F5C96A;
+  --copper-shadow:#682B0E;
+  --copper-deep:#8C3A0F;
+
+  /* Texto */
+  --text:#F0EBE3;
+  --text2:#C4B8A8;
+  --muted:#9A8672;
+
+  /* Bordes */
+  --border:#211A12;
+  --border2:#2E2318;
+
+  /* Gradiente cobre metálico */
+  --g-copper:linear-gradient(135deg,#682B0E 0%,#B85420 25%,#F5C96A 55%,#B85420 80%,#682B0E 100%);
+  --g-copper-h:linear-gradient(90deg,#8C3A0F 0%,#B85420 30%,#F5C96A 55%,#B85420 75%,#8C3A0F 100%);
+
+  /* Tipografías */
+  --font-h1:'Bebas Neue',sans-serif;
+  --font-h2:'Rajdhani',sans-serif;
+  --font-body:'Raleway',sans-serif;
+  --font-accent:'Cormorant',serif;
+
+  --r:12px;
+  --r-sm:8px
+}
+
+html{scroll-behavior:smooth;overflow-x:hidden}
+
+/* ─── SCROLLBAR PERSONALIZADA ────────────────────────────────── */
+:root{--thumb-bg:linear-gradient(180deg,rgba(140,58,15,.35),rgba(184,84,32,.35),rgba(140,58,15,.35))}
+html.scrolling{--thumb-bg:linear-gradient(180deg,var(--copper-deep),var(--copper),var(--copper-deep))}
+::-webkit-scrollbar{width:7px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{
+  background:var(--thumb-bg);
+  border-radius:100px;
+  border:1px solid rgba(245,201,106,.06);
+  transition:background .35s ease,border .35s ease
+}
+::-webkit-scrollbar-thumb:hover{
+  background:linear-gradient(180deg,var(--copper),var(--copper-warm),var(--copper));
+  border-color:rgba(245,201,106,.15)
+}
+html{scrollbar-width:thin;scrollbar-color:rgba(184,84,32,.35) transparent}
+
+body{
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse 900px 600px at 15% -5%, rgba(184,84,32,.12), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 30%, rgba(184,84,32,.07), transparent 55%),
+    radial-gradient(ellipse 800px 500px at 0% 75%, rgba(184,84,32,.06), transparent 55%);
+  background-attachment:fixed;
+  color:var(--text);
+  font-family:var(--font-body),-apple-system,sans-serif;
+  font-size:16px;
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  overflow-x:hidden
+}
+
+/* Grain / ruido de textura */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  pointer-events:none;z-index:1;
+  opacity:.03;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+}
+
+/* Logo marca de agua fondo */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  pointer-events:none;z-index:-1;
+  background-image:url("img/logos/logo negativo.png");
+  background-size:60%;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  opacity:.25;
+  filter:blur(4px)
+}
+
+/* ─── NAV ────────────────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 5%;
+  background:rgba(8,7,5,.35);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--border)
+}
+.nav-logo{
+  display:flex;align-items:center;
+  text-decoration:none
+}
+.nav-logo img{
+  height:54px;
+  mix-blend-mode:screen;
+  filter:brightness(1.05)
+}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-family:var(--font-body);
+  font-size:13px;font-weight:400;
+  letter-spacing:.06em;
+  transition:.25s cubic-bezier(.16,1,.3,1)
+}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{
+  background:var(--surface2);
+  color:var(--copper-warm);
+  border:1px solid rgba(184,84,32,.45);
+  padding:10px 22px;
+  border-radius:var(--r-sm);
+  font-family:var(--font-body);
+  font-size:13px;font-weight:600;
+  letter-spacing:.04em;
+  text-decoration:none;
+  transition:.25s cubic-bezier(.16,1,.3,1)
+}
+.nav-cta:hover{
+  background:var(--g-copper);
+  color:#0a0a0a;
+  border-color:transparent;
+  transform:translateY(-1px);
+  box-shadow:0 6px 18px rgba(184,84,32,.28)
+}
+@media(max-width:900px){.nav-links{display:none}}
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 5% 80px 2%;
+  max-width:1100px;margin:0 auto
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr;
+  gap:60px;align-items:center
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  color:var(--copper-warm);
+  font-family:var(--font-body);
+  font-size:11px;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;
+  margin-bottom:22px
+}
+.hero-tag::before{
+  content:'';display:block;
+  width:28px;height:1.5px;
+  background:var(--g-copper-h);
+  flex-shrink:0
+}
+.hero-title{
+  font-family:var(--font-h1);
+  font-weight:400;
+  font-size:clamp(48px,7.5vw,110px);
+  line-height:.9;
+  letter-spacing:.01em;
+  margin-bottom:12px;
+  text-transform:uppercase
+}
+.hero-title .hl{
+  background:var(--g-copper);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text
+}
+.hero-sub{
+  font-family:var(--font-body);
+  font-size:clamp(14px,1.2vw,17px);font-weight:300;
+  color:var(--text2);
+  line-height:1.75;
+  margin-bottom:34px;
+  max-width:700px
+}
+
+#tw-line1, #tw-line2{
+  display:inline-block;
+  white-space:nowrap
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{
+  background:var(--surface2);
+  color:var(--copper-warm);
+  border:1px solid rgba(184,84,32,.45);
+  padding:14px 28px;
+  border-radius:var(--r-sm);
+  font-family:var(--font-body);
+  font-size:14px;font-weight:600;
+  letter-spacing:.03em;
+  text-decoration:none;
+  transition:.25s cubic-bezier(.16,1,.3,1);
+  display:inline-flex;align-items:center;gap:8px
+}
+.btn-primary:hover{
+  background:var(--g-copper);
+  color:#0a0a0a;
+  border-color:transparent;
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(184,84,32,.3)
+}
+.btn-ghost{
+  background:transparent;
+  color:var(--text2);
+  padding:14px 28px;
+  border-radius:var(--r-sm);
+  border:1px solid var(--border2);
+  font-family:var(--font-body);
+  font-size:14px;font-weight:400;
+  letter-spacing:.03em;
+  text-decoration:none;
+  transition:.25s cubic-bezier(.16,1,.3,1);
+  display:inline-flex;align-items:center;gap:8px
+}
+.btn-ghost:hover{
+  border-color:rgba(184,84,32,.5);
+  color:var(--text);
+  transform:translateY(-2px)
+}
+
+/* ─── STATS ──────────────────────────────────────────────────── */
+.stats-bar{
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  display:flex;justify-content:center;overflow-x:auto;
+  position:relative
+}
+.stats-bar::before{
+  content:'';display:block;
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--g-copper-h)
+}
+.stat-item{
+  padding:28px 40px;text-align:center;
+  border-right:1px solid var(--border);
+  flex:1;min-width:140px
+}
+.stat-item:last-child{border-right:none}
+.stat-num{
+  font-family:var(--font-h1);
+  font-size:32px;font-weight:400;
+  line-height:1;
+  background:var(--g-copper);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text
+}
+.stat-label{
+  font-family:var(--font-body);
+  font-size:12px;font-weight:400;
+  color:var(--muted);
+  letter-spacing:.05em;
+  margin-top:6px
+}
+
+/* ─── SECCIONES GENÉRICAS ────────────────────────────────────── */
+.section{padding:96px 5%;max-width:1100px;margin:0 auto}
+.fw{
+  max-width:100%;padding:96px 5%;
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden
+}
+.fw::before{
+  content:'';display:block;
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--g-copper-h)
+}
+.fw-inner{max-width:1100px;margin:0 auto}
+
+.section-tag{
+  display:inline-block;
+  font-family:var(--font-body);
+  font-size:11px;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--copper-warm);
+  margin-bottom:12px
+}
+.section-tag::after{
+  content:'';display:block;
+  width:0;height:2px;
+  background:var(--g-copper-h);
+  margin-top:7px;
+  transition:width .6s cubic-bezier(.16,1,.3,1) .2s
+}
+.fi.vis .section-tag::after{width:100%}
+.section-title{
+  font-family:var(--font-h2);
+  font-size:clamp(26px,3.2vw,42px);
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:.01em;
+  margin-bottom:16px
+}
+.section-sub{
+  font-family:var(--font-body);
+  font-size:15px;font-weight:300;
+  color:var(--text2);
+  max-width:540px;
+  line-height:1.75
+}
+
+/* ─── CÓMO FUNCIONA — STEPS ──────────────────────────────────── */
+.steps-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;margin-top:48px;
+  background:var(--border);
+  border-radius:var(--r);overflow:hidden
+}
+.step{
+  background:var(--surface);
+  padding:34px 26px;
+  transition:.25s cubic-bezier(.16,1,.3,1);
+  position:relative;overflow:hidden
+}
+.step::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--g-copper-h);
+  opacity:0;transition:opacity .25s
+}
+.step:hover{background:var(--surface2)}
+.step:hover::before{opacity:1}
+.step-num{
+  width:38px;height:38px;
+  border-radius:50%;
+  background:rgba(184,84,32,.1);
+  border:1px solid rgba(184,84,32,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-body);
+  font-size:13px;font-weight:600;
+  color:var(--copper-warm);
+  margin-bottom:18px
+}
+.step h3{
+  font-family:var(--font-h2);
+  font-size:17px;font-weight:700;
+  margin-bottom:8px;line-height:1.3;
+  letter-spacing:.01em
+}
+.step p{
+  font-family:var(--font-body);
+  font-size:13px;font-weight:300;
+  color:var(--muted);line-height:1.65
+}
+
+/* ─── POR QUÉ UN STAND — DIFF ────────────────────────────────── */
+.diff-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:center
+}
+.diff-points{
+  display:flex;flex-direction:column;
+  gap:14px;margin-top:36px
+}
+.diff-point{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:18px;
+  background:var(--surface2);
+  border-radius:var(--r-sm);
+  border:1px solid var(--border2);
+  transition:.25s cubic-bezier(.16,1,.3,1)
+}
+.diff-point:hover{
+  border-color:rgba(184,84,32,.38);
+  transform:translateX(3px)
+}
+.diff-icon{
+  width:36px;height:36px;
+  border-radius:var(--r-sm);
+  background:rgba(184,84,32,.08);
+  border:1px solid rgba(184,84,32,.2);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--copper-light);flex-shrink:0;margin-top:2px
+}
+.diff-icon svg{width:18px;height:18px;stroke:var(--copper-light);fill:none}
+.diff-point h4{
+  font-family:var(--font-h2);
+  font-size:15px;font-weight:700;
+  margin-bottom:4px;letter-spacing:.01em
+}
+.diff-point p{
+  font-family:var(--font-body);
+  font-size:13px;font-weight:300;
+  color:var(--muted);line-height:1.6
+}
+.diff-img{
+  border-radius:var(--r);overflow:hidden;
+  box-shadow:0 2px 4px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.55),0 0 0 1px var(--border2)
+}
+.diff-img img{width:100%;display:block}
+
+/* ─── TABS — SECTORES ────────────────────────────────────────── */
+.tab-list{
+  display:flex;
+  border-bottom:1px solid var(--border);
+  overflow-x:auto;scrollbar-width:none;
+  margin:36px 0 28px
+}
+.tab-list::-webkit-scrollbar{display:none}
+.tab-btn{
+  padding:13px 20px;cursor:pointer;
+  white-space:nowrap;
+  font-family:var(--font-body);
+  font-size:13px;font-weight:400;
+  color:var(--muted);
+  background:none;border:none;
+  border-bottom:2px solid transparent;
+  transition:.25s cubic-bezier(.16,1,.3,1);
+  margin-bottom:-1px;letter-spacing:.03em
+}
+.tab-btn:hover{color:var(--text2)}
+.tab-btn.active{
+  color:var(--copper-warm);
+  border-bottom-color:var(--copper)
+}
+/* ─── SECTORES — SLIDER DESLIZABLE ──────────────────────────────
+   El usuario mueve el carrusel arrastrando/deslizando (touch, mouse
+   drag o trackpad). Sin flechas ni autoplay: el movimiento SIEMPRE
+   lo inicia el usuario. scroll-snap ordena cada slide al soltar.
+   El .tab-viewport actúa como máscara overflow:hidden para evitar
+   fugas visuales de paneles adyacentes en el borde. */
+.tab-viewport{
+  overflow:hidden;
+  margin:0 -5px;
+  padding:4px 5px 20px
+}
+.tab-track{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  gap:0;
+  cursor:grab;
+  scrollbar-width:none
+}
+.tab-track::-webkit-scrollbar{display:none}
+.tab-track.dragging{
+  cursor:grabbing;
+  scroll-snap-type:none;
+  scroll-behavior:auto
+}
+.tab-panel{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:40px;align-items:start;
+  min-width:100%;flex:0 0 100%;
+  scroll-snap-align:start;
+  padding:0 5px;
+  user-select:none
+}
+.tab-track.dragging .tab-panel{pointer-events:none}
+.tab-track img{-webkit-user-drag:none;user-drag:none}
+.slider-hint{
+  display:flex;align-items:center;gap:8px;
+  margin-top:4px;
+  font-family:var(--font-body);
+  font-size:12px;font-weight:400;
+  color:var(--muted);letter-spacing:.03em
+}
+.slider-hint svg{width:15px;height:15px;stroke:var(--copper-warm);flex-shrink:0}
+@media(max-width:768px){
+  .tab-panel{grid-template-columns:1fr}
+}
+.tab-info h3{
+  font-family:var(--font-h2);
+  font-size:22px;font-weight:700;
+  margin-bottom:10px;letter-spacing:.01em
+}
+.tab-info p{
+  font-family:var(--font-body);
+  font-size:14px;font-weight:300;
+  color:var(--text2);line-height:1.75;margin-bottom:16px
+}
+.tab-uses{list-style:none;display:flex;flex-direction:column;gap:8px}
+.tab-uses li{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-body);
+  font-size:13px;font-weight:300;
+  padding:11px 14px;
+  background:var(--surface2);
+  border-radius:var(--r-sm);
+  border:1px solid var(--border)
+}
+.tab-uses li::before{
+  content:"→";
+  color:var(--copper-warm);font-weight:600
+}
+.tab-cta{
+  margin-top:20px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-body);
+  font-size:13px;font-weight:700;
+  letter-spacing:.04em;
+  text-decoration:none;
+  color:var(--copper-light);
+  transition:.35s cubic-bezier(.16,1,.3,1)
+}
+.tab-cta:hover{
+  gap:13px;
+  transform:scale(1.06);
+  background:var(--g-copper);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  color:transparent
+}
+.tab-logo{
+  margin-top:50px;
+  text-align:left
+}
+.tab-logo img{
+  height:100px
+}
+
+.tab-card{
+  background:var(--surface);
+  border:1px solid var(--border2);
+  border-radius:var(--r);
+  padding:26px;
+  box-shadow:0 1px 2px rgba(0,0,0,.3),0 20px 40px rgba(0,0,0,.4);
+  transition:.25s cubic-bezier(.16,1,.3,1);
+  position:relative;overflow:hidden
+}
+.tab-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--g-copper-h)
+}
+.tab-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 1px 2px rgba(0,0,0,.35),0 28px 56px rgba(0,0,0,.5);
+  border-color:rgba(184,84,32,.3)
+}
+.tab-card .diff-img img{height:280px;object-fit:contain;background:var(--surface2)}
+.tab-img-h{height:220px!important;object-fit:contain!important;background:var(--surface2)!important;border-radius:var(--r-sm)}
+.tab-img-v{height:340px!important;object-fit:contain!important;background:var(--surface2)!important;border-radius:var(--r-sm)}
+.tab-card .badge{
+  display:inline-block;
+  background:rgba(184,84,32,.14);
+  border:1px solid rgba(184,84,32,.35);
+  color:var(--copper-light);
+  padding:5px 12px;border-radius:6px;
+  font-family:var(--font-body);
+  font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:14px
+}
+.tab-card h4{
+  font-family:var(--font-h2);
+  font-size:18px;font-weight:700;
+  margin-bottom:4px;letter-spacing:.01em
+}
+.tab-card .price{
+  font-family:var(--font-h1);
+  font-size:34px;font-weight:400;
+  background:var(--g-copper);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1.1
+}
+.tab-card .price span{
+  font-family:var(--font-body);
+  font-size:13px;color:var(--muted);
+  font-weight:300;-webkit-text-fill-color:var(--muted)
+}
+.tab-card p{
+  font-family:var(--font-body);
+  font-size:13px;font-weight:300;
+  color:var(--muted);margin:10px 0;line-height:1.65
+}
+.tab-incl{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.tab-incl li{
+  font-family:var(--font-body);
+  font-size:12px;font-weight:300;
+  color:var(--muted);
+  display:flex;gap:8px;align-items:center
+}
+.tab-incl li::before{content:"✓";color:var(--copper-warm);font-weight:700}
+
+/* ─── CATÁLOGO ───────────────────────────────────────────────── */
+.catalog-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:2px;
+  background:var(--border);
+  border-radius:var(--r);overflow:hidden;
+  margin-top:48px
+}
+.product-card{
+  background:var(--surface);
+  padding:30px 26px;
+  position:relative;
+  transition:.25s cubic-bezier(.16,1,.3,1);
+  display:flex;flex-direction:column;
+  overflow:hidden
+}
+.product-card::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 40%,rgba(184,84,32,.05) 50%,transparent 60%);
+  background-size:200% 100%;
+  opacity:0;transition:opacity .3s;
+  pointer-events:none
+}
+.product-card:hover{
+  background:var(--surface2);
+  box-shadow:0 1px 2px rgba(0,0,0,.35),0 24px 48px rgba(0,0,0,.45);
+  transform:translateY(-3px)
+}
+.product-card:hover::after{
+  opacity:1;
+  animation:shimmer .6s ease forwards
+}
+@keyframes shimmer{
+  from{background-position:200% 0}
+  to{background-position:-200% 0}
+}
+
+.product-card.featured{
+  background:var(--surface2);
+  position:relative
+}
+.product-card.featured::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--g-copper-h)
+}
+.product-card.featured{
+  outline:1px solid rgba(184,84,32,.38);
+  box-shadow:0 1px 2px rgba(0,0,0,.35),0 6px 16px rgba(184,84,32,.1),0 32px 64px rgba(0,0,0,.5)
+}
+.feat-label{
+  position:absolute;top:0;right:22px;
+  background:var(--g-copper);
+  color:#0a0a0a;
+  padding:4px 12px;
+  border-radius:0 0 8px 8px;
+  font-family:var(--font-body);
+  font-size:11px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase
+}
+.card-name{
+  font-family:var(--font-h2);
+  font-size:16px;font-weight:700;
+  letter-spacing:.02em;
+  margin-bottom:4px
+}
+.card-price{
+  font-family:var(--font-h1);
+  font-size:38px;font-weight:400;
+  line-height:1.1;
+  background:var(--g-copper);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin:10px 0 4px
+}
+.card-price sub{
+  font-family:var(--font-body);
+  font-size:13px;color:var(--muted);
+  font-weight:300;-webkit-text-fill-color:var(--muted)
+}
+.card-desc{
+  font-family:var(--font-body);
+  font-size:13px;font-weight:300;
+  color:var(--muted);line-height:1.65;
+  margin:10px 0;flex:1
+}
+.card-cta{
+  margin-top:18px;display:block;
+  text-align:center;
+  padding:11px;
+  border-radius:var(--r-sm);
+  background:transparent;
+  border:1px solid var(--border2);
+  color:var(--text2);
+  text-decoration:none;
+  font-family:var(--font-body);
+  font-size:13px;font-weight:600;
+  letter-spacing:.04em;
+  transition:.25s cubic-bezier(.16,1,.3,1)
+}
+.card-cta:hover{
+  border-color:rgba(184,84,32,.45);
+  color:var(--copper-warm)
+}
+.product-card.featured .card-cta{
+  background:var(--surface3);
+  border:1px solid rgba(184,84,32,.55);
+  color:var(--copper-light);font-weight:700
+}
+.product-card.featured .card-cta:hover{
+  background:var(--g-copper);
+  border-color:transparent;
+  color:#0a0a0a;
+  transform:translateY(-1px);
+  box-shadow:0 6px 18px rgba(184,84,32,.3)
+}
+
+/* ─── UPSELL ─────────────────────────────────────────────────── */
+.upsell-card{
+  margin-top:20px;
+  background:var(--surface);
+  border:1px solid rgba(184,84,32,.28);
+  border-radius:var(--r);
+  padding:36px;
+  display:grid;grid-template-columns:1fr auto;
+  gap:24px;
+  position:relative;overflow:hidden
+}
+.upsell-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--g-copper-h)
+}
+.upsell-left h3{
+  font-family:var(--font-h2);
+  font-size:22px;font-weight:700;
+  margin-bottom:8px;letter-spacing:.01em
+}
+.upsell-left p{
+  font-family:var(--font-body);
+  font-size:14px;font-weight:300;
+  color:var(--text2);line-height:1.75;
+  margin-bottom:16px;max-width:520px
+}
+.upsell-tag{
+  display:inline-block;
+  color:var(--copper-warm);
+  padding:4px 12px;
+  border-radius:100px;
+  font-family:var(--font-body);
+  font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:14px
+}
+.upsell-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.upsell-list li{
+  font-family:var(--font-body);
+  font-size:13px;font-weight:300;
+  color:var(--muted);display:flex;gap:8px;align-items:center
+}
+.upsell-list li::before{content:"✦";color:var(--copper-warm);font-size:10px}
+.upsell-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;height:100%}
+
+.upsell-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 32px;
+  border-radius:var(--r-sm);
+  border:1px solid var(--copper);
+  background:transparent;
+  font-family:var(--font-body);
+  font-size:14px;font-weight:700;
+  letter-spacing:.04em;
+  text-decoration:none;
+  transition:.35s cubic-bezier(.16,1,.3,1);
+  justify-content:center
+}
+.upsell-cta .cta-text{
+  background:var(--g-copper);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text
+}
+.upsell-cta .cta-arrow{
+  color:var(--copper-warm)
+}
+.upsell-cta:hover{
+  background:var(--g-copper);
+  border-color:#000;
+  transform:translateY(-2px) scale(1.04);
+  box-shadow:0 0 28px rgba(184,84,32,.35),0 8px 28px rgba(184,84,32,.2)
+}
+.upsell-cta:hover .cta-text,
+.upsell-cta:hover .cta-arrow{
+  background:none;
+  -webkit-text-fill-color:#0a0a0a;
+  color:#0a0a0a
+}
+.upsell-price{
+  font-family:var(--font-body);
+  font-size:13px;color:var(--muted);
+  text-align:right
+}
+
+/* ─── INCLUYE ────────────────────────────────────────────────── */
+.includes-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:14px;margin-top:48px
+}
+.include-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:22px;
+  background:var(--surface);
+  border-radius:var(--r);
+  border:1px solid var(--border2);
+  box-shadow:0 1px 2px rgba(0,0,0,.25),0 10px 24px rgba(0,0,0,.3);
+  transition:.25s cubic-bezier(.16,1,.3,1)
+}
+.include-item:hover{
+  transform:translateY(-2px);
+  border-color:rgba(184,84,32,.3)
+}
+.incl-icon{
+  width:38px;height:38px;flex-shrink:0;
+  background:rgba(184,84,32,.08);
+  border:1px solid rgba(184,84,32,.18);
+  border-radius:var(--r-sm);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--copper-light)
+}
+.incl-icon svg{width:18px;height:18px}
+.include-item h4{
+  font-family:var(--font-h2);
+  font-size:15px;font-weight:700;
+  margin-bottom:4px;letter-spacing:.01em
+}
+.include-item p{
+  font-family:var(--font-body);
+  font-size:12px;font-weight:300;
+  color:var(--muted);line-height:1.6
+}
+
+/* ─── PROCESO ────────────────────────────────────────────────── */
+.process-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2px;
+  background:var(--border);
+  border-radius:var(--r);overflow:hidden;
+  margin-top:48px
+}
+.process-step{
+  background:var(--surface);padding:30px 22px;
+  transition:.25s cubic-bezier(.16,1,.3,1);
+  position:relative;overflow:hidden
+}
+.process-step::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--g-copper-h);
+  opacity:0;transition:opacity .25s
+}
+.process-step:hover{background:var(--surface2)}
+.process-step:hover::before{opacity:1}
+.process-num{
+  font-family:var(--font-h1);
+  font-size:42px;font-weight:400;
+  color:rgba(184,84,32,.45);
+  line-height:1;margin-bottom:14px;
+  letter-spacing:.01em
+}
+.process-step h3{
+  font-family:var(--font-h2);
+  font-size:16px;font-weight:700;
+  margin-bottom:6px;line-height:1.3;
+  letter-spacing:.01em
+}
+.process-step p{
+  font-family:var(--font-body);
+  font-size:12px;font-weight:300;
+  color:var(--muted);line-height:1.65
+}
+
+/* ─── FORMULARIO ─────────────────────────────────────────────── */
+.contact-form{
+  margin-top:40px;
+  background:var(--surface);
+  border:1px solid var(--border2);
+  border-radius:var(--r);
+  padding:36px;
+  position:relative;overflow:hidden
+}
+.contact-form::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--g-copper-h)
+}
+.form-row{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:20px;margin-bottom:20px
+}
+.contact-form label{
+  display:flex;flex-direction:column;gap:6px;
+  font-family:var(--font-body);
+  font-size:12px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted)
+}
+.contact-form input,
+.contact-form select{
+  background:var(--surface2);
+  border:1px solid var(--border2);
+  border-radius:var(--r-sm);
+  padding:12px 14px;
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:14px;font-weight:300;
+  transition:.25s cubic-bezier(.16,1,.3,1);
+  outline:none
+}
+.contact-form input:focus,
+.contact-form select:focus{
+  border-color:rgba(184,84,32,.5);
+  background:var(--surface3)
+}
+.contact-form select{cursor:pointer}
+.contact-form select option{background:var(--surface2);color:var(--text)}
+.radio-group{display:flex;gap:16px;margin-top:4px}
+.radio-group label{
+  display:flex;flex-direction:row;align-items:center;
+  gap:6px;
+  font-family:var(--font-body);
+  font-size:13px;font-weight:300;
+  color:var(--text2);
+  text-transform:none;letter-spacing:0;
+  cursor:pointer
+}
+.radio-group input[type=radio]{accent-color:var(--copper);width:16px;height:16px}
+.btn-full{width:100%;justify-content:center;margin-top:8px;padding:16px;font-size:15px}
+.form-note{
+  font-family:var(--font-body);
+  font-size:12px;font-weight:300;
+  color:var(--muted);text-align:center;margin-top:12px
+}
+
+/* ─── CTA FINAL ──────────────────────────────────────────────── */
+.cta-section{
+  text-align:center;
+  padding:96px 5%;
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  position:relative;overflow:hidden
+}
+.cta-section::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--g-copper-h)
+}
+.cta-section::after{
+  content:'';
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 70% at 50% 0%, rgba(184,84,32,.09), transparent 70%)
+}
+.cta-section h2{
+  font-family:var(--font-h1);
+  font-size:clamp(32px,5vw,60px);
+  font-weight:400;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  line-height:1.05;
+  margin-bottom:16px;
+  position:relative;z-index:1;
+  text-align:center
+}
+.cta-section h2 .hl{
+  background:var(--g-copper);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text
+}
+.cta-section p{
+  font-family:var(--font-body);
+  font-size:17px;font-weight:300;
+  color:var(--text2);
+  margin-bottom:34px;
+  position:relative;z-index:1;
+  text-align:center
+}
+.cta-group{
+  display:flex;gap:14px;
+  justify-content:center;flex-wrap:wrap;
+  position:relative;z-index:1
+}
+.btn-wa{
+  background:#25D366;color:#fff;
+  padding:15px 30px;
+  border-radius:var(--r-sm);
+  font-family:var(--font-body);
+  font-size:14px;font-weight:600;
+  letter-spacing:.03em;
+  text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;
+  transition:.25s cubic-bezier(.16,1,.3,1)
+}
+.btn-wa:hover{background:#20bd5a;transform:translateY(-2px)}
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+footer{
+  background:var(--surface);
+  border-top:1px solid var(--border2);
+  padding:28px 5%;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--font-body);
+  font-size:13px;font-weight:300;
+  color:var(--muted);flex-wrap:wrap;gap:14px
+}
+footer .footer-logo img{
+  height:50px;
+  mix-blend-mode:screen;
+  opacity:.7
+}
+footer a{color:var(--copper-warm);text-decoration:none}
+footer a:hover{color:var(--copper-light)}
+
+/* ─── ÉNFASIS EN CUERPO ──────────────────────────────────────── */
+strong.em,.em{
+  font-family:var(--font-accent);
+  font-style:italic;
+  font-weight:700;
+  color:var(--text);
+  font-size:1.05em;
+  letter-spacing:.01em;
+  -webkit-text-fill-color:var(--text)
+}
+
+/* ─── ANIMACIONES SCROLL ─────────────────────────────────────── */
+.fi{
+  opacity:0;
+  transform:translateY(24px) scale(.99);
+  transition:
+    opacity .65s cubic-bezier(.16,1,.3,1),
+    transform .65s cubic-bezier(.16,1,.3,1)
+}
+.fi.vis{
+  opacity:1;
+  transform:translateY(0) scale(1)
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media(max-width:768px){
+   .hero-grid{grid-template-columns:1fr;gap:36px}
+  .steps-grid{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:1fr}
+  .tab-panel.active{grid-template-columns:1fr}
+  .catalog-grid{grid-template-columns:1fr}
+  .includes-grid{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:repeat(2,1fr)}
+  .stat-item{padding:18px 20px;min-width:110px}
+  .stat-num{font-size:26px}
+  .btn-primary,.btn-ghost{width:100%;justify-content:center}
+  .form-row{grid-template-columns:1fr}
+  .upsell-card{grid-template-columns:1fr;display:grid}
+  .upsell-right{height:auto;align-items:flex-start}
+  .hero-title{font-size:clamp(44px,10vw,64px);padding-right:0;line-height:.95;height:4.5em;overflow:hidden;margin-bottom:6px}
+  #tw-line1, #tw-line2{white-space:normal}
+}
+@media(max-width:685px){
+  .hero-title{height:4.5em}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
+  </a>
+  <div class="nav-links">
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#producto">Producto</a>
+    <a href="#sectores">Sectores</a>
+    <a href="#catalogo">Precios</a>
+    <a href="#contactar">Contacto</a>
+  </div>
+  <a class="nav-cta" href="#contactar">Pedir diseño gratis →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag">Stands NFC para negocios locales</div>
+      <h1 class="hero-title">
+        <span id="tw-line1"></span><br>
+        <span id="tw-line2" class="hl"></span>
+      </h1>
+      <p class="hero-sub">Un stand de metacrilato con <strong class="em">diseño personalizado</strong> en el mostrador. El cliente <strong class="em">acerca el móvil</strong> y se abre directamente el enlace. Se convierte en una reseña de Google, una reserva automática, un nuevo seguidor. Y si quieres más: <strong class="em">landing web</strong> con formulario de captación y <strong class="em">campañas de marketing</strong> automatizadas desde tu base de clientes.</p>
+      <div class="hero-actions">
+        <a href="#contactar" class="btn-primary">Quiero el diseño gratis →</a>
+        <a href="#como-funciona" class="btn-ghost">Cómo funciona</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num" data-count="35" data-suffix="€">35€</div><div class="stat-label">Stand personalizado</div></div>
+  <div class="stat-item"><div class="stat-num">10×15</div><div class="stat-label">Visible desde lejos</div></div>
+  <div class="stat-item"><div class="stat-num" data-count="12" data-suffix=" meses">12 meses</div><div class="stat-label">Garantía incluida</div></div>
+  <div class="stat-item"><div class="stat-num" data-count="0" data-suffix="€">0€</div><div class="stat-label">Diseño — siempre gratis</div></div>
+</div>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como-funciona" class="section fi">
+  <div class="section-tag">Cómo funciona</div>
+  <h2 class="section-title">Tres segundos. Sin fricción.</h2>
+  <p class="section-sub">El cliente no tiene que buscar nada, descargar ninguna app ni escribir ningún nombre. Un gesto y listo.</p>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>El cliente acerca el móvil al stand</h3>
+      <p>Igual que cuando paga contactless. El stand detecta el teléfono <strong class="em">automáticamente</strong> sin tocar pantalla.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Se abre lo que tú hayas configurado</h3>
+      <p>Tu ficha de Google para reseña · Booksy para reservar · Instagram · carta digital · lo que necesites.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Tú recibes el resultado sin pedir nada</h3>
+      <p>Una reseña nueva, una reserva, un seguidor. Sin que el cliente busque, <strong class="em">sin que tengas que pedirlo</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ UN STAND -->
+<div class="fw fi" id="producto">
+  <div class="fw-inner">
+    <div class="diff-grid">
+      <div>
+        <div class="section-tag">Por qué un stand y no una tarjeta genérica</div>
+        <h2 class="section-title">La diferencia que el cliente ve desde la puerta</h2>
+        <div class="diff-points">
+          <div class="diff-point">
+            <div class="diff-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="17" rx="1"/><path d="M10 21h4M12 19v2"/><path d="M9 6h6M9 9h4"/></svg>
+            </div>
+            <div>
+              <h4>10×15 cm (vertical) o 15×10 cm (horizontal)</h4>
+              <p>Las tarjetas del tamaño de una tarjeta de crédito pasan desapercibidas. Un stand de mostrador no. El cliente lo ve, lo entiende y actúa.</p>
+            </div>
+          </div>
+          <div class="diff-point">
+            <div class="diff-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="19" x2="19" y2="5"/><circle cx="19" cy="5" r="2" fill="currentColor" opacity=".6" stroke="none"/><circle cx="9" cy="15" r="1.5"/><circle cx="13" cy="11" r="1.5"/></svg>
+            </div>
+            <div>
+              <h4>Diseñado con tu identidad — vertical u horizontal</h4>
+              <p><strong class="em">Tu logo, tus colores, tu tipografía</strong>. No un plástico genérico de AliExpress sin identidad. Expositor en metacrilato disponible en vertical 10×15 cm u horizontal 15×10 cm.</p>
+            </div>
+          </div>
+          <div class="diff-point">
+            <div class="diff-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            </div>
+            <div>
+              <h4>Nosotros lo instalamos y programamos</h4>
+              <p>No te mandamos un paquete y te dejamos con el manual. <strong class="em">Vamos al local</strong>, elegimos la ubicación ideal y lo dejamos funcionando.</p>
+            </div>
+          </div>
+          <div class="diff-point">
+            <div class="diff-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="currentColor"/><path d="M9 7h6M9 11h4"/></svg>
+            </div>
+            <div>
+              <h4>NFC + QR — ningún cliente se queda fuera</h4>
+              <p>NFC funciona en el 95% de smartphones. El QR incluido sirve de respaldo. Nadie se queda sin poder usarlo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="diff-img">
+        <img src="img/Gemini_Generated_Image_515w2515w2515w25.png" alt="Stand ONIX en formato vertical 10×15 cm y horizontal 15×10 cm" loading="lazy">
+        <div style="display:flex;gap:24px;justify-content:center;margin-top:18px">
+          <span style="font-family:var(--font-h1);font-size:20px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Horizontal</span>
+          <span style="font-family:var(--font-h1);font-size:16px;font-weight:400;letter-spacing:.04em;color:var(--text);align-self:flex-end;padding-bottom:1px">15×10 cm</span>
+          <span style="font-family:var(--font-h1);font-size:20px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Vertical</span>
+          <span style="font-family:var(--font-h1);font-size:16px;font-weight:400;letter-spacing:.04em;color:var(--text);align-self:flex-end;padding-bottom:1px">10×15 cm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTORES -->
+<section id="sectores" class="section fi">
+  <div class="section-tag">Por sector</div>
+  <h2 class="section-title">Adaptado a tu tipo de negocio</h2>
+  <p class="section-sub">El stand hace cosas distintas según dónde lo pongas. Cada sector tiene su momento clave.</p>
+  <div class="tab-list">
+    <button class="tab-btn active" data-tab="hotel">Hotel / Alojamiento</button>
+    <button class="tab-btn" data-tab="mascotas">Tienda Mascotas</button>
+    <button class="tab-btn" data-tab="papeleria">Papelería</button>
+    <button class="tab-btn" data-tab="tatoo">Tatuajes / Estudio</button>
+    <button class="tab-btn" data-tab="restaurante">Restaurante</button>
+    <button class="tab-btn" data-tab="estetica">Estética / Spa</button>
+    <button class="tab-btn" data-tab="barberia">Barbería / Peluquería</button>
+  </div>
+  <div class="slider-hint">
+    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5l7 7-7 7M4 12h15"/></svg>
+    Desliza para ver cada sector
+  </div>
+
+  <div class="tab-viewport">
+    <div class="tab-track" id="tab-track">
+    <!-- HOTEL -->
+  <div class="tab-panel active" id="tab-hotel">
+    <div class="tab-info">
+      <h3>Hotel / Alojamiento Rural</h3>
+      <p>El huésped acaba de hacer el check-out con la experiencia todavía fresca. Un stand horizontal en la recepción convierte esa sensación en una reseña de TripAdvisor o Google antes de salir por la puerta.</p>
+      <ul class="tab-uses">
+        <li>Reseña en TripAdvisor o Google al hacer check-out</li>
+        <li>Reserva directa para la próxima visita — sin intermediarios</li>
+        <li>Encuesta de satisfacción con un gesto</li>
+        <li>Redes sociales para compartir la experiencia</li>
+      </ul>
+      <a href="#contactar" class="tab-cta">Lo quiero para mi alojamiento →</a>
+      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+    </div>
+    <div class="tab-card">
+      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-h" src="img/hotelrural.png" alt="Stand NFC horizontal en recepción de hotel rural" loading="lazy"></div>
+      <div class="badge">Horizontal recomendado</div>
+      <h4>Stand Personalizado</h4>
+      <div class="price">35€ <span>/ unidad</span></div>
+      <p>Metacrilato horizontal 15×10 cm. Encaja perfectamente en mostradores de recepción. Tu marca, tu imagen.</p>
+      <ul class="tab-incl"><li>Diseño personalizado incluido</li><li>Programado a TripAdvisor o Google</li><li>Instalación en tu recepción</li><li>Garantía 12 meses</li></ul>
+    </div>
+  </div>
+
+  <!-- MASCOTAS -->
+  <div class="tab-panel" id="tab-mascotas">
+    <div class="tab-info">
+      <h3>Tienda de Mascotas</h3>
+      <p>El cliente entra a buscar algo para su animal de compañía y sale con más de lo que esperaba. Un stand horizontal en el mostrador le conecta con tus redes, tus ofertas y tu comunidad de amantes de las mascotas.</p>
+      <ul class="tab-uses">
+        <li>Seguir en Instagram para ver productos y novedades</li>
+        <li>Acceder a tu web o tienda online al instante</li>
+        <li>Reseña de Google — los clientes de mascotas son muy fieles</li>
+        <li>WhatsApp para consultas y disponibilidad de productos</li>
+      </ul>
+      <a href="#contactar" class="tab-cta">Lo quiero para mi tienda →</a>
+      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+    </div>
+    <div class="tab-card">
+      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-h" src="img/MASCOTAS.png" alt="Stand NFC horizontal en tienda de mascotas" loading="lazy"></div>
+      <div class="badge">Horizontal recomendado</div>
+      <h4>Stand Personalizado</h4>
+      <div class="price">35€ <span>/ unidad</span></div>
+      <p>Metacrilato horizontal 15×10 cm con tu identidad de marca. Ideal sobre el mostrador de cobro.</p>
+      <ul class="tab-incl"><li>Diseño con tu logo y colores</li><li>Programado a redes o tienda online</li><li>Instalación incluida</li><li>Garantía 12 meses</li></ul>
+    </div>
+  </div>
+
+  <!-- PAPELERÍA -->
+  <div class="tab-panel" id="tab-papeleria">
+    <div class="tab-info">
+      <h3>Papelería / Imprenta</h3>
+      <p>El cliente entra con un archivo y quiere imprimirlo ya. Un stand en el mostrador le permite enviar el documento por email o WhatsApp con solo acercar el móvil — sin USB, sin cables, sin buscarte la dirección.</p>
+      <ul class="tab-uses">
+        <li>Enviar archivo por email para imprimir al instante</li>
+        <li>Acceder a tu lista de servicios y precios</li>
+        <li>Reservar un turno para encargos grandes</li>
+        <li>Reseña de Google al recoger el trabajo</li>
+      </ul>
+      <a href="#contactar" class="tab-cta">Lo quiero para mi papelería →</a>
+      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+    </div>
+    <div class="tab-card">
+      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-h" src="img/papeleria.png" alt="Stand NFC horizontal en papelería" loading="lazy"></div>
+      <div class="badge">Horizontal recomendado</div>
+      <h4>Stand Personalizado</h4>
+      <div class="price">35€ <span>/ unidad</span></div>
+      <p>Metacrilato horizontal 15×10 cm. Limpio y profesional sobre el mostrador de atención al cliente.</p>
+      <ul class="tab-incl"><li>Diseño con tu imagen corporativa</li><li>Programado a email o WhatsApp</li><li>Instalación incluida</li><li>Garantía 12 meses</li></ul>
+    </div>
+  </div>
+
+  <!-- TATUAJES -->
+  <div class="tab-panel" id="tab-tatoo">
+    <div class="tab-info">
+      <h3>Tatuajes / Estudio</h3>
+      <p>El cliente acaba de vivir una experiencia intensa y única. Ese es el momento de pedirle que te siga, que comparta y que vuelva. Un stand en la mesa de trabajo o en la salida lo convierte en seguidor activo.</p>
+      <ul class="tab-uses">
+        <li>Seguir en Instagram para ver el portfolio y nuevos trabajos</li>
+        <li>Reservar la próxima sesión directamente</li>
+        <li>Reseña de Google para atraer más clientes</li>
+        <li>WhatsApp para consultas de diseños y presupuestos</li>
+      </ul>
+      <a href="#contactar" class="tab-cta">Lo quiero para mi estudio →</a>
+      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+    </div>
+    <div class="tab-card">
+      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-v" src="img/redesTatoo.png" alt="Stand NFC Instagram en estudio de tatuajes" loading="lazy"></div>
+      <div class="badge">Vertical recomendado</div>
+      <h4>Stand Personalizado</h4>
+      <div class="price">35€ <span>/ unidad</span></div>
+      <p>Formato vertical 10×15 cm, oscuro e impactante, que encaja con la estética de cualquier estudio de tatuaje.</p>
+      <ul class="tab-incl"><li>Diseño con tu imagen y estilo</li><li>Programado a Instagram o reservas</li><li>Instalación incluida</li><li>Garantía 12 meses</li></ul>
+    </div>
+  </div>
+
+  <!-- RESTAURANTE -->
+  <div class="tab-panel" id="tab-restaurante">
+    <div class="tab-info">
+      <h3>Restaurante / Bar</h3>
+      <p>En la mesa, en la barra o en la caja. El comensal acerca el móvil y accede a la carta digital, reserva o reseña <strong class="em">justo cuando acaba de comer</strong>.</p>
+      <ul class="tab-uses">
+        <li>Carta digital en la mesa — sin descargar nada</li>
+        <li>Reserva de mesa para la próxima vez</li>
+        <li>Reseña de Google al pagar — la propina emocional</li>
+        <li>WhatsApp para menú del día o eventos</li>
+      </ul>
+      <a href="#contactar" class="tab-cta">Lo quiero para mi restaurante →</a>
+      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+    </div>
+    <div class="tab-card">
+      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-v" src="img/menudigital restaurante.png" alt="Menú digital NFC en mesa de restaurante" loading="lazy"></div>
+      <div class="badge">Ideal para hostelería</div>
+      <h4>Stand Personalizado</h4>
+      <div class="price">35€ <span>/ unidad</span></div>
+      <p>Metacrilato resistente al ambiente de hostelería, en vertical u horizontal. Cada mesa puede tener el suyo con diferente destino.</p>
+      <ul class="tab-incl"><li>Diseño personalizado incluido</li><li>Programado a carta digital o Google</li><li>Instalación incluida</li><li>Garantía 12 meses</li></ul>
+    </div>
+  </div>
+
+  <!-- ESTÉTICA -->
+  <div class="tab-panel" id="tab-estetica">
+    <div class="tab-info">
+      <h3>Estética / Spa</h3>
+      <p>La clienta sale de un tratamiento con las endorfinas altas. Es el mejor momento del día. Un stand al pagar convierte esa sensación en reseña o en próxima cita.</p>
+      <ul class="tab-uses">
+        <li>Reseña de Google cuando sale con la piel radiante</li>
+        <li>Reserva de próxima sesión con un gesto</li>
+        <li>Instagram — ver resultados de otras clientas</li>
+        <li>WhatsApp para promos y disponibilidad</li>
+      </ul>
+      <a href="#contactar" class="tab-cta">Lo quiero para mi centro →</a>
+      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+    </div>
+    <div class="tab-card">
+      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-v" src="img/estetica.png" alt="Stand NFC de fidelización en centro de estética" loading="lazy"></div>
+      <div class="badge">Vertical recomendado</div>
+      <h4>Stand Personalizado</h4>
+      <div class="price">35€ <span>/ unidad</span></div>
+      <p>El formato vertical 10×15 cm queda especialmente elegante en centros de estética, junto al espejo o mostrador.</p>
+      <ul class="tab-incl"><li>Diseño con tus colores y logo</li><li>Vertical u horizontal, a elegir</li><li>Instalación incluida</li><li>Garantía 12 meses</li></ul>
+    </div>
+  </div>
+
+  <!-- BARBERÍA -->
+  <div class="tab-panel" id="tab-barberia">
+    <div class="tab-info">
+      <h3>Barbería / Peluquería</h3>
+      <p>El cliente sale con el corte hecho y está contento. <strong class="em">Ese es el momento</strong>. Un stand en el espejo o en el mostrador de pago convierte esa satisfacción en una reseña de Google antes de llegar a la puerta.</p>
+      <ul class="tab-uses">
+        <li>Reseña de Google al salir — momento de máxima satisfacción</li>
+        <li>Reserva de próxima cita sin llamar (Booksy, Calendly)</li>
+        <li>Seguir en Instagram para ver trabajos y novedades</li>
+        <li>Enlace a tu WhatsApp de negocio para consultas</li>
+      </ul>
+      <a href="#contactar" class="tab-cta">Lo quiero para mi barbería →</a>
+      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+    </div>
+    <div class="tab-card">
+      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-v" src="img/BABERIRA.png" alt="Stand NFC en espejo de barbería" loading="lazy"></div>
+      <div class="badge">Más pedido en barberías</div>
+      <h4>Stand Personalizado</h4>
+      <div class="price">35€ <span>/ unidad</span></div>
+      <p>Metacrilato vertical 10×15 cm. Tu logo y colores. Instalado en espejo o mostrador.</p>
+      <ul class="tab-incl"><li>Diseño personalizado incluido</li><li>Programado a tu ficha de Google</li><li>Instalación en tu local</li><li>Garantía 12 meses</li></ul>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATÁLOGO -->
+<section id="catalogo" class="section fi">
+  <div class="section-tag">Catálogo</div>
+  <h2 class="section-title">Elige lo que mejor encaja</h2>
+  <p class="section-sub">Diseño gratuito, instalación presencial y garantía de 12 meses incluida en cada opción.</p>
+  <div class="catalog-grid">
+    <div class="product-card featured">
+      <div class="feat-label">El más pedido</div>
+      <div class="card-name">Stand Personalizado</div>
+      <div class="card-price">35€</div>
+      <p class="card-desc">Expositor en metacrilato, vertical 10×15 cm u horizontal 15×10 cm, con o sin base de madera. Diseño con tu logo y colores. Visible desde lejos.</p>
+      <a href="#contactar" class="card-cta">Lo quiero →</a>
+    </div>
+    <div class="product-card">
+      <div class="card-name">Pack Múltiple</div>
+      <div class="card-price">79€ <sub>desde</sub></div>
+      <p class="card-desc">3 a 5 unidades personalizadas, cada una con un destino distinto — ideal para poner un stand en cada mesa de un restaurante. Cobertura total del local. Instalación + asesoría de ubicaciones incluidas.</p>
+      <a href="#contactar" class="card-cta">Consultar →</a>
+    </div>
+  </div>
+
+  <!-- UPSELLS -->
+  <div class="fi" style="margin-top:56px">
+    <div class="upsell-tag">Para crecer cada mes</div>
+    <h3 style="font-family:var(--font-h2);font-size:24px;font-weight:700;margin-bottom:8px;letter-spacing:.01em">Servicios adicionales — mensualidad, no proyecto único</h3>
+    <p style="font-family:var(--font-body);font-size:14px;font-weight:300;color:var(--text2);line-height:1.75;margin-bottom:28px;max-width:620px">El stand capta el dato. Estos servicios lo convierten en ingresos recurrentes: web propia, automatización de seguimiento y campañas activas sobre tu base de clientes.</p>
+    <div class="includes-grid">
+      <div class="include-item">
+        <div class="incl-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18"/></svg>
+        </div>
+        <div><h4>Landing web para tu negocio — <strong>desde 300€</strong> (pago único)</h4><p>Página propia con formulario de captación, integrada con tu WhatsApp o reservas. Diseñada con tu identidad. Sin cuotas mensuales — pagas una vez y es tuya. Varía en función de complejidad, número de enlaces y páginas extra.</p></div>
+      </div>
+      <div class="include-item">
+        <div class="incl-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div><h4>Agente de seguimiento y reservas — desde 50€/mes</h4><p>Confirmación automática de citas, recordatorios y mensajes de seguimiento post-visita por WhatsApp. Planes por volumen de mensajes: <strong>50€/mes (hasta 500 msg)</strong> · 79€/mes (hasta 1000) · 109€/mes (hasta 2000).</p></div>
+      </div>
+      <div class="include-item">
+        <div class="incl-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5-5 4 4 7-7"/><path d="M14 4h6v6"/></svg>
+        </div>
+        <div><h4>Campañas de marketing — a definir</h4><p>Gestión mensual de email/WhatsApp marketing sobre la base de datos de clientes que capta tu stand. El precio varía según tipo de campaña y volumen de contactos — lo definimos contigo.</p></div>
+      </div>
+      <div class="include-item">
+        <div class="incl-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+        </div>
+        <div><h4>Mantenimiento web + soporte — desde 25€/mes</h4><p>Cambios de contenido, actualizaciones y soporte técnico continuo de tu landing. Puede contratarse como add-on independiente.</p></div>
+      </div>
+    </div>
+    <div class="upsell-card fi" style="margin-top:14px">
+      <div class="upsell-left">
+        <div class="upsell-tag">Pack recomendado — oferta lanzamiento</div>
+        <h3>Pack Crecimiento — todo incluido</h3>
+        <p>Landing web (alta: <strong>150€</strong>) + agente + mantenimiento. Los 3 primeros meses a <strong>25€/mes (agente) + 15€/mes (mantenimiento) = 40€/mes</strong>. Ahorro total de más de <strong style="color:var(--copper-light)">250€</strong> sobre el precio individual. Después, cada servicio vuelve a precio normal.</p>
+      </div>
+      <div class="upsell-right">
+        <p class="upsell-price">desde 40€/mes (3 meses)<br><small style="color:var(--muted);font-weight:300">alta landing 150€ · ahorro +250€</small></p>
+        <a href="#contactar" class="upsell-cta"><span class="cta-text">Quiero saber más</span> <span class="cta-arrow">→</span></a>
+      </div>
+    </div>
+    <p class="form-note" style="margin-top:14px">Precios orientativos de lanzamiento — se confirman según el alcance real de tu negocio.</p>
+  </div>
+</section>
+
+<!-- PRÓXIMAMENTE -->
+<div class="fw fi">
+  <div class="fw-inner">
+    <div class="section-tag">Próximamente</div>
+    <h2 class="section-title">Un solo expositor, varios destinos — y recompensa para el cliente</h2>
+    <p class="section-sub">En vez de poner un stand por cada acción, un único expositor redirige al cliente al sitio adecuado según el momento, y le da algo a cambio por completarlo.</p>
+    <div class="diff-points" style="margin-top:32px">
+      <div class="diff-point">
+        <div class="diff-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>
+        </div>
+        <div>
+          <h4>Un solo punto físico</h4>
+          <p>Menos stands que gestionar en el mostrador. El cliente acerca el móvil una vez y accede a un pequeño menú: reseña, reserva, redes o carta — sin saturar la barra.</p>
+        </div>
+      </div>
+      <div class="diff-point">
+        <div class="diff-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+        </div>
+        <div>
+          <h4>Redirección inteligente</h4>
+          <p>El mismo stand puede llevar a destinos distintos según la hora, el día o la campaña activa, sin cambiar nada físicamente.</p>
+        </div>
+      </div>
+      <div class="diff-point">
+        <div class="diff-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z" fill="currentColor" opacity=".7" stroke="none"/></svg>
+        </div>
+        <div>
+          <h4>Incentivo para el cliente</h4>
+          <p>Un pequeño descuento, un punto de fidelidad o un sorteo al completar la acción — la recompensa aumenta cuántos clientes lo usan de verdad.</p>
+        </div>
+      </div>
+    </div>
+    <p class="form-note" style="margin-top:24px;text-align:left">Esta funcionalidad está en desarrollo — cuéntanos si te interesa para reservar tu sitio entre los primeros.</p>
+  </div>
+</div>
+
+<!-- INCLUYE -->
+<section class="section fi">
+  <div class="section-tag">Siempre incluido</div>
+  <h2 class="section-title">Sin sorpresas. Sin letra pequeña.</h2>
+  <div class="includes-grid">
+    <div class="include-item">
+      <div class="incl-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div><h4>Diseño gratuito con tu logo</h4><p>Hasta 3 revisiones. Lo ves y apruebas antes de que imprimamos nada.</p></div>
+    </div>
+    <div class="include-item">
+      <div class="incl-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M16.9 16.9l2.1 2.1M16.9 7.1l2.1-2.1M4.9 19.1l2.1-2.1"/></svg>
+      </div>
+      <div><h4>Programación del enlace</h4><p>Configuramos el destino del NFC y del QR. Si quieres cambiarlo después, te lo gestionamos.</p></div>
+    </div>
+    <div class="include-item">
+      <div class="incl-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+      </div>
+      <div><h4>Instalación presencial en tu local</h4><p>Vamos al negocio, elegimos contigo la ubicación ideal y lo dejamos puesto y funcionando. Incluida en Girona y comarca — para otras zonas, consultar.</p></div>
+    </div>
+    <div class="include-item">
+      <div class="incl-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v6q0 5-8 8Q4 18 4 13V7z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <div><h4>Garantía 12 meses</h4><p>Si falla o se despega, lo sustituimos sin coste. Siempre dejamos una unidad de repuesto.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="section fi">
+  <div class="section-tag">Cómo empezamos</div>
+  <h2 class="section-title">Del primer contacto a la instalación en 4 pasos</h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <h3>Te lo muestro en persona</h3>
+      <p>5 minutos. Sin compromiso. Te enseño cómo funciona con un ejemplo real en tu tipo de negocio.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <h3>Diseño gratuito</h3>
+      <p>Preparo el diseño con tu logo y colores. Lo ves antes de decidir. Sin pagar nada todavía.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <h3>Señal de 10€</h3>
+      <p>Si te convence, arrancamos con 10€. Ese importe se descuenta del total al instalar.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <h3>Entrega e instalación</h3>
+      <p>7-10 días laborables. Voy al local, instalo y te explico cómo ver las estadísticas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARIO -->
+<section id="contactar" class="section fi">
+  <div class="section-tag">Empieza gratis</div>
+  <h2 class="section-title">Cuéntanos un poco y te contactamos hoy</h2>
+  <p class="section-sub">En menos de 2 minutos tienes el diseño en camino. Sin compromiso, sin coste.</p>
+  <form id="contact-form" class="contact-form" novalidate>
+    <div class="form-row">
+      <label>Nombre del negocio *
+        <input type="text" name="negocio" required placeholder="Ej. Barbería Komet">
+      </label>
+      <label>Tu nombre *
+        <input type="text" name="nombre" required placeholder="Marc">
+      </label>
+    </div>
+    <div class="form-row">
+      <label>Tipo de negocio *
+        <select name="sector" required>
+          <option value="">Selecciona...</option>
+          <option>Hotel / Alojamiento Rural</option>
+          <option>Tienda de Mascotas</option>
+          <option>Papelería / Imprenta</option>
+          <option>Barbería / Peluquería</option>
+          <option>Restaurante / Bar</option>
+          <option>Estética / Spa</option>
+          <option>Tatuajes / Estudio</option>
+          <option>Clínica / Fisioterapia</option>
+          <option>Otro negocio local</option>
+        </select>
+      </label>
+      <label>¿Qué te interesa? *
+        <select name="producto" required>
+          <option value="">Selecciona...</option>
+          <option>Stand Personalizado — 35€ (recomendado)</option>
+          <option>Pack Múltiple — desde 79€</option>
+
+          <option>Landing web para mi negocio</option>
+          <option>Solo quiero información</option>
+        </select>
+      </label>
+    </div>
+    <div class="form-row">
+      <label>Ciudad
+        <input type="text" name="ciudad" placeholder="Girona">
+      </label>
+      <label>¿Quieres diseño gratuito con tu logo?
+        <div class="radio-group">
+          <label><input type="radio" name="diseno" value="si" checked> Sí, con mi logo</label>
+          <label><input type="radio" name="diseno" value="no"> No por ahora</label>
+        </div>
+      </label>
+    </div>
+    <button type="submit" class="btn-primary btn-full">
+      Enviar por WhatsApp →
+    </button>
+    <p class="form-note">Al enviar se abrirá WhatsApp con tus datos. Sin compromiso.</p>
+  </form>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-section">
+  <h2>¿Lo quieres ver funcionar en <span class="hl">tu negocio</span>?</h2>
+  <p>Te lo muestro en 5 minutos. Sin compromiso. Sin coste.</p>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='inline'">
+    <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
+  </div>
+  <span>© 2025 ONIX — Stands NFC para Negocios · Girona</span>
+  <span style="display:flex;gap:14px;flex-wrap:wrap">
+    <a href="legal.html">Aviso Legal</a>
+    <a href="legal.html">Privacidad</a>
+    <a href="legal.html">Cookies</a>
+  </span>
+  <a href="https://wa.me/34630910142">+34 630 910 142</a>
+</footer>
+
+<script>
+// ── SECTORES — SLIDER DESLIZABLE ────────────────────────────────────────────
+// El carrusel SOLO se mueve por acción del usuario: swipe táctil nativo,
+// drag con ratón/trackpad, o clic en una pestaña/punto para saltar. Nunca
+// se mueve solo (sin autoplay ni setInterval de desplazamiento).
+(function() {
+  const track = document.getElementById('tab-track');
+  if (!track) return;
+  const panels = Array.from(track.querySelectorAll('.tab-panel'));
+  const tabBtns = Array.from(document.querySelectorAll('.tab-btn'));
+
+  function setActive(tabName) {
+    tabBtns.forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
+    panels.forEach(p => p.classList.toggle('active', p.id === 'tab-' + tabName));
+  }
+
+  function goTo(tabName) {
+    const panel = document.getElementById('tab-' + tabName);
+    if (panel) track.scrollTo({ left: panel.offsetLeft - panels[0].offsetLeft, behavior: 'smooth' });
+  }
+
+  tabBtns.forEach(btn => btn.addEventListener('click', () => goTo(btn.dataset.tab)));
+
+  // Sincroniza pestaña activa según lo que el usuario está viendo al deslizar
+  let scrollRAF = null;
+  track.addEventListener('scroll', () => {
+    if (scrollRAF) return;
+    scrollRAF = requestAnimationFrame(() => {
+      scrollRAF = null;
+      const trackRect = track.getBoundingClientRect();
+      const center = trackRect.left + trackRect.width / 2;
+      let closest = panels[0];
+      let closestDist = Infinity;
+      panels.forEach(p => {
+        const r = p.getBoundingClientRect();
+        const dist = Math.abs((r.left + r.width / 2) - center);
+        if (dist < closestDist) { closestDist = dist; closest = p; }
+      });
+      const tabName = closest.id.replace('tab-', '');
+      setActive(tabName);
+    });
+  }, { passive: true });
+
+  // Drag-to-scroll con ratón/trackpad (el móvil ya usa touch-scroll nativo)
+  let isDown = false, startX = 0, startScroll = 0, moved = false;
+  track.addEventListener('mousedown', e => {
+    isDown = true; moved = false;
+    startX = e.pageX;
+    startScroll = track.scrollLeft;
+    track.classList.add('dragging');
+  });
+  window.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    const dx = e.pageX - startX;
+    if (Math.abs(dx) > 4) moved = true;
+    track.scrollLeft = startScroll - dx;
+  });
+  function endDrag() {
+    if (!isDown) return;
+    isDown = false;
+    track.classList.remove('dragging');
+    // Snap al slide más cercano al soltar
+    const trackRect = track.getBoundingClientRect();
+    const center = trackRect.left + trackRect.width / 2;
+    let closest = panels[0], closestDist = Infinity;
+    panels.forEach(p => {
+      const r = p.getBoundingClientRect();
+      const dist = Math.abs((r.left + r.width / 2) - center);
+      if (dist < closestDist) { closestDist = dist; closest = p; }
+    });
+    goTo(closest.id.replace('tab-', ''));
+  }
+  window.addEventListener('mouseup', endDrag);
+  track.addEventListener('mouseleave', () => { if (isDown) endDrag(); });
+  // Evita que un drag se interprete como clic en los links/CTAs internos
+  track.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+})();
+
+// ── SCROLL ANIMATIONS ────────────────────────────────────────────────────────
+setTimeout(function() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, {threshold: 0.1, rootMargin: '0px 0px -80px 0px'});
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+}, 200);
+
+// ── COUNT-UP ──────────────────────────────────────────────────────────────────
+function animateCount(el, target, suffix) {
+  let startTs = null;
+  const duration = 1200;
+  function step(ts) {
+    if (!startTs) startTs = ts;
+    const progress = Math.min((ts - startTs) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(ease * target) + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const statObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      if (!isNaN(target)) animateCount(el, target, suffix);
+      statObs.unobserve(el);
+    }
+  });
+}, {threshold: 0.5});
+document.querySelectorAll('.stat-num[data-count]').forEach(el => statObs.observe(el));
+
+// ── FORMULARIO → WHATSAPP ────────────────────────────────────────────────────
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const f = this;
+  const negocio = f.negocio.value.trim();
+  const nombre = f.nombre.value.trim();
+  const sector = f.sector.value;
+  const producto = f.producto.value;
+  const ciudad = f.ciudad.value.trim();
+  const diseno = f.diseno.value === 'si';
+
+  if (!negocio || !nombre || !sector || !producto) {
+    [f.negocio, f.nombre, f.sector, f.producto].forEach(el => {
+      if (!el.value.trim()) el.style.borderColor = '#c0392b';
+      else el.style.borderColor = '';
+    });
+    return;
+  }
+
+  const lines = [
+    `Hola! Soy *${nombre}* de *${negocio}* (${sector}).`,
+    `Me interesa: *${producto}*.`,
+    diseno ? `Quiero ver el diseño gratuito con mi logo.` : '',
+    ciudad ? `Ciudad: ${ciudad}` : '',
+  ].filter(Boolean).join('%0A');
+
+  window.open(`https://wa.me/34630910142?text=${lines}`, '_blank');
+});
+
+// ── TYPEWRITER MULTILINGÜE ─────────────────────────────────────────────────
+(function() {
+  const el1 = document.getElementById('tw-line1');
+  const el2 = document.getElementById('tw-line2');
+  if (!el1 || !el2) return;
+
+  const text1 = 'Convierte visitas en clientes —';
+  const text2 = 'sin apps, sin pedir, sin buscar';
+  const pool = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚÜÊÈËÀÂÄÇ1234567890€$%&@#+*~^<>/\\[]{}|_-¡¿!?';
+
+  el1.style.display = 'inline-block';
+  el2.style.display = 'inline-block';
+  el1.textContent = text1;
+  el2.textContent = text2;
+
+  function getRand() {
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  function fillRand(len) {
+    let s = '';
+    for (let i = 0; i < len; i++) s += getRand();
+    return s;
+  }
+
+  function animateLine(el, text, cb) {
+    const len = text.length;
+    let locked = 0;
+
+    function tick() {
+      if (locked === len) {
+        el.textContent = text;
+        if (cb) cb();
+        return;
+      }
+      let display = '';
+      for (let i = 0; i < len; i++) {
+        if (i < locked) display += text[i];
+        else display += getRand();
+      }
+      el.textContent = display;
+      locked++;
+      setTimeout(tick, locked < len - 5 ? 25 : 40);
+    }
+    tick();
+  }
+
+  setTimeout(function() {
+    const heroObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          el1.textContent = fillRand(text1.length);
+          el2.textContent = fillRand(text2.length);
+
+          var line2Cycle = setInterval(function() {
+            el2.textContent = fillRand(text2.length);
+          }, 50);
+
+          animateLine(el1, text1, function() {
+            clearInterval(line2Cycle);
+            setTimeout(function() {
+              animateLine(el2, text2, function() {});
+            }, 150);
+          });
+          heroObs.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.01});
+    heroObs.observe(document.getElementById('hero'));
+  }, 100);
+})();
+</script>
+<script>let st;document.addEventListener('scroll',()=>{document.documentElement.classList.add('scrolling');clearTimeout(st);st=setTimeout(()=>document.documentElement.classList.remove('scrolling'),800)},{passive:!0})</script>
+</body>
+</html>
+
+
+ 
+ 
+ 
