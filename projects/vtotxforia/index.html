@@ -720,13 +720,14 @@ splashImg.onload = () => {
 };
 
 let glowStartTime = 0;
-let glowRunning = true;
+let glowStopRequested = false;
 function splashAnimGlow(){
-  if(!splashReady || !glowRunning) return;
+  if(!splashReady) return;
   const now = performance.now();
   if(!glowStartTime) glowStartTime = now;
   const elapsed = now - glowStartTime;
   const pos = (elapsed / 2000) % 1;
+  if(glowStopRequested && pos < 0.05) return;
   const alpha = Math.min(1, elapsed / 800);
   splashGlowCanvas.style.opacity = alpha;
   const W = splashGlowCanvas.width, H = splashGlowCanvas.height;
@@ -763,6 +764,7 @@ function splashAnimGlow(){
 function closeSplash(){
   if(splashClosing || !splashReady) return;
   splashClosing = true;
+  glowStopRequested = true;
 
   splashOverlay.classList.add('faded');
   splashLogoContainer.classList.add('collapsed');
@@ -773,7 +775,6 @@ function closeSplash(){
     document.body.style.overflow = '';
     document.body.style.height = '';
     splashLogoContainer.classList.add('header-mode');
-    glowRunning = false;
     ensureModel().catch(() => {
       modelSelect.disabled = false;
       loadModelBtn.disabled = false;
