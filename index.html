@@ -15,118 +15,122 @@ a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
 section{padding:0 max(20px,2.23vw);max-width:1600px;margin:0 auto}
 
+.cursor-dot{position:fixed;pointer-events:none;z-index:9999;width:24px;height:24px;transform:translate(-50%,-50%);opacity:0.8;transition:width 0.25s,height 0.25s,opacity 0.25s;filter:drop-shadow(0 0 6px rgba(0,0,0,0.3))}
+.cursor-dot svg{width:100%;height:100%;display:block}
+.cursor-dot.hover{width:40px;height:40px;opacity:1}
+.cursor-dot.hidden{opacity:0}
+
 .noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.022;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .main{position:relative;z-index:1}
 
 /* ═══ PAGE TRANSITION ═══ */
 .page-transition{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(0.76,0,0.24,1);will-change:transform}
-.page-transition.hide{transform:translateX(-100%)}
-.page-transition-inner{text-align:center}
-.page-transition-logo{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);color:#fff;letter-spacing:-0.02em;margin-bottom:8px;font-weight:500}
+.page-transition.hide{transform:translateY(-100%)}
+.page-transition-logo{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);color:#fff;letter-spacing:-0.02em;font-weight:500}
 .page-transition-logo em{font-style:italic;color:#d45a24}
 
 /* ═══ HEADER ═══ */
-header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px max(20px,2.23vw);font-family:'Space Grotesk',sans-serif;transition:background 0.4s,backdrop-filter 0.4s}
-header.scrolled{background:rgba(10,10,10,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-header .logo{font-size:1rem;font-weight:500;letter-spacing:-0.02em;color:#fff}
-header nav{display:flex;gap:22px}
-header nav a{font-size:0.66rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);padding-bottom:3px;position:relative;transition:color 0.3s}
+header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:16px max(20px,2.23vw);font-family:'Space Grotesk',sans-serif}
+header .glass{position:absolute;inset:0;background:rgba(153,153,153,0.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity 0.4s}
+header.scrolled .glass{opacity:1}
+header .logo{position:relative;z-index:1;font-size:1rem;font-weight:500;letter-spacing:-0.02em;color:#fff}
+header nav{position:relative;z-index:1;display:flex;gap:22px}
+header nav a{font-size:0.64rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);padding-bottom:3px;position:relative;transition:color 0.3s}
 header nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:#fff;transition:width 0.3s ease}
-header nav a:hover{color:#fff}
-header nav a:hover::after{width:100%}
+header nav a:hover{color:#fff}header nav a:hover::after{width:100%}
 
 /* ═══ HERO ═══ */
 .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 80px);padding-top:80px;position:relative;overflow:hidden}
-.hero-photos{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;width:min(220px,38vw);aspect-ratio:2/3}
-.hero-photo{position:absolute;inset:0;border-radius:4px;overflow:hidden;transition:filter 0.5s ease,opacity 0.5s ease}
-.hero-photo.base{z-index:1;filter:grayscale(100%) brightness(0.85);cursor:none}
-.hero-photo.overlay{z-index:2;opacity:0;filter:grayscale(100%) brightness(0.85)}
-.hero-photos:hover .hero-photo.base{opacity:0}
-.hero-photos:hover .hero-photo.overlay{opacity:1;filter:none}
-.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-photos{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;width:min(220px,38vw);aspect-ratio:2/3;cursor:pointer}
+.hero-photo{position:absolute;inset:0;border-radius:4px;overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) brightness(0.85);transition:filter 0.5s ease}
+.hero-photos:hover .hero-photo img,.hero-photos.active .hero-photo img{filter:none}
+.hero-photo.base{z-index:1}
+.hero-photo.overlay{z-index:2}
 
 .marquee-wrap{position:absolute;left:0;right:0;z-index:2;pointer-events:none}
 .marquee-wrap.top{top:14%}.marquee-wrap.mid{top:50%;transform:translateY(-50%)}.marquee-wrap.bot{bottom:14%}
 .marquee-track{display:flex;will-change:transform}
-.marquee-track span{flex-shrink:0;font-family:'Inter',system-ui,sans-serif;font-size:clamp(1.6rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;color:#fff;padding:0 24px;line-height:1.1;white-space:nowrap}
-.marquee-wrap.mid .marquee-track span{font-weight:300;font-size:clamp(1.4rem,4.5vw,3.6rem);opacity:0.65}
-.marquee-wrap.bot .marquee-track span{font-weight:600;font-size:clamp(1.4rem,4.5vw,4rem);opacity:0.5;font-style:italic;font-family:'Playfair Display',serif}
+.marquee-track span{flex-shrink:0;font-family:'Inter',system-ui,sans-serif;font-size:clamp(1.6rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;color:#fff;padding:0 22px;line-height:1.1;white-space:nowrap}
+.marquee-wrap.mid .marquee-track span{font-weight:300;font-size:clamp(1.4rem,4.5vw,3.6rem);opacity:0.6}
+.marquee-wrap.bot .marquee-track span{font-weight:600;font-size:clamp(1.4rem,4.5vw,4rem);opacity:0.45;font-style:italic;font-family:'Playfair Display',serif}
 
 /* ═══ SECTION HEADERS ═══ */
 .section-head{display:flex;justify-content:space-between;align-items:center;padding:100px 0 28px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:28px}
-.section-num{font-size:0.62rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.section-num{font-size:0.62rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.22)}
 .section-head h2{font-size:clamp(1.8rem,5.5vw,5.5rem);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:-0.02em}
 
 /* ═══ ABOUT ═══ */
 .about-content{display:flex;flex-direction:column;gap:clamp(20px,4vw,40px);max-width:800px;padding:24px 0 20px}
-.about-content p{font-size:clamp(0.85rem,2.5vw,1.3rem);font-weight:300;line-height:1.6;color:rgba(255,255,255,0.55)}
+.about-content p{font-size:clamp(0.85rem,2.5vw,1.3rem);font-weight:300;line-height:1.6;color:rgba(255,255,255,0.52)}
 .about-content p:last-child{align-self:flex-end;max-width:78%}
 
 /* ═══ EDUCATION ═══ */
 .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;padding:24px 0 70px}
-.edu-card{border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:22px 20px;transition:border-color 0.4s,background 0.4s}
-.edu-card:hover{border-color:rgba(255,255,255,0.14);background:rgba(255,255,255,0.02)}
-.edu-card .edu-tag{font-family:'Space Grotesk',sans-serif;font-size:0.6rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#22c55e;margin-bottom:8px;display:block}
+.edu-card{border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:22px 20px;transition:border-color 0.4s,background 0.4s}
+.edu-card:hover{border-color:rgba(255,255,255,0.12);background:rgba(255,255,255,0.015)}
+.edu-tag{font-family:'Space Grotesk',sans-serif;font-size:0.6rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#22c55e;margin-bottom:8px;display:block}
 .edu-card h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:500;letter-spacing:-0.01em;margin-bottom:4px}
-.edu-card .school{font-size:0.78rem;color:rgba(255,255,255,0.4);margin-bottom:8px}
-.edu-card .meta{font-size:0.7rem;color:rgba(255,255,255,0.3);display:flex;flex-wrap:wrap;gap:10px}
-.edu-card .meta span{padding:2px 7px;border-radius:4px;color:rgba(255,255,255,0.35);font-size:0.66rem}
+.edu-card .school{font-size:0.78rem;color:rgba(255,255,255,0.38);margin-bottom:8px}
+.edu-card .meta{font-size:0.7rem;color:rgba(255,255,255,0.25);display:flex;flex-wrap:wrap;gap:10px}
+.edu-card .meta span{padding:2px 7px;border-radius:4px;color:rgba(255,255,255,0.3);font-size:0.66rem}
 
 /* ═══ STACK ═══ */
 .stack-grid{max-width:800px;padding:16px 0 60px;display:flex;flex-direction:column}
-.stack-row{display:flex;justify-content:space-between;align-items:center;padding:16px 10px;margin:0 -10px;border-radius:6px;transition:background 0.4s;cursor:default}
-.stack-row:hover{background:rgba(255,255,255,0.025)}
+.stack-row{display:flex;justify-content:space-between;align-items:center;padding:16px 10px;margin:0 -10px;border-radius:6px;transition:background 0.4s}
+.stack-row:hover{background:rgba(255,255,255,0.022)}
 .stack-row .cat{font-family:'Space Grotesk',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#22c55e;min-width:120px}
 .stack-row .items{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
-.stack-row .items span{font-size:0.72rem;color:rgba(255,255,255,0.38);padding:3px 8px;border-radius:99px;border:1px solid rgba(255,255,255,0.05);transition:all 0.3s}
-.stack-row:hover .items span{border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6)}
+.stack-row .items span{font-size:0.72rem;color:rgba(255,255,255,0.35);padding:3px 8px;border-radius:99px;border:1px solid rgba(255,255,255,0.04);transition:all 0.3s}
+.stack-row:hover .items span{border-color:rgba(255,255,255,0.14);color:rgba(255,255,255,0.58)}
 
-/* ═══ PROJECT CARDS (iper.com.au style) ═══ */
-.projects-list{display:flex;flex-direction:column;gap:80px;padding:20px 0 100px}
-.project-card{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;min-height:300px}
-.project-info{display:flex;flex-direction:column;justify-content:center}
-.project-card .num{font-size:0.6rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:8px}
-.project-card .tag{display:inline-block;font-size:0.56rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:3px 0;margin-bottom:14px;color:rgba(255,255,255,0.3);transition:color 0.4s}
-.project-card h2{font-size:clamp(2rem,4.5vw,3.8rem);font-weight:700;line-height:1;letter-spacing:-0.02em;text-transform:uppercase;margin-bottom:12px;transition:color 0.4s}
-.project-card .desc{font-size:0.85rem;line-height:1.6;color:rgba(255,255,255,0.45);max-width:420px;margin-bottom:24px}
-.project-card .card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:20px}
-.project-card .card-tags span{padding:3px 8px;border-radius:4px;font-size:0.58rem;font-weight:500;letter-spacing:0.03em;color:rgba(255,255,255,0.3);border:1px solid rgba(255,255,255,0.06);transition:all 0.3s}
-.project-card:hover .card-tags span{border-color:rgba(255,255,255,0.14);color:rgba(255,255,255,0.5)}
-.project-card .cta{display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;padding:9px 20px;border-radius:7px;width:fit-content;transition:all 0.3s}
-.project-card .cta:hover{transform:translateY(-2px)}
+/* ═══ EDUCATION STACK ═══ */
+.edu-stack{max-width:800px;padding:0 0 60px;display:flex;flex-direction:column}
+.edu-stack .stack-row .cat{color:rgba(255,255,255,0.5)}
+.edu-stack .stack-row:hover .cat{color:#22c55e}
+.edu-stack .stack-row .items span{border-color:rgba(255,255,255,0.03)}
+
+/* ═══ PROJECT CARDS ═══ */
+.projects-list{display:flex;flex-direction:column;gap:56px;padding:20px 0 100px}
+.project-card{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;min-height:320px;position:relative}
+.project-info{display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.project-card .num{font-size:0.6rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:6px}
+.project-card .tag{display:inline-block;font-size:0.56rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:2px 0;margin-bottom:12px;color:rgba(255,255,255,0.25);transition:color 0.4s}
+.project-card h2{font-size:clamp(2.4rem,4.5vw,4rem);font-weight:700;line-height:1;letter-spacing:-0.02em;text-transform:uppercase;margin-bottom:10px;transition:color 0.4s}
+.project-card .desc{font-size:0.85rem;line-height:1.6;color:rgba(255,255,255,0.42);max-width:420px;margin-bottom:18px;transition:color 0.4s}
+.project-card .card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:16px}
+.project-card .card-tags span{padding:3px 8px;border-radius:4px;font-size:0.58rem;font-weight:500;color:rgba(255,255,255,0.25);border:1px solid rgba(255,255,255,0.04);transition:all 0.3s}
+.project-card:hover .card-tags span{border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.45)}
+.project-card .cta{display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;padding:9px 20px;border-radius:7px;width:fit-content;opacity:0;transform:translateY(6px);transition:all 0.4s cubic-bezier(0.22,1,0.36,1);pointer-events:none}
+.project-card:hover .cta{opacity:1;transform:translateY(0);pointer-events:auto}
+.project-card .cta:hover{transform:translateY(-2px)!important}
 .project-visual{position:relative;overflow:hidden;border-radius:8px;aspect-ratio:4/3;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)}
 .project-card:hover .project-visual{transform:scale(1.02)}
-.project-visual-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.03);transition:background 0.4s}
-.project-card:hover .project-visual-inner{background:rgba(255,255,255,0.05)}
-.project-visual img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.22,1,0.36,1),opacity 0.5s}
-.project-card:hover .project-visual img{transform:scale(1.04)}
-.project-visual svg{position:absolute;inset:0;margin:auto;opacity:0.06;width:min(100px,25%)}
+.project-visual-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);transition:background 0.4s}
+.project-card:hover .project-visual-inner{background:rgba(255,255,255,0.04)}
+.project-visual svg{opacity:0.05;width:min(100px,25%);transition:opacity 0.4s}
+.project-card:hover .project-visual svg{opacity:0.14}
 
-/* Project-specific */
-.pj-vdownloader h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3.5rem);font-weight:800}
-.pj-vdownloader:hover h2,.pj-vdownloader:hover .tag{color:#e0451b}
-.pj-vdownloader .cta{background:#e0451b;color:#fff}
-.pj-vdownloader .cta:hover{background:#f05a32}
+/* Project typography & colors - all titles same clamp size */
+.pj-vdownloader h2{font-family:'Playfair Display',serif;font-weight:800}
+.pj-vdownloader:hover h2,.pj-vdownloader:hover .tag,.pj-vdownloader:hover .desc{color:#e0451b}
+.pj-vdownloader .cta{background:#e0451b;color:#fff}.pj-vdownloader .cta:hover{background:#f05a32}
 
-.pj-hivemind h2{font-family:'Courier New',monospace;font-size:clamp(1.6rem,3.6vw,3rem);font-weight:400;letter-spacing:-0.03em}
-.pj-hivemind:hover h2,.pj-hivemind:hover .tag{color:#b8f060}
-.pj-hivemind .cta{background:#b8f060;color:#0a0d12}
-.pj-hivemind .cta:hover{background:#c6f57e}
+.pj-hivemind h2{font-family:'Courier New',monospace;font-weight:400;letter-spacing:-0.03em}
+.pj-hivemind:hover h2,.pj-hivemind:hover .tag,.pj-hivemind:hover .desc{color:#b8f060}
+.pj-hivemind .cta{background:#b8f060;color:#0a0d12}.pj-hivemind .cta:hover{background:#c6f57e}
 
-.pj-vtotx h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,3.5rem);font-weight:500}
-.pj-vtotx:hover h2,.pj-vtotx:hover .tag{color:#6096fa}
-.pj-vtotx .cta{background:#6096fa;color:#fff}
-.pj-vtotx .cta:hover{background:#4a82f0}
+.pj-vtotx h2{font-family:'Space Grotesk',sans-serif;font-weight:500}
+.pj-vtotx:hover h2,.pj-vtotx:hover .tag,.pj-vtotx:hover .desc{color:#6096fa}
+.pj-vtotx .cta{background:#6096fa;color:#fff}.pj-vtotx .cta:hover{background:#4a82f0}
 
-.pj-ares h2{font-family:'Courier New',monospace;font-size:clamp(1.6rem,3.6vw,3rem);font-weight:400;letter-spacing:-0.02em}
-.pj-ares:hover h2,.pj-ares:hover .tag{color:#44d490}
-.pj-ares .cta{background:transparent;color:#44d490;border:1px solid #44d490}
-.pj-ares .cta:hover{background:rgba(68,212,144,0.08)}
+.pj-ares h2{font-family:'Courier New',monospace;font-weight:400;letter-spacing:-0.02em}
+.pj-ares:hover h2,.pj-ares:hover .tag,.pj-ares:hover .desc{color:#44d490}
+.pj-ares .cta{background:transparent;color:#44d490;border:1px solid #44d490}.pj-ares .cta:hover{background:rgba(68,212,144,0.08)}
 
-.pj-onix h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,3.5rem);letter-spacing:0.02em}
-.pj-onix:hover h2,.pj-onix:hover .tag{color:#d45a24}
-.pj-onix .cta{background:#d45a24;color:#fff}
-.pj-onix .cta:hover{background:#e8743e}
+.pj-onix h2{font-family:'Bebas Neue',sans-serif;letter-spacing:0.02em}
+.pj-onix:hover h2,.pj-onix:hover .tag,.pj-onix:hover .desc{color:#d45a24}
+.pj-onix .cta{background:#d45a24;color:#fff}.pj-onix .cta:hover{background:#e8743e}
 
 /* ═══ CONTACT ═══ */
 .contact{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0}
@@ -135,36 +139,32 @@ header nav a:hover::after{width:100%}
 .contact-cta a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:#22c55e;transition:width 0.5s cubic-bezier(0.22,1,0.36,1)}
 .contact-cta a:hover::after{width:100%}
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
-.contact-item{display:flex;align-items:center;gap:10px;padding:14px 16px;border:1px solid rgba(255,255,255,0.06);border-radius:6px;font-size:0.8rem;color:rgba(255,255,255,0.45);transition:all 0.3s}
-.contact-item:hover{border-color:rgba(255,255,255,0.16);color:#fff;transform:translateY(-1px)}
-.contact-item svg{width:14px;height:14px;opacity:0.35;flex-shrink:0;transition:opacity 0.3s}
+.contact-item{display:flex;align-items:center;gap:10px;padding:14px 16px;border:1px solid rgba(255,255,255,0.05);border-radius:6px;font-size:0.8rem;color:rgba(255,255,255,0.4);transition:all 0.3s}
+.contact-item:hover{border-color:rgba(255,255,255,0.14);color:#fff;transform:translateY(-1px)}
+.contact-item svg{width:14px;height:14px;opacity:0.3;flex-shrink:0;transition:opacity 0.3s}
 .contact-item:hover svg{opacity:1}
-footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.18)}
+footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.16)}
 
 @media(max-width:768px){
   header nav{display:none}
   .hero-photos{width:min(150px,50vw)}
   .section-head h2{font-size:clamp(1.4rem,7vw,2.6rem)}
-  .stack-row{flex-direction:column;align-items:flex-start;gap:5px}
-  .stack-row .items{justify-content:flex-start}
+  .stack-row{flex-direction:column;align-items:flex-start;gap:5px}.stack-row .items{justify-content:flex-start}
   .about-content p:last-child{max-width:100%;align-self:flex-start}
-  .project-card{grid-template-columns:1fr;gap:24px;min-height:auto}
+  .project-card{grid-template-columns:1fr;gap:20px;min-height:auto}
   .project-card .project-visual{order:-1;aspect-ratio:16/9}
   .contact-cta{font-size:clamp(1.8rem,7vw,3rem)}
   .edu-grid{grid-template-columns:1fr}
 }
 </style></head>
 <body class="loading">
-<div class="page-transition" id="pageTrans">
-  <div class="page-transition-inner">
-    <div class="page-transition-logo">Liam <em>Garcia</em></div>
-  </div>
-</div>
-
+<div class="cursor-dot" id="cursorDot"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z" fill="#fff" opacity="0.85"/></svg></div>
+<div class="page-transition" id="pageTrans"><div class="page-transition-logo">Liam <em>Garcia</em></div></div>
 <div class="noise"></div>
 <div class="main" id="main">
 
 <header id="header">
+  <div class="glass"></div>
   <a href="#" class="logo">Liam Garcia</a>
   <nav>
     <a href="#about">Sobre mí</a>
@@ -176,13 +176,13 @@ footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1
 </header>
 
 <section class="hero">
-  <div class="hero-photos">
+  <div class="hero-photos" id="heroPhotos">
     <div class="hero-photo base"><img src="./assets/photo.jpg" alt="Liam Garcia" loading="eager"></div>
     <div class="hero-photo overlay"><img src="../BASE/CV/FOTOS/LIAM_BASE-Photoroom.png" alt="Liam Garcia"></div>
   </div>
   <div class="marquee-wrap top"><div class="marquee-track" data-speed="-0.3"><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span></div></div>
-  <div class="marquee-wrap mid"><div class="marquee-track" data-speed="0.22"><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span></div></div>
-  <div class="marquee-wrap bot"><div class="marquee-track" data-speed="-0.22"><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span></div></div>
+  <div class="marquee-wrap mid"><div class="marquee-track" data-speed="0.18"><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span></div></div>
+  <div class="marquee-wrap bot"><div class="marquee-track" data-speed="-0.2"><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span></div></div>
 </section>
 
 <section id="about">
@@ -197,17 +197,19 @@ footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1
   <div class="section-head"><span class="section-num">(02)</span><h2>Formación</h2></div>
   <div class="edu-grid">
     <div class="edu-card">
-      <span class="edu-tag">Máster</span>
-      <h3>Inteligencia Artificial</h3>
+      <span class="edu-tag">Máster</span><h3>Inteligencia Artificial</h3>
       <div class="school">BIG School · Universidad Isabel I (6 ECTS)</div>
       <div class="meta"><span>+240h</span><span>+50 herramientas IA</span><span>+20 asignaturas</span></div>
     </div>
     <div class="edu-card">
-      <span class="edu-tag">Grado Superior</span>
-      <h3>Marketing y Publicidad</h3>
+      <span class="edu-tag">Grado Superior</span><h3>Marketing y Publicidad</h3>
       <div class="school">ETG Business (Escola Tècnica Girona)</div>
       <div class="meta"><span>2.000h</span><span>515h prácticas</span><span>Erasmus</span></div>
     </div>
+  </div>
+  <div class="edu-stack">
+    <div class="stack-row"><span class="cat">Máster IA</span><div class="items"><span>ChatGPT</span><span>Claude</span><span>Gemini</span><span>Copilot</span><span>Prompt Engineering</span><span>LLMs</span><span>Automatización</span></div></div>
+    <div class="stack-row"><span class="cat">GS Marketing</span><div class="items"><span>SEO</span><span>SEM</span><span>Google Ads</span><span>Analytics</span><span>Branding</span><span>Copywriting</span><span>Email Marketing</span><span>RRPP</span></div></div>
   </div>
 </section>
 
@@ -219,7 +221,6 @@ footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1
     <div class="stack-row"><span class="cat">Frontend</span><div class="items"><span>React 19</span><span>Vite</span><span>HTML/CSS</span><span>JavaScript</span></div></div>
     <div class="stack-row"><span class="cat">DevOps</span><div class="items"><span>Docker</span><span>Git</span><span>CI/CD</span><span>Linux/WSL2</span></div></div>
     <div class="stack-row"><span class="cat">Automatización</span><div class="items"><span>n8n</span><span>Make</span><span>MCP</span><span>Power Automate</span></div></div>
-    <div class="stack-row"><span class="cat">Marketing</span><div class="items"><span>SEO IA</span><span>SEM</span><span>Email Mkting</span><span>CRM</span><span>Google Ads</span><span>Analytics</span></div></div>
   </div>
 </section>
 
@@ -229,77 +230,52 @@ footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1
 
     <a class="project-card pj-vdownloader" href="./projects/V_DownLoadSUB/index.html">
       <div class="project-info">
-        <span class="num">01</span><span class="tag">Video + IA</span>
-        <h2>V_DOWNLOADER</h2>
-        <p class="desc">Descarga, transcribe y traduce vídeos con IA. Edición de subtítulos con línea de tiempo, estilos visuales y exportación. yt-dlp + Whisper + FFmpeg.</p>
+        <span class="num">01</span><span class="tag">Video + IA</span><h2>V_DOWNLOADER</h2>
+        <p class="desc">Descarga, transcribe y traduce vídeos con IA. Edición de subtítulos con línea de tiempo, estilos visuales y exportación.</p>
         <div class="card-tags"><span>Python</span><span>Flask</span><span>Whisper</span><span>FFmpeg</span></div>
         <span class="cta">Abrir proyecto →</span>
       </div>
-      <div class="project-visual">
-        <div class="project-visual-inner">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#e0451b" stroke-width="1"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
-        </div>
-      </div>
+      <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#e0451b" stroke-width="1"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/></svg></div></div>
     </a>
 
     <a class="project-card pj-hivemind" href="https://github.com/LIAMHADES" target="_blank">
       <div class="project-info">
-        <span class="num">02</span><span class="tag">Ecosistema IA</span>
-        <h2>HIVE-MIND</h2>
-        <p class="desc">Ecosistema multi-agente de conocimiento con 3.776+ documentos indexados, 19 agentes por dominio, motor de búsqueda vectorial, y pipeline de extracción de vídeos 24/7.</p>
+        <span class="num">02</span><span class="tag">Ecosistema IA</span><h2>HIVE-MIND</h2>
+        <p class="desc">Ecosistema multi-agente de conocimiento con 3.776+ documentos indexados, 19 agentes por dominio y motor de búsqueda vectorial.</p>
         <div class="card-tags"><span>Python</span><span>ChromaDB</span><span>Ollama</span><span>Docker</span><span>RAG</span></div>
         <span class="cta">GitHub →</span>
       </div>
-      <div class="project-visual">
-        <div class="project-visual-inner">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#b8f060" stroke-width="1"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
-        </div>
-      </div>
+      <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#b8f060" stroke-width="1"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div></div>
     </a>
 
     <a class="project-card pj-vtotx" href="./projects/vtotxforia/index.html">
       <div class="project-info">
-        <span class="num">03</span><span class="tag">Voice AI</span>
-        <h2>VtoTXforIA</h2>
-        <p class="desc">Dictado por voz en tiempo real con Whisper WASM. Sin servidor, 100% local en tu navegador. PCM directo para transcripción instantánea. 20× más rápido que escribir.</p>
+        <span class="num">03</span><span class="tag">Voice AI</span><h2>VtoTXforIA</h2>
+        <p class="desc">Dictado por voz en tiempo real con Whisper WASM. Sin servidor, 100% local en tu navegador. PCM directo para transcripción instantánea.</p>
         <div class="card-tags"><span>Whisper</span><span>WASM</span><span>Python</span></div>
         <span class="cta">Abrir proyecto →</span>
       </div>
-      <div class="project-visual">
-        <div class="project-visual-inner">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#6096fa" stroke-width="1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-        </div>
-      </div>
+      <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#6096fa" stroke-width="1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div></div>
     </a>
 
     <a class="project-card pj-ares" href="https://github.com/LIAMHADES" target="_blank">
       <div class="project-info">
-        <span class="num">04</span><span class="tag">IoT &amp; Hardware</span>
-        <h2>ARES GPS</h2>
-        <p class="desc">Plataforma IoT de tracking GPS para perros. Hardware ESP32-S3 con GNSS 0.8m, firmware C/C++, backend FastAPI, frontend React 19 con mapas en tiempo real.</p>
+        <span class="num">04</span><span class="tag">IoT &amp; Hardware</span><h2>ARES GPS</h2>
+        <p class="desc">Plataforma IoT de tracking GPS para perros. Hardware ESP32-S3 con GNSS 0.8m, firmware C/C++, backend FastAPI con mapas en tiempo real.</p>
         <div class="card-tags"><span>ESP32</span><span>FastAPI</span><span>React</span><span>PostgreSQL</span></div>
         <span class="cta">GitHub →</span>
       </div>
-      <div class="project-visual">
-        <div class="project-visual-inner">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#44d490" stroke-width="1"><path d="M4 20h16"/><path d="M6 16l6-12 6 12"/><path d="M8 12h8"/></svg>
-        </div>
-      </div>
+      <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#44d490" stroke-width="1"><path d="M4 20h16"/><path d="M6 16l6-12 6 12"/><path d="M8 12h8"/></svg></div></div>
     </a>
 
     <a class="project-card pj-onix" href="./projects/onix/index.html">
       <div class="project-info">
-        <span class="num">05</span><span class="tag">Diseño + Fabricación</span>
-        <h2>ONIX Stands</h2>
-        <p class="desc">Diseño y fabricación de stands modulares para ferias y eventos. Sistema de 3 estilos de diseño, planos técnicos, visualizaciones 3D y memoria de materiales.</p>
+        <span class="num">05</span><span class="tag">Diseño + Fabricación</span><h2>ONIX Stands</h2>
+        <p class="desc">Diseño y fabricación de stands modulares para ferias y eventos. Sistema de 3 estilos, planos técnicos, visualizaciones 3D y memoria de materiales.</p>
         <div class="card-tags"><span>Diseño</span><span>Fabricación</span><span>Stands</span></div>
         <span class="cta">Abrir proyecto →</span>
       </div>
-      <div class="project-visual">
-        <div class="project-visual-inner">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#d45a24" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-        </div>
-      </div>
+      <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#d45a24" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div></div>
     </a>
 
   </div>
@@ -320,20 +296,41 @@ footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1
 </div>
 
 <script>
-// Page transition
+// Page transition — slide UP
 setTimeout(function(){
   document.getElementById('pageTrans').classList.add('hide');
   document.body.classList.remove('loading');
   setTimeout(function(){var p=document.getElementById('pageTrans');if(p)p.style.display='none'},1050);
 },400);
 
+// Custom cursor
+(function(){
+var dot=document.getElementById('cursorDot'),hoverEls;
+function update(){hoverEls=document.querySelectorAll('a,button,.project-card,.hero-photos,.contact-item,.edu-card,[data-click]')}
+update();
+document.addEventListener('mousemove',function(e){dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px'});
+document.addEventListener('mouseover',function(e){
+  var el=e.target.closest('a,button,.project-card,.hero-photos,.contact-item,.edu-card,[data-click]');
+  if(el){dot.classList.add('hover');el.style.cursor='none'}else{dot.classList.remove('hover')}
+  if(!el)dot.classList.remove('hover');
+});
+document.addEventListener('mouseout',function(){dot.classList.remove('hover')});
+document.addEventListener('mouseleave',function(){dot.classList.add('hidden')});
+document.addEventListener('mouseenter',function(){dot.classList.remove('hidden')});
+})();
+
 // Header glass on scroll
 var header=document.getElementById('header');
-window.addEventListener('scroll',function(){
-  header.classList.toggle('scrolled',window.scrollY>40);
-});
+window.addEventListener('scroll',function(){header.classList.toggle('scrolled',window.scrollY>40)});
 
-// Marquee infinite
+// Hero photo B&W → color
+(function(){
+var hp=document.getElementById('heroPhotos');
+hp.addEventListener('mouseenter',function(){hp.classList.add('active')});
+hp.addEventListener('mouseleave',function(){hp.classList.remove('active')});
+})();
+
+// Marquee — infinite seamless
 (function(){
 var tracks=document.querySelectorAll('.marquee-track');
 if(!tracks.length)return;
@@ -344,8 +341,9 @@ tracks.forEach(function(t,i){offsets[i]=0});
     var speed=parseFloat(t.getAttribute('data-speed')||'0.5');
     offsets[i]+=speed;
     var sw=t.scrollWidth;
-    if(offsets[i]<-sw/3)offsets[i]+=sw/3;
-    if(offsets[i]>sw/3)offsets[i]-=sw/3;
+    var wrap=sw/3;
+    while(offsets[i]<-wrap)offsets[i]+=wrap;
+    while(offsets[i]>wrap)offsets[i]-=wrap;
     t.style.transform='translateX('+Math.round(offsets[i])+'px)';
   });
   requestAnimationFrame(tick);
