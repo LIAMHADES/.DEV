@@ -5,154 +5,170 @@
 <title>Liam Garcia — AI & Automation Engineer</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>✦</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant:ital,wght@0,300;0,700;1,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,800&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,700&family=Press+Start+2P&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant:ital,wght@0,300;0,700;1,700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,800&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,700&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{
-  background:#0a0a0a;color:#e8e8e8;
-  font-family:'Inter',system-ui,sans-serif;font-size:16px;font-weight:400;line-height:1.5;min-height:100vh;
-  cursor:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z' fill='%23e8e8e8' opacity='.6'/%3E%3C/svg%3E") 12 12, auto;
-}
-a,button,[data-hover]{cursor:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z' fill='%23ffffff'/%3E%3C/svg%3E") 16 16, pointer;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.5;min-height:100vh;overflow-x:hidden}
+body.loading{overflow:hidden}
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
-section{padding:0 2.23vw;max-width:1920px;margin:0 auto}
-.noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.025;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+section{padding:0 max(20px,2.23vw);max-width:1600px;margin:0 auto}
 
+.noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.022;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .main{position:relative;z-index:1}
 
+/* ═══ PAGE TRANSITION ═══ */
+.page-transition{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(0.76,0,0.24,1);will-change:transform}
+.page-transition.hide{transform:translateX(-100%)}
+.page-transition-inner{text-align:center}
+.page-transition-logo{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);color:#fff;letter-spacing:-0.02em;margin-bottom:8px;font-weight:500}
+.page-transition-logo em{font-style:italic;color:#d45a24}
+
 /* ═══ HEADER ═══ */
-header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 2.23vw;mix-blend-mode:difference;color:#fff;font-family:'Space Grotesk',sans-serif}
-header .logo{font-size:1.05rem;font-weight:500;letter-spacing:-0.02em}
-header nav{display:flex;gap:24px}
-header nav a{font-size:0.68rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;position:relative;padding-bottom:3px}
+header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px max(20px,2.23vw);font-family:'Space Grotesk',sans-serif;transition:background 0.4s,backdrop-filter 0.4s}
+header.scrolled{background:rgba(10,10,10,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+header .logo{font-size:1rem;font-weight:500;letter-spacing:-0.02em;color:#fff}
+header nav{display:flex;gap:22px}
+header nav a{font-size:0.66rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);padding-bottom:3px;position:relative;transition:color 0.3s}
 header nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:#fff;transition:width 0.3s ease}
+header nav a:hover{color:#fff}
 header nav a:hover::after{width:100%}
 
 /* ═══ HERO ═══ */
-.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 100px);padding-top:100px;position:relative;overflow:hidden}
-.hero-portrait{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(240px,40vw);aspect-ratio:2/3;border-radius:4px;overflow:hidden;z-index:1}
-.hero-portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(30%) brightness(0.9)}
+.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 80px);padding-top:80px;position:relative;overflow:hidden}
+.hero-photos{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;width:min(220px,38vw);aspect-ratio:2/3}
+.hero-photo{position:absolute;inset:0;border-radius:4px;overflow:hidden;transition:filter 0.5s ease,opacity 0.5s ease}
+.hero-photo.base{z-index:1;filter:grayscale(100%) brightness(0.85);cursor:none}
+.hero-photo.overlay{z-index:2;opacity:0;filter:grayscale(100%) brightness(0.85)}
+.hero-photos:hover .hero-photo.base{opacity:0}
+.hero-photos:hover .hero-photo.overlay{opacity:1;filter:none}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
 
 .marquee-wrap{position:absolute;left:0;right:0;z-index:2;pointer-events:none}
-.marquee-wrap.top{top:16%}.marquee-wrap.mid{top:50%;transform:translateY(-50%)}.marquee-wrap.bot{bottom:16%}
-.marquee-track{display:flex;width:max-content;will-change:transform}
-.marquee-track span{flex-shrink:0;font-family:'Inter',system-ui,sans-serif;font-size:clamp(1.8rem,5.5vw,5rem);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;color:#fff;padding:0 20px;line-height:1.1}
-.marquee-wrap.mid .marquee-track span{font-weight:300;font-size:clamp(1.5rem,5vw,4rem);opacity:0.7}
-.marquee-wrap.bot .marquee-track span{font-weight:600;font-size:clamp(1.6rem,5vw,4.5rem);opacity:0.55;font-style:italic;font-family:'Playfair Display',serif}
-.hero-meta{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:3;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.6);font-family:'Space Grotesk',sans-serif}
-.hero-meta .dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:dotPulse 2s infinite ease-out}
-@keyframes dotPulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,0.7)}100%{box-shadow:0 0 0 9px rgba(34,197,94,0)}}
+.marquee-wrap.top{top:14%}.marquee-wrap.mid{top:50%;transform:translateY(-50%)}.marquee-wrap.bot{bottom:14%}
+.marquee-track{display:flex;will-change:transform}
+.marquee-track span{flex-shrink:0;font-family:'Inter',system-ui,sans-serif;font-size:clamp(1.6rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;color:#fff;padding:0 24px;line-height:1.1;white-space:nowrap}
+.marquee-wrap.mid .marquee-track span{font-weight:300;font-size:clamp(1.4rem,4.5vw,3.6rem);opacity:0.65}
+.marquee-wrap.bot .marquee-track span{font-weight:600;font-size:clamp(1.4rem,4.5vw,4rem);opacity:0.5;font-style:italic;font-family:'Playfair Display',serif}
 
 /* ═══ SECTION HEADERS ═══ */
-.section-head{display:flex;justify-content:space-between;align-items:center;padding:120px 0 32px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:32px}
-.section-num{font-size:0.65rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
-.section-head h2{font-size:clamp(2rem,6vw,6rem);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:-0.02em}
+.section-head{display:flex;justify-content:space-between;align-items:center;padding:100px 0 28px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:28px}
+.section-num{font-size:0.62rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.section-head h2{font-size:clamp(1.8rem,5.5vw,5.5rem);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:-0.02em}
 
 /* ═══ ABOUT ═══ */
-.about-content{display:flex;flex-direction:column;gap:clamp(24px,5vw,48px);max-width:860px;padding:32px 0 80px}
-.about-content p{font-size:clamp(0.9rem,3vw,1.4rem);font-weight:300;line-height:1.6;color:rgba(255,255,255,0.6)}
-.about-content p:last-child{align-self:flex-end;max-width:80%}
+.about-content{display:flex;flex-direction:column;gap:clamp(20px,4vw,40px);max-width:800px;padding:24px 0 20px}
+.about-content p{font-size:clamp(0.85rem,2.5vw,1.3rem);font-weight:300;line-height:1.6;color:rgba(255,255,255,0.55)}
+.about-content p:last-child{align-self:flex-end;max-width:78%}
+
+/* ═══ EDUCATION ═══ */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;padding:24px 0 70px}
+.edu-card{border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:22px 20px;transition:border-color 0.4s,background 0.4s}
+.edu-card:hover{border-color:rgba(255,255,255,0.14);background:rgba(255,255,255,0.02)}
+.edu-card .edu-tag{font-family:'Space Grotesk',sans-serif;font-size:0.6rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#22c55e;margin-bottom:8px;display:block}
+.edu-card h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:500;letter-spacing:-0.01em;margin-bottom:4px}
+.edu-card .school{font-size:0.78rem;color:rgba(255,255,255,0.4);margin-bottom:8px}
+.edu-card .meta{font-size:0.7rem;color:rgba(255,255,255,0.3);display:flex;flex-wrap:wrap;gap:10px}
+.edu-card .meta span{padding:2px 7px;border-radius:4px;color:rgba(255,255,255,0.35);font-size:0.66rem}
 
 /* ═══ STACK ═══ */
-.stack-grid{max-width:860px;padding:24px 0 80px;display:flex;flex-direction:column}
-.stack-row{display:flex;justify-content:space-between;align-items:center;padding:18px 10px;margin:0 -10px;border-radius:6px;transition:background 0.4s;cursor:default}
+.stack-grid{max-width:800px;padding:16px 0 60px;display:flex;flex-direction:column}
+.stack-row{display:flex;justify-content:space-between;align-items:center;padding:16px 10px;margin:0 -10px;border-radius:6px;transition:background 0.4s;cursor:default}
 .stack-row:hover{background:rgba(255,255,255,0.025)}
-.stack-row .cat{font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#22c55e;min-width:130px}
+.stack-row .cat{font-family:'Space Grotesk',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#22c55e;min-width:120px}
 .stack-row .items{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
-.stack-row .items span{font-size:0.74rem;color:rgba(255,255,255,0.4);padding:3px 9px;border-radius:99px;border:1px solid rgba(255,255,255,0.06);transition:all 0.3s}
-.stack-row:hover .items span{border-color:rgba(255,255,255,0.16);color:rgba(255,255,255,0.65)}
+.stack-row .items span{font-size:0.72rem;color:rgba(255,255,255,0.38);padding:3px 8px;border-radius:99px;border:1px solid rgba(255,255,255,0.05);transition:all 0.3s}
+.stack-row:hover .items span{border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6)}
 
-/* ═══ PROJECT CARDS ═══ */
-.projects-list{display:flex;flex-direction:column;gap:60px;padding:24px 0 100px}
-.project-card{position:relative;border-radius:12px;overflow:hidden;min-height:340px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.5s cubic-bezier(0.22,1,0.36,1)}
-.project-card:hover{background:rgba(255,255,255,0.024)}
-
-.project-img{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:transform 0.6s cubic-bezier(0.22,1,0.36,1),opacity 0.6s cubic-bezier(0.22,1,0.36,1);opacity:0;transform:translateY(30px)}
-.project-card:hover .project-img{opacity:1;transform:translateY(0)}
-.project-img svg{width:min(180px,40vw);opacity:0.08;transition:opacity 0.6s,filter 0.6s}
-.project-card:hover .project-img svg{opacity:0.18}
-
-.project-text{position:relative;z-index:2;text-align:center;padding:40px 20px}
-.project-card .num{display:block;font-size:0.6rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:10px;transition:color 0.5s}
-.project-card:hover .num{color:rgba(255,255,255,0.5)}
-.project-card .tag{display:inline-block;font-size:0.56rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:99px;margin-bottom:16px;transition:all 0.5s}
-.project-card h2{transition:color 0.5s cubic-bezier(0.22,1,0.36,1)}
-.project-card .desc{font-size:0.88rem;line-height:1.6;color:rgba(255,255,255,0.45);max-width:480px;margin:0 auto 20px;opacity:0;transform:translateY(8px);transition:all 0.5s cubic-bezier(0.22,1,0.36,1) 0.05s}
-.project-card:hover .desc{opacity:1;transform:translateY(0)}
-.project-card .card-tags{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin-bottom:20px;opacity:0;transform:translateY(8px);transition:all 0.5s cubic-bezier(0.22,1,0.36,1) 0.1s}
-.project-card:hover .card-tags{opacity:1;transform:translateY(0)}
-.project-card .card-tags span{padding:3px 9px;border-radius:99px;font-size:0.58rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.3);transition:all 0.4s}
-.project-card:hover .card-tags span{border-color:rgba(255,255,255,0.16);color:rgba(255,255,255,0.55)}
-.project-card .cta{display:inline-flex;align-items:center;gap:6px;font-size:0.7rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:9px 20px;border-radius:7px;opacity:0;transform:translateY(8px);transition:all 0.5s cubic-bezier(0.22,1,0.36,1) 0.15s}
-.project-card:hover .cta{opacity:1;transform:translateY(0)}
-.project-card .cta:hover{transform:translateY(-2px)!important}
+/* ═══ PROJECT CARDS (iper.com.au style) ═══ */
+.projects-list{display:flex;flex-direction:column;gap:80px;padding:20px 0 100px}
+.project-card{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;min-height:300px}
+.project-info{display:flex;flex-direction:column;justify-content:center}
+.project-card .num{font-size:0.6rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:8px}
+.project-card .tag{display:inline-block;font-size:0.56rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:3px 0;margin-bottom:14px;color:rgba(255,255,255,0.3);transition:color 0.4s}
+.project-card h2{font-size:clamp(2rem,4.5vw,3.8rem);font-weight:700;line-height:1;letter-spacing:-0.02em;text-transform:uppercase;margin-bottom:12px;transition:color 0.4s}
+.project-card .desc{font-size:0.85rem;line-height:1.6;color:rgba(255,255,255,0.45);max-width:420px;margin-bottom:24px}
+.project-card .card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:20px}
+.project-card .card-tags span{padding:3px 8px;border-radius:4px;font-size:0.58rem;font-weight:500;letter-spacing:0.03em;color:rgba(255,255,255,0.3);border:1px solid rgba(255,255,255,0.06);transition:all 0.3s}
+.project-card:hover .card-tags span{border-color:rgba(255,255,255,0.14);color:rgba(255,255,255,0.5)}
+.project-card .cta{display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;padding:9px 20px;border-radius:7px;width:fit-content;transition:all 0.3s}
+.project-card .cta:hover{transform:translateY(-2px)}
+.project-visual{position:relative;overflow:hidden;border-radius:8px;aspect-ratio:4/3;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)}
+.project-card:hover .project-visual{transform:scale(1.02)}
+.project-visual-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.03);transition:background 0.4s}
+.project-card:hover .project-visual-inner{background:rgba(255,255,255,0.05)}
+.project-visual img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.22,1,0.36,1),opacity 0.5s}
+.project-card:hover .project-visual img{transform:scale(1.04)}
+.project-visual svg{position:absolute;inset:0;margin:auto;opacity:0.06;width:min(100px,25%)}
 
 /* Project-specific */
-.pj-vdownloader .tag{color:rgba(224,69,27,0.6);border:1px solid rgba(224,69,27,0.2);background:rgba(224,69,27,0.05)}
-.pj-vdownloader h2{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,4.5rem);font-weight:800;letter-spacing:-0.02em}
-.pj-vdownloader:hover h2{color:#e0451b}
-.pj-vdownloader .cta{background:#e0451b;color:#fff}.pj-vdownloader .cta:hover{background:#f05a32}
+.pj-vdownloader h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3.5rem);font-weight:800}
+.pj-vdownloader:hover h2,.pj-vdownloader:hover .tag{color:#e0451b}
+.pj-vdownloader .cta{background:#e0451b;color:#fff}
+.pj-vdownloader .cta:hover{background:#f05a32}
 
-.pj-hivemind .tag{color:rgba(184,240,96,0.6);border:1px solid rgba(184,240,96,0.2);background:rgba(184,240,96,0.05)}
-.pj-hivemind h2{font-family:'Courier New',monospace;font-size:clamp(1.8rem,4.5vw,3.8rem);font-weight:400;letter-spacing:-0.03em}
-.pj-hivemind:hover h2{color:#b8f060}
-.pj-hivemind .cta{background:#b8f060;color:#0a0d12}.pj-hivemind .cta:hover{background:#c6f57e}
+.pj-hivemind h2{font-family:'Courier New',monospace;font-size:clamp(1.6rem,3.6vw,3rem);font-weight:400;letter-spacing:-0.03em}
+.pj-hivemind:hover h2,.pj-hivemind:hover .tag{color:#b8f060}
+.pj-hivemind .cta{background:#b8f060;color:#0a0d12}
+.pj-hivemind .cta:hover{background:#c6f57e}
 
-.pj-pick4design .tag{color:rgba(255,87,51,0.6);border:1px solid rgba(255,87,51,0.2);background:rgba(255,87,51,0.05)}
-.pj-pick4design h2{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(2.2rem,5vw,4.5rem);font-weight:300;letter-spacing:-0.04em}
-.pj-pick4design:hover h2{color:#FF5733}
-.pj-pick4design .cta{background:#fff;color:#000}.pj-pick4design .cta:hover{background:#FF5733;color:#fff}
+.pj-vtotx h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,3.5rem);font-weight:500}
+.pj-vtotx:hover h2,.pj-vtotx:hover .tag{color:#6096fa}
+.pj-vtotx .cta{background:#6096fa;color:#fff}
+.pj-vtotx .cta:hover{background:#4a82f0}
 
-.pj-vtotx .tag{color:rgba(96,150,250,0.6);border:1px solid rgba(96,150,250,0.2);background:rgba(96,150,250,0.05)}
-.pj-vtotx h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,5vw,4.5rem);font-weight:500}
-.pj-vtotx:hover h2{color:#6096fa}
-.pj-vtotx .cta{background:#6096fa;color:#fff}.pj-vtotx .cta:hover{background:#4a82f0}
+.pj-ares h2{font-family:'Courier New',monospace;font-size:clamp(1.6rem,3.6vw,3rem);font-weight:400;letter-spacing:-0.02em}
+.pj-ares:hover h2,.pj-ares:hover .tag{color:#44d490}
+.pj-ares .cta{background:transparent;color:#44d490;border:1px solid #44d490}
+.pj-ares .cta:hover{background:rgba(68,212,144,0.08)}
 
-.pj-ares .tag{color:rgba(68,212,144,0.6);border:1px solid rgba(68,212,144,0.2);background:rgba(68,212,144,0.05)}
-.pj-ares h2{font-family:'Courier New',monospace;font-size:clamp(1.8rem,4.5vw,3.8rem);font-weight:400;letter-spacing:-0.02em}
-.pj-ares:hover h2{color:#44d490}
-.pj-ares .cta{background:transparent;color:#44d490;border:1px solid #44d490}.pj-ares .cta:hover{background:rgba(68,212,144,0.1)}
-
-.pj-onix .tag{color:rgba(212,90,36,0.6);border:1px solid rgba(212,90,36,0.2);background:rgba(212,90,36,0.05)}
-.pj-onix h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,4.5rem);letter-spacing:0.02em}
-.pj-onix:hover h2{color:#d45a24}
-.pj-onix .cta{background:#d45a24;color:#fff}.pj-onix .cta:hover{background:#e8743e}
+.pj-onix h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,3.5rem);letter-spacing:0.02em}
+.pj-onix:hover h2,.pj-onix:hover .tag{color:#d45a24}
+.pj-onix .cta{background:#d45a24;color:#fff}
+.pj-onix .cta:hover{background:#e8743e}
 
 /* ═══ CONTACT ═══ */
 .contact{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0}
-.contact-cta{font-size:clamp(3rem,10vw,12rem);font-weight:700;line-height:0.9;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:50px}
+.contact-cta{font-size:clamp(2.6rem,9vw,10rem);font-weight:700;line-height:0.9;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:40px}
 .contact-cta a{display:inline-block;position:relative}
-.contact-cta a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:4px;background:#22c55e;transition:width 0.5s cubic-bezier(0.22,1,0.36,1)}
+.contact-cta a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:#22c55e;transition:width 0.5s cubic-bezier(0.22,1,0.36,1)}
 .contact-cta a:hover::after{width:100%}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.contact-item{display:flex;align-items:center;gap:12px;padding:16px 18px;border:1px solid rgba(255,255,255,0.06);border-radius:7px;font-size:0.82rem;color:rgba(255,255,255,0.5);transition:all 0.3s}
-.contact-item:hover{border-color:rgba(255,255,255,0.18);color:#fff;transform:translateY(-1px)}
-.contact-item svg{width:15px;height:15px;opacity:0.4;flex-shrink:0;transition:opacity 0.3s}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.contact-item{display:flex;align-items:center;gap:10px;padding:14px 16px;border:1px solid rgba(255,255,255,0.06);border-radius:6px;font-size:0.8rem;color:rgba(255,255,255,0.45);transition:all 0.3s}
+.contact-item:hover{border-color:rgba(255,255,255,0.16);color:#fff;transform:translateY(-1px)}
+.contact-item svg{width:14px;height:14px;opacity:0.35;flex-shrink:0;transition:opacity 0.3s}
 .contact-item:hover svg{opacity:1}
-footer{padding:60px 0 30px;text-align:center;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.2)}
+footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.18)}
 
 @media(max-width:768px){
   header nav{display:none}
-  .hero-portrait{width:min(160px,55vw)}
-  .section-head h2{font-size:clamp(1.6rem,8vw,3rem)}
-  .stack-row{flex-direction:column;align-items:flex-start;gap:6px}
+  .hero-photos{width:min(150px,50vw)}
+  .section-head h2{font-size:clamp(1.4rem,7vw,2.6rem)}
+  .stack-row{flex-direction:column;align-items:flex-start;gap:5px}
   .stack-row .items{justify-content:flex-start}
   .about-content p:last-child{max-width:100%;align-self:flex-start}
-  .project-card{min-height:260px}
-  .project-card h2{font-size:clamp(1.5rem,6vw,2.8rem)!important}
-  .contact-cta{font-size:clamp(2rem,8vw,3.5rem)}
+  .project-card{grid-template-columns:1fr;gap:24px;min-height:auto}
+  .project-card .project-visual{order:-1;aspect-ratio:16/9}
+  .contact-cta{font-size:clamp(1.8rem,7vw,3rem)}
+  .edu-grid{grid-template-columns:1fr}
 }
 </style></head>
-<body>
-<div class="noise"></div>
-<div class="main">
+<body class="loading">
+<div class="page-transition" id="pageTrans">
+  <div class="page-transition-inner">
+    <div class="page-transition-logo">Liam <em>Garcia</em></div>
+  </div>
+</div>
 
-<header>
+<div class="noise"></div>
+<div class="main" id="main">
+
+<header id="header">
   <a href="#" class="logo">Liam Garcia</a>
   <nav>
     <a href="#about">Sobre mí</a>
+    <a href="#education">Formación</a>
     <a href="#stack">Stack</a>
     <a href="#projects">Proyectos</a>
     <a href="#contact">Contacto</a>
@@ -160,100 +176,129 @@ footer{padding:60px 0 30px;text-align:center;font-size:0.62rem;letter-spacing:0.
 </header>
 
 <section class="hero">
-  <div class="hero-portrait"><img src="./assets/photo.jpg" alt="Liam Garcia" loading="eager"></div>
-  <div class="marquee-wrap top"><div class="marquee-track" data-speed="-0.35"><span>AI ENGINEER · AUTOMATION · MULTI-AGENT SYSTEMS · MCP ARCHITECT · FULL-STACK ·</span><span>AI ENGINEER · AUTOMATION · MULTI-AGENT SYSTEMS · MCP ARCHITECT · FULL-STACK ·</span></div></div>
-  <div class="marquee-wrap mid"><div class="marquee-track" data-speed="0.2"><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span></div></div>
-  <div class="marquee-wrap bot"><div class="marquee-track" data-speed="-0.25"><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS 24/7 · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS 24/7 · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span></div></div>
-  <div class="hero-meta"><span>based in Girona, España</span><div class="dot"></div><span>Open to work</span></div>
+  <div class="hero-photos">
+    <div class="hero-photo base"><img src="./assets/photo.jpg" alt="Liam Garcia" loading="eager"></div>
+    <div class="hero-photo overlay"><img src="../BASE/CV/FOTOS/LIAM_BASE-Photoroom.png" alt="Liam Garcia"></div>
+  </div>
+  <div class="marquee-wrap top"><div class="marquee-track" data-speed="-0.3"><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span></div></div>
+  <div class="marquee-wrap mid"><div class="marquee-track" data-speed="0.22"><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span></div></div>
+  <div class="marquee-wrap bot"><div class="marquee-track" data-speed="-0.22"><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span></div></div>
 </section>
 
 <section id="about">
   <div class="section-head"><span class="section-num">(01)</span><h2>Sobre mí</h2></div>
   <div class="about-content">
     <p>Empecé en marketing y ventas B2B/B2C en empresas como Sanitas (Bupa) y BAT antes de pivotar a la tecnología. Hoy construyo sistemas de IA y automatización en producción — ecosistemas multi-agente, pipelines de conocimiento, asistentes de voz y herramientas web.</p>
-    <p>Máster en IA por Big Data School (UI1), 33 cursos especializados (~200h), y un ecosistema de 15+ sistemas funcionando 24/7. Todo self-hosted, todo construido por mí.<br>Inglés nativo · Español nativo · Catalán nativo · Girona, España</p>
+    <p>Máster en IA por BIG School con certificación universitaria (UI1, 6 ECTS). Grado Superior en Marketing y Publicidad por ETG Business. 33 cursos especializados (+200h). Un ecosistema de 15+ sistemas funcionando 24/7, todo self-hosted, todo construido por mí.<br>Inglés nativo · Español nativo · Catalán nativo · Girona, España</p>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-head"><span class="section-num">(02)</span><h2>Formación</h2></div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <span class="edu-tag">Máster</span>
+      <h3>Inteligencia Artificial</h3>
+      <div class="school">BIG School · Universidad Isabel I (6 ECTS)</div>
+      <div class="meta"><span>+240h</span><span>+50 herramientas IA</span><span>+20 asignaturas</span></div>
+    </div>
+    <div class="edu-card">
+      <span class="edu-tag">Grado Superior</span>
+      <h3>Marketing y Publicidad</h3>
+      <div class="school">ETG Business (Escola Tècnica Girona)</div>
+      <div class="meta"><span>2.000h</span><span>515h prácticas</span><span>Erasmus</span></div>
+    </div>
   </div>
 </section>
 
 <section id="stack">
-  <div class="section-head"><span class="section-num">(02)</span><h2>Stack</h2></div>
+  <div class="section-head"><span class="section-num">(03)</span><h2>Stack</h2></div>
   <div class="stack-grid">
     <div class="stack-row"><span class="cat">IA / ML</span><div class="items"><span>Python</span><span>Ollama</span><span>Whisper</span><span>ChromaDB</span><span>LangChain</span><span>PyTorch</span><span>RAG</span><span>HuggingFace</span></div></div>
     <div class="stack-row"><span class="cat">Backend</span><div class="items"><span>FastAPI</span><span>Flask</span><span>Node.js</span><span>PostgreSQL</span><span>SQLite</span></div></div>
     <div class="stack-row"><span class="cat">Frontend</span><div class="items"><span>React 19</span><span>Vite</span><span>HTML/CSS</span><span>JavaScript</span></div></div>
     <div class="stack-row"><span class="cat">DevOps</span><div class="items"><span>Docker</span><span>Git</span><span>CI/CD</span><span>Linux/WSL2</span></div></div>
     <div class="stack-row"><span class="cat">Automatización</span><div class="items"><span>n8n</span><span>Make</span><span>MCP</span><span>Power Automate</span></div></div>
-    <div class="stack-row"><span class="cat">Marketing</span><div class="items"><span>SEO IA</span><span>SEM</span><span>Email Mkting</span><span>CRM</span></div></div>
+    <div class="stack-row"><span class="cat">Marketing</span><div class="items"><span>SEO IA</span><span>SEM</span><span>Email Mkting</span><span>CRM</span><span>Google Ads</span><span>Analytics</span></div></div>
   </div>
 </section>
 
 <section id="projects">
-  <div class="section-head"><span class="section-num">(03)</span><h2>Proyectos</h2></div>
+  <div class="section-head"><span class="section-num">(04)</span><h2>Proyectos</h2></div>
   <div class="projects-list">
 
-    <a class="project-card pj-vdownloader" href="./projects/V_DownLoadSUB/index.html" data-hover>
-      <div class="project-img"><svg viewBox="0 0 24 24" fill="none" stroke="#e0451b" stroke-width="1"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/></svg></div>
-      <div class="project-text">
+    <a class="project-card pj-vdownloader" href="./projects/V_DownLoadSUB/index.html">
+      <div class="project-info">
         <span class="num">01</span><span class="tag">Video + IA</span>
         <h2>V_DOWNLOADER</h2>
         <p class="desc">Descarga, transcribe y traduce vídeos con IA. Edición de subtítulos con línea de tiempo, estilos visuales y exportación. yt-dlp + Whisper + FFmpeg.</p>
         <div class="card-tags"><span>Python</span><span>Flask</span><span>Whisper</span><span>FFmpeg</span></div>
         <span class="cta">Abrir proyecto →</span>
       </div>
+      <div class="project-visual">
+        <div class="project-visual-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e0451b" stroke-width="1"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+        </div>
+      </div>
     </a>
 
-    <a class="project-card pj-hivemind" href="https://github.com/LIAMHADES" target="_blank" data-hover>
-      <div class="project-img"><svg viewBox="0 0 24 24" fill="none" stroke="#b8f060" stroke-width="1"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div>
-      <div class="project-text">
+    <a class="project-card pj-hivemind" href="https://github.com/LIAMHADES" target="_blank">
+      <div class="project-info">
         <span class="num">02</span><span class="tag">Ecosistema IA</span>
         <h2>HIVE-MIND</h2>
         <p class="desc">Ecosistema multi-agente de conocimiento con 3.776+ documentos indexados, 19 agentes por dominio, motor de búsqueda vectorial, y pipeline de extracción de vídeos 24/7.</p>
         <div class="card-tags"><span>Python</span><span>ChromaDB</span><span>Ollama</span><span>Docker</span><span>RAG</span></div>
         <span class="cta">GitHub →</span>
       </div>
-    </a>
-
-    <a class="project-card pj-pick4design" href="https://github.com/LIAMHADES" target="_blank" data-hover>
-      <div class="project-img"><svg viewBox="0 0 24 24" fill="none" stroke="#FF5733" stroke-width="1"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
-      <div class="project-text">
-        <span class="num">03</span><span class="tag">Diseño + IA</span>
-        <h2>Pick4Design</h2>
-        <p class="desc">Explorador visual de diseño web con 30+ sitios analizados. Extrae tokens de diseño, colores, tipografías, animaciones. Genera fichas de referencia y réplicas.</p>
-        <div class="card-tags"><span>Flask</span><span>Playwright</span><span>Firecrawl</span></div>
-        <span class="cta">GitHub →</span>
+      <div class="project-visual">
+        <div class="project-visual-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b8f060" stroke-width="1"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+        </div>
       </div>
     </a>
 
-    <a class="project-card pj-vtotx" href="./projects/vtotxforia/index.html" data-hover>
-      <div class="project-img"><svg viewBox="0 0 24 24" fill="none" stroke="#6096fa" stroke-width="1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
-      <div class="project-text">
-        <span class="num">04</span><span class="tag">Voice AI</span>
+    <a class="project-card pj-vtotx" href="./projects/vtotxforia/index.html">
+      <div class="project-info">
+        <span class="num">03</span><span class="tag">Voice AI</span>
         <h2>VtoTXforIA</h2>
         <p class="desc">Dictado por voz en tiempo real con Whisper WASM. Sin servidor, 100% local en tu navegador. PCM directo para transcripción instantánea. 20× más rápido que escribir.</p>
         <div class="card-tags"><span>Whisper</span><span>WASM</span><span>Python</span></div>
         <span class="cta">Abrir proyecto →</span>
       </div>
+      <div class="project-visual">
+        <div class="project-visual-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6096fa" stroke-width="1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+      </div>
     </a>
 
-    <a class="project-card pj-ares" href="https://github.com/LIAMHADES" target="_blank" data-hover>
-      <div class="project-img"><svg viewBox="0 0 24 24" fill="none" stroke="#44d490" stroke-width="1"><path d="M4 20h16"/><path d="M6 16l6-12 6 12"/><path d="M8 12h8"/></svg></div>
-      <div class="project-text">
-        <span class="num">05</span><span class="tag">IoT &amp; Hardware</span>
+    <a class="project-card pj-ares" href="https://github.com/LIAMHADES" target="_blank">
+      <div class="project-info">
+        <span class="num">04</span><span class="tag">IoT &amp; Hardware</span>
         <h2>ARES GPS</h2>
         <p class="desc">Plataforma IoT de tracking GPS para perros. Hardware ESP32-S3 con GNSS 0.8m, firmware C/C++, backend FastAPI, frontend React 19 con mapas en tiempo real.</p>
         <div class="card-tags"><span>ESP32</span><span>FastAPI</span><span>React</span><span>PostgreSQL</span></div>
         <span class="cta">GitHub →</span>
       </div>
+      <div class="project-visual">
+        <div class="project-visual-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#44d490" stroke-width="1"><path d="M4 20h16"/><path d="M6 16l6-12 6 12"/><path d="M8 12h8"/></svg>
+        </div>
+      </div>
     </a>
 
-    <a class="project-card pj-onix" href="./projects/onix/index.html" data-hover>
-      <div class="project-img"><svg viewBox="0 0 24 24" fill="none" stroke="#d45a24" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
-      <div class="project-text">
-        <span class="num">06</span><span class="tag">Diseño + Fabricación</span>
+    <a class="project-card pj-onix" href="./projects/onix/index.html">
+      <div class="project-info">
+        <span class="num">05</span><span class="tag">Diseño + Fabricación</span>
         <h2>ONIX Stands</h2>
         <p class="desc">Diseño y fabricación de stands modulares para ferias y eventos. Sistema de 3 estilos de diseño, planos técnicos, visualizaciones 3D y memoria de materiales.</p>
         <div class="card-tags"><span>Diseño</span><span>Fabricación</span><span>Stands</span></div>
         <span class="cta">Abrir proyecto →</span>
+      </div>
+      <div class="project-visual">
+        <div class="project-visual-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d45a24" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
       </div>
     </a>
 
@@ -275,7 +320,20 @@ footer{padding:60px 0 30px;text-align:center;font-size:0.62rem;letter-spacing:0.
 </div>
 
 <script>
-// Marquee
+// Page transition
+setTimeout(function(){
+  document.getElementById('pageTrans').classList.add('hide');
+  document.body.classList.remove('loading');
+  setTimeout(function(){var p=document.getElementById('pageTrans');if(p)p.style.display='none'},1050);
+},400);
+
+// Header glass on scroll
+var header=document.getElementById('header');
+window.addEventListener('scroll',function(){
+  header.classList.toggle('scrolled',window.scrollY>40);
+});
+
+// Marquee infinite
 (function(){
 var tracks=document.querySelectorAll('.marquee-track');
 if(!tracks.length)return;
@@ -285,29 +343,13 @@ tracks.forEach(function(t,i){offsets[i]=0});
   tracks.forEach(function(t,i){
     var speed=parseFloat(t.getAttribute('data-speed')||'0.5');
     offsets[i]+=speed;
-    var halfW=t.scrollWidth/2;
-    if(offsets[i]>halfW)offsets[i]-=halfW*2;
-    if(offsets[i]<-halfW)offsets[i]+=halfW*2;
+    var sw=t.scrollWidth;
+    if(offsets[i]<-sw/3)offsets[i]+=sw/3;
+    if(offsets[i]>sw/3)offsets[i]-=sw/3;
     t.style.transform='translateX('+Math.round(offsets[i])+'px)';
   });
   requestAnimationFrame(tick);
 })();
-})();
-
-// Stats Counter (si hay en hero)
-(function(){
-var obs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      e.target.querySelectorAll('.num[data-target]').forEach(function(n){
-        var t=parseInt(n.getAttribute('data-target')),c=0,d=1600,s=performance.now();
-        (function st(now){var p=Math.min((now-s)/d,1),ed=1-Math.pow(1-p,3);c=Math.round(t*ed);n.textContent=t>999?c.toLocaleString():c;if(p<1)requestAnimationFrame(st);else n.textContent=t>999?t.toLocaleString():t})(performance.now())
-      });
-      obs.unobserve(e.target)
-    }
-  })
-},{threshold:0.5});
-var stats=document.querySelector('.hero-stats');if(stats)obs.observe(stats);
 })();
 </script>
 </body>
