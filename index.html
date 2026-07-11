@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Liam Garcia — AI & Automation Engineer</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>✦</text></svg>">
+<link rel="icon" type="image/png" href="LOGOLIAM.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="LOGONEGTIVO.png" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant:ital,wght@0,300;0,700;1,700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,800&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,700&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -368,21 +369,27 @@ resizeAll();requestAnimationFrame(animate);
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 import gsap from 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js';
 
-// ═══ BACKGROUND PARTICLES ═══
+// ═══ BACKGROUND PARTICLES (con gradiente oscuro) ═══
 (function(){
 var c=document.getElementById('bgCanvas'),ctx=c.getContext('2d');
-function rs(){c.width=innerWidth;c.height=innerHeight}
+function rs(){c.width=innerWidth;c.height=innerHeight;drawBg()}
+function drawBg(){
+  var grd=ctx.createRadialGradient(c.width/2,c.height/2,0,c.width/2,c.height/2,Math.max(c.width,c.height)*0.7);
+  grd.addColorStop(0,'#080816');grd.addColorStop(1,'#010103');
+  ctx.fillStyle=grd;ctx.fillRect(0,0,c.width,c.height);
+}
 rs();window.addEventListener('resize',rs);
 var t=0,cols,rows;
 (function anim(){
-  ctx.clearRect(0,0,c.width,c.height);
-  t+=0.006;cols=Math.ceil(c.width/28);rows=Math.ceil(c.height/28);
+  ctx.clearRect(0,0,c.width,c.height);drawBg();
+  t+=0.008;cols=Math.ceil(c.width/24);rows=Math.ceil(c.height/24);
   for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){
-    var px=x*28+14,py=y*28+14;
+    var px=x*24+12,py=y*24+12;
     var dx=px-c.width/2,dy=py-c.height/2,d=Math.sqrt(dx*dx+dy*dy);
-    var ox=Math.sin(t*0.4+y*0.35+x*0.25)*3,oy=Math.cos(t*0.35+x*0.3+y*0.4)*3;
-    ctx.fillStyle='rgba(255,255,255,'+(0.04+0.08*Math.sin(d*0.012+t*1.5)*0.5+0.5)+')';
-    ctx.beginPath();ctx.arc(px+ox,py+oy,1+0.3*Math.sin(d*0.008+t*0.8),0,Math.PI*2);ctx.fill();
+    var ox=Math.sin(t*0.5+y*0.4+x*0.3)*4,oy=Math.cos(t*0.4+x*0.35+y*0.45)*4;
+    var a=0.15+0.22*Math.sin(d*0.01+t*1.8)*0.5+0.5;
+    ctx.fillStyle='rgba(200,215,255,'+a+')';
+    ctx.beginPath();ctx.arc(px+ox,py+oy,1.5+0.5*Math.sin(d*0.007+t),0,Math.PI*2);ctx.fill();
   }
   requestAnimationFrame(anim);
 })();
@@ -417,9 +424,9 @@ var t=0,cols,rows;
         });
         window.addEventListener('resize',function(){w=innerWidth;h=innerHeight;renderer.setSize(w,h);uniforms.uAspect.value=w/h;});
         var clock=new THREE.Clock();
-        // Overlay 2D con mix-blend-mode (agua sobre contenido, sin congelar nada)
+        // Overlay 2D — AGUA SOBRE TODO
         var oc=document.createElement('canvas'),octx=oc.getContext('2d');
-        oc.style.cssText='position:fixed;inset:0;z-index:4;pointer-events:none;mix-blend-mode:screen';
+        oc.style.cssText='position:fixed;inset:0;z-index:8;pointer-events:none;mix-blend-mode:overlay';
         document.body.appendChild(oc);
         function rs2(){oc.width=innerWidth;oc.height=innerHeight}
         rs2();window.addEventListener('resize',rs2);
@@ -428,7 +435,7 @@ var t=0,cols,rows;
         for(var i=0;i<MAX;i++){var r=ripples[i];if(r.str>0){r.prog+=dt*config.speed*0.7;if(r.prog>=1){r.str=0;}else{r.str=r.maxStr*Math.pow(1-r.prog,1.8);}}uRips[i].set(r.x,r.y,r.prog,r.str);}
         tex.needsUpdate=true;renderer.render(scene,camera);
         octx.clearRect(0,0,oc.width,oc.height);
-        for(var i=0;i<MAX;i++){var r=ripples[i];if(r.str<=0)continue;var cx=r.x*oc.width,cy=r.y*oc.height,rad=r.prog*Math.max(oc.width,oc.height)*0.5,str=r.str;var g=octx.createRadialGradient(cx,cy,0,cx,cy,rad);g.addColorStop(0,'rgba(255,255,255,0)');g.addColorStop(Math.max(0,0.45-str*0.1),'rgba(200,225,255,'+(str*0.35)+')');g.addColorStop(Math.max(0,0.5+str*0.1),'rgba(255,255,255,0)');octx.beginPath();octx.arc(cx,cy,rad,0,Math.PI*2);octx.fillStyle=g;octx.fill();}
+        for(var i=0;i<MAX;i++){var r=ripples[i];if(r.str<=0)continue;var cx=r.x*oc.width,cy=r.y*oc.height,rad=r.prog*Math.max(oc.width,oc.height)*0.55,str=r.str;var g=octx.createRadialGradient(cx,cy,0,cx,cy,rad);g.addColorStop(0,'rgba(255,255,255,'+(str*0.6)+')');g.addColorStop(0.3,'rgba(200,230,255,'+(str*0.5)+')');g.addColorStop(0.5,'rgba(255,255,255,'+(str*0.3)+')');g.addColorStop(1,'rgba(0,0,0,0)');octx.beginPath();octx.arc(cx,cy,rad,0,Math.PI*2);octx.fillStyle=g;octx.fill();}
         })();
         })();
 
