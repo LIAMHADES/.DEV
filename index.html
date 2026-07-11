@@ -10,7 +10,7 @@
 @font-face{font-family:'Dirtyline';src:url('./assets/fonts/dirtyline.woff2') format('woff2');unicode-range:U+0030-0039;font-weight:400;font-display:swap}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{background:#0a0a0a;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.5;min-height:100vh;overflow-x:hidden;cursor:none}
+body{background:#0a0a0a;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.5;min-height:100vh;overflow-x:hidden;cursor:none!important}
 body.loading{overflow:hidden}
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
@@ -36,12 +36,15 @@ img,svg{display:block;max-width:100%}
 section{padding:0 max(20px,2.23vw);max-width:1600px;margin:0 auto;position:relative;z-index:2}
 
 /* ═══ CURSOR ═══ */
-.cursor-dot{position:fixed;pointer-events:none;z-index:10000;width:26px;height:26px;transform:translate(-50%,-50%);transition:width 0.25s,height 0.25s,opacity 0.2s}
-.cursor-dot svg{width:100%;height:100%}
-.cursor-dot.hover{width:46px;height:46px}
-.cursor-dot.hidden{opacity:0}
-.cursor-ir{position:fixed;pointer-events:none;z-index:10001;transform:translate(-50%,-50%);opacity:0;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;white-space:nowrap;transition:opacity 0.2s}
-.cursor-ir.visible{opacity:1}
+a,button,.project-card,.contact-item{cursor:none!important}
+.custom-cursor{position:fixed;top:0;left:0;pointer-events:none;z-index:99999;mix-blend-mode:difference;transform:translate3d(-50%,-50%,0);display:flex;align-items:center;justify-content:center;will-change:transform;opacity:0;transition:opacity 0.3s ease}
+.cursor-inner{position:relative;display:flex;align-items:center;justify-content:center;width:120px;height:120px}
+.sparkle-shape{position:absolute;width:36px;height:36px;fill:#fff;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1),opacity 0.4s ease;transform:scale(1) rotate(0deg);opacity:1}
+.square-shape{position:absolute;width:90px;height:90px;border:1.5px solid #fff;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0) rotate(-45deg);transition:transform 0.6s cubic-bezier(0.16,1,0.3,1),opacity 0.4s ease}
+.square-shape span{color:#fff;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;opacity:0;transition:opacity 0.3s ease 0.1s}
+.custom-cursor.is-hovering .sparkle-shape{transform:scale(0) rotate(90deg);opacity:0}
+.custom-cursor.is-hovering .square-shape{opacity:1;transform:scale(1) rotate(0deg)}
+.custom-cursor.is-hovering .square-shape span{opacity:1}
 
 /* ═══ PAGE TRANSITION ═══ */
 .page-transition{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(0.76,0,0.24,1)}
@@ -180,8 +183,16 @@ footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1
 <canvas id="bgCanvas"></canvas>
 <canvas id="rippleCanvas"></canvas>
 
-<div class="cursor-dot" id="cursorDot"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z" fill="#fff" opacity="0.85"/></svg></div>
-<div class="cursor-ir" id="cursorIr">IR →</div>
+<div id="js-cursor" class="custom-cursor">
+  <div class="cursor-inner">
+    <svg class="sparkle-shape" viewBox="0 0 100 100">
+      <path d="M 50 0 C 50 35, 65 50, 100 50 C 65 50, 50 65, 50 100 C 50 65, 35 50, 0 50 C 35 50, 50 35, 50 0 Z" />
+    </svg>
+    <div class="square-shape">
+      <span>IR →</span>
+    </div>
+  </div>
+</div>
 
 <div class="page-transition" id="pageTrans"><div class="page-transition-logo"><img src="LOGONEGTIVO.png" alt="Logo"></div></div>
 
@@ -354,36 +365,16 @@ setTimeout(function(){document.getElementById('pageTrans').classList.add('hide')
 
 // ═══ CURSOR ═══
 (function(){
-var dot=document.getElementById('cursorDot'),ir=document.getElementById('cursorIr');
-var cc=document.createElement('canvas');cc.width=1;cc.height=1;var cctx=cc.getContext('2d');
-function sampleBrightness(x,y){
-  try{
-    var el=document.elementFromPoint(x,y);if(!el)return 0.7;
-    var cs=getComputedStyle(el);
-    // Try background-color first
-    var col=cs.backgroundColor,textCol=cs.color;
-    var m=col.match(/[\d.]+/g);if(!m||m[3]==='0')m=textCol.match(/[\d.]+/g);
-    if(!m||m.length<3)return 0.7;
-    var r=parseFloat(m[0]),g=parseFloat(m[1]),b=parseFloat(m[2]);
-    return Math.min(1,(0.2126*r+0.7152*g+0.0722*b)/255+0.15);
-  }catch(e){return 0.7}
-}
-document.addEventListener('mousemove',function(e){
-  dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px';ir.style.left=e.clientX+'px';ir.style.top=(e.clientY-20)+'px';
-  var b=sampleBrightness(e.clientX,e.clientY);
-  dot.querySelector('path').setAttribute('fill',b>0.5?'#1a1a1a':'#ffffff');
+var c=document.getElementById('js-cursor'),l=c.querySelector('.square-shape span');
+var mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my,init=false;
+window.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;if(!init){c.style.opacity='1';cx=mx;cy=my;init=true}});
+(function anim(){cx+=(mx-cx)*0.16;cy+=(my-cy)*0.16;c.style.transform='translate3d('+cx+'px,'+cy+'px,0) translate(-50%,-50%)';requestAnimationFrame(anim)})();
+document.querySelectorAll('.project-card').forEach(function(el){
+  el.addEventListener('mouseenter',function(){c.classList.add('is-hovering');l.textContent='IR \u2192';var f=el.getAttribute('data-font');if(f)l.style.fontFamily=f});
+  el.addEventListener('mouseleave',function(){c.classList.remove('is-hovering');l.style.fontFamily=''});
 });
-document.addEventListener('mouseover',function(e){
-  var card=e.target.closest('.project-card');
-  if(card){
-    dot.classList.add('hover');dot.style.display='none';
-    ir.textContent='IR →';ir.style.fontFamily=card.getAttribute('data-font');ir.style.color=card.getAttribute('data-color');ir.classList.add('visible');
-  }else{
-    dot.classList.remove('hover');dot.style.display='block';ir.classList.remove('visible');
-  }
-});
-document.addEventListener('mouseleave',function(){dot.classList.add('hidden')});
-document.addEventListener('mouseenter',function(){dot.classList.remove('hidden')});
+document.addEventListener('mouseleave',function(){c.style.opacity='0'});
+document.addEventListener('mouseenter',function(){if(init)c.style.opacity='1'});
 })();
 
 // ═══ HEADER SCROLL ═══
