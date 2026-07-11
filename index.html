@@ -168,7 +168,7 @@ header.scrolled .glass{opacity:1}
 @keyframes bgPulse{0%,to{transform:translate(0,0)}25%{transform:translate(10px,-10px)}50%{transform:translate(-5px,15px)}75%{transform:translate(-15px,-5px)}}
 
 footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.14)}
-.light footer{color:rgba(0,0,0,0.15)}
+.wrap-light footer{color:rgba(0,0,0,0.25)}
 
 @media(max-width:768px){
   header nav{display:none}
@@ -211,8 +211,8 @@ footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1
 <section class="hero">
   <div class="hero-photos" id="heroPhotos">
     <div class="hero-photo base"><img src="./assets/fondo.png" alt="Liam Garcia" loading="eager"></div>
-    <div class="hero-photo overlay"><img src="./assets/LIAM_BASE-Photoroom.png" alt="Liam Garcia"></div>
   </div>
+  <div class="hero-photo overlay" style="position:absolute;left:50%;bottom:0;transform:translate(-50%,0);z-index:7;height:min(560px,75vw,calc(100vh - 120px));aspect-ratio:1/1;pointer-events:none;border-radius:4px;overflow:hidden"><img src="./assets/LIAM_BASE-Photoroom.png" alt="Liam Garcia" style="width:100%;height:100%;object-fit:cover"></div>
   <div class="marquee-wrap top"><div class="marquee-track" data-speed="-0.3" style="transform: translateX(-1854px);"><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span></div></div>
   <div class="marquee-wrap mid"><div class="marquee-track" data-speed="0.18" style="transform: translateX(-427px);"><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span></div></div>
   <div class="marquee-wrap bot"><div class="marquee-track" data-speed="-0.2" style="transform: translateX(-2183px);"><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span></div></div>
@@ -318,8 +318,7 @@ footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1
   </div>
 </section>
 
-<footer>Liam Garcia Soldevila · AI &amp; Automation Engineer · 2026</footer>
-</div>
+<div class="wrap-light" style="padding-bottom:0"><footer>Liam Garcia Soldevila · AI &amp; Automation Engineer · 2026</footer></div>
 
 <script type="module">
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
@@ -345,7 +344,7 @@ var t=0,cols,rows;
 })();
 })();
 
-        // ═══ WEBGL WATER RIPPLE — DEFORMACIÓN DE PARTÍCULAS + SVG DISPLACEMENT PARA CONTENIDO ═══
+        // ═══ WEBGL WATER RIPPLE — DEFORMACIÓN DE PARTÍCULAS ═══
         (function(){
         var canvas=document.getElementById('rippleCanvas');
         canvas.style.position='fixed';canvas.style.inset='0';canvas.style.zIndex='1';canvas.style.pointerEvents='none';
@@ -374,30 +373,10 @@ var t=0,cols,rows;
         });
         window.addEventListener('resize',function(){w=innerWidth;h=innerHeight;renderer.setSize(w,h);uniforms.uAspect.value=w/h;});
         var clock=new THREE.Clock();
-        // Displacement map for SVG filter (deforma contenido HTML)
-        var dc=document.createElement('canvas'),dw=100,dh=56;
-        dc.width=dw;dc.height=dh;
-        var dctx=dc.getContext('2d'),dimg=dctx.createImageData(dw,dh),dd=dimg.data,fcnt=0,lurl='';
-        var ds=document.getElementById('dispMapSource');
         (function tick(){requestAnimationFrame(tick);
         var dt=Math.min(clock.getDelta(),0.1);
         for(var i=0;i<MAX;i++){var r=ripples[i];if(r.str>0){r.prog+=dt*config.speed*0.7;if(r.prog>=1){r.str=0;}else{r.str=r.maxStr*Math.pow(1-r.prog,1.8);}}uRips[i].set(r.x,r.y,r.prog,r.str);}
         tex.needsUpdate=true;renderer.render(scene,camera);
-        fcnt++;
-        if(fcnt%2===0){
-          var asp=w/h;
-          for(var py=0;py<dh;py++){for(var px=0;px<dw;px++){
-            var ux=px/dw,uy=py/dh,tdx=0,tdy=0;
-            for(var i=0;i<MAX;i++){var r=ripples[i];if(r.str<=0)continue;var dx=ux-r.x,dy=uy-(1-r.y);dx*=asp;var dist=Math.sqrt(dx*dx+dy*dy);var rad=r.prog*0.7;var dtf=Math.abs(dist-rad);if(dtf<config.thickness){var f=1.0-dtf/config.thickness;f=f*f*(3-2*f);var wave=Math.sin((dist-rad)*config.frequency);var id=Math.sqrt(dx*dx+dy*dy)||0.001;tdx+=(dx/id)*wave*f*r.str*config.strength;tdy+=(dy/id)*wave*f*r.str*config.strength;}}
-            var idx=(py*dw+px)*4;
-            dd[idx]=Math.max(0,Math.min(255,Math.round(128+tdx*6000)));
-            dd[idx+1]=Math.max(0,Math.min(255,Math.round(128+tdy*6000)));
-            dd[idx+2]=128;dd[idx+3]=255;
-          }}
-          dctx.putImageData(dimg,0,0);
-          var url=dc.toDataURL();
-          ds.setAttribute('href',url+'#'+fcnt);
-        }
         })();
         })();
 
@@ -459,14 +438,8 @@ tracks.forEach(function(t,i){t.style.transform='translateX(0px)';offsets[i]=0});
 })();
 })();
 
-// ═══ GRAIN OVERLAY (Uniform Grain V4) ═══
+// ═══ GRAIN OVERLAY (solo en .wrap-light: About, Stack, Footer) ═══
 (function(){
-var c=document.createElement('canvas');
-c.style.cssText='position:fixed;inset:0;z-index:3;pointer-events:none;mix-blend-mode:overlay;opacity:0.18';
-document.body.prepend(c);
-var ctx=c.getContext('2d'),W,H;
-function rs(){W=innerWidth;H=innerHeight;c.width=W;c.height=H}
-rs();window.addEventListener('resize',rs);
 var frames=[],S=64,N=8;
 for(var f=0;f<N;f++){
   var b=document.createElement('canvas');b.width=S;b.height=S;
@@ -474,13 +447,26 @@ for(var f=0;f<N;f++){
   for(var i=0;i<id.data.length;i+=4){var n=Math.random()*255;id.data[i]=n;id.data[i+1]=n;id.data[i+2]=n;id.data[i+3]=255}
   bx.putImageData(id,0,0);frames.push(b);
 }
+var cans=[];
+document.querySelectorAll('.wrap-light').forEach(function(w){
+  var c=document.createElement('canvas');
+  c.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:overlay;opacity:0.18';
+  w.appendChild(c);
+  var ctx=c.getContext('2d');
+  var r=w.getBoundingClientRect();c.width=r.width;c.height=r.height;
+  cans.push({c:c,ctx:ctx});
+});
+window.addEventListener('resize',function(){cans.forEach(function(o){var r=o.c.parentElement.getBoundingClientRect();o.c.width=r.width;o.c.height=r.height})});
 var idx=0,lt=0;
 (function anim(t){
   var dt=t-lt;lt=t;
   if(dt>100||!dt){idx=(idx+1)%N;lt=t}
-  ctx.clearRect(0,0,W,H);ctx.imageSmoothingEnabled=false;
-  var ss=S*2;
-  for(var x=0;x<W;x+=ss)for(var y=0;y<H;y+=ss)ctx.drawImage(frames[idx],0,0,S,S,x,y,ss,ss);
+  cans.forEach(function(o){
+    var ctx=o.ctx,W=o.c.width,H=o.c.height;
+    ctx.clearRect(0,0,W,H);ctx.imageSmoothingEnabled=false;
+    var ss=S*2;
+    for(var x=0;x<W;x+=ss)for(var y=0;y<H;y+=ss)ctx.drawImage(frames[idx],0,0,S,S,x,y,ss,ss);
+  });
   requestAnimationFrame(anim);
 })();
 })();
