@@ -87,7 +87,8 @@ header.scrolled .glass{opacity:1}
 .section-head h2{font-size:clamp(1.8rem,5.5vw,5.5rem);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:-0.02em}
 
 /* ═══ ABOUT ═══ */
-.wrap-light{background:#f5f5f5;padding:0 0 80px;margin:0 calc(-50vw + 50%) 0}
+.wrap-light{background:#f5f5f5;padding:0 0 80px;margin:0 calc(-50vw + 50%) 0;position:relative}
+.wrap-light::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cline x1='25%25' y1='0' x2='25%25' y2='100%25' stroke='rgba(0,0,0,0.04)' stroke-width='1'/%3E%3Cline x1='50%25' y1='0' x2='50%25' y2='100%25' stroke='rgba(0,0,0,0.04)' stroke-width='1'/%3E%3Cline x1='75%25' y1='0' x2='75%25' y2='100%25' stroke='rgba(0,0,0,0.04)' stroke-width='1'/%3E%3Cline x1='0' y1='25%25' x2='100%25' y2='25%25' stroke='rgba(0,0,0,0.04)' stroke-width='1'/%3E%3Cline x1='0' y1='50%25' x2='100%25' y2='50%25' stroke='rgba(0,0,0,0.04)' stroke-width='1'/%3E%3Cline x1='0' y1='75%25' x2='100%25' y2='75%25' stroke='rgba(0,0,0,0.04)' stroke-width='1'/%3E%3C/svg%3E");background-size:100% 100%}
 .wrap-light section{padding-left:max(20px,2.23vw);padding-right:max(20px,2.23vw)}
 .about-content{display:flex;flex-direction:column;gap:clamp(20px,4vw,40px);max-width:800px;padding:24px 0 20px}
 .about-content p{font-size:clamp(0.85rem,2.5vw,1.3rem);font-weight:300;line-height:1.6}
@@ -183,7 +184,6 @@ footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1
 }
 </style></head>
 <body class="loading">
-<svg style="position:absolute;width:0;height:0"><filter id="waterContentFilter"><feImage id="dispMapSource" href="" result="dispMap"/><feDisplacementMap in="SourceGraphic" in2="dispMap" scale="35" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <canvas id="bgCanvas"></canvas>
 <canvas id="rippleCanvas"></canvas>
 
@@ -208,14 +208,14 @@ footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1
   <nav><a href="#about">Sobre mí</a><a href="#education">Formación</a><a href="#stack">Stack</a><a href="#projects">Proyectos</a><a href="#contact">Contacto</a></nav>
 </header>
 
-<section class="hero" style="filter:url(#waterContentFilter)">
+<section class="hero">
   <div class="hero-photos" id="heroPhotos">
     <div class="hero-photo base"><img src="./assets/fondo.png" alt="Liam Garcia" loading="eager"></div>
     <div class="hero-photo overlay"><img src="./assets/LIAM_BASE-Photoroom.png" alt="Liam Garcia"></div>
   </div>
-  <div class="marquee-wrap top"><div class="marquee-track" data-speed="-0.3"><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span></div></div>
-  <div class="marquee-wrap mid"><div class="marquee-track" data-speed="0.18"><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span></div></div>
-  <div class="marquee-wrap bot"><div class="marquee-track" data-speed="-0.2"><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span></div></div>
+  <div class="marquee-wrap top"><div class="marquee-track" data-speed="-0.3" style="transform: translateX(-1854px);"><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span><span>AI ENGINEER · AUTOMATION · MULTI-AGENT · MCP ARCHITECT · FULL-STACK ·</span></div></div>
+  <div class="marquee-wrap mid"><div class="marquee-track" data-speed="0.18" style="transform: translateX(-427px);"><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span><span>PYTHON · OLLAMA · WHISPER · CHROMADB · RAG · DOCKER · N8N · FASTAPI · REACT · POSTGRESQL ·</span></div></div>
+  <div class="marquee-wrap bot"><div class="marquee-track" data-speed="-0.2" style="transform: translateX(-2183px);"><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span><span>VOICE AI · VECTOR DATABASES · 7 SYSTEMS · KNOWLEDGE PIPELINES · IOT &amp; HARDWARE ·</span></div></div>
 </section>
 
 <div class="wrap-light"><section id="about" class="light">
@@ -396,7 +396,7 @@ var t=0,cols,rows;
           }}
           dctx.putImageData(dimg,0,0);
           var url=dc.toDataURL();
-          if(lurl!==url){ds.setAttribute('href',url);lurl=url;}
+          ds.setAttribute('href',url+'#'+fcnt);
         }
         })();
         })();
@@ -456,6 +456,32 @@ tracks.forEach(function(t,i){t.style.transform='translateX(0px)';offsets[i]=0});
     t.style.transform='translateX('+Math.round(offsets[i])+'px)';
   });
   requestAnimationFrame(tick);
+})();
+})();
+
+// ═══ GRAIN OVERLAY (Uniform Grain V4) ═══
+(function(){
+var c=document.createElement('canvas');
+c.style.cssText='position:fixed;inset:0;z-index:3;pointer-events:none;mix-blend-mode:overlay;opacity:0.18';
+document.body.prepend(c);
+var ctx=c.getContext('2d'),W,H;
+function rs(){W=innerWidth;H=innerHeight;c.width=W;c.height=H}
+rs();window.addEventListener('resize',rs);
+var frames=[],S=64,N=8;
+for(var f=0;f<N;f++){
+  var b=document.createElement('canvas');b.width=S;b.height=S;
+  var bx=b.getContext('2d'),id=bx.createImageData(S,S);
+  for(var i=0;i<id.data.length;i+=4){var n=Math.random()*255;id.data[i]=n;id.data[i+1]=n;id.data[i+2]=n;id.data[i+3]=255}
+  bx.putImageData(id,0,0);frames.push(b);
+}
+var idx=0,lt=0;
+(function anim(t){
+  var dt=t-lt;lt=t;
+  if(dt>100||!dt){idx=(idx+1)%N;lt=t}
+  ctx.clearRect(0,0,W,H);ctx.imageSmoothingEnabled=false;
+  var ss=S*2;
+  for(var x=0;x<W;x+=ss)for(var y=0;y<H;y+=ss)ctx.drawImage(frames[idx],0,0,S,S,x,y,ss,ss);
+  requestAnimationFrame(anim);
 })();
 })();
 </script>
