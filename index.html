@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Liam Garcia — AI & Automation Engineer</title>
-<link rel="icon" type="image/png" href="LOGOLIAM.png" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/png" href="LOGONEGTIVO.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cstyle%3E@media (prefers-color-scheme: light) %7B .bg %7B fill: %23f5f5f5 %7D .fg %7B fill: %230a0a0a %7D %7D @media (prefers-color-scheme: dark) %7B .bg %7B fill: %230a0a0a %7D .fg %7B fill: %23e8e8e8 %7D %7D%3C/style%3E%3Crect class='bg' width='32' height='32' rx='6'/%3E%3Ctext class='fg' x='50%25' y='55%25' dominant-baseline='central' text-anchor='middle' font-family='Space+Grotesk,sans-serif' font-weight='700' font-size='20'%3EL%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant:ital,wght@0,300;0,700;1,700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,800&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,700&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -64,7 +63,7 @@ header .glass{position:absolute;inset:0;background:rgba(153,153,153,0.15);backdr
 header.scrolled .glass{opacity:1}
 
 /* ═══ HERO ═══ */
-.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 80px);padding-top:80px;position:relative;overflow:hidden}
+.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 80px);padding-top:80px;position:relative;overflow:hidden;filter:url(#water-distort)}
 .hero-photos{position:absolute;left:50%;bottom:0;transform:translate(-50%,0);z-index:2;height:min(560px,75vw,calc(100vh - 120px));aspect-ratio:1/1;cursor:pointer}
 .hero-photo{position:absolute;border-radius:4px;overflow:hidden}
 .hero-photo.base{inset:0;z-index:1}
@@ -82,8 +81,8 @@ header.scrolled .glass{opacity:1}
 
 /* ═══ SECTION HEADERS ═══ */
 .section-head{display:flex;justify-content:space-between;align-items:center;padding:100px 0 28px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:28px}
-.section-num{font-family:'Dirtyline',serif;font-size:2.32rem;line-height:1;color:rgba(255,255,255,0.35)}
-.light .section-num{color:rgba(0,0,0,0.25)}
+.section-num{font-family:'Dirtyline',serif;font-size:2.32rem;line-height:1;color:#fff}
+.light .section-num{color:#000}
 .section-head h2{font-size:clamp(1.8rem,5.5vw,5.5rem);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:-0.02em}
 
 /* ═══ ABOUT ═══ */
@@ -201,6 +200,13 @@ footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1
 <div class="page-transition" id="pageTrans"><div class="page-transition-logo"><img src="LOGONEGTIVO.png" alt="Logo"></div></div>
 
 <div id="contentWrapper" style="position:relative;z-index:2">
+
+<svg style="position:fixed;width:0;height:0" xmlns="http://www.w3.org/2000/svg">
+  <filter id="water-distort" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="2" result="noise" id="water-turb"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" id="water-disp"/>
+  </filter>
+</svg>
 
 <a href="#" class="header-logo"><img src="LOGONEGTIVO.png" alt="Liam Garcia" style="height:60px;width:auto"></a>
 <header id="header">
@@ -386,10 +392,9 @@ var t=0,cols,rows;
   for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){
     var px=x*24+12,py=y*24+12;
     var dx=px-c.width/2,dy=py-c.height/2,d=Math.sqrt(dx*dx+dy*dy);
-    var ox=Math.sin(t*0.5+y*0.4+x*0.3)*4,oy=Math.cos(t*0.4+x*0.35+y*0.45)*4;
-    var a=0.15+0.22*Math.sin(d*0.01+t*1.8)*0.5+0.5;
+    var a=0.15+0.22*(Math.sin(d*0.01+t*1.8)*0.5+0.5);
     ctx.fillStyle='rgba(200,215,255,'+a+')';
-    ctx.beginPath();ctx.arc(px+ox,py+oy,1.5+0.5*Math.sin(d*0.007+t),0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(px,py,1.5+0.5*(Math.sin(d*0.007+t)*0.5+0.5),0,Math.PI*2);ctx.fill();
   }
   requestAnimationFrame(anim);
 })();
@@ -424,7 +429,7 @@ var t=0,cols,rows;
         });
         window.addEventListener('resize',function(){w=innerWidth;h=innerHeight;renderer.setSize(w,h);uniforms.uAspect.value=w/h;});
         var clock=new THREE.Clock();
-        // Overlay 2D — AGUA SOBRE TODO
+        // Overlay 2D sutil (feedback visual)
         var oc=document.createElement('canvas'),octx=oc.getContext('2d');
         oc.style.cssText='position:fixed;inset:0;z-index:8;pointer-events:none;mix-blend-mode:overlay';
         document.body.appendChild(oc);
@@ -435,7 +440,7 @@ var t=0,cols,rows;
         for(var i=0;i<MAX;i++){var r=ripples[i];if(r.str>0){r.prog+=dt*config.speed*0.7;if(r.prog>=1){r.str=0;}else{r.str=r.maxStr*Math.pow(1-r.prog,1.8);}}uRips[i].set(r.x,r.y,r.prog,r.str);}
         tex.needsUpdate=true;renderer.render(scene,camera);
         octx.clearRect(0,0,oc.width,oc.height);
-        for(var i=0;i<MAX;i++){var r=ripples[i];if(r.str<=0)continue;var cx=r.x*oc.width,cy=r.y*oc.height,rad=r.prog*Math.max(oc.width,oc.height)*0.55,str=r.str;var g=octx.createRadialGradient(cx,cy,0,cx,cy,rad);g.addColorStop(0,'rgba(255,255,255,'+(str*0.6)+')');g.addColorStop(0.3,'rgba(200,230,255,'+(str*0.5)+')');g.addColorStop(0.5,'rgba(255,255,255,'+(str*0.3)+')');g.addColorStop(1,'rgba(0,0,0,0)');octx.beginPath();octx.arc(cx,cy,rad,0,Math.PI*2);octx.fillStyle=g;octx.fill();}
+        for(var i=0;i<MAX;i++){var r=ripples[i];if(r.str<=0)continue;var cx=r.x*oc.width,cy=(1-r.y)*oc.height,rad=r.prog*Math.max(oc.width,oc.height)*0.5,str=r.str;var g=octx.createRadialGradient(cx,cy,0,cx,cy,rad);g.addColorStop(0,'rgba(255,255,255,'+(str*0.15)+')');g.addColorStop(0.5,'rgba(200,225,255,'+(str*0.1)+')');g.addColorStop(1,'rgba(0,0,0,0)');octx.beginPath();octx.arc(cx,cy,rad,0,Math.PI*2);octx.fillStyle=g;octx.fill();}
         })();
         })();
 
@@ -487,6 +492,22 @@ tracks.forEach(function(t,i){t.style.transform='translateX(0px)';offsets[i]=0});
 })();
 })();
 
+// ═══ SVG WATER DISTORTION (afecta a todo el contenido) ═══
+(function(){
+var turb=document.getElementById('water-turb'),disp=document.getElementById('water-disp');
+if(!turb||!disp)return;
+var targetScale=4,mx=0,my=0,lmx=0,lmy=0;
+window.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});
+(function anim(t){
+  var dx=mx-lmx,dy=my-lmy,vel=Math.hypot(dx,dy);lmx=mx;lmy=my;
+  var s=3.5+vel*0.5;s=Math.min(s,12);
+  targetScale+=(s-targetScale)*0.06;
+  disp.setAttribute('scale',targetScale.toFixed(2));
+  var freq=0.008+Math.sin(t*0.001)*0.004;
+  turb.setAttribute('baseFrequency',freq.toFixed(4)+' '+freq.toFixed(4));
+  requestAnimationFrame(anim);
+})();
+})();
 </script>
 </body>
 </html>
