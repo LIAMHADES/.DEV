@@ -47,25 +47,18 @@ section{padding:0 max(20px,2.23vw);max-width:1600px;margin:0 auto;position:relat
 .page-transition{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(0.76,0,0.24,1)}
 .page-transition.hide{transform:translateY(-100%)}
 .page-transition-logo{text-align:center}
-.page-transition-logo img{width:min(120px,25vw);height:auto;margin:0 auto}
-.page-transition-logo span{display:block;font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,2.5rem);color:#d45a24;margin-top:8px;font-style:italic}
+.page-transition-logo img{width:min(320px,50vw);height:auto;margin:0 auto;display:block}
 
 /* ═══ HEADER ═══ */
-header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:12px max(20px,2.23vw);font-family:'Space Grotesk',sans-serif;transition:justify-content 0.4s}
-header .logo-img{position:relative;z-index:1;height:32px;width:auto}
-header nav{position:relative;z-index:1;display:flex;gap:22px}
-header nav a{font-size:0.64rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);padding-bottom:3px;position:relative;transition:color 0.3s}
-header nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:#fff;transition:width 0.3s ease}
-header nav a:hover{color:#fff}header nav a:hover::after{width:100%}
-header .glass{position:absolute;inset:0;background:rgba(153,153,153,0.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity 0.4s}
+.header-logo{position:fixed;top:10px;left:max(20px,2.23vw);z-index:101;height:60px;width:auto;transition:filter 0.4s;mix-blend-mode:difference}
+.header-logo:hover{filter:brightness(1.2)}
+header{position:fixed;top:0;right:0;z-index:100;padding:22px max(20px,2.23vw) 22px 0;font-family:'Space Grotesk',sans-serif;letter-spacing:0.04em}
+header nav{display:flex;gap:28px;font-weight:500}
+header nav a{font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding-bottom:3px;position:relative;mix-blend-mode:difference;color:#fff;transition:color 0.3s}
+header nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:currentColor;transition:width 0.3s ease}
+header nav a:hover::after{width:100%}
+header .glass{position:absolute;inset:0;background:rgba(153,153,153,0.15);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity 0.4s;border-radius:30px;margin:0 -20px}
 header.scrolled .glass{opacity:1}
-header.scrolled{justify-content:center}
-header.scrolled .logo-img{opacity:0;width:0;margin:0;overflow:hidden}
-header .logo-dark{display:block}header .logo-light{display:none}
-header.light-nav .logo-dark{display:none}header.light-nav .logo-light{display:block}
-header.light-nav nav a{color:rgba(0,0,0,0.45)}
-header.light-nav nav a:hover{color:#000}
-header.light-nav nav a::after{background:#000}
 
 /* ═══ HERO ═══ */
 .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 80px);padding-top:80px;position:relative;overflow:hidden}
@@ -84,8 +77,8 @@ header.light-nav nav a::after{background:#000}
 
 /* ═══ SECTION HEADERS ═══ */
 .section-head{display:flex;justify-content:space-between;align-items:center;padding:100px 0 28px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:28px}
-.section-num{font-family:'Dirtyline',serif;font-size:2.32rem;line-height:1;color:rgba(255,255,255,0.14)}
-.light .section-num{color:rgba(0,0,0,0.08)}
+.section-num{font-family:'Dirtyline',serif;font-size:2.32rem;line-height:1;color:rgba(255,255,255,0.35)}
+.light .section-num{color:rgba(0,0,0,0.25)}
 .section-head h2{font-size:clamp(1.8rem,5.5vw,5.5rem);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:-0.02em}
 
 /* ═══ ABOUT ═══ */
@@ -134,7 +127,7 @@ header.light-nav nav a::after{background:#000}
 .project-visual{position:relative;overflow:hidden;border-radius:8px;aspect-ratio:4/3}
 .project-visual-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);transition:all 0.6s cubic-bezier(0.22,1,0.36,1);transform:translateY(20px);opacity:0.6}
 .project-card:hover .project-visual-inner{transform:translateY(0);opacity:1;background:rgba(255,255,255,0.05)}
-.project-visual svg{opacity:0.04;width:min(100px,25%);transition:opacity 0.4s}
+.project-visual svg{opacity:0.04;width:min(50px,12%);transition:opacity 0.4s}
 .project-card:hover .project-visual svg{opacity:0.16}
 
 /* Project typography */
@@ -190,12 +183,11 @@ footer{padding:50px 0 24px;text-align:center;font-size:0.6rem;letter-spacing:0.1
 <div class="cursor-dot" id="cursorDot"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z" fill="#fff" opacity="0.85"/></svg></div>
 <div class="cursor-ir" id="cursorIr">IR →</div>
 
-<div class="page-transition" id="pageTrans"><div class="page-transition-logo"><img src="LOGONEGTIVO.png" alt="Logo"><span>Liam Garcia</span></div></div>
+<div class="page-transition" id="pageTrans"><div class="page-transition-logo"><img src="LOGONEGTIVO.png" alt="Logo"></div></div>
 
+<a href="#" class="header-logo"><img src="LOGONEGTIVO.png" alt="Liam Garcia" style="height:60px;width:auto"></a>
 <header id="header">
   <div class="glass"></div>
-  <img class="logo-img logo-dark" src="LOGONEGTIVO.png" alt="Liam Garcia" id="logoImg">
-  <img class="logo-img logo-light" src="LOGOLIAM.png" alt="Liam Garcia">
   <nav><a href="#about">Sobre mí</a><a href="#education">Formación</a><a href="#stack">Stack</a><a href="#projects">Proyectos</a><a href="#contact">Contacto</a></nav>
 </header>
 
@@ -396,13 +388,7 @@ document.addEventListener('mouseenter',function(){dot.classList.remove('hidden')
 
 // ═══ HEADER SCROLL ═══
 var header=document.getElementById('header');
-window.addEventListener('scroll',function(){
-  var scrolled=window.scrollY>40;
-  header.classList.toggle('scrolled',scrolled);
-  var el=document.elementFromPoint(innerWidth/2,80);
-  var light=el&&(el.classList.contains('light')||el.closest('.light'));
-  header.classList.toggle('light-nav',light);
-});
+window.addEventListener('scroll',function(){header.classList.toggle('scrolled',window.scrollY>40)});
 
 // ═══ HERO PHOTO HOVER ═══
 (function(){
