@@ -341,24 +341,22 @@ var t=0,cols,rows;
         // ═══ WEBGL WATER RIPPLE — DEFORMACIÓN DE PARTÍCULAS (1 OLA, .35 REF, 40 ANILLOS, 1 RGB) ═══
         (function(){
         var canvas=document.getElementById('rippleCanvas');
-        canvas.style.position='fixed';canvas.style.inset='0';canvas.style.zIndex='1';canvas.style.pointerEvents='none';
+        canvas.style.position='fixed';canvas.style.inset='0';canvas.style.zIndex='10';canvas.style.pointerEvents='none';canvas.style.mixBlendMode='screen';
         var w=innerWidth,h=innerHeight;
-        var renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:false,antialias:true});
+        var renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true});
         renderer.setSize(w,h);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+        renderer.setClearColor(0x000000,0);
         var scene=new THREE.Scene();var camera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
         var config={speed:2.0,strength:0.45,frequency:50.0,chromatic:1.0,thickness:0.06};
-        var bgCanvas=document.getElementById('bgCanvas');
-        var tex=new THREE.CanvasTexture(bgCanvas);
-        tex.minFilter=THREE.LinearFilter;tex.magFilter=THREE.LinearFilter;
         var MAX=45,ripples=[],idx=0;
         for(var i=0;i<MAX;i++)ripples.push({x:0.5,y:0.5,prog:0,str:0,maxStr:0});
         function spawn(x,y,f){var r=ripples[idx];r.x=x;r.y=y;r.prog=0;r.str=Math.min(f,2);r.maxStr=r.str;idx=(idx+1)%MAX;}
         var uRips=[];for(var i=0;i<MAX;i++)uRips.push(new THREE.Vector4(0.5,0.5,0,0));
-        var uniforms={uTexture:{value:tex},uRipples:{value:uRips},uAspect:{value:w/h},uFreq:{value:config.frequency},uStrength:{value:config.strength},uThickness:{value:config.thickness},uChromatic:{value:config.chromatic}};
+        var uniforms={uRipples:{value:uRips},uAspect:{value:w/h},uFreq:{value:config.frequency},uStrength:{value:config.strength},uThickness:{value:config.thickness},uChromatic:{value:config.chromatic}};
         var vs='varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position,1.0);}';
-        var fs='varying vec2 vUv;uniform sampler2D uTexture;uniform vec4 uRipples[45];uniform float uAspect;uniform float uFreq;uniform float uStrength;uniform float uThickness;uniform float uChromatic;void main(){vec2 uv=vUv;vec2 td=vec2(0.0);for(int i=0;i<45;i++){vec4 r=uRipples[i];if(r.w<=0.0)continue;vec2 tp=uv-r.xy;tp.x*=uAspect;float d=length(tp);float rad=r.z*0.7;float dtf=abs(d-rad);if(dtf<uThickness){float f=1.0-dtf/uThickness;f=smoothstep(0.0,1.0,f);float wave=sin((d-rad)*uFreq);vec2 dir=normalize(uv-r.xy);td+=dir*wave*f*r.w*uStrength;}}vec2 ruv=uv+td;ruv=clamp(ruv,0.001,0.999);vec2 sv=td*0.35*uChromatic;vec4 c;c.r=texture2D(uTexture,clamp(ruv+sv,0.001,0.999)).r;c.g=texture2D(uTexture,ruv).g;c.b=texture2D(uTexture,clamp(ruv-sv,0.001,0.999)).b;c.a=1.0;gl_FragColor=c;}';
+        var fs='varying vec2 vUv;uniform vec4 uRipples[45];uniform float uAspect;uniform float uFreq;uniform float uStrength;uniform float uThickness;uniform float uChromatic;void main(){vec2 uv=vUv;vec2 td=vec2(0.0);for(int i=0;i<45;i++){vec4 r=uRipples[i];if(r.w<=0.0)continue;vec2 tp=uv-r.xy;tp.x*=uAspect;float d=length(tp);float rad=r.z*0.7;float dtf=abs(d-rad);if(dtf<uThickness){float f=1.0-dtf/uThickness;f=smoothstep(0.0,1.0,f);float wave=sin((d-rad)*uFreq);vec2 dir=normalize(uv-r.xy);td+=dir*wave*f*r.w*uStrength;}}float dl=length(td);if(dl<0.002){gl_FragColor=vec4(0.0,0.0,0.0,0.0);return;}float wv=min(dl*10.0,1.0);float sp=wv*0.35;float cs=dl*2.5;vec3 col=vec3(sp*0.8,sp*0.85,sp*1.0);col.r+=wv*cs*0.12;col.b+=wv*cs*0.08;gl_FragColor=vec4(col,wv*0.65);}';
         var geo=new THREE.PlaneGeometry(2,2);
-        var mat=new THREE.ShaderMaterial({vertexShader:vs,fragmentShader:fs,uniforms:uniforms,depthWrite:false});
+        var mat=new THREE.ShaderMaterial({vertexShader:vs,fragmentShader:fs,uniforms:uniforms,depthWrite:false,transparent:true});
         var mesh=new THREE.Mesh(geo,mat);scene.add(mesh);
         document.addEventListener('mousemove',function(e){
           var nx=e.clientX/w,ny=1-e.clientY/h;
@@ -367,7 +365,7 @@ var t=0,cols,rows;
         });
         window.addEventListener('resize',function(){w=innerWidth;h=innerHeight;renderer.setSize(w,h);uniforms.uAspect.value=w/h;});
         var clock=new THREE.Clock();
-        (function tick(){requestAnimationFrame(tick);var dt=Math.min(clock.getDelta(),0.1);for(var i=0;i<MAX;i++){var r=ripples[i];if(r.str>0){r.prog+=dt*config.speed*0.7;if(r.prog>=1){r.str=0;}else{r.str=r.maxStr*Math.pow(1-r.prog,1.8);}}uRips[i].set(r.x,r.y,r.prog,r.str);}tex.needsUpdate=true;renderer.render(scene,camera);})();
+        (function tick(){requestAnimationFrame(tick);var dt=Math.min(clock.getDelta(),0.1);for(var i=0;i<MAX;i++){var r=ripples[i];if(r.str>0){r.prog+=dt*config.speed*0.7;if(r.prog>=1){r.str=0;}else{r.str=r.maxStr*Math.pow(1-r.prog,1.8);}}uRips[i].set(r.x,r.y,r.prog,r.str);}renderer.render(scene,camera);})();
         })();
 
 // ═══ PAGE TRANSITION ═══
@@ -391,10 +389,20 @@ document.addEventListener('mouseenter',function(){if(init)c.style.opacity='1'});
 var header=document.getElementById('header');
 window.addEventListener('scroll',function(){header.classList.toggle('scrolled',window.scrollY>40)});
 
-// ═══ HERO PHOTO HOVER ═══
+// ═══ HERO PHOTO HOVER (pixel-aware: solo persona) ═══
 (function(){
-var hp=document.getElementById('heroPhotos');
-hp.addEventListener('mouseenter',function(){hp.classList.add('active')});
+var hp=document.getElementById('heroPhotos'),img=hp.querySelector('.overlay img'),ca=document.createElement('canvas'),ctx=ca.getContext('2d'),ld=false;
+function loadMask(){
+  if(img.naturalWidth){ca.width=img.naturalWidth;ca.height=img.naturalHeight;ctx.drawImage(img,0,0);ld=true}
+}
+if(img.complete&&img.naturalWidth)loadMask();else img.addEventListener('load',loadMask);
+hp.addEventListener('mousemove',function(e){
+  if(!ld)return;
+  var r=hp.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+  var px=Math.floor(x*ca.width),py=Math.floor(y*ca.height);
+  if(px>=0&&px<ca.width&&py>=0&&py<ca.height&&ctx.getImageData(px,py,1,1).data[3]>30)hp.classList.add('active');
+  else hp.classList.remove('active');
+});
 hp.addEventListener('mouseleave',function(){hp.classList.remove('active')});
 })();
 
