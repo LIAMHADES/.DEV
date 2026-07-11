@@ -41,7 +41,7 @@ a,button,.project-card,.contact-item{cursor:none!important}
 .cursor-inner{position:relative;display:flex;align-items:center;justify-content:center;width:120px;height:120px}
 .sparkle-shape{position:absolute;width:36px;height:36px;fill:#fff;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1),opacity 0.4s ease;transform:scale(1) rotate(0deg);opacity:1}
 .square-shape{position:absolute;width:90px;height:90px;border:1.5px solid #fff;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0) rotate(-45deg);transition:transform 0.6s cubic-bezier(0.16,1,0.3,1),opacity 0.4s ease}
-.square-shape span{color:#fff;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;opacity:0;transition:opacity 0.3s ease 0.1s}
+.square-shape span{color:#fff;font-size:min(2rem,5.5vw);font-weight:700;text-transform:uppercase;opacity:0;transition:opacity 0.3s ease 0.1s}
 .custom-cursor.is-hovering .sparkle-shape{transform:scale(0) rotate(90deg);opacity:0}
 .custom-cursor.is-hovering .square-shape{opacity:1;transform:scale(1) rotate(0deg)}
 .custom-cursor.is-hovering .square-shape span{opacity:1}
@@ -370,8 +370,8 @@ var mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my,init=false;
 window.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;if(!init){c.style.opacity='1';cx=mx;cy=my;init=true}});
 (function anim(){cx+=(mx-cx)*0.16;cy+=(my-cy)*0.16;c.style.transform='translate3d('+cx+'px,'+cy+'px,0) translate(-50%,-50%)';requestAnimationFrame(anim)})();
 document.querySelectorAll('.project-card').forEach(function(el){
-  el.addEventListener('mouseenter',function(){c.classList.add('is-hovering');l.textContent='IR \u2192';var f=el.getAttribute('data-font');if(f)l.style.fontFamily=f});
-  el.addEventListener('mouseleave',function(){c.classList.remove('is-hovering');l.style.fontFamily=''});
+  el.addEventListener('mouseenter',function(){c.classList.add('is-hovering');l.textContent='IR \u2192';var f=el.getAttribute('data-font'),col=el.getAttribute('data-color');if(f)l.style.fontFamily=f;if(col){var sq=c.querySelector('.square-shape');sq.style.borderColor=col;l.style.color=col}});
+  el.addEventListener('mouseleave',function(){c.classList.remove('is-hovering');l.style.fontFamily='';var sq=c.querySelector('.square-shape');sq.style.borderColor='';l.style.color=''});
 });
 document.addEventListener('mouseleave',function(){c.style.opacity='0'});
 document.addEventListener('mouseenter',function(){if(init)c.style.opacity='1'});
