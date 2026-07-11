@@ -67,10 +67,11 @@ header.scrolled .glass{opacity:1}
 .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 80px);padding-top:80px;position:relative;overflow:hidden}
 .hero-photos{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:min(380px,55vw);aspect-ratio:1/1;cursor:pointer}
 .hero-photo{position:absolute;inset:0;border-radius:4px;overflow:hidden}
-.hero-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) brightness(0.85);transition:filter 0.5s ease}
-.hero-photos:hover .hero-photo img,.hero-photos.active .hero-photo img{filter:none}
+.hero-photo img{width:100%;height:100%;object-fit:cover;transition:filter 0.5s ease}
+.hero-photo.base img{filter:grayscale(100%) brightness(0.85)}
+.hero-photo.overlay img{filter:none}
+.hero-photos:hover .hero-photo.base img,.hero-photos.active .hero-photo.base img{filter:none}
 .hero-photo.base{z-index:1}.hero-photo.overlay{z-index:2}
-.hero-photo.overlay img{mask-image:url(./assets/person-mask.png);mask-size:contain;mask-repeat:no-repeat;-webkit-mask-image:url(./assets/person-mask.png)}
 
 .marquee-wrap{position:absolute;left:0;right:0;z-index:5;pointer-events:none}
 .marquee-wrap.top{top:14%}.marquee-wrap.mid{top:50%;transform:translateY(-50%)}.marquee-wrap.bot{bottom:14%}
@@ -347,24 +348,24 @@ var t=0,cols,rows;
         var renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:false,antialias:true});
         renderer.setSize(w,h);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
         var scene=new THREE.Scene();var camera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-        var config={speed:1.4,strength:0.45,frequency:40.0,chromatic:1.0,thickness:0.06};
+        var config={speed:2.0,strength:0.45,frequency:50.0,chromatic:1.0,thickness:0.06};
         var bgCanvas=document.getElementById('bgCanvas');
         var tex=new THREE.CanvasTexture(bgCanvas);
         tex.minFilter=THREE.LinearFilter;tex.magFilter=THREE.LinearFilter;
-        var MAX=30,ripples=[],idx=0;
+        var MAX=45,ripples=[],idx=0;
         for(var i=0;i<MAX;i++)ripples.push({x:0.5,y:0.5,prog:0,str:0,maxStr:0});
         function spawn(x,y,f){var r=ripples[idx];r.x=x;r.y=y;r.prog=0;r.str=Math.min(f,2);r.maxStr=r.str;idx=(idx+1)%MAX;}
         var uRips=[];for(var i=0;i<MAX;i++)uRips.push(new THREE.Vector4(0.5,0.5,0,0));
         var uniforms={uTexture:{value:tex},uRipples:{value:uRips},uAspect:{value:w/h},uFreq:{value:config.frequency},uStrength:{value:config.strength},uThickness:{value:config.thickness},uChromatic:{value:config.chromatic}};
         var vs='varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position,1.0);}';
-        var fs='varying vec2 vUv;uniform sampler2D uTexture;uniform vec4 uRipples[30];uniform float uAspect;uniform float uFreq;uniform float uStrength;uniform float uThickness;uniform float uChromatic;void main(){vec2 uv=vUv;vec2 td=vec2(0.0);for(int i=0;i<30;i++){vec4 r=uRipples[i];if(r.w<=0.0)continue;vec2 tp=uv-r.xy;tp.x*=uAspect;float d=length(tp);float rad=r.z*0.7;float dtf=abs(d-rad);if(dtf<uThickness){float f=1.0-dtf/uThickness;f=smoothstep(0.0,1.0,f);float wave=sin((d-rad)*uFreq);vec2 dir=normalize(uv-r.xy);td+=dir*wave*f*r.w*uStrength;}}vec2 ruv=uv+td;ruv=clamp(ruv,0.001,0.999);vec2 sv=td*0.35*uChromatic;vec4 c;c.r=texture2D(uTexture,clamp(ruv+sv,0.001,0.999)).r;c.g=texture2D(uTexture,ruv).g;c.b=texture2D(uTexture,clamp(ruv-sv,0.001,0.999)).b;c.a=1.0;gl_FragColor=c;}';
+        var fs='varying vec2 vUv;uniform sampler2D uTexture;uniform vec4 uRipples[45];uniform float uAspect;uniform float uFreq;uniform float uStrength;uniform float uThickness;uniform float uChromatic;void main(){vec2 uv=vUv;vec2 td=vec2(0.0);for(int i=0;i<45;i++){vec4 r=uRipples[i];if(r.w<=0.0)continue;vec2 tp=uv-r.xy;tp.x*=uAspect;float d=length(tp);float rad=r.z*0.7;float dtf=abs(d-rad);if(dtf<uThickness){float f=1.0-dtf/uThickness;f=smoothstep(0.0,1.0,f);float wave=sin((d-rad)*uFreq);vec2 dir=normalize(uv-r.xy);td+=dir*wave*f*r.w*uStrength;}}vec2 ruv=uv+td;ruv=clamp(ruv,0.001,0.999);vec2 sv=td*0.35*uChromatic;vec4 c;c.r=texture2D(uTexture,clamp(ruv+sv,0.001,0.999)).r;c.g=texture2D(uTexture,ruv).g;c.b=texture2D(uTexture,clamp(ruv-sv,0.001,0.999)).b;c.a=1.0;gl_FragColor=c;}';
         var geo=new THREE.PlaneGeometry(2,2);
         var mat=new THREE.ShaderMaterial({vertexShader:vs,fragmentShader:fs,uniforms:uniforms,depthWrite:false});
         var mesh=new THREE.Mesh(geo,mat);scene.add(mesh);
-        var last={x:0.5,y:0.5};
         document.addEventListener('mousemove',function(e){
           var nx=e.clientX/w,ny=1-e.clientY/h;
-          if(Math.hypot(nx-last.x,ny-last.y)>0.04){spawn(nx,ny,1.0);last.x=nx;last.y=ny;}
+          var prv=ripples[(idx+MAX-1)%MAX];
+          if(Math.hypot(nx-prv.x,ny-prv.y)>0.006){spawn(nx,ny,Math.min(Math.hypot(nx-prv.x,ny-prv.y)*8,1.2));}
         });
         window.addEventListener('resize',function(){w=innerWidth;h=innerHeight;renderer.setSize(w,h);uniforms.uAspect.value=w/h;});
         var clock=new THREE.Clock();
