@@ -338,35 +338,34 @@ var t=0,cols,rows;
 })();
 })();
 
-        // ═══ WEBGL WATER RIPPLE — HOVER FULL PAGE ═══
+        // ═══ WEBGL WATER RIPPLE — HOVER FULL PAGE (1 OLA, .35 REF, 40 ANILLOS, 1 RGB) ═══
         (function(){
-        var c=document.getElementById('rippleCanvas');
-        c.style.position='fixed';c.style.inset='0';c.style.zIndex='1';c.style.pointerEvents='none';
+        var canvas=document.getElementById('rippleCanvas');
+        canvas.style.position='fixed';canvas.style.inset='0';canvas.style.zIndex='9999';canvas.style.pointerEvents='none';
         var w=innerWidth,h=innerHeight;
-        var renderer=new THREE.WebGLRenderer({canvas:c,alpha:true,antialias:true});
+        var renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true});
         renderer.setSize(w,h);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+        renderer.setClearColor(0x000000,0);
         var scene=new THREE.Scene();var camera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-        var rip={x:0.5,y:0.5,prog:0,str:0,maxStr:0};
-        function spawn(x,y,f){rip.x=x;rip.y=y;rip.prog=0;rip.str=Math.min(f,2);rip.maxStr=rip.str;}
-        var uRip=new THREE.Vector4(0.5,0.5,0,0);
-        var uniforms={uRipple:{value:uRip},uAspect:{value:w/h},uFreq:{value:40.0},uStrength:{value:0.35},uThickness:{value:0.15}};
+        var config={speed:1.4,strength:0.35,frequency:40.0,chromatic:1.0,thickness:0.15};
+        var MAX=30,ripples=[],idx=0;
+        for(var i=0;i<MAX;i++)ripples.push({x:0.5,y:0.5,prog:0,str:0,maxStr:0});
+        function spawn(x,y,f){var r=ripples[idx];r.x=x;r.y=y;r.prog=0;r.str=Math.min(f,2);r.maxStr=r.str;idx=(idx+1)%MAX;}
+        var uRips=[];for(var i=0;i<MAX;i++)uRips.push(new THREE.Vector4(0.5,0.5,0,0));
+        var uniforms={uRipples:{value:uRips},uAspect:{value:w/h},uFreq:{value:config.frequency},uStrength:{value:config.strength},uThickness:{value:config.thickness}};
         var vs='varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position,1.0);}';
-        var fs='varying vec2 vUv;uniform vec4 uRipple;uniform float uAspect;uniform float uFreq;uniform float uStrength;uniform float uThickness;void main(){vec2 uv=vUv;vec4 r=uRipple;gl_FragColor=vec4(0.0,0.0,0.0,0.0);if(r.w<=0.0)return;vec2 tp=uv-r.xy;tp.x*=uAspect;float dist=length(tp);float rad=r.z*0.7;float dtf=abs(dist-rad);if(dtf>=uThickness)return;float f=1.0-dtf/uThickness;f=smoothstep(0.0,1.0,f);float wave=sin((dist-rad)*uFreq);float crest=max(0.0,wave)*f*r.w*0.5;float disp=abs(wave)*f*r.w*uStrength;vec3 col=vec3(0.82,0.86,0.92)*disp*0.15+vec3(1.0,0.97,0.92)*crest;float alp=clamp(crest*1.5+disp*0.2,0.0,0.5);gl_FragColor=vec4(col,alp);}';
+        var fs='varying vec2 vUv;uniform vec4 uRipples[30];uniform float uAspect;uniform float uFreq;uniform float uStrength;uniform float uThickness;void main(){vec2 uv=vUv;vec2 td=vec2(0.0);for(int i=0;i<30;i++){vec4 r=uRipples[i];if(r.w<=0.0)continue;vec2 tp=uv-r.xy;tp.x*=uAspect;float d=length(tp);float rad=r.z*0.7;float dtf=abs(d-rad);if(dtf<uThickness){float f=1.0-dtf/uThickness;f=smoothstep(0.0,1.0,f);float wave=sin((d-rad)*uFreq);vec2 dir=normalize(uv-r.xy);td+=dir*wave*f*r.w*uStrength;}}float dl=length(td);if(dl<0.001){gl_FragColor=vec4(0.0,0.0,0.0,0.0);return;}float crest=min(dl*4.0,1.0)*0.4;vec3 col=vec3(0.82,0.86,0.92)*dl*0.12+vec3(1.0,0.97,0.92)*crest;float alp=clamp(crest*1.5+dl*0.15,0.0,0.45);gl_FragColor=vec4(col,alp);}';
         var geo=new THREE.PlaneGeometry(2,2);
         var mat=new THREE.ShaderMaterial({vertexShader:vs,fragmentShader:fs,uniforms:uniforms,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});
         var mesh=new THREE.Mesh(geo,mat);scene.add(mesh);
         var last={x:0.5,y:0.5};
         document.addEventListener('mousemove',function(e){
           var nx=e.clientX/w,ny=1-e.clientY/h;
-          var dx=nx-last.x,dy=ny-last.y;
-          var v=Math.hypot(dx,dy);
-          if(v>0.004){spawn(nx,ny,Math.min(0.15+v*35,0.9));}
-          last.x=nx;last.y=ny;
+          if(Math.hypot(nx-last.x,ny-last.y)>0.04){spawn(nx,ny,1.0);last.x=nx;last.y=ny;}
         });
-        document.addEventListener('click',function(e){var nx=e.clientX/w,ny=1-e.clientY/h;spawn(nx,ny,1.5);});
         window.addEventListener('resize',function(){w=innerWidth;h=innerHeight;renderer.setSize(w,h);uniforms.uAspect.value=w/h;});
         var clock=new THREE.Clock();
-        (function tick(){requestAnimationFrame(tick);var dt=Math.min(clock.getDelta(),0.1);if(rip.str>0){rip.prog+=dt*0.7;if(rip.prog>=1){rip.str=0;}else{rip.str=rip.maxStr*Math.pow(1-rip.prog,1.8);}}uRip.set(rip.x,rip.y,rip.prog,rip.str);renderer.render(scene,camera);})();
+        (function tick(){requestAnimationFrame(tick);var dt=Math.min(clock.getDelta(),0.1);for(var i=0;i<MAX;i++){var r=ripples[i];if(r.str>0){r.prog+=dt*config.speed*0.7;if(r.prog>=1){r.str=0;}else{r.str=r.maxStr*Math.pow(1-r.prog,1.8);}}uRips[i].set(r.x,r.y,r.prog,r.str);}renderer.render(scene,camera);})();
         })();
 
 // ═══ PAGE TRANSITION ═══
@@ -402,13 +401,15 @@ hp.addEventListener('mouseleave',function(){hp.classList.remove('active')});
 var tracks=document.querySelectorAll('.marquee-track');
 if(!tracks.length)return;
 var offsets=[];
-tracks.forEach(function(t,i){offsets[i]=0;t.style.transform='translateX(0px)'});
+tracks.forEach(function(t,i){t.style.transform='translateX(0px)';offsets[i]=0});
 (function tick(){
   tracks.forEach(function(t,i){
     var speed=parseFloat(t.getAttribute('data-speed')||'0.5');
     var s=t.querySelector('span');if(!s)return;
     var w=s.offsetWidth;if(!w)return;
-    offsets[i]+=speed;offsets[i]%=w;
+    offsets[i]+=speed;
+    while(offsets[i]<-w)offsets[i]+=w;
+    while(offsets[i]>0)offsets[i]-=w;
     t.style.transform='translateX('+Math.round(offsets[i])+'px)';
   });
   requestAnimationFrame(tick);
