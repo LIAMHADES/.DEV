@@ -338,27 +338,36 @@ var t=0,cols,rows;
 })();
 })();
 
-// ═══ WEBGL RIPPLE CANVAS ═══
-(function(){
-var container=document.getElementById('rippleCanvas');
-container.style.position='fixed';container.style.inset='0';container.style.zIndex='1';container.style.pointerEvents='none';
-var w=innerWidth,h=innerHeight;
-var scene=new THREE.Scene(),camera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var renderer=new THREE.WebGLRenderer({canvas:container,alpha:true,antialias:true});
-renderer.setSize(w,h);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-var uniforms={uTime:{value:0},uResolution:{value:new THREE.Vector2(w,h)},uMouse:{value:new THREE.Vector2(0.5,0.5)},uMouseVel:{value:0},uLastMouse:{value:new THREE.Vector2(0.5,0.5)},uRipples:{value:[]}};
-for(var i=0;i<8;i++)uniforms.uRipples.value.push({pos:new THREE.Vector2(0,0),force:0,age:0});
-var geo=new THREE.PlaneGeometry(2,2);
-var mat=new THREE.ShaderMaterial({vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position,1.0);}',fragmentShader:'varying vec2 vUv;uniform vec2 uResolution;uniform vec2 uMouse;uniform float uMouseVel;\nstruct Ripple{vec2 pos;float force;float age;};\nuniform Ripple uRipples[8];\nvoid main(){\nvec2 uv=vUv;\nvec2 dist=vec2(0.0);\nfor(int i=0;i<8;i++){Ripple r=uRipples[i];if(r.force<=0.0)continue;\nvec2 d=uv-r.pos;float distLen=length(d);\nfloat wave=sin(distLen*40.0-r.age*5.0)*exp(-distLen*2.5)*r.force*0.04;\ndist+=normalize(d)*wave;}\nvec2 disp=uv+dist;\nfloat r=sin(disp.x*8.0+disp.y*6.0)*0.5+0.5;\nfloat g=sin(disp.x*9.0+disp.y*7.0+1.5)*0.5+0.5;\nfloat b=sin(disp.x*7.0+disp.y*8.0+3.0)*0.5+0.5;\nfloat alpha=length(dist)*80.0;\ngl_FragColor=vec4(r,g,b,min(alpha,0.6));\n}',transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});
-var mesh=new THREE.Mesh(geo,mat);scene.add(mesh);
-var rippleIndex=0;
-var ripples=uniforms.uRipples.value;
-var lastMouse={x:0.5,y:0.5};
-container.addEventListener('mousemove',function(e){var nx=e.clientX/w,ny=1-e.clientY/h;var dx=nx-lastMouse.x,dy=ny-lastMouse.y;var vel=Math.hypot(dx,dy);lastMouse.x=nx;lastMouse.y=ny;uniforms.uMouse.value.set(nx,ny);uniforms.uMouseVel.value=vel;if(vel>0.002){var r=ripples[rippleIndex];r.pos.set(nx,ny);r.force=Math.min(vel*60,5);r.age=0;rippleIndex=(rippleIndex+1)%8}});
-window.addEventListener('resize',function(){w=innerWidth;h=innerHeight;renderer.setSize(w,h);uniforms.uResolution.value.set(w,h)});
-var clock=new THREE.Clock();
-(function animWebGL(){requestAnimationFrame(animWebGL);var dt=Math.min(clock.getDelta(),0.1);uniforms.uTime.value+=dt;for(var i=0;i<ripples.length;i++){var r=ripples[i];if(r.force>0.001){r.age+=dt*1.8;r.force*=0.95;if(r.age>4||r.force<0.001)r.force=0}}renderer.render(scene,camera)})();
-})();
+        // ═══ WEBGL WATER RIPPLE — HOVER FULL PAGE ═══
+        (function(){
+        var c=document.getElementById('rippleCanvas');
+        c.style.position='fixed';c.style.inset='0';c.style.zIndex='1';c.style.pointerEvents='none';
+        var w=innerWidth,h=innerHeight;
+        var renderer=new THREE.WebGLRenderer({canvas:c,alpha:true,antialias:true});
+        renderer.setSize(w,h);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+        var scene=new THREE.Scene();var camera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+        var rip={x:0.5,y:0.5,prog:0,str:0,maxStr:0};
+        function spawn(x,y,f){rip.x=x;rip.y=y;rip.prog=0;rip.str=Math.min(f,2);rip.maxStr=rip.str;}
+        var uRip=new THREE.Vector4(0.5,0.5,0,0);
+        var uniforms={uRipple:{value:uRip},uAspect:{value:w/h},uFreq:{value:40.0},uStrength:{value:0.35},uThickness:{value:0.15}};
+        var vs='varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position,1.0);}';
+        var fs='varying vec2 vUv;uniform vec4 uRipple;uniform float uAspect;uniform float uFreq;uniform float uStrength;uniform float uThickness;void main(){vec2 uv=vUv;vec4 r=uRipple;gl_FragColor=vec4(0.0,0.0,0.0,0.0);if(r.w<=0.0)return;vec2 tp=uv-r.xy;tp.x*=uAspect;float dist=length(tp);float rad=r.z*0.7;float dtf=abs(dist-rad);if(dtf>=uThickness)return;float f=1.0-dtf/uThickness;f=smoothstep(0.0,1.0,f);float wave=sin((dist-rad)*uFreq);float crest=max(0.0,wave)*f*r.w*0.5;float disp=abs(wave)*f*r.w*uStrength;vec3 col=vec3(0.82,0.86,0.92)*disp*0.15+vec3(1.0,0.97,0.92)*crest;float alp=clamp(crest*1.5+disp*0.2,0.0,0.5);gl_FragColor=vec4(col,alp);}';
+        var geo=new THREE.PlaneGeometry(2,2);
+        var mat=new THREE.ShaderMaterial({vertexShader:vs,fragmentShader:fs,uniforms:uniforms,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});
+        var mesh=new THREE.Mesh(geo,mat);scene.add(mesh);
+        var last={x:0.5,y:0.5};
+        document.addEventListener('mousemove',function(e){
+          var nx=e.clientX/w,ny=1-e.clientY/h;
+          var dx=nx-last.x,dy=ny-last.y;
+          var v=Math.hypot(dx,dy);
+          if(v>0.004){spawn(nx,ny,Math.min(0.15+v*35,0.9));}
+          last.x=nx;last.y=ny;
+        });
+        document.addEventListener('click',function(e){var nx=e.clientX/w,ny=1-e.clientY/h;spawn(nx,ny,1.5);});
+        window.addEventListener('resize',function(){w=innerWidth;h=innerHeight;renderer.setSize(w,h);uniforms.uAspect.value=w/h;});
+        var clock=new THREE.Clock();
+        (function tick(){requestAnimationFrame(tick);var dt=Math.min(clock.getDelta(),0.1);if(rip.str>0){rip.prog+=dt*0.7;if(rip.prog>=1){rip.str=0;}else{rip.str=rip.maxStr*Math.pow(1-rip.prog,1.8);}}uRip.set(rip.x,rip.y,rip.prog,rip.str);renderer.render(scene,camera);})();
+        })();
 
 // ═══ PAGE TRANSITION ═══
 setTimeout(function(){document.getElementById('pageTrans').classList.add('hide');document.body.classList.remove('loading');setTimeout(function(){var p=document.getElementById('pageTrans');if(p)p.style.display='none'},1050)},500);
@@ -393,14 +402,13 @@ hp.addEventListener('mouseleave',function(){hp.classList.remove('active')});
 var tracks=document.querySelectorAll('.marquee-track');
 if(!tracks.length)return;
 var offsets=[];
-tracks.forEach(function(t,i){offsets[i]=0});
+tracks.forEach(function(t,i){offsets[i]=0;t.style.transform='translateX(0px)'});
 (function tick(){
   tracks.forEach(function(t,i){
     var speed=parseFloat(t.getAttribute('data-speed')||'0.5');
-    offsets[i]+=speed;
-    var sw=t.scrollWidth,wrap=sw/3;
-    while(offsets[i]<-wrap)offsets[i]+=wrap;
-    while(offsets[i]>wrap)offsets[i]-=wrap;
+    var s=t.querySelector('span');if(!s)return;
+    var w=s.offsetWidth;if(!w)return;
+    offsets[i]+=speed;offsets[i]%=w;
     t.style.transform='translateX('+Math.round(offsets[i])+'px)';
   });
   requestAnimationFrame(tick);
