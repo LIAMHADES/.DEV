@@ -61,7 +61,7 @@
     --c-cyan-soft:#E8F2FC;
   }
 
-  *, *::before, *::after{ box-sizing:border-box; }
+  *, *::before, *::after{ box-sizing:border-box; transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
 
   body.splash-active{ display:block; }
   body{
@@ -164,7 +164,7 @@
   .rec-dot{ width:8px; height:8px; border-radius:50%; background:var(--c-bright); visibility:hidden; }
   .rec-dot.active{ visibility:visible; }
 
-  .tagline{ color:var(--text-muted); font-size:1rem; margin-top:10px; line-height:1.6; max-width:620px; margin-left:auto; margin-right:auto; font-family:var(--font-elegant); overflow-wrap:anywhere; }
+  .tagline{ color:var(--text-muted); font-size:1rem; margin-top:10px; line-height:1.6; max-width:620px; margin-left:auto; margin-right:auto; font-family:var(--font-elegant); }
 
   .badge-row{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:16px; }
   .badge{ font-family:var(--font-display); font-size:0.7rem; line-height:1.6; letter-spacing:0.03em; color:var(--text-muted); }
@@ -181,7 +181,6 @@
     max-width:760px; width:100%;
     background:var(--bg-panel); border:1px solid var(--border); border-left:3px solid var(--c-mid);
     padding:16px 20px; font-size:0.95rem; color:var(--text-muted); line-height:1.7; margin-bottom:28px; font-family:var(--font-elegant);
-    overflow-wrap:anywhere;
   }
   .notice strong{ color:var(--text); font-weight:600; font-family:var(--font-elegant); }
 
@@ -217,18 +216,13 @@
   }
   .orb-btn:hover{ transform:scale(1.04); }
   .orb-btn:active{ transform:scale(0.96); }
-  .orb-icon{ position:absolute; width:30px; height:30px; top:50%; left:50%; transform:translate(-50%,-50%); }
-  .orb-icon-mic{ opacity:1; }
-  .orb-icon-stop{ opacity:0; }
-  .orb-btn.recording .orb-icon-mic{ opacity:0; }
-  .orb-btn.recording .orb-icon-stop{ opacity:1; }
+  .orb-icon{ position:absolute; width:30px; height:30px; }
 
   .status-line{
     display:flex; align-items:center; gap:10px;
     font-size:0.95rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted);
     min-height:1.2em; padding:0 4px;
     transition: color 0.2s, gap 0.25s;
-    overflow-wrap:anywhere;
   }
   .status-dot{ width:7px; height:7px; border-radius:50%; background:var(--text-muted); flex-shrink:0; }
   .status-spinner{
@@ -329,7 +323,7 @@
   .history-empty{ color:var(--text-muted); font-size:1rem; text-align:center; padding:24px; border:1px dashed var(--border); }
   .history-list{ display:flex; flex-direction:column; gap:8px; }
   .history-item{ background:var(--bg-panel); border:1px solid var(--border); padding:12px 14px; display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
-  .history-item-text{ font-size:1rem; color:var(--text); line-height:1.5; flex:1; white-space:pre-wrap; font-family:var(--font-elegant); overflow-wrap:anywhere; }
+  .history-item-text{ font-size:1rem; color:var(--text); line-height:1.5; flex:1; white-space:pre-wrap; font-family:var(--font-elegant); }
   .history-item-meta{ font-size:0.82rem; color:var(--text-muted); margin-bottom:4px; font-family:var(--font-elegant); }
   .history-item-actions{ display:flex; gap:6px; flex-shrink:0; }
   .icon-btn{ background:transparent; border:none; color:var(--text-muted); cursor:pointer; font-size:0.92rem; font-weight:700; padding:5px 8px; font-family:var(--font-body); transition:color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease; }
@@ -344,12 +338,11 @@
   .marquee-strip{
     width:100%; max-width:760px; overflow:hidden; margin-top:24px;
     border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-    padding:10px 0; contain:layout;
+    padding:10px 0;
   }
   .marquee-track{
-    display:inline-flex;
+    display:flex; width:max-content;
     animation: marquee-scroll 26s linear infinite;
-    will-change: transform;
   }
   .marquee-track span{
     font-family:var(--font-display);
@@ -431,8 +424,8 @@
         <line x1="12" y1="18" x2="12" y2="22"></line>
         <line x1="9" y1="22" x2="15" y2="22"></line>
       </svg>
-      <svg class="orb-icon orb-icon-stop" viewBox="0 0 24 24" fill="currentColor">
-        <rect x="7" y="7" width="10" height="10" rx="2"></rect>
+      <svg class="orb-icon orb-icon-stop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="7" y="7" width="10" height="10" rx="1.5"></rect>
       </svg>
     </button>
   </div>
@@ -445,9 +438,10 @@
 
   <div class="controls-row">
     <select id="modelSelect">
-      <option value="Xenova/whisper-base" selected>MODELO: SMALL</option>
-      <option value="Xenova/whisper-small">MODELO: MEDIUM</option>
-      <option value="Xenova/whisper-medium">MODELO: BIG</option>
+      <option value="Xenova/whisper-base" selected>MODELO: BASE</option>
+      <option value="Xenova/whisper-small">MODELO: SMALL</option>
+      <option value="Xenova/whisper-tiny">MODELO: TINY (rápido)</option>
+      <option value="Xenova/whisper-tiny.en">MODELO: TINY EN (muy rápido)</option>
     </select>
     <div class="lang-wrap">
       <input type="text" id="langSelect" placeholder="IDIOMA (escribe o elige…)" autocomplete="off">
@@ -711,25 +705,17 @@ splashImg.onload = () => {
 
   splashLogoCanvas.style.filter = 'contrast(1.6) saturate(1.9)';
   splashReady = true;
-  splashGlowCanvas.style.opacity = '0';
-  setTimeout(() => splashAnimGlow(), 600);
+  splashAnimGlow();
 
   document.addEventListener('click', closeSplash, { once:true });
   document.addEventListener('keydown', closeSplash, { once:true });
   setTimeout(closeSplash, 7000);
 };
 
-let glowStartTime = 0;
-let glowStopRequested = false;
 function splashAnimGlow(){
-  if(!splashReady) return;
-  const now = performance.now();
-  if(!glowStartTime) glowStartTime = now;
-  const elapsed = now - glowStartTime;
-  const pos = (elapsed / 2000) % 1;
-  if(glowStopRequested && pos < 0.05) return;
-  const alpha = Math.min(1, elapsed / 800);
-  splashGlowCanvas.style.opacity = alpha;
+  if(!splashReady || splashOverlay.classList.contains('hidden')) return;
+  const t = performance.now()/2000;
+  const pos = t % 1;
   const W = splashGlowCanvas.width, H = splashGlowCanvas.height;
   splashGlowCtx.clearRect(0, 0, W, H);
   splashGlowCtx.save();
@@ -764,7 +750,6 @@ function splashAnimGlow(){
 function closeSplash(){
   if(splashClosing || !splashReady) return;
   splashClosing = true;
-  glowStopRequested = true;
 
   splashOverlay.classList.add('faded');
   splashLogoContainer.classList.add('collapsed');
@@ -827,8 +812,7 @@ function drawGrid(){
   if(orbRecording && orbAnalyser && orbDataArray){
     orbAnalyser.getByteFrequencyData(orbDataArray);
     for(let c = 0; c < COLS; c++){
-      const t = c / COLS;
-      const idx = Math.floor((1 - Math.cos(t * Math.PI * 2)) / 2 * orbDataArray.length * 0.55);
+      const idx = Math.floor(c / COLS * orbDataArray.length * 0.55);
       heights[c] = Math.round((orbDataArray[idx] || 0) / 255 * ROWS * 0.7);
     }
   }
@@ -964,11 +948,10 @@ buildLangDropdown('');
 
 let transcriber = null;
 let modelReady = false;
-let scriptNode = null;
-let pcmChunks = [];
-let audioSampleRate = 0;
+let modelPromise = null;
+let mediaRecorder = null;
+let audioChunks = [];
 let audioContext = null;
-let streamTracks = null;
 let isRecording = false;
 
 const HISTORY_KEY = 'vtotxforia_web_history';
@@ -1022,25 +1005,36 @@ clearHistoryBtn.addEventListener('click', () => { saveHistory([]); renderHistory
 
 async function ensureModel(){
   if(modelReady) return;
+  if(modelPromise) return modelPromise;
   const modelId = modelSelect.value;
   loadModelBtn.disabled = true;
   modelSelect.disabled = true;
   progressBar.classList.add('active');
   setStatus('st-loading', 'Cargando modelo…');
 
-  transcriber = await pipeline('automatic-speech-recognition', modelId, {
+  modelPromise = pipeline('automatic-speech-recognition', modelId, {
     progress_callback: (data) => {
       if(data.status === 'progress' && data.total){
         progressBarFill.style.width = Math.round((data.loaded/data.total)*100) + '%';
       }
     }
+  }).then(p => {
+    transcriber = p;
+    modelReady = true;
+    modelPromise = null;
+    progressBar.classList.remove('active');
+    modelSelect.disabled = false;
+    loadModelBtn.textContent = 'MODELO CARGADO ✓';
+    setStatus('st-ready', 'Listo para grabar');
+  }).catch(err => {
+    modelPromise = null;
+    progressBar.classList.remove('active');
+    modelSelect.disabled = false;
+    loadModelBtn.disabled = false;
+    throw err;
   });
 
-  modelReady = true;
-  progressBar.classList.remove('active');
-  modelSelect.disabled = false;
-  loadModelBtn.textContent = 'MODELO CARGADO ✓';
-  setStatus('st-ready', 'Listo para grabar');
+  return modelPromise;
 }
 
 loadModelBtn.addEventListener('click', () => {
@@ -1053,7 +1047,7 @@ loadModelBtn.addEventListener('click', () => {
 });
 
 modelSelect.addEventListener('change', () => {
-  modelReady = false; transcriber = null;
+  modelReady = false; transcriber = null; modelPromise = null;
   loadModelBtn.disabled = false; modelSelect.disabled = false;
   loadModelBtn.textContent = 'CARGAR MODELO';
   setStatus('st-ready', 'Modelo no cargado');
@@ -1061,10 +1055,14 @@ modelSelect.addEventListener('change', () => {
 
 /* ===================== RECORDING ===================== */
 async function startRecording(){
-  await ensureModel();
+  try{ await ensureModel(); }
+  catch(err){
+    console.error('[VtoTXforIA] Error cargando modelo:', err);
+    setStatus('st-ready', 'Error al cargar el modelo — revisa F12');
+    return;
+  }
 
   const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
-  streamTracks = stream.getTracks();
   audioContext = new (window.AudioContext || window.webkitAudioContext)();
   const source = audioContext.createMediaStreamSource(stream);
 
@@ -1074,17 +1072,14 @@ async function startRecording(){
   orbDataArray = new Uint8Array(orbAnalyser.frequencyBinCount);
   source.connect(orbAnalyser);
 
-  audioSampleRate = audioContext.sampleRate;
-  pcmChunks = [];
-  scriptNode = audioContext.createScriptProcessor(4096, 1, 1);
-  scriptNode.onaudioprocess = e => {
-    pcmChunks.push(new Float32Array(e.inputBuffer.getChannelData(0)));
+  audioChunks = [];
+  mediaRecorder = new MediaRecorder(stream);
+  mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+  mediaRecorder.onstop = async () => {
+    stream.getTracks().forEach(t => t.stop());
+    await transcribeRecording();
   };
-  source.connect(scriptNode);
-  const mute = audioContext.createGain();
-  mute.gain.value = 0;
-  scriptNode.connect(mute);
-  mute.connect(audioContext.destination);
+  mediaRecorder.start();
 
   silenceStart = null;
   silenceTimer = setInterval(() => {
@@ -1102,68 +1097,40 @@ async function startRecording(){
 
   isRecording = true;
   orbRecording = true;
-  orbBtn.classList.add('recording');
   drawGrid();
   startBlink();
   setStatus('st-recording', 'Grabando — pulsa para parar');
 }
 
 function stopRecording(){
-  if(scriptNode){
-    scriptNode.disconnect();
-    scriptNode.onaudioprocess = null;
-    scriptNode = null;
-  }
+  if(mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
   isRecording = false;
   orbRecording = false;
-  orbBtn.classList.remove('recording');
   if(silenceTimer){ clearInterval(silenceTimer); silenceTimer = null; }
   silenceStart = null;
   orbAnalyser = null;
   orbDataArray = null;
-  if(streamTracks){ streamTracks.forEach(t => t.stop()); streamTracks = null; }
-  if(audioContext){ audioContext.close(); audioContext = null; }
+  if(audioContext) audioContext.close();
   stopBlink();
   transcriptBox.placeholder = 'Transcribiendo…';
   transcriptBox.disabled = true;
   setStatus('st-transcribing', 'Transcribiendo…');
   startTranscribeDots();
-
-  const rawPcm = concatPcm(pcmChunks);
-  pcmChunks = [];
-  transcribeRecording(rawPcm, audioSampleRate);
 }
 
-function concatPcm(chunks){
-  if(!chunks.length) return new Float32Array(0);
-  const len = chunks.reduce((s, c) => s + c.length, 0);
-  const out = new Float32Array(len);
-  let off = 0;
-  for(const c of chunks){ out.set(c, off); off += c.length; }
-  return out;
-}
-
-async function transcribeRecording(rawPcm, sampleRate){
+async function transcribeRecording(){
+  let decodeCtx = null;
   try{
-    let audioData;
-    if(sampleRate === 16000){
-      audioData = rawPcm;
-    } else {
-      const offlineCtx = new OfflineAudioContext(1, Math.ceil(rawPcm.length * 16000 / sampleRate), 16000);
-      const src = offlineCtx.createBufferSource();
-      const buffer = offlineCtx.createBuffer(1, rawPcm.length, sampleRate);
-      buffer.getChannelData(0).set(rawPcm);
-      src.buffer = buffer;
-      src.connect(offlineCtx.destination);
-      src.start();
-      const rendered = await offlineCtx.startRendering();
-      audioData = rendered.getChannelData(0);
-    }
+    const blob = new Blob(audioChunks, { type:'audio/webm' });
+    const arrayBuffer = await blob.arrayBuffer();
+    decodeCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const decoded = await decodeCtx.decodeAudioData(arrayBuffer.slice(0));
+    const resampled = await resampleTo16k(decoded);
 
     const lang = langSelect.value.trim();
     const whisperOpts = { task:'transcribe' };
     if(lang) whisperOpts.language = lang;
-    const result = await transcriber(audioData, whisperOpts);
+    const result = await transcriber(resampled, whisperOpts);
     const text = (result?.text || '').trim();
 
     const existing = transcriptBox.value.trim();
@@ -1175,18 +1142,31 @@ async function transcribeRecording(rawPcm, sampleRate){
     transcriptBox.value += '\n[Error al transcribir — revisa la consola (F12) e inténtalo de nuevo]';
   }finally{
     stopTranscribeDots();
+    if(decodeCtx) decodeCtx.close();
     transcriptBox.placeholder = 'Escribe o pega aquí…';
     transcriptBox.disabled = false;
     setStatus('st-ready', 'Listo para grabar');
   }
 }
 
+async function resampleTo16k(audioBuffer){
+  const targetRate = 16000;
+  if(audioBuffer.sampleRate === targetRate) return audioBuffer.getChannelData(0);
+  const offlineCtx = new OfflineAudioContext(1, Math.ceil(audioBuffer.duration*targetRate), targetRate);
+  const src = offlineCtx.createBufferSource();
+  src.buffer = audioBuffer;
+  src.connect(offlineCtx.destination);
+  src.start();
+  const rendered = await offlineCtx.startRendering();
+  return rendered.getChannelData(0);
+}
+
 orbBtn.addEventListener('click', async () => {
   if(!isRecording){
     try{ await startRecording(); }
     catch(err){
-      console.error('[VtoTXforIA] Error accediendo al micrófono:', err);
-      setStatus('st-ready', 'No se pudo acceder al micrófono — revisa permisos');
+      console.error('[VtoTXforIA] Error:', err);
+      setStatus('st-ready', 'Error: ' + (err.message || 'desconocido') + ' — revisa F12');
     }
   } else {
     stopRecording();
@@ -1206,7 +1186,21 @@ clearBtn.addEventListener('click', () => { transcriptBox.value=''; updateCharCou
 
 renderHistory();
 updateCharCount();
-ensureModel().catch(err => console.error('[VtoTXforIA] Auto-load error:', err));
+
+// Auto-cargar modelo al abrir la página (descarga en segundo plano)
+if(!modelReady){
+  loadModelBtn.disabled = true;
+  modelSelect.disabled = true;
+  progressBar.classList.add('active');
+  setStatus('st-loading', 'Cargando modelo (290MB) en segundo plano…');
+  ensureModel().catch(err => {
+    console.error('[VtoTXforIA] Auto-load falló:', err);
+    loadModelBtn.disabled = false;
+    modelSelect.disabled = false;
+    progressBar.classList.remove('active');
+    setStatus('st-ready', 'Error al cargar — pulsa "CARGAR MODELO"');
+  });
+}
 </script>
 
 </body>
