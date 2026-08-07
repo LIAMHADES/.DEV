@@ -294,8 +294,10 @@
   .load-model-btn:disabled{ opacity:0.5; cursor:not-allowed; }
 
   .progress-bar{ width:100%; max-width:480px; height:3px; background:var(--border); display:none; }
-  .progress-bar.active{ display:block; }
-  .progress-bar-fill{ height:100%; width:0%; background:var(--c-mid); transition:width 0.2s ease; }
+  .progress-bar.active{ display:block; animation:barPulse 0.8s infinite ease-in-out; }
+  .server-status{ font-size:0.55rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--c-dim); }
+  .server-status.ready{ color:#22c55e; }
+  .server-status.error{ color:#ef4444; }
 
   .transcript-box{
     width:100%; min-height:140px; background:var(--bg-panel-2); border:1px solid var(--border);
@@ -437,20 +439,14 @@
   </div>
 
   <div class="controls-row">
-    <select id="modelSelect">
-      <option value="Xenova/whisper-base" selected>MODELO: BASE</option>
-      <option value="Xenova/whisper-small">MODELO: SMALL</option>
-      <option value="Xenova/whisper-tiny">MODELO: TINY (rápido)</option>
-      <option value="Xenova/whisper-tiny.en">MODELO: TINY EN (muy rápido)</option>
-    </select>
     <div class="lang-wrap">
       <input type="text" id="langSelect" placeholder="IDIOMA (escribe o elige…)" autocomplete="off">
       <div class="lang-dropdown" id="langDropdown"></div>
     </div>
-    <button class="load-model-btn" id="loadModelBtn">CARGAR MODELO</button>
+    <span class="server-status" id="serverStatus">⚡ SERVIDOR LOCAL</span>
   </div>
 
-  <div class="progress-bar" id="progressBar"><div class="progress-bar-fill" id="progressBarFill"></div></div>
+  <div class="progress-bar" id="progressBar"></div>
 
   <textarea class="transcript-box" id="transcriptBox" placeholder="Tu transcripción aparecerá aquí. Puedes editarla libremente antes de copiarla."></textarea>
 
@@ -489,8 +485,6 @@
 </div>
 
 <script type="module">
-import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2';
-env.allowLocalModels = false;
 
 /* ===================== COLOR ENGINE (puerto de _blend de la app original) ===================== */
 function hexToRgb(hex){
@@ -760,11 +754,7 @@ function closeSplash(){
     document.body.style.overflow = '';
     document.body.style.height = '';
     splashLogoContainer.classList.add('header-mode');
-    ensureModel().catch(() => {
-      modelSelect.disabled = false;
-      loadModelBtn.disabled = false;
-      setStatus('st-ready', 'Error al cargar modelo — pulsa "CARGAR MODELO"');
-    });
+    checkServer();
   }, 2200);
 }
 
@@ -896,11 +886,9 @@ const transcriptBox = document.getElementById('transcriptBox');
 const charCount = document.getElementById('charCount');
 const copyBtn = document.getElementById('copyBtn');
 const clearBtn = document.getElementById('clearBtn');
-const modelSelect = document.getElementById('modelSelect');
 const langSelect = document.getElementById('langSelect');
-const loadModelBtn = document.getElementById('loadModelBtn');
 const progressBar = document.getElementById('progressBar');
-const progressBarFill = document.getElementById('progressBarFill');
+const serverStatus = document.getElementById('serverStatus');
 const historyEmpty = document.getElementById('historyEmpty');
 const historyItems = document.getElementById('historyItems');
 const clearHistoryBtn = document.getElementById('clearHistoryBtn');
@@ -946,10 +934,8 @@ langDropdown.addEventListener('mousedown', e => {
 });
 buildLangDropdown('');
 
-let transcriber = null;
-let modelReady = false;
-let modelPromise = null;
 let mediaRecorder = null;
+const SERVER = 'http://localhost:5100';
 let audioChunks = [];
 let audioContext = null;
 let isRecording = false;
@@ -1003,64 +989,36 @@ function addToHistory(text, lang){
 
 clearHistoryBtn.addEventListener('click', () => { saveHistory([]); renderHistory(); });
 
-async function ensureModel(){
-  if(modelReady) return;
-  if(modelPromise) return modelPromise;
-  const modelId = modelSelect.value;
-  loadModelBtn.disabled = true;
-  modelSelect.disabled = true;
-  progressBar.classList.add('active');
-  setStatus('st-loading', 'Cargando modelo…');
-
-  modelPromise = pipeline('automatic-speech-recognition', modelId, {
-    progress_callback: (data) => {
-      if(data.status === 'progress' && data.total){
-        progressBarFill.style.width = Math.round((data.loaded/data.total)*100) + '%';
-      }
-    }
-  }).then(p => {
-    transcriber = p;
-    modelReady = true;
-    modelPromise = null;
-    progressBar.classList.remove('active');
-    modelSelect.disabled = false;
-    loadModelBtn.textContent = 'MODELO CARGADO ✓';
-    setStatus('st-ready', 'Listo para grabar');
-  }).catch(err => {
-    modelPromise = null;
-    progressBar.classList.remove('active');
-    modelSelect.disabled = false;
-    loadModelBtn.disabled = false;
-    throw err;
-  });
-
-  return modelPromise;
+/* ===================== SERVER CHECK ===================== */
+async function checkServer(){
+  try{
+    const r = await fetch(SERVER + '/api/health');
+    const d = await r.json();
+    serverStatus.textContent = d.loaded ? '\u26a1 SERVIDOR: ' + d.model.toUpperCase() : '\u26a1 CARGANDO ' + d.model + '...';
+    serverStatus.className = 'server-status' + (d.loaded ? ' ready' : '');
+  }catch(e){
+    serverStatus.textContent = '\u26a0\uFE0F SIN SERVIDOR';
+    serverStatus.className = 'server-status error';
+  }
 }
 
-loadModelBtn.addEventListener('click', () => {
-  ensureModel().catch(err => {
-    console.error('[VtoTXforIA] Error cargando modelo:', err);
-    modelSelect.disabled = false;
-    loadModelBtn.disabled = false;
-    setStatus('st-ready', 'Error cargando el modelo — revisa consola (F12)');
-  });
-});
-
-modelSelect.addEventListener('change', () => {
-  modelReady = false; transcriber = null; modelPromise = null;
-  loadModelBtn.disabled = false; modelSelect.disabled = false;
-  loadModelBtn.textContent = 'CARGAR MODELO';
-  setStatus('st-ready', 'Modelo no cargado');
-});
+async function transcribeOnServer(blob){
+  progressBar.classList.add('active');
+  const r = await fetch(SERVER + '/api/transcribe', {method:'POST',body:blob});
+  progressBar.classList.remove('active');
+  if(!r.ok){
+    const err = await r.json().catch(()=>({error:'Server error '+r.status}));
+    throw new Error(err.error||'Server error');
+  }
+  const d = await r.json();
+  return d.text;
+}
 
 /* ===================== RECORDING ===================== */
 async function startRecording(){
-  try{ await ensureModel(); }
-  catch(err){
-    console.error('[VtoTXforIA] Error cargando modelo:', err);
-    setStatus('st-ready', 'Error al cargar el modelo — revisa F12');
-    return;
-  }
+  // Quick server ping
+  try{ await fetch(SERVER+'/api/health',{signal:AbortSignal.timeout(2000)}); }
+  catch(e){ throw new Error('Servidor no accesible — ejecuta "python server.py"'); }
 
   const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
   audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -1119,46 +1077,24 @@ function stopRecording(){
 }
 
 async function transcribeRecording(){
-  let decodeCtx = null;
   try{
     const blob = new Blob(audioChunks, { type:'audio/webm' });
-    const arrayBuffer = await blob.arrayBuffer();
-    decodeCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const decoded = await decodeCtx.decodeAudioData(arrayBuffer.slice(0));
-    const resampled = await resampleTo16k(decoded);
-
-    const lang = langSelect.value.trim();
-    const whisperOpts = { task:'transcribe' };
-    if(lang) whisperOpts.language = lang;
-    const result = await transcriber(resampled, whisperOpts);
-    const text = (result?.text || '').trim();
+    const text = await transcribeOnServer(blob);
+    if(!text) return;
 
     const existing = transcriptBox.value.trim();
     transcriptBox.value = existing ? existing + '\n' + text : text;
     updateCharCount();
-    addToHistory(text, lang);
+    addToHistory(text, langSelect.value.trim());
   }catch(err){
     console.error('[VtoTXforIA] Error transcribiendo:', err);
-    transcriptBox.value += '\n[Error al transcribir — revisa la consola (F12) e inténtalo de nuevo]';
+    transcriptBox.value += '\n[' + (err.message || 'Error') + ']';
   }finally{
     stopTranscribeDots();
-    if(decodeCtx) decodeCtx.close();
     transcriptBox.placeholder = 'Escribe o pega aquí…';
     transcriptBox.disabled = false;
     setStatus('st-ready', 'Listo para grabar');
   }
-}
-
-async function resampleTo16k(audioBuffer){
-  const targetRate = 16000;
-  if(audioBuffer.sampleRate === targetRate) return audioBuffer.getChannelData(0);
-  const offlineCtx = new OfflineAudioContext(1, Math.ceil(audioBuffer.duration*targetRate), targetRate);
-  const src = offlineCtx.createBufferSource();
-  src.buffer = audioBuffer;
-  src.connect(offlineCtx.destination);
-  src.start();
-  const rendered = await offlineCtx.startRendering();
-  return rendered.getChannelData(0);
 }
 
 orbBtn.addEventListener('click', async () => {
@@ -1166,7 +1102,7 @@ orbBtn.addEventListener('click', async () => {
     try{ await startRecording(); }
     catch(err){
       console.error('[VtoTXforIA] Error:', err);
-      setStatus('st-ready', 'Error: ' + (err.message || 'desconocido') + ' — revisa F12');
+      setStatus('st-ready', (err.message || 'Error') + ' — ¿server.py ejecutando?');
     }
   } else {
     stopRecording();
@@ -1186,21 +1122,7 @@ clearBtn.addEventListener('click', () => { transcriptBox.value=''; updateCharCou
 
 renderHistory();
 updateCharCount();
-
-// Auto-cargar modelo al abrir la página (descarga en segundo plano)
-if(!modelReady){
-  loadModelBtn.disabled = true;
-  modelSelect.disabled = true;
-  progressBar.classList.add('active');
-  setStatus('st-loading', 'Cargando modelo (290MB) en segundo plano…');
-  ensureModel().catch(err => {
-    console.error('[VtoTXforIA] Auto-load falló:', err);
-    loadModelBtn.disabled = false;
-    modelSelect.disabled = false;
-    progressBar.classList.remove('active');
-    setStatus('st-ready', 'Error al cargar — pulsa "CARGAR MODELO"');
-  });
-}
+checkServer();
 </script>
 
 </body>
