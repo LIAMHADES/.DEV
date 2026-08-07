@@ -12,9 +12,15 @@
 </head>
 <body>
 
-<!-- Ambient Glow -->
-<div class="ambient ambient-1"></div>
-<div class="ambient ambient-2"></div>
+<!-- Dynamic Blob Background -->
+<div class="blob-bg">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+</div>
+<div class="grid-overlay"></div>
+<canvas id="particles"></canvas>
 
 <!-- Status Dock -->
 <div class="status-dock" id="statusBar">
@@ -337,7 +343,7 @@
 </section>
 </div>
 
-<script>var API_URL='http://localhost:5555';</script>
+<script>var API_URL=window.location.origin==='file://'?'http://localhost:5555':window.location.origin;</script>
 <script src="./static/subtitle/dom.js?v=2"></script>
 <script src="./static/subtitle/subtitles.js?v=2"></script>
 <script src="./static/subtitle/editorHistory.js?v=2"></script>
@@ -346,5 +352,37 @@
 <script src="./static/subtitle/editorSegments.js?v=2"></script>
 <script src="./static/subtitle/studio.js?v=2"></script>
 <script src="./static/script.js?v=5"></script>
+<script>
+(function(){
+  var c=document.getElementById('particles'), ctx=c.getContext('2d'), dots=[], w, h, isDark=document.documentElement.classList.contains('dark');
+  function resize(){ w=c.width=window.innerWidth; h=c.height=window.innerHeight; }
+  resize(); window.addEventListener('resize',resize);
+  for(var i=0;i<80;i++) dots.push({ x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.5+0.4, vx:(Math.random()-0.5)*0.3, vy:(Math.random()-0.5)*0.3, o:Math.random()*0.5+0.1 });
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    var mode=isDark?'dark':'light';
+    for(var i=0;i<dots.length;i++){
+      var d=dots[i];
+      d.x+=d.vx; d.y+=d.vy;
+      if(d.x<0)d.x=w; if(d.x>w)d.x=0; if(d.y<0)d.y=h; if(d.y>h)d.y=0;
+      ctx.beginPath(); ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+      ctx.fillStyle=mode==='dark'?'rgba(255,255,255,'+d.o+')':'rgba(60,40,30,'+d.o+')';
+      ctx.fill();
+      for(var j=i+1;j<dots.length;j++){
+        var dx=dots[j].x-d.x, dy=dots[j].y-d.y, dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<120){
+          ctx.beginPath(); ctx.moveTo(d.x,d.y); ctx.lineTo(dots[j].x,dots[j].y);
+          var lo=mode==='dark'?0.02:0.04, alpha=lo*(1-dist/120);
+          ctx.strokeStyle=mode==='dark'?'rgba(255,255,255,'+alpha+')':'rgba(60,40,30,'+alpha+')';
+          ctx.lineWidth=0.5; ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+  new MutationObserver(function(m){ isDark=document.documentElement.classList.contains('dark'); }).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+})();
+</script>
 </body>
 </html>
