@@ -183,6 +183,14 @@
     padding:16px 20px; font-size:0.95rem; color:var(--text-muted); line-height:1.7; margin-bottom:28px; font-family:var(--font-elegant);
   }
   .notice strong{ color:var(--text); font-weight:600; font-family:var(--font-elegant); }
+  .download-row{ margin-top:14px; text-align:center; }
+  .download-btn{
+    display:inline-block; padding:12px 24px; border-radius:8px;
+    background:var(--c-mid); color:var(--bg); text-decoration:none;
+    font-family:var(--font-display); font-size:0.72rem; letter-spacing:0.04em;
+    transition:filter 0.2s ease, transform 0.15s ease;
+  }
+  .download-btn:hover{ filter:brightness(1.15); transform:scale(1.03); }
 
   /* distorted-link: linea bajo el texto que se contrae al hover, color pasa a --c-glow (patron tomado de synchronized_studio) */
   .distorted-link{
@@ -414,6 +422,11 @@
   <strong>Esto es una demo standalone</strong>, no la app completa. Aquí grabas, transcribes y copias el texto manualmente.
   La <strong>app de escritorio</strong> hace algo que un navegador no puede: con un <strong>Botón del teclado</strong> configurable
   y pega el texto automáticamente donde estabas escribiendo.
+  <div class="download-row">
+    <a class="download-btn" href="https://github.com/LIAMHADES/.DEV" target="_blank" rel="noopener">
+      ⬇ DESCARGAR APP DE ESCRITORIO
+    </a>
+  </div>
 </div>
 
 <main>
