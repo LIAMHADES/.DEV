@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARES GPS — Calculadora de calorías quemadas por tu perro</title>
+<meta name="description" content="Prueba tú mismo cuánto quema tu perro: introduce su peso, la distancia recorrida y la intensidad, y calcula sus calorías al instante. Datos reales, no estimaciones a ojo.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+/* ============================================
+   LAYOUT PROPIO — no sigue hero→como-funciona→por-que→casos→planes.
+   Aquí: hero corto → CALCULADORA protagonista (asimétrica, 2 columnas
+   desiguales) → explicación visual integrada en la propia calculadora (tira
+   lateral, no tarjetas) → barra "¿se mueve lo suficiente?" a pantalla casi
+   completa como sección propia → cierre de planes + CTA.
+   ============================================ */
+
+/* === HERO CORTO === */
+#hero{min-height:34vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:5.5rem;position:relative;overflow:hidden;background:var(--bg)}
+#hero .container{position:relative;z-index:2}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--hl);text-transform:uppercase;margin-bottom:1rem}
+#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.9rem,4.6vw,3.1rem);color:var(--t);letter-spacing:0.02em;line-height:1.2;text-transform:uppercase;max-width:780px;margin:0 auto}
+.hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.8rem,1.4vw,0.95rem);color:var(--t2);letter-spacing:0.03em;margin-top:1rem;max-width:520px;margin-left:auto;margin-right:auto}
+.hero-arrow{margin-top:1.6rem;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--hl);text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:0.4rem;animation:bounceDown 2s ease-in-out infinite}
+.hero-arrow .material-symbols-outlined{font-size:1.1rem}
+@keyframes bounceDown{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* === SECCION CALCULADORA (protagonista, asimetrica) === */
+#calc-hero{background:var(--bg2);padding:4rem 0 5rem;position:relative}
+.calc-hero-wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:0;align-items:stretch;max-width:1140px;margin:2rem auto 0}
+.calc-hero-head{max-width:900px;margin:0 auto;text-align:center}
+
+/* Panel principal de la calculadora — protagonista visual: fondo oscuro,
+   borde sutil, chaflan 45deg, mas grande que cualquier otro bloque de la
+   pagina, con el mismo tratamiento de inputs de calculadora.html */
+#kcal-widget{
+  background:#20303d;
+  border:1px solid rgba(240,242,245,0.14);
+  clip-path:polygon(28px 0,100% 0,100% calc(100% - 28px),calc(100% - 28px) 100%,0 100%,0 28px);
+  padding:2.6rem 2.6rem 2.4rem;
+  position:relative;
+  z-index:2;
+}
+.kw-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:var(--hl);text-transform:uppercase;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.5rem}
+.kw-eyebrow .live-dot{width:7px;height:7px;border-radius:50%;background:var(--hl);box-shadow:0 0 0 0 rgba(246,174,45,0.6);animation:pulseDot 1.6s ease-out infinite}
+@keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(246,174,45,0.5)}70%{box-shadow:0 0 0 8px rgba(246,174,45,0)}100%{box-shadow:0 0 0 0 rgba(246,174,45,0)}}
+.kw-title{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.3rem,2.6vw,1.8rem);color:var(--t);letter-spacing:0.02em;text-transform:uppercase;line-height:1.25;margin-bottom:2rem}
+
+.kw-field{margin-bottom:1.6rem}
+.kw-field-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.6rem}
+.kw-field label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3)}
+.kw-field-val{font-family:'Bruno Ace SC',sans-serif;font-size:1.3rem;color:var(--hl);letter-spacing:0.02em}
+.kw-field-val .unit{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--t2);letter-spacing:0.05em;margin-left:0.25rem}
+
+/* Slider naranja custom, coherente con --cta */
+.kw-slider{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:0;background:rgba(240,242,245,0.12);outline:none;cursor:pointer}
+.kw-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;background:var(--cta);clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);cursor:pointer;box-shadow:0 2px 8px rgba(242,100,25,0.4);transition:transform 0.2s}
+.kw-slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
+.kw-slider::-moz-range-thumb{width:20px;height:20px;background:var(--cta);border:none;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);cursor:pointer;box-shadow:0 2px 8px rgba(242,100,25,0.4)}
+.kw-slider::-moz-range-track{height:5px;background:rgba(240,242,245,0.12)}
+.kw-range-labels{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.04em;color:var(--t3);margin-top:0.5rem}
+
+/* Botones de intensidad — clip-path 45deg, mismo tratamiento visual de botones del sitio */
+.kw-intensity{display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem}
+.kw-int-btn{
+  background:rgba(240,242,245,0.04);
+  border:1px solid rgba(240,242,245,0.16);
+  color:var(--t2);
+  font-family:'Orbitron',sans-serif;
+  font-weight:500;
+  font-size:0.72rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  padding:0.75rem 0.4rem;
+  cursor:pointer;
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+  transition:background 0.25s,border-color 0.25s,color 0.25s,transform 0.15s;
+  text-align:center;
+  line-height:1.4;
+}
+.kw-int-btn small{display:block;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.05em;color:var(--t3);margin-top:0.2rem;text-transform:none}
+.kw-int-btn:hover{border-color:rgba(242,100,25,0.4);color:var(--t)}
+.kw-int-btn.active{background:var(--cta);border-color:var(--cta);color:#fff;transform:translateY(-2px)}
+.kw-int-btn.active small{color:rgba(255,255,255,0.75)}
+
+/* Resultado grande, actualizacion en vivo */
+#kw-result{
+  margin-top:2.2rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(240,242,245,0.12);
+  text-align:center;
+}
+.kw-result-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--t3);margin-bottom:0.5rem}
+#kw-kcal{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(3rem,7vw,4.4rem);color:var(--hl);line-height:1;letter-spacing:0.01em;transition:color 0.3s}
+#kw-kcal .kw-kcal-unit{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--t2);letter-spacing:0.04em;margin-left:0.4rem;vertical-align:middle}
+#kw-formula{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.03em;color:var(--t3);margin-top:0.7rem}
+#kw-formula b{color:var(--t2)}
+#kw-equiv{font-family:'Orbitron',sans-serif;font-size:0.78rem;color:var(--t2);margin-top:1rem;max-width:380px;margin-left:auto;margin-right:auto;line-height:1.6}
+#kw-equiv b{color:var(--hl)}
+.kw-divider{height:1px;background:rgba(240,242,245,0.1);margin:1.4rem 0}
+#kw-bmr{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.8rem,3.6vw,2.4rem);color:var(--deco);line-height:1;letter-spacing:0.01em;margin-top:0.4rem}
+#kw-bmr .kw-kcal-unit{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--t3);letter-spacing:0.04em;margin-left:0.3rem;vertical-align:middle}
+#kw-bmr-note{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.03em;color:var(--t3);margin-top:0.5rem}
+#kw-disclaimer{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.02em;color:var(--t3);margin-top:1rem;padding:0.7rem 0.9rem;background:rgba(240,242,245,0.03);border:1px solid rgba(240,242,245,0.06);clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);line-height:1.7}
+#kw-total-daily{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.8rem,3.6vw,2.4rem);color:var(--t);line-height:1;letter-spacing:0.01em;margin-top:0.4rem}
+#kw-total-daily .kw-kcal-unit{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--t3);letter-spacing:0.04em;margin-left:0.3rem;vertical-align:middle}
+#kw-total-note{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.03em;color:var(--t3);margin-top:0.5rem}
+#kw-food-grams{font-family:'Bruno Ace SC',sans-serif;font-size:1.1rem;color:var(--t);letter-spacing:0.02em}
+#kw-breed-examples{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.02em;color:var(--t3);line-height:1.9}
+#kw-breed-examples b{color:var(--t2)}
+.cx-point.cx-breed-ref p{font-size:0.78rem}
+#kw-disclaimer{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.02em;color:var(--t3);line-height:1.7;margin-top:0.6rem}
+#kw-ares-note{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.03em;color:var(--hl);margin-top:0.8rem;padding:0.6rem 0.7rem;background:rgba(246,174,45,0.05);border:1px solid rgba(246,174,45,0.2);clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);line-height:1.7}
+
+/* === FRANJA LATERAL "POR QUE ES REAL" — integrada al lado de la calculadora,
+   NO como bloque de tarjetas identico a otras paginas. Tira vertical angosta
+   con 3 micro-puntos y un diagrama SVG compacto, pegada al widget. === */
+#calc-context{
+  background:#151d25;
+  border:1px solid rgba(240,242,245,0.08);
+  border-left:none;
+  padding:2.6rem 2rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+}
+.cx-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:var(--deco);text-transform:uppercase;margin-bottom:1rem}
+.cx-point{display:flex;gap:0.9rem;margin-bottom:1.5rem;align-items:flex-start}
+.cx-point:last-child{margin-bottom:0}
+.cx-point .material-symbols-outlined{color:var(--hl);font-size:1.3rem;flex-shrink:0;margin-top:0.1rem}
+.cx-point p{font-size:0.82rem;color:var(--t2);line-height:1.65}
+.cx-point strong{color:var(--t);font-weight:500}
+.cx-divider{height:1px;background:rgba(240,242,245,0.08);margin:1.6rem 0}
+.cx-formula-box{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--t3);line-height:1.9;background:rgba(246,174,45,0.05);border:1px dashed rgba(246,174,45,0.25);padding:0.9rem 1rem;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+.cx-formula-box .hl{color:var(--hl)}
+
+@media(max-width:900px){
+  .calc-hero-wrap{grid-template-columns:1fr}
+  #kcal-widget{clip-path:polygon(22px 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%,0 22px);padding:2rem 1.5rem}
+  #calc-context{border-left:1px solid rgba(240,242,245,0.08);border-top:none}
+}
+
+/* === SECCION: BARRA "SE MUEVE LO SUFICIENTE" — casi pantalla completa,
+   termometro horizontal grande, propia seccion sin grid de tarjetas 1:1 === */
+#move-bar-section{min-height:64vh;display:flex;align-items:center;background:var(--bg);position:relative;overflow:hidden}
+.mb-wrap{max-width:900px;margin:0 auto;width:100%;text-align:center;position:relative;z-index:2}
+.mb-question{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.5rem,3.4vw,2.3rem);color:var(--t);text-transform:uppercase;letter-spacing:0.02em;margin-bottom:0.6rem}
+.mb-sub{font-family:'Orbitron',sans-serif;font-size:0.85rem;color:var(--t2);max-width:560px;margin:0 auto 2.6rem;line-height:1.7}
+
+.mb-input-row{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2.6rem;flex-wrap:wrap}
+.mb-input-row label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--t3)}
+#mb-minutes-input{width:110px;background:#20303d;border:1px solid rgba(240,242,245,0.18);color:var(--t);font-family:'Bruno Ace SC',sans-serif;font-size:1.3rem;text-align:center;padding:0.6rem 0.5rem;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:border-color 0.3s}
+#mb-minutes-input:focus{outline:none;border-color:var(--cta)}
+.mb-sync-btn{background:none;border:1px dashed rgba(240,242,245,0.25);color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.05em;text-transform:uppercase;padding:0.6rem 0.9rem;cursor:pointer;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);transition:border-color 0.3s,color 0.3s}
+.mb-sync-btn:hover{border-color:var(--hl);color:var(--hl)}
+
+/* Termometro horizontal — 3 zonas de color, marcador que se mueve segun minutos */
+.mb-thermo-wrap{position:relative;padding:0 0.5rem}
+.mb-thermo-track{position:relative;height:22px;display:flex;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px);overflow:hidden;border:1px solid rgba(240,242,245,0.15)}
+.mb-zone{height:100%;transition:opacity 0.3s}
+.mb-zone-low{flex:40;background:rgba(134,187,216,0.35)}
+.mb-zone-mid{flex:50;background:rgba(246,174,45,0.4)}
+.mb-zone-high{flex:60;background:rgba(242,100,25,0.45)}
+.mb-marker{position:absolute;top:-9px;width:3px;height:40px;background:var(--t);left:0;transition:left 0.5s cubic-bezier(0.16,1,0.3,1);box-shadow:0 0 8px rgba(240,242,245,0.5)}
+
+.mb-labels{display:flex;margin-top:1.4rem;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase}
+.mb-labels span{flex:1;text-align:center}
+.mb-labels .lab-low{color:var(--deco)}
+.mb-labels .lab-mid{color:var(--hl)}
+.mb-labels .lab-high{color:var(--cta)}
+
+#mb-verdict{margin-top:2.4rem;padding:1.4rem 2rem;border:1px solid rgba(240,242,245,0.1);clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);max-width:640px;margin-left:auto;margin-right:auto;transition:border-color 0.4s,background 0.4s}
+#mb-verdict-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;display:inline-block}
+#mb-verdict-text{font-size:0.9rem;color:var(--t2);line-height:1.7}
+
+/* === SECCION: NUTRICION — PUENTE A PREMIUM === */
+#nutricion-teaser{background:var(--bg);padding:4rem 0}
+.nt-head{text-align:center;margin-bottom:3rem}
+.nt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:960px;margin:0 auto}
+.nt-card{text-align:center;padding:1.8rem 1.4rem;background:rgba(240,242,245,0.03);border:1px solid rgba(240,242,245,0.08);clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);transition:transform 0.3s,border-color 0.3s}
+.nt-card:hover{transform:translateY(-4px);border-color:rgba(246,174,45,0.3)}
+.nt-card .material-symbols-outlined{font-size:2rem;color:var(--hl);margin-bottom:0.8rem}
+.nt-card h4{font-family:'Bruno Ace SC',sans-serif;font-size:0.95rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--t);margin-bottom:0.6rem}
+.nt-card p{font-family:'Orbitron',sans-serif;font-size:0.78rem;color:var(--t2);line-height:1.7}
+.nt-bridge{max-width:720px;margin:2.4rem auto 0;text-align:center;padding:1.5rem 1.8rem;background:rgba(246,174,45,0.05);border:1px solid rgba(246,174,45,0.2);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.nt-bridge p{font-family:'Orbitron',sans-serif;font-size:0.85rem;color:var(--t2);line-height:1.8}
+.nt-bridge p strong{color:var(--hl)}
+.nt-bridge .btn{margin-top:1rem}
+@media(max-width:768px){
+  .nt-grid{grid-template-columns:1fr}
+}
+
+/* === SECCION CIERRE: PLANES + CTA (compacta, no repite formato tarjeta identico) === */
+#planes-nota{background:var(--bg2);padding:4.5rem 0}
+.pn-inline{max-width:820px;margin:2.4rem auto 0;display:flex;align-items:stretch;border:1px solid rgba(240,242,245,0.1);clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px)}
+.pn-col{flex:1;padding:1.8rem 1.7rem;text-align:left}
+.pn-col + .pn-col{border-left:1px solid rgba(240,242,245,0.1)}
+.pn-col.hl{background:rgba(246,174,45,0.05)}
+.pn-plan{font-family:'Bruno Ace SC',sans-serif;font-size:1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--t2);margin-bottom:0.6rem}
+.pn-col.hl .pn-plan{color:var(--hl)}
+.pn-col p{font-size:0.85rem;color:var(--t2);line-height:1.8}
+.pn-cta{text-align:center;margin-top:2rem}
+.pn-cta a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--t2);text-decoration:none;border-bottom:1px solid rgba(240,242,245,0.2);padding-bottom:2px;transition:color 0.3s,border-color 0.3s}
+.pn-cta a:hover{color:var(--hl);border-color:var(--hl)}
+
+/* === CTA FINAL === */
+#cta-final{min-height:44vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:var(--bg)}
+
+/* === FOOTER MAP === */
+.pf-footer-wrap{position:relative;margin-top:0}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:hidden;background:var(--bg)}
+/* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:blur(0.5px)}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(-100vw)}}
+@media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
+@media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
+.pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
+.pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
+.pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
+
+/* TÉCNICA BORDE-SOMBRA — border invisible en esquinas 45° => drop-shadow */
+.nt-card,.nt-bridge,.cx-formula-box,#kw-disclaimer,#kw-ares-note,#mb-verdict,.pn-inline{filter:drop-shadow(0 0 1.5px rgba(134,187,216,0.2))}
+
+/* === SECCIÓN SEPARADOR "ANILLO" (zigzag 40px, como index.html) === */
+.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+.sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+section:first-of-type{clip-path:none}
+
+/* === PRISM (hover grid trail) === */
+.sec-prism{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.sec-prism .prism-grid{display:grid;position:absolute;left:50%;top:50%}
+.sec-prism .prism-cell{border-right:1px solid rgba(134,187,216,0.18);border-bottom:1px solid rgba(134,187,216,0.18);transition:background 0.15s ease-out}
+.sec-prism .prism-cell.lit{transition:background 0s}
+
+@media(max-width:768px){
+  .pn-inline{flex-direction:column}
+  .pn-col + .pn-col{border-left:none;border-top:1px solid rgba(240,242,245,0.1)}
+  .mb-input-row{flex-direction:column;gap:0.7rem}
+  #move-bar-section{min-height:auto;padding:4rem 0}
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<button class="nav-toggle" id="navToggle">
+  <span></span><span></span><span></span>
+</button>
+<nav id="mini-nav">
+  <a href="../index.html" class="nl">ARES GPS</a>
+  <img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo">
+  <ul class="inline-links">
+    <li><a href="../index.html">Inicio</a></li>
+    <li><a href="pricing.html">Precios</a></li>
+  </ul>
+</nav>
+<div class="nav-overlay" id="navOverlay">
+  <div class="nav-overlay-inner">
+    <img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo-ov">
+    <ul class="nav-full-links">
+      <li class="nl-item"><a href="../index.html">Inicio</a></li>
+      <li class="nl-item"><a href="pricing.html">Precios</a></li>
+      <li class="nl-item nl-current"><a>Actividad</a></li>
+      <li class="nl-item"><a href="descanso.html">Descanso</a></li>
+      <li class="nl-item"><a href="comunidad.html">Comunidad</a></li>
+      <li class="nl-item"><a href="geocerca.html">Geocerca</a></li>
+      <li class="nl-item"><a href="calculadora.html">Calculadora</a></li>
+      <li class="nl-item"><a href="pet-friendly.html">Pet-friendly</a></li>
+      <li class="nl-item"><a href="proximamente.html">Próximamente</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- 1. HERO CORTO -->
+<section id="hero" class="sec-dark" style="position:relative">
+  <div class="sec-prism" id="prism-hero"></div>
+  <div class="container">
+    <div class="hero-tag">Actividad y calorías</div>
+    <h1>PRUEBA TÚ MISMO CUÁNTO QUEMA TU PERRO</h1>
+    <div class="hero-sub">Mueve los controles de abajo. El resultado cambia al instante, con la misma fórmula que usa ARES cada día.</div>
+    <div class="hero-arrow"><span class="material-symbols-outlined">expand_more</span>Calcula ahora</div>
+  </div>
+</section>
+
+<!-- 2. CALCULADORA PROTAGONISTA (asimetrica: widget grande + tira de contexto) -->
+<section id="calc-hero">
+  <div class="container">
+    <div class="calc-hero-head">
+      <div class="sl">La calculadora en vivo</div>
+      <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">PESO + DISTANCIA + INTENSIDAD = CALORÍAS</h2>
+    </div>
+
+    <div class="calc-hero-wrap">
+      <div id="kcal-widget">
+        <div class="kw-eyebrow"><span class="live-dot"></span>Cálculo en tiempo real</div>
+        <h3 class="kw-title">Ajusta los controles y mira el resultado moverse</h3>
+
+        <div class="kw-field">
+          <div class="kw-field-top">
+            <label for="kw-weight">Peso de tu perro</label>
+            <div class="kw-field-val"><span id="kw-weight-val">20</span><span class="unit">kg</span></div>
+          </div>
+          <input type="range" id="kw-weight" class="kw-slider" min="1" max="80" step="0.5" value="20">
+          <div class="kw-range-labels"><span>1 kg</span><span>80 kg</span></div>
+        </div>
+
+        <div class="kw-field">
+          <div class="kw-field-top">
+            <label for="kw-distance">Distancia recorrida</label>
+            <div class="kw-field-val"><span id="kw-distance-val">3</span><span class="unit">km</span></div>
+          </div>
+          <input type="range" id="kw-distance" class="kw-slider" min="0" max="20" step="0.1" value="3">
+          <div class="kw-range-labels"><span>0 km</span><span>20 km</span></div>
+        </div>
+
+        <div class="kw-field">
+          <div class="kw-field-top">
+            <label>Intensidad</label>
+          </div>
+          <div class="kw-intensity" id="kw-intensity" role="group" aria-label="Intensidad del ejercicio">
+            <button type="button" class="kw-int-btn active" data-factor="1.0">Paseo tranquilo<small>×1.0</small></button>
+            <button type="button" class="kw-int-btn" data-factor="1.2">Trote<small>×1.2</small></button>
+            <button type="button" class="kw-int-btn" data-factor="1.4">Carrera<small>×1.4</small></button>
+          </div>
+        </div>
+
+        <div id="kw-result">
+          <div class="kw-result-label">Gasto del ejercicio</div>
+          <div id="kw-kcal">60<span class="kw-kcal-unit">kcal</span></div>
+          <div id="kw-formula">kcal_ejercicio ≈ <b id="kw-f-weight">20</b> kg × <b id="kw-f-distance">3</b> km × <b id="kw-f-factor">1.0</b></div>
+          <div id="kw-equiv"></div>
+          <div class="kw-divider"></div>
+          <div class="kw-result-label">Metabolismo basal diario (estimado)</div>
+          <div id="kw-bmr">662<span class="kw-kcal-unit">kcal/día</span></div>
+          <div id="kw-bmr-note">Lo que quema solo por existir, sin moverse (BMR ≈ 70 × peso^0.75)</div>
+          <div class="kw-divider"></div>
+          <div class="kw-result-label">Total diario estimado (reposo + este paseo)</div>
+          <div id="kw-total-daily">722<span class="kw-kcal-unit">kcal/día</span></div>
+          <div id="kw-total-note">Suma otros paseos si tu perro sale más de una vez al día</div>
+        </div>
+      </div>
+
+      <div id="calc-context">
+        <div class="cx-tag">Por qué el dato es real</div>
+        <div class="cx-point">
+          <span class="material-symbols-outlined">sensors</span>
+          <p><strong>Sensor de movimiento en el collar</strong>, no una estimación a ojo desde el mapa. ARES sabe si tu perro está quieto, caminando, trotando o corriendo.</p>
+        </div>
+        <div class="cx-point">
+          <span class="material-symbols-outlined">directions_car_filled</span>
+          <p><strong>Descarta el coche.</strong> Si va rápido por GPS pero su cuerpo está quieto, ARES sabe que es transporte y no lo cuenta como ejercicio.</p>
+        </div>
+        <div class="cx-point">
+          <span class="material-symbols-outlined">calculate</span>
+          <p><strong>Misma fórmula que arriba.</strong> Con el peso real y la distancia e intensidad de cada tramo, calcula las calorías quemadas de ese paseo.</p>
+        </div>
+        <div class="cx-divider"></div>
+        <div class="cx-formula-box">kcal_ejercicio ≈ peso_kg × distancia_km × factor<br>kcal_basal_día ≈ 70 × peso^0.75<br>factor: paseo <span class="hl">1.0</span> · trote <span class="hl">1.2</span> · carrera <span class="hl">1.4</span></div>
+        <div class="cx-divider"></div>
+        <div class="cx-tag">Traducción al plato</div>
+        <div class="cx-point">
+          <span class="material-symbols-outlined">scale</span>
+          <p><strong>Ingesta diaria orientativa:</strong> <span style="font-family:'Bruno Ace SC',sans-serif;color:var(--t);font-size:1.1rem"><span id="kw-food-grams">195</span> g de pienso/día</span><br><small style="color:var(--t3)">Pienso seco estándar ~370 kcal / 100 g</small></p>
+        </div>
+        <div class="cx-point cx-breed-ref">
+          <span class="material-symbols-outlined">pets</span>
+          <p><strong>Referencia de razas por peso:</strong><br>
+          <span id="kw-breed-examples">
+            <b>1–5</b> Chihuahua, Yorkie · <b>5–10</b> Bulldog francés, Beagle<br>
+            <b>10–25</b> Border Collie, Husky · <b>25–40</b> Labrador, Pastor alemán<br>
+            <b>40+</b> Mastín, Gran Danés
+          </span></p>
+        </div>
+        <div class="cx-divider"></div>
+        <div id="kw-disclaimer">Cálculo orientativo. Sin los datos reales de raza, altura y peso de tu perro no podemos conocer su gasto exacto. Cada perro es distinto.</div>
+        <div id="kw-ares-note">ARES registra actividad, peso y raza automáticamente y calcula sus kcal reales cada día en la app — sin tablas ni cuentas manuales.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2.5 NUTRICIÓN — por qué lo que mide ARES importa para su dieta -->
+<section id="nutricion-teaser">
+  <div class="container">
+    <div class="nt-head">
+      <div class="sl">Nutrición inteligente</div>
+      <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">DEL EJERCICIO A LA DIETA REAL</h2>
+      <div class="ss" style="text-transform:none;letter-spacing:0;max-width:640px;margin-top:0.5rem">ARES no solo cuenta calorías. Con Premium, convierte los datos de actividad de tu perro en un plan de alimentación real — automático, personalizado y seguro.</div>
+    </div>
+
+    <div class="nt-grid">
+      <div class="nt-card">
+        <span class="material-symbols-outlined">photo_camera</span>
+        <h4>Analiza cualquier comida</h4>
+        <p>Haz una foto a su pienso, lata o comida casera. La IA calcula sus macronutrientes reales (proteína, grasa, kcal por ración) — no lo que dice la etiqueta, sino lo que hay en el cuenco.</p>
+      </div>
+      <div class="nt-card">
+        <span class="material-symbols-outlined">psychology</span>
+        <h4>Recomendación personalizada</h4>
+        <p>ARES cruza los datos reales de tu perro (actividad diaria del collar, peso, raza, edad y condición) con los macros del alimento. El resultado: una recomendación única para él, no una tabla genérica.</p>
+      </div>
+      <div class="nt-card">
+        <span class="material-symbols-outlined">menu_book</span>
+        <h4>Te forma como dueño</h4>
+        <p>Aprende qué alimentos son peligrosos y por qué, qué significan realmente las etiquetas de los piensos y cómo afecta el ejercicio de hoy a lo que debería comer mañana.</p>
+      </div>
+    </div>
+
+    <div class="nt-bridge">
+      <p><strong>ARES Premium</strong> toma los datos reales del collar — cuánto se ha movido hoy, su peso, su raza, su edad — y los cruza con el análisis de macronutrientes de su comida. Así sabe exactamente qué necesita tu perro, no un perro genérico de su tamaño. <strong>Tú solo llenas el cuenco.</strong></p>
+      <a href="pricing.html#planes" class="btn btn-out" style="display:inline-block;margin-top:0.8rem"><span>Ver planes Premium →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BARRA "SE MUEVE LO SUFICIENTE" -->
+<section id="move-bar-section">
+  <div class="container">
+    <div class="mb-wrap">
+      <div class="sl" style="text-align:center">Segunda pregunta</div>
+      <h2 class="mb-question">¿SE MUEVE LO SUFICIENTE HOY?</h2>
+      <div class="mb-sub">Depende de su nivel de actividad habitual. Escribe los minutos de hoy o sincroniza con la distancia de arriba (a ritmo de paseo, ~15 min/km).</div>
+
+      <div class="mb-input-row">
+        <label for="mb-minutes-input">Minutos de actividad hoy</label>
+        <input type="number" id="mb-minutes-input" min="0" max="200" step="5" value="45">
+        <button type="button" class="mb-sync-btn" id="mb-sync-btn"><span class="material-symbols-outlined" style="font-size:11px;vertical-align:middle">sync</span> Usar la distancia de arriba</button>
+      </div>
+
+      <div class="mb-thermo-wrap">
+        <div class="mb-thermo-track">
+          <div class="mb-zone mb-zone-low"></div>
+          <div class="mb-zone mb-zone-mid"></div>
+          <div class="mb-zone mb-zone-high"></div>
+        </div>
+        <div class="mb-marker" id="mb-marker"></div>
+        <div class="mb-labels">
+          <span class="lab-low">Baja · 20-40 min</span>
+          <span class="lab-mid">Moderada · 45-90 min</span>
+          <span class="lab-high">Alta · 90-150 min</span>
+        </div>
+      </div>
+
+      <div id="mb-verdict">
+        <span id="mb-verdict-tag">—</span>
+        <p id="mb-verdict-text">—</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. PLANES + CIERRE -->
+<section id="planes-nota">
+  <div class="container" style="text-align:center">
+    <div class="sl">Disponibilidad por plan</div>
+    <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">DE LA ESTIMACIÓN AL PERFIL REAL</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;max-width:580px;margin:0.5rem auto 0">Las calorías quemadas están disponibles desde el primer plan. Lo que cambia es la precisión del cálculo.</div>
+
+    <div class="pn-inline">
+      <div class="pn-col">
+        <div class="pn-plan">Esencial</div>
+        <p>Estimación genérica de calorías y distancia, a partir del peso y el recorrido de tu perro — la misma cuenta que acabas de probar arriba.</p>
+      </div>
+      <div class="pn-col hl">
+        <div class="pn-plan">Premium</div>
+        <p>Calorías y macronutrientes precisos según el perfil real de tu perro, con comparativas por raza y benchmarks de actividad.</p>
+      </div>
+    </div>
+
+    <div class="pn-cta">
+      <a href="pricing.html">Ver todos los planes y precios &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CTA FINAL -->
+<section id="cta-final" class="sec-dark">
+  <div class="container" style="position:relative;z-index:1">
+    <h2 class="st">TU PERRO MERECE UN GUARDIÁN.</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;margin-top:0.75rem">El hardware aún no está a la venta. Cuéntanos qué necesitas y sé de los primeros en reservar.</div>
+    <a href="proximamente.html" class="btn btn-cta" style="margin-top:1.5rem"><span>Reserva tu ARES</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="pf-footer-wrap">
+    <div class="pf-footer-map">
+      <div class="pf-footer-track" aria-hidden="true">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+      </div>
+      <div class="pf-footer-gradient"></div>
+      <div class="pf-footer-text">
+        <div>ARES GPS &copy; 2026 — Actividad</div>
+        <div class="pf-footer-sub">C&aacute;lculo real de kcal &middot; Sensor de movimiento, no GPS &middot; Nutrici&oacute;n inteligente en Premium</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================
+   CALCULADORA DE CALORIAS — vanilla JS, sin librerias externas.
+   Formula (base_de_conocimiento_canina_mvp v0.1, bloque B.2):
+     kcal ~= 1.0 x peso_kg x distancia_km  (paseo/trote normal)
+     intensidad alta: ~1.3-1.5x -> aqui: paseo x1.0 / trote x1.2 / carrera x1.4
+   ============================================ */
+(function(){
+  const weightSlider = document.getElementById('kw-weight');
+  const distanceSlider = document.getElementById('kw-distance');
+  const weightVal = document.getElementById('kw-weight-val');
+  const distanceVal = document.getElementById('kw-distance-val');
+  const intensityBtns = [...document.querySelectorAll('#kw-intensity .kw-int-btn')];
+  const kcalEl = document.getElementById('kw-kcal');
+  const fWeight = document.getElementById('kw-f-weight');
+  const fDistance = document.getElementById('kw-f-distance');
+  const fFactor = document.getElementById('kw-f-factor');
+  const equivEl = document.getElementById('kw-equiv');
+  const bmrEl = document.getElementById('kw-bmr');
+  const totalEl = document.getElementById('kw-total-daily');
+  const foodEl = document.getElementById('kw-food-grams');
+
+  let factor = 1.0;
+
+  // Equivalencias reales de comida/premios para que el numero se sienta tangible
+  // (aprox: 1g de pienso seco estandar ~= 3.5-4 kcal; 1 galleta premio media ~=20-25 kcal)
+  function equivalentText(kcal){
+    if(kcal <= 0) return 'Añade distancia para ver el gasto estimado.';
+    const grams = Math.round(kcal / 3.7);
+    const treats = Math.max(1, Math.round(kcal / 22));
+    return `Equivale aprox. a <b>${grams} g</b> de su pienso habitual, o unos <b>${treats}</b> premio${treats===1?'':'s'} medianos.`;
+  }
+
+  function render(){
+    const w = parseFloat(weightSlider.value);
+    const d = parseFloat(distanceSlider.value);
+    const kcal = Math.round(w * d * factor);
+
+    weightVal.textContent = w.toFixed(w % 1 === 0 ? 0 : 1);
+    distanceVal.textContent = d.toFixed(d % 1 === 0 ? 0 : 1);
+    fWeight.textContent = w.toFixed(w % 1 === 0 ? 0 : 1);
+    fDistance.textContent = d.toFixed(d % 1 === 0 ? 0 : 1);
+    fFactor.textContent = factor.toFixed(1);
+
+    kcalEl.innerHTML = kcal + '<span class="kw-kcal-unit">kcal</span>';
+    equivEl.innerHTML = equivalentText(kcal);
+
+    const bmr = Math.round(70 * Math.pow(w, 0.75));
+    bmrEl.innerHTML = bmr + '<span class="kw-kcal-unit">kcal/día</span>';
+
+    const totalDaily = bmr + kcal;
+    totalEl.innerHTML = totalDaily + '<span class="kw-kcal-unit">kcal/día</span>';
+
+    const foodGrams = Math.round(totalDaily / 3.7);
+    foodEl.innerHTML = foodGrams + '<span class="kw-kcal-unit">g/día</span>';
+
+    kcalEl.style.color = factor >= 1.4 ? 'var(--cta)' : (factor >= 1.2 ? 'var(--hl)' : 'var(--hl)');
+
+    syncDistanceToMinutes(d);
+  }
+
+  weightSlider.addEventListener('input', render);
+  distanceSlider.addEventListener('input', render);
+
+  intensityBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      intensityBtns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      factor = parseFloat(btn.dataset.factor);
+      render();
+    });
+  });
+
+  /* ============================================
+     BARRA "SE MUEVE LO SUFICIENTE" — umbrales reales
+     (base_de_conocimiento v0.1, bloque B.1):
+       Baja: 20-40 min | Moderada: 45-90 min | Alta: 90-150 min
+     ============================================ */
+  const minutesInput = document.getElementById('mb-minutes-input');
+  const syncBtn = document.getElementById('mb-sync-btn');
+  const marker = document.getElementById('mb-marker');
+  const verdictTag = document.getElementById('mb-verdict-tag');
+  const verdictText = document.getElementById('mb-verdict-text');
+  const verdictBox = document.getElementById('mb-verdict');
+
+  const SCALE_MAX = 160; // techo visual de la barra (ligeramente por encima de 150)
+
+  const LEVELS = [
+    { id:'baja', label:'Baja', min:0, max:40, color:'var(--deco)', bg:'rgba(134,187,216,0.08)', border:'rgba(134,187,216,0.35)',
+      text:'Está por debajo del mínimo de referencia (20-40 min/día). Puede ser normal en un perro senior o muy sedentario, pero si no es su caso, le vendría bien un paseo más largo hoy.' },
+    { id:'moderada', label:'Moderada', min:40, max:90, color:'var(--hl)', bg:'rgba(246,174,45,0.08)', border:'rgba(246,174,45,0.35)',
+      text:'Está en el rango de un adulto sano de referencia (45-90 min/día). Buen ritmo — mantenlo con paseos y algo de juego.' },
+    { id:'alta', label:'Alta', min:90, max:150, color:'var(--cta)', bg:'rgba(242,100,25,0.08)', border:'rgba(242,100,25,0.4)',
+      text:'Nivel alto (90-150 min/día), propio de razas activas o de trabajo. Si tu perro no es de esas razas, vigila que no se sobre-exija — la calidad del ejercicio importa tanto como la cantidad.' },
+  ];
+
+  function levelFor(minutes){
+    if(minutes < 40) return LEVELS[0];
+    if(minutes <= 90) return LEVELS[1];
+    return LEVELS[2];
+  }
+
+  function renderMoveBar(){
+    let minutes = parseFloat(minutesInput.value);
+    if(!Number.isFinite(minutes) || minutes < 0) minutes = 0;
+    const clamped = Math.min(minutes, SCALE_MAX);
+    const pct = (clamped / SCALE_MAX) * 100;
+    marker.style.left = pct + '%';
+
+    const level = levelFor(minutes);
+    verdictTag.textContent = level.label.toUpperCase() + ' · ' + Math.round(minutes) + ' min';
+    verdictTag.style.color = level.color;
+    verdictText.textContent = level.text;
+    verdictBox.style.background = level.bg;
+    verdictBox.style.borderColor = level.border;
+  }
+
+  minutesInput.addEventListener('input', renderMoveBar);
+
+  // Sincroniza minutos con la distancia de la calculadora, asumiendo ritmo de
+  // paseo tranquilo (~15 min/km) como referencia neutra -- solo al pulsar el
+  // boton, para no pisar lo que el usuario ya escribio manualmente.
+  function syncDistanceToMinutes(km){
+    syncBtn.dataset.km = km;
+  }
+  syncBtn.addEventListener('click', ()=>{
+    const km = parseFloat(syncBtn.dataset.km || distanceSlider.value);
+    const estMinutes = Math.round(km * 15);
+    minutesInput.value = estMinutes;
+    renderMoveBar();
+  });
+
+  render();
+  renderMoveBar();
+})();
+</script>
+
+<script>
+(function(){
+  const bar = document.getElementById('progress-bar');
+  const nav = document.getElementById('mini-nav');
+  if(!bar) return;
+  function update(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled/max*100) : 0) + '%';
+    if(nav) nav.classList.toggle('scrolled', scrolled > 20);
+  }
+  document.addEventListener('scroll', update, { passive:true });
+  update();
+})();
+</script>
+<script src="assets/js/mobile-menu.js"></script>
+<script>
+function buildPrism(id) {
+  const wrap = document.getElementById(id);
+  if(!wrap) return;
+  const section = wrap.closest('section') || wrap.parentElement;
+  const size = 40,
+        cols = Math.ceil(section.offsetWidth  / size) + 4,
+        rows = Math.ceil(section.offsetHeight / size) + 4;
+  const grid = document.createElement('div');
+  grid.className = 'prism-grid';
+  const gw = cols * size, gh = rows * size;
+  grid.style.cssText = `width:${gw}px;height:${gh}px;margin-left:${gw/-2}px;margin-top:${gh/-2}px;grid-template-columns:repeat(${cols},${size}px);grid-template-rows:repeat(${rows},${size}px)`;
+  const cells = [];
+  for(let i = 0; i < rows*cols; i++){
+    const c = document.createElement('div');
+    c.className = 'prism-cell';
+    c.style.cssText = `width:${size}px;height:${size}px`;
+    grid.appendChild(c);
+    cells.push(c);
+  }
+  wrap.appendChild(grid);
+  const trail = [], max = 18;
+  let cc = '134,187,216';
+  section.addEventListener('mousemove', e => {
+    const rect = section.getBoundingClientRect();
+    const cx = section.offsetWidth/2, cy = section.offsetHeight/2,
+          gl = cx - gw/2,           gt = cy - gh/2;
+    const col = Math.floor((e.clientX - rect.left - gl) / size),
+          row = Math.floor((e.clientY - rect.top  - gt) / size);
+    if(col >= 0 && col < cols && row >= 0 && row < rows)
+      trail.push({col, row, life: 1});
+    const el = document.querySelector(':hover');
+    if(el && (el.tagName === 'A' || el.tagName === 'BUTTON' || el.closest('.btn') || el.closest('.dn-link')))
+      cc = '246,174,45';
+    else
+      cc = '134,187,216';
+  });
+  section.addEventListener('mouseleave', () => {
+    trail.length = 0;
+    cells.forEach(c => {
+      c.style.background = 'rgba(134,187,216,0)';
+      c.classList.remove('lit');
+    });
+  });
+  function anim(){
+    for(let i = trail.length-1; i >= 0; i--){
+      trail[i].life -= 0.04;
+      if(trail[i].life <= 0) trail.splice(i,1);
+    }
+    while(trail.length > max) trail.shift();
+    const lm = {};
+    trail.forEach(t => {
+      const k = t.row * cols + t.col;
+      if(!lm[k] || lm[k] < t.life) lm[k] = t.life;
+    });
+    cells.forEach((c, i) => {
+      const l = lm[i] || 0;
+      c.style.background = l > 0.01
+        ? `rgba(${cc},${l * 0.3})`
+        : 'rgba(134,187,216,0)';
+      if(l > 0.01) c.classList.add('lit');
+      else         c.classList.remove('lit');
+    });
+    requestAnimationFrame(anim);
+  }
+  anim();
+}
+buildPrism('prism-hero');
+</script>
+<script src="assets/js/typewriter.js"></script>
+</body>
+</html>

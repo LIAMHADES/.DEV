@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>3D Quick</title>
+<style>body{background:#86BBD8;margin:0;display:flex;justify-content:center;align-items:center;height:100vh}
+#c{width:500px;height:500px;background:rgba(0,0,0,0.1)}</style></head>
+<body><div id="c"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="assets/3d/base.glb.js"></script>
+<script>
+var el=document.getElementById('c');
+var scene=new THREE.Scene();
+var cam=new THREE.PerspectiveCamera(45,1,0.1,100);cam.position.z=3;
+var r=new THREE.WebGLRenderer({alpha:true,antialias:true});r.setSize(500,500);r.setClearColor(0,0);el.appendChild(r.domElement);
+scene.add(new THREE.AmbientLight(0xffffff,0.8));
+var dl=new THREE.DirectionalLight(0xffffff,0.8);dl.position.set(2,3,4);scene.add(dl);
+
+// Parse GLB from base64
+var b=atob(window.__ARES_MODEL), bytes=new Uint8Array(b.length);
+for(var i=0;i<b.length;i++)bytes[i]=b.charCodeAt(i);
+var loader=new THREE.GLTFLoader();
+loader.parse(bytes.buffer,'',function(gltf){
+  console.log('GLTF OK:',gltf);
+  var m=gltf.scene;
+  var box=new THREE.Box3().setFromObject(m);
+  var c=box.getCenter(new THREE.Vector3()), s=box.getSize(new THREE.Vector3());
+  var max=Math.max(s.x,s.y,s.z), sc=2.5/max;
+  m.scale.setScalar(sc);m.position.set(-c.x*sc,-c.y*sc,-c.z*sc);
+  scene.add(m);
+},function(err){console.warn('GLTF err:',err);});
+
+// Show fallback cube
+var cube=new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshStandardMaterial({color:0xF26419,wireframe:true}));
+scene.add(cube);
+function anim(){requestAnimationFrame(anim);cube.rotation.y+=0.01;r.render(scene,cam);}
+anim();
+</script></body></html>

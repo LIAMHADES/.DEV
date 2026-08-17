@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARES GPS — Precios y planes</title>
+<meta name="description" content="Elige tu ARES GPS: hardware Medium, Large o Family Pack, y el plan de suscripción (Esencial, Básico, Premium) que se ajusta a lo que necesitas saber de tu perro.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+/* === HERO === */
+#hero{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:var(--bg)}
+#hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(-45deg,#0c1116,#10161c,#1c3a4d,#0c1116);background-size:400% 400%;animation:gradientMove 14s ease infinite}
+@keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+#hero .container{position:relative;z-index:2}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--hl);text-transform:uppercase;margin-bottom:1rem}
+#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2.3rem,5.5vw,4rem);color:var(--t);letter-spacing:0.02em;line-height:1.2;text-transform:uppercase;max-width:820px;margin:0 auto}
+.hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.85rem,1.6vw,1rem);color:var(--t2);letter-spacing:0.04em;margin-top:1.25rem;max-width:560px;margin-left:auto;margin-right:auto}
+
+/* === CARRITO === */
+.nav-cart{position:relative;display:flex;align-items:center;gap:0.3rem;cursor:pointer;padding:0.4rem 0.7rem;border:1px solid rgba(240,242,245,0.15);border-radius:6px;color:var(--t);transition:border-color 0.3s,color 0.3s}
+.nav-cart:hover{border-color:var(--cta);color:var(--cta)}
+.nav-cart .material-symbols-outlined{font-size:1.2rem}
+.nav-cart-count{font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--cta);color:#fff;border-radius:50%;width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center}
+.nav-cart-count:empty{display:none}
+.cart-panel{position:fixed;top:64px;right:1rem;width:min(340px,calc(100vw - 2rem));background:var(--bg2);border:1px solid rgba(134,187,216,0.25);border-radius:6px;padding:1.1rem 1.2rem;z-index:1002;box-shadow:0 12px 40px rgba(0,0,0,0.5)}
+.cart-panel-head{display:flex;justify-content:space-between;align-items:center;font-family:'Bruno Ace SC',sans-serif;font-size:0.95rem;letter-spacing:0.05em;color:var(--t);text-transform:uppercase;margin-bottom:0.8rem}
+.cart-panel-close{background:none;border:none;color:var(--t3);font-size:1.3rem;cursor:pointer;line-height:1}
+.cart-panel-close:hover{color:var(--cta)}
+.cart-items{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:0.8rem}
+.cart-item{display:flex;justify-content:space-between;align-items:center;gap:0.6rem;background:rgba(134,187,216,0.08);border:1px solid rgba(134,187,216,0.12);border-radius:4px;padding:0.6rem 0.7rem;font-size:0.82rem;color:var(--t)}
+.cart-item .ci-name{font-family:'Orbitron',sans-serif;color:var(--t);font-weight:500}
+.cart-item .ci-price{font-family:'JetBrains Mono',monospace;color:var(--cta);white-space:nowrap}
+.cart-item .ci-remove{background:none;border:none;color:var(--t3);cursor:pointer;font-size:1rem;line-height:1;padding:0 0.2rem}
+.cart-item .ci-remove:hover{color:var(--cta)}
+.cart-empty{font-size:0.82rem;color:var(--t3);padding:0.4rem 0 0.6rem}
+.cart-total{display:flex;justify-content:space-between;font-family:'Bruno Ace SC',sans-serif;font-size:1rem;color:var(--t);border-top:1px solid rgba(134,187,216,0.2);padding-top:0.7rem}
+.cart-total span:last-child{color:var(--cta)}
+.cart-note{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.05em;color:var(--t3);margin-top:0.8rem;text-transform:uppercase}
+.hw-add{cursor:pointer}
+@media(max-width:768px){.cart-panel{top:56px}}
+
+/* === SELECTOR DE HARDWARE === */
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.hw-card{background:rgb(134,187,216);border:2px solid rgba(47,72,88,0.15);border-radius:6px;padding:2.2rem 1.8rem;text-align:center;box-shadow:0 2px 12px rgba(47,72,88,0.05);transition:transform 0.3s,box-shadow 0.3s;display:flex;flex-direction:column}
+.hw-card:hover{transform:translateY(-6px);box-shadow:0 8px 28px rgba(134,187,216,0.4)}
+.hw-card .btn-out{background:var(--cta);color:#fff;border:none}
+.hw-card .btn-out::before{background-color:var(--cta)}
+.hw-card .btn-out:hover::before{background-color:#fff}
+.hw-card .btn-out:hover span{color:var(--cta)}
+.hw-card:not(.pop) .hw-batt,.hw-card:not(.pop) .hw-fit{color:var(--wtext)}
+.hw-card.pop{border:2px solid var(--deco);background:#fff;box-shadow:0 2px 16px rgba(134,187,216,0.25)}
+.hw-card.pop:hover{box-shadow:0 8px 32px rgba(134,187,216,0.35)}
+.hw-badge{background:var(--deco);color:var(--wtext);font-family:'Orbitron',sans-serif;font-weight:500;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.28rem 0.9rem;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);display:inline-block;margin-bottom:1rem}
+.hw-card h4{font-family:'Bruno Ace SC',sans-serif;font-size:1.25rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--wtext);margin-bottom:0.4rem}
+.hw-price{font-family:'Bruno Ace SC',sans-serif;font-size:2.2rem;color:var(--cta);margin:0.6rem 0 0.3rem}
+.hw-batt{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.05em;color:var(--wtext2);margin-bottom:1rem}
+.hw-fit{font-size:0.85rem;color:var(--wtext2);line-height:1.7;margin-bottom:1.4rem;min-height:3.4em}
+.hw-card .btn{margin-top:auto}
+
+/* === TABLA COMPARATIVA DE SUSCRIPCION === */
+.plan-badge-provisional{display:inline-flex;align-items:center;gap:0.4rem;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:var(--cta);background:rgba(242,100,25,0.08);border:1px dashed rgba(242,100,25,0.4);padding:0.25rem 0.7rem;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);margin-top:0.5rem}
+.plan-badge-provisional .material-symbols-outlined{font-size:0.9rem}
+
+.cmp-wrap{overflow-x:auto;margin-top:3rem;-webkit-overflow-scrolling:touch}
+.cmp-table{width:100%;border-collapse:collapse;min-width:720px;table-layout:fixed}
+.cmp-table th,.cmp-table td{padding:0.9rem 1rem;text-align:left;border-bottom:1px solid rgba(240,242,245,0.08);font-size:0.85rem;color:var(--t2)}
+.cmp-table th:first-child,.cmp-table td:first-child{width:34%}
+.cmp-table th.plan-col,.cmp-table td.plan-col{width:22%}
+.cmp-table thead th{position:sticky;top:0;background:var(--bg)}
+.cmp-table th.plan-col{text-align:center;font-family:'Bruno Ace SC',sans-serif;font-size:1.05rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--deco);padding-top:1.4rem}
+.cmp-table th.plan-col.pop{color:var(--hl);background:rgba(246,174,45,0.07)}
+.cmp-table td.plan-col{text-align:center}
+.cmp-table tbody tr:nth-child(even){background:rgba(134,187,216,0.05)}
+.cmp-table .grp-row td{background:var(--bg2);color:var(--t);font-family:'Bruno Ace SC',sans-serif;font-size:1.1rem;letter-spacing:0.06em;text-transform:uppercase;padding:1rem 1rem 0.7rem;font-weight:400;border-top:2px solid rgba(240,242,245,0.35);border-bottom:1px solid rgba(240,242,245,0.08)}
+.cmp-table .grp-row:first-of-type td{border-top:none}
+.cmp-table .yes{color:var(--hl)}
+.cmp-table .yes .material-symbols-outlined{font-size:1.1rem;vertical-align:middle}
+.cmp-table .no{color:var(--t3)}
+.cmp-table .feat-name{font-family:'Orbitron',sans-serif;font-size:0.85rem;color:var(--t);font-weight:500}
+.cmp-table .feat-help td{font-family:'Orbitron',sans-serif;font-size:0.75rem;color:var(--t2);padding:0.25rem 1rem 0.9rem;border-bottom:1px solid rgba(240,242,245,0.06);line-height:1.6}
+.cmp-table .feat-help strong{color:var(--hl);font-weight:500}
+.cmp-price-row td{text-align:center;padding-top:1.2rem;padding-bottom:1.4rem}
+.cmp-price-row .feat-name{font-family:'Bruno Ace SC',sans-serif;font-size:1.4rem;letter-spacing:0.02em;color:var(--t);text-align:left}
+.cmp-price-row .price-num{font-family:'Bruno Ace SC',sans-serif;font-size:1.7rem;color:var(--cta)}
+.cmp-price-row .price-mes{font-family:'Bruno Ace SC',sans-serif;font-size:1.1rem;color:var(--t2)}
+/* Color de precio intercalado (puramente estetico): col 1 y 3 en claro, col 2 en naranja */
+.cmp-price-row td:nth-child(3) .price-num{color:var(--t)}
+.cmp-price-row .price-period{font-family:'JetBrains Mono',monospace;font-size:7.5px;color:rgba(240,242,245,0.40);display:inline;margin-left:0.35rem}
+.cmp-cta-row td{text-align:center;padding-top:0.5rem;padding-bottom:1.6rem}
+.cmp-legend{display:flex;justify-content:center;gap:2rem;margin-top:1.5rem;flex-wrap:wrap}
+.cmp-legend span{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.05em;color:var(--t3);display:flex;align-items:center;gap:0.35rem}
+
+/* Vista resumida por defecto: oculta todo lo que no sea clave, precio o CTA */
+.cmp-table tbody tr{display:table-row}
+
+/* Boton "Ver comparativa completa" */
+.cmp-toggle-wrap{display:flex;justify-content:center;margin-top:1.6rem}
+.cmp-toggle{display:inline-flex;align-items:center;gap:0.5rem}
+.cmp-toggle .cmp-toggle-chevron{font-size:1.15rem;transition:transform 0.25s}
+.cmp-toggle[aria-expanded="true"] .cmp-toggle-chevron{transform:rotate(180deg)}
+
+/* === TRANSPARENCIA === */
+#transparencia{background:var(--bg2)}
+.tr-box{max-width:760px;margin:2rem auto 0;display:flex;flex-direction:column;gap:1.3rem}
+.tr-box p{font-family:'Orbitron',sans-serif;font-size:0.92rem;color:var(--t2);line-height:1.9}
+.tr-box strong{color:var(--hl);font-weight:500}
+.tr-stat{display:flex;justify-content:center;gap:3rem;margin-top:2rem;flex-wrap:wrap}
+.tr-stat .val{font-family:'Bruno Ace SC',sans-serif;font-size:1.6rem;color:var(--hl);text-align:center}
+.tr-stat .lab{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.08em;margin-top:0.3rem;text-align:center;max-width:160px}
+
+/* === ADD-ONS (acordeon, secundario) === */
+#addons{background:var(--white)}
+.addon-list{max-width:760px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:0.75rem}
+.addon-item{background:#fff;border:1px solid rgba(47,72,88,0.08);border-radius:6px;overflow:hidden}
+.addon-item summary{list-style:none;cursor:pointer;padding:1.1rem 1.4rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:'Orbitron',sans-serif;font-weight:500;font-size:0.9rem;color:var(--wtext);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.addon-item summary::-webkit-details-marker{display:none}
+.addon-item summary .addon-price{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--cta);white-space:nowrap}
+.addon-item summary .addon-chevron{font-size:1.1rem;color:var(--wtext2);transition:transform 0.25s,color 0.25s;flex-shrink:0}
+.addon-item[open] summary .addon-chevron{transform:rotate(180deg);color:var(--cta)}
+.addon-body{padding:0 1.4rem 1.3rem;font-size:0.85rem;color:var(--wtext2);line-height:1.8}
+.addon-body ul{margin:0.6rem 0 0 1.1rem}
+.addon-body li{margin-bottom:0.35rem}
+
+/* === FAQ === */
+#faq{background:var(--bg2)}
+.faq-list{max-width:720px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:0.75rem}
+.faq-item{background:rgba(255,255,255,0.03);border:1px solid rgba(240,242,245,0.08);border-radius:6px;overflow:hidden}
+.faq-item summary{list-style:none;cursor:pointer;padding:1.1rem 1.4rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:'Orbitron',sans-serif;font-weight:500;font-size:0.88rem;color:var(--t);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .faq-chevron{font-size:1.1rem;color:var(--t3);transition:transform 0.25s,color 0.25s;flex-shrink:0}
+.faq-item[open] summary .faq-chevron{transform:rotate(180deg);color:var(--cta)}
+.faq-body{padding:0 1.4rem 1.3rem;font-size:0.85rem;color:var(--t2);line-height:1.8}
+.faq-provisional-note{text-align:center;margin-top:1.5rem;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.04em;color:var(--t3);max-width:560px;margin-left:auto;margin-right:auto}
+
+/* === CTA FINAL === */
+#cta-final{min-height:55vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:var(--bg)}
+
+/* === STEP BADGE: separacion conceptual Producto (pago unico) vs Mensualidades (recurrente) === */
+.step-badge{display:inline-flex;align-items:center;gap:0.55rem;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;padding:0.4rem 1.1rem;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);margin-bottom:1.1rem}
+.step-badge .step-num{font-family:'Bruno Ace SC',sans-serif;font-size:0.9rem;letter-spacing:0}
+#hardware .step-badge{color:var(--wtext);background:rgba(47,72,88,0.09)}
+#hardware .step-badge .step-num{color:var(--cta)}
+#planes .step-badge{color:var(--t);background:rgba(240,242,245,0.09)}
+#planes .step-badge .step-num{color:var(--deco)}
+.step-divider{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1.2rem}
+.step-divider .step-divider-line{flex:0 0 60px;height:1px;background:rgba(240,242,245,0.15)}
+.step-divider .step-divider-txt{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--t3);white-space:nowrap}
+
+/* Tarjetas por plan (solo movil): ocultas por defecto */
+.cmp-cards{display:none}
+.cmp-card{background:var(--bg2);border:1px solid rgba(134,187,216,0.15);clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);padding:1.4rem 1.3rem;margin-bottom:1.2rem}
+.cmp-card.pop{border-color:rgba(246,174,45,0.4)}
+.cmp-card-plan{font-family:'Bruno Ace SC',sans-serif;font-size:1.25rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--deco);margin-bottom:0.3rem}
+.cmp-card.pop .cmp-card-plan{color:var(--hl)}
+.cmp-card-price{font-family:'Bruno Ace SC',sans-serif;font-size:1.7rem;margin-bottom:1rem}
+.cmp-card-price-val{color:var(--cta)}
+.cmp-card-price-mes{color:var(--t2);font-size:1.1rem}
+.cmp-card-price-year{font-family:'JetBrains Mono',monospace;font-size:7.5px;color:rgba(240,242,245,0.40);margin-left:0.35rem}
+.cmp-card-inherit{display:flex;align-items:center;gap:0.5rem;font-family:'Orbitron',sans-serif;font-size:0.9rem;color:var(--hl);background:rgba(246,174,45,0.08);border:1px solid rgba(246,174,45,0.25);padding:0.6rem 0.8rem;margin:0.4rem 0 0.6rem;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px)}
+.cmp-card-inherit .material-symbols-outlined{font-size:1.1rem;flex-shrink:0}
+.cmp-card-grp{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--deco);margin:1.1rem 0 0.5rem;padding-bottom:0.35rem;border-bottom:1px solid rgba(134,187,216,0.2)}
+.cmp-card-feat{display:flex;align-items:flex-start;gap:0.55rem;font-size:0.95rem;color:rgba(240,242,245,0.82);line-height:1.55;padding:0.36rem 0}
+.cmp-card-feat .material-symbols-outlined{font-size:1.05rem;color:var(--hl);flex-shrink:0;margin-top:0.1rem}
+.cmp-card-feat .fv{color:var(--hl);margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:0.8rem;white-space:nowrap}
+/* Indicador de scroll de la tabla en tablet */
+.cmp-wrap{position:relative}
+.cmp-scroll-hint{display:none}
+
+@media(max-width:1024px){
+  /* Tablet: la tabla scrollea horizontalmente; avisar con sombra + texto */
+  .cmp-wrap::after{content:'';position:absolute;top:0;right:0;bottom:0;width:44px;background:linear-gradient(to right,transparent,var(--bg));pointer-events:none}
+  .cmp-scroll-hint{display:block;text-align:right;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--hl);margin-top:0.6rem}
+}
+
+@media(max-width:768px){
+  .hw-grid,.cmp-legend,.tr-stat{grid-template-columns:1fr}
+  .hw-grid{display:flex;flex-direction:column}
+  /* Movil: ocultar tabla y su indicador, mostrar tarjetas por plan */
+  .cmp-wrap,.cmp-scroll-hint{display:none}
+  .cmp-cards{display:block}
+  .cmp-card-cta{text-align:center;margin-top:1.2rem}
+  .cmp-card-cta .btn-cta{font-size:1.1rem;padding:0.75rem 2rem}
+  /* Divisor: que el texto envuelva y las lineas no fuercen ancho */
+  .step-divider{gap:0.6rem}
+  .step-divider .step-divider-line{flex:1 1 auto;min-width:12px}
+  .step-divider .step-divider-txt{white-space:normal;text-align:center}
+}
+
+/* === FOOTER MAP === */
+.pf-footer-wrap{position:relative;margin-top:0}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:hidden;background:var(--bg)}
+/* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:8vw}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:blur(0.5px)}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(-100vw)}}
+@media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
+@media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
+.pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
+.pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
+.pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
+
+.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+.sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+section:first-of-type{clip-path:none}
+
+/* === BLOQUES DE VIDEO (full-width, sticky: el video se queda quieto y la seccion siguiente sube por encima y lo tapa con su angulo) === */
+.vid-sec{position:relative}
+.vid-band{position:sticky;top:0;height:100vh;z-index:1;overflow:hidden;background:var(--bg);padding:0}
+.vid-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:var(--bg)}
+.vid-cap{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,242,245,0.65);background:radial-gradient(ellipse at center,rgba(12,17,22,0.15) 0%,rgba(12,17,22,0.55) 100%);pointer-events:none}
+.vid-cap strong{font-family:'Bruno Ace SC',sans-serif;font-size:1.1rem;letter-spacing:0.06em;color:var(--hl);display:block;margin-bottom:0.4rem}
+.vid-sec>section:not(.vid-band){position:relative;z-index:2}
+#hardware,#planes{position:relative;z-index:2}
+/* #planes (seccion 2): angulo de ARRIBA + ABAJO para que el video 2 quede detras de ambos */
+#planes{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+@media(prefers-reduced-motion:reduce){.vid-band{position:relative;height:56.25vw;min-height:220px}}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<div class="scroll-indicator-horizontal" id="ticksWrapper"></div>
+
+<button class="nav-toggle" id="navToggle">
+  <span></span><span></span><span></span>
+</button>
+<nav id="mini-nav">
+  <a href="../index.html" class="nl">ARES GPS</a>
+  <img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo">
+  <div class="nav-cart" id="navCart">
+    <span class="material-symbols-outlined">shopping_cart</span>
+    <span class="nav-cart-count" id="navCartCount">0</span>
+  </div>
+  <a href="../index.html" class="back-link">Ver producto completo &rarr;</a>
+</nav>
+<div class="cart-panel" id="cartPanel" hidden>
+  <div class="cart-panel-head"><span>Tu carrito</span><button class="cart-panel-close" id="cartClose" aria-label="Cerrar carrito">&times;</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-empty" id="cartEmpty">Aún no has añadido ningún dispositivo.</div>
+  <div class="cart-total" id="cartTotalWrap" hidden><span>Total</span><span id="cartTotal">0€</span></div>
+  <a href="#planes" class="btn btn-cta" id="cartCheckout" style="margin-top:1rem"><span>Continuar con la suscripción</span></a>
+  <div class="cart-note">El plan mensual se elige en el paso siguiente.</div>
+</div>
+<div class="nav-overlay" id="navOverlay">
+  <div class="nav-overlay-inner">
+    <img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo-ov">
+    <ul class="nav-full-links">
+      <li class="nl-item"><a href="../index.html">Inicio</a></li>
+      <li class="nl-item nl-current"><a>Precios</a></li>
+      <li class="nl-item"><a href="actividad.html">Actividad</a></li>
+      <li class="nl-item"><a href="descanso.html">Descanso</a></li>
+      <li class="nl-item"><a href="comunidad.html">Comunidad</a></li>
+      <li class="nl-item"><a href="geocerca.html">Geocerca</a></li>
+      <li class="nl-item"><a href="calculadora.html">Calculadora</a></li>
+      <li class="nl-item"><a href="pet-friendly.html">Pet-friendly</a></li>
+      <li class="nl-item"><a href="proximamente.html">Próximamente</a></li>
+    </ul>
+  </div>
+</div>
+<div class="ov-ticks" id="ovTicks"></div>
+
+<!-- 1. HERO -->
+<section id="hero" class="sec-dark">
+  <div id="hero-bg"></div>
+  <div class="container">
+    <div class="hero-tag">Precios y planes</div>
+    <h1>Elige tu dispositivo. Elige tu plan.</h1>
+    <div class="hero-sub">El dispositivo se paga una vez, desde 120€ (o 199€ el pack de dos). La suscripción empieza en 6€/mes — y en los planes superiores ARES cuida la salud de tu perro: calorías reales, dieta personalizada, ejercicio y descanso. No solo saber dónde está: saber cómo está.</div>
+  </div>
+</section>
+
+<!-- VÍDEO 1 — full-width sticky: se queda quieto y #hardware sube por encima y lo tapa con su angulo -->
+<div class="vid-sec">
+<section class="vid-band" aria-label="Vídeo: el dispositivo ARES">
+  <video src="../assets/video/paso1.mp4" poster="../assets/video/paso1-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+  <div class="vid-cap"><div><strong>Vídeo placeholder</strong>deja aquí el vídeo del dispositivo</div></div>
+</section>
+
+<!-- 2. SELECTOR DE HARDWARE -->
+<section id="hardware" class="sec-light light">
+  <div class="container">
+    <div style="text-align:center">
+      <span class="step-badge"><span class="step-num">01</span> Paso 1 &middot; Elige tu dispositivo</span>
+    </div>
+    <div class="sl" style="text-align:center">El dispositivo &middot; pago único</div>
+    <h2 class="st" style="text-align:center">ELIGE TU ARES</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:600px;margin:0.5rem auto 0">Pago único. Sin cuotas ocultas por el dispositivo. La suscripción se elige aparte, más abajo, y ves exactamente qué incluye cada euro.</div>
+
+    <div class="hw-grid">
+      <div class="hw-card">
+        <h4>ARES Medium</h4>
+        <div class="hw-price">120€</div>
+        <div class="hw-batt">~2750mAh &middot; ~18-20 días de uso típico</div>
+        <div class="hw-fit">Ideal para perros medianos y grandes. El punto de partida recomendado para la mayoría de dueños.</div>
+        <button class="btn btn-out hw-add" data-hw="ARES Medium" data-price="120" style="font-size:0.7rem;padding:0.7rem 1.6rem"><span>Añadir al carrito</span></button>
+      </div>
+      <div class="hw-card pop">
+        <div class="hw-badge">Más autonomía</div>
+        <h4>ARES Large</h4>
+        <div class="hw-price">149€</div>
+        <div class="hw-batt">~4000mAh &middot; ~26-28 días de uso típico</div>
+        <div class="hw-fit">Para perros XL o para quien quiere olvidarse de la carga durante más tiempo. Uso extensivo.</div>
+        <button class="btn btn-cta hw-add" data-hw="ARES Large" data-price="149" style="font-size:0.7rem;padding:0.7rem 1.6rem"><span>Añadir al carrito</span></button>
+      </div>
+      <div class="hw-card">
+        <h4>Family Pack</h4>
+        <div class="hw-price">desde 199€</div>
+        <div class="hw-batt">2 dispositivos ARES</div>
+        <div class="hw-fit">Para hogares con más de un perro. Elige la combinación de modelos al comprar.</div>
+        <button class="btn btn-out hw-add" data-hw="Family Pack" data-price="199" style="font-size:0.7rem;padding:0.7rem 1.6rem"><span>Añadir al carrito</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- VÍDEO 2 — full-width sticky: se queda quieto y #planes sube por encima y lo tapa con su angulo (arriba y abajo) -->
+<div class="vid-sec">
+<section class="vid-band" aria-label="Vídeo: la app y los planes ARES">
+  <video src="../assets/video/paso2.mp4" poster="../assets/video/paso2-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+  <div class="vid-cap"><div><strong>Vídeo placeholder</strong>deja aquí el vídeo de la app / planes</div></div>
+</section>
+
+<!-- 3. TABLA COMPARATIVA DE SUSCRIPCION -->
+<section id="planes" class="sec-dark">
+  <div class="container">
+    <!-- Divisor conceptual: fin del bloque "Producto" (pago único), inicio de "Mensualidades" (recurrente) -->
+    <div class="step-divider" aria-hidden="true">
+      <span class="step-divider-line"></span>
+      <span class="step-divider-txt">Ya elegiste tu dispositivo &middot; ahora, tu plan mensual</span>
+      <span class="step-divider-line"></span>
+    </div>
+    <div style="text-align:center">
+      <span class="step-badge"><span class="step-num">02</span> Paso 2 &middot; Elige tu plan mensual</span>
+    </div>
+    <div class="sl" style="text-align:center">Suscripción mensual &middot; recurrente</div>
+    <h2 class="st" style="text-align:center">DE SABER DÓNDE ESTÁ A SABERLO TODO</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:640px;margin:0.5rem auto 0">Todos los dispositivos ARES necesitan una suscripción mínima para funcionar: la conectividad celular tiene un coste real que no desaparece (lo explicamos en la siguiente sección). La diferencia entre planes es cuánto quieres saber de tu perro.</div>
+
+    <div style="text-align:center">
+      <span class="plan-badge-provisional">Ahorra ~2 meses pagando el plan anual</span>
+    </div>
+
+    <div class="cmp-wrap">
+      <table class="cmp-table" id="cmpTable">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="plan-col">Esencial</th>
+            <th class="plan-col pop">Básico</th>
+            <th class="plan-col">Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cmp-price-row">
+            <td class="feat-name">Precio</td>
+            <td class="plan-col"><span class="price-num closed">6€</span><span class="price-mes">/mes</span> <span class="price-period">&middot; o 60€/año</span></td>
+            <td class="plan-col"><span class="price-num">10€</span><span class="price-mes">/mes</span> <span class="price-period">&middot; o 100€/año</span></td>
+            <td class="plan-col"><span class="price-num">12,99€</span><span class="price-mes">/mes</span> <span class="price-period">&middot; o 129,90€/año</span></td>
+          </tr>
+
+          <tr class="grp-row"><td colspan="4">Seguimiento y seguridad</td></tr>
+          <tr class="cmp-key"><td class="feat-name">Localización GPS en tiempo real</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr class="cmp-key"><td class="feat-name">Modos de seguimiento auto-adaptativo</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Geofencing (zonas seguras)</td><td class="plan-col yes">1 zona</td><td class="plan-col yes">hasta 5 zonas</td><td class="plan-col yes">hasta 10 zonas</td></tr>
+          <tr class="cmp-key"><td class="feat-name">Geofencing adaptativo ("Modo Guardia")</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Find Nearby (Bluetooth, ~50m)</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Luces remotas</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr class="cmp-key"><td class="feat-name">Alerta de caída o inmovilidad</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+
+          <tr class="grp-row"><td colspan="4">Fiabilidad y conectividad</td></tr>
+          <tr><td class="feat-name">Guarda la ruta sin cobertura y la envía al recuperarla</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Deep Sleep (ahorro por inmovilidad)</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Ahorro en zonas Wi-Fi seguras (con cambio manual)</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+
+          <tr class="grp-row"><td colspan="4">Salud y actividad</td></tr>
+          <tr class="cmp-key"><td class="feat-name">Clasificación de actividad (reposo/paseo/trote/carrera)</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr class="cmp-key"><td class="feat-name">Ejercicio real (anti-trampa por coche)</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr class="cmp-key"><td class="feat-name">Temperatura ambiente + hidratación</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Alerta de golpe de calor (índice térmico real, no solo temperatura)</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Recomendación de beber agua según los datos del perro</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Aviso de peligros de la zona (garrapatas, plantas venenosas, fauna, estación)</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Estadísticas completas + benchmarks por raza</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr class="cmp-key"><td class="feat-name">Fatiga y recuperación (IA)</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Anomalías de comportamiento</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr class="cmp-key"><td class="feat-name">Edad biológica</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Análisis de comportamiento (rascado, ladridos)</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Modo cachorro / senior (metas adaptadas a la edad)</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Chat/triaje con veterinario</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Plan de salud preventivo personalizado (vacunas, desparasitación, chequeos)</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Informe de salud del perro (PDF)</td><td class="plan-col no">—</td><td class="plan-col yes">mensual</td><td class="plan-col yes">semanal + estadísticas diarias</td></tr>
+          <tr><td class="feat-name">Score de bienestar diario (0-100)</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Registro de medicación (aviso cuándo toca)</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Guía de ejercicio según raza/edad/peso</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+
+          <tr class="grp-row"><td colspan="4">Nutrición (Dog Fuel)</td></tr>
+          <tr class="cmp-key"><td class="feat-name">Estimación genérica de calorías y distancia</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr class="cmp-key"><td class="feat-name">Dieta personalizada (cruza actividad real + perfil + macros del alimento)</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr class="cmp-key"><td class="feat-name">Análisis de macronutrientes por IA (reconoce el alimento y calcula la ración)</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Guía de alimentos peligrosos y formación nutricional</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Base de datos de alimentos + guía de superalimentos</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Historial de dietas y peso</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+
+          <tr class="grp-row"><td colspan="4">Interfaz y datos</td></tr>
+          <tr class="cmp-key"><td class="feat-name">Historial de rutas</td><td class="plan-col yes">7 días</td><td class="plan-col yes">30 días</td><td class="plan-col yes">1 año</td></tr>
+          <tr class="cmp-key"><td class="feat-name">Dashboard (ubicación, estado, batería, señal)</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr class="cmp-key"><td class="feat-name">Alertas push</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Mapas offline (España) + POIs</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Exportación de datos</td><td class="plan-col no">—</td><td class="plan-col yes">PDF + GPX</td><td class="plan-col yes">PDF + GPX</td></tr>
+          <tr class="feat-help"><td colspan="4">Descarga el historial de rutas y los datos en PDF, o en GPX para usarlos en otra app deportiva. El informe te lo resume; la exportación te da los datos para lo que necesites.</td></tr>
+
+          <tr class="grp-row"><td colspan="4">Social y comunidad</td></tr>
+          <tr class="cmp-key"><td class="feat-name">Compartir con familia/amigos</td><td class="plan-col no">—</td><td class="plan-col yes">hasta 5</td><td class="plan-col yes">+5, con roles</td></tr>
+          <tr><td class="feat-name">Gestión multi-mascota</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Rankings de actividad</td><td class="plan-col no">—</td><td class="plan-col yes">local, semanal</td><td class="plan-col yes">nacional y por raza</td></tr>
+          <tr><td class="feat-name">Rutas de amigos, grupos y desafíos</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Live Share Pro (búsqueda colaborativa)</td><td class="plan-col no">—</td><td class="plan-col no">add-on</td><td class="plan-col yes">incluido</td></tr>
+          <tr><td class="feat-name">Recompensas, insignias y eventos VIP</td><td class="plan-col no">—</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+
+          <tr class="grp-row"><td colspan="4">Otros</td></tr>
+          <tr><td class="feat-name">Informe explicativo de batería</td><td class="plan-col no">—</td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td><td class="plan-col yes"><span class="material-symbols-outlined">check</span></td></tr>
+          <tr><td class="feat-name">Seguro integrado (gestión desde app)</td><td class="plan-col no">—</td><td class="plan-col no">add-on</td><td class="plan-col yes">add-on preferente</td></tr>
+
+          <tr class="cmp-cta-row">
+            <td></td>
+            <td class="plan-col" colspan="3" style="text-align:center;padding:1.5rem 0"><a href="proximamente.html" class="btn btn-cta" style="font-size:1.28rem;padding:0.85rem 2.1rem"><span>Selecciona tu plan</span></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cmp-scroll-hint">Desliza para ver los 3 planes →</div>
+    <!-- Tarjetas por plan (solo movil, generadas por JS desde la tabla) -->
+    <div class="cmp-cards" id="cmpCards" aria-hidden="true"></div>
+    <div class="cmp-legend">
+      <span><span class="material-symbols-outlined" style="font-size:0.9rem;color:var(--hl)">check</span> Incluido</span>
+      <span>— No incluido en ese plan</span>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- 4. TRANSPARENCIA: por qué hay coste de suscripción -->
+<section id="transparencia" class="sec-darker">
+  <div class="container" style="text-align:center">
+    <div class="sl">Honestidad de marca</div>
+    <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">POR QUÉ NO HAY UN PLAN GRATIS</h2>
+    <div class="tr-box">
+      <p>La mayoría de trackers GPS prometen "gratis" y luego cobran por todo lo que de verdad importa. Nosotros preferimos decirte la verdad desde el principio: <strong>no existe un plan 100% gratuito, porque la conectividad celular tiene un coste real que nadie puede eliminar del todo</strong>.</p>
+      <p>Cada vez que ARES envía la ubicación de tu perro, usa una conexión de datos, igual que un móvil diminuto. Ese dato cuesta dinero de verdad a la red que lo transporta. Cualquiera que te diga "gratis para siempre" o está mintiendo, o te va a cobrar esa diferencia de otra forma menos clara.</p>
+      <p>Por eso el <strong>Plan Esencial cuesta 6€/mes</strong>: es el precio más bajo posible que cubre ese coste real con margen suficiente para que el servicio no se caiga el día que menos lo esperas. Nada más. Nada escondido.</p>
+    </div>
+    <div class="tr-stat">
+      <div><div class="val">6€</div><div class="lab">Plan Esencial, cerrado. El suelo real de la conectividad.</div></div>
+      <div><div class="val">0€</div><div class="lab">de sorpresas. Lo que ves es lo que pagas.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ADD-ONS -->
+<section id="addons" class="sec-light light">
+  <div class="container">
+    <div class="sl" style="text-align:center">Extras opcionales</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">AÑADE SOLO LO QUE NECESITAS</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:600px;margin:0.5rem auto 0">Nada de esto es obligatorio. Actívalo cuando lo necesites, desactívalo cuando no.</div>
+
+    <div class="addon-list">
+      <details class="addon-item">
+        <summary><span>Travel / Roaming Pass</span><span class="addon-price">5,99€/mes UE &middot; 9,99€/mes Global</span><span class="material-symbols-outlined addon-chevron">expand_more</span></summary>
+        <div class="addon-body">
+          Habilita la conectividad de tu ARES fuera de su zona base (España/UE), sin obligarte a cambiar de plan. Ideal para viajes.
+          <ul>
+            <li><strong>UE/EEE Pass:</strong> 5,99€/mes o 2,99€/semana.</li>
+            <li><strong>Global Pass:</strong> 9,99€/mes o 4,99€/semana.</li>
+            <li>El precio cubre el coste real de la SIM fuera de zona base — si ese coste sube, ajustamos el add-on, nunca tu plan principal.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="addon-item">
+        <summary><span>Historial extendido</span><span class="addon-price">+2,99€/mes</span><span class="material-symbols-outlined addon-chevron">expand_more</span></summary>
+        <div class="addon-body">
+          Para usuarios del Plan Básico: amplía tu historial de rutas de 7 días hasta 365 días, el mismo nivel que incluye Premium por defecto.
+        </div>
+      </details>
+
+      <details class="addon-item">
+        <summary><span>Live Share Pro</span><span class="addon-price">+2,99€/mes</span><span class="material-symbols-outlined addon-chevron">expand_more</span></summary>
+        <div class="addon-body">
+          Búsqueda colaborativa avanzada: comparte la ubicación en vivo de tu perro con hasta 10 ayudantes simultáneos (2 incluidos ya en Básico), en modo invitado, sin necesidad de credenciales y con caducidad automática a las 12h. Incluido de serie en Premium.
+          <ul>
+            <li>El número de ayudantes no aumenta el consumo de batería del dispositivo.</li>
+            <li>Los ayudantes solo ven la ubicación en vivo — sin rutas pasadas, sin datos de salud.</li>
+            <li>Precio fijo mensual, no se cobra por evento de pérdida.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="addon-item">
+        <summary><span>Seguro para tu ARES</span><span class="addon-price">desde 19,99€ pago único</span><span class="material-symbols-outlined addon-chevron">expand_more</span></summary>
+        <div class="addon-body">
+          ¿Se te rompe el ARES y ya pasó la garantía? Con el Seguro ARES repones tu dispositivo pagando solo el 50% de su precio.
+          <ul>
+            <li><strong>Qué cubre:</strong> roturas y fallos del dispositivo (golpes, agua, uso diario) que no cubre la garantía legal.</li>
+            <li><strong>Cómo funciona:</strong> pagas el seguro una sola vez al comprar el ARES. Si se rompe, solo pagas el <strong>50% del precio del dispositivo nuevo</strong> para reponerlo.</li>
+            <li><strong>Dos opciones de duración:</strong>
+              <ul>
+                <li><strong>+2 años:</strong> 19,99€ → hasta 5 años de cobertura total (2 años de garantía legal + 2 de seguro, y si tu país da más garantía legal, el seguro arranca al terminar esa garantía).</li>
+                <li><strong>+3 años:</strong> 25€ → cobertura aún más larga (2 años de garantía legal + 3 de seguro).</li>
+              </ul>
+            </li>
+            <li><strong>Gestión:</strong> póliza, estado de la cobertura y recordatorios desde la app, sin papeles.</li>
+          </ul>
+          <em>Precios orientativos a validar — la cobertura exacta (qué se considera "rotura cubierta") se fija en el anexo de la póliza.</em>
+        </div>
+      </details>
+
+      <div class="addon-note" style="margin-top:1.2rem;padding:1rem 1.2rem;border:1px dashed rgba(242,100,25,0.35);border-radius:6px;background:rgba(242,100,25,0.05);font-size:0.82rem;color:var(--wtext2);line-height:1.7">
+        <strong style="color:var(--cta)">Tienda de bienestar · próximamente</strong> — una tienda dentro de ARES con productos de calidad para tu perro (pienso, suplementos, accesorios) recomendados según sus datos reales. Compras desde la web o la app, ARES hace de intermediario y el producto te llega directo del fabricante. Sin coste extra para ti.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. FAQ -->
+<section id="faq" class="sec-darker">
+  <div class="container">
+    <div class="sl" style="text-align:center">Preguntas frecuentes</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">DUDAS SOBRE EL PRECIO</h2>
+
+    <div class="faq-list">
+      <!-- PLACEHOLDER: contenido de FAQ pendiente de redacción final, respuestas genéricas provisionales -->
+      <details class="faq-item">
+        <summary><span>¿Puedo cambiar de plan más adelante?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
+        <div class="faq-body">Sí. Podrás subir o bajar de plan (Esencial, Básico, Premium) desde la app cuando quieras. El cambio se aplicará en el siguiente ciclo de facturación. <em>(Respuesta provisional, pendiente de confirmar condiciones exactas.)</em></div>
+      </details>
+      <details class="faq-item">
+        <summary><span>¿Hay permanencia mínima?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
+        <div class="faq-body">La suscripción se planea sin permanencia obligatoria, con posibilidad de cancelar mes a mes. <em>(Respuesta provisional, pendiente de confirmar condiciones exactas de facturación y SIM.)</em></div>
+      </details>
+      <details class="faq-item">
+        <summary><span>¿Qué pasa si no pago la suscripción?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
+        <div class="faq-body">El dispositivo seguirá encendido, pero sin conectividad activa no podrá enviar su ubicación ni datos a la app. Es probable que exista un aviso previo antes de suspender el servicio. <em>(Respuesta provisional, pendiente de definir el flujo exacto de impago.)</em></div>
+      </details>
+      <details class="faq-item">
+        <summary><span>¿Puedo cancelar en cualquier momento?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
+        <div class="faq-body">Sí, desde la app, sin necesidad de llamar a soporte. <em>(Respuesta provisional, pendiente de confirmar plazos de preaviso si los hubiera.)</em></div>
+      </details>
+      <details class="faq-item">
+        <summary><span>¿El Family Pack tiene descuento en la suscripción?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
+        <div class="faq-body">Por ahora, no: el descuento del Family Pack aplica solo al hardware (desde 199€ por 2 dispositivos, según la combinación). Cada dispositivo necesita su propia suscripción. <em>(Pendiente de decisión explícita sobre una posible tarifa familiar.)</em></div>
+      </details>
+    </div>
+    <div class="faq-provisional-note">Contenido de FAQ provisional — se ampliará y ajustará con preguntas reales de usuarios antes del lanzamiento.</div>
+  </div>
+</section>
+
+<!-- 7. CTA FINAL -->
+<section id="cta-final" class="sec-dark">
+  <div class="container" style="position:relative;z-index:1">
+    <h2 class="st">TU PERRO MERECE UN GUARDIÁN.</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;margin-top:0.75rem">El hardware aún no está a la venta. Cuéntanos qué necesitas y sé de los primeros en reservar.</div>
+    <a href="proximamente.html" class="btn btn-cta" style="margin-top:1.5rem"><span>Reserva tu ARES</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="pf-footer-wrap">
+    <div class="pf-footer-map">
+      <div class="pf-footer-track" aria-hidden="true">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+      </div>
+      <div class="pf-footer-gradient"></div>
+      <div class="pf-footer-text">
+        <div>ARES GPS &copy; 2026 — Precios</div>
+        <div class="pf-footer-sub">Hardware + suscripci&oacute;n &middot; Sin permanencia &middot; Hecho en Espa&ntilde;a</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================
+   BARRA DE PROGRESO DE SCROLL — mismo id/estilo que landing/index.html
+   ============================================ */
+(function(){
+  const bar = document.getElementById('progress-bar');
+  const nav = document.getElementById('mini-nav');
+  if(!bar) return;
+  function update(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled/max*100) : 0) + '%';
+    if(nav) nav.classList.toggle('scrolled', scrolled > 20);
+  }
+  document.addEventListener('scroll', update, { passive:true });
+  update();
+})();
+
+/* ============================================
+   INDICADOR DE SCROLL HORIZONTAL (#ticksWrapper) — mismo patron visual que
+   landing/index.html (80 rayitas verticales).
+   ============================================ */
+(function(){
+  const el = document.getElementById('ticksWrapper');
+  if(!el) return;
+  const inner = document.createElement('div');
+  inner.className = 'ti';
+  el.appendChild(inner);
+  for(let i=0;i<80;i++){
+    const t = document.createElement('div');
+    t.className = 'tick-h';
+    inner.appendChild(t);
+  }
+  const ticks = inner.querySelectorAll('.tick-h');
+  function updateTicks(){
+    const h = document.documentElement;
+    const scroll = h.scrollTop;
+    const limit = h.scrollHeight - h.clientHeight;
+    const active = limit > 0 ? Math.round(scroll/limit*80) : 0;
+    ticks.forEach((t,i)=> t.classList.toggle('active', i<active));
+  }
+  document.addEventListener('scroll', updateTicks, { passive:true });
+  updateTicks();
+})();
+
+/* ============================================
+   ANCLAS SUAVES — links internos (#hardware, #planes) con scroll nativo suave
+   ============================================ */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', function(e){
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+
+/* ============================================
+   CARRITO — botones "Añadir al carrito" del hardware
+   ============================================ */
+(function(){
+  const cartBtn   = document.getElementById('navCart');
+  const cartPanel = document.getElementById('cartPanel');
+  const cartClose = document.getElementById('cartClose');
+  const cartItems = document.getElementById('cartItems');
+  const cartEmpty = document.getElementById('cartEmpty');
+  const cartCount = document.getElementById('navCartCount');
+  const cartTotalWrap = document.getElementById('cartTotalWrap');
+  const cartTotal = document.getElementById('cartTotal');
+  const checkout  = document.getElementById('cartCheckout');
+  const addBtns   = document.querySelectorAll('.hw-add');
+  const KEY = 'ares_cart';
+  let items = [];
+  try { items = JSON.parse(localStorage.getItem(KEY)) || []; } catch(e){ items = []; }
+
+  function persist(){ try { localStorage.setItem(KEY, JSON.stringify(items)); } catch(e){} }
+  function fmt(n){ return n.toLocaleString('es-ES') + '€'; }
+  function render(){
+    cartCount.textContent = items.length || '';
+    cartItems.innerHTML = '';
+    items.forEach((it, i)=>{
+      const row = document.createElement('div');
+      row.className = 'cart-item';
+      row.innerHTML = '<span class="ci-name"></span><span class="ci-price"></span><button class="ci-remove" aria-label="Quitar">&times;</button>';
+      row.querySelector('.ci-name').textContent = it.name;
+      row.querySelector('.ci-price').textContent = fmt(it.price);
+      row.querySelector('.ci-remove').addEventListener('click', ()=>{
+        items.splice(i,1); persist(); render();
+      });
+      cartItems.appendChild(row);
+    });
+    cartEmpty.style.display = items.length ? 'none' : '';
+    cartTotalWrap.hidden = !items.length;
+    const total = items.reduce((s,it)=>s+it.price,0);
+    cartTotal.textContent = fmt(total);
+    cartCount.style.display = items.length ? '' : 'none';
+  }
+  addBtns.forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      items.push({ name: btn.dataset.hw, price: Number(btn.dataset.price) });
+      persist(); render();
+      cartPanel.hidden = false;
+      const t = btn.textContent;
+      btn.querySelector('span').textContent = 'Añadido ✓';
+      setTimeout(()=>{ if(btn.isConnected) btn.querySelector('span').textContent = t; }, 1200);
+    });
+  });
+  cartBtn.addEventListener('click', (e)=>{ e.stopPropagation(); cartPanel.hidden = !cartPanel.hidden; });
+  cartClose.addEventListener('click', (e)=>{ e.stopPropagation(); cartPanel.hidden = true; });
+  document.addEventListener('click', (e)=>{ if(!cartPanel.hidden && !cartPanel.contains(e.target)) cartPanel.hidden = true; });
+  checkout.addEventListener('click', (e)=>{ e.stopPropagation(); e.preventDefault(); cartPanel.hidden = true; document.getElementById('planes').scrollIntoView({behavior:'smooth', block:'start'}); });
+  render();
+})();
+</script>
+<script>
+/* Genera tarjetas por plan (movil) leyendo la tabla comparativa — sin duplicar contenido */
+(function(){
+  const table=document.getElementById('cmpTable');
+  const host=document.getElementById('cmpCards');
+  if(!table||!host)return;
+  const heads=[...table.querySelectorAll('thead th')].slice(1).map(th=>({name:th.textContent.trim(),pop:th.classList.contains('pop')}));
+  const rows=[...table.querySelectorAll('tbody tr')];
+  // estructura: por cada plan, lista de {grupo, features:[{name,value}]}
+  const plans=heads.map(()=>({groups:[]}));
+  let curGroup=null, price=[{},{},{}];
+  rows.forEach(tr=>{
+    if(tr.classList.contains('grp-row')){
+      curGroup=tr.textContent.trim();
+      plans.forEach(p=>p.groups.push({name:curGroup,feats:[]}));
+      return;
+    }
+    const feat=tr.querySelector('.feat-name');
+    if(!feat)return;
+    const name=feat.textContent.trim();
+    const cells=[...tr.querySelectorAll('.plan-col')];
+    if(cells.length<heads.length)return;
+    if(name.toLowerCase()==='precio'){
+      cells.forEach((c,i)=>{
+        const pn=c.querySelector('.price-num');
+        const pm=c.querySelector('.price-mes');
+        const pp=c.querySelector('.price-period');
+        price[i]={num:pn?pn.textContent.trim():'', mes:pm?pm.textContent.trim():'', year:pp?pp.textContent.trim():''};
+      });
+      return;
+    }
+    cells.forEach((c,i)=>{
+      const g=plans[i].groups[plans[i].groups.length-1]; if(!g)return;
+      const yes=c.classList.contains('yes');
+      const hasCheck=!!c.querySelector('.material-symbols-outlined');
+      const txt=c.textContent.trim().replace('check','');
+      g.feats.push({name, yes, val: yes&&!hasCheck? txt : '', included: yes});
+    });
+  });
+  // set de features incluidas por plan (clave = nombre), para detectar lo NUEVO respecto al plan anterior
+  const inclSet=plans.map(p=>{
+    const s=new Set();
+    p.groups.forEach(g=>g.feats.forEach(f=>{if(f.included)s.add(f.name);}));
+    return s;
+  });
+  // construir HTML: plan 0 = todo; planes siguientes = "Todo lo de X, y además:" + solo lo nuevo
+  const html=heads.map((h,i)=>{
+    const p=plans[i];
+    let body=`<div class="cmp-card${h.pop?' pop':''}"><div class="cmp-card-plan">${h.name}</div>`;
+    if(price[i]&&price[i].num)body+=`<div class="cmp-card-price"><span class="cmp-card-price-val">${price[i].num}</span><span class="cmp-card-price-mes">${price[i].mes}</span><span class="cmp-card-price-year">${price[i].year}</span></div>`;
+    const prevSet=i>0?inclSet[i-1]:null;
+    if(prevSet)body+=`<div class="cmp-card-inherit"><span class="material-symbols-outlined">done_all</span>Todo lo de ${heads[i-1].name}, y además:</div>`;
+    p.groups.forEach(g=>{
+      // incluidas en este plan Y (si hay plan anterior) que NO estuvieran ya en el anterior
+      const incl=g.feats.filter(f=>f.included && (!prevSet || !prevSet.has(f.name)));
+      if(!incl.length)return;
+      body+=`<div class="cmp-card-grp">${g.name}</div>`;
+      incl.forEach(f=>{
+        const v=f.val?`<span class="fv">${f.val}</span>`:'';
+        body+=`<div class="cmp-card-feat"><span class="material-symbols-outlined">check</span><span>${f.name}</span>${v}</div>`;
+      });
+    });
+    body+='</div>';
+    return body;
+  }).join('');
+  host.innerHTML=html+'<div class="cmp-card-cta"><a href="proximamente.html" class="btn btn-cta"><span>Selecciona tu plan</span></a></div>';
+})();
+</script>
+<script src="assets/js/mobile-menu.js"></script>
+<script src="assets/js/typewriter.js"></script>
+</body>
+</html>

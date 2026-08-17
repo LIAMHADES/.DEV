@@ -1,0 +1,63 @@
+# ✅ **PIEZAS FINALES HARDWARE ARES v3.6 (Build Definitivo)**
+
+**Este documento consolida la lista de componentes finales para la arquitectura modular v3.6, priorizando las decisiones de `Hardwear.txt`.**
+
+***
+
+## **CORE: Módulo de Chip Unificado**
+
+| **Componente** | **Modelo Exacto** | **Función Crítica** | **Estado** |
+|----------------|------------------|-------------------|------------|
+| **Placa Principal**| **LilyGo T-SIM7000G S3**| CPU, GPS, LTE-M, WiFi, BLE | ✅ **APROBADO** |
+| **IMU Sensor** | **Bosch BMI270** | Antifraude, Detección Movimiento | ✅ **APROBADO** |
+| **Antena GPS/LTE**| **Ignion A101 + LNA**| Precisión <1m, Omnidireccional | ✅ **APROBADO** |
+| **SIM Datos** | **eSIM 1NCE soldada**| Conectividad Global IoT | ✅ **APROBADO** |
+| **LED Indicador**| **WS2812B** | Feedback de 4 estados | ✅ **APROBADO** |
+
+***
+
+## **POWER: Módulo de Batería Intercambiable**
+
+| **Componente** | **Modelo Exacto** | **Función Crítica** | **Estado** |
+|----------------|-----------------|-------------------|------------|
+| **Cargador IC** | **BQ24040 TI** | Carga segura, 32°C seguridad | ✅ **APROBADO** |
+| **Conector USB**| **Molex USB-C IP68**| Carga sumergible | ✅ **APROBADO** |
+| **Baterías LiPo** | **Packs Modulares** | 850 / 1200 / 2800 mAh | ✅ **APROBADO** |
+| **Conector Módulo**| **Pogo Pins Oro 1.5N**| Conexión hermética | ✅ **APROBADO** |
+
+***
+
+## **💰 COSTO TOTAL PROTOTIPO (PCBA): ~35-45€ / unidad**
+
+```
+MÓDULO CHIP (~30€):
+• LilyGo T-SIM7000G S3: 28€
+• Bosch BMI270: 3.2€
+• Ignion A101 + LNA: 3.2€
+• eSIM 1NCE soldada: 3€
+• WS2812B Tractive: 1.5€
+• PCB 4 capas: 2€
+
+MÓDULO BATERÍA (~13€):
+• BQ24040 TI: 4€
+• USB-C Molex IP68: 4.2€
+• Pogo Pins oro 1.5N: 1.5€
+• PCB + Rail: 3€
+```
+
+***
+
+## **📋 ESTADO DECISIÓN: 100% DEFINIDO (v3.6)**
+
+```
+✅ GPS+MCU+LTE: LilyGo T-SIM7000G S3
+✅ IMU: Bosch BMI270
+✅ Antena: Ignion A101 + LNA
+✅ Cargador: BQ24040 TI
+✅ SIM: eSIM 1NCE
+✅ Batería: Packs Modulares (NANO, STANDARD, MAX)
+
+❌ DESCARTADAS:
+× Quectel BG96, MPU6050, TP4056, Antenas Taoglas.
+```
+**Estado**: **HARDWARE 100% DEFINIDO Y LISTO PARA PRODUCCIÓN PCBA.**

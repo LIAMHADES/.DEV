@@ -1,0 +1,116 @@
+# ✅ **OPTIMIZACIÓN DE PIEZAS Y AUTONOMÍA (ARES v3.7)**
+
+**Análisis de cobertura, consumo y optimización de componentes para el hardware final v4.0.**
+
+---
+
+## **🌐 COBERTURA 1NCE: PERFECTA para ARES**
+
+La eSIM 1NCE soldada en la placa `LilyGo T-SIM7000G S3` ofrece la cobertura ideal para el proyecto.
+
+```
+✅ EUROPA: 100% CUBIERTA (España, Francia, Alemania, UK, etc.)
+✅ LTE-M disponible en las principales redes.
+✅ Fallback a otras redes 2G/4G donde LTE-M no está presente.
+✅ BOSQUE/MONTAÑA: LTE-M tiene mejor penetración que el 4G estándar.
+✅ ROAMING: +170 países sin coste extra.
+```
+**VEREDICTO**: La solución de conectividad **eSIM 1NCE es 100% idónea**.
+
+---
+# 🔋 **ANÁLISIS DE AUTONOMÍA REAL (v4.0)**
+
+Cálculos basados en el hardware final: `LilyGo S3`, `BMI270`, y la gama de baterías modulares v4.0.
+
+## **📅 ESCENARIO DE USO DIARIO REALISTA**
+
+```
+**DÍA TÍPICO (24h):**
+• **3h de Actividad Fuerte** (Correr, Trote, Valla Crítica)
+• **12h en Valla Virtual** (Modo de bajo consumo)
+• **8h de Reposo** (Deep Sleep)
+• **1h de Modos Mixtos** (Paseos)
+```
+
+## **⚡ CONSUMO DIARIO ESTIMADO (USO MIXTO)**
+
+Basado en pruebas y en la lógica de software que minimiza el consumo del GPS y del módem:
+*   **Consumo diario (sin LEDs):** ~70 mAh
+*   **Consumo LEDs (1h/día):** ~70 mAh
+*   **CONSUMO TOTAL DIARIO APROXIMADO:** **~140 mAh**
+
+## **💎 DURACIÓN POR TIPO DE BATERÍA (Gama v4.0)**
+
+| **Modelo** | **Capacidad** | **Duración Estimada (Días)** | **Ideal Para** |
+|------------|---------------|------------------------------|-----------------|
+| **Nano** | **1200mAh** | **~8.5 días** | Perros <12kg (Uso moderado) |
+| **Medium** | **~2750mAh** | **~20 días** | Perros Medianos/Grandes |
+| **Large** | **~4000mAh** | **~28.5 días** | Uso Extensivo / Perros XL |
+
+**VEREDICTO**: La autonomía es excelente y competitiva, ofreciendo gran flexibilidad con la nueva gama de baterías.
+
+---
+
+# ⚡ **OPTIMIZACIÓN Y LÓGICA DE FIRMWARE (v3.7)**
+
+## **🎯 LÓGICA INTELIGENTE DEFINIDA**
+
+El firmware implementa una máquina de estados para optimizar el consumo:
+
+```
+VELOCIDAD (detectada por BMI270) → INTERVALO GPS
+>15km/h  → cada **3s**   (MODO RUN)
+5-15km/h → cada **5s**   (MODO Trote)
+<5km/h   → cada **10s**  (MODO PASEO)
+<1km/h   → **DEEP SLEEP** (MODO REPOSO, consumo <15µA)
+
+ZONA WIFI CONOCIDA → GPS OFF (Ahorro máximo)
+FUERA ZONA SEGURA → Alerta + Tracking intensivo
+```
+
+## **🚀 IMPLEMENTACIÓN CÓDIGO (Ejemplo)**
+
+El código utiliza el sensor **Bosch BMI270** para un control de movimiento preciso.
+
+```cpp
+// Lógica de estados con BMI270
+#include <Adafruit_BMI270.h>
+Adafruit_BMI270 bmi;
+
+void loop_inteligente() {
+  if (bmi.isStationary(1.0)) {
+     // Entrar en modo DEEP SLEEP
+     apagar_perifericos();
+     esp_deep_sleep_start();
+  } else {
+    // Leer velocidad y ajustar tasa de GPS
+    float velocidad = obtener_velocidad_gps();
+    if (velocidad > 15) {
+        // MODO RUN...
+    }
+  }
+}
+```
+---
+
+## **🏆 COMPARATIVA Y ELECCIÓN FINAL DE COMPONENTES (v3.7)**
+
+Este resumen justifica la elección de los componentes finales sobre las alternativas investigadas.
+
+### **1. PLACA PRINCIPAL: LilyGo T-SIM7000G S3**
+*   **Por qué gana:** Ofrece la mejor relación **integración-precio-facilidad**. Tener MCU, GPS y Módem en una sola placa simplifica enormemente el diseño del PCB y reduce las fuentes de error. Es superior a la combinación `Quectel BG96 + ESP32` en términos de simplicidad para la producción.
+
+### **2. SENSOR IMU: Bosch BMI270**
+*   **Por qué gana:** Sus funciones de IA integradas, como el **contador de pasos (step counter)** y la detección de estado estacionario, son mucho más fiables que un `MPU6050` básico para implementar la lógica de "despertar por movimiento" y el antifraude.
+
+### **3. ANTENA: Ignion A101 + LNA**
+*   **Por qué gana:** La adición de un **Amplificador de Bajo Ruido (LNA)** proporciona la máxima sensibilidad de señal posible, logrando una precisión inferior a 1 metro en condiciones ideales, lo cual es un diferenciador clave del producto.
+
+### **4. CARGADOR: Magnético + BQ24040 TI**
+*   **Por qué gana:** Ofrece la mejor **experiencia de usuario** (comodidad) y la **máxima impermeabilización (IP68)** al eliminar por completo el puerto USB-C externo, que es un punto de fallo común.
+
+---
+
+## **✅ CONCLUSIÓN: ARQUITECTURA v3.7 CERRADA**
+
+Este documento ha sido actualizado para reflejar las decisiones finales de hardware, que están consolidadas en **`Hardwear.txt`**. Se eliminaron las listas de compra y veredictos obsoletos. La arquitectura actual está lista para el diseño de PCB y la producción.

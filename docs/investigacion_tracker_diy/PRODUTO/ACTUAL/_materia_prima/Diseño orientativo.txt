@@ -1,0 +1,92 @@
+# 📐 **ARES v4.0: ARQUITECTURA (Medium & Large)**
+
+**Documento de Producto v4.0 - Enero 2026**  
+**Arquitectura unificada para modelos Medium/Large: 1 Módulo Chip + 2 Módulos de Batería intercambiables.**
+
+***
+
+## **🎯 ALCANCE v4.0: ENFOQUE EN MEDIUM Y LARGE**
+*   Esta especificación se centra en los modelos **Medium (~2750 mAh)** y **Large (~4000 mAh)**.
+*   El modelo **Small/Nano queda postpuesto** para una futura fase, con un diseño simplificado.
+
+---
+
+## **🧠 MÓDULO CHIP ARES v4.0 (ÚNICO PARA TODOS)**
+
+Este es el cerebro del dispositivo, unificado para garantizar la máxima calidad y rendimiento.
+
+```
+**MÓDULO CHIP 37x28mm | IP68**
+┌──────────────────────────┐
+│ LilyGo T-SIM7000G S3     │ ← **GNSS+LTE Cat-M1 mundial**
+│ Bosch BMI270             │ ← **Antifraude 99.5%**
+│ Ignion A101 + LNA        │ ← **Precisión <1m**
+│ eSIM 1NCE soldada        │ ← **99.9% uptime**
+│ 12x LEDs SMD 1206        │ ← **Sistema de Luces v4**
+└──────────RAIL POGO───────┘
+```
+*   **Calidad Consistente:** Los modelos Medium y Large comparten el mismo chip, garantizando idéntico rendimiento.
+
+---
+
+## **🔋 GAMA DE MÓDULOS DE BATERÍA ("POWER PACKS")**
+
+La diferenciación entre modelos se basa en el "Power Pack". Ambos usan una carcasa con la misma huella interna de **36x58mm**, variando solo en el grosor.
+
+| **Modelo** | **Capacidad** | **Peso Total*** | **Uso Ideal** |
+|------------|---------------|-----------------|-------------------|
+| **Medium** | **~2750mAh** | **~64g** | Perros Medianos/Grandes |
+| **Large** | **~4000mAh** | **~67g** | Uso Extensivo / Perros XL |
+
+*\*Peso total estimado = Módulo Chip (~44g) + Módulo Batería + Batería.*
+
+```
+**MÓDULO BATERÍA CON CARGA MAGNÉTICA:**
+┌──────────────────────────┐
+│ BQ24040 TI (Carga Segura)│ ← **45°C seguridad térmica**
+│ Conector Magnético IP68  │ ← **Carga externa sin puertos**
+│ LiPo (2750 o 4000mAh)    │
+└──────────RAIL POGO───────┘
+```
+*   **LED de Carga:** El estado es comunicado al Módulo Chip y mostrado en los LEDs principales.
+
+---
+
+## **✅ CALIDAD UNIFICADA EN TODA LA GAMA**
+
+| **Especificación** | **ARES Medium** | **ARES Large** |
+|--------------------|-----------------|----------------|
+| **Precisión GPS** | **<1m** | **<1m** |
+| **Antifraude** | **BMI270 99.5%** | **BMI270 99.5%**|
+| **Seguridad Carga**| **BQ24040 TI** | **BQ24040 TI** |
+| **Carga** | **Magnética** | **Magnética** |
+| **Resistencia** | IP68 / IK10 | IP68 / IK10 |
+
+**La única diferencia es la autonomía y el grosor, que dependen del "Power Pack" elegido.**
+
+---
+
+## **💰 ESTRATEGIA DE PRECIOS MODULAR (v4.0)**
+
+Los precios se basan en el coste final del hardware.
+
+```
+**ARES Medium (Chip + Batería ~2750mAh):** ~64€
+**ARES Large (Chip + Batería ~4000mAh):** ~67€
+
+**VENTAJA COMPETITIVA:** Arquitectura premium, carga magnética y baterías de alta capacidad a un precio de coste muy competitivo.
+```
+
+---
+
+## **🎯 VEREDICTO FINAL: ARQUITECTURA v4.0**
+
+```
+✅ **ARQUITECTURA MODULAR VALIDADA:**
+1. **UN Módulo Chip** para consistencia de calidad.
+2. **DOS Módulos de Batería** para el lanzamiento (Medium, Large).
+3. **UNA Carga Magnética** para máxima comodidad e impermeabilización.
+4. **UN Sistema de Luces v4** robusto y sin sensores.
+
+**El documento ha sido actualizado para reflejar la arquitectura final v4.0, eliminando las inconsistencias con la especificación de `Hardwear.txt`.**
+```

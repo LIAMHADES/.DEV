@@ -1,0 +1,67 @@
+# ARES GPS: Resumen de Arquitectura Técnica (V2 - Post-Pivotaje)
+
+Este documento resume la arquitectura actual y las tecnologías aprobadas para el proyecto ARES GPS, reemplazando las ideas iniciales basadas en el hardware GF-07 y la comunicación por SMS.
+
+---
+
+### **1. Arquitectura General: IoT "Direct-to-Cloud"**
+
+El sistema ARES ha pivotado hacia una arquitectura profesional donde el dispositivo de rastreo es un cliente IoT inteligente que se comunica directamente con el backend en la nube.
+
+- **Flujo de Datos:** `[Dispositivo ARES] --(Datos LTE-M)--> [API ARES en la Nube]`
+- **Ventajas:**
+    - **Tiempo Real:** Latencia inferior a 200ms.
+    - **Datos Ricos:** Envío de datos estructurados en formato JSON (precisión, batería, sensores).
+    - **Fiabilidad:** Se elimina la dependencia de un móvil intermediario.
+    - **Coste Predecible:** Se utiliza una SIM de datos IoT con un pago único para 10 años (1NCE).
+
+---
+
+### **2. Hardware del Dispositivo ARES (Prototipo V1)**
+
+El hardware se basa en componentes de alta calidad, asequibles y fáciles de prototipar.
+
+- **Módulo Principal (GPS + Celular):** **Quectel BG96**.
+  - **Tecnología:** GNSS (GPS, GLONASS, BeiDou) y LTE-M/NB-IoT.
+  - **Precisión:** Error de localización ≤ 2 metros.
+- **Microcontrolador (Cerebro):** **ESP32-S3**.
+  - **Funciones:** Ejecuta el firmware, gestiona los sensores, la energía y la comunicación. Proporciona conectividad de respaldo por Wi-Fi y Bluetooth LE.
+- **Sensor de Movimiento (IMU):** **MPU6050** (6 ejes).
+  - **Función Crítica:** Detección de actividad (reposo, paseo, carrera) para implementar una gestión de energía inteligente (despertar el GPS solo cuando es necesario) y para el cálculo preciso de calorías.
+- **Conectividad IoT:** **SIM de 1NCE**.
+  - **Modelo:** Pago único de 10€ por 500MB de datos y 10 años de servicio.
+- **Antena GPS (Producto Final):** **Antena de chip cerámico Ignion**.
+  - **Ventaja:** Es omnidireccional (resuelve el problema de orientación del collar) y robusta al estar soldada a la placa. Para el prototipo se usa una antena flexible Taoglas por simplicidad.
+- **Batería:** **LiPo de 2000mAh**.
+  - **Autonomía (Estimada con optimización):** Más de 22 horas en modo de caza (tracking intensivo) y varios días/semanas en uso normal gracias a la gestión de energía inteligente.
+
+---
+
+### **3. Backend (API ARES)**
+
+La API está diseñada para recibir y procesar los datos del dispositivo.
+
+- **Endpoint Principal:** Se implementará un nuevo endpoint, por ejemplo, `/api/v1/ingest`, que aceptará peticiones `HTTP POST` con un payload JSON.
+- **Payload de Datos (Ejemplo):**
+  ```json
+  {
+    "device_id": "imei_del_dispositivo",
+    "timestamp": 1736528400,
+    "gps": { "lat": 40.123, "lon": -3.456, "accuracy": 1.8, "satellites": 9 },
+    "telemetry": { "battery_mv": 4100, "activity_score": 250 },
+    "status": "MOVING"
+  }
+  ```
+- **Lógica Obsoleta:** El endpoint `/sms` y toda la lógica de procesamiento de mensajes de texto quedan obsoletos.
+
+---
+
+### **4. Funcionalidades Clave de la App**
+
+La aplicación de usuario (frontend) consumirá los datos procesados por el backend para ofrecer las siguientes funcionalidades sobre una base de datos fiable y precisa:
+
+- **Perfil Canino Completo:** Para personalizar la experiencia.
+- **Geovallas (Límites Virtuales):** Con alertas en tiempo real gracias a la alta precisión del GPS.
+- **Monitor de Actividad Real:** Utiliza los datos del IMU y del GPS para un cálculo preciso de calorías y niveles de actividad.
+- **Historial de Rutas Detallado.**
+- **Planes de Ejercicio y Nutrición:** Basados en datos reales y precisos.

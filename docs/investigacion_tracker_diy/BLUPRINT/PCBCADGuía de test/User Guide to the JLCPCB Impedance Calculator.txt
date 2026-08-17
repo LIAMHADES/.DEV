@@ -1,0 +1,109 @@
+User Guide to the JLCPCB Impedance Calculator
+ Last updated on Jul 31, 2025
+
+Table of Contents
+User Interface
+Notes
+Calculation Parameters Used
+Stack-Up Naming Scheme
+The JLCPCB Impedance Calculator computes track width values and recommended stack-ups from user-input values of board thickness, copper weight, layer, target impedance, conductor spacing (for edge-coupled pairs), and conductor-to-ground gap (coplanar waveguides).
+
+link:https://jlcpcb.com/pcb-impedance-calculator
+
+
+link importante How to generate Gerber and Drill files in KiCAD 8:https://jlcpcb.com/help/article/how-to-generate-gerber-and-drill-files-in-kicad-8
+
+User Interface
+
+
+
+
+1. Layers: Total number of copper layers in the board.
+
+2. Finished Thickness: Thickness of the finished PCB, including soldermask.
+
+3. Internal Copper Thickness: Copper weight for internal layers. The calculator only supports 0.5 oz and 1 oz; for calculations with 2 oz internal copper please contact customer support.
+
+4. External Copper Thickness: Copper weight for the top and bottom layers. Although JLCPCB can produce boards with 2 oz external copper, the calculator only supports 1 oz because (1) the wider tolerance of 2 oz traces hinders impedance control, and (2) most signal traces only carries small currents.
+
+5. Unit: Options are mm, mil, μm, and inch.
+
+6. Impedance (Ω): The desired impedance. The range of accepted values is 20 to 90 Ω for single-ended and 50 to 150 Ω for differential signals.
+
+7. Type: Options are microstrip (single-ended), coplanar (single-ended), edge-coupled (differential), and dual coplanar (differential). Make sure the correct Layer is selected before changing this option.
+
+8. Layer: Which layer the signal should be on.
+
+9. Reference Layer Above: Only needed if the signal is on an internal layer.
+
+10. Reference Layer Below: Does not need to be one layer below the signal; for example for a signal on L3, this option can be L4 or L5. However there must be a ground plane associated with the signal on the reference layer selected.
+
+11. Conductor Spacing: The gap between the two conductors in a differential trace. Increasing conductor spacing increases the calculated trace width.
+
+12. Conductor-to-Ground Gap: The gap between the signal conductor and the surrounding ground in a coplanar waveguide configuration.
+
+
+
+Notes
+
+
+· The first stack-up recommended by the calculator usually has the lowest cost and quickest turn-around.
+
+· The 3313 prepreg replaces the previously available 2313. Their thickness and dielectric constant (εr) are the same.
+
+· For the same nominal copper weight, internal layers have a slightly smaller thickness than external layers due to a small amount of copper being lost in production during deoxidation etc. For example, 0.5 oz copper on internal layers is 15.2 μm thick 4- to 8-layinstead of the nominal 17.5 μm.
+
+· Results for 4- to 8-layer boards are calculated assuming Nan Ya Plastics NP-155F core material, and SYTECH S1000-2M for 10-layer boards and higher. The correct material should be selected when ordering so that the calculated parameters give accurate impedances.
+
+
+
+Calculation Parameters Used
+
+
+External copper thickness (1 oz)	1.6 mil
+Internal copper thickness (0.5 oz)	0.6 mil
+Internal copper thickness (1 oz)	1.2 mil
+Base soldermask thickness	1.2 mil
+Copper-surface soldermask thickness	0.6 mil
+Soldermask thickness in between traces	1.2 mil
+Soldermask dielectric constant (εr)	3.8
+Trace top width	Trace base width – 0.7 mil
+
+
+
+Nan Ya Plastics NP-155F (4 to 8 layers)
+
+Core Thickness	εr	Prepreg Type	Resin Content	Nominal Thickness	εr
+0.08 mm	3.99	7628	49%	8.6 mil	4.4
+0.10 mm	4.36	3313 (2313)	57%	4.2 mil	4.1
+0.13 mm	4.17	1080	67%	3.3 mil	3.91
+0.15 mm	4.36	2116	54%	4.9 mil	4.16
+0.20 mm	4.36				
+0.25 mm	4.23				
+0.30 mm	4.41				
+0.35 mm	4.36				
+0.40 mm	4.36				
+0.45 mm	4.36				
+0.50 mm	4.48				
+0.55 mm	4.41				
+0.60 mm	4.36				
+0.65 mm	4.36				
+0.70 mm	4.53				
+> 0.70 mm	4.43				
+
+
+
+SYTECH (Shengyi) S1000-2M (10+ layers)
+
+Core Thickness	εr	Prepreg Type	Resin Content	Nominal Thickness	εr
+0.075 mm	4.14	106	72%	1.97 mil	3.92
+0.10 mm	4.11	1080	69%	3.31 mil	3.99
+0.13 mm	4.03	2313	58%	4.09 mil	4.31
+0.15 mm	4.35	2116	57%	5.00 mil	4.29
+0.20 mm	4.42				
+0.25 mm	4.29				
+0.30 mm	4.56				
+
+
+
+The values provided above are for reference only. Some of the values have been calculated from test results by JLCPCB and may be adjusted in the future.

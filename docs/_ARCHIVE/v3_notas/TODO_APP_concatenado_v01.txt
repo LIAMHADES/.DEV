@@ -1,0 +1,2670 @@
+# H) Find Nearby (BLE) — Especificación cerrada (v1)
+
+## Objetivo
+Permitir encontrar el dispositivo/perro a corta distancia (casa, parque, ciudad cuando ya estás cerca) usando Bluetooth Low Energy (BLE) con un flujo rápido, honesto y con consumo controlado. **No es direccional** (sin flechas), es **hot/cold RSSI**.
+
+---
+
+## Decisiones v1 (congeladas)
+- **Experiencia**: Hot/Cold RSSI (sin guía direccional).
+- **Coded PHY (BLE Long Range)**: **Solo en “Find Activo”**.
+- **BLE Standby**: **Por ventanas (modo B)** para compatibilidad con reposo/ahorro.
+- **Latencia objetivo** (detección al abrir Find Nearby): **≤ 5 s**.
+- **LED Find**: patrón distinto a LOST_MODE y **limitado por batería (Plan 2)**.
+- **PING**: incluye **micro-destello**.
+- **Emparejamiento/transferencia**: sin botón físico; **dock magnético (carga) como método principal**, y **patrón de luces como fallback**.
+- **Caducidad de invitación temporal**: por defecto **24h**, pero **el Owner decide** (puede ajustar por invitación).
+
+---
+
+## UX (App)
+### Pantalla “Find Nearby”
+1) **Estado de enlace**: Conectando / Conectado / Señal débil.
+2) **Radar hot/cold**:
+   - Frío (lejos), Tibio (cerca), Caliente (muy cerca).
+   - Mostrar tendencia (↑ / ↓) basada en filtro (mediana/EMA) para evitar saltos.
+3) **Botón “Hacer parpadear”** (LED Find) con temporizador y aviso de batería.
+4) **Botón “Ping”** (confirmación + micro-destello).
+5) **Batería del tracker** (lectura rápida).
+6) Mensaje honesto: “La señal es aproximada. En interior puede rebotar; muévete y observa la tendencia”.
+
+### Comportamiento recomendado al usuario
+- Si no sube la señal: caminar en arco/círculo (reduces rebotes y orientaciones malas).
+- En interior: acercarse a zonas altas/ventanas, reducir interferencias.
+
+---
+
+## BLE: Modos y consumo (diseño)
+### 1) BLE Standby (ventanas) — siempre disponible sin “radio constante”
+**Propósito**: que el móvil detecte el tracker en ≤5 s aunque esté en reposo.
+
+**Estrategia**:
+- En reposo, el dispositivo hace micro-wake para anunciar BLE y vuelve a dormir.
+- Parámetros iniciales para cumplir 5 s:
+  - Periodo de ventana: **cada 4 s**
+  - Duración de ventana: **500 ms** de advertising
+  - Advertising connectable
+  - Potencia TX: baja/media (ajustable tras medición)
+
+**Nota**: parámetros ajustables tras test de consumo/latencia.
+
+### 2) Find Activo (solo cuando el usuario abre Find Nearby)
+**Propósito**: actualización rápida y estable de RSSI.
+
+- Se activa al entrar en pantalla Find Nearby.
+- Activa **Coded PHY** si el móvil lo soporta.
+- Connection interval inicial: **250 ms** (ajustable si se requiere más fluidez).
+- Timeout de sesión: configurable (recomendado 5 min máx por sesión).
+
+---
+
+## Comandos BLE (v1)
+### Permitidos (solo “encontrar”)
+- **RSSI hot/cold**: lectura RSSI y cálculo de estado Frío/Tibio/Caliente.
+- **LED_FIND_START / LED_FIND_STOP**: patrón de búsqueda.
+- **PING**: ACK + micro-destello.
+- **READ_BATTERY**: batería % (y opcional temperatura si está disponible).
+
+### Prohibidos por BLE (v1)
+- Cambiar modos GNSS, activar LOST_MODE, OTA, cambios persistentes críticos.
+
+---
+
+## Permisos (roles)
+### Owner
+- Control total del perro/dispositivo.
+- Admin: invitar/revocar usuarios, ajustar duración de invitaciones temporales, transferencias.
+
+### Family
+- **Control completo del dispositivo y funciones del perro** (igual que Owner en “funcionalidad”), excepto:
+  - No puede expulsar al Owner.
+  - No puede transferir propiedad.
+  - No puede cambiar configuración de cuenta/billing.
+  - Social: restringido si aplica (no moderación/administración).
+
+### Temporal (invitación con caducidad)
+- Acceso a:
+  - Funciones de “encontrar”: Find Nearby, LED Find, Ping.
+  - Funciones del perro: salud, paseos, rutinas (según app).
+- Sin acceso a:
+  - Social.
+  - Administración de cuenta.
+  - Transferencias / revocaciones.
+
+### Caducidad
+- Default: **24h**.
+- El Owner elige duración por invitación (presets sugeridos: 2h / 24h / 7d).
+
+---
+
+## Anti-abuso y seguridad
+### Reglas mínimas
+- Requiere sesión válida + permisos del rol.
+- BLE con enlace cifrado (bonding/whitelist).
+- Comandos “encontrar” solo cuando el móvil está realmente cerca:
+  - RSSI alto sostenido (ej. N lecturas consecutivas por encima de umbral).
+
+### Rate limits (default v1 — “Balanceado”)
+- **Ping**: hasta **6/min**.
+- **LED Find**: 60 s por activación, cooldown 20 s.
+- Sesión Find: 5 min máx (extensible 1 vez por el usuario si batería lo permite).
+
+### Privacidad
+- Evitar identificadores BLE estáticos rastreables (usar direcciones aleatorias/resolubles).
+
+---
+
+## LED Find: política por batería (Plan 2)
+- **>20%**: LED Find normal.
+- **10–20%**: brillo reducido + activación limitada.
+- **<10%**: bloquear LED Find; permitir solo Ping micro-flash y lectura.
+
+### PING (micro-destello)
+- Duración recomendada: 100–300 ms.
+- No entra en “modo Find”; es solo confirmación rápida.
+
+---
+
+## Emparejamiento / Vinculación / Transferencia
+### Principio
+Si el dispositivo ya está vinculado a una cuenta/perro, un tercero con la app **no puede controlarlo** sin credenciales y autorización.
+
+### Método principal (sin botón): “Dock magnético”
+- Para permitir **nuevo bonding/transferencia**, el dispositivo exige estado “cargando” (detecta carga).
+- El Owner inicia proceso en app → backend emite token de 1 uso (expira) → app lo entrega por BLE → el tracker valida token y completa bonding.
+
+### Fallback: “Patrón de luces”
+- El tracker muestra un patrón/código por LED.
+- El Owner lo confirma en app dentro de una ventana corta.
+
+---
+
+## QA / Tests mínimos (para cerrar números reales)
+1) **Latencia de detección** en interior/exterior con Standby por ventanas (periodos 3–4–6–8 s).
+2) **Consumo promedio**: Standby ventanas vs Find Activo (con y sin Coded PHY).
+3) **RSSI estabilidad**: porcentaje de “falsas subidas/bajadas” en interior.
+4) **Batería/LED**: impacto de 1 min LED Find y límites por batería.
+5) **Abuso**: rate limit, intentos sin permisos, intentos con RSSI bajo.
+
+---
+
+## Decision Log
+- **DL-001**: Find Nearby v1 será hot/cold RSSI (sin flecha).
+- **DL-002**: Coded PHY solo en Find Activo.
+- **DL-003**: BLE Standby por ventanas con objetivo ≤5 s.
+- **DL-004**: Family con control completo funcional (sin administración/propiedad).
+- **DL-005**: Temporal con acceso completo a funciones del perro + “encontrar”, sin social/cuenta.
+- **DL-006**: Pairing sin botón físico: cargando como prueba principal + patrón LED como fallback.
+- **DL-007**: LED Find por batería Plan 2 + Ping con micro-destello.
+
+---
+
+## Risk Register
+- **RR-001 (Consumo BLE real)**: Ventanas demasiado frecuentes suben consumo.
+  - Mitigación: medir mA promedio y ajustar periodo/duración.
+- **RR-002 (RSSI interior inestable)**: UX frustrante.
+  - Mitigación: filtro mediana/EMA, tendencia, copy honesto.
+- **RR-003 (Secuestro de pairing)**: acceso no autorizado.
+  - Mitigación: token 1 uso + prueba física (carga/patrón LED) + RSSI alto sostenido.
+
+# J) Salud / Nutrición / Perfil perro — Especificación (v1)
+
+## Objetivo
+Un módulo de salud y nutrición **fiable, honesto y accionable** que:
+- Convierta actividad + perfil del perro en **objetivos diarios/mensuales**.
+- Entregue **recomendaciones de comida en gramos** (y opcionalmente “tazas/puñados/cucharas” como traducción).
+- Permita Q&A tipo “¿puede comer X?” con foco en **seguridad**.
+- No haga promesas médicas: **orienta y advierte**, no “cura”.
+
+Principio: **Backend = fuente de verdad** para métricas oficiales (kcal oficiales, flags, progreso) y para coherencia cross‑device.
+
+---
+
+## Alcance por plan (solo 2): Básico / Premium
+
+### Básico (v1)
+**Incluye (lo que se muestra):**
+- Resumen diario: actividad (intensidad), descanso/inactividad, y “por debajo / igual / por encima” del objetivo del perro.
+- Resumen semanal: “guardado semanal” (tendencia de actividad y descanso).
+- Objetivo configurable (mantener / definir / perder grasa / ganar masa) **pero** el detalle nutricional se limita.
+
+**No incluye:**
+- Recomendación completa de ración/ingredientes.
+- Q&A “¿puede comer X?”
+- Suplementos.
+
+### Premium (v1)
+**Incluye todo**, con detalle:
+- Calorías objetivo (DER) + ajuste por objetivo/BCS.
+- Recomendación de comida **en gramos** (y equivalencias a tazas/cucharas si el usuario lo configura).
+- Resumen diario y mensual avanzado.
+- Q&A “¿puede comer X?”
+- Suplementos y educación guiada (sin claims milagro).
+- Registro de comidas (foto/etiqueta/casera) con control de cambios.
+
+---
+
+## Inputs del perfil del perro (onboarding)
+
+### Capa 1 (rápida)
+- Nombre
+- Edad (meses o fecha nacimiento)
+- Tamaño (toy/pequeño/mediano/grande/gigante)
+
+### Capa 2 (precisión)
+- Peso actual (kg)
+- Altura (cm)
+- Sexo
+- Raza 1 (opcional)
+- Raza 2 (opcional) + ratio mezcla (slider)
+- Esterilizado (sí/no)
+
+### Capa 3 (dieta habitual)
+- Pienso / húmeda / mixta / casera cocida / BARF controlada
+
+---
+
+## Clasificación del perro + discrepancias (v1)
+Se implementa **tal cual** la lógica de conciliación:
+- Si difieren 1 “paso” (p. ej. pequeño vs mediano) y el usuario eligió uno → **respetar usuario** y marcar discrepancia leve.
+- Si difieren ≥2 pasos → **proponer corrección** y marcar discrepancia fuerte.
+
+### BCS objetivo
+- Por defecto: **4–5**.
+- Editable por Owner/Family (con guardarraíles: avisos si el objetivo es extremo).
+
+### Estado de integridad
+- ok / faltan_datos / datos_incongruentes.
+
+---
+
+## Objetivos del perro (v1)
+El usuario define:
+1) Objetivo principal:
+- Mantener
+- Definir (recomposición leve)
+- Perder grasa
+- Ganar masa/condición
+
+2) “Exigencia” (slider):
+- Menos exigente ↔ más exigente
+
+El sistema devuelve:
+- Objetivo diario
+- Objetivo mensual
+- Recomendación de “hoy toca”: más intensidad / más duración / más descanso
+
+---
+
+## Métricas de actividad y descanso (v1)
+
+### Reglas de registro
+- Se registra actividad **por minuto** (timeline) desde el primer movimiento.
+- Se agrupa en “paseos/sesiones” según la lógica de sesiones ya definida.
+
+### Outputs diarios (Básico + Premium)
+- Minutos por intensidad (suave/moderada/vigorosa)
+- Descanso/inactividad total
+- Estado vs objetivo: por debajo / igual / por encima
+
+### Outputs mensuales
+- Progreso y tendencia (cumplimiento, consistencia, recuperación)
+
+---
+
+## Motor de calorías y ración (Premium v1)
+
+### 1) Calorías objetivo (DER)
+- Calcular RER.
+- Aplicar factor de mantenimiento (DER = RER × factor).
+- Ajustar según objetivo (pérdida/ganancia) y BCS.
+- Autocalibración semanal si el peso/BCS se desvía del plan.
+
+**Regla de seguridad:** si el sistema detecta señales de riesgo (BCS muy bajo, pérdida rápida, letargia marcada), se muestra aviso: “consulta veterinario”.
+
+### 2) Recomendación de comida en gramos (v1)
+**Siempre** recomendamos en **gramos**.
+
+Para convertir kcal → gramos necesitamos la “referencia de comida”:
+- **Pienso/comida comercial:** foto del saco/lata + lectura de kcal/100g (o entrada manual si falla).
+- **Casera cocida:** receta base (ingredientes + gramos + rinde total). Si el usuario no quiere receta completa, se permite un “modo simple”: solo kcal estimadas y ración en gramos aproximados.
+
+#### Equivalencias a tazas/cucharas/puñados (opcional)
+- La app muestra **gramos** como principal.
+- Además ofrece “traducción” si el usuario define su medida:
+  - 1 taza = ___ g (se puede tomar de la etiqueta o calibrar una vez).
+  - 1 cucharada = ___ g (si aplica).
+  - Puñado = ___ g (aprox, calibración por usuario).
+
+---
+
+## Registro de comidas (Premium v1)
+Cada registro incluye:
+- Foto (opcional pero recomendado)
+- Tipo: pienso/húmeda/mixta/casera
+- Cantidad (g/ml)
+- kcal estimadas (derivadas de la referencia)
+- Notas (apetito/síntomas GI 24h)
+
+### Control de cambios (clave)
+- Owner/Family pueden cambiar la “comida base”.
+- Temporal puede:
+  - **ver** la comida recomendada esos días,
+  - **registrar** comidas,
+  - **marcar** “se cambió comida hoy” → queda como **pendiente de confirmación** por Owner/Family (para no romper cálculos sin control).
+
+---
+
+## Q&A “¿Puede comer X?” (Premium v1)
+
+### Salida estándar
+- Veredicto: **Seguro / Evitar / Tóxico**
+- Motivo breve
+- Qué hacer si ya lo comió
+- Alternativas seguras
+
+### Política de cantidades (tu decisión)
+- **Tóxico / peligroso:** NO damos “cantidad segura”. Se responde **NO** y se dan pasos de acción.
+- **Seguro / premios:** sí damos cantidades **orientativas** (en gramos) basadas en:
+  - regla de “premios” (parte pequeña del total diario),
+  - y tamaño/peso del perro.
+
+### Ejemplos (para ilustrar el comportamiento)
+**Ejemplo 1 (Tóxico): “¿Uvas/pasas?”**
+- Respuesta: **TÓXICO**. No dar cantidad. Acción: registrar cantidad/tiempo si se sabe y contactar vet/poison control.
+
+**Ejemplo 2 (Evitar): “¿Huesos cocidos?”**
+- Respuesta: **EVITAR** (riesgo de astillas/obstrucción).
+
+**Ejemplo 3 (Seguro como premio): “¿Zanahoria?”**
+- Respuesta: **SEGURO**.
+- Cantidad orientativa: gramos pequeños como snack (y el sistema lo descuenta del total diario).
+
+---
+
+## Suplementos (Premium v1)
+Objetivo: ayudar a decidir **cuándo sí tiene sentido** y cuándo no.
+
+### Reglas
+- Siempre: “No sustituye veterinario ni medicación”.
+- No se prometen curas.
+- Se muestran **riesgos/interacciones** cuando aplique.
+
+### Ejemplos (orientativos)
+**Omega‑3 (EPA+DHA):**
+- Uso típico: articulaciones, piel, inflamación (según contexto).
+- Mostrar rango orientativo de dosis y avisar de precauciones (trastornos de coagulación, pancreatitis, etc.).
+
+**Mitología que NO vendemos como real:**
+- “Orégano/romero para desparasitar”: se etiqueta como **no sustituto** de antiparasitarios veterinarios. Puede mostrarse como “sin evidencia suficiente para reemplazar tratamiento”.
+
+---
+
+## Patologías (Premium v1) — sin diagnóstico ni tratamiento
+No se introducen “patologías” como diagnóstico clínico en v1.
+
+**Pero** sí se pregunta en Premium un “screen” de seguridad:
+- “¿Tu perro tiene alguna condición diagnosticada o medicación?” (sí/no)
+- Si sí: “Esto puede ser perjudicial” + ejemplos típicos de riesgos (sin afirmar curas).
+- La app **evita recomendaciones** potencialmente peligrosas y deriva a “consulta vet”.
+
+---
+
+## UX mínimo (pantallas)
+
+1) **Perfil del perro**
+- Capa 1 / Capa 2 / Capa 3
+- Discrepancias (chip de corrección)
+
+2) **Objetivos**
+- Selección objetivo + slider exigencia
+
+3) **Resumen diario**
+- Actividad vs objetivo
+- Descanso/inactividad
+- Recomendación de mañana
+
+4) **Resumen mensual**
+- Tendencia, consistencia, recuperación
+
+5) **Comida (Premium)**
+- “Comida base” (foto/etiqueta/receta)
+- Recomendación en gramos + equivalencias
+- Registro diario
+
+6) **Q&A alimentos (Premium)**
+- Buscar alimento
+- Respuesta segura
+
+7) **Suplementos (Premium)**
+- Lista guiada
+- Precauciones
+
+---
+
+## Backend / App — responsabilidades
+
+### Backend (source of truth)
+- Cálculo DER / kcal objetivo
+- Cálculo ración en gramos (según referencia de comida)
+- Consolidación de actividad (kcal oficiales)
+- Flags de riesgo (BCS extremo, progresos raros, incoherencias)
+- Motor Q&A (base de tóxicos + reglas)
+
+### App
+- Captura de inputs (foto/etiqueta)
+- UI de objetivos
+- Presentación de resúmenes
+- Offline básico de últimos datos
+
+---
+
+## Guardarraíles (seguridad y confianza)
+- Siempre distinguir: **estimado** (en vivo) vs **oficial** (backend).
+- Copys: “Esto orienta; si hay síntomas o condición clínica, veterinario”.
+- Para tóxicos: alerta roja + pasos + botón de llamada.
+
+---
+
+## Decision Log (J)
+- **DL-J-001**: Solo 2 planes: Básico (resumen) / Premium (todo).
+- **DL-J-002**: Premium incluye Q&A alimentos; en tóxicos NO se dan “cantidades seguras”.
+- **DL-J-003**: Patologías no se registran como diagnóstico; sí hay pantalla de seguridad en Premium.
+- **DL-J-004**: Recomendaciones siempre en **gramos**; equivalencias a tazas/cucharas son opcionales.
+- **DL-J-005**: Temporal ve y registra comida durante su acceso; cambios de comida quedan “pendientes” de Owner/Family.
+
+---
+
+## Risk Register (J)
+- **RR-J-001 (recomendación peligrosa por dato incorrecto):**
+  - Mitigación: discrepancias + estado_integridad + avisos.
+- **RR-J-002 (claims médicos):**
+  - Mitigación: lenguaje no médico + derivación vet + no prometer curas.
+- **RR-J-003 (conversión kcal→gramos sin datos de comida):**
+  - Mitigación: exigir referencia (foto/etiqueta) o entrar en “modo simple” con precisión marcada.
+
+---
+
+## Próximo paso verificable (para QA)
+1) Probar onboarding completo con 10 perfiles reales (mezcla razas, tamaños) y forzar discrepancias.
+2) Probar recomendación de gramos con 3 escenarios:
+   - pienso con kcal/100g,
+   - húmeda,
+   - casera simple.
+3) Probar Q&A con 15 alimentos (incluye tóxicos) y confirmar que **nunca** damos “cantidad segura” en tóxicos.
+
+
+
+# K) Notificaciones y canales — Especificación (v1)
+
+## Objetivo
+- Notificar **rápido** y con **alta probabilidad de lectura** sin arruinar UX ni costes.
+- Push es el canal base siempre.
+- Premium añade WhatsApp **solo** donde aporta valor (geofence) y con control de costes.
+- Email se usa para **marketing/educación/updates**, no para emergencias.
+
+Fuentes:
+- App spec: Push como base; canales extra pendientes por tier. fileciteturn13file10
+- Funcionalidades: Matriz/tabla de alertas por tipo/canal/tier. fileciteturn13file15
+
+---
+
+## Canales v1
+
+### 1) Push (FCM) — siempre
+- Canal principal para todas las alertas operativas.
+- Debe soportar: deep link a pantalla de evento, “ack/visto”, y acción rápida si aplica.
+
+### 2) Bandeja in‑app (Eventos) — siempre
+- Historial de alertas con:
+  - timestamp, severidad, motivo, datos relevantes, y estado (visto/ack).
+- Evita soporte y “¿qué pasó?”.
+
+### 3) WhatsApp — solo Premium (opt‑in)
+- Se usa **solo** para:
+  - **Geofence EXIT** (y opcional ENTER si el usuario lo activa).
+- No se usa para batería, calor, inmovilidad, etc.
+
+### 4) Email — solo marketing / comunicación (no alertas críticas)
+- Campañas, descuentos, novedades, contenidos educativos.
+- (Opcional futuro) reportes mensuales si el usuario lo activa.
+- No se usa para geofence ni pérdida de señal.
+
+### 5) SMS — fuera de v1
+- No se implementa en v1 por coste/operación.
+
+---
+
+## Planes (solo 2): Básico / Premium
+
+### Básico
+- Push + in‑app.
+- Sin WhatsApp.
+- Email solo marketing (si el usuario lo consiente).
+
+### Premium
+- Push + in‑app.
+- WhatsApp (opt‑in) **solo geofence**.
+- Email marketing (si consiente).
+
+---
+
+## Tipos de alertas (v1) y canales
+
+### A) Geofence
+#### 1) GEOFENCE_EXIT (crítica)
+- **Push:** Básico + Premium.
+- **WhatsApp:** Premium (opt‑in) con escalado (ver “Modo B”).
+- **Email:** NO.
+
+#### 2) GEOFENCE_ENTER (informativa)
+- **Push:** Básico + Premium (configurable).
+- **WhatsApp:** Premium (opcional, por defecto OFF).
+
+**Rate limit:**
+- No repetir EXIT hasta que haya RE‑ENTER o pasen X minutos (p. ej. 10 min) + histéresis.
+
+---
+
+### B) Pérdida de señal / pérdida de tracking
+**Definición:** si el backend no recibe heartbeat/posición durante un intervalo.
+
+- Trigger v1: **60 s** sin comunicación con backend.
+
+**Canales:**
+- **Push:** Premium (sí). Básico (no).
+- **WhatsApp:** NO.
+- **Email:** NO.
+
+**Mensaje (copy honesto):**
+- “Sin señal desde hace 60 s. La posición puede no ser exacta hasta que reconecte. Última ubicación: …”.
+
+**Rate limit:**
+- 1 push al iniciar.
+- Recordatorios cada 30–60 min (solo si persiste y configurable) — Premium.
+
+---
+
+### C) Batería
+**Canales:**
+- **Push:** siempre (Básico + Premium).
+- **WhatsApp:** NO.
+- **In‑app:** indicador visible cuando <15%.
+
+**Umbrales (confirmado):**
+- 20% (baja) → 1 push.
+- 10% (crítica) → 1 push.
+- 5% (muy crítica) → 1 push.
+
+**Regla anti‑spam:** no repetir por % intermedios.
+
+---
+
+### D) Riesgos ambientales (educación + seguridad)
+
+#### 1) Calor / golpe de calor (riesgo)
+- **Push:** siempre.
+- Mensajes guiados (contexto + acción):
+  - “Evita salir 12:00–15:00. Prioriza sombra y baja intensidad.”
+  - Si se detecta actividad sostenida durante calor: a los 20 min otro push:
+    - “Humedece el cuerpo (no el hocico). No dejes beber en exceso de golpe.”
+
+**Nota de producto:** el copy debe ser responsable y no médico; objetivo: prevención.
+
+#### 2) Asfalto caliente (ciudad)
+- Trigger: exposición/tiempo en exterior + condiciones de calor.
+- Push tras ~1h en calle con condiciones de riesgo:
+  - “Riesgo de asfalto caliente: puede quemar almohadillas. Busca césped/sombra.”
+
+**Rate limit:** máximo 1–2 al día por tipo con histéresis.
+
+---
+
+### E) Golpe / impacto e inmovilidad
+
+#### 1) Impacto fuerte
+- **Push:** siempre.
+- Trigger: golpe fuerte + no movimiento durante **15 s**.
+- Copy:
+  - “Posible golpe fuerte. Si (mascota) no se mueve, revisa ahora.”
+
+#### 2) Inmovilidad anómala (futuro / Premium si aplica)
+- Si se implementa en v1: Premium push.
+- Si no: v1.1.
+
+---
+
+### F) Logros / engagement
+- **Push:** siempre, pero se recomienda digest (diario).
+
+---
+
+## Modo de escalado Premium para WhatsApp (decisión final)
+
+### Modo B (elegido): Push primero + WhatsApp si no hay ACK
+- Para **Geofence EXIT**:
+  1) Push inmediato.
+  2) Si el usuario **no abre la app / no hace ACK** en **30 s**, enviar WhatsApp.
+
+**Requisito:**
+- La notificación push y la bandeja in‑app deben permitir “Marcar como visto / ACK”.
+
+---
+
+## Preferencias y roles
+
+### Roles (consistentes con H/I/J)
+- **Owner + Family:** reciben push y pueden configurar preferencias.
+- **Temporal:** recibe push/in‑app durante su ventana de acceso.
+  - WhatsApp: no (evita coste/abuso). *(Ajustable si lo pides más adelante.)*
+
+### Preferencias por usuario y por perro
+- Configuración granular (ON/OFF por tipo de alerta) con defaults seguros.
+
+---
+
+## Anti‑abuso (backend)
+- Cooldowns por tipo de alerta.
+- Histéresis en umbrales (evita “flapping”).
+- Dedupe de eventos: no mandar la misma alerta si no cambió el estado.
+
+---
+
+## Ejemplos v1 (texto real de notificación)
+
+1) **Geofence EXIT (push)**
+- “(Mascota) salió de la zona segura. Última ubicación: …”
+
+2) **Geofence EXIT (WhatsApp Premium, si no ACK en 30 s)**
+- “Alerta: (Mascota) salió de la zona segura. Abre ARES para ver ubicación.”
+
+3) **Pérdida de señal (Premium push, 60 s)**
+- “Sin señal desde hace 60 s. La posición puede no ser exacta hasta reconectar.”
+
+4) **Batería 10% (push)**
+- “Batería crítica (10%). Activa ahorro o carga el dispositivo.”
+
+5) **Calor (push educativo)**
+- “Evita salir 12:00–15:00. Sombra y baja intensidad.”
+
+6) **Asfalto caliente (push)**
+- “Riesgo de asfalto caliente: puede quemar almohadillas. Busca césped/sombra.”
+
+7) **Impacto + inmóvil 15 s (push)**
+- “Posible golpe fuerte. Revisa a (Mascota) ahora.”
+
+---
+
+## Decision Log (K)
+- **DL-K-001**: Push + in‑app siempre.
+- **DL-K-002**: WhatsApp solo Premium y solo geofence.
+- **DL-K-003**: Email no se usa para alertas críticas; solo marketing/updates.
+- **DL-K-004**: Pérdida de señal: Premium push a los 60 s (sin WhatsApp).
+- **DL-K-005**: Batería: push 20/10/5% + indicador in‑app <15%.
+- **DL-K-006**: Modo B: WhatsApp si no ACK en 30 s.
+
+---
+
+## Risk Register (K)
+- **RR-K-001 (spam / fatiga):** demasiados pushes.
+  - Mitigación: cooldowns, histéresis, digests, preferencias.
+- **RR-K-002 (coste WhatsApp):** mensajes innecesarios.
+  - Mitigación: Modo B con ACK + solo geofence.
+- **RR-K-003 (mensajes de salud demasiado “médicos”):** riesgo legal/confianza.
+  - Mitigación: copy preventivo, no diagnóstico, derivación vet si aplica.
+
+---
+
+## QA / Tests mínimos
+1) Geofence EXIT: push inmediato + WA tras 30 s sin ACK.
+2) Pérdida señal: dispara a 60 s, no se repite sin estado.
+3) Batería: notifica solo en 20/10/5 y muestra banner <15.
+4) Calor/asfalto: histéresis + no spam (máximo 1–2/día).
+5) Impacto: evento + verificación de inmovilidad 15 s.
+
+
+# ARES — Especificación completa APP (iOS/Android) + Nube  
+**Versión:** v0.1 (consolidada)  
+**Última actualización:** 2026-01-11  
+**Objetivo:** que el editor/desarrollo tenga una referencia única y ejecutable de **qué debe hacer la app**, **qué depende de backend**, **qué datos se intercambian** y **cómo se estructura por tiers**.
+
+---
+
+## 0) Scope y principios (para evitar contradicciones)
+- **La app muestra y opera** (UI + lógica ligera).  
+- **El backend decide la “verdad oficial”** para rankings, rewards, km válidos, anti‑fraude completo y recomendaciones finales.  
+- **El dispositivo manda telemetría**; la app no es “fuente de posición” salvo en **modo degradado** o en asistencias (Find Nearby, onboarding, etc.).  
+- **Todo contrato** (campos, enums, topics, endpoints) se define aquí. Sin esto, firmware/app/backend divergen.
+
+---
+
+## 1) Arquitectura APP + Nube (con fases)
+### 1.1 App
+- **Frontend:** Flutter (iOS/Android)  
+- **Mapas online:** Google Maps SDK  
+- **Mapas offline:** OSM (recomendación: `flutter_map` + MBTiles; alternativa: descarga de tiles por región)  
+- **BLE:** búsqueda cercana + setup local  
+- **Streaming real‑time:** MQTT over WebSocket (o WebSocket propio vía backend)
+
+### 1.2 Nube (propuesta híbrida compatible con lo ya definido del tracker)
+> La spec del tracker ya asume broker MQTT + backend + PostGIS para histórico geoespacial. Aquí se integra Firebase sin romperlo.
+
+**Broker:** EMQX (Cloud/Managed)  
+**Backend core:** FastAPI (ingesta, reglas, alertas, tiers, rewards, anti‑fraude, export)  
+**DB core:** PostgreSQL + PostGIS (histórico y queries geo rápidas)  
+
+**Firebase (capas app):**
+- **Auth:** Firebase Auth (email/telefono/OAuth)  
+- **Push:** FCM  
+- **Datos app (opcionales):** Firestore para perfiles, settings, social ligero si se quiere (pero el “core” de tracking/histórico va en PostGIS)
+
+### 1.3 Fases (escalabilidad)
+- **Fase 1 (MVP):** EMQX Cloud + backend mínimo + DB core  
+- **Fase 2:** Firebase/Firestore para UX y crecimiento (social/ajustes) + escalado de alertas  
+- **Fase 3:** AWS IoT Core/IoT Rules si se busca industrializar costos por dispositivo/mes (opcional)
+
+---
+
+# 2) Tiers: Gratis / Plata / Oro (tabla única, sin solapes)
+> “TBD” = pendiente de cerrar valores exactos sin bloquear implementación.
+
+## 2.1 Dashboard principal (todas las tiers)
+**Widgets base (siempre):**
+- Mapa real‑time + indicador de precisión y fuente (`GNSS/CELL/WIFI/MIXED`)
+- Estado del tracker: `MOVING/STATIC/CHARGING/LOST_MODE`
+- Modo de actividad: `REST/WALK/JOG/RUN/VEHICLE`
+- Batería: % + estimación restante (basada en modo GNSS + consumo catálogo)
+- Distancia y calorías del día (estimación app; oficial backend)
+- Parques cercanos (dog-friendly) + clima/temperatura + recomendación de franja horaria
+- Alertas (push) y bandeja de “eventos” (geofence, batería, calor, etc.)
+
+## 2.2 Tabla de features por tier
+| Área | Gratis | Plata (4,99€/mes) | Oro (9,99€/mes) |
+|---|---|---|---|
+| Tracking | Real‑time + histórico **7 días** (local + nube) | Histórico **30 días** | Histórico **1 año** + export veterinario |
+| Geofence | 1–2 zonas (TBD) + alertas push | **5 zonas** + alertas avanzadas | 5+ zonas + IA rutas habituales (TBD) |
+| Social | Ver amigos (lista) + km semanales | Rutas de amigos + tiempos + mapas | Stats completas + HR estimada (TBD) |
+| Ranking | — | **Local** (ciudad/isla) | **Nacional** + por raza |
+| Challenges/Grupos | — | Locales semanales + grupos locales | Nacionales mensuales + eventos VIP |
+| Dog Fuel (Nutrición) | kcal aprox + escáner básico | kcal exactas + 3 marcas locales + tienda | + proteína óptima + suplementos + histórico dietas |
+| Multi‑perro | 1 perro | 1 perro | 2–3 perros (familia) |
+| Rewards | cupón 10% por hitos | cupones 15% + rewards ampliados | cupones 20% + beneficios VIP |
+| Integraciones | WhatsApp geofence (básico) + offline maps ES | Strava sync básico + afiliados locales | Garmin widget + Home Assistant + GPX completo |
+
+---
+
+# 3) Módulos APP (pantallas, lógica, dependencias)
+## 3.1 Autenticación y cuenta
+**Pantallas:**
+- Login (email/telefono/OAuth)
+- Registro
+- Recuperación
+- Gestión de sesión y dispositivos
+
+**Datos:**
+- `user_id`, `email/phone`, `created_at`, `locale`, `subscription_tier`, `privacy_settings`
+
+**Reglas:**
+- Sin sesión → no se muestran datos del tracker.
+- ACL: un usuario solo ve sus perros/dispositivos y los compartidos con permisos.
+
+---
+
+## 3.2 Onboarding completo (usuario + perro + dispositivo)
+### 3.2.1 Flujo UX (tolerante y rápido)
+- **Capa 1 (≤30s):** nombre perro → edad → tamaño (selector con iconos)  
+- **Capa 2 (precisión):** altura, peso, sexo, raza1 (autocompletar), raza2 (opcional) + ratio (slider 50/50 default)  
+- **Capa 3 (opcional):** dieta habitual (pienso/húmeda/mixta/casera)  
+- **Feedback inmediato:** si hay discrepancia fuerte → chip “Sugerimos *Mediano* por tus medidas. ¿Cambiar?” (1 click)
+
+### 3.2.2 Entidad `PerroOnboarding` (inputs usuario, no calculados)
+Campos mínimos:
+- `perro_id (uuid)`
+- `usuario_id`
+- `nombre_perro`
+- `edad_meses` o `fecha_nacimiento`
+- `sexo` (M/H/Desconocido)
+- `tamano_usuario` (toy/pequeño/mediano/grande/gigante)
+- `raza1_id` (opcional)
+- `raza2_id` (opcional)
+- `mix_ratio_pct` (0–100; default 50 si hay dos razas)
+- `altura_cm` (2ª capa)
+- `peso_kg` (2ª capa)
+- `datos_incongruentes` (bool)
+
+### 3.2.3 Vinculación de dispositivo
+**Opciones v1:**
+- BLE pairing (QR + BLE)
+- WiFi AP para setup (`Roco_Setup_123`) si aplica
+- Asociar `device_id` ↔ `perro_id` (1‑a‑1 activo)
+
+**Edge cases:**
+- dispositivo ya vinculado → flujo “transferencia” con confirmación y bloqueo
+- firmware no responde → diagnóstico + pasos de recuperación
+
+---
+
+## 3.3 Dashboard real‑time (Home)
+**Componentes UI:**
+- Mapa (posición + precisión)
+- Tarjeta estado tracker (modo, batería, señal, fuente posición)
+- Tarjeta actividad día (km, kcal, tiempo activo, pace)
+- Tarjeta alertas recientes (geofence, batería, calor)
+- CTA contextual:
+  - “Activar LOST_MODE”
+  - “Find Nearby”
+  - “Crear geofence”
+  - “Subir a Plata/Oro” (según triggers)
+
+**Lógica:**
+- La app puede estimar km/kcal en vivo, pero marca “estimado”.
+- Backend envía “km válidos” y “kcal oficiales” para rankings/rewards.
+
+---
+
+## 3.4 Mapa + Histórico (Rutas)
+**Gratis:** histórico 7 días (local + nube)  
+**Plata:** 30 días  
+**Oro:** 1 año + export
+
+**Pantallas:**
+- Lista sesiones (día/semana/mes)
+- Detalle sesión: ruta, km, pace, kcal, flags (GNSS degradado/vehículo)
+- Comparativas (Plata/Oro): semana vs semana, percentiles por raza (Oro)
+
+**Datos:**
+- `session_id`, `start_ts`, `end_ts`, `distance_m`, `valid_distance_m`, `kcal_est`, `kcal_official`, `quality_flags`
+
+---
+
+## 3.5 Geofence (Valla inteligente)
+**Pantallas:**
+- Crear/editar geofence (mapa + radio)
+- Lista de geofences (máx por tier)
+- Histórico salidas/entradas + patrones
+
+**Algoritmo tasa adaptativa (contrato):**
+- `<15%` al límite → 2s  
+- `15–30%` → 10s  
+- `>30%` → 30s  
+
+**Alertas:**
+- push siempre
+- WhatsApp/Telegram: Plata+ (TBD) o configurable
+
+---
+
+## 3.6 LOST_MODE (Modo perdido)
+**Pantallas:**
+- Activar (con aviso de consumo)
+- Duración (preset 15/30/60 min)
+- Cancelar
+- Estado visual (LED pattern + badge en app)
+
+**Reglas:**
+- Trigger: app → backend → comando a dispositivo
+- Timeout o cancelación
+- Si batería crítica → backend puede forzar salida
+
+---
+
+## 3.7 Find Nearby (BLE)
+**Objetivo:** ayudar a recuperar al perro cerca (≈50–60m).  
+**Pantallas:**
+- “Buscando…” (RSSI + hot/cold)
+- Guía direccional (si se implementa; v1 puede ser solo hot/cold)
+- Botón “hacer parpadear LED” (si firmware lo soporta)
+- (Opcional) activar actuador fuerte si existe (buzzer/motor) — OUT v1 si no hay pieza
+
+---
+
+## 3.8 Social (amigos, feed, privacidad)
+**Pantallas:**
+- Amigos (lista)
+- Perfil (alias, badges, privacidad)
+- Compartir con familia (permisos)
+- Feed (opcional v1.5)
+
+**Privacidad mínima:**
+- ranking por defecto con alias
+- ruta exacta solo para familia/propietario
+- modo privado: no aparece en rankings/grupos
+
+**Modelo mental:**
+- Un usuario tiene N perros
+- Un perro puede ser visible por varios usuarios (familia)
+- Un dispositivo solo vinculado a 1 perro a la vez
+
+---
+
+## 3.9 Rankings + Challenges + Grupos
+**Rankings:**
+- Plata: local (ciudad/isla)
+- Oro: nacional + por raza
+
+**Challenges:**
+- Plata: semanales locales
+- Oro: mensuales nacionales
+
+**Grupos:**
+- Plata: grupos locales (“Running dogs Palma”)
+- Oro: grupos nacionales + eventos VIP (TBD)
+
+**Inputs para ranking:**
+- `valid_distance_m` (backend)
+- flags anti-fraude (vehículo, GNSS degradado, etc.)
+
+---
+
+## 3.10 Dog Rewards (gamificación)
+### 3.10.1 Recompensas automáticas (coste controlado)
+- **50km/semana:** cupón 10%  
+- **150km/mes:** cupón 15%  
+- **350km/mes:** 1 mes Plata gratis  
+- **600km/mes:** 2º tracker 20% OFF  
+
+> Los umbrales usan **km válidos backend**. La app solo muestra progreso.
+
+### 3.10.2 Insignias
+- 🥉 BRONCE (100km/mes)  
+- 🥈 PLATA (250km/mes)  
+- 🥇 ORO (500km/mes)  
+- 💎 DIAMANTE (1.000km/mes)
+
+**Pantallas:**
+- progreso semanal/mensual
+- wallet de cupones
+- historial de claims
+
+---
+
+## 3.11 Dog Fuel (nutrición IA)
+### 3.11.1 Inputs (desde onboarding + logs)
+- raza, edad, sexo, peso, esterilización, nivel actividad
+- BCS (1–9) y/o IMC si se usa
+- objetivos (mantener, bajar, rendimiento)
+
+### 3.11.2 Features por tier
+| Función | Gratis | Plata | Oro |
+|---|---:|---:|---:|
+| Calorías diarias | Aprox | Exactas | + proteína |
+| Marcas recomendadas | — | 3 locales | 10 + suplementos |
+| % proteína óptima | — | — | Sí |
+| Tienda integrada | — | Sí | Sí (mayor comisión) |
+| Escáner comida | Cámara básica | IA análisis | Histórico dietas |
+
+### 3.11.3 Log de comida (Registro inteligente)
+**Pantallas:**
+- capturar foto
+- reconocimiento/edición manual
+- guardar alimento + cantidad + notas
+- histórico y tendencias
+
+**Datos (mínimo):**
+- `food_log_id`, `dog_id`, `ts`, `food_name`, `brand`, `portion_g`, `kcal`, `protein_g`, `fat_g`, `carb_g`, `source` (manual/scan)
+
+### 3.11.4 Base de datos de salud (para editor)
+Tablas recomendadas (backend/DB):
+- `CategoriasTamano`: umbrales por tamaño (incluye riesgo calor/frío)  
+- `NivelActividad`: baja/moderada/alta (minutos, distancia aprox)  
+- `FactoresEnergeticos`: factores para RER por estado (adulto, esterilizado, cachorro, trabajo intenso…)  
+- `NutrientesMinimos`: requerimientos AAFCO por etapa  
+- `BCS`: escala 1–9 con % grasa estimado y relación peso ideal  
+- `AlimentosToxicos`: lista negra + síntomas + acciones  
+- `PerfilPerro`: entidad central  
+- históricos: `PesoHistorial`, `ActividadHistorial`, `ComidaHistorial`
+
+> Fórmula RER (referencia veterinaria habitual): `RER = 70 * (peso_kg ^ 0.75)`; MER = RER * factor (tabla FactoresEnergeticos).
+
+---
+
+## 3.12 Salud y bienestar IA (calor, hidratación, fatiga)
+**Gratis:**
+- índice de calor (temp + humedad) + alertas
+- hidratación sugerida (tiempo + intensidad)
+- parques óptimos (clima + tipo hierba)
+
+**Plata:**
+- “edad biológica” (actividad vs media raza)
+- kcal diarias exactas (perfil + actividad)
+- marcas cercanas (precio/disponibilidad) (TBD fuente)
+
+**Oro:**
+- HR estimado (TBD; depende de modelo/validación)
+- fatiga/recuperación 24h
+- benchmark por raza (percentiles)
+
+---
+
+## 3.13 Tienda integrada (affiliate + monetización)
+**Gratis:** links externos  
+**Plata:** tienda integrada (8% comisión) + cupones 15%  
+**Oro:** 12% comisión + cupones 20%
+
+**IA de productos:**
+- comida según raza/peso/actividad
+- suplementos según km/semana
+- juguetes según intensidad
+
+---
+
+## 3.14 Export & reporting
+- Plata: export básico (TBD)
+- Oro: export PDF “veterinario” + GPX completo
+- Strava:
+  - Plata: KML básico
+  - Oro: GPX completo
+
+---
+
+## 3.15 Integraciones externas
+**Gratis:**
+- mapas offline ES
+- WhatsApp alertas geofence (si se activa)
+
+**Plata:**
+- Strava sync básico
+- afiliados locales (Petco/Mercadona/Kiwoko etc.)
+
+**Oro:**
+- Garmin Connect IQ widget (TBD)
+- Home Assistant geofence (TBD)
+- veterinarios locales PDF (directorio)
+
+---
+
+# 4) Anti‑fraude (contrato app↔backend) — 4 capas
+**Objetivo:** rankings justos, rewards fiables.
+
+1) **IMU (device):** patrones aceleración/cadencia  
+2) **Velocidad (GNSS):** rango real vs vehículo (>25 km/h sospechoso)  
+3) **Teléfono (app):** correlación opcional con Google Fit/HealthKit (Plata/Oro)  
+4) **Social (Oro):** confirmación por amigos (TBD; cuidado privacidad)
+
+**Reglas UI (transparencia):**
+- “🟢 TROTE 6.2km/h VALIDADO”
+- “🚗 Vehículo detectado → 0km ranking”
+
+---
+
+# 5) Notificaciones (push + WhatsApp) y automatizaciones
+## 5.1 FCM push (todas)
+- geofence
+- batería baja
+- calor/riesgo
+- inmovilidad anómala (Plata+)
+- reward conseguido
+
+## 5.2 WhatsApp Business API (tiers y reglas)
+- geofence salida (Plata+ recomendado)
+- pérdida de señal (Oro/Plata+ TBD)
+
+## 5.3 Flujo 1ª semana (engagement)
+- Día 1: parques cercanos + clima
+- Día 3: progreso km + cupón (si procede)
+- Semana 1: mensaje ranking local → upsell a Plata
+
+---
+
+# 6) Contratos técnicos para desarrollo (lo que el editor necesita)
+## 6.1 MQTT topics (mínimo)
+- `devices/{device_id}/telemetry` (PUB device)  
+- `devices/{device_id}/commands` (SUB device)  
+- `users/{user_id}/dogs/{dog_id}/realtime` (PUB backend → app)
+
+## 6.2 Endpoints mínimos (HTTP)
+- `POST /api/v1/ingest` (device → backend; punto o batch)  
+- `GET /api/v1/devices/{id}/history?from=&to=`  
+- `GET /api/v1/dogs/{dog_id}/stats?range=`  
+- `POST /api/v1/devices/{id}/lost-mode` (on/off + timeout)  
+- `POST /api/v1/geofences` / `PUT /api/v1/geofences/{id}` / `DELETE`  
+- `POST /api/v1/rewards/claim`  
+- `GET /api/v1/rankings/local` / `GET /api/v1/rankings/national`  
+- `POST /api/v1/food/log` / `GET /api/v1/food/log?range=`  
+- `POST /api/v1/social/invite` / `POST /api/v1/social/accept`
+
+## 6.3 Payloads clave
+### Telemetría (device → backend) — referencia v1
+```json
+{
+  "device_id": "ares-001",
+  "seq_id": 123456,
+  "ts": "2026-01-11T12:34:56Z",
+  "position": {
+    "lat": 40.4168,
+    "lon": -3.7038,
+    "accuracy": 2.1,
+    "satellites": 18,
+    "speed": 3.2,
+    "source": "GNSS",
+    "gnss_rate_s": 2
+  },
+  "state": {
+    "status": "MOVING",
+    "activity_mode": "RUN",
+    "activity_score": 84,
+    "gnss_rate_s": 2
+  },
+  "power": {
+    "battery_mv": 3920,
+    "battery_pct": 76,
+    "temperature_c": 31.4
+  },
+  "integrity": { "fw_version": "0.1.0" }
+}
+```
+
+### Comando LOST_MODE (backend → device)
+```json
+{
+  "cmd": "SET_LOST_MODE",
+  "enabled": true,
+  "timeout_s": 1800,
+  "reason": "user_request",
+  "ts": "2026-01-11T12:40:00Z"
+}
+```
+
+### Evento alerta (backend → app)
+```json
+{
+  "type": "GEOFENCE_EXIT",
+  "device_id": "ares-001",
+  "dog_id": "dog-123",
+  "severity": "HIGH",
+  "ts": "2026-01-11T12:41:10Z",
+  "meta": { "geofence_id": "gf-1", "distance_m": 42 }
+}
+```
+
+---
+
+# 7) Data model mínimo (para implementación)
+## 7.1 Entidades core
+- `User`
+- `DogProfile`
+- `Device`
+- `DeviceBinding` (histórico vínculo device↔dog)
+- `TelemetryPoint` (PostGIS)
+- `Session` (agregado)
+- `Geofence`
+- `AlertEvent`
+- `Subscription`
+- `RewardRule`
+- `RewardClaim`
+- `Coupon`
+- `Friendship`
+- `Group`
+- `Challenge`
+- `FoodLog`
+- `WeightLog`
+- `BCSLog`
+
+## 7.2 Campos mínimos recomendados (resumen)
+**DogProfile:** raza(s), edad, sexo, peso, esterilización, tamaño, activity_level, objetivos, privacy  
+**Session:** start/end, distancia estimada, distancia válida, kcal estimadas/oficiales, flags, source mix  
+**RewardClaim:** regla, periodo, km válidos, estado (pending/approved/issued), cupón/código
+
+---
+
+# 8) Requisitos no funcionales (imprescindibles)
+- **Offline:** histórico 7 días local (Gratis), con sync posterior  
+- **Rendimiento:** mapa fluido con throttling (no renderizar cada punto si llega a 2s)  
+- **Batería móvil:** MQTT solo si pantalla activa; en background usar push + refresh puntual  
+- **Privacidad:** controles de visibilidad; no exponer ubicación exacta a terceros  
+- **Multi‑idioma:** ES/EN/PT/FR/DE/IT (auto‑detect; strings versionadas)  
+- **Analytics:** eventos de funnel (onboarding, activación, upsell, churn)  
+- **Observabilidad:** crash reporting + logs de red (Sentry/Firebase Crashlytics)
+
+---
+
+# 9) Decisiones pendientes (bloquean “cerrado 100%”)
+1) **Qué parte va en Firebase vs backend core** (recomendación: Auth+Push en Firebase; tracking/histórico/anti‑fraude en backend+PostGIS)  
+2) **HR estimado**: entra v1 o es fase 2 (validez médica)  
+3) **WhatsApp**: tiers y límites (costes)  
+4) **Integraciones**: Garmin/Home Assistant (definir alcance real v1.5)  
+5) **Actuador fuerte (buzzer/motor)**: si se incluye, añadir estados y UX en Find Nearby
+
+---
+
+## 10) Entregable siguiente (para ejecutar sin dudas)
+1) **Checklist implementable** (APP/BE) con IDs: `APP-xxx`, `BE-xxx`, asociado a tier y a pantallas.  
+2) **OpenAPI** (FastAPI) + **ACL MQTT** (topics por usuario/dispositivo) + esquema JSON versionado.
+
+
+# ARES — Bloque E: GNSS, autonomía y “verdad” en UI (Spec final v1)
+
+## 1) Objetivo de producto (funcionalidad, no marketing)
+- Meta principal: que la posición sea **normalmente <10 m** en uso real (ciudad y bosque incluidos) e intentar operar **lo más cerca posible de <5 m** cuando el entorno lo permite.
+- Cuando no se pueda cumplir <10 m (multipath severo, cielo muy bloqueado, interior/metro/túnel), el sistema debe:
+  - **no engañar**, y
+  - ofrecer una experiencia útil para recuperar al perro (Modo Perdido + BLE).
+
+## 2) Principio de “verdad” en UI (obligatorio)
+Cada punto/tramo incluye y se persiste:
+- `position_source`: `GNSS | WIFI | CELL | MIXED`
+- `accuracy_m` (o estimación equivalente si la fuente no lo da)
+- `fix_age_s`
+- `satellites` (si aplica)
+- `quality_score` (0–100, recomendado)
+- flags: `is_estimated`, `is_rank_eligible`, `confidence_state`
+
+### Mapa (estilo Google Maps)
+- Marker central + **círculo de incertidumbre** (radio = `accuracy_m`).
+  - cuanto peor la precisión, **más grande** el círculo
+  - cuando mejora, **se cierra** el círculo
+- Si la posición no es confiable, **no se muestra como pin exacto**.
+
+## 3) Prioridad de fuentes (siempre por precisión)
+Orden de preferencia:
+1) `GNSS` (principal)
+2) `MIXED` solo si mantiene calidad alta (`quality_score`/umbrales)
+3) `WIFI` como apoyo (si se usa), siempre marcado como aproximado
+4) `CELL`/torres únicamente como último recurso
+
+### UX (decisión 4b)
+- `CELL` **no se muestra por defecto** como ubicación.
+- Si se implementa, solo puede mostrarse como **área aproximada** bajo toggle o en contexto controlado (no pin exacto).
+
+## 4) Motor de calidad de posición (Position Quality Engine) — obligatorio
+### Estados
+- `PRECISE`: posición tratable como “pin exacto”
+- `OK`: usable pero con incertidumbre visible
+- `DEGRADED`: no confiable como pin exacto
+- `NO_FIX`: sin fix GNSS válido
+
+### Defaults v1 (Remote Config; ajustables)
+- `precise_accuracy_max_m = 10`
+- `ideal_accuracy_target_m = 5` (objetivo interno)
+- `ok_accuracy_max_m = 25`
+- `max_fix_age_s = 10`
+- `min_sats_ok = 4`
+- `min_sats_precise = 5`
+- `degraded_after_s = 15` (si se mantiene mala calidad)
+- `no_fix_after_s = 25–30` (sin fix válido en movimiento)
+
+### Anti-saltos / outliers (crítico ciudad)
+- Rechazar puntos que impliquen salto/velocidad imposible en ventana de 2–3 s.
+- Si outlier: no mover el pin como “verdad”; marcar como `DEGRADED`.
+
+## 5) Modo degradado (sin engaño + reglas social)
+Si un punto/tramo no pasa umbrales:
+- se marca `DEGRADED/NO_FIX`
+- se visualiza con círculo grande y (si aplica) trazo discontinuo
+
+### Social / rankings / rewards
+- Solo cuentan tramos con calidad suficiente:
+  - `GNSS` bueno
+  - `MIXED` solo si cumple umbrales de calidad
+- Puntos degradados se pueden ver en histórico, pero **no cuentan para competir**.
+
+## 6) Latencia y “catch-up” (ya decidido)
+### Objetivo UX
+- Al abrir el mapa tras horas:
+  1) primero **estado actual + últimos 10–15 s** (máxima prioridad)
+  2) luego ruta orientativa
+  3) refinado por tandas
+- Target: mapa útil inmediato; esencial completo en ~5 s.
+
+### Servidor
+- Deduplicación y condensación server-side:
+  - `device_id + boot_id + seq_id` (idempotencia)
+  - apoyo por `timestamp` y distancia para deduplicación/orden
+
+## 7) Estimación (extrapolación) en cortes
+- Permitida solo como puente **≤ 5 s** desde el último fix real.
+- Siempre marcada como estimación (`is_estimated=true`).
+- Círculo de incertidumbre creciendo con el tiempo.
+- Pasados 5 s: congelar en último fix real + estado “sin cobertura” (sin mover el pin como si fuese real).
+
+## 8) Modo Perdido (live) — frecuencia dinámica 2–3 s
+- Objetivo: máxima precisión práctica en emergencia.
+- Intervalo depende de calidad y contexto:
+  - si `PRECISE/OK` y buena calidad → **2 s**
+  - si `DEGRADED/NO_FIX` → **3 s** (más conservador)
+- Ajustable por Remote Config:
+  - `lost_interval_good_s = 2`
+  - `lost_interval_bad_s = 3`
+- Puede ponderarse por velocidad (rápido → tender a 2 s; parado → 3 s).
+
+## 9) Sin cobertura: Wi-Fi + “teléfono cerca” (B)
+### 9.1 Wi-Fi
+Usos:
+1) **Power Saving Zones / Zonas seguras** (confirmación de entorno “casa”) para ahorrar batería.
+2) **Backhaul**: si falla celular pero hay Wi-Fi conocida, usarla para subir estado/ruta (no como pin exacto).
+
+Defaults v1 (Remote Config):
+- `wifi_scan_interval_rest_s = 120–300`
+- `wifi_scan_interval_move_s = OFF` (o muy bajo)
+- `wifi_connect_window_s = 30–60`
+
+### 9.2 Teléfono cerca: BLE Find Nearby + BLE Relay (bajo demanda)
+- **BLE Find Nearby**: búsqueda frío/caliente para cerrar a metros.
+- **BLE Relay**: si móvil tiene internet y collar no, el móvil sube puntos al servidor (`source=BLE_RELAY`).
+
+Política batería tracker:
+- activación por acción del usuario (Buscar / Modo Perdido / toggle)
+- intentos cada **30 s** hasta **10 min**
+
+## 10) Remote Config (sí)
+- Umbrales y reglas de calidad ajustables desde backend.
+- Firmware/app consultan configuración y aplican fallback a defaults si no hay conexión.
+- Config versionada y firmada.
+
+## 11) Contrato de datos (server → app) mínimo
+- `lat, lon, accuracy_m, position_source, fix_age_s, satellites`
+- `confidence_state (PRECISE/OK/DEGRADED/NO_FIX)`
+- `quality_score`
+- `is_estimated`
+- `is_rank_eligible`
+
+## 12) Validación interna (aunque no sea marketing)
+Escenarios:
+1) Ciudad cañón urbano
+2) Ciudad abierta/parque
+3) Bosque denso
+4) Exterior abierto
+
+Métricas:
+- `p95_accuracy_m` por escenario
+- `% tiempo en PRECISE (≤10m)` por escenario
+- nº de outliers/saltos por hora
+
+## 13) Hardware v1 / plan v2
+- V1: mantener GNSS actual y maximizar con:
+  - integración de antena + ventana RF
+  - control EMI (LTE/DC-DC/LEDs)
+  - filtros/outlier rejection
+- V2 (planificado): migración a GNSS de mayor rendimiento (ideal dual-band) sin rehacer app/backend (solo fuente + tuning).
+
+
+
+# ARES — Bloque F: Geofence (alertas fiables, cero tardanza) — Spec final v1
+
+## F0) Objetivo
+- Alertas fiables con latencia mínima cerca del borde.
+- Cero engaños: evitar falsos “FUERA” por jitter.
+- Batería protegida: no mantener tracking agresivo cuando está lejos, quieto y seguro.
+
+---
+
+## F1) Conceptos base
+### Distancia clave
+- `d_in_m`: distancia mínima **al borde** estando dentro (>=0).
+- `d_out_m`: distancia mínima **al borde** estando fuera (>=0).
+
+### Escala para cálculos (D_cap)
+- `R_eff` (tamaño característico):
+  - Círculo: `R_eff = radio`
+  - Rect/Cuadrado: `R_eff = min(ancho/2, alto/2)`
+- `D_cap_m`: **tope de escala** para que vallas enormes no destruyan batería.
+- `S = min(R_eff, D_cap_m)`
+
+> `S` es la “escala útil” para bandas. Si la valla es enorme, solo se considera relevante un tramo interior de tamaño `S` para definir rojo/ámbar; el resto es “deep safe” y se gobierna por movimiento + predicción.
+
+Defaults v1 (Remote Config):
+- `D_cap_m = 100`
+
+---
+
+## F2) Bandas dentro de la valla (Básico)
+### ROJO (alto riesgo, máxima precisión)
+- El ROJO **no es fijo**: se define por proporción, con techo.
+- `red_m_default = min( 0.10 * S, 20m )`
+- El usuario puede ajustar manualmente el ROJO (slider):
+  - `red_m_user ∈ [red_m_min, 20m]`
+  - `red_m_min = max(0.10 * S, 5m)` (mínimo operativo recomendado)
+
+> La intención: en casas pequeñas el ROJO no puede ser enorme, pero tampoco ridículamente pequeño; 5m es un mínimo práctico.
+
+### ÁMBAR (riesgo medio, tracking medio)
+- El ámbar se calcula como **% de lo que queda tras el rojo**, no del total.
+- `remaining = max(S - red_m_user, 0)`
+- `amber_width = 0.30 * remaining`  (Básico fijo)
+- `amber_limit = red_m_user + amber_width`
+
+### SEGURA
+- `d_in_m > amber_limit` → zona segura (ahorro batería).
+
+---
+
+## F3) Bandas dentro de la valla (Premium)
+- Igual que Básico, pero:
+  - `amber_pct_user ∈ [0..0.50]` (hasta 50% del remaining)
+  - Permite **zonas rojas internas (hotspots)** con formas v1 (círc/rect/cuadrado) para:
+    - carreteras, acantilados, zonas prohibidas, etc.
+  - Hotspot rojo: forzar 2s y/o alertas específicas.
+
+---
+
+## F4) Intervalos de tracking (base)
+### Dentro
+- Zona ROJA: **2s**
+- Zona ÁMBAR: **10s**
+- Zona SEGURA: **30s**
+
+### Avisos en app (decisión)
+- La app **solo avisa/alerta** cuando entra en **ROJO**.
+- ÁMBAR/SEGURA: sin alertas intrusivas (solo UI pasiva de color/estado).
+
+---
+
+## F5) Inteligencia “se dirige hacia la valla” (sube frecuencia cuando importa)
+Para no fundir batería, el sistema puede subir frecuencia fuera del rojo si detecta riesgo real.
+
+### Cálculo
+- `v_toward = (d_prev - d_now) / dt` (positivo = se acerca al borde)
+- `ttb = d_in_m / max(v_toward, ε)` (tiempo estimado hasta borde)
+
+### Reglas
+- Si `v_toward > 0` y `ttb < 60s`: subir 1 nivel (30→10, 10→2).
+- Si `ttb < 20s`: forzar 2s.
+- Si `v_toward <= 0` (se aleja): volver a intervalo base de la zona.
+
+---
+
+## F6) Estado FUERA (zona negra) + notificación + tracking
+### Confirmación “FUERA” (para evitar jitter)
+Definimos una **zona negra** fuera del borde:
+- `black_out_m = 5m` (mínimo)
+- Confirmación FUERA cuando:
+  - `d_out_m >= max(black_out_m, 2*accuracy_m)`
+
+### Alertas
+- En el momento de confirmarse FUERA: notificación inmediata (push + SMS/WhatsApp si activado).
+
+### Tracking estando FUERA (similar a LOST guardarraíles)
+- Por defecto: **cada 5s**
+- Si batería baja: **cada 10s**
+- Si batería crítica: **cada 30s**
+
+Umbrales (Remote Config, alineados con Lost):
+- `low_batt_pct = 15%` → mínimo 10s
+- `critical_batt_pct = 5%` → mínimo 30s
+
+> Nota: el usuario puede cancelar/ajustar para ahorrar, pero el sistema puede imponer mínimos por batería.
+
+---
+
+## F7) Reposo por inmovilidad (ahorro extra)
+- Si no hay movimiento significativo durante `60s` → modo reposo.
+- En reposo, intervalos pueden estirarse (p.ej. 60–180s) **solo** si:
+  - está en zona SEGURA, y
+  - no hay riesgo por `ttb` (no se está acercando), y
+  - no está en LOST_MODE.
+
+---
+
+## F8) Formas de geofence
+- v1: Círculo / Rectángulo / Cuadrado.
+- v2: Polígonos.
+
+---
+
+## F9) Límites por plan (activos vs guardados)
+- Básico: 1 activo / 2 guardados.
+- Add-on Travel: 2 activos / 5 guardados.
+- Premium: 5 activos / 10 guardados.
+
+---
+
+## F10) Remote Config (tunable)
+- `D_cap_m = 100`
+- `red_pct_default = 0.10`
+- `red_m_max = 20`
+- `red_m_min_floor = 5`
+- `amber_pct_basic = 0.30`
+- `amber_pct_premium_max = 0.50`
+- `black_out_m = 5`
+- `ttb_boost_10s = 60s`
+- `ttb_boost_2s = 20s`
+- `low_batt_pct = 15`
+- `critical_batt_pct = 5`
+- `out_interval_default = 5s`
+- `out_interval_low = 10s`
+- `out_interval_critical = 30s`
+- `rest_after_s = 60`
+
+
+# ARES — Bloque G: LOST_MODE (recuperación real + guardarraíles) — Spec final v1
+
+## 1) Activación, presets y extensiones
+- Presets: **15 / 30 / 60 min**.
+- Default al activar: **15 min**.
+- Extensión:
+  - Al acercarse el final, la app pregunta si necesita más: **+15 min** o **+30 min**.
+  - **Ilimitadas** extensiones (sin límite de veces).
+- Desactivación:
+  - El usuario puede **desactivar LOST_MODE** en cualquier momento para ahorrar batería.
+
+## 2) Selector de frecuencia (solo LOST_MODE)
+- El usuario puede elegir **cada cuánto recibir ubicación** solo dentro de LOST_MODE.
+- Opciones UI:
+  - **Auto (recomendado)**: el sistema decide intervalos dinámicos (2–3 s) en función de velocidad, calidad y batería.
+  - **5 s / 10 s / 30 s**.
+- Guardarraíl batería (forzado por sistema):
+  - Si batería <= **15%** ⇒ mínimo **10 s** (perfil Low Power).
+  - Si batería <= **5%** ⇒ mínimo **30 s** (perfil Critical).
+  - La app muestra: “Limitado por batería para aguantar más tiempo”.
+
+## 3) Frecuencia dinámica dentro de LOST_MODE
+- Objetivo: máxima precisión práctica sin agotar batería de forma absurda.
+- En **Auto**:
+  - Buena calidad + alta velocidad ⇒ **2 s**.
+  - Calidad/media/velocidad media ⇒ **3 s**.
+  - Si entra en Low Power/Critical, se respetan mínimos (10 s / 30 s).
+
+### Remote Config (mínimo)
+- `lost_interval_fast_s=2`
+- `lost_interval_normal_s=3`
+- `lost_interval_low_batt_s=10`
+- `lost_interval_critical_batt_s=30`
+- `low_batt_pct=15`
+- `critical_batt_pct=5`
+- Umbrales de calidad (ver Bloque E): `precise_accuracy_max_m`, `ok_accuracy_max_m`, `min_sats_*`, `max_fix_age_s`, etc.
+
+## 4) Backend: batería baja/crítica (no se apaga LOST_MODE, se optimiza)
+- **LOW (<=15%)**:
+  - Mantiene comunicación, entra en perfil “Lost Low Power”.
+  - Intervalo mínimo: **10 s**.
+  - Reduce lo no esencial (Wi-Fi scanning agresivo, BLE relay automático, extras).
+- **CRITICAL (<=5%)**:
+  - Mantiene comunicación hasta agotar batería.
+  - Intervalo mínimo: **30 s**.
+  - Mensajes compactos + evitar loops caros.
+
+## 5) LED pattern en LOST_MODE
+- Patrón SOS (Morse) disponible: `... --- ...`.
+- **Decisión:** **solo se activa si el usuario lo activa** (no automático).
+- En Low/Critical, el sistema puede reducir duty/brillo si compromete supervivencia.
+
+## 6) UX de recuperación (mapa + verdad)
+- En LOST_MODE, el mapa prioriza:
+  1) **estado actual + últimos 10–15 s**
+  2) ruta orientativa
+  3) refinado posterior
+- Banner en modo búsqueda:
+  - Calidad: `±Xm` + círculo de incertidumbre.
+  - Perfil actual: Normal / Low Power / Critical.
+  - Autonomía estimada en LOST_MODE.
+
+## 7) Teléfono cerca (casos extremos)
+- **BLE Find Nearby** (frío/caliente) para cerrar la búsqueda a metros.
+- **BLE Relay** bajo demanda para frescura (si el móvil tiene internet y el collar no).
+- Política batería tracker:
+  - activación por acción del usuario (Buscar / toggle)
+  - intentos cada **30 s** hasta **10 min**
+
+## 8) Roles y notificaciones
+- Owner: siempre puede activar/desactivar/extender.
+- Caregiver/invitado (si tiene permiso): puede activar LOST_MODE.
+  - Notifica inmediatamente a Owners (push y SMS/WhatsApp si están activados).
+
+## 9) Estimación de autonomía en app (modelo v1)
+### Datos
+- Batería (v1 Medium): **2750 mAh**.
+- Consumo de referencia aportado: **~150 mA** cuando la frecuencia es **10 s**.
+
+### Regla de cálculo (v1, explícita y ajustable)
+- Para dar una estimación simple al usuario, el modelo v1 usa la aproximación:
+  - `I_avg(10s) = 150 mA` (ancla)
+  - `I_avg(30s) ≈ 50 mA` (aprox. por proporcionalidad de intervalo; se refina con telemetría real)
+  - `I_avg(5s) ≈ 300 mA` (solo como aproximación; se refina con telemetría)
+- La app muestra la autonomía como **estimación** y se recalcula al recibir telemetría real.
+
+### Duración estimada desde umbrales (con el modelo v1)
+- 15% de 2750 mAh = **412.5 mAh**
+- 5% de 2750 mAh = **137.5 mAh**
+
+**Con reglas de sistema (15%→10s, 5%→30s):**
+- Tramo 15%→5% (275 mAh) a 150 mA ⇒ **~1.83 h**
+- Tramo 5%→0% (137.5 mAh) a 50 mA ⇒ **~2.75 h**
+- Total desde 15% hasta 0% ⇒ **~4.6 h**
+
+> Nota: estos números se refinan automáticamente cuando haya telemetría real de consumo (TX retries, time-to-fix, etc.).
+
+## 10) Telemetría mínima para refinar autonomía (recomendado)
+- `gnss_on_time_s`
+- `time_to_fix_avg_s`
+- `tx_on_time_s`
+- `tx_retries_count`
+- `signal_quality` (CSQ u otro)
+
+Con esto el backend puede ajustar el modelo de autonomía por entorno/cobertura sin actualizar app/firmware.
+
+# ARES — Especificación DeviceBinding (v1)
+**Objetivo:** definir con precisión cómo funciona el **vínculo Dispositivo ↔ Perro ↔ Usuarios**, incluyendo transferencias, invitaciones temporales y logs (auditoría).
+
+---
+
+## 1) Entidades y conceptos
+
+### 1.1 Perro (Dog Profile) = “cuenta” de datos
+- Un **Perro** es una entidad independiente que guarda:
+  - Perfil (nombre, raza, edad, peso, objetivos, etc.)
+  - Historial (rutas, actividad, métricas, nutrición si aplica)
+  - Configuración (geofences, POIs, normativa, alertas)
+- **Regla clave:** el histórico pertenece al **perro**, no al dispositivo ni al teléfono.
+
+### 1.2 Dispositivo (Tracker) = hardware intercambiable
+- Un **device_id** (tracker físico) se puede:
+  - vincular a un perro
+  - desvincular
+  - reemplazar por otro tracker sin perder datos del perro
+
+### 1.3 DeviceBinding
+- Un DeviceBinding representa: **device_id → dog_id** con estado.
+- **Regla:** 1 dispositivo solo puede estar vinculado a **1 perro activo** a la vez.
+- **Historial de bindings**: se guardan eventos de vinculación/desvinculación.
+
+### 1.4 Usuarios y roles (por perro)
+- **Owner principal**: primer usuario que configura el dispositivo.
+- **Owner secundario** (gratis, incluido en Plan Básico): segundo propietario con casi los mismos poderes.
+- **Caregiver / Invitado temporal**: acceso limitado y con caducidad.
+
+---
+
+## 2) Permisos (ACL) por rol
+
+### 2.1 Owner (principal y secundario)
+Puede:
+- Ver ubicación y estado del tracker
+- Cambiar modos (incl. Modo Perdido)
+- Encender luces
+- Configurar y editar geofences
+- Invitar / revocar caregivers
+- Añadir / quitar owner secundario
+- Desvincular / reemplazar dispositivo
+- Iniciar “Transferencia de propiedad” (entre cuentas)
+- Ver logs completos del perro
+
+### 2.2 Caregiver / Invitado temporal
+Puede:
+- Ver ubicación / estado
+- Ver información básica de seguridad (geofence, batería, señal)
+- **Activar Modo Perdido** (Live Tracking) **pero**:
+  - notifica inmediatamente a los Owners (push + log)
+- Encender luces
+- Recibir alertas (push) relacionadas con seguridad del perro
+
+No puede:
+- Editar geofences
+- Desvincular / transferir dispositivo
+- Añadir/quitar usuarios
+- Cambiar “cuenta del perro” o datos sensibles (según definas)
+
+---
+
+## 3) Reglas de invitaciones
+
+### 3.1 Owner secundario (gratis)
+- Máximo: **1 owner secundario** incluido en Plan Básico.
+- Alta:
+  1) Owner principal invita (email/teléfono)
+  2) Invitado acepta
+  3) Queda como Owner secundario
+- Baja:
+  - Cualquiera de los Owners puede retirar al otro Owner (con confirmación fuerte).
+
+### 3.2 Caregiver temporal
+- Lo crea un Owner desde “Compartir → Añadir cuidador”.
+- **Duración**: definida por Owner, máximo **1 mes**.
+- Revocación: instantánea (Owner puede quitar acceso cuando quiera).
+- Los Owners ven:
+  - cuándo aceptó
+  - cuándo expira
+  - qué acciones críticas ejecutó (logs)
+
+> Nota (técnica): la app debe mostrar claramente “Acceso temporal hasta: fecha/hora”.
+
+---
+
+## 4) Flujos (pantallas + comportamiento)
+
+### 4.1 Primera configuración (binding inicial)
+**Precondición:** usuario tiene cuenta (o se crea) y está logueado.
+1) Emparejar por BLE (o método definido) y validar el tracker.
+2) Seleccionar/crear Perro.
+3) Backend crea:
+   - DogProfile (si no existía)
+   - DeviceBinding: `ACTIVE`
+   - Owner principal = usuario actual
+4) App muestra Dashboard del perro.
+
+**Log:**
+- `DEVICE_BOUND` (device_id, dog_id, by_user, timestamp)
+
+---
+
+### 4.2 Reemplazo de dispositivo (GPS nuevo) sin perder datos
+1) Pantalla “Dispositivo → Cambiar dispositivo”
+2) Confirmación fuerte (PIN/biometría)
+3) `UNBIND` del dispositivo actual (o marcarlo como reemplazado)
+4) Emparejar nuevo tracker
+5) `BIND` al mismo dog_id
+
+**Resultado:**
+- Historial del perro intacto
+- Cambia solo el device_id activo
+
+**Logs:**
+- `DEVICE_UNBOUND`
+- `DEVICE_BOUND`
+- `DEVICE_REPLACED` (opcional, para agrupar el evento)
+
+---
+
+### 4.3 Cambio de teléfono
+- El usuario inicia sesión en el móvil nuevo.
+- Accede al perro y a todo su historial (perro es independiente del teléfono).
+- Si además quiere dar acceso a otra persona, usa “Compartir”.
+
+**Log:**
+- `LOGIN_NEW_DEVICE` (opcional; útil para seguridad)
+
+---
+
+### 4.4 Transferencia de propiedad (cuenta a cuenta) — Opción 3 (modo transferencia + espera + confirmación)
+**Objetivo:** permitir segunda mano / traspaso sin soporte, de forma controlada.
+
+**Reglas:**
+- Requiere:
+  - activar “Modo transferencia”
+  - esperar un tiempo **configurable** (por producto, ej. 24h por defecto)
+  - confirmación (email/OTP)
+- No permitido si:
+  - el perro/dispositivo está en Modo Perdido activo (anti-robo), salvo soporte interno.
+
+**Flujo:**
+1) Owner activa “Transferir”
+2) App indica: “Transferencia pendiente, finaliza en X horas”
+3) Se envía código / link al nuevo owner
+4) Nuevo owner acepta
+5) Se reasigna ownership y se cierra el binding anterior (o se mantiene dog_id según tu estrategia de “venta con perro”)
+
+**Logs:**
+- `TRANSFER_REQUESTED`
+- `TRANSFER_CONFIRMED_OWNER`
+- `TRANSFER_ACCEPTED_NEW_OWNER`
+- `TRANSFER_COMPLETED`
+
+---
+
+## 5) Logs (auditoría) — eventos mínimos obligatorios
+- `DEVICE_BOUND`
+- `DEVICE_UNBOUND`
+- `DEVICE_REPLACED`
+- `OWNER_INVITE_SENT`
+- `OWNER_INVITE_ACCEPTED`
+- `OWNER_REMOVED`
+- `CAREGIVER_INVITE_SENT`
+- `CAREGIVER_ACCEPTED`
+- `CAREGIVER_REVOKED`
+- `CAREGIVER_EXPIRED`
+- `MODE_CHANGED` (incluye: Live/Lost/Home Save/Tracking)
+- `LOST_MODE_TRIGGERED_BY_CAREGIVER` (con notificación a owners)
+- `GEOFENCE_EDITED` (solo owners)
+- `LIGHTS_TRIGGERED`
+- `PLAN_REDEEMED` (código)
+- `TRANSFER_*` (si aplica)
+
+**Visibilidad:**
+- Owners: ven el log completo.
+- Caregiver: no ve logs (o solo mínimos si decides).
+
+---
+
+## 6) Notificaciones
+- Si caregiver activa Modo Perdido:
+  - push inmediato a Owners: “Cuidador X activó Modo Perdido”
+  - evento en logs
+- Eventos críticos (geofence, batería baja, offline prolongado) → push (según settings).
+
+---
+
+## 7) Monetización / estructura de cuentas (según tu criterio)
+- **Un perro = una “cuenta/perfil”**. Si se quiere gestionar otro perro con su propio dispositivo, es una **cuenta adicional** (de pago según tu modelo).
+- Reemplazo de tracker no crea un perro nuevo: se mantiene dog_id.
+
+---
+
+## 8) Parámetros cerrados
+- **Máximo caregivers simultáneos:** **3**.
+- Si caregiver activa **Modo Perdido**:
+  - Notificación **push** inmediata a Owners.
+  - Si el Owner tiene **SMS/WhatsApp** activado, también se envía por esos canales.
+# ARES — Plan de mejora futura: GNSS Dual‑Band (L1/L5) + “Precisión Extrema” (Roadmap)
+
+## Objetivo del plan (para siguiente generación)
+Subir el techo de precisión y robustez en **ciudad/bosque** reduciendo multipath y mejorando estabilidad de fix, manteniendo:
+- **Verdad en UI** (círculo de incertidumbre estilo Google Maps).
+- **BLE Find Nearby + BLE Relay** como cierre de precisión cuando el owner está cerca.
+- Sin romper autonomía ni coste del modelo actual.
+
+> Nota: Este plan **NO entra en v1** por coste/tiempo de validación RF/antena. Queda registrado como v2/vNext.
+
+---
+
+## 1) Qué aporta Dual‑Band (L1/L5) y por qué interesa
+**Dual‑Band** mejora sobre todo:
+- Resistencia a **multipath** (ciudad “urban canyon”).
+- Estabilidad de posición en entornos difíciles.
+- Mejor “confidence” (menos saltos).
+
+No elimina límites físicos:
+- **Interior/metro/túnel**: GNSS puede no estar disponible.
+- Bosque muy denso: seguirá habiendo degradación, pero normalmente menos “ruidosa”.
+
+---
+
+## 2) Qué incluye exactamente la mejora (v2)
+### 2.1 Hardware (mínimo)
+- **Módulo GNSS dedicado Dual‑Band (L1/L5)** (separado del módem).
+- **Antena Dual‑Band** (FPC o patch según tamaño/arquitectura).
+- Front-end RF (según diseño):
+  - ESD, matching, posible filtrado, ruta RF limpia.
+- **Diseño EMI** reforzado para que LTE/DC‑DC/LEDs no contaminen GNSS.
+
+### 2.2 Firmware
+- Motor “Position Quality Engine” (ya definido conceptualmente):
+  - `position_source` (GNSS/WIFI/CELL/MIXED)
+  - `accuracy_m`, `satellites`, edad del fix
+  - `quality_score` (0–100) + niveles HIGH/MED/LOW
+- Rechazo de outliers y filtros anti-saltos.
+- Telemetría de calidad (para tuning).
+
+### 2.3 Backend/App
+- Remote Config (umbrales ajustables sin reflashear):
+  - thresholds de degradado
+  - thresholds de “pin exacto”
+  - reglas de elegibilidad para rankings
+- UI:
+  - marker + círculo de incertidumbre
+  - banner de calidad (solo modo búsqueda/perdido con ±m y HIGH/MED/LOW)
+
+---
+
+## 3) Opciones de arquitectura GNSS para v2
+### Opción A (recomendada): GNSS dedicado Dual‑Band + Antena optimizada
+- Máxima mejora por euro.
+- Menor dependencia del módem para GNSS.
+- Más control de calidad y telemetría.
+
+### Opción B: GNSS dual‑band + “Precisión Extrema” (modo perdido)
+- Misma base de A.
+- Añade un modo de emergencia con parámetros más agresivos.
+- (Opcional futuro) correcciones GNSS solo en emergencia (si se decide).
+
+---
+
+## 4) Coste adicional estimado (BOM) — guía para decisión
+> Los importes reales dependen de volumen y antena final. Esto es solo para registrar orden de magnitud.
+
+- Módulo GNSS dual‑band: **+2€ a +10€** vs single‑band (según referencia/volumen).
+- Antena dual‑band: **+1€ a +6€** (industrializada) o más si se compra “de catálogo”.
+- Pasivos/RF/ESD adicionales: **+0,5€ a +2€**.
+- Coste de validación/iteración: alto (tiempo/ingeniería), no BOM.
+
+**Riesgo principal:** sin un buen diseño RF/antena, dual‑band no da la mejora esperada.
+
+---
+
+## 5) Requisitos de diseño (para que la mejora sea real)
+### 5.1 Antena y carcasa
+- “Ventana RF” (zona plástica) sin metal cercano.
+- Plano de masa adecuado.
+- Ubicación que minimice apantallamiento por cuerpo del perro.
+
+### 5.2 EMI/ruido
+- Separación física y eléctrica del módem LTE y DC‑DC.
+- Rutado GNSS corto y limpio.
+- Pruebas de interferencias en modos:
+  - LEDs encendidos
+  - carga/USB
+  - transmisión LTE continua
+
+### 5.3 Validación de campo (obligatoria)
+Medir precisión como percentiles por entorno:
+- **Open sky**
+- **Ciudad densa**
+- **Bosque**
+- **Interior/metro** (esperar degradado; medir “comportamiento honesto”)
+
+Métricas mínimas:
+- p50/p90/p95 de `accuracy_m`
+- tasa de outliers (saltos)
+- estabilidad de rumbo/velocidad
+- tiempo a primer fix (TTFF)
+- consumo en modo normal y perdido
+
+---
+
+## 6) Qué no cambia (principios ARES que se mantienen)
+- No “vender” torres como precisión fina:
+  - CELL solo como área aproximada (si se muestra).
+- Puntos degradados:
+  - visibles en mapa (orientativo)
+  - **no** cuentan para rankings/challenges si no pasan umbrales.
+- BLE Find Nearby:
+  - sigue siendo el cierre final para encontrar al perro cerca.
+- BLE relay:
+  - solo bajo demanda (foreground / modo perdido / toggle) con ventanas limitadas.
+
+---
+
+## 7) Plan de ejecución (roadmap sugerido)
+### Fase 0 — Spec & selección
+- Elegir módulo GNSS dual‑band candidato (2–3 finalistas).
+- Definir tipo de antena (FPC vs patch) por restricciones físicas.
+- Definir objetivos por entorno (KPIs).
+
+### Fase 1 — Prototipo RF (1–2 iteraciones)
+- PCBA v2 con GNSS dedicado.
+- Carcasa “representativa” para tuning real.
+- Primera campaña de medición.
+
+### Fase 2 — Tuning + firmware (iterativo)
+- Ajustar layout/antena/EMI.
+- Refinar `quality_score` y umbrales por Remote Config.
+
+### Fase 3 — Pre‑producción
+- Validación final (ciudad/bosque).
+- Bloquear BOM y reglas de UI.
+
+---
+
+## 8) Criterios de éxito (para aprobar v2)
+- Reducción significativa de saltos y jitter en ciudad.
+- Mejora del p90/p95 de `accuracy_m` (según KPIs definidos).
+- Comportamiento honesto en degradado (UI + rules).
+- Autonomía aceptable en modo normal (no degradar el producto).
+
+---
+
+## 9) Decisiones pendientes para cuando se active este plan
+1) Volumen objetivo (1k / 5k / 10k+) para cerrar BOM real.
+2) Restricciones de antena (espacio real / tipo).
+3) Si se añade “Precisión Extrema” (solo Modo Perdido) y qué implica a nivel comercial.
+
+
+# ARES — “Preview / Demo Mode” sin dispositivo (B3) (v1)
+**Objetivo:** no es “usar el móvil como tracker”. Es un **modo de presentación y onboarding** para:
+- explicar capacidades,
+- elegir plan,
+- canjear código,
+- y preparar la app antes de que llegue el dispositivo.
+
+---
+
+## 1) Qué es (y qué NO es)
+### Sí es
+- Un **tour interactivo** (slider/cards) con:
+  - geofence
+  - ubicación
+  - actividad orientativa
+  - social (resumen)
+  - nutrición (resumen)
+- Una pantalla de **comparativa** de Plan Básico vs Premium.
+- Un flujo de “**Ya tengo un plan**” → meter **código**.
+- Un flujo “**Ya tengo cuenta**” → login y entrar.
+
+### NO es
+- Tracking real con el teléfono.
+- Un modo que funcione como sustituto del hardware.
+- Mapas offline descargables (por tu decisión).
+
+---
+
+## 2) Estructura B3 (dos niveles)
+
+### Nivel 1 — Preview rápido (sin dispositivo)
+**Entrada:** abrir app por primera vez (usuario nuevo).
+1) Pantalla: “Crear cuenta / Iniciar sesión”
+2) Tras crear cuenta: **Slider de capacidades** (cards con imagen + texto corto):
+   - Ubicación (GPS)
+   - Geofence + Modo Guardia
+   - Modo Perdido
+   - Luces
+   - Actividad (orientativa)
+   - Social (rankings/challenges – resumen)
+   - Nutrición (resumen del “nutricionista” Premium)
+3) CTA: “Continuar” → pantalla “Planes”
+
+### Nivel 2 — Selección de plan + canjeo
+Pantalla “Elige tu plan”
+- Comparativa lado a lado (Básico vs Premium):
+  - qué incluye cada uno (resumen)
+  - precio
+  - botón “Elegir”
+- Acciones:
+  - **Ya tengo un plan (código)** → input código → validar → activar plan
+  - **Comprar plan** → (si se compra fuera en web, aquí solo se guía; si in-app purchase, procesar pago)
+  - **Upgrade cuando quieras** (si empieza en básico)
+
+---
+
+## 3) Flujo “comprado en web antes de que llegue el dispositivo”
+**Caso principal que quieres:**
+- Usuario compra el plan en la web (básico por defecto).
+- Al abrir la app:
+  1) crea cuenta
+  2) ve preview
+  3) pulsa “Ya tengo plan” e introduce **código único**
+  4) se activa el plan en backend
+  5) queda listo para cuando llegue el tracker
+
+**Cuando llega el dispositivo:**
+- App muestra: “Vincula tu dispositivo”
+- Emparejamiento y DeviceBinding (ver spec DeviceBinding).
+
+---
+
+## 4) Flujo “ya tengo cuenta”
+- Pantalla inicial: “Ya tengo cuenta” → login.
+- Si el usuario ya tiene perro(s), entra directo.
+- Si tiene plan activo, ve la pantalla de “Vincular / Gestionar”.
+
+---
+
+## 5) Datos en Preview (cómo se simula)
+- No hay dispositivo real, por tanto:
+  - se usa un dataset **simulado** (perro demo) solo para UI
+  - se bloquean acciones que consumen coste real (SMS/WhatsApp, Live real, etc.)
+- El preview debe mostrar etiquetas claras:
+  - “Ejemplo”
+  - “Vista previa”
+  - “Activa tu dispositivo para usarlo”
+
+---
+
+## 6) Reglas del Plan por defecto
+- El usuario puede entrar sin elegir Premium.
+- Por defecto:
+  - se orienta al **Plan Básico** (porque es el mínimo)
+  - Premium se presenta como upgrade en cualquier momento.
+
+---
+
+## 7) Offline maps
+- **No disponible en Preview** (según tu decisión).
+
+---
+
+## 8) Objetivo de UX (para evitar confusión)
+- El preview debe quedar claro como “explicación de capacidades”.
+- La app no debe crear la expectativa de que “ya está trackeando” sin el tracker.
+
+---
+
+## 9) Copy mínimo recomendado (para que el usuario lo entienda)
+- “Esta es una vista rápida de lo que podrás hacer con ARES.”
+- “Cuando tu dispositivo llegue, podrás vincularlo en 2 minutos.”
+- “¿Ya compraste un plan? Introduce tu código y deja todo listo.”
+
+
+\## L) Privacidad y cumplimiento (UE) — definición final (v1) + costes (mapa propio + “ayuda búsqueda”)
+
+
+
+\### 1) Privacidad mínima (sin sustos)
+
+
+
+\*\*Social / ranking\*\*
+
+
+
+\* El ranking y cualquier social muestran \*\*solo alias\*\*, nunca nombre real por defecto.
+
+\* En social solo se muestran \*\*métricas agregadas\*\* (km/minutos/badges). \*\*Nunca\*\* puntos exactos ni rutas completas.
+
+
+
+\*\*Rutas exactas\*\*
+
+
+
+\* \*\*Rutas exactas + histórico detallado\*\*: \*\*solo Owner y Family\*\*.
+
+\* Cualquier tercero (incluido “amigo que ayuda”) \*\*no ve histórico\*\* ni rutas pasadas.
+
+
+
+\*\*Modo privado\*\*
+
+
+
+\* Toggle “Modo privado” (por perro):
+
+
+
+&nbsp; \* No aparece en ranking/social.
+
+&nbsp; \* Mantiene todas las funciones de seguridad.
+
+
+
+\*\*Minimización\*\*
+
+
+
+\* El “modo ayuda” expone el \*\*mínimo\*\*: ubicación actual (lat/lon), precisión, última actualización, y distancia/rumbo desde el móvil del helper.
+
+
+
+---
+
+
+
+\### 2) Retención y borrado (GDPR) — por plan
+
+
+
+\*\*Retención de histórico (geodatos)\*\*
+
+
+
+\* \*\*Básico:\*\* 7 días.
+
+\* \*\*Premium:\*\* 1 año.
+
+
+
+\*\*Borrado\*\*
+
+
+
+\* “Eliminar cuenta” (borrado total, con ventana técnica de backups).
+
+\* “Eliminar perro” (borra perfil + histórico/sesiones asociados).
+
+\* Revocación inmediata de permisos compartidos (Family) y de accesos de “ayuda”.
+
+
+
+\*\*Consentimientos\*\*
+
+
+
+\* Marketing/email \*\*opt-in separado\*\*.
+
+\* Tracking/ubicación: texto claro de finalidad (seguridad/servicio) + política de privacidad.
+
+
+
+---
+
+
+
+\### 3) Compartir ubicación “modo ayuda” (12h) — SOLO con nuestra app (sin credenciales)
+
+
+
+\*\*Objetivo\*\*
+
+
+
+\* Que el owner pueda pedir ayuda rápida a terceros \*\*sin que el tracker gaste más batería\*\* y sin depender de WhatsApp/Telegram como canal de ubicación (solo como canal de envío del link).
+
+
+
+\*\*Principio técnico (tal como lo quieres)\*\*
+
+
+
+\* El \*\*dispositivo envía UNA vez\*\* a la central con su cadencia normal.
+
+\* La \*\*central re-emite esa misma ubicación\*\* a todos los móviles que estén en “modo ayuda”.
+
+\* Por tanto: \*\*más helpers = no más batería del tracker\*\*. Solo más tráfico en backend/mapa.
+
+
+
+\#### 3.1 Flujo UX (sin login)
+
+
+
+1\. Owner activa “Compartir búsqueda” en la app.
+
+2\. Backend genera un \*\*token de ayuda\*\* (aleatorio, no adivinable) con:
+
+
+
+&nbsp;  \* `expires\_at = 12h`
+
+&nbsp;  \* `scope = solo lectura (live location)`
+
+&nbsp;  \* `max\_helpers` (límite según plan/upsell)
+
+3\. Owner envía el link por WhatsApp (o donde sea).
+
+4\. El helper instala la app si no la tiene.
+
+5\. Al abrir el link, la app entra directo a \*\*“Mapa fácil (Helper Mode)”\*\*:
+
+
+
+&nbsp;  \* Ve ubicación del perro + su propia ubicación (para acercarse)
+
+&nbsp;  \* No ve rutas, no ve histórico, no ve datos personales, no toca ajustes
+
+6\. El Owner puede \*\*revocar\*\* el modo ayuda en cualquier momento.
+
+
+
+\*\*Aviso obligatorio en UI\*\*
+
+
+
+\* “Este enlace comparte ubicación exacta durante 12h. Compártelo solo con personas de confianza. Puedes revocarlo cuando quieras.”
+
+
+
+\#### 3.2 Permisos (roles)
+
+
+
+\* \*\*Owner/Family:\*\* control total; pueden crear y revocar el modo ayuda.
+
+\* \*\*Helper (sin credenciales):\*\* solo lectura “ubicación live” + su posición. Nada más.
+
+
+
+---
+
+
+
+\### 4) Límites y upsell (control de riesgo y de coste)
+
+
+
+Aquí se define exactamente lo que pediste (base + upsell), sin crear un tercer plan:
+
+
+
+\* \*\*Incluido (Básico y Premium):\*\* hasta \*\*5 helpers simultáneos\*\* en modo ayuda (token activo 12h).
+
+\* \*\*Upsell “Búsqueda en equipo”:\*\* sube a \*\*10 helpers simultáneos\*\*.
+
+
+
+> Motivo: el coste marginal real de 5→10 en mapa propio es muy bajo; el límite es por \*\*seguridad/abuso\*\* y por \*\*valor de producto\*\*.
+
+
+
+---
+
+
+
+\### 5) Mapa propio (self-host) — cómo se hace y por qué
+
+
+
+\*\*No se usan tiles de `tile.openstreetmap.org`\*\* porque el uso offline/prefetch está prohibido y el heavy use se bloquea; la política recomienda self-host o proveedor adecuado. (\[Grupo de Operaciones OSMF]\[1])
+
+
+
+\*\*Opción A (la que elegiste, correcta):\*\*
+
+
+
+\* Servimos \*\*vector tiles propios\*\* desde nuestra infraestructura (objeto + CDN).
+
+\* En la app renderizamos el mapa y solo descargamos tiles de la zona visible.
+
+\* Implementación muy práctica: enfoque tipo “mapa del mundo en un fichero” estilo Protomaps (vector tiles en un archivo estático con HTTP range requests). (\[Protomaps]\[2])
+
+
+
+---
+
+
+
+\### 6) Coste real de “compartir con 5 vs 10” (con mapa propio)
+
+
+
+El coste variable viene sobre todo de \*\*peticiones de tiles\*\* (no del tracker), y se reduce mucho con caché.
+
+
+
+Para estimar, uso referencias típicas de vector tiles:
+
+
+
+\* Recomendación histórica: \*\*tile medio < 50KB\*\* y límite clásico \*\*500KB\*\*. (\[Medium]\[3])
+
+
+
+\#### 6.1 Coste de almacenamiento del mapa mundial (fijo mensual)
+
+
+
+Si alojamos el mapa mundial en un único MBTiles grande:
+
+
+
+\* R2 Storage: \*\*$0.015/GB-mes\*\* (Standard). (\[Cloudflare Docs]\[4])
+
+&nbsp; Ejemplo con 128GB: \*\*~$1.92/mes\*\* (orden de magnitud). \*(El tamaño exacto depende del estilo/dataset; Protomaps lo plantea como “mundo en un file”, pero el peso final lo decidimos nosotros.)\* (\[Protomaps]\[2])
+
+
+
+\#### 6.2 Coste por una búsqueda (variable por helpers)
+
+
+
+Si usamos Cloudflare R2:
+
+
+
+\* Lecturas (Class B): \*\*$0.36 / millón requests\*\*
+
+\* Egress a Internet: \*\*gratis\*\* (\[Cloudflare Docs]\[4])
+
+
+
+\*\*Escenario típico (búsqueda real 30–45 min, poco paneo):\*\*
+
+
+
+\* Suposición: ~200 tiles por helper (carga + algo de movimiento).
+
+\* 5 helpers → 1,000 requests → 1,000/1,000,000 × $0.36 = \*\*$0.00036\*\*
+
+\* 10 helpers → 2,000 requests → \*\*$0.00072\*\*
+
+
+
+\*\*Escenario heavy (12h, bastante paneo):\*\*
+
+
+
+\* Suposición: 4,800 tiles/helper (alto).
+
+\* 5 helpers → 24,000 requests → \*\*$0.00864\*\*
+
+\* 10 helpers → 48,000 requests → \*\*$0.01728\*\*
+
+
+
+\*\*Conclusión:\*\* con mapa propio + R2, el salto de 5→10 helpers cuesta \*\*céntimos o menos\*\* por evento incluso en casos “heavy”. El límite/upsell se justifica más por \*\*seguridad y valor\*\*, no por coste puro. (\[Cloudflare Docs]\[4])
+
+
+
+---
+
+
+
+\### 7) Precio recomendado del upsell (para fijarlo ya)
+
+
+
+Como el coste marginal es bajísimo y el valor es alto (“encontrar al perro”), el pricing debe ser \*\*value-based\*\*.
+
+
+
+Recomendación (simple y sin fricción en emergencia):
+
+
+
+\* \*\*Upsell “Búsqueda en equipo (10 helpers)” = 2,99 €/mes\*\*
+
+
+
+&nbsp; \* Evita cobrar “por activación” justo cuando hay urgencia.
+
+&nbsp; \* Mantiene margen incluso con picos.
+
+
+
+\*(Si algún día quieres un “Pro” de 20 helpers, sería otro add-on, pero 10 cubre la mayoría de escenarios reales.)\*
+
+
+
+---
+
+
+
+\### 8) Controles anti-abuso (obligatorios)
+
+
+
+\* Token aleatorio largo + expiración 12h + revocación inmediata.
+
+\* 1 token activo por perro (para no proliferar links).
+
+\* Rate-limit por token/IP en backend (evita scraping).
+
+\* Helper Mode \*\*solo lectura\*\* y sin histórico.
+
+\* Log de seguridad mínimo (sin rutas completas) para detectar abuso.
+
+
+
+---
+
+
+
+Este bloque L queda listo para copiar/guardar como especificación de privacidad + GDPR + “modo ayuda” solo app + mapa propio + costes + upsell.
+
+
+
+\[1]: https://operations.osmfoundation.org/policies/tiles/?utm\_source=chatgpt.com "Tile Usage Policy"
+
+\[2]: https://protomaps.com/?utm\_source=chatgpt.com "Protomaps - The open source map in a file"
+
+\[3]: https://medium.com/%40ibesora/a-data-driven-journey-through-vector-tile-optimization-4a1dbd4f3a27?utm\_source=chatgpt.com "A data-driven journey through Vector Tile optimization"
+
+\[4]: https://developers.cloudflare.com/r2/pricing/?utm\_source=chatgpt.com "R2 pricing"
+
+
+
+
+
+# ARES — Protocolo realtime app↔backend + Catch-up + Batería móvil (Spec v1)
+
+## Objetivo
+Que al abrir la app/mapa el usuario vea **dónde está el perro “ya”** y que el recorrido se cargue **sin fallos ni duplicados**, manteniendo **batería móvil** bajo control.
+
+---
+
+## 1) Decisión de arquitectura
+### 1.1 Canales
+- **HTTP (REST)**: autenticación, planes/códigos, configuración, **catch-up** (histórico/track), estado actual, assets.
+- **MQTT over WebSocket**: **stream realtime** (solo cuando el mapa está en primer plano).
+- **Push (FCM/APNS)**: alertas críticas en background (escape/geofence, batería baja, offline, caregiver activa Modo Perdido, etc.).
+
+### 1.2 Regla de batería móvil (obligatoria)
+- **MQTT solo con pantalla activa** (mapa abierto / pantalla activa en foreground).
+- Al pasar a background: **cortar MQTT**.
+- En background: solo **push** + **refresh puntual** cuando el usuario abre la notificación o vuelve a la app.
+
+---
+
+## 2) Identidades y permisos (topics + ACL)
+### 2.1 Identidades
+- Se manejan **ambos IDs**:
+  - `device_id` (tracker)
+  - `dog_id` (perro)
+
+### 2.2 Reglas de acceso al live (stream)
+- **Owner**: siempre puede suscribirse a live.
+- **Caregiver**: puede suscribirse a live **solo dentro de su ventana temporal activa**.
+- Fuera de ventana: denegar subscripción live (ACL).
+
+### 2.3 Topics recomendados
+> Nota: el backend puede mapear dog_id↔device_id internamente.
+
+- Live ubicación:
+  - `dog/{dog_id}/location/live`
+- Estado dispositivo:
+  - `dog/{dog_id}/device/state`
+- Alertas/eventos:
+  - `dog/{dog_id}/alerts`
+- (Opcional debug/ops interno):
+  - `device/{device_id}/telemetry`
+
+### 2.4 Autenticación
+- App obtiene token (JWT/OAuth) por HTTP.
+- MQTT over WS se autentica con ese token.
+- Broker aplica ACL por roles (Owner/Caregiver) y validez temporal.
+
+---
+
+## 3) Modelo de datos en servidor (para “siempre actualizado”)
+### 3.1 Dos capas de track (obligatorio)
+1) **RAW Track (inmutable)**
+- Guarda **todos** los puntos recibidos (sin perder detalle), con idempotencia.
+
+2) **VIEW Track (precalculado / optimizado)**
+- Versión condensada para pintar rápido el mapa.
+- Se genera automáticamente al ingerir puntos (o por job rápido) para que el móvil no espere cálculos.
+
+### 3.2 Idempotencia y deduplicación (100% server-side)
+Cada punto debe incluir:
+- `device_id`
+- `boot_id` (UUID por arranque del dispositivo)
+- `seq_id` (contador incremental por boot)
+- `ts` (timestamp)
+- `lat`, `lon`
+- `accuracy_m` (si existe)
+- `source` (GNSS/WiFi/BLE/Cell/…) si aplica
+
+**Clave de idempotencia:** `(device_id, boot_id, seq_id)`
+- Si llega repetido: se ignora.
+- Orden por `ts` y/o `seq_id`.
+
+### 3.3 Condensación (VIEW Track)
+- El servidor decide cómo “empaquetar” para el móvil:
+  - simplificación geométrica (tipo Douglas–Peucker) o
+  - muestreo adaptativo por ventanas (más denso en giros, menos en rectas).
+- Objetivo: mantener fidelidad visual y precisión sin saturar red/UI.
+
+---
+
+## 4) UX: al abrir mapa tras horas (Catch-up)
+### 4.1 Requisito de latencia
+- **1–2 s** para mostrar:
+  - **posición actual** (o la más reciente disponible)
+  - estado actual (online/offline/sincronizando, batería, modo)
+- Carga completa del recorrido orientativo:
+  - progresiva, con objetivo **<= 5 s** para “ruta útil”, y luego refinado si se necesita.
+
+### 4.2 Estrategia “Fast First, Refine Later” (obligatoria)
+Al abrir el mapa:
+
+**Fase 0 (inmediata, prioridad máxima)**
+- Pedir por HTTP un paquete mínimo (“NOW”):
+  - `last_fix` (último punto)
+  - últimos **10–15 s** de puntos (si existen)
+  - `device_state` (batería, señal, modo, último contacto)
+- Render:
+  - marcador “posición actual”
+  - mini-traza reciente (si llega)
+
+**Fase 1 (catch-up orientativo, rápido)**
+- Pedir por HTTP “VIEW Track” desde `last_seen_ts` (la última vez que el usuario abrió el mapa).
+- Render:
+  - ruta “orientativa” completa desde última sesión (sin bloquear UI)
+
+**Fase 2 (refinado por tandas)**
+- Si el usuario se queda mirando:
+  - el servidor envía lotes adicionales (más densidad) por HTTP (no por MQTT) para segmentos donde haga falta más precisión.
+- Regla:
+  - el refinado no puede impedir que el usuario vea ya la posición actual.
+
+**Fase 3 (realtime)**
+- Abrir **MQTT over WS** y suscribirse al live.
+- Deduplicar cualquier solape entre:
+  - puntos del catch-up (HTTP)
+  - primeros puntos del stream (MQTT)
+
+### 4.3 “Desde la última vez” (tu opción C)
+- La app guarda `last_seen_ts` por perro (cuando el usuario salió del mapa).
+- Catch-up se solicita con `since=last_seen_ts`.
+- Si `last_seen_ts` no existe (primera vez), usar ventana por defecto (ej. 2h o 24h; se define en producto).
+
+---
+
+## 5) Límite de puntos (qué significa y por qué)
+> Esto no limita lo que guarda la nube; limita lo que **se envía y pinta** en el móvil por rendimiento.
+
+### 5.1 Reglas de payload
+- “NOW packet” (Fase 0): máximo ~20–60 puntos (10–15 s según frecuencia).
+- “VIEW Track” (Fase 1): entregar una ruta simplificada con un máximo recomendado:
+  - **500–1000 puntos** por respuesta (ajustable por dispositivo/OS).
+- “Refine batches” (Fase 2): lotes pequeños por tramo (ej. 100–300 puntos) bajo demanda.
+
+### 5.2 Principio
+- Guardar RAW completo siempre.
+- Enviar VIEW para pintar rápido.
+- Refinar solo si el usuario lo necesita.
+
+---
+
+## 6) Estado visual mínimo (banner / indicadores)
+### 6.1 En uso normal (no molestar)
+- Mostrar discreto:
+  - “Última actualización: hace X”
+  - Estado: `Online / Offline / Sincronizando`
+
+### 6.2 Solo en Modo Perdido / Buscar (contexto de estrés)
+Mostrar ambos:
+- **Precisión cualitativa**: `Alta / Media / Baja`
+- **Margen en metros**: `± Xm`
+- (Opcional) motivo de baja precisión: solo si aporta valor y no ensucia (se puede reservar para Premium o solo en modo Buscar).
+
+---
+
+## 7) Modo sin red: fallback local (cercanía) + estimación controlada
+
+### 7.1 Principio
+- Si no hay red, **no** gastar batería intentando “encontrar el móvil” constantemente.
+- La búsqueda/sincronización local se activa **solo por acción del usuario** o por **condiciones muy concretas** (ver 7.4).
+
+### 7.2 BLE (Find Nearby — recomendado)
+- Función “Find Nearby”:
+  - App inicia escaneo BLE.
+  - Tracker aumenta presencia BLE temporalmente.
+  - UI “frío/caliente” + distancia estimada.
+
+### 7.3 Estimación de posición cuando se corta la conectividad (sin engañar)
+**Objetivo:** dar orientación durante cortes cortos sin mandar al usuario a un sitio incorrecto.
+
+Reglas:
+- La app siempre muestra el **último punto real** (`last_fix`) con su timestamp.
+- Solo se permite **extrapolación corta** (posición estimada) durante una ventana breve:
+  - **<= 5–10 s** (configurable por producto)
+  - basada en **última velocidad/rumbo conocidos** (vector) y/o modelo simple.
+- La extrapolación **siempre** se marca como:
+  - trazo discontinuo + etiqueta “Estimación”
+  - con **incertidumbre creciente** (círculo/radio) en metros.
+- Pasada la ventana de extrapolación:
+  - dejar de “mover” el marcador como si fuese real
+  - mantener `last_fix` + estado “Sin cobertura” + círculo de incertidumbre (si procede).
+
+Notas:
+- Esto es UI/UX y lógica de servidor para empaquetado; no sustituye a puntos GNSS reales.
+- Si el dispositivo sigue obteniendo GNSS pero no puede subirlo por celular, se guarda en buffer (store&forward) y se sincroniza después.
+
+### 7.4 BLE Assisted Sync (opcional, rentable si se hace bien)
+**Idea:** si el teléfono está cerca y el dispositivo no tiene red celular, el tracker puede enviar puntos por **BLE** a la app para:
+- mostrar ubicación más actual **en el teléfono**
+- y, si el teléfono tiene internet, actuar como “relay” hacia el servidor.
+
+Reglas para no gastar batería del tracker:
+- Solo activo cuando:
+  - la app está **en foreground** y el usuario está en el mapa, **y**
+  - el usuario ha iniciado “Buscar/Find Nearby” o “Modo Perdido”, **o**
+  - el usuario activa explícitamente un toggle “Asistencia cercana (BLE)” con ventana limitada.
+- Ventana limitada (ej. 2–10 min) y luego vuelve a modo normal.
+- Tasa de envío por BLE adaptativa (no igual que live por LTE):
+  - normal: 1 punto cada 5–15 s
+  - modo perdido cercano: 1 punto cada 2–5 s
+
+Resultado:
+- Si el teléfono tiene internet: la app puede subir esos puntos al servidor como “relayed” (marcados con `source=BLE_RELAY`).
+- Si el teléfono tampoco tiene internet: la app al menos pinta la ubicación en local y luego sincroniza al recuperar conexión.
+
+### 7.5 Wi‑Fi local (opcional, solo si es imprescindible)
+- Más coste energético.
+- Solo activable bajo acción del usuario y con ventana limitada.
+
+---
+
+## 8) Contrato de endpoints (mínimo)
+### 8.1 HTTP
+- `GET /dogs/{dog_id}/map/now`
+  - devuelve `last_fix`, puntos últimos 10–15 s, `device_state`
+- `GET /dogs/{dog_id}/track/view?since=...`
+  - devuelve ruta condensada + metadatos
+- `GET /dogs/{dog_id}/track/refine?segment=...`
+  - devuelve lote adicional de puntos para refinar
+
+### 8.2 MQTT (solo foreground)
+- Subscribe:
+  - `dog/{dog_id}/location/live`
+  - `dog/{dog_id}/device/state`
+  - `dog/{dog_id}/alerts`
+
+---
+
+## 9) Reglas anti-errores (para que “no parezca roto”)
+- Si no llega `now` en 1–2 s:
+  - mostrar estado “Cargando ubicación…” + último punto cacheado si existe.
+- Si el dispositivo está offline:
+  - mostrar “Último contacto hace X” + ruta disponible.
+- Si el servidor aún está procesando store&forward:
+  - estado “Sincronizando ruta…” (sin bloquear mapa).
+
+---
+
+## 10) Checklist de validación (QA)
+- Abrir mapa tras 2h: marcador actual visible en <=2 s.
+- Ruta catch-up aparece progresivamente sin congelar UI.
+- Sin duplicados al pasar de HTTP → MQTT.
+- Caregiver con ventana activa: puede ver live; fuera de ventana, no.
+- Caregiver activa Modo Perdido: notificación inmediata a Owners (push + SMS/WhatsApp si activado).
+- Offline: Find Nearby BLE funciona sin quemar batería (solo bajo acción del usuario).
+

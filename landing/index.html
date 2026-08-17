@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARES GPS — El guardián de tu perro</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<link id="favicon" rel="icon" type="image/svg+xml" href="assets/img/logo-simple-blanco.svg">
+<style>
+/* === CUSTOM FONTS === */
+@font-face{font-family:'Bruno Ace SC';src:url('assets/fonts/BrunoAceSC-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Orbitron';src:url('assets/fonts/Orbitron-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+
+:root{
+  --bg:#151d25;--bg2:#1c2732;--white:#f6f8fa;--wtext:#2F4858;--wtext2:rgba(47,72,88,0.5);
+  --cb:rgba(134,187,216,0.1);--cta:#F26419;--hl:#F6AE2D;--deco:#86BBD8;
+  --t:#f0f2f5;--t2:rgba(240,242,245,0.55);--t3:rgba(240,242,245,0.25);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scrollbar-width:none;overflow-x:clip}
+html::-webkit-scrollbar{display:none}
+body{font-family:'Orbitron',sans-serif;font-weight:500;background:var(--bg);color:var(--t);line-height:1.7;overflow-x:clip}
+img{max-width:100%;display:block}
+
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--cta);z-index:999;width:0}
+
+/* === INTRO === */
+#intro-overlay{position:fixed;inset:0;z-index:10000;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity 0.8s,visibility 0.8s}
+#intro-overlay.hidden{opacity:0;visibility:hidden}
+.intro-inner{text-align:center;position:relative;z-index:2}
+.intro-logo{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2rem,6vw,4rem);color:#fff;letter-spacing:0.08em;margin-bottom:1rem}
+.intro-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.7rem,1.5vw,0.9rem);color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2.5rem}
+.intro-btn{padding:1rem 3rem;font-family:'Orbitron',sans-serif;font-weight:500;font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--cta);color:#fff;border:none;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s}
+.intro-btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(242,100,25,0.4)}
+#intro-overlay canvas{position:absolute;inset:0;z-index:1;pointer-events:none;width:100%;height:100%}
+
+/* === TYPO === */
+.sl{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.18em;color:var(--hl);text-transform:uppercase;margin-bottom:0.75rem}
+.light .sl{color:var(--cta)}
+.st{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2rem,4vw,3rem);color:var(--t);letter-spacing:0.03em;text-transform:uppercase;line-height:1.15}
+.light .st{color:var(--wtext)}
+.ss{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.75rem,1.2vw,0.85rem);color:var(--t2);letter-spacing:0.04em;text-transform:uppercase}
+.light .ss{color:var(--wtext2)}
+h3,h4{font-family:'Bruno Ace SC',sans-serif;font-weight:400;letter-spacing:0.06em;text-transform:uppercase}
+.light h3,.light h4{color:var(--wtext)}
+
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+section{padding:6rem 0;position:relative;z-index:1}
+.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+.sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+#hero{clip-path:none}
+
+.btn{font-family:'Orbitron',sans-serif;font-weight:500;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:transform .3s,color .3s,background .3s;text-decoration:none;border:none;display:inline-flex;align-items:center;justify-content:center;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);position:relative;user-select:none}
+.btn::before{content:'';position:absolute;top:2px;left:2px;right:2px;bottom:2px;z-index:1;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);transition:background-color .3s ease}
+.btn span{position:relative;z-index:2;transition:color .3s}
+.btn-cta{background:var(--cta);color:#fff;padding:0.9rem 2.5rem;border:none}
+.btn-cta::before{background-color:var(--cta)}
+.btn-cta:hover{transform:translateY(-3px)}
+.btn-cta:hover::before{background-color:#fff}
+.btn-cta:hover span{color:var(--cta)}
+.btn-out{background:var(--cta);color:var(--cta);padding:0.8rem 2.2rem;border:none}
+.btn-out::before{background-color:#fff}
+.btn-out:hover{transform:translateY(-3px)}
+.btn-out:hover::before{background-color:var(--cta)}
+.btn-out:hover span{color:#fff}
+
+/* === SECTION PRISM GRID === */
+.sec-prism{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.sec-prism .prism-grid{display:grid;position:absolute;left:50%;top:50%}
+.sec-prism .prism-cell{border-right:1px solid rgba(134,187,216,0.08);border-bottom:1px solid rgba(134,187,216,0.08);transition:background 0.15s ease-out}
+.sec-prism .prism-cell.lit{transition:background 0s}
+
+/* === NAV === */
+#main-nav{position:fixed;top:0;left:0;right:0;z-index:1001;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;transition:background 0.4s}
+#main-nav.scrolled{background:rgba(21,29,37,0.75);backdrop-filter:blur(12px);border-bottom:1px solid rgba(134,187,216,0.08)}
+#main-nav .nl{font-family:'Bruno Ace SC',sans-serif;font-size:1.6rem;letter-spacing:0.08em;color:var(--t);text-decoration:none}
+.nav-logo{height:58px;width:auto;opacity:0.9;transition:opacity 0.3s;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-logo:hover{opacity:1}
+.nlinks{display:flex;gap:1.5rem;list-style:none}
+.nlinks a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--t);opacity:0.65;transition:opacity 0.3s}
+.nlinks a:hover{opacity:1;color:var(--cta)}
+.nlinks .ndrop{position:relative}
+.nlinks .ndrop>a{display:flex;align-items:center;gap:0.3rem;cursor:pointer}
+.nlinks .ndrop>a::after{content:'';width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);transition:transform 0.25s}
+.nlinks .ndrop.open>a::after{transform:rotate(225deg)}
+.ndrop-menu{position:absolute;top:calc(100% + 0.9rem);left:50%;transform:translateX(-50%) translateY(-6px);min-width:220px;background:rgba(21,29,37,0.92);backdrop-filter:blur(12px);border:1px solid rgba(134,187,216,0.14);padding:0.4rem;opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.25s,transform 0.25s,visibility 0.25s}
+.nlinks .ndrop.open .ndrop-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.ndrop-menu a{display:block;padding:0.65rem 0.85rem;font-size:9px;opacity:0.7;letter-spacing:0.08em}
+.ndrop-menu a:hover{opacity:1;background:rgba(134,187,216,0.08)}
+@media(max-width:768px){.ndrop-menu{left:auto;right:0;transform:translateY(-6px)}.nlinks .ndrop.open .ndrop-menu{transform:translateY(0)}}
+
+/* === NAV HAMBURGER === */
+.inline-links{display:flex;gap:1.5rem;list-style:none;margin-left:auto;margin-right:4rem}
+.inline-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--t);opacity:0.65;transition:opacity 0.3s}
+.inline-links a:hover{opacity:1;color:var(--cta)}
+.inline-links .ndrop{position:relative}
+.inline-links .ndrop>a{cursor:pointer}
+.inline-links .ndrop>a::after{content:'';display:inline-block;width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)translateY(-1px);transition:transform 0.25s;margin-left:0.3rem}
+.inline-links .ndrop.open>a::after{transform:rotate(225deg)translateY(1px)}
+.inline-links .ndrop-menu{position:absolute;top:100%;right:0;min-width:220px;background:rgba(21,29,37,0.94);backdrop-filter:blur(12px);border:1px solid rgba(134,187,216,0.14);padding:0.4rem;margin-top:0.4rem;opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.25s,visibility 0.25s}
+.inline-links .ndrop.open .ndrop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.inline-links .ndrop-menu a{display:block;padding:0.65rem 0.85rem;font-family:'JetBrains Mono',monospace;font-size:9px;opacity:0.7;letter-spacing:0.08em;text-decoration:none;color:var(--t)}
+.inline-links .ndrop-menu a:hover{opacity:1;background:rgba(134,187,216,0.08);color:var(--hl)}
+
+.nav-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;z-index:1004;padding:4px;position:fixed;top:1rem;right:2rem}
+.nav-toggle span{display:block;height:2px;background:var(--t);border-radius:2px;transition:all 0.3s;transform-origin:center}
+.nav-toggle:hover span{background:var(--cta)}
+.nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.active span:nth-child(2){opacity:0;scale:0}
+.nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-overlay{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:1002;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;background:rgba(21,29,37,0.96);backdrop-filter:blur(20px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.4s,visibility 0.4s}
+.nav-overlay::-webkit-scrollbar{display:none}
+.nav-overlay.open{opacity:1;visibility:visible;pointer-events:auto}
+.nav-overlay-inner{min-height:calc(100vh + 600px);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:14vh 0 6.7rem;width:100%}
+.ov-logo{height:100px;width:auto;margin-bottom:1rem;opacity:0;transform:translateY(-20px);transition:opacity 0.4s,transform 0.4s}
+.nav-overlay.open .ov-logo{opacity:1;transform:translateY(0);transition-delay:0.5s}
+.nav-full-links{list-style:none;padding:0;margin:0;text-align:center;display:flex;flex-direction:column;gap:0.1rem;width:100%;perspective:600px}
+.nav-full-links a{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(3.8rem,8vw,4.5rem);color:var(--t);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;padding:0.3rem 0;display:block;text-align:center;width:100%;transition:color 0.3s,opacity 0.3s,transform 0.4s}
+.nav-full-links a:hover{color:var(--hl);transform:rotateX(-8deg) rotateY(15deg) scale(1.08)}
+.nav-overlay .nl-item a{opacity:0;transform:translateY(-40px)}
+.nav-overlay.open .nl-item a{animation:navStagger 0.5s both}
+.nav-overlay.open .nl-item:nth-child(1) a{animation-delay:0.54s}
+.nav-overlay.open .nl-item:nth-child(2) a{animation-delay:0.47s}
+.nav-overlay.open .nl-item:nth-child(3) a{animation-delay:0.4s}
+.nav-overlay.open .nl-item:nth-child(4) a{animation-delay:0.33s}
+.nav-overlay.open .nl-item:nth-child(5) a{animation-delay:0.26s}
+.nav-overlay.open .nl-item:nth-child(6) a{animation-delay:0.19s}
+.nav-overlay.open .nl-item:nth-child(7) a{animation-delay:0.12s}
+.nav-overlay.open .nl-item:nth-child(8) a{animation-delay:0.05s}
+@keyframes navStagger{0%{opacity:0;transform:translateY(-40px)}100%{opacity:1;transform:translateY(0)}}
+.nav-full-links a:hover{color:var(--hl)}
+.nav-full-links .ndrop-trigger{font-size:clamp(3.8rem,8vw,4.5rem);cursor:pointer;color:var(--t);background:none;border:none;padding:0.3rem 0;display:block;letter-spacing:0.06em;text-transform:uppercase;text-align:center;width:100%}
+.nav-full-links .ndrop-trigger::after{content:'';display:inline-block;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-left:0.4rem;margin-bottom:0.4rem;transition:transform 0.3s;vertical-align:middle}
+.nav-full-links .ndrop-trigger:hover{color:var(--hl)}
+.nav-full-links .ndrop-trigger-static{font-size:clamp(3.8rem,8vw,4.5rem);cursor:default;color:var(--t);background:none;border:none;padding:0.3rem 0 0.4rem;display:block;letter-spacing:0.06em;text-transform:uppercase;text-align:center;width:100%}
+.nav-full-links .ndrop-sub.open,.nav-full-links .ndrop-sub{overflow:hidden;max-height:600px;opacity:1}
+
+/* === OVERLAY TICKS VERTICALES (estilo horizontal, derecha) === */
+.ov-ticks{position:fixed;right:3px;top:50%;transform:translateY(-50%);z-index:1003;display:flex;flex-direction:column;gap:3px;pointer-events:none;opacity:0;transition:opacity 0.4s}
+.nav-overlay.open~.ov-ticks{opacity:1}
+.ov-ticks .ov-t{width:3px;height:10px;background:rgba(242,100,25,0.08);border-radius:1px;transition:background 0.15s,box-shadow 0.15s}
+.ov-ticks .ov-t.on{background:var(--cta);box-shadow:0 0 4px rgba(242,100,25,0.3)}
+.nav-full-links .ndrop-sub.open{max-height:600px;opacity:1}
+.nav-full-links .ndrop-sub a{font-size:clamp(1.5rem,4vw,2.2rem);letter-spacing:0.04em;padding:0.3rem 0;color:var(--t2);text-transform:none}
+.nav-full-links .ndrop-sub a:hover{color:var(--hl)}
+
+/* === SECTIONS === */
+.sec-dark{background:var(--bg)}
+.sec-darker{background:var(--bg2)}
+.sec-light{background:var(--white)}
+#como-funciona.sec-dark,#vscroll{background:#1c2732}
+#extras.sec-darker{background:#23303a}
+.sec-light,.light{color:var(--wtext)}
+.sec-light .ss,.light .ss{color:var(--wtext2)}
+
+/* === SECTION PRISM GRID === */
+.sec-prism{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.sec-prism .prism-inner{display:grid;position:absolute;left:50%;top:50%}
+.sec-prism .prism-cell{border-right:1px solid rgba(134,187,216,0.08);border-bottom:1px solid rgba(134,187,216,0.08);transition:background 0.15s ease-out}
+.sec-prism .prism-cell.lit{transition:background 0s}
+.sec-dark .sec-prism,.sec-darker .sec-prism{z-index:0}
+.sec-light{background:var(--white)}
+.sec-light,.light{color:var(--wtext)}
+.sec-light .ss,.light .ss{color:var(--wtext2)}
+#como-funciona{padding:3rem 0}
+
+/* === BLOQUES DE VIDEO (full-width, sticky: el video se queda quieto y la seccion siguiente sube por encima y lo tapa con su angulo) === */
+.vid-sec{position:relative}
+.vid-band{position:sticky;top:0;height:100vh;z-index:1;overflow:hidden;background:var(--bg);padding:0}
+.vid-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:var(--bg)}
+.vid-cap{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,242,245,0.65);background:radial-gradient(ellipse at center,rgba(12,17,22,0.15) 0%,rgba(12,17,22,0.55) 100%);pointer-events:none}
+.vid-cap strong{font-family:'Bruno Ace SC',sans-serif;font-size:1.1rem;letter-spacing:0.06em;color:var(--hl);display:block;margin-bottom:0.4rem}
+.vid-sec>section:not(.vid-band){position:relative;z-index:2}
+@media(prefers-reduced-motion:reduce){.vid-band{position:relative;height:56.25vw;min-height:220px}}
+
+/* === TITLE MORPH HERO === */
+#hero h1 .ares-tag{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(4rem,12vw,10rem);color:var(--t);letter-spacing:0.05em;display:inline-block;text-align:center;will-change:transform}
+
+/* === HERO === */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+#hero-bg{position:absolute;inset:0;z-index:0}
+#hero .container{position:relative;z-index:2}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--hl);text-transform:uppercase;margin-bottom:1rem}
+#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(4rem,12vw,10rem);color:var(--t);letter-spacing:0.05em;line-height:1;text-transform:uppercase;text-align:center}
+#hero h1 .ares-tag{display:inline-block;perspective:600px}
+.hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.8rem,1.6vw,1rem);color:rgba(240,242,245,0.85);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.75rem;text-align:center}
+.hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:3rem;flex-wrap:wrap}
+.hs{text-align:center}
+.hs .val{font-family:'Bruno Ace SC',sans-serif;font-size:2rem;color:var(--hl);line-height:1}
+.hs .lab{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(240,242,245,0.55);letter-spacing:0.1em;margin-top:0.3rem}
+
+/* === PAS STORYTELLING (Por qué existe ARES) === */
+.pas-block{max-width:1140px;margin:3rem 0;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.pas-block+.pas-block{margin-top:4rem}
+.pas-text{max-width:620px}
+.pas-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cta);margin-bottom:1rem}
+.pas-p{font-size:clamp(1rem,1.6vw,1.25rem);line-height:1.7;color:var(--wtext);margin-bottom:1rem}
+.pas-problem{opacity:0.85}
+.pas-agitation{opacity:1;color:var(--wtext)}
+.pas-solution{color:var(--cta);opacity:1}
+.pas-img{position:relative;aspect-ratio:16/9;width:100%;background:var(--bg2);clip-path:polygon(40px 0,100% 0,100% calc(100% - 40px),calc(100% - 40px) 100%,0 100%,0 40px)}
+.pas-img .ph-bg{position:absolute;inset:0;z-index:1;overflow:hidden;background:var(--bg2)}
+.ph-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.pas-block.pas-reverse .pas-text{order:2}
+.pas-block.pas-reverse .pas-img{order:1;background:var(--bg2);clip-path:polygon(0 0,calc(100% - 40px) 0,100% 40px,100% 100%,40px 100%,0 calc(100% - 40px));margin-right:0}
+.pas-reverse .ph-bg{padding:0}
+.pas-close{margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(47,72,88,0.1)}
+
+/* === PAS — SVGs flotantes de fondo + glass en texto === */
+#proposito .container{position:relative;z-index:1}
+.pas-floaters{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.pas-float{position:absolute;top:0;left:0;opacity:0;will-change:transform;transition:opacity 1.2s ease}
+.pas-float img{width:100%;height:100%;object-fit:contain;display:block}
+.pas-float.on{opacity:1}
+.pas-text{position:relative;z-index:1;background:rgba(255,255,255,0.45);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);padding:1.8rem 2rem;border-radius:16px;border:1px solid rgba(255,255,255,0.6);box-shadow:0 8px 32px rgba(21,29,37,0.12);max-width:640px}
+@media(max-width:768px){.pas-text{padding:1.4rem 1.4rem}}
+
+/* === GRID 2 COLUMNAS === */
+.cl{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:2rem}
+.ctxt h3{font-size:1.5rem;margin-bottom:1rem}
+.ctxt p{font-size:0.9rem;color:var(--t2);line-height:1.8;margin-bottom:1.5rem}
+.cpr{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2rem}
+.cpr .pi{text-align:center}
+.cpr .pi .val{font-family:'Bruno Ace SC',sans-serif;font-size:1.4rem;color:var(--hl);line-height:1.1}
+.cpr .pi .lab{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--t3);letter-spacing:0.08em;margin-top:0.25rem}
+#showcase-3d{width:100%;height:420px;cursor:grab;transform-origin:center center}
+#showcase-3d:active{cursor:grabbing}
+
+
+/* === BIENESTAR === */
+.gc{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.bc{background:var(--bg);border:1px solid rgba(134,187,216,0.1);border-radius:6px;padding:2rem;transition:transform 0.3s,box-shadow 0.3s}
+.bc:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.3)}
+.bc .material-symbols-outlined{font-size:1.8rem;color:var(--hl);margin-bottom:0.75rem}
+.bc h4{font-size:0.85rem;letter-spacing:0.04em;margin-bottom:0.5rem}
+.bc p{font-size:0.85rem;color:var(--t2)}
+.bc.bc-cta{text-decoration:none;display:block;cursor:pointer}
+.bc.bc-cta:hover{border-color:rgba(242,100,25,0.3)}
+.bc.bc-cta h4{color:var(--t)}
+.bc.bc-cta p{color:var(--t2)}
+.bc.bc-cta .bc-link{display:inline-flex;align-items:center;gap:0.3rem;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--cta);margin-top:0.85rem}
+.bc.bc-cta .bc-link::after{content:'→';transition:transform 0.25s}
+.bc.bc-cta:hover .bc-link::after{transform:translateX(4px)}
+
+/* === DESPIECE — SWIPE STACK 3D === */
+.cs-wrap{max-width:460px;margin:1.25rem auto 0;position:relative;display:flex;flex-direction:column;align-items:center}
+.card-stack{position:relative;width:100%;height:min(440px,52vh);perspective:1000px;transform-style:preserve-3d;z-index:3}
+.cs-card{position:absolute;width:100%;height:100%;border-radius:14px;padding:0.8rem 1.5rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:grab;backface-visibility:hidden;transform-style:preserve-3d;will-change:transform,opacity;overflow:hidden;user-select:none;touch-action:none}
+.cs-card:active{cursor:grabbing}
+.cs-card::after{content:'';position:absolute;inset:0;border-radius:14px;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,0.06) 0%,transparent 50%)}
+.cs-card.swiping{transition:none!important}
+.csc-icon .material-symbols-outlined{font-size:2rem;margin-bottom:0.5rem;color:#fff;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2))}
+.cs-card h4{font-size:1rem;letter-spacing:0.04em;margin-bottom:0.5rem;color:#fff;flex-shrink:0}
+.cs-card p{font-size:0.9rem;line-height:1.55;max-width:320px;margin:0 auto;color:rgba(255,255,255,0.75);text-align:left}
+.cs-card p strong{color:#fff;font-weight:700}
+.cs-card .cs-idx{position:absolute;top:0.7rem;right:1rem;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;background:rgba(0,0,0,0.25);color:rgba(255,255,255,0.4);padding:0.15rem 0.5rem;clip-path:polygon(4px 0,100% 0,100% calc(100% - 4px),calc(100% - 4px) 100%,0 100%,0 4px)}
+.cs-ctrls{display:flex;align-items:center;gap:1rem;margin-top:1rem}
+.cs-hint{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;opacity:0.5;color:var(--wtext2)}
+.dp-logo{position:absolute;left:calc(100% + 120px + 10%);top:25%;width:500px;z-index:1;pointer-events:none;will-change:transform}
+.dp-logo canvas{width:100%;height:auto;display:block}
+
+/* === VSCROLL (scroll-synced product) === */
+#vscroll{position:relative;background:var(--bg)}
+/* Tira vertical "ARES": recorre toda la seccion (A arriba al inicio -> S abajo al final) */
+#vscroll .bg-img{position:absolute;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none;overflow:hidden;display:flex;justify-content:center;align-items:flex-start;padding-top:250px}
+/* tira proporcional a la seccion: alto 300% garantiza recorrido completo A->S con VELOCITY=0.3 */
+#vscroll .bg-img img{display:block;width:auto;height:140%;max-width:none;opacity:0.2;will-change:transform}
+#vscroll .bg-img::after{content:'';position:absolute;left:0;width:100%;height:calc(100% + 280px);top:-140px;background:linear-gradient(180deg,rgba(21,29,37,0.9) 0%,rgba(21,29,37,0.3) 20%,rgba(21,29,37,0.3) 80%,rgba(21,29,37,0.9) 100%);pointer-events:none}
+.vscroll-inner{position:relative;z-index:1}
+.scroll-panels{position:relative;z-index:2}
+.vp{min-height:100vh;display:flex;align-items:center;padding:4rem 2rem}
+.vp:nth-child(odd) .vpi{margin-left:auto}
+.vp:nth-child(even) .vpi{margin-right:auto}
+.vpi{max-width:460px;background:#33658A;border-radius:8px;padding:2.5rem;box-shadow:0 12px 40px rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.15);transition:box-shadow 0.4s,border-color 0.4s}
+.vpi.active{box-shadow:0 16px 48px rgba(246,174,45,0.3);border-color:var(--hl)}
+.vpi h3{font-size:1.5rem;margin-bottom:0.75rem;color:#fff}
+.bf{font-family:'Orbitron',sans-serif;font-weight:500;font-size:1.2rem;color:rgba(255,255,255,0.85);margin-bottom:0.6rem;line-height:1.5}
+.hw{font-size:0.9rem;color:rgba(255,255,255,0.55);margin-bottom:0.6rem;line-height:1.7}
+.dy{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--hl);text-transform:uppercase}
+.hl{display:inline;background-image:linear-gradient(to right,rgba(246,174,45,0.4),rgba(246,174,45,0.4));background-repeat:no-repeat;background-position:0 0;background-size:0% 100%;transition:background-size 0.8s cubic-bezier(0.16,1,0.3,1);-webkit-box-decoration-break:clone;box-decoration-break:clone;color:#fff}
+.hl.active{background-size:100% 100%}
+[data-color="#F6AE2D"] .hl,[data-color="#F26419"] .hl{background-image:linear-gradient(to right,rgba(47,72,88,0.4),rgba(47,72,88,0.4))}
+@media(max-width:768px){
+  .vp{padding:3rem 1rem}
+  .vpi{max-width:100%;padding:1.75rem}
+  .vpi h3{font-size:1.3rem}
+}
+
+/* === SCROLL INDICATOR HORIZONTAL (Radian) === */
+#ticksWrapper{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:center;padding:77px 0 6px;background:linear-gradient(180deg,rgba(13,15,18,0.5) 0%,transparent 100%);pointer-events:none;z-index:999}
+#ticksWrapper .ti{display:flex;flex-direction:row;align-items:flex-end;gap:3px;width:50%;margin:0 25%}
+.tick-h{flex:1;height:14px;background:rgba(242,100,25,0.08);border-radius:1px;transition:background 0.1s}
+.tick-h.active{background:#F26419;box-shadow:0 0 5px rgba(242,100,25,0.4)}
+
+/* === PLANES === */
+.plg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.pc{background:#fff;border:1px solid rgba(47,72,88,0.06);border-radius:6px;padding:1.5rem 1.5rem;text-align:center;box-shadow:0 2px 12px rgba(47,72,88,0.03);transition:transform 0.3s,box-shadow 0.3s;display:flex;flex-direction:column}
+.pc .btn,.pc .btn-cta,.pc .btn-out{margin-top:auto}
+.pc:hover{transform:translateY(-6px);box-shadow:0 8px 28px rgba(47,72,88,0.08)}
+.pc.pop{border:2px solid rgba(246,174,45,0.3);background:rgba(246,174,45,0.03)}
+.pc.pop .pbadge{background:var(--hl);color:var(--bg);font-family:'Orbitron',sans-serif;font-weight:500;font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 1rem;clip-path:polygon(7px 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%,0 7px);display:inline-block;margin-bottom:1rem}
+.pc h4{font-family:'Bruno Ace SC',sans-serif;font-size:1.5rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.8rem;color:var(--wtext)}
+.pc.pop h4{color:var(--hl)}
+.pc ul{list-style:none;text-align:left;margin-bottom:2rem}
+.pc ul li{padding:0.4rem 0;color:var(--wtext2);font-size:0.85rem;display:flex;align-items:center;gap:0.5rem}
+.pc ul li .material-symbols-outlined{font-size:0.8rem;color:var(--hl)}
+.pc-blue,.pc-blue *{color:#fff!important}
+.pc-blue h4{color:var(--wtext)!important}
+.pc-blue h4+div{color:var(--bg)!important}
+.pc-blue .btn span{color:var(--cta)!important}
+.pc-blue .btn:hover span{color:#fff!important}
+.pc-blue .material-symbols-outlined{color:var(--hl)!important}
+.pc .ss + a,.pc p + a{margin-top:auto}
+.pc-blue .ss>strong,.pc .ss>strong{color:var(--cta)!important}
+/* Label "Para quién es" SIEMPRE naranja (tambien en tarjetas azules) */
+.pc [style*="color:var(--cta)"]{color:var(--cta)!important}
+.pc-blue [style*="color:var(--cta)"]{color:#F26419!important}
+/* Desktop: solo el boton inferior de "Ver todos los detalles"; movil: solo los de las tarjetas */
+.btn-plans-card{display:none}
+.btn-plans-bottom{display:inline-flex}
+@media(max-width:768px){
+  .btn-plans-card{display:inline-flex}
+  .btn-plans-bottom{display:none}
+}
+
+/* === CTA === */
+#cta-final{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:var(--bg2)}
+#cta-final .cta-logo-bg{position:absolute;inset:0;z-index:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden}
+#cta-final .cta-logo-bg img{width:min(60vw,306px);height:auto;opacity:0.06;filter:grayscale(1) brightness(1.4)}
+#cta-final .container{position:relative;z-index:1}
+
+footer{background:var(--bg);padding:2rem 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.12em}
+.footer-links{display:flex;justify-content:center;gap:1.75rem;flex-wrap:wrap;margin-bottom:0.9rem}
+.footer-links a{color:var(--t3);text-decoration:none;text-transform:uppercase;letter-spacing:0.1em;transition:color 0.3s}
+.footer-links a:hover{color:var(--cta)}
+
+#como-funciona{padding:3rem 0}
+#despiece .st{color:#fff;position:relative;z-index:2}
+#despiece{padding-top:calc(80px + 0.75rem);padding-bottom:1.25rem;min-height:100vh;display:flex;align-items:center;box-sizing:border-box;overflow-x:clip}
+#despiece .container{padding-top:0}
+#despiece .sl{margin-bottom:0.4rem;position:relative;z-index:2}
+#despiece .st{font-size:clamp(1.6rem,3.2vw,2.6rem);line-height:1.1;margin-bottom:0.3rem}
+
+@media(max-width:768px){
+  .inline-links{display:none}
+  /* Nav: reducir para que texto + logo + hamburguesa no colisionen */
+  #main-nav{padding:0.85rem 1.25rem}
+  #main-nav .nl{font-size:1.15rem}
+  .nav-logo{height:42px}
+  .nav-toggle{right:1.25rem}
+  .gc,.plg,#como-funciona .cl,.pas-block{grid-template-columns:1fr;gap:2rem}
+  .pas-block .pas-img{order:0;max-width:100%;aspect-ratio:16/9;background:var(--bg2);clip-path:polygon(40px 0,100% 0,100% calc(100% - 40px),calc(100% - 40px) 100%,0 100%,0 40px);margin-left:auto !important;margin-right:auto !important}
+  .pas-block .pas-img .ph-bg,.pas-block.pas-reverse .pas-img .ph-bg{inset:0}
+  .pas-block.pas-reverse .pas-text,.pas-block.pas-reverse .pas-img{order:0}
+  .pas-block.pas-reverse .pas-img{clip-path:polygon(0 0,calc(100% - 40px) 0,100% 40px,100% 100%,40px 100%,0 calc(100% - 40px))}
+  .pas-reverse .ph-bg{padding:1rem}
+  .hero-stats{gap:1.5rem}
+  section{padding:4rem 0}
+  .card-stack{height:min(420px,50vh)}
+  .cs-card{padding:0.6rem 1.2rem 1.5rem}
+  .dp-logo{display:none}
+  #despiece{padding-top:calc(64px + 0.5rem);padding-bottom:1rem}
+  #despiece .st{font-size:clamp(1.3rem,6vw,1.8rem)}
+  /* Overlay del menú: compacto y centrado */
+  .nav-overlay-inner{padding:12vh 1.25rem 5rem;max-width:90vw;margin:0 auto;min-height:auto}
+  .nav-full-links a,.nav-full-links .ndrop-trigger,.nav-full-links .ndrop-trigger-static{font-size:clamp(1.5rem,6vw,2.4rem)}
+  .ov-logo{height:72px}
+  /* Barras de scroll: ensanchar y subir para que se vean en móvil */
+  #ticksWrapper{padding:60px 0 5px}
+  #ticksWrapper .ti{width:calc(100% - 2rem);margin:0 1rem;gap:2px}
+  #vscroll .bg-img img{height:90%;margin-left:-20px}
+  #vscroll .bg-img{padding-top:clamp(400px,2200px - 150vw,1300px) !important}
+  /* Logo del footer: ~2x más grande en móvil */
+  #cta-final .cta-logo-bg img{width:min(92vw,560px)}
+}
+/* Tablet grande: reducir alturas fijas que quedan grandes en horizontal estrecho */
+@media(max-width:1024px){
+  #showcase-3d{height:360px}
+  .dp-logo{width:380px}
+}
+/* Movil pequeño: apretar padding lateral y stats para que nada se comprima */
+@media(max-width:480px){
+  .container{padding:0 1.25rem}
+  #main-nav{padding:0.8rem 1rem}
+  #main-nav .nl{font-size:1.05rem;letter-spacing:0.05em}
+  .nav-logo{height:38px}
+  .nav-toggle{right:1rem}
+  .cpr{gap:1.25rem;justify-content:space-between}
+  .cpr .pi{flex:1 1 40%}
+  .hero-stats{gap:1rem}
+  #showcase-3d{height:300px}
+  .dp-logo{width:230px}
+  .vpi{padding:1.4rem}
+}
+/* Movil ultra-fino (iPhone mini, Z Fold cerrado ~344px): logo mas pequeño y sin colisiones */
+@media(max-width:400px){
+  #main-nav .nl{font-size:0.95rem;letter-spacing:0.03em}
+  .nav-logo{height:32px}
+  #cta-final .cta-logo-bg img{width:min(96vw,460px)}
+  .nav-full-links a,.nav-full-links .ndrop-trigger,.nav-full-links .ndrop-trigger-static{font-size:clamp(1.7rem,10vw,2.4rem)}
+  .nav-overlay-inner{padding:10vh 1rem 4.5rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div id="intro-overlay">
+  <canvas id="intro-canvas"></canvas>
+  <div class="intro-inner">
+    <div class="intro-logo">ARES GPS</div>
+    <div class="intro-sub">El guardián de tu perro</div>
+    <button class="intro-btn" id="intro-btn">Entrar</button>
+  </div>
+</div>
+
+<button class="nav-toggle" id="navToggle">
+  <span></span><span></span><span></span>
+</button>
+<nav id="main-nav">
+  <a href="#" class="nl">ARES GPS</a>
+  <img src="assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo">
+  <ul class="inline-links">
+    <li><a href="#como-funciona">Cómo funciona</a></li>
+    <li><a href="#extras">Extras</a></li>
+    <li><a href="#planes">Planes</a></li>
+    <li><a href="contenido/pricing.html">Precios</a></li>
+    <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
+      <div class="ndrop-menu"><a href="contenido/calculadora.html">Calculadora de peso ideal</a><a href="contenido/actividad.html">Actividad y calorías</a><a href="contenido/descanso.html">Descanso</a><a href="contenido/geocerca.html">Geocerca</a><a href="contenido/comunidad.html">Comunidad</a><a href="contenido/pet-friendly.html">Sitios pet-friendly</a></div>
+    </li>
+  </ul>
+</nav>
+<div class="nav-overlay" id="navOverlay" data-lenis-prevent>
+  <div class="nav-overlay-inner">
+  <img src="assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo">
+  <ul class="nav-full-links">
+    <li class="nl-item"><a href="#proposito">Por qué ARES</a></li>
+    <li class="nl-item"><a href="#como-funciona">Cómo funciona</a></li>
+    <li class="nl-item"><a href="#extras">Extras</a></li>
+    <li class="nl-item"><a href="#planes">Planes</a></li>
+    <li class="nl-item"><a href="contenido/pricing.html">Precios</a></li>
+    <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a>
+      <div class="ndrop-sub open"><a href="contenido/calculadora.html">Calculadora de peso ideal</a><a href="contenido/actividad.html">Actividad y calorías</a><a href="contenido/descanso.html">Descanso</a><a href="contenido/geocerca.html">Geocerca</a><a href="contenido/comunidad.html">Comunidad</a><a href="contenido/pet-friendly.html">Sitios pet-friendly</a></div>
+    </li>
+  </ul>
+  </div>
+</div>
+<div class="ov-ticks" id="ovTicks"></div>
+<div class="scroll-indicator-horizontal" id="ticksWrapper"></div>
+
+<!-- HERO -->
+<section id="hero" class="sec-dark">
+  <div id="hero-bg"></div>
+  <div class="prism-wrap sec-prism" id="prism-hero"></div>
+  <div class="container">
+    <div class="hero-tag">Seguridad y bienestar para tu perro</div>
+    <h1><span class="ares-tag">ARES</span></h1>
+    <div class="hero-sub">Para quien se preocupa de verdad: saber si se ejercita lo necesario, si su alimentación es la correcta y si está viviendo su mejor vida.</div>
+    <div class="hero-stats">
+      <div class="hs"><div class="val">+160 países</div><div class="lab">COBERTURA GLOBAL 4G</div></div>
+      <div class="hs"><div class="val">14 días</div><div class="lab">BATERÍA</div></div>
+      <div class="hs"><div class="val">Alerta</div><div class="lab">CALOR · CAÍDA · GEOCERCA</div></div>
+      <div class="hs"><div class="val">Salud</div><div class="lab">ACTIVIDAD · DESCANSO</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VÍDEO — full-width sticky: se queda quieto y #proposito sube y lo tapa con su angulo -->
+<div class="vid-sec">
+<section class="vid-band" aria-label="Vídeo: el dispositivo ARES">
+  <video src="assets/video/paso1.mp4" poster="assets/video/paso1-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+  <div class="vid-cap"><div><strong>Vídeo placeholder</strong>deja aquí el vídeo del dispositivo</div></div>
+</section>
+
+<!-- POR QUÉ EXISTE ARES — storytelling PAS -->
+<section id="proposito" class="sec-light light">
+  <div class="pas-floaters" id="pasFloatBg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="sl">Por qué existe ARES</div>
+    <h2 class="st">DOS MIEDOS. UNA RESPUESTA.</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;max-width:650px;margin-top:0.5rem">No nace de la tecnología. Nace de dos preguntas que todo dueño se hace tarde o temprano.</div>
+
+    <div class="pas-block">
+      <div class="pas-text">
+        <div class="pas-eyebrow">El silencio de después de llamarlo</div>
+        <p class="pas-p pas-problem">Llamas a tu perro. Silencio. Esa fracción de segundo donde el pecho se te encoge.</p>
+        <p class="pas-p pas-agitation">No es la primera vez. La última tardaste 40 minutos en encontrarlo. Detrás de la gasolinera. Casi en la carretera.</p>
+        <p class="pas-p pas-solution">Con ARES abres la app. Está a 23 metros. Detrás del seto. Tú sigues andando, él sigue oliendo.</p>
+      </div>
+      <div class="pas-img">
+        <div class="ph-bg"><img src="assets/img/pas-miedo.webp" alt="Perro entre los arbustos visto desde el parque" class="ph-img"></div>
+      </div>
+    </div>
+
+    <div class="pas-block pas-reverse">
+      <div class="pas-text">
+        <div class="pas-eyebrow">Lo que no se ve a simple vista</div>
+        <p class="pas-p pas-problem">¿Ha corrido hoy lo que necesita? ¿Ha descansado bien esta noche? Nunca lo sabes del todo. Solo lo intuyes.</p>
+        <p class="pas-p pas-agitation">Y cuando algo cambia — está más apagado, duerme distinto — te enteras tarde. Cuando ya lleva días así.</p>
+        <p class="pas-p pas-solution">Con ARES lo sabes al momento: actividad, descanso, incluso su frecuencia respiratoria en reposo, con el mismo sensor que ya lleva puesto. No adivinas: sabes que estás haciendo un buen trabajo.</p>
+      </div>
+      <div class="pas-img">
+        <div class="ph-bg"><img src="assets/img/pas-salud.webp" alt="Perros jugando y perra durmiendo" class="ph-img"></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- CÓMO FUNCIONA — intro (precisión) + card-stack fusionado (antes despiece + vscroll) -->
+<section id="como-funciona" class="sec-dark">
+  <div class="sec-prism" id="prism-conoce"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="sl">Conoce a ARES</div>
+    <h2 class="st">ESTE ES TU GUARDIÁN</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0">Un solo aparato en su collar. Ligero, sumergible, siempre conectado. Esto es lo que lleva puesto tu perro.</div>
+    <div class="cl" style="align-items:start">
+      <div class="ctxt">
+        <h3>Pensado para que ni se entere de que lo lleva</h3>
+        <p>Tan ligero que <span class="hl">apenas nota que lo lleva puesto,</span> y aguanta el río, el barro y la lluvia sin despeinarse. <span class="hl">Tu perro corre, nada y se revuelca igual que siempre</span> — tú, mientras, sabes dónde está con menos de un metro de margen. No "por ahí": ahí.</p>
+        <div class="cpr">
+          <div class="pi"><div class="val">~64g</div><div class="lab">APENAS LO NOTA</div></div>
+          <div class="pi"><div class="val">IP68</div><div class="lab">NADA, LLUEVE, SE REVUELCA</div></div>
+          <div class="pi"><div class="val">+7 días</div><div class="lab">SIN CARGAR CADA DÍA</div></div>
+          <div class="pi"><div class="val">~1m</div><div class="lab">PRECISIÓN REAL</div></div>
+        </div>
+      </div>
+      <div id="showcase-3d" style="width:100%;height:420px;transform-origin:center center"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA: card stack interactivo (8 piezas, sin duplicación) -->
+<section id="despiece" class="sec-light" style="background:#86BBD8;position:relative;z-index:2">
+  <div class="container" style="position:relative;z-index:1;text-align:left">
+    <div class="sl">Qué te aporta</div>
+    <h2 class="st">DE SABER DÓNDE ESTÁ A SABER CÓMO ESTÁ</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;margin-top:0.5rem;position:relative;z-index:2">No solo dónde está. Cómo está y cuándo actuar.</div>
+
+    <div class="cs-wrap" style="position:relative">
+      <div class="dp-logo" id="dpLogo"></div>
+      <div class="card-stack" id="cardStack">
+        <div class="cs-card" data-tag="satellite_alt" data-color="#33658A">
+          <span class="cs-idx">01 / 08</span>
+          <div class="csc-icon"><span class="material-symbols-outlined">satellite_alt</span></div>
+          <h4>Encuéntralo al instante, siempre</h4>
+          <p>Se suelta en el parque y desaparece entre los árboles. Abres la app: está a 8 metros, detrás del roble grande. Cruza cuatro redes de satélite a la vez, por eso <span class="hl">no lo pierde ni entre ramas, ni en callejones, ni bajo edificios altos.</span></p>
+        </div>
+        <div class="cs-card" data-tag="signal_cellular_alt" data-color="#F6AE2D">
+          <span class="cs-idx">02 / 08</span>
+          <div class="csc-icon"><span class="material-symbols-outlined">signal_cellular_alt</span></div>
+          <h4>Localízalo aunque no lleves el móvil</h4>
+          <p>Te vas a trabajar y lo dejas en casa. A media mañana, desde la oficina, abres la app: sigue dormido en el sofá. ARES lleva su propia conexión dentro del collar — <span class="hl">como un móvil diminuto</span> — así que no depende del tuyo para estar localizado.</p>
+        </div>
+        <div class="cs-card" data-tag="wifi_tethering" data-color="#2F4858">
+          <span class="cs-idx">03 / 08</span>
+          <div class="csc-icon"><span class="material-symbols-outlined">wifi_tethering</span></div>
+          <h4>No lo pierdas ni donde no hay cobertura</h4>
+          <p>Ruta de montaña, tu móvil marca "sin servicio". El suyo, no. Una antena reforzada capta señal en bosque cerrado, entre montañas y en valles <span class="hl">donde el resto de trackers se quedan mudos.</span></p>
+        </div>
+        <div class="cs-card" data-tag="lightbulb" data-color="#F26419">
+          <span class="cs-idx">04 / 08</span>
+          <div class="csc-icon"><span class="material-symbols-outlined">flare</span></div>
+          <h4>Míralo de noche antes de verlo</h4>
+          <p>Anochece, lo sueltas y se aleja hacia los matorrales. Antes de perderlo de vista, lo haces parpadear desde la app y ahí está: <span class="hl">un punto de luz a 50 metros.</span> Tres modos de luz — para el paseo, para buscarlo, y un pulso que te avisa de su estado.</p>
+        </div>
+        <div class="cs-card" data-tag="directions_run" data-color="#33658A">
+          <span class="cs-idx">05 / 08</span>
+          <div class="csc-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 315 130" fill="#fff" style="width:auto;height:2rem"><path d="M 261.50 117.57 C258.75,116.24 253.35,112.42 249.50,109.08 C245.65,105.73 240.59,102.05 238.25,100.91 C235.91,99.76 234.00,98.47 234.00,98.04 C234.00,96.94 240.34,96.02 248.00,96.01 C254.46,96.00 254.55,96.04 263.29,102.60 C268.13,106.23 272.78,110.25 273.62,111.55 C275.70,114.71 274.60,117.60 270.81,118.92 C266.82,120.31 267.32,120.38 261.50,117.57 ZM 55.67 112.33 C53.88,110.55 55.39,107.05 59.75,102.83 C62.36,100.30 65.48,97.73 66.68,97.12 C69.04,95.91 75.04,95.79 78.88,96.87 C81.12,97.49 80.89,97.85 74.88,103.12 C66.03,110.88 58.04,114.71 55.67,112.33 ZM 25.75 109.92 C23.46,108.59 23.51,104.75 25.84,102.64 C26.86,101.73 30.51,99.87 33.96,98.51 C43.23,94.88 49.60,90.40 55.20,83.58 C62.13,75.14 62.39,75.00 70.63,75.00 C82.26,75.00 84.18,73.49 87.70,61.62 C88.54,58.80 90.31,54.36 91.63,51.75 C92.95,49.14 93.88,47.00 93.69,47.00 C93.51,47.00 89.72,48.57 85.28,50.50 C64.20,59.63 39.15,56.42 26.55,42.95 C21.96,38.04 18.37,31.19 19.73,29.92 C20.15,29.51 24.38,30.46 29.12,32.02 C51.11,39.24 75.57,38.70 110.50,30.20 C121.35,27.56 121.98,27.52 156.50,27.50 L 191.50 27.49 L 202.00 24.71 C215.64,21.10 226.47,20.33 234.96,22.37 C238.51,23.22 241.62,23.71 241.87,23.46 C242.46,22.88 242.66,23.03 235.25,18.52 C229.05,14.75 227.65,12.73 230.47,11.65 C231.27,11.34 236.56,10.55 242.22,9.90 C260.16,7.82 272.96,11.88 278.83,21.52 C281.11,25.26 282.68,26.42 289.50,29.41 C297.20,32.78 297.49,33.03 297.34,36.10 C297.13,40.13 294.34,43.98 289.93,46.32 C286.86,47.95 284.82,48.08 270.75,47.52 L 255.00 46.89 L 249.39 52.19 C242.72,58.50 231.74,72.77 232.55,74.08 C232.86,74.58 237.06,75.00 241.88,75.00 C252.42,75.00 259.22,76.82 268.02,81.99 C275.28,86.25 287.10,96.32 288.23,99.19 C289.29,101.90 285.77,105.00 281.63,105.00 C279.22,105.00 275.92,103.44 270.01,99.50 C256.90,90.78 248.24,89.48 226.83,93.02 C219.31,94.26 212.46,95.01 211.60,94.68 C210.71,94.34 209.75,92.30 209.38,89.98 C208.89,86.90 208.36,86.03 207.23,86.47 C206.40,86.78 201.85,87.32 197.11,87.65 C186.03,88.44 176.27,86.80 163.45,82.01 C152.22,77.81 144.83,76.00 138.95,76.00 C136.78,76.00 135.00,75.75 135.00,75.45 C135.00,75.14 136.12,73.24 137.50,71.21 C142.67,63.60 139.66,65.16 129.66,75.26 C121.67,83.35 117.77,86.48 112.43,89.11 L 105.53,92.50 L 86.01,92.50 C64.08,92.50 65.97,91.99 53.50,101.30 C49.10,104.58 43.70,108.10 41.50,109.11 C37.16,111.11 28.56,111.56 25.75,109.92 Z"/></svg></div>
+          <h4>Sabe si de verdad se ha movido</h4>
+          <p>La app dice que hoy ha corrido 3 km. Y los ha corrido él — no es que fuera contigo en el coche. ARES distingue el ritmo de su cuerpo del de un vehículo, y <span class="hl">si se cae o se queda quieto de golpe, te avisa.</span></p>
+        </div>
+        <div class="cs-card" data-tag="device_thermostat" data-color="#F6AE2D">
+          <span class="cs-idx">06 / 08</span>
+          <div class="csc-icon"><span class="material-symbols-outlined">device_thermostat</span></div>
+          <h4>Te avisa antes de que haga calor de más</h4>
+          <p>Tarde de julio, piensas en sacarlo a las cuatro. El móvil te frena antes: "hace demasiado calor para pasear ahora". Mide la temperatura del ambiente y la compara con lo que es seguro para él, <span class="hl">antes de que el asfalto queme.</span></p>
+        </div>
+        <div class="cs-card" data-tag="battery_charging_full" data-color="#2F4858">
+          <span class="cs-idx">07 / 08</span>
+          <div class="csc-icon"><span class="material-symbols-outlined">battery_charging_full</span></div>
+          <h4>Olvídate de la batería una semana</h4>
+          <p>Vuelves del paseo, el perro empapado, y solo apoyas el ARES en su base. <span class="hl">Clic, se está cargando.</span> Sin buscar el cable, sin destapar nada — carga magnética que aguanta más de una semana entre recargas.</p>
+        </div>
+        <div class="cs-card" data-tag="shield" data-color="#F26419">
+          <span class="cs-idx">08 / 08</span>
+          <div class="csc-icon"><span class="material-symbols-outlined">shield</span></div>
+          <h4>Que se moje, se embarre, nade</h4>
+          <p>Se mete en el río de cabeza y tú ni te inmutas. <span class="hl">Sellado IP68, sin puertos ni tapas</span> por donde entre agua: nada, corre bajo la lluvia y se revuelca en el barro sin que se lo quites nunca.</p>
+        </div>
+      </div>
+
+      <div class="cs-ctrls">
+        <div class="cs-hint">Arrastra la carta ←  o  → · o scrollea</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ HACE CADA PARTE — scroll-pin, 5 escenas inmersivas -->
+<!-- VSCROLL (scroll-synced product) -->
+<section id="vscroll">
+  <div class="bg-img"><img src="assets/img/ares-device.svg" id="vscrollTape" alt="" aria-hidden="true"></div>
+  <div class="vscroll-inner">
+    <div class="container" style="text-align:center;padding-top:4rem;position:relative;z-index:1">
+      <div class="sl">Por dentro</div>
+      <h2 class="st" style="font-size:clamp(1.5rem,3vw,2.2rem)">LO QUE ARES LLEVA DENTRO</h2>
+    </div>
+    <div class="scroll-panels container" id="vpanels">
+    <div class="vp"><div class="vpi"><div class="sl">Conexión autónoma</div><h3>Habla con la nube por su cuenta</h3><div class="bf">ARES no depende de tu teléfono para reportar dónde está tu perro.</div><div class="hw">Lleva su propia SIM y su propia radio móvil dentro del collar. Sube la ubicación directamente a la red móvil y de ahí a la nube — tu móvil solo necesita su propio internet para consultarla, <span class="hl">nunca tiene que alcanzar al collar.</span></div><div class="dy">La ves desde la oficina o desde otro país. Da igual dónde estés.</div></div></div>
+    <div class="vp"><div class="vpi"><div class="sl">Cerebro que se despierta solo</div><h3>Duerme hasta que hace falta</h3><div class="bf">No malgasta batería vigilando a un perro que está dormido.</div><div class="hw">Cuando tu perro lleva un rato quieto, ARES entra en reposo profundo. En cuanto se levanta y se mueve, se despierta solo y entra en alerta — activa el GPS justo cuando de verdad hay algo que seguir. Nadie lo enciende: <span class="hl">lo decide el sensor de movimiento en tiempo real.</span></div><div class="dy">Es lo que estira la batería hasta unas dos semanas de uso.</div></div></div>
+    <div class="vp"><div class="vpi"><div class="sl">Ubicación que no engaña</div><h3>Fusión de GPS y movimiento</h3><div class="bf">La posición que ves es real, no ruido ni un salto de señal.</div><div class="hw">Un amplificador de bajo ruido en la antena permite fijar la posición con <span class="hl">menos de un metro de margen.</span> Al cruzar el GPS con el sensor de movimiento, filtra los saltos falsos entre edificios y distingue si tu perro se mueve de verdad o va en coche.</div><div class="dy">Menos de un metro de margen. No "por ahí": ahí.</div></div></div>
+    <div class="vp"><div class="vpi"><div class="sl">Sabe cuándo está en casa</div><h3>Ahorro por contexto</h3><div class="bf">Deja de gastar batería cuando no hay nada que vigilar.</div><div class="hw">Cuando reconoce el WiFi de tu casa, entiende que está en zona segura y baja a consumo mínimo. En cuanto tu perro sale, <span class="hl">se reactiva solo, sin que toques nada.</span></div><div class="dy">Vigila fuera. Descansa dentro.</div></div></div>
+    <div class="vp"><div class="vpi"><div class="sl">Y si te quedas sin datos</div><h3>Bluetooth cuando no hay internet</h3><div class="bf">En mitad del monte, sin cobertura en tu móvil, sigues teniéndolo cerca.</div><div class="hw">Cuando ninguno de los dos tiene internet, ARES se conecta directamente a tu teléfono por Bluetooth y la app te guía hacia él, "frío/caliente", <span class="hl">sin depender de ninguna red.</span> En campo abierto, hasta unos 100 metros.</div><div class="dy">Hasta ~100 m en campo abierto, con un móvil compatible.</div></div></div>
+    <div class="vp"><div class="vpi"><div class="sl">Blindado para el mundo real</div><h3>Sellado, sumergible, sin puertos</h3><div class="bf">Aguanta el agua, el barro y los golpes sin que se lo quites nunca.</div><div class="hw">Doce luces de color repartidas en dos esquinas, visibles a más de 50 metros, y todo dentro de una carcasa que resiste golpes (IK10) y sumersión (IP68). Se recarga por contacto magnético, <span class="hl">sin puertos ni tapas por donde entre agua.</span></div><div class="dy">Sumergible de verdad. No solo "resistente a salpicaduras".</div></div></div>
+  </div>
+</div>
+</section>
+
+<!-- EXTRAS: lo que ARES sabe de tu perro (solo contenido no-físico, sin duplicar hardware) -->
+<section id="extras" class="sec-darker">
+  <div class="sec-prism" id="prism-bienestar"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="sl">Extras</div>
+    <h2 class="st" style="font-size:clamp(1.5rem,3vw,2rem)">LO QUE ARES SABE DE TU PERRO</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;margin-top:0.5rem">Más que un localizador. Datos reales sobre cómo vive, cada día.</div>
+    <div class="gc">
+      <a href="contenido/actividad.html" class="bc bc-cta"><span class="material-symbols-outlined">fitness_center</span><h4>Actividad real</h4><p>Cuenta cada paso real y lo convierte en algo útil: cuántas calorías ha quemado hoy y si el ejercicio ha sido de calidad — un paseo tranquilo no es lo mismo que una buena carrera. <span class="hl">Con datos de su cuerpo, no una estimación a ojo.</span></p><span class="bc-link">Ver cómo se calcula</span></a>
+      <a href="contenido/descanso.html" class="bc bc-cta"><span class="material-symbols-outlined">bedtime</span><h4>Tiempo de descanso</h4><p>Sabe cuántas horas pasa realmente en reposo — no fases de sueño, sino cuánto tiempo ha estado quieto y tranquilo. Si una noche duerme mucho menos de lo normal, te lo dice: <span class="hl">a veces un cambio en el descanso es la primera señal de que algo no va bien.</span></p><span class="bc-link">Por qué importa el descanso</span></a>
+      <a href="contenido/comunidad.html" class="bc bc-cta"><span class="material-symbols-outlined">groups</span><h4>Una comunidad de dueños como tú</h4><p>Compara la actividad de tu perro con otros de su raza y edad, sigue las rutas de tus amigos y únete a retos semanales. Saber que tu perro está en forma es más divertido cuando no lo haces solo.</p><span class="bc-link">Descubrir la comunidad</span></a>
+      <a href="contenido/geocerca.html" class="bc bc-cta"><span class="material-symbols-outlined">map</span><h4>Geocerca inteligente</h4><p>Dibujas una zona segura en el mapa — el jardín, el parque, la finca. Mientras está dentro, todo en verde. Cuando se acerca al borde, ARES ya te avisa: <span class="hl">no espera a que cruce y esté lejos.</span></p><span class="bc-link">Cómo funciona la geocerca</span></a>
+      <a href="contenido/actividad.html" class="bc bc-cta"><span class="material-symbols-outlined">restaurant</span><h4>Actividad, calorías y dieta personalizada</h4><p>Calcula cuánto quema tu perro en cada paseo y qué significa para su alimentación diaria. Con Premium, ARES analiza los macros de su comida y los cruza con su actividad real para recomendarte una dieta única — <span class="hl">la que necesita tu perro, no un perro genérico.</span></p><span class="bc-link">Calcular calorías y dieta</span></a>
+      <a href="contenido/pet-friendly.html" class="bc bc-cta"><span class="material-symbols-outlined">pets</span><h4>¿Dónde puedes llevarlo sin dudarlo?</h4><p>Restaurantes, parques y alojamientos donde de verdad es bienvenido. <span class="hl">Verificado, no adivinado.</span></p><span class="bc-link">Buscar sitios pet-friendly</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section id="planes" class="sec-light light">
+  <div class="container" style="text-align:center">
+    <div class="sl">Planes</div>
+    <h2 class="st" style="font-size:clamp(1.5rem,3vw,2rem)">ELIGE TU NIVEL</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;margin-top:0.5rem">El dispositivo se compra aparte, pago único. Esto es la suscripción mensual: la diferencia es cuánto quieres saber de tu perro.</div>
+    <div class="plg">
+      <div class="pc pc-blue" style="background:#86BBD8"><h4>ESENCIAL</h4><div style="font-family:'Bruno Ace SC',sans-serif;font-size:1.5rem;color:var(--bg);margin:0.3rem 0 1.2rem">6€<span style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;font-weight:400"> /mes · o 60€/año</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:var(--cta);text-transform:uppercase;margin-bottom:0.6rem;text-align:left">Para quién es</div><div class="ss" style="text-transform:none;letter-spacing:0;text-align:left;font-size:0.9rem;margin-bottom:1rem;opacity:0.95;line-height:1.7">Tú, cuando lo sueltas en el parque y esa llamada en falso se te queda en el pecho. Abres la app y sabes que está bien. La tranquilidad de saber dónde está, <span style="color:var(--cta)">en todo momento, desde hoy</span> — sin complicarte con nada más.</div><a href="contenido/pricing.html" class="btn btn-out btn-plans-card"><span>Ver todos los detalles</span></a></div>
+      <div class="pc pop"><h4>BÁSICO</h4><div style="font-family:'Bruno Ace SC',sans-serif;font-size:1.5rem;color:var(--hl);margin:0.3rem 0 1.2rem">10€<span style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;font-weight:400"> /mes · o 100€/año</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:var(--cta);text-transform:uppercase;margin-bottom:0.6rem;text-align:left">Para quién es</div><div class="ss" style="text-transform:none;letter-spacing:0;text-align:left;font-size:0.9rem;margin-bottom:1rem;opacity:0.95;line-height:1.7">Tú, el que no adivina: <span style="color:var(--cta)">sabes</span>. Sabes si ha hecho el ejercicio que necesita, si ha dormido bien y cómo le ha sentado esa última comida. Cuando algo cambia, no te enteras a los días — te enteras el mismo día.</div><a href="contenido/pricing.html" class="btn btn-out btn-plans-card"><span>Ver todos los detalles</span></a></div>
+      <div class="pc pc-blue" style="background:#86BBD8"><h4>PREMIUM</h4><div style="font-family:'Bruno Ace SC',sans-serif;font-size:1.5rem;color:var(--bg);margin:0.3rem 0 1.2rem">12,99€<span style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;font-weight:400"> /mes · o 129,90€/año</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:var(--cta);text-transform:uppercase;margin-bottom:0.6rem;text-align:left">Para quién es</div><div class="ss" style="text-transform:none;letter-spacing:0;text-align:left;font-size:0.9rem;margin-bottom:1rem;opacity:0.95;line-height:1.7">Tú, el que no se conforma con datos: quiere que <span style="color:var(--cta)">se conviertan en decisiones</span>. Anticiparte a que algo no va bien, darle la dieta exacta que necesita y tener a un veterinario a un mensaje de distancia cuando te entra la duda.</div><a href="contenido/pricing.html" class="btn btn-out btn-plans-card"><span>Ver todos los detalles</span></a></div>
+    </div>
+    <div style="margin-top:2.5rem">
+      <div class="ss" style="text-transform:none;letter-spacing:0;margin-bottom:0.75rem">Así de simple: primero eliges tu dispositivo ARES (pago único) y después la suscripción que mejor encaja con tu perro. Lo tienes todo en un solo paso.</div>
+      <a href="contenido/pricing.html" class="btn btn-out btn-plans-bottom" style="font-size:0.7rem;padding:0.7rem 1.8rem"><span>Ver todos los detalles →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-final" class="sec-darker">
+  <div class="sec-prism" id="prism-cta"></div>
+  <div class="cta-logo-bg" aria-hidden="true"><img src="assets/img/logo-simple-blanco.svg" alt=""></div>
+  <div class="container" style="position:relative;z-index:1">
+    <h2 class="st">TU PERRO MERECE UN GUARDIÁN.</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0">No entiende de tecnología. Entiende de confianza. De salir a correr y volver a casa.</div>
+    <p style="font-family:'Orbitron',sans-serif;font-weight:500;font-size:0.9rem;letter-spacing:0.04em;color:var(--hl);margin-top:1.5rem">ARES GPS te ayuda a estar ahí. Siempre.</p>
+    <a href="contenido/proximamente.html" class="btn btn-cta" style="margin-top:1.5rem"><span>Reserva tu ARES</span></a>
+  </div>
+</section>
+
+<footer><div class="container"><div class="footer-links"><a href="contenido/calculadora.html">Calculadora de peso ideal</a><a href="contenido/pet-friendly.html">Sitios pet-friendly</a><a href="contenido/proximamente.html">Reserva anticipada</a></div>ARES GPS &copy; 2026</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="assets/3d/base.glb.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.topology.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="assets/js/TextPlugin.min.js"></script>
+<script src="assets/js/CustomEase.min.js"></script>
+<script src="assets/js/InertiaPlugin.min.js"></script>
+<script src="assets/js/Draggable.min.js"></script>
+<script>
+/* ============================================
+   INTRO OVERLAY
+   ============================================ */
+(function(){
+  const o=document.getElementById('intro-overlay'),b=document.getElementById('intro-btn'),cv=document.getElementById('intro-canvas'),cx=cv.getContext('2d');
+  function rs(){cv.width=window.innerWidth;cv.height=window.innerHeight}
+  window.addEventListener('resize',rs);rs();
+  let t=0;
+  function dr(){
+    cx.clearRect(0,0,cv.width,cv.height);
+    for(let y=0;y<cv.height;y+=3){const hue=200+Math.sin(y*0.008+t*0.02)*30,alpha=0.03+Math.sin(y*0.012+t*0.015)*0.015;cx.beginPath();cx.moveTo(0,y);cx.lineTo(cv.width,y);cx.strokeStyle=`hsla(${hue},50%,55%,${alpha})`;cx.stroke()}
+    t++;if(!o.classList.contains('hidden'))requestAnimationFrame(dr);
+  }
+  dr();
+  b.addEventListener('click',()=>{o.classList.add('hidden');document.body.style.overflow='';initGSAP();});
+})();
+
+/* ============================================
+   LENIS + GSAP
+   ============================================ */
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),smoothWheel:true,prevent:node=>node.closest&&node.closest('[data-lenis-prevent]')});
+
+// Generate horizontal scroll ticks
+(function(){const el=document.getElementById('ticksWrapper');if(!el)return;const inner=document.createElement('div');inner.className='ti';el.appendChild(inner);for(let i=0;i<80;i++){const t=document.createElement('div');t.className='tick-h';inner.appendChild(t)}const ticks=inner.querySelectorAll('.tick-h');lenis.on('scroll',({scroll,limit})=>{const a=limit>0?Math.round(scroll/limit*80):0;ticks.forEach((t,i)=>t.classList.toggle('active',i<a))})})();
+const nav=document.getElementById('main-nav');
+lenis.on('scroll',({scroll})=>{if(scroll>40)nav.classList.add('scrolled');else nav.classList.remove('scrolled')});
+
+/* ============================================
+   VANTA TOPOLOGY
+   ============================================ */
+VANTA.TOPOLOGY({el:'#hero-bg',mouseControls:!0,touchControls:!0,gyroControls:!1,scale:1,color:0x33658A,backgroundColor:0x151d25});
+
+/* ============================================
+   3D PRODUCT VIEWER — Conoce ARES
+   ============================================ */
+(function(){
+  const container=document.getElementById('showcase-3d');
+  if(!container)return;
+
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(45,container.clientWidth/container.clientHeight,0.1,100);
+  camera.position.set(2,1.5,4);
+  camera.lookAt(0,0,0);
+
+  const renderer=new THREE.WebGLRenderer({alpha:!0,antialias:!0});
+  renderer.setSize(container.clientWidth,container.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setClearColor(0x000000,0);
+  container.appendChild(renderer.domElement);
+
+  const ambient=new THREE.AmbientLight(0xffffff,0.5);
+  scene.add(ambient);
+  const light=new THREE.DirectionalLight(0xffffff,1);
+  light.position.set(5,5,5);
+  scene.add(light);
+  const light2=new THREE.DirectionalLight(0x86BBD8,0.6);
+  light2.position.set(-5,-2,-3);
+  scene.add(light2);
+
+  // Device body
+  const bodyGeo=new THREE.BoxGeometry(1.4,0.85,0.22);
+  const bodyMat=new THREE.MeshStandardMaterial({color:0x1c2732,roughness:0.4,metalness:0.3});
+  const body=new THREE.Mesh(bodyGeo,bodyMat);
+  scene.add(body);
+
+  // Screen/face
+  const screenGeo=new THREE.PlaneGeometry(1.0,0.5);
+  const screenMat=new THREE.MeshStandardMaterial({color:0x0a1628,roughness:0.1,metalness:0.7});
+  const screen=new THREE.Mesh(screenGeo,screenMat);
+  screen.position.z=0.12;
+  scene.add(screen);
+
+  // Antenna bump
+  const antGeo=new THREE.CylinderGeometry(0.15,0.2,0.1,32);
+  const antMat=new THREE.MeshStandardMaterial({color:0x33658A,roughness:0.3,metalness:0.5});
+  const ant=new THREE.Mesh(antGeo,antMat);
+  ant.position.y=0.48;
+  scene.add(ant);
+
+  // LED indicator dot
+  const ledGeo=new THREE.SphereGeometry(0.04,16,16);
+  const ledMat=new THREE.MeshStandardMaterial({color:0xF6AE2D,emissive:0xF6AE2D,emissiveIntensity:0.8});
+  const led=new THREE.Mesh(ledGeo,ledMat);
+  led.position.set(0.55,0.48,0.12);
+  scene.add(led);
+
+  // Ring around LED
+  const ringGeo=new THREE.TorusGeometry(0.08,0.015,8,32);
+  const ringMat=new THREE.MeshStandardMaterial({color:0xF26419,roughness:0.2,metalness:0.8});
+  const ring=new THREE.Mesh(ringGeo,ringMat);
+  ring.position.set(0.55,0.48,0.12);
+  ring.rotation.x=Math.PI/2;
+  scene.add(ring);
+
+  const group=new THREE.Group();
+  scene.remove(body,screen,ant,led,ring);
+  group.add(body,screen,ant,led,ring);
+  scene.add(group);
+
+  let rotX=0,rotY=0,targetX=0,targetY=0;
+  container.addEventListener('mousemove',e=>{
+    const rect=container.getBoundingClientRect();
+    targetX=((e.clientY-rect.top)/rect.height-0.5)*1.5;
+    targetY=((e.clientX-rect.left)/rect.width-0.5)*2;
+  });
+
+  /* === SUBRAYADOR AMARILLO — highlighter en scroll === */
+  ScrollTrigger.batch('.hl',{
+    start:'top 75%',
+    once:true,
+    onEnter:batch=>batch.forEach(el=>el.classList.add('active'))
+  });
+
+
+  function render(){
+    rotX+=(targetX-rotX)*0.08;
+    rotY+=(targetY-rotY)*0.08;
+    group.rotation.x=rotX;
+    group.rotation.y=rotY;
+    group.position.y=Math.sin(Date.now()*0.002)*0.04;
+    renderer.render(scene,camera);
+    requestAnimationFrame(render);
+  }
+  render();
+
+  window.addEventListener('resize',()=>{
+    if(!container.clientWidth)return;
+    camera.aspect=container.clientWidth/container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth,container.clientHeight);
+  });
+})();
+
+/* ============================================
+   3D MODEL — #dpLogo (GLTF loader)
+   ============================================ */
+(function(){
+  const el=document.getElementById('dpLogo');
+  if(!el)return;
+  const scene3d=new THREE.Scene();
+  const w=500;const camera3d=new THREE.PerspectiveCamera(45,1,0.1,100);
+  camera3d.position.set(0,0.5,2.8);
+  camera3d.lookAt(0,0,0);
+  const rend3d=new THREE.WebGLRenderer({alpha:!0,antialias:!0});
+  rend3d.setSize(w,w);
+  rend3d.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  rend3d.setClearColor(0x000000,0);
+  el.appendChild(rend3d.domElement);
+  // Lights
+  scene3d.add(new THREE.AmbientLight(0xffffff,0.55));
+  const dl1=new THREE.DirectionalLight(0xffffff,0.7);dl1.position.set(2,3,4);scene3d.add(dl1);
+  const dl2=new THREE.DirectionalLight(0x86BBD8,0.5);dl2.position.set(-2,-1,-2);scene3d.add(dl2);
+  const dl3=new THREE.DirectionalLight(0xF6AE2D,0.3);dl3.position.set(1,-2,1);scene3d.add(dl3);
+  let modelG;
+  var b64=window.__ARES_MODEL;
+  if(b64){
+    var binStr=atob(b64),bytes=new Uint8Array(binStr.length);
+    for(var i=0;i<binStr.length;i++)bytes[i]=binStr.charCodeAt(i);
+    var loader=new THREE.GLTFLoader();
+    loader.parse(bytes.buffer,'',function(gltf){
+      modelG=gltf.scene;
+      var box=new THREE.Box3().setFromObject(modelG);
+      var center=box.getCenter(new THREE.Vector3());
+      var size=box.getSize(new THREE.Vector3());
+      var maxDim=Math.max(size.x,size.y,size.z);
+      var s=2.4/maxDim;
+      modelG.scale.setScalar(s);
+      modelG.position.set(-center.x*s,-center.y*s,-center.z*s);
+      scene3d.add(modelG);
+      // White material override
+      modelG.traverse(function(child){
+        if(child.isMesh){
+          child.material=new THREE.MeshStandardMaterial({color:0xd8d8d8,roughness:0.45,metalness:0.08});
+        }
+      });
+    },function(err){console.warn('GLTF parse err:',err);});
+  }
+  function anim3d(){
+    requestAnimationFrame(anim3d);
+    if(modelG)modelG.rotation.y+=0.004;
+    rend3d.render(scene3d,camera3d);
+  }
+  anim3d();
+  window.addEventListener('resize',function(){
+    var r=el.getBoundingClientRect();
+    if(r.width>0){rend3d.setSize(r.width,r.width);camera3d.aspect=1;camera3d.updateProjectionMatrix();}
+  });
+})();
+
+/* ============================================
+   GSAP INIT
+   ============================================ */
+function initGSAP(){
+  gsap.registerPlugin(TextPlugin,CustomEase,InertiaPlugin,Draggable);
+  lenis.on('scroll',ScrollTrigger.update);
+  gsap.ticker.add(time=>lenis.raf(time*1000));
+  gsap.ticker.lagSmoothing(0);
+
+  /* === CUSTOM EASE — curvas orgánicas === */
+  CustomEase.create('softBounce','M0,0 C0.2,1.5 0.3,0.6 0.5,0.98 C0.7,1.4 0.8,0.9 1,1');
+  CustomEase.create('gentleOvershoot','M0,0 C0.3,1.3 0.6,0.85 1,1');
+
+  /* === HERO — morph ARES↔GPS con rotateX flip (no pestañeo) === */
+  // typewriter.js gestiona hero-tag + hero-sub (escribir una vez)
+
+  const aresEl=document.querySelector('#hero h1 .ares-tag');
+  let morphState=0;
+  function doMorph(){
+    morphState=1-morphState;
+    gsap.timeline()
+      .to(aresEl,{rotateX:90,opacity:0,duration:0.2,ease:'power2.in',transformOrigin:'center center'})
+      .set(aresEl,{text:{value:morphState?'GPS':'ARES'}})
+      .to(aresEl,{rotateX:0,opacity:1,duration:0.35,ease:'gentleOvershoot',transformOrigin:'center center'});
+    setTimeout(doMorph,morphState?1000:2000);
+  }
+  setTimeout(doMorph,2000);
+  gsap.from('#hero .hs',{y:30,opacity:0,duration:0.6,stagger:0.1,delay:1.8,clearProps:'all',ease:'gentleOvershoot'});
+
+  /* === COUNTER ANIMATION — cifras suben al scrollear === */
+  (function(){
+    const els=document.querySelectorAll('#hero .hs .val,.cpr .pi .val');
+    els.forEach(el=>{
+      const t=el.textContent.trim(),m=t.match(/^(-?\d+(?:\.\d+)?)(.*)/);
+      if(!m)return;
+      const target=parseFloat(m[1]),suffix=m[2],wrap={val:0};
+      ScrollTrigger.create({trigger:el.closest('section')||el,start:'top 65%',once:true,
+        onEnter:()=>{gsap.to(wrap,{val:target,duration:1.2,ease:'gentleOvershoot',
+          onUpdate:()=>{el.textContent=(Number.isInteger(target)?Math.round(wrap.val):wrap.val.toFixed(1))+suffix}
+        })}
+      });
+    });
+  })();
+
+  /* === TEXT TYPEWRITER desactivado: los h2 y .ss muestran su texto directamente === */
+
+  // Por qué ARES — storytelling PAS
+  gsap.from('#proposito .pas-block',{scrollTrigger:{trigger:'#proposito',start:'top 60%'},y:40,opacity:0,duration:0.8,stagger:0.25,clearProps:'all',ease:'gentleOvershoot'});
+  gsap.from('#proposito .pas-close',{scrollTrigger:{trigger:'#proposito .pas-close',start:'top 75%'},y:30,opacity:0,duration:0.6,clearProps:'all',ease:'gentleOvershoot'});
+  gsap.utils.toArray('#proposito .pas-block:not(.pas-reverse) .pas-img').forEach(el=>{gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%',end:'top 35%',scrub:0.5},x:300,opacity:0,ease:'power2.out'});});
+  gsap.utils.toArray('#proposito .pas-block.pas-reverse .pas-img').forEach(el=>{gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%',end:'top 35%',scrub:0.5},x:-300,opacity:0,ease:'power2.out'});});
+
+  // Cómo funciona — intro dispositivo
+  gsap.from('#como-funciona .ctxt',{scrollTrigger:{trigger:'#como-funciona',start:'top 60%'},x:-40,opacity:0,duration:0.8,clearProps:'all',ease:'gentleOvershoot'});
+  gsap.from('#como-funciona .cpr .pi',{scrollTrigger:{trigger:'#como-funciona',start:'top 50%'},y:30,opacity:0,duration:0.6,stagger:0.15,clearProps:'all',ease:'gentleOvershoot'});
+
+  // Cómo funciona — Card Stack (fusiona antiguo despiece + vscroll)
+  gsap.from('#despiece .sl, #despiece .ss',{scrollTrigger:{trigger:'#despiece',start:'top 70%'},y:20,opacity:0,duration:0.6,stagger:0.15,clearProps:'all',ease:'gentleOvershoot'});
+  initCardStack();
+
+  // VScroll panels + parallax
+  const vps=document.querySelectorAll('.vpi');
+  vps.forEach(p=>{ScrollTrigger.create({trigger:p.closest('.vp'),start:'top center',end:'bottom center',onEnter:()=>{vps.forEach(x=>x.classList.remove('active'));p.classList.add('active')},onEnterBack:()=>{vps.forEach(x=>x.classList.remove('active'));p.classList.add('active')}})});
+  // Tira vertical "ARES": recorre de arriba (A) a abajo (S) durante TODO el scroll de la seccion
+  (function initTape(){
+    const vBg=document.querySelector('#vscroll .bg-img img');
+    if(!vBg)return;
+    let vST=null;
+    const setTape=()=>{
+      if(vST){vST.kill();vST=null;}
+      // recorrido = todo el alto de la tira menos un viewport (A arriba al inicio, S abajo al final)
+      // VELOCITY: 1 = velocidad completa, 0.5 = sube a mitad de velocidad, 0.3 = mucho mas lento
+      const VELOCITY=window.innerWidth<768?0.2:0.35;
+      const travel=Math.max((vBg.offsetHeight - window.innerHeight) * VELOCITY, 1);
+      gsap.set(vBg,{y:0});
+      // el progreso 0->1 abarca TODO el scroll de la seccion (top top -> bottom bottom)
+      vST=ScrollTrigger.create({
+        trigger:'#vscroll', start:'top top', end:'bottom bottom', scrub:1,
+        onUpdate:self=>{ gsap.set(vBg,{y:-travel*self.progress}); }
+      });
+    };
+    const kick=()=>{ setTape(); ScrollTrigger.refresh(); };
+    // asegurar ejecucion: imagen cargada + un tick tras el layout
+    if(vBg.complete && vBg.offsetHeight>0) kick(); else vBg.addEventListener('load',kick);
+    setTimeout(kick, 600);
+    window.addEventListener('resize',()=>{clearTimeout(window.__vt);window.__vt=setTimeout(kick,200)});
+  })();
+
+  gsap.from('#extras .bc',{scrollTrigger:{trigger:'#extras',start:'top 60%'},y:40,opacity:0,duration:0.7,stagger:0.1,clearProps:'all',ease:'gentleOvershoot'});
+
+  // Planes
+  gsap.from('#planes .pc',{scrollTrigger:{trigger:'#planes',start:'top 65%'},y:40,opacity:0,duration:0.7,stagger:0.15,ease:'gentleOvershoot'});
+
+  // CTA
+  gsap.from('#cta-final .st',{scrollTrigger:{trigger:'#cta-final',start:'top 60%'},y:30,opacity:0,duration:0.8,clearProps:'all',ease:'gentleOvershoot'});
+  gsap.from('#cta-final .ss',{scrollTrigger:{trigger:'#cta-final',start:'top 70%'},y:20,opacity:0,duration:0.7,delay:0.2,ease:'gentleOvershoot'});
+}
+
+/* ============================================
+   CARD STACK — animación continua por progreso
+   ============================================ */
+function initCardStack(){
+  const stack=document.getElementById('cardStack');
+  if(!stack||!stack.children.length)return;
+  const cards=[...stack.children];
+  const total=cards.length;
+  let current=0;
+
+  const rots=[0,-9,12,-6,15,-11,7,-13];
+  const xs=[0,18,-22,14,-25,10,-16,20];
+  const ys=[0,-10,8,-15,6,-12,10,-8];
+
+  cards.forEach(c=>c.style.background=c.dataset.color||'#33658A');
+  gsap.set('#dpLogo',{yPercent:-50,x:0,rotate:0});
+
+  function animCards(target){
+    target=target===undefined?current:target;
+    const ordered=cards.slice(target).concat(cards.slice(0,target));
+    ordered.forEach((c,i)=>{
+      const ov='auto';
+      if(i===0){gsap.to(c,{scale:1,y:0,z:0,opacity:1,zIndex:total,x:0,rotate:0,pointerEvents:'auto',boxShadow:'0 14px 40px rgba(0,0,0,0.3)',duration:0.35,overwrite:ov,ease:'power2.out',onStart(){
+        const idx=c.querySelector('.cs-idx');
+        if(idx)gsap.fromTo(idx,{scale:1.5,opacity:0.3},{scale:1,opacity:1,duration:0.35,ease:'back.out(2)'});
+      }});
+      }else{const r=rots[i%rots.length],ox=xs[i%xs.length],oy=ys[i%ys.length];gsap.to(c,{scale:Math.max(1-i*0.04,0.82),y:oy,z:-i*4,opacity:1,zIndex:total-i,x:ox,rotate:r,pointerEvents:'none',boxShadow:'0 4px 12px rgba(0,0,0,0.12)',duration:0.35,overwrite:ov,ease:'power2.out'})}
+    });
+  }
+
+  animCards(0);
+
+  ScrollTrigger.create({trigger:'#despiece',pin:true,start:'78px 75',end:'+=350%',onUpdate:self=>{
+    const p=self.progress;
+    gsap.set('#dpLogo',{yPercent:-50,x:-200*p,rotate:-45*p});
+    const d=Draggable.get(cards[current]);
+    if(d&&d.isDragging)return;
+    const t=Math.round(p*(total-1));
+    if(t!==current){current=t;animCards(t);attachDrag(current)}
+  }});
+
+  function attachDrag(idx){
+    cards.forEach(c=>{const d=Draggable.get(c);if(d)d.kill()});
+    const el=cards[idx];
+    Draggable.create(el,{
+      type:'x',
+      inertia:true,
+      bounds:{minX:-200,maxX:200},
+      edgeResistance:0.7,
+      onDragStart(){el.classList.add('swiping')},
+      onDrag(){gsap.to(el,{rotate:this.x*0.06,scale:1-Math.min(Math.abs(this.x)*0.001,0.1),duration:0.05,overwrite:'auto'})},
+      onDragEnd(){
+        el.classList.remove('swiping');
+        if(Math.abs(this.x)>60||Math.abs(this.getVelocity('x'))>150){
+          const dir=this.x>0?1:-1;
+          gsap.to(el,{x:this.x>0?500:-500,opacity:0,duration:0.25,ease:'power2.in',
+            onComplete(){
+              gsap.set(el,{x:0,opacity:1,clearProps:'transform'});
+              current=(idx+dir+total)%total;
+              animCards(current);
+              attachDrag(current);
+}
+          });
+        }else{gsap.to(el,{x:0,rotate:0,scale:1,duration:0.5,ease:'back.out(1.7)'})}
+      },
+      onClick(){current=(current+1)%total;animCards(current);attachDrag(current)}
+    });
+  }
+
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){current=(current+1)%total;animCards(current);attachDrag(current)}
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){current=(current-1+total)%total;animCards(current);attachDrag(current)}
+  });
+
+  attachDrag(current);
+}
+
+/* ============================================
+   SECTION PRISM GRIDS — hero, conoce, bienestar, cta
+   ============================================ */
+function buildPrism(id) {
+  const wrap=document.getElementById(id);if(!wrap)return;
+  const section=wrap.closest('section')||wrap.parentElement;
+  const size=40,cols=Math.ceil(section.offsetWidth/size)+4,rows=Math.ceil(section.offsetHeight/size)+4;
+  const grid=document.createElement('div');grid.className='prism-grid';
+  const gw=cols*size,gh=rows*size;
+  grid.style.cssText=`width:${gw}px;height:${gh}px;margin-left:${gw/-2}px;margin-top:${gh/-2}px;grid-template-columns:repeat(${cols},${size}px);grid-template-rows:repeat(${rows},${size}px)`;
+  const cells=[];
+  for(let i=0;i<rows*cols;i++){const c=document.createElement('div');c.className='prism-cell';c.style.cssText=`width:${size}px;height:${size}px`;grid.appendChild(c);cells.push(c)}
+  wrap.appendChild(grid);
+  const trail=[],max=18;let cc='134,187,216';
+  section.addEventListener('mousemove',e=>{
+    const rect=section.getBoundingClientRect();
+    const cx=section.offsetWidth/2,cy=section.offsetHeight/2,gl=cx-gw/2,gt=cy-gh/2;
+    const col=Math.floor((e.clientX-rect.left-gl)/size),row=Math.floor((e.clientY-rect.top-gt)/size);
+    if(col>=0&&col<cols&&row>=0&&row<rows)trail.push({col,row,life:1});
+    const el=document.querySelector(':hover');
+    if(el&&(el.tagName==='A'||el.tagName==='BUTTON'||el.closest('.btn')||el.closest('.bc')||el.closest('.pc')))cc='246,174,45';else cc='134,187,216';
+  });
+  section.addEventListener('mouseleave',()=>{trail.length=0;cells.forEach(c=>{c.style.background='rgba(134,187,216,0)';c.classList.remove('lit')})});
+  function anim(){
+    for(let i=trail.length-1;i>=0;i--){trail[i].life-=0.04;if(trail[i].life<=0)trail.splice(i,1)}
+    while(trail.length>max)trail.shift();
+    const lm={};trail.forEach(t=>{const k=t.row*cols+t.col;if(!lm[k]||lm[k]<t.life)lm[k]=t.life});
+    cells.forEach((c,i)=>{const l=lm[i]||0;c.style.background=l>0.01?`rgba(${cc},${l*0.3})`:'rgba(134,187,216,0)';if(l>0.01)c.classList.add('lit');else c.classList.remove('lit')});
+    requestAnimationFrame(anim);
+  }
+  anim();
+}
+['prism-hero','prism-conoce','prism-bienestar','prism-cta'].forEach(buildPrism);
+
+/* === ANCHOR LINKS === */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){if(this.closest('#navOverlay'))return;e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)lenis.scrollTo(t,{offset:-60,duration:1.5})})});
+
+/* === HAMBURGER MENU === */
+(function(){
+  const btn=document.getElementById('navToggle'),ov=document.getElementById('navOverlay'),tc=document.getElementById('ovTicks');
+  if(!btn||!ov)return;
+  if(tc){for(let i=0;i<36;i++){const t=document.createElement('div');t.className='ov-t';tc.appendChild(t)}}
+  function close(){btn.classList.remove('active');ov.classList.remove('open');document.body.style.overflow='';if(typeof lenis!=='undefined')lenis.start()}
+  btn.addEventListener('click',()=>{
+    const op=ov.classList.contains('open');
+    btn.classList.toggle('active');ov.classList.toggle('open');
+    document.body.style.overflow=op?'':'hidden';
+    if(typeof lenis!=='undefined'){if(op)lenis.start();else lenis.stop()}
+    if(!op){ov.querySelectorAll('.nl-item a').forEach(a=>{a.style.animation='none';void a.offsetWidth;a.style.animation=''})}
+  });
+  ov.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();close();const t=document.querySelector(this.getAttribute('href'));if(t)requestAnimationFrame(()=>{requestAnimationFrame(()=>lenis.scrollTo(t,{offset:-60,duration:1.5}))})})});
+  if(tc)ov.addEventListener('scroll',()=>{
+    const p=Math.min(ov.scrollTop/(ov.scrollHeight-ov.clientHeight),1),ticks=tc.querySelectorAll('.ov-t'),n=Math.round(p*ticks.length);
+    ticks.forEach((t,i)=>t.classList.toggle('on',i<=n))
+  });
+})();
+
+/* === NAV DROPDOWN (Recursos) — hover + click, desktop y touch === */
+(function(){
+  const drop=document.getElementById('navDrop');
+  if(!drop)return;
+  const trigger=drop.querySelector(':scope > a');
+  const isTouch=window.matchMedia('(hover:none)').matches;
+  if(isTouch){
+    trigger.addEventListener('click',e=>{e.preventDefault();drop.classList.toggle('open')});
+    document.addEventListener('click',e=>{if(!drop.contains(e.target))drop.classList.remove('open')});
+  }else{
+    drop.addEventListener('mouseenter',()=>drop.classList.add('open'));
+    drop.addEventListener('mouseleave',function(e){if(drop.contains(e.relatedTarget))return;drop.classList.remove('open')});
+    const menu=drop.querySelector('.ndrop-menu');
+    if(menu)menu.addEventListener('mouseleave',function(e){if(!drop.contains(e.relatedTarget))drop.classList.remove('open')});
+    trigger.addEventListener('click',e=>{e.preventDefault();drop.classList.toggle('open')});
+    document.addEventListener('click',e=>{if(!drop.contains(e.target))drop.classList.remove('open')});
+  }
+})();
+
+/* === PAS FLOTANTES — SVGs de fondo en #proposito con barrera de texto === */
+(function(){
+  const host=document.getElementById('pasFloatBg');
+  if(!host)return;
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const STICKERS=['huella','pelota','hueso','satelite','cuerda'];
+  const isMobile=window.matchMedia('(max-width:768px)').matches;
+  const COUNT=STICKERS.length*2, MIN=isMobile?52:110, MAX=isMobile?92:190;
+  const PAD=36;
+  const rand=(a,b)=>a+Math.random()*(b-a);
+  const items=[];
+  let W=host.clientWidth, H=host.clientHeight;
+  const h2El=document.querySelector('#proposito .container h2');
+  const subEl=document.querySelector('#proposito .container .ss');
+  let floorY=0; // banda: los SVG solo se mueven POR DEBAJO del subtítulo
+  let zones=[]; // solo bloques de texto glass (para que el blur no se recalcule)
+  function updateBarrier(){
+    const hr=host.getBoundingClientRect();
+    const header=[h2El,subEl].filter(Boolean);
+    if(header.length){
+      const bots=header.map(el=>el.getBoundingClientRect().bottom-hr.top);
+      floorY=Math.max(...bots)+PAD;
+    }else{floorY=0;}
+    zones=[];
+    document.querySelectorAll('#proposito .pas-text').forEach(el=>{
+      const r=el.getBoundingClientRect();
+      zones.push({x:r.left-hr.left-PAD, y:r.top-hr.top-PAD, w:r.width+PAD*2, h:r.height+PAD*2});
+    });
+  }
+  function inZone(x,y,s){
+    for(const z of zones){
+      if(x<z.x+z.w && x+s>z.x && y<z.y+z.h && y+s>z.y) return true;
+    }
+    return false;
+  }
+  for(let i=0;i<COUNT;i++){
+    const el=document.createElement('span');
+    el.className='pas-float';
+    const size=rand(MIN,MAX);
+    el.style.width=el.style.height=size+'px';
+    const img=document.createElement('img');
+    img.src='assets/stickers/floats/'+STICKERS[i%STICKERS.length]+'.png';
+    img.alt='';
+    el.appendChild(img);
+    host.appendChild(el);
+    const spd=rand(3,10);
+    let px,py,guard=0;
+    do{
+      px=rand(0,Math.max(0,W-size));
+      py=rand(floorY,Math.max(floorY,H-size));
+    }while(inZone(px,py,size)&&++guard<50);
+    items.push({
+      el,size,r:size/2,x:px,y:py,
+      vx:rand(-spd,spd)/60,vy:rand(-spd,spd)/60,
+      rot:rand(0,360),vr:rand(-0.12,0.12)
+    });
+  }
+  items.forEach((it,i)=>setTimeout(()=>{it.el.classList.add('on')},120*i));
+  const mouse={x:-9999,y:-9999,active:false};
+  host.addEventListener('mousemove',e=>{
+    const r=host.getBoundingClientRect();
+    mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.active=true;
+  });
+  host.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;mouse.active=false});
+  function resize(){
+    W=host.clientWidth; H=host.clientHeight;
+    updateBarrier();
+    for(const it of items){
+      it.x=Math.min(Math.max(0,it.x),Math.max(0,W-it.size));
+      it.y=Math.min(Math.max(floorY,it.y),Math.max(floorY,H-it.size));
+    }
+  }
+  window.addEventListener('resize',resize,{passive:true});
+  resize();
+  function collide(a,b){
+    const dx=b.x-a.x, dy=b.y-a.y;
+    const min=a.r+b.r;
+    const d2=dx*dx+dy*dy;
+    if(d2>=min*min)return;
+    const d=Math.sqrt(d2)||0.0001;
+    const nx=dx/d, ny=dy/d;
+    const push=(min-d)/2;
+    a.x-=nx*push; a.y-=ny*push;
+    b.x+=nx*push; b.y+=ny*push;
+    const dvx=a.vx-b.vx, dvy=a.vy-b.vy;
+    const dot=dvx*nx+dvy*ny;
+    if(dot>0){ a.vx-=dot*nx; a.vy-=dot*ny; b.vx+=dot*nx; b.vy+=dot*ny; }
+  }
+  function escapeZone(it){
+    for(const z of zones){
+      if(it.x<z.x+z.w && it.x+it.size>z.x && it.y<z.y+z.h && it.y+it.size>z.y){
+        const cx=z.x+z.w/2, cy=z.y+z.h/2;
+        const cxp=it.x+it.size/2, cyp=it.y+it.size/2;
+        const dx=cxp-cx, dy=cyp-cy;
+        if(Math.abs(dx/z.w)>Math.abs(dy/z.h)){
+          it.x = dx>0 ? z.x+z.w : z.x-it.size;
+        } else {
+          it.y = dy>0 ? z.y+z.h : z.y-it.size;
+        }
+        it.x=Math.min(Math.max(0,it.x),Math.max(0,W-it.size));
+        it.y=Math.min(Math.max(floorY,it.y),Math.max(floorY,H-it.size));
+      }
+    }
+  }
+  function repelMouse(it){
+    if(!mouse.active)return;
+    const cxp=it.x+it.size/2, cyp=it.y+it.size/2;
+    const dx=cxp-mouse.x, dy=cyp-mouse.y;
+    const dist=Math.sqrt(dx*dx+dy*dy)||1;
+    const RADIUS=it.r*2.2+40;
+    if(dist<RADIUS){
+      const force=(RADIUS-dist)/RADIUS;
+      const push=force*6;
+      it.x+=dx/dist*push; it.y+=dy/dist*push;
+      it.vx=dx/dist*force*1.2; it.vy=dy/dist*force*1.2;
+    }
+  }
+  function tick(){
+    for(const it of items){
+      it.x+=it.vx; it.y+=it.vy; it.rot+=it.vr;
+      if(it.x<=0){it.x=0;it.vx=Math.abs(it.vx)}
+      else if(it.x>=W-it.size){it.x=W-it.size;it.vx=-Math.abs(it.vx)}
+      if(it.y<=floorY){it.y=floorY;it.vy=Math.abs(it.vy)}
+      else if(it.y>=H-it.size){it.y=H-it.size;it.vy=-Math.abs(it.vy)}
+    }
+    for(let i=0;i<items.length;i++){
+      for(let j=i+1;j<items.length;j++) collide(items[i],items[j]);
+    }
+    for(const it of items){
+      escapeZone(it);
+      repelMouse(it);
+      it.x=Math.min(Math.max(0,it.x),Math.max(0,W-it.size));
+      it.y=Math.min(Math.max(floorY,it.y),Math.max(floorY,H-it.size));
+      it.el.style.transform=`translate(${it.x.toFixed(1)}px,${it.y.toFixed(1)}px) rotate(${it.rot.toFixed(1)}deg)`;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
+/* === FAVICON — basado en tema del navegador (claro/oscuro) === */
+(function(){const f=document.getElementById('favicon');const m=window.matchMedia('(prefers-color-scheme:dark)');function set(){f.href='assets/img/logo-simple-'+(m.matches?'blanco':'negro')+'.svg'}set();m.addEventListener('change',set)})();
+</script>
+<script src="assets/js/typewriter.js"></script>
+</body>
+</html>

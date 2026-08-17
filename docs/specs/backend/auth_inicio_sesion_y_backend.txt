@@ -1,0 +1,85 @@
+# Especificaciones Técnicas del Backend ARES v2
+
+**Estado:** VIGENTE (reemplaza especificaciones anteriores)
+
+Este documento describe la arquitectura y endpoints principales del backend de ARES, diseñado para la comunicación con el dispositivo IoT de ARES.
+
+---
+
+### 1. Autenticación y Seguridad
+
+- **Autenticación de Usuarios (App Móvil):** Se utilizará un sistema estándar basado en tokens.
+    1.  `POST /auth/token`: El usuario envía email y contraseña.
+    2.  El servidor valida las credenciales y devuelve un `access_token` (JWT).
+    3.  Este token se enviará en la cabecera `Authorization` (`Bearer <token>`) para todas las peticiones subsecuentes desde la app.
+
+- **Autenticación de Dispositivos (IoT):** Cada dispositivo ARES se autenticará en la API mediante una clave secreta única.
+    -   Cada petición desde el dispositivo IoT deberá incluir una cabecera `X-Device-Key` con su clave pre-provisionada.
+    -   La API validará esta clave contra la base de datos de dispositivos registrados.
+
+---
+
+### 2. Endpoint Principal: Ingesta de Datos IoT
+
+Toda la comunicación del dispositivo se centraliza en un único endpoint diseñado para recibir datos de telemetría.
+
+- **Endpoint:** `POST /api/v1/iot/ingest`
+- **Formato:** `application/json`
+
+#### Estructura del Payload (Cuerpo de la Petición)
+
+El dispositivo enviará un objeto JSON, o un array de estos objetos si ha estado almacenando datos por falta de cobertura (Store & Forward).
+
+**Ejemplo de un único punto de datos:**
+```json
+{
+  "device_id": "imei_o_id_unico_del_dispositivo",
+  "timestamp": 1736528400,
+  "gps": {
+    "lat": 40.416775,
+    "lon": -3.703790,
+    "accuracy": 2.1,
+    "satellites": 8,
+    "speed": 15.5
+  },
+  "telemetry": {
+    "battery_mv": 4150,
+    "temperature_c": 25.5,
+    "activity_score": 350
+  },
+  "status": "MOVING"
+}
+```
+
+**Ejemplo de envío en bloque (batch):**
+```json
+[
+  {
+    "device_id": "imei_1",
+    "timestamp": 1736528400,
+    "gps": { "lat": 40.1, "lon": -3.1, ... },
+    "telemetry": { ... }
+  },
+  {
+    "device_id": "imei_1",
+    "timestamp": 1736528460,
+    "gps": { "lat": 40.2, "lon": -3.2, ... },
+    "telemetry": { ... }
+  }
+]
+```
+
+### 3. Lógica de Procesamiento del Backend
+
+1.  **Validación:** La API validará la `X-Device-Key` y la estructura del JSON.
+2.  **Procesamiento de Datos:**
+    -   **Filtrado de Precisión:** Ignorará los puntos GPS con un `accuracy` superior a 50 metros para evitar "saltos" en el mapa.
+    -   **Almacenamiento:** Guardará los datos válidos en la base de datos (en las tablas `locations`, `device_status`, etc.).
+    -   **Análisis de Geovallas:** Comprobará si la nueva coordenada está fuera de alguna de las geovallas definidas para ese dispositivo.
+3.  **Notificaciones Push:** Si se detecta una salida de geovalla, el backend enviará una notificación push al móvil del usuario a través de un servicio como Firebase Cloud Messaging (FCM) o similar.
+
+---
+
+### 4. Endpoints Obsoletos (A Eliminar)
+
+- **`GET /sms` y `POST /sms`**: Toda la funcionalidad relacionada con la recepción y procesamiento de SMS queda eliminada. El código asociado en `sms.py` y `sms_parser.py` debe ser borrado del proyecto.

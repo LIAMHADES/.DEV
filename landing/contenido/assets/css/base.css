@@ -1,0 +1,637 @@
+/* ============================================
+   ARES GPS — Base compartida para las páginas de contenido
+   (calculadora, pet-friendly, proximamente)
+   Mismos tokens que landing/index.html para coherencia visual/técnica.
+   ============================================ */
+
+@font-face {
+  font-family: "Bruno Ace SC";
+  src: url("../fonts/BrunoAceSC-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Orbitron";
+  src: url("../fonts/Orbitron-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Badeen Display";
+  src: url("../fonts/BadeenDisplay-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --bg: #151d25;
+  --bg2: #1c2732;
+  --white: #f6f8fa;
+  --wtext: #2f4858;
+  --wtext2: rgba(47, 72, 88, 0.5);
+  --cb: rgba(134, 187, 216, 0.1);
+  --cta: #f26419;
+  --hl: #f6ae2d;
+  --deco: #86bbd8;
+  --t: #f0f2f5;
+  --t2: rgba(240, 242, 245, 0.55);
+  --t3: rgba(240, 242, 245, 0.25);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 500;
+  background: var(--bg);
+  color: var(--t);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--cta);
+  z-index: 999;
+  width: 0;
+}
+
+/* === SCROLL INDICATOR HORIZONTAL (idéntico a #ticksWrapper de
+   landing/index.html) — 80 rayitas verticales que se activan de izquierda a
+   derecha segun el progreso de scroll. padding-top igual al de index.html
+   (77px). El fondo con degradado va en el wrapper completo (igual que
+   index.html), no en .ti — index.html no aplica ningun fondo extra a .ti. === */
+#ticksWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 77px 0 6px;
+  background: linear-gradient(180deg, rgba(13, 15, 18, 0.5) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 999;
+}
+#ticksWrapper .ti {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 3px;
+  width: 50%;
+  margin: 0 25%;
+}
+.tick-h {
+  flex: 1;
+  height: 14px;
+  background: rgba(242, 100, 25, 0.08);
+  border-radius: 1px;
+  transition: background 0.1s;
+}
+.tick-h.active {
+  background: #f26419;
+  box-shadow: 0 0 5px rgba(242, 100, 25, 0.4);
+}
+
+/* Logo del nav — idéntico al de index.html (.nav-logo, linea 70) */
+#mini-nav .nav-logo {
+  height: 58px;
+  width: auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+#mini-nav .nav-logo:hover {
+  opacity: 1;
+}
+
+.sl {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--hl);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.light .sl {
+  color: var(--cta);
+}
+.st {
+  font-family: "Bruno Ace SC", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--t);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+.light .st {
+  color: var(--wtext);
+}
+.ss {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+  color: var(--t2);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.light .ss {
+  color: var(--wtext2);
+}
+h3,
+h4 {
+  font-family: "Bruno Ace SC", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.light h3,
+.light h4 {
+  color: var(--wtext);
+}
+
+/* === SECTIONS (mismo patron que index.html: fondo segun clase, texto adaptado) === */
+.sec-dark {
+  background: var(--bg);
+}
+.sec-darker {
+  background: var(--bg2);
+}
+.sec-light {
+  background: var(--white);
+}
+.sec-light,
+.light {
+  color: var(--wtext);
+}
+.sec-light .ss,
+.light .ss {
+  color: var(--wtext2);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+section {
+  padding: 5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  clip-path: polygon(
+    14px 0,
+    100% 0,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    0 100%,
+    0 14px
+  );
+  transition: transform 0.3s, color 0.3s, background 0.3s;
+  user-select: none;
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  z-index: 1;
+  clip-path: polygon(
+    12px 0,
+    100% 0,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    0 100%,
+    0 12px
+  );
+  transition: background-color 0.3s ease;
+}
+.btn span {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s;
+}
+.btn-cta {
+  background: var(--cta);
+  color: #fff;
+  padding: 0.9rem 2.5rem;
+}
+.btn-cta::before {
+  background-color: var(--cta);
+}
+.btn-cta:hover {
+  background: var(--cta);
+  color: #fff;
+  transform: translateY(-3px);
+}
+.btn-cta:hover::before {
+  background-color: #fff;
+}
+.btn-cta:hover span {
+  color: var(--cta);
+}
+.btn-out {
+  background: var(--cta);
+  color: #fff;
+  padding: 0.8rem 2.2rem;
+}
+.btn-out::before {
+  background-color: var(--cta);
+}
+.btn-out:hover {
+  background: var(--cta);
+  color: var(--cta);
+  transform: translateY(-3px);
+}
+.btn-out:hover::before {
+  background-color: #fff;
+}
+.btn-out:hover span {
+  color: var(--cta);
+}
+
+/* === NAV compartida ===
+   El fondo opaco + blur solo se aplica con la clase .scrolled (misma logica
+   que #main-nav en landing/index.html). En reposo (scroll=0) el nav queda
+   transparente para no tapar la franja superior de 3px donde vive
+   #progress-bar -- si el nav es opaco desde el pixel 0, la barra de progreso
+   nunca se llega a ver aunque su JS funcione correctamente. */
+#mini-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  transition: background 0.4s;
+}
+#mini-nav.scrolled {
+  background: rgba(21, 29, 37, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(134, 187, 216, 0.08);
+}
+#mini-nav .nl {
+  font-family: "Bruno Ace SC", sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: var(--t);
+  text-decoration: none;
+}
+#mini-nav .back-link {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--t);
+  opacity: 0.65;
+  transition: opacity 0.3s;
+}
+#mini-nav .back-link:hover {
+  opacity: 1;
+  color: var(--cta);
+}
+#mini-nav .inline-links{display:flex;gap:1.5rem;list-style:none;margin-left:auto;margin-right:3rem}
+#mini-nav .inline-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--t);opacity:0.65;transition:opacity 0.3s}
+#mini-nav .inline-links a:hover{opacity:1;color:var(--cta)}
+
+/* === NUMBER INPUTS — botones +/- personalizados naranjas === */
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{display:none}
+.num-wrap{position:relative;display:flex;width:100%}
+.num-wrap input[type=number]{flex:1;padding-right:4rem}
+.num-btn{position:absolute;right:0;width:2.2rem;border:2px solid var(--cta);font-size:1.2rem;font-weight:700;cursor:pointer;z-index:2;color:var(--cta);background:transparent}
+.num-btn:hover{background:var(--cta);color:#fff}
+.num-inc{top:0;height:50%;border-radius:0 4px 0 0}
+.num-dec{bottom:0;height:50%;border-radius:0 0 4px 0}
+
+/* === SELECTS — flecha naranja personalizada (abajo→cerrado, arriba→abierto) === */
+select{-webkit-appearance:none;-moz-appearance:none;appearance:none!important;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='11' viewBox='0 0 16 11'%3E%3Cpath d='M2 3.5l6 6 6-6' stroke='%23f26419' stroke-width='2.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 1rem center!important;padding-right:3.5rem}
+select:hover{border-color:rgba(242,100,25,0.4)!important}
+select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='11' viewBox='0 0 16 11'%3E%3Cpath d='M2 7.5l6-6 6 6' stroke='%23f26419' stroke-width='2.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;border-color:var(--cta)!important;box-shadow:0 0 0 3px rgba(242,100,25,0.15)!important;outline:none!important}
+
+/* ============================================
+   MENU HAMBURGUESA — mismo patron que landing/index.html
+   (.nav-toggle, .nav-overlay, .ov-ticks, .nav-full-links, dropdown "Recursos").
+   Compartido por las 4 paginas de contenido via mobile-menu.js.
+   ============================================ */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1004;
+  padding: 4px;
+  position: fixed;
+  top: 1rem;
+  right: 2rem;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--t);
+  border-radius: 2px;
+  transition: all 0.3s;
+  transform-origin: center;
+}
+.nav-toggle:hover span {
+  background: var(--cta);
+}
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+  scale: 0;
+}
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1002;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  background: rgba(21, 29, 37, 0.96);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+.nav-overlay::-webkit-scrollbar {
+  display: none;
+}
+.nav-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.nav-overlay-inner {
+  min-height: calc(100vh + 1px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10rem 0 20rem;
+  width: 100%;
+}
+.nav-overlay .nav-logo-ov {
+  height: 58px;
+  width: auto;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+.nav-full-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  width: 100%;
+}
+.nav-full-links a {
+  font-family: "Bruno Ace SC", sans-serif;
+  font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+  color: var(--t);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3rem 0;
+  display: block;
+  text-align: center;
+  width: 100%;
+  transition: color 0.3s, opacity 0.3s, transform 0.3s;
+}
+.nav-overlay .nl-item a {
+  opacity: 0;
+  transform: translateY(-40px);
+}
+.nav-overlay.open .nl-item a {
+  animation: navStagger 0.5s both;
+}
+.nav-overlay.open .nl-item:nth-child(1) a {
+  animation-delay: 0.54s;
+}
+.nav-overlay.open .nl-item:nth-child(2) a {
+  animation-delay: 0.47s;
+}
+.nav-overlay.open .nl-item:nth-child(3) a {
+  animation-delay: 0.4s;
+}
+.nav-overlay.open .nl-item:nth-child(4) a {
+  animation-delay: 0.33s;
+}
+.nav-overlay.open .nl-item:nth-child(5) a {
+  animation-delay: 0.26s;
+}
+.nav-overlay.open .nl-item:nth-child(6) a {
+  animation-delay: 0.19s;
+}
+@keyframes navStagger {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.nav-full-links a:hover {
+  color: var(--hl);
+}
+.nav-full-links .ndrop-trigger {
+  font-size: clamp(3.8rem, 8vw, 4.5rem);
+  cursor: pointer;
+  color: var(--t);
+  background: none;
+  border: none;
+  padding: 0.3rem 0;
+  display: block;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  font-family: "Bruno Ace SC", sans-serif;
+}
+.nav-full-links .ndrop-trigger:hover {
+  color: var(--hl);
+}
+.nav-full-links .ndrop-sub {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s, opacity 0.35s;
+  opacity: 0;
+}
+.nav-full-links .ndrop-sub.open {
+  max-height: 200px;
+  opacity: 1;
+}
+.nav-full-links .ndrop-sub a {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0;
+  color: var(--t2);
+  text-transform: none;
+}
+.nav-full-links .ndrop-sub a:hover {
+  color: var(--hl);
+}
+
+/* === OVERLAY TICKS VERTICALES (mismo patron que index.html) === */
+.ov-ticks {
+  position: fixed;
+  right: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1003;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.nav-overlay.open ~ .ov-ticks {
+  opacity: 1;
+}
+.ov-ticks .ov-t {
+  width: 3px;
+  height: 10px;
+  background: rgba(242, 100, 25, 0.08);
+  border-radius: 1px;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.ov-ticks .ov-t.on {
+  background: var(--cta);
+  box-shadow: 0 0 4px rgba(242, 100, 25, 0.3);
+}
+
+footer {
+  background: var(--bg);
+  padding: 0;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  color: var(--t3);
+  letter-spacing: 0.12em;
+}
+
+/* Estimacion / disclaimer, comun a las 3 paginas */
+.disclaimer {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  color: var(--t3);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 3.5rem 0;
+  }
+  #mini-nav .inline-links{display:none}
+  #mini-nav .back-link{display:none}
+  /* Nav: evitar que el logo tape "ARES GPS" y la hamburguesa en pantallas estrechas */
+  #mini-nav{padding:0.85rem 1.25rem}
+  #mini-nav .nl{font-size:1.15rem}
+  #mini-nav .nav-logo{height:42px}
+  .nav-toggle{right:1.25rem}
+  /* Overlay del menú: texto que quepa sin cortarse por los lados */
+  .nav-overlay-inner{padding:2rem 1.25rem 3rem;min-height:100dvh}
+  .nav-full-links{gap:0.2rem}
+  .nav-full-links a,.nav-full-links .ndrop-trigger{font-size:clamp(1.5rem,6vw,2.1rem);padding:0.45rem 0}
+  .nav-overlay .nav-logo-ov{height:56px;margin-bottom:1rem}
+  /* Barras de scroll: ensanchar y subir para que se vean en móvil */
+  #ticksWrapper{padding:60px 0 5px}
+  #ticksWrapper .ti{width:calc(100% - 2rem);margin:0 1rem;gap:2px}
+}
+
+@media (max-width: 480px) {
+  #mini-nav{padding:0.8rem 1rem}
+  #mini-nav .nl{font-size:1.05rem;letter-spacing:0.05em}
+  #mini-nav .nav-logo{height:38px}
+  .nav-toggle{right:1rem}
+}
+
+@media (max-width: 400px) {
+  #mini-nav .nl{font-size:0.95rem;letter-spacing:0.03em}
+  #mini-nav .nav-logo{height:32px}
+  .nav-full-links a,.nav-full-links .ndrop-trigger{font-size:clamp(1.25rem,6.5vw,1.7rem)}
+  .nav-overlay-inner{padding:1.5rem 0.75rem 2.5rem}
+}
+
+@media (min-width: 769px) {
+  .nav-toggle{display:none !important}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

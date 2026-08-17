@@ -1,0 +1,20 @@
+Pick & Place File for PCB Assembly
+ Last updated on Apr 24, 2025
+
+The Pick & Place File / Component Placement List(CPL) is necessary for the proper utilization of pick and place machines. We require Pick & Place data to accurately place the surface mount and through-hole parts on circuit boards. Pick & Place data is the machine file in ASCII text format which comprises reference designator, X/Y locations, rotation, top or bottom side of the board.
+
+The Pick & Place File must contain the information below:
+
+Designator - Component Reference Designator (e.g. C1, L2, R3)
+Mid X/Mid Y - The X/Y coordinate of the component centroid. Required units: Metric(mm).
+Layer - Top / Bottom, the board side where the component should be placed.
+Rotation - The rotation of the component given in degrees. Positive values are counter clockwise.
+Recommended File Format: .csv, .xls and .xlsx.
+
+Below is a Sample Pick & Place File.
+
+Designator	Mid X	Mid Y	Layer	Rotation
+C1	95.0518mm	22.6822mm	T	270
+C2	106.4056mm	23.0124mm	T	90
+C3	109.0726mm	22.8854mm	T	270
+R2	109.5996mm	16.6443mm	B	0

@@ -1,0 +1,207 @@
+﻿breed,sex,height_min_cm,height_max_cm,weight_min_kg,weight_max_kg,size_category,imc_ref,imc_normal_min,imc_normal_max,imc_overweight_start,imc_obesity_start,sources
+Australian Shepherd,F,45.72,53.34,18.14,24.95,medium,87.82,70.26,105.39,105.39,114.17,AKC breed page
+Australian Shepherd,M,50.8,58.42,22.68,29.48,large,87.45,71.71,103.19,103.19,113.69,AKC breed page
+Beagle (13–16 in variety),F,33.02,40.64,9.07,10.43,small,71.88,56.07,87.69,87.69,93.44,Wikipedia; AKC allows two varieties by height
+Beagle (13–16 in variety),M,33.02,40.64,9.98,11.34,medium,78.59,62.87,94.31,94.31,102.16,Wikipedia; AKC allows two varieties by height
+Border Collie,F,45.72,53.34,13.61,20.41,medium,69.34,55.47,83.2,83.2,90.14,AKC breed page
+Border Collie,M,48.26,55.88,18.14,24.95,medium,79.46,63.57,95.36,95.36,103.3,AKC breed page
+Boxer,F,53.34,60.96,25.0,27.0,large,79.61,65.28,93.93,93.93,103.49,Wikipedia (height & weight)
+Boxer,M,55.88,63.5,30.0,32.0,large,87.01,71.35,102.67,102.67,113.11,Wikipedia (height & weight)
+Chihuahua,U,13.0,20.0,1.0,3.0,toy,73.46,55.1,91.83,91.83,95.5,FCI standard (weight); typical height
+Dachshund (Standard),U,20.32,22.86,7.26,14.51,medium,233.52,186.82,280.22,280.22,303.58,AKC standard (weight); typical height
+Doberman Pinscher,F,60.96,66.04,27.22,40.82,large,84.37,69.18,99.56,99.56,109.68,AKC breed page
+Doberman Pinscher,M,66.04,71.12,34.02,45.36,large,84.39,69.2,99.58,99.58,109.71,AKC breed page
+English Cocker Spaniel,F,38.1,40.64,11.79,14.51,medium,84.84,67.87,101.81,101.81,110.29,AKC standard PDF
+English Cocker Spaniel,M,40.64,43.18,12.7,15.42,medium,80.05,64.04,96.06,96.06,104.06,AKC standard PDF
+French Bulldog,F,24.0,32.0,8.0,13.0,medium,133.93,107.14,160.71,160.71,174.11,FCI standard
+French Bulldog,M,27.0,35.0,9.0,14.0,medium,119.67,95.73,143.6,143.6,155.57,FCI standard
+German Shepherd Dog,F,55.88,60.96,22.68,31.75,large,79.74,65.39,94.1,94.1,103.66,AKC breed page
+German Shepherd Dog,M,60.96,66.04,29.48,40.82,large,87.17,71.48,102.86,102.86,113.32,AKC breed page
+Golden Retriever,F,54.61,57.15,24.95,29.48,large,87.16,71.47,102.84,102.84,113.3,AKC breed page
+Golden Retriever,M,58.42,60.96,29.48,34.02,large,89.11,73.07,105.15,105.15,115.85,AKC breed page
+Great Dane,F,71.12,76.2,49.9,63.5,giant,104.5,88.83,120.18,120.18,135.85,AKC breed page
+Great Dane,M,76.2,81.28,63.5,79.38,giant,115.23,97.94,132.51,132.51,149.79,AKC breed page
+Labrador Retriever,F,54.61,59.69,24.95,31.75,large,86.8,71.18,102.42,102.42,112.84,AKC standard PDF
+Labrador Retriever,M,57.15,62.23,29.48,36.29,large,92.3,75.68,108.91,108.91,119.99,AKC standard PDF
+Miniature Schnauzer,U,30.48,35.56,4.99,9.07,small,64.48,50.29,78.66,78.66,83.82,AKC breed page
+Pug,U,25.4,33.02,6.35,8.16,small,85.03,66.32,103.74,103.74,110.54,AKC breed page
+Rottweiler,F,55.88,63.5,36.29,45.36,large,114.58,93.96,135.21,135.21,148.96,AKC breed page
+Rottweiler,M,60.96,68.58,43.09,61.23,giant,124.33,105.68,142.98,142.98,161.63,AKC breed page
+Shiba Inu,F,34.29,39.37,7.71,7.71,small,56.84,44.33,69.34,69.34,73.89,AKC standard PDF (avg weight)
+Shiba Inu,M,36.83,41.91,10.43,10.43,medium,67.29,53.83,80.75,80.75,87.48,AKC standard PDF (avg weight)
+Shih Tzu,U,22.86,26.67,4.08,7.26,small,92.45,72.11,112.79,112.79,120.18,AKC breed page
+Siberian Husky,F,50.8,55.88,15.88,22.68,medium,67.76,54.21,81.32,81.32,88.09,AKC standard PDF
+Siberian Husky,M,53.34,59.69,20.41,27.22,medium,74.56,59.65,89.48,89.48,96.93,AKC standard PDF
+Yorkshire Terrier,U,17.78,20.32,1.8,3.18,toy,68.61,51.46,85.77,85.77,89.2,AKC breed page
+Chihuahua,U,13,20,1.0,3.0,toy,73.46,55.1,91.83,91.83,95.5,FCI/AKC typical
+Pomeranian,U,18,24,1.8,3.5,toy,60.09,45.07,75.11,75.11,78.12,AKC typical
+Yorkshire Terrier,U,17,23,1.8,3.2,toy,62.5,46.87,78.12,78.12,81.25,AKC typical
+Maltese,U,20,23,3.0,4.0,toy,75.72,56.79,94.65,94.65,98.43,AKC typical
+Havanese,U,22,29,4.5,7.3,small,90.73,70.77,110.7,110.7,117.95,AKC typical
+Papillon,U,20,28,2.5,4.5,toy,60.76,45.57,75.95,75.95,78.99,AKC typical
+Pekingese,U,15,23,3.2,6.4,toy,132.96,99.72,166.2,166.2,172.85,AKC typical
+Shih Tzu,U,20,28,4.0,7.2,small,97.22,75.83,118.61,118.61,126.39,AKC typical
+Toy Poodle,U,24,28,2.5,4.5,toy,51.78,38.83,64.72,64.72,67.31,AKC/FCI typical
+Miniature Poodle,U,28,38,7.0,9.0,small,73.46,57.3,89.62,89.62,95.5,AKC/FCI typical
+Miniature Pinscher,U,25,30,3.5,5.0,toy,56.2,42.15,70.25,70.25,73.06,AKC typical
+Italian Greyhound,U,32,38,3.6,5.0,toy,35.1,26.33,43.88,43.88,45.63,AKC typical
+Japanese Chin,U,20,28,2.0,4.0,toy,52.08,39.06,65.1,65.1,67.71,AKC typical
+Brussels Griffon,U,18,28,3.0,5.0,toy,75.61,56.71,94.52,94.52,98.3,AKC typical
+Chinese Crested,U,23,33,3.2,5.4,toy,54.85,41.14,68.56,68.56,71.3,AKC typical
+Cavalier King Charles Spaniel,U,30,33,5.9,8.2,small,71.05,55.42,86.68,86.68,92.37,AKC typical
+Pug,U,25,33,6.3,8.1,small,85.61,66.78,104.45,104.45,111.3,AKC typical
+French Bulldog,U,27,33,8.0,14.0,medium,122.22,97.78,146.67,146.67,158.89,FCI standard
+Boston Terrier,U,38,43,6.8,11.3,small,55.17,43.04,67.31,67.31,71.73,AKC typical
+Lhasa Apso,U,25,28,5.4,8.2,small,96.83,75.53,118.13,118.13,125.88,AKC typical
+Tibetan Spaniel,U,25,27,4.0,7.0,small,81.36,63.46,99.26,99.26,105.77,AKC typical
+Bichon Frise,U,23,30,5.0,8.0,small,92.56,72.2,112.92,112.92,120.33,AKC typical
+Coton de Tulear,U,23,30,3.5,6.5,small,71.2,55.54,86.86,86.86,92.56,FCI typical
+Shiba Inu,M,35,43,8.0,11.0,small,62.46,48.72,76.2,76.2,81.2,FCI typical
+Shiba Inu,F,33,41,6.8,9.0,small,57.71,45.01,70.4,70.4,75.02,FCI typical
+Pembroke Welsh Corgi,U,25,30,9.0,13.0,medium,145.45,116.36,174.55,174.55,189.09,AKC typical
+Cardigan Welsh Corgi,U,27,32,11.0,17.0,medium,160.87,128.7,193.05,193.05,209.14,AKC typical
+Keeshond,U,43,46,16.0,20.0,medium,90.9,72.72,109.08,109.08,118.17,AKC typical
+Shetland Sheepdog,U,33,41,7.0,11.0,small,65.74,51.28,80.2,80.2,85.46,AKC typical
+Miniature Schnauzer,U,30,36,5.0,9.0,small,64.28,50.14,78.42,78.42,83.56,AKC typical
+West Highland White Terrier,U,25,28,6.8,9.1,small,113.21,88.3,138.11,138.11,147.17,AKC typical
+Cairn Terrier,U,25,33,6.0,7.5,small,80.26,62.6,97.92,97.92,104.34,AKC typical
+Scottish Terrier,U,25,28,8.5,10.5,small,135.28,105.52,165.04,165.04,175.86,AKC typical
+Norwich Terrier,U,24,26,4.5,5.5,small,80.0,62.4,97.6,97.6,104.0,AKC typical
+Norfolk Terrier,U,24,26,4.5,5.5,small,80.0,62.4,97.6,97.6,104.0,AKC typical
+Jack Russell Terrier,U,25,30,6.0,8.0,small,92.56,72.2,112.93,112.93,120.33,FCI typical
+Parson Russell Terrier,U,33,36,6.0,8.0,small,58.81,45.87,71.75,71.75,76.45,AKC typical
+Border Terrier,U,28,33,5.0,7.0,small,64.5,50.31,78.69,78.69,83.85,AKC typical
+Fox Terrier (Smooth),U,36,39,7.0,9.0,small,56.89,44.37,69.4,69.4,73.96,AKC typical
+Fox Terrier (Wire),U,36,39,7.0,9.0,small,56.89,44.37,69.4,69.4,73.96,AKC typical
+Toy Fox Terrier,U,21,28,1.5,3.2,toy,39.15,29.36,48.94,48.94,50.9,AKC typical
+Russell Terrier,U,25,30,5.0,7.5,small,82.64,64.46,100.83,100.83,107.44,AKC typical
+Beagle (13-15 in),U,33,38,9.0,13.5,medium,89.27,71.41,107.12,107.12,116.05,AKC typical
+Beagle (under 13 in),U,33,33,8.0,9.0,small,78.05,60.88,95.22,95.22,101.47,AKC typical
+Cocker Spaniel (American),U,36,39,9.0,14.0,medium,81.78,65.42,98.13,98.13,106.31,AKC typical
+Cocker Spaniel (English),U,38,41,12.0,16.0,medium,89.73,71.78,107.68,107.68,116.65,KC/FCI typical
+Field Spaniel,U,43,46,16.0,23.0,medium,98.47,78.78,118.17,118.17,128.01,AKC typical
+English Springer Spaniel,U,48,51,18.0,25.0,medium,87.75,70.2,105.3,105.3,114.07,AKC typical
+English Setter,U,61,68,25.0,36.0,large,73.31,60.12,86.51,86.51,95.31,AKC typical
+Irish Setter,U,64,69,29.0,34.0,large,71.23,58.41,84.05,84.05,92.6,AKC typical
+Gordon Setter,U,62,66,25.0,36.0,large,74.46,61.06,87.87,87.87,96.8,AKC typical
+Brittany,U,46,52,14.0,20.0,medium,70.8,56.64,84.96,84.96,92.04,AKC typical
+Border Collie,M,48,56,14.0,20.0,medium,62.87,50.3,75.44,75.44,81.73,AKC typical
+Border Collie,F,46,53,12.0,19.0,medium,63.26,50.61,75.91,75.91,82.24,AKC typical
+Australian Shepherd,M,51,58,23.0,32.0,large,92.58,75.92,109.25,109.25,120.36,AKC typical
+Australian Shepherd,F,46,53,18.0,25.0,medium,87.75,70.2,105.3,105.3,114.07,AKC typical
+Australian Cattle Dog,U,43,51,14.0,22.0,medium,81.48,65.19,97.78,97.78,105.93,AKC typical
+Collie (Rough),U,56,66,20.0,34.0,large,72.56,59.5,85.62,85.62,94.33,AKC typical
+Collie (Smooth),U,56,66,20.0,34.0,large,72.56,59.5,85.62,85.62,94.33,AKC typical
+Whippet,U,47,56,9.0,19.0,medium,52.79,42.23,63.34,63.34,68.62,AKC typical
+Greyhound,U,68,76,27.0,40.0,large,64.62,52.99,76.25,76.25,84.01,AKC typical
+Borzoi,U,68,74,34.0,48.0,large,81.33,66.69,95.97,95.97,105.73,FCI typical
+Basenji,U,40,43,9.0,11.0,medium,58.06,46.45,69.68,69.68,75.48,AKC typical
+Samoyed,U,48,60,16.0,30.0,medium,78.88,63.1,94.65,94.65,102.54,AKC typical
+Siberian Husky,M,53,60,20.0,27.0,medium,73.62,58.89,88.34,88.34,95.7,AKC standard
+Siberian Husky,F,50,56,16.0,23.0,medium,69.42,55.54,83.3,83.3,90.25,AKC standard
+Finnish Spitz,U,39,50,10.0,14.0,medium,60.6,48.48,72.72,72.72,78.78,AKC typical
+Icelandic Sheepdog,U,41,46,9.0,14.0,medium,60.77,48.62,72.93,72.93,79.01,AKC typical
+Portuguese Water Dog,U,43,57,16.0,27.0,medium,86.0,68.8,103.2,103.2,111.8,AKC typical
+Spanish Water Dog,U,40,50,14.0,22.0,medium,88.89,71.11,106.67,106.67,115.56,FCI typical
+Standard Schnauzer,U,45,50,14.0,20.0,medium,75.35,60.28,90.42,90.42,97.95,FCI typical
+American Staffordshire Terrier,M,43,48,25.0,32.0,large,137.66,112.88,162.44,162.44,178.96,AKC standard
+American Staffordshire Terrier,F,43,46,18.0,25.0,medium,108.57,86.86,130.29,130.29,141.14,AKC standard
+American Pit Bull Terrier,M,43,53,16.0,27.0,medium,93.32,74.65,111.98,111.98,121.31,UKC standard
+American Pit Bull Terrier,F,43,50,14.0,23.0,medium,85.56,68.45,102.67,102.67,111.23,UKC standard
+American Bully (Standard),M,43,51,29.0,39.0,large,153.92,126.21,181.62,181.62,200.09,ABKC standard typical
+American Bully (Standard),F,40,48,27.0,36.0,large,162.71,133.42,191.99,191.99,211.52,ABKC standard typical
+Staffordshire Bull Terrier,U,35,41,11.0,17.0,medium,96.95,77.56,116.34,116.34,126.04,AKC/KC typical
+Bull Terrier (Standard),U,53,56,20.0,35.0,large,92.58,75.92,109.25,109.25,120.36,AKC typical
+Bull Terrier (Miniature),U,25,36,9.0,16.0,medium,134.37,107.5,161.25,161.25,174.68,AKC typical
+English Foxhound,U,58,64,29.0,34.0,large,84.65,69.42,99.89,99.89,110.05,AKC typical
+Harrier,U,48,53,20.0,27.0,medium,92.15,73.72,110.58,110.58,119.79,AKC typical
+Bearded Collie,U,51,56,18.0,27.0,medium,78.61,62.89,94.33,94.33,102.19,AKC typical
+Belgian Malinois,U,56,66,20.0,30.0,large,67.19,55.09,79.28,79.28,87.34,FCI typical
+Belgian Tervuren,U,56,66,20.0,30.0,large,67.19,55.09,79.28,79.28,87.34,FCI typical
+Belgian Sheepdog (Groenendael),U,56,66,20.0,30.0,large,67.19,55.09,79.28,79.28,87.34,FCI typical
+Belgian Laekenois,U,56,66,20.0,30.0,large,67.19,55.09,79.28,79.28,87.34,FCI typical
+Airedale Terrier,U,56,61,18.0,29.0,medium,68.67,54.93,82.4,82.4,89.27,AKC typical
+Kerry Blue Terrier,U,46,51,13.0,18.0,medium,65.89,52.72,79.07,79.07,85.66,AKC typical
+Soft Coated Wheaten Terrier,U,43,48,14.0,20.0,medium,82.12,65.69,98.54,98.54,106.75,AKC typical
+Glen of Imaal Terrier,U,32,36,14.0,16.0,medium,129.76,103.81,155.71,155.71,168.69,AKC typical
+Irish Terrier,U,46,48,11.0,13.0,medium,54.32,43.46,65.19,65.19,70.62,AKC typical
+Lakeland Terrier,U,34,38,7.0,8.0,small,57.87,45.14,70.6,70.6,75.23,AKC typical
+Manchester Terrier (Standard),U,38,41,7.0,10.0,small,54.48,42.49,66.46,66.46,70.82,AKC typical
+American Eskimo Dog (Standard),U,38,48,10.0,16.0,medium,70.31,56.25,84.37,84.37,91.4,AKC typical
+Canaan Dog,U,48,61,16.0,25.0,medium,69.02,55.21,82.82,82.82,89.72,AKC typical
+Chow Chow,U,46,56,20.0,32.0,large,99.96,81.97,117.95,117.95,129.95,AKC typical
+Shar-Pei,U,46,51,18.0,27.0,medium,95.65,76.52,114.78,114.78,124.35,AKC typical
+Dalmatian,U,56,61,20.0,32.0,large,75.97,62.3,89.65,89.65,98.77,AKC typical
+Vizsla,U,53,61,18.0,29.0,medium,72.33,57.86,86.8,86.8,94.03,AKC typical
+Weimaraner,U,58,69,25.0,41.0,large,81.84,67.11,96.57,96.57,106.39,AKC typical
+German Shorthaired Pointer,U,53,64,20.0,32.0,large,75.97,62.3,89.65,89.65,98.77,AKC typical
+German Wirehaired Pointer,U,56,66,25.0,34.0,large,79.28,65.01,93.55,93.55,103.06,AKC typical
+Pointer (English),U,61,69,20.0,34.0,large,63.91,52.4,75.41,75.41,83.08,AKC typical
+Pharaoh Hound,U,53,64,18.0,27.0,medium,65.75,52.6,78.9,78.9,85.47,AKC typical
+Ibizan Hound,U,56,74,20.0,29.0,medium,57.99,46.39,69.59,69.59,75.38,AKC typical
+Saluki,U,58,71,18.0,27.0,medium,54.08,43.27,64.9,64.9,70.31,AKC typical
+Rhodesian Ridgeback,U,61,69,29.0,41.0,large,82.84,67.93,97.75,97.75,107.69,AKC typical
+Standard Poodle,U,45,60,20.0,32.0,large,94.33,77.35,111.31,111.31,122.63,AKC typical
+Xoloitzcuintli (Standard),U,51,58,11.0,18.0,medium,48.82,39.05,58.58,58.58,63.46,AKC typical
+Xoloitzcuintli (Miniature),U,36,45,6.0,11.0,small,51.82,40.42,63.22,63.22,67.37,AKC typical
+Xoloitzcuintli (Toy),U,23,36,3.0,6.0,toy,51.71,38.78,64.64,64.64,67.22,AKC typical
+Labrador Retriever,M,57,62,29.0,36.0,large,91.8,75.28,108.33,108.33,119.34,AKC standard
+Labrador Retriever,F,55,60,25.0,32.0,large,86.2,70.68,101.72,101.72,112.06,AKC standard
+Golden Retriever,M,58,61,29.0,34.0,large,88.98,72.96,104.99,104.99,115.67,AKC typical
+Golden Retriever,F,55,57,25.0,32.0,large,90.88,74.52,107.24,107.24,118.14,AKC typical
+German Shepherd Dog,M,60,65,30.0,40.0,large,89.6,73.47,105.73,105.73,116.48,SV/FCI standard
+German Shepherd Dog,F,55,60,22.0,32.0,large,81.66,66.96,96.36,96.36,106.16,SV/FCI standard
+Rottweiler,M,61,69,45.0,60.0,giant,124.26,105.62,142.9,142.9,161.54,FCI/AKC typical
+Rottweiler,F,56,63,40.0,48.0,large,124.29,101.91,146.66,146.66,161.57,FCI/AKC typical
+Doberman Pinscher,M,68,72,34.0,45.0,large,80.61,66.1,95.12,95.12,104.8,FCI/AKC typical
+Doberman Pinscher,F,63,68,27.0,41.0,large,79.25,64.98,93.51,93.51,103.02,FCI/AKC typical
+Boxer,M,57,63,30.0,32.0,large,86.11,70.61,101.61,101.61,111.94,FCI typical
+Boxer,F,53,60,25.0,27.0,large,81.45,66.79,96.11,96.11,105.88,FCI typical
+Great Dane,M,76,86,54.0,82.0,giant,103.64,88.1,119.19,119.19,134.74,FCI/AKC typical
+Great Dane,F,71,81,45.0,59.0,giant,90.03,76.52,103.53,103.53,117.04,FCI/AKC typical
+Irish Wolfhound,U,79,86,54.0,82.0,giant,99.91,84.92,114.89,114.89,129.88,FCI typical
+Scottish Deerhound,U,71,81,34.0,50.0,large,72.71,59.63,85.8,85.8,94.53,FCI typical
+Mastiff (English),U,70,80,73.0,100.0,giant,153.78,130.71,176.84,176.84,199.91,AKC typical
+Neapolitan Mastiff,U,60,75,50.0,70.0,giant,131.69,111.93,151.44,151.44,171.19,FCI/AKC typical
+Bullmastiff,U,61,69,45.0,59.0,giant,123.08,104.62,141.54,141.54,160.0,AKC typical
+Saint Bernard,U,70,90,50.0,82.0,giant,103.12,87.66,118.59,118.59,134.06,FCI typical
+Newfoundland,U,66,71,50.0,69.0,giant,126.8,107.78,145.83,145.83,164.85,AKC typical
+Bernese Mountain Dog,U,58,70,36.0,50.0,large,104.98,86.08,123.88,123.88,136.47,AKC typical
+Greater Swiss Mountain Dog,U,60,72,38.0,63.0,giant,115.93,98.54,133.32,133.32,150.71,AKC typical
+Great Pyrenees,U,69,81,36.0,54.0,giant,80.0,68.0,92.0,92.0,104.0,AKC typical
+Leonberger,U,65,80,41.0,75.0,giant,110.34,93.79,126.9,126.9,143.45,FCI typical
+Anatolian Shepherd Dog,U,71,81,41.0,65.0,giant,91.76,78.0,105.52,105.52,119.29,AKC typical
+Kangal Shepherd Dog,U,72,78,48.0,60.0,giant,96.0,81.6,110.4,110.4,124.8,FCI typical
+Cane Corso,U,60,70,40.0,50.0,giant,106.51,90.53,122.49,122.49,138.46,FCI typical
+Dogue de Bordeaux,U,60,68,50.0,65.0,giant,140.38,119.32,161.44,161.44,182.5,FCI typical
+Akita,U,61,71,32.0,59.0,giant,104.45,88.79,120.12,120.12,135.79,AKC typical
+Alaskan Malamute,U,58,64,34.0,43.0,large,103.47,84.84,122.09,122.09,134.51,AKC typical
+Boerboel,U,60,70,50.0,90.0,giant,165.68,140.83,190.53,190.53,215.38,FCI typical
+Komondor,U,65,80,36.0,60.0,giant,91.32,77.62,105.02,105.02,118.72,FCI typical
+Kuvasz,U,66,76,32.0,52.0,large,83.32,68.32,98.31,98.31,108.31,FCI typical
+Old English Sheepdog,U,56,61,27.0,41.0,large,99.35,81.47,117.23,117.23,129.15,AKC typical
+Bouvier des Flandres,U,60,70,32.0,50.0,large,97.04,79.57,114.51,114.51,126.15,FCI typical
+Briard,U,58,69,27.0,41.0,large,84.32,69.14,99.5,99.5,109.62,FCI typical
+Tibetan Mastiff,U,61,76,45.0,72.0,giant,124.67,105.97,143.37,143.37,162.08,FCI typical
+American Bulldog,U,52,69,30.0,54.0,large,114.75,94.09,135.4,135.4,149.17,UKC typical
+American Foxhound,U,53,64,20.0,34.0,large,78.9,64.69,93.1,93.1,102.56,AKC typical
+Black and Tan Coonhound,U,58,69,25.0,34.0,large,73.16,59.99,86.33,86.33,95.11,AKC typical
+Bloodhound,U,58,69,36.0,50.0,large,106.64,87.44,125.84,125.84,138.63,AKC typical
+Otterhound,U,61,69,32.0,52.0,large,99.41,81.51,117.3,117.3,129.23,AKC typical
+Norwegian Elkhound,U,49,52,20.0,27.0,medium,92.15,73.72,110.58,110.58,119.79,AKC typical
+Norwegian Buhund,U,41,45,12.0,18.0,medium,81.12,64.9,97.35,97.35,105.46,AKC typical
+Afghan Hound,U,61,74,20.0,34.0,large,59.26,48.59,69.93,69.93,77.04,AKC typical
+Hovawart,U,58,70,25.0,40.0,large,79.35,65.06,93.63,93.63,103.15,FCI typical
+Pyrenean Shepherd,U,38,48,8.0,14.0,medium,59.49,47.59,71.39,71.39,77.34,FCI typical
+Welsh Springer Spaniel,U,46,48,16.0,20.0,medium,81.48,65.19,97.78,97.78,105.93,KC typical
+Sussex Spaniel,U,38,41,16.0,23.0,medium,124.98,99.98,149.98,149.98,162.47,KC typical
+Clumber Spaniel,U,43,51,25.0,34.0,large,133.54,109.51,157.58,157.58,173.61,KC typical
+Spinone Italiano,U,60,70,28.0,39.0,large,79.29,65.02,93.56,93.56,103.08,FCI typical
+Wirehaired Pointing Griffon,U,50,60,18.0,27.0,medium,74.38,59.5,89.26,89.26,96.69,FCI typical
+Lagotto Romagnolo,U,41,48,11.0,16.0,medium,68.17,54.54,81.81,81.81,88.63,FCI typical
+German Longhaired Pointer,U,60,70,30.0,40.0,large,82.84,67.93,97.75,97.75,107.69,FCI typical
+Irish Water Spaniel,U,53,61,20.0,31.0,large,78.49,64.36,92.61,92.61,102.03,AKC typical
+Nova Scotia Duck Tolling Retriever,U,43,53,17.0,23.0,medium,86.81,69.44,104.17,104.17,112.85,AKC typical
+Flat-Coated Retriever,U,56,61,25.0,36.0,large,89.12,73.08,105.16,105.16,115.86,AKC typical
+Chesapeake Bay Retriever,U,53,66,25.0,36.0,large,86.15,70.64,101.66,101.66,112.0,AKC typical
+

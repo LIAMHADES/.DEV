@@ -1,0 +1,96 @@
+## 1) Tablas mínimas (enfocadas al usuario)
+
+### A) `PerroOnboarding` (lo que el usuario dice)
+
+> Aquí guardamos SOLO inputs del usuario. Nada “calculado”.
+
+* `perro_id` (uuid)
+* `usuario_id`
+* `nombre_perro`
+* `edad_meses` *(o `fecha_nacimiento` si la tienes)*
+* `sexo` *(M/H/Desconocido)*
+* `tamano_usuario` *(toy/pequeño/mediano/grande/gigante)*
+* `raza1_id` *(opcional en 1ª capa)*
+* `raza2_id` *(opcional en 1ª capa)*
+* `mix_ratio_pct` *(0–100; default 50 si hay dos razas)*
+* `altura_cm` *(2ª capa)*
+* `peso_kg` *(2ª capa)*
+* `tipo_dieta_preferida` *(pienso/húmeda/mixta/casera/NS) — 3ª capa, opcional*
+* `esterilizado` *(bool/opcional)*
+
+**CSV listo para pegar**
+`perro_id,usuario_id,nombre_perro,edad_meses,sexo,tamano_usuario,raza1_id,raza2_id,mix_ratio_pct,altura_cm,peso_kg,tipo_dieta_preferida,esterilizado`
+
+---
+
+### B) `PerroClasificacion` (lo que el sistema deriva con tus catálogos)
+
+> Capa “nuestra”: calculados y normalizados. Se rellena/actualiza en segundo plano cuando el usuario avanza.
+
+* `perro_id`
+* `edad_clase` *(cachorro/adulto/senior)*
+* `tamano_final` *(toy/pequeño/mediano/grande/gigante — conciliado)*
+* `tamano_fuente` *(usuario|calculado)*
+* `raza_base` *(si hay 2, la más influyente por mix_ratio o la “peor-condición” para seguridad)*
+* `mix_activo` *(bool)*
+* `braquicefalo` *(bool si cualquiera de las dos razas lo es)*
+* `sens_calor` *(0–2; toma el **peor** caso entre razas)*
+* `sens_frio` *(0–2; peor caso)*
+* `imc_ideal_min` · `imc_ideal_max` *(mezcla ponderada si hay 2 razas)*
+* `bcs_objetivo` *(p. ej., 4–5)*
+* `discrepancia_tamano` *(none|leve|fuerte)*
+* `motivo_discrepancia` *(p. ej., “peso fuera de rango para toy”)*
+* `estado_integridad` *(ok|faltan_datos|datos_incongruentes)*
+
+**CSV listo para pegar**
+`perro_id,edad_clase,tamano_final,tamano_fuente,raza_base,mix_activo,braquicefalo,sens_calor,sens_frio,imc_ideal_min,imc_ideal_max,bcs_objetivo,discrepancia_tamano,motivo_discrepancia,estado_integridad`
+
+> **Nota**: `PerroClasificacion` usa tus tablas de referencia (`Razas`, `RazaMetricas`, `CategoriasTamano`). No dupliques esos valores aquí; solo guarda el **resultado para este perro**.
+
+---
+
+## 2) Reglas (claras y cortas)
+
+1. **Edad → edad_clase**
+
+* cachorro < 12 meses · adulto 12–84 · senior > 84 *(ajuste por tamaño si quieres: gigantes pasan a senior antes).*
+
+2. **Tamaño final (conciliación)**
+
+* Empieza con `tamano_usuario`.
+* Si llega **peso** y **altura**: calcula `tamano_por_medidas`.
+* Si hay razas: calcula `tamano_por_raza` (mezcla ponderada por `mix_ratio_pct`).
+* **Resolución**:
+
+  * Si los 3 coinciden → `tamano_final = ese`.
+  * Si difieren 1 paso (p. ej., pequeño vs mediano) y el usuario escogió uno → **respeta usuario** (marca `discrepancia_tamano=leve`).
+  * Si difieren ≥2 pasos (p. ej., pequeño vs grande) → **proponer corrección** en la UI y marca `discrepancia_tamano=fuerte`.
+
+3. **Mix de razas**
+
+* `braquicefalo = true` si **cualquiera** de las dos razas lo es.
+* `sens_calor/sens_frio = max(r1, r2)` (peor caso para seguridad).
+* `imc_ideal_min/max = (r1_min/max × ratio) + (r2_min/max × (1−ratio))`.
+
+4. **BCS objetivo**
+
+* Por defecto 4–5 (ajustable por edad/condición clínica).
+
+5. **Estado integridad**
+
+* `ok` (inputs suficientes y congruentes)
+* `faltan_datos` (falta peso o razas si la persona quiere precisión)
+* `datos_incongruentes` (tamaño usuario muy alejado de medidas/razas)
+
+---
+
+## 3) UX (flujo súper simple y tolerante)
+
+**Capa 1 (30s):** nombre → edad → tamaño (selector grande con iconos).
+**Capa 2 (precisión):** altura, peso, sexo, raza1 (autocompletar), raza2 (opcional) + ratio (slider 50/50 por defecto).
+**Capa 3 (opcional):** tipo de dieta habitual (pienso/húmeda/mixta/casera).
+**Feedback inmediato:** si hay **discrepancia fuerte**, mostrar chip “Sugerimos *Mediano* por tus medidas. ¿Cambiar?” (1 click).
+
+---
+
+

@@ -1,0 +1,156 @@
+**AVISO: DOCUMENTO OBSOLETO (v4.1)**
+Este archivo documenta el pivote de la arquitectura v3 a la v4. Sirve como registro histórico pero sus conclusiones y planes han sido integrados en los documentos maestros de la versión 4.0 final.
+La información final y válida se encuentra en la carpeta `PRODUTO_V4_FINAL` (o `ACTUAL`).
+
+---
+
+**ARES – Resume...n de Pivotaje, Limpieza del Proyecto y Plan de Hardware (v4.1)**
+
+*Fecha: 10-Jan-2026 | Para: Codex (editor) + decisión de prototipo*
+
+# 1) Objetivo del documento
+
+Dejar el proyecto limpio del enfoque antiguo (GF-07 / LBS / SMS), poner al día a Codex con el nuevo enfoque (GNSS real + LTE-M/NB-IoT), y fijar un plan de compra y pruebas de prototipos para decidir el hardware definitivo.
+
+# 2) Línea temporal (cómo hemos llegado aquí)
+
+| Etapa | Qué se hizo / conclusión |
+| --- | --- |
+| Fase inicial (tracker tipo GF-07) | Ingesta por SMS (incl. comandos tipo 777), dedupe SMS, geovalla y dashboard. |
+| Hardening backend | Persistencia de estado de geovalla (GeofenceState), cola de comandos (DeviceCommand), seguridad por X-Device-Key y limpieza de rutas duplicadas. |
+| Descubrimiento del problema | Se confirma que GF-07 suele usar LBS (torres), con error inaceptable para precisión y métricas de actividad. |
+| Pivot (RFC-001 / SSOT) | Migración a tracker IoT: GNSS real + LTE-M/NB-IoT con SIM IoT (sin cuota mensual) y protocolo directo a API. |
+| Ahora | Elegir 2–3 prototipos, probar 1 mes en ciudad/bosque, y cerrar hardware + protocolo final. |
+
+# 3) Por qué el plan anterior (GF-07) se descarta
+
+Problema raíz: ubicación por LBS (torres GSM) en vez de GNSS (satélite). Esto introduce errores del orden de cientos de metros a kilómetros, y rompe: geovalla precisa, ‘tiempo real’ fiable y métricas de actividad.
+
+Qué sacrificamos al abandonar GF-07:
+
+Simplicidad de SMS (pero a cambio ganamos precisión y escalabilidad).
+
+Compatibilidad con trackers baratos genéricos (pero evitamos un producto que no cumple el objetivo).
+
+# 4) Decisión estratégica: nueva arquitectura (TARGET)
+
+Arquitectura objetivo (“IoT Direct-to-Cloud”):
+
+[Collar/Tracker con GNSS] → (LTE-M/NB-IoT) → [API ARES] → [Dashboard/App]
+
+El móvil deja de ser pasarela y pasa a ser cliente/visualizador (mapa, alertas, configuración).
+
+## 4.1 Requisitos de producto (actualizados)
+
+| Precisión horizontal | Objetivo: ≤2 m (cuanto menos, mejor). Ciudad y bosque. |
+| --- | --- |
+| Frecuencia – Paseo | Cada 5 s (casi tiempo real). |
+| Frecuencia – Geovalla | Cada 15–20 s (monitorización de perímetro). |
+| Ahorro batería (reposo) | Si está parado X min → bajar frecuencia y/o apagar GNSS usando IMU. |
+| Autonomía | Ideal: 7 días con ~4 h/día paseo. Objetivo adicional: ~30 h en modo más exigente. |
+| Peso | <100 g si es posible; prioridad: precisión + autonomía. |
+| Actividad | Pasos/actividad + Kcal + objetivos por raza/peso/edad. Añadir desnivel (elevación ganada) tipo Strava. |
+
+# 5) Qué se queda fuera (limpieza)
+
+**DEPRECATED (congelar o eliminar):**
+
+Pipeline GF-07/SMS: /sms, parseo de texto, enlaces Google Maps, dedupe por SMS (sha256), SmsInbox y lógica específica de SMS.
+
+Comandos por SMS tipo “777”: sustituidos por downlink por datos (polling/HTTP/MQTT).
+
+Suposiciones de LBS como fuente primaria.
+
+# 6) Qué se mantiene del backend actual (reutilizable)
+
+User + JWT ownership (cada dueño ve sus perros).
+
+Dogs/Devices/Locations/Event/Alert + motor de geovallas (confirmación 2 lecturas).
+
+Hardening útil: GeofenceState (persistente) y DeviceCommand (PENDING/DISPATCHED/SENT/FAILED/EXPIRED).
+
+Dashboard React: mapa + alertas + simulación.
+
+# 7) Cambios obligatorios para soportar tracker GNSS real
+
+## 7.1 Ingesta unificada (push del dispositivo)
+
+Crear endpoint único (ej.: POST /v1/ingest) autenticado por X-Device-Key.
+
+Requisitos:
+
+Aceptar punto único o batch (store & forward).
+
+Idempotencia: (device_id + seq) o (device_id + ts + lat/lon) con unique constraint.
+
+Campos mínimos: lat, lon, ts, accuracy_m, battery_pct/voltage.
+
+Recomendados: altitude_m, v_accuracy_m, speed, heading, satellites, fix_type, temperature, motion_state, steps/activity_index.
+
+## 7.2 Desnivel y métricas tipo Strava
+
+Recomendación: añadir barómetro en prototipo y combinar con GNSS para recalibración. El cálculo de elevación ganada debe aplicar filtro/suavizado para evitar ruido vertical.
+
+## 7.3 Sin cobertura: definiciones realistas
+
+Sin cobertura LTE-M/NB-IoT: (1) store & forward (graba y sube cuando vuelve la señal) es viable y barato; (2) ‘en vivo’ sin cobertura exige radio dedicada + receptor/gateway cercano (más caro, más hardware).
+
+# 8) Plan de prototipado: piezas a comparar
+
+Comprar 2–3 opciones, probar 1 mes y elegir con datos.
+
+## 8.1 Prototipo A – DIY rápido (referencia)
+
+Quectel BG96 + ESP32-S3 + IMU + barómetro + SIM 1NCE.
+
+Piezas mínimas:
+
+BG96 + antenas (LTE + GNSS).
+
+ESP32-S3 (BLE para configuración local).
+
+IMU (MPU6050 para arrancar; luego low-power: BMA400/BMI270).
+
+Barómetro (BMP388/BMP390) para desnivel.
+
+Batería 2000–3000 mAh para acercarse a objetivo de 30 h a 5 s.
+
+## 8.2 Prototipo B – Dev kit (reduce fricción)
+
+Nordic Thingy:91 o Thingy:91 X (LTE-M/NB-IoT + GNSS + sensores).
+
+## 8.3 Prototipo C – Tracker industrial (benchmark)
+
+Queclink GL320MG (LTE-M/NB-IoT + GNSS, protocolo @Track TCP/UDP) u otro tracker industrial similar.
+
+## 8.4 Opcional: benchmark ‘caza’ (sin cobertura real)
+
+Solo si queremos medir ‘tracking sin red’ en vivo: comprar 1 collar de caza (radio propietaria).
+
+## 8.5 Decisión Final del Prototipado
+
+Tras analizar las opciones y la complejidad de la integración, se tomó la decisión de proceder con una solución que combina la rapidez del enfoque DIY pero con una mayor integración de componentes, para acelerar el desarrollo.
+
+**Hardware Seleccionado:** **LilyGo T-SIM7000G**. Este módulo ya integra el ESP32-S3, el módem SIM7000G (LTE-M/NB-IoT + GNSS) y el sistema de gestión de energía, sirviendo como la base para el prototipo funcional y las especificaciones de software posteriores.
+
+# 9) Fabricación/prototipado físico (cuando cerremos electrónica)
+
+Servicios típicos para pasar de prototipo a placas y carcasa:
+
+PCB/PCBA: JLCPCB / PCBWay / Seeed Fusion (fabricación + montaje).
+
+Carcasa: impresión 3D (SLA/SLS) para prototipos; luego inyección si escala.
+
+Iteración: 1–2 revisiones de PCB y 2–3 iteraciones de carcasa antes de ‘pre-serie’.
+
+# 10) Preguntas que faltan para cerrar el hardware al 100%
+
+¿Necesitamos ‘en vivo’ sin cobertura (radio) o aceptamos store & forward en MVP?
+
+¿Cuánta batería toleras (volumen/peso) para cumplir 30 h a 5 s?
+
+¿HTTPS (simple) o MQTT (más eficiente) en el prototipo?
+
+¿Añadimos botón físico (SOS/búsqueda) en prototipo o fuera?
+
+¿Qué margen aceptas en elevación ganada (solo barómetro + filtro vs GNSS+baro)?

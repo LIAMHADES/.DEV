@@ -1,0 +1,127 @@
+Sí: todo lo que has puesto (ancho de pista por corriente/ΔT, separación por tensión, evitar 90°, retorno pegado a la señal, plano de tierra, evitar lazos) sigue siendo válido como **principios**. Lo que ha cambiado (y lo que conviene usar hoy) es **qué estándar usar para dimensionar** y **cómo fijar reglas numéricas**.
+
+## 1) Qué “actualizamos” respecto a tu material (hace ~5 años)
+
+### Dimensionado de pistas por corriente/temperatura
+
+* La fórmula que muestras es la clásica de **IPC-2221** (muy usada, pero no es la mejor para predecir temperatura real en PCB modernas).
+* Para dimensionar pistas hoy se recomienda **IPC-2152**, basada en ensayos y contemplando mejor el efecto de planos, cobre cercano, entorno, etc. ([The ANSI Blog][1])
+
+### Separación eléctrica (clearance/creepage)
+
+* Para separación “por tensión”, IPC-2221 (y revisiones como IPC-2221C) sigue siendo referencia, pero **en productos low-voltage** (3–5 V, baterías Li-ion 4.2 V, USB 5 V) casi siempre manda más:
+
+  1. la **capacidad del fabricante** (mínimo trace/space),
+  2. robustez frente a **ESD/contaminación**,
+  3. y reglas específicas de conectores/RF.
+* Para “seguridad de aislamiento” (cuando hay tensiones altas o requisitos formales), el marco típico es **IEC 60664-1** (clearance/creepage y criterios por contaminación/altitud). ([IEC Webstore][2])
+
+### EMC/EMI (lo que más te importa aquí)
+
+* Lo que has escrito (plano de tierra, retorno pegado, minimizar área de bucle, evitar cortes en referencia, agrupar por bloques) es exactamente el core de EMC. En tu PDF AN1050 se explica por qué el **área de bucle** y la **inductancia/parasitarios** dominan el ruido y las emisiones, y por qué el **clock** y los cambios bruscos de pista son fuentes típicas. 
+* TI resume lo mismo como regla práctica: reducir loop area llevando el retorno bajo la señal y usar plano/“grid” de tierra en 2 capas. ([Texas Instruments][3])
+
+---
+
+## 2) Reglas prácticas “2026” para TU placa (compacta, con RF, GNSS, switching, MCU)
+
+### A) Stackup recomendado (si quieres compacta + RF + buen EMC)
+
+* **4 capas** como base:
+
+  * L1: componentes + señales cortas + *ground pour* (con stitching vias)
+  * L2: **plano GND sólido** (sin cortes bajo señales rápidas/RF)
+  * L3: power (VBAT/3V3) + señales secundarias
+  * L4: señales + ground pour
+    Esto coincide con guías clásicas de EMC: planos para bajar inductancia y contener campos. 
+
+### B) Power: pistas “gordas” y retorno corto (sobre todo VBAT→módem)
+
+* Dimensiona con **IPC-2152** (no IPC-2221) para corriente continua y ΔT objetivo. ([The ANSI Blog][1])
+* En tu caso hay dos mundos:
+
+  1. **pulsos altos** del módem (ráfagas): aquí manda **impedancia baja** (polígonos/planos VBAT+GND, múltiples vías, desacoplos pegados).
+  2. consumo medio bajo: aquí manda eficiencia/sleep.
+* Mantén tu idea del **margen del 20%** (bien), pero que el margen sea sobre el peor caso: corriente pico + temperatura ambiente alta dentro de carcasa.
+
+### C) Plano de tierra y retornos (la regla #1 de EMC)
+
+* Nunca enrutes señales rápidas “sin referencia”: una pista sin retorno cercano crea un lazo grande → radia y se vuelve susceptible. 
+* Evita **splits** y ranuras en GND bajo señales rápidas: actúan como antenas y fuerzan retornos largos. ([Texas Instruments][4])
+
+### D) Alta frecuencia / reloj / buses
+
+* Clock/oscilador: **bloque compacto**, pistas mínimas, lejos de I/O y RF. 
+* Si la longitud de una pista empieza a ser comparable al tiempo de subida, trátala como línea de transmisión y valora terminación (regla de 1/4 de tr como guía). 
+
+### E) RF (LTE/GNSS) y antenas
+
+* Empieza el diseño por la **antena y su keep-out** y a partir de ahí colocas el resto (esto es lo que recomiendan guías de integración RF tipo nRF9160). ([docs.nordicsemi.com][5])
+* Feedline RF: ruta corta, impedancia controlada (50 Ω), plano de referencia continuo, **via fence** alrededor si usas CPWG, y matching pegado al pin/ANT.
+
+### F) 90° y pistas paralelas
+
+* Evitar 90° en señales rápidas (mejor 45°/arco) es una regla clásica por discontinuidad/EMI y sigue vigente. 
+* En pistas paralelas largas: minimiza el paralelismo, aumenta separación, y prioriza que ambas tengan **retorno continuo** (esto suele ser más importante que el “no paralelas” en abstracto). ([Texas Instruments][3])
+
+### G) Separaciones por tensión (tu tabla IPC-2221)
+
+* Para tu electrónica de baja tensión, normalmente no estás “limitado” por clearance de seguridad, pero sí debes fijar:
+
+  * spacing suficiente para fabricación/rework,
+  * y margen ante humedad/contaminación en un producto de exterior.
+* Si más adelante metes partes con requisitos de aislamiento formal (p. ej. cargadores no aislados, alto voltaje, etc.), entonces sí: IEC 60664-1 manda. ([IEC Webstore][2])
+* IPC-2221C sigue siendo referencia de tabla de “electrical conductor spacing” (Table 6-1) cuando aplique. ([Siemens Blog Network][6])
+
+### H) Footprints y ensamblaje (compacto sin dolor)
+
+* Usa land patterns según **IPC-7351** (reduce defectos de ensamblaje y te evita retrabajos por pads mal dimensionados). ([electronics.org][7])
+
+---
+
+## 3) Links (normas/guías clave para que el diseñador “siga el libro”)
+
+```text
+IPC-2152 (referencias y contexto):
+https://blog.ansi.org/ansi/ipc-2152-current-carrying-capacity-in-pcbs/
+https://www.electronics.org/system/files/technical_resource/E7%26S22_03.pdf
+
+IPC-2221C (spacing / tabla 6-1 como referencia):
+https://blogs.sw.siemens.com/electronic-systems-design/2025/04/29/pcb-high-voltage-spacing-what-every-engineer-should-know/
+
+IEC 60664-1 (marco de creepage/clearance):
+https://webstore.iec.ch/en/publication/59671
+TI - diseño de aislamiento según IEC60664 (explicación práctica):
+https://www.ti.com/lit/pdf/sluaar5
+
+EMC/EMI layout (muy aplicable a tu caso):
+TI - PCB Design Guidelines for Reduced EMI:
+https://www.ti.com/lit/pdf/szza009
+TI - High Speed Layout Guidelines (split planes, retornos, etc.):
+https://www.ti.com/lit/pdf/scaa082
+
+IPC-7351 (footprints/land patterns):
+https://www.electronics.org/TOC/IPC-7351.pdf
+
+(Además: tu AN1050 que has subido es una guía base muy buena para los fundamentos EMC.)
+```
+
+---
+
+## 4) Para fijar “reglas numéricas definitivas” (DRC) sin inventar
+
+Dime solo esto y te devuelvo un **DRC cerrado** (mínimos de pista/espacio/vía, clases por red, anchos por corriente con IPC-2152, keepouts RF, etc.):
+
+1. **Fábrica PCB** prevista (JLCPCB / PCBWay / otra) y si es prototipo o producción.
+2. **Capas** (2 vs 4) y **cobre** (1 oz / 2 oz exterior; 0.5/1 oz interior).
+3. Corriente pico real que quieres cubrir en **VBAT→módem** y en **carga** (mA).
+4. Si USB-C será solo **carga (USB2.0 opcional)** o también datos.
+5. Tamaño máximo de placa y dónde irá la(s) antena(s) (borde superior/lateral).
+
+[1]: https://blog.ansi.org/ansi/ipc-2152-current-carrying-capacity-in-pcbs/?utm_source=chatgpt.com "IPC 2152, Current Carrying Capacity in Printed Board Design"
+[2]: https://webstore.iec.ch/en/publication/59671?utm_source=chatgpt.com "IEC 60664-1:2020"
+[3]: https://www.ti.com/lit/pdf/szza009?utm_source=chatgpt.com "PCB Design Guidelines For Reduced EMI"
+[4]: https://www.ti.com/lit/pdf/scaa082?utm_source=chatgpt.com "High Speed Layout Guidelines (Rev. A)"
+[5]: https://docs.nordicsemi.com/bundle/nwp_037/page/WP/nwp_037/nwp_037_intro.html?utm_source=chatgpt.com "nRF9160 Hardware Design Guidelines"
+[6]: https://blogs.sw.siemens.com/electronic-systems-design/2025/04/29/pcb-high-voltage-spacing-what-every-engineer-should-know/?utm_source=chatgpt.com "PCB high voltage spacing: What every engineer should know"
+[7]: https://www.electronics.org/TOC/IPC-7351.pdf?utm_source=chatgpt.com "IPC-7351.pdf"

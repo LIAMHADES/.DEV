@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>3D Model Test — #dpLogo replica</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#86BBD8;font-family:sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+h2{color:#1c2732;font-family:'Orbitron',sans-serif}
+#dpLogo{width:500px;height:500px;position:relative;border:1px dashed rgba(28,39,50,0.3)}
+.info{font-family:'JetBrains Mono',monospace;font-size:11px;color:#1c2732;text-align:center}
+</style>
+</head>
+<body>
+<h2>TEST — 3D Model (base.glb)</h2>
+<div id="dpLogo"></div>
+<div class="info" id="status">Loading...</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="assets/3d/base.glb.js"></script>
+<script>
+(function(){
+  const el = document.getElementById('dpLogo');
+  const st = document.getElementById('status');
+  
+  st.textContent = 'THREE: ' + (typeof THREE !== 'undefined' ? 'OK' : 'FAIL');
+  st.textContent += ' | GLTFLoader: ' + (typeof THREE.GLTFLoader !== 'undefined' ? 'OK' : 'FAIL');
+  
+  const scene = new THREE.Scene();
+  scene.background = null;
+  
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(0, 0.5, 2.8);
+  camera.lookAt(0, 0, 0);
+  
+  const renderer = new THREE.WebGLRenderer({alpha:true, antialias:true});
+  renderer.setSize(500, 500);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+  el.appendChild(renderer.domElement);
+  
+  // Lights
+  scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+  const dl1 = new THREE.DirectionalLight(0xffffff, 0.8);
+  dl1.position.set(2, 3, 4);
+  scene.add(dl1);
+  const dl2 = new THREE.DirectionalLight(0x222222, 0.4);
+  dl2.position.set(-2, -1, -2);
+  scene.add(dl2);
+  
+  // Fallback: show a placeholder cube if GLTF fails
+  const fallbackGeo = new THREE.BoxGeometry(1, 1, 1);
+  const fallbackMat = new THREE.MeshStandardMaterial({color:0xF26419, roughness:0.3, metalness:0.5, wireframe:true});
+  const fallback = new THREE.Mesh(fallbackGeo, fallbackMat);
+  scene.add(fallback);
+  
+  // Try to load GLTF from embedded base64
+  st.textContent += '\nLoading GLTF from base64...';
+  var b64 = window.__ARES_MODEL;
+  var binStr = atob(b64);
+  var bytes = new Uint8Array(binStr.length);
+  for (var i = 0; i < binStr.length; i++) bytes[i] = binStr.charCodeAt(i);
+  
+  var loader = new THREE.GLTFLoader();
+  loader.parse(bytes.buffer, '', function(gltf) {
+    st.textContent += '\nGLTF LOADED OK';
+    scene.remove(fallback);
+    var model = gltf.scene;
+    var box = new THREE.Box3().setFromObject(model);
+    var center = box.getCenter(new THREE.Vector3());
+    var size = box.getSize(new THREE.Vector3());
+    var maxDim = Math.max(size.x, size.y, size.z);
+    var s = 2.4 / maxDim;
+    model.scale.setScalar(s);
+    model.position.set(-center.x * s, -center.y * s, -center.z * s);
+    scene.add(model);
+    st.textContent += '\nTriangles: ' + renderer.info.render.triangles;
+  }, function(err) {
+    st.textContent += '\nPARSE ERROR: ' + (err.message || err);
+    console.error('GLTF Parse:', err);
+  });
+  
+  function anim() {
+    requestAnimationFrame(anim);
+    fallback.rotation.y += 0.01;
+    renderer.render(scene, camera);
+  }
+  anim();
+})();
+</script>
+</body>
+</html>

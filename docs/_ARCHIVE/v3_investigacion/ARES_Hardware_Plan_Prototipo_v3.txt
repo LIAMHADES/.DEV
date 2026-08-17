@@ -1,0 +1,119 @@
+**AVISO: DOCUMENTO OBSOLETO (v3.0)**
+Este archivo representa una fase de planificación temprana del proyecto y está desactualizado.
+La información final y válida se encuentra en la carpeta `PRODUTO_V4_FINAL` (o `ACTUAL`), en los documentos maestros de la versión 4.0.
+
+---
+
+**ARES — Replanteo de Hardware y Plan de Prototipado (v3)**
+
+Fecha: 2026-01-10
+
+**1) Decisión clave: ¿cómo llega la ubicación al backend?**
+
+Has confirmado que quieres precisión alta (≈5 m o menos), casi tiempo real en paseo (5 s) y que el sistema funcione incluso cuando NO hay cobertura móvil.
+
+Esto obliga a separar dos cosas:
+A) Obtener posición precisa (GNSS satelital: GPS/Galileo/GLONASS/BeiDou)
+B) Transportar esa posición hasta tu backend (celular / radio / satélite).
+
+Sin cobertura móvil, no existe forma de enviar datos a internet salvo:
+- Radio a un receptor cercano (el dueño/handheld hace de 'gateway')
+- Satélite (Iridium/otros) con coste y consumo mayores
+- O aceptar que fuera de cobertura solo se guarde en memoria y se suba al recuperar señal (no “tiempo real”).
+
+**2) Parámetros operativos que fijamos ahora**
+
+Frecuencias objetivo (actualizadas):
+
+- Modo Paseo: 1 posición cada 5 s
+- Modo Geovalla (normal): 1 posición cada 15–20 s
+- Modo Reposo: bajar frecuencia cuando detecte inmovilidad (ej. 5–10 min)
+- Autonomía objetivo: 30 h en modo más exigente; ideal 7 días con 4 h/día de paseo (adaptativo)
+
+**3) 3 arquitecturas viables (y qué implica cada una)**
+
+A) GNSS + Celular (LTE-M/NB-IoT/Cat-1)
+
+- Pros: integración cloud directa, experiencia tipo “Tractive” para urbano.
+- Contras: fuera de cobertura no hay tracking en vivo; requiere SIM + plan.
+- Recomendación: imprescindible como modo urbano si quieres que el dueño vea el mapa desde cualquier lugar.
+
+B) GNSS + Radio (tipo collares de caza)
+
+- Pros: funciona sin cobertura móvil, actualizaciones muy rápidas (2–3 s), sin cuotas.
+- Contras: necesitas un receptor/gateway cerca (handheld o ‘connector’ + móvil), peso mayor y cumplimiento regulatorio por bandas/frecuencias.
+- Recomendación: si tu requisito 'sin cobertura' significa tracking real en monte.
+
+C) GNSS + Satélite (Iridium SBD)
+
+- Pros: cobertura global real.
+- Contras: caro (hardware + airtime), bajo throughput (mensajes pequeños), consumo alto si envías muy frecuente.
+- Recomendación: solo como 'modo rescate/lost' con intervalos largos (1–5 min), no para 5 s.
+
+**4) Qué comprar para comparar (1 mes de test)**
+
+Set mínimo recomendado (equilibra aprendizaje + coste):
+
+1) Smartphone Android como “collar virtual” (baseline)
+
+- Sirve para validar 100% del backend (geovallas, alertas, mapa, intervalos) con GNSS real.
+- Te permite simular 5 s/15–20 s sin depender de hardware.
+
+2) Un sistema 'sin cobertura' (radio) para benchmark de campo
+
+Opción A: Dogtra Pathfinder 2 TRX (connector + collar) — enfoque app móvil.
+Opción B: Dogtrace X30 — enfoque mando dedicado + app.
+Objetivo: medir precisión real, estabilidad, alcance, batería a 2–3 s y comportamiento en bosque/montaña.
+
+3) Un tracker celular con protocolo relativamente abierto (para integración real con tu backend)
+
+Ejemplo: Mictrack MT710 u otro LTE-M/NB-IoT con GNSS.
+Objetivo: probar ingestión automática (TCP/UDP/HTTP), dedupe, latencias y consumo con red móvil.
+
+4) (Opcional) Dev kit satelital para evaluar 'modo rescate'
+
+Ejemplo: RockBLOCK 9603/9704.
+Objetivo: entender coste por mensaje, latencia y consumo para un modo emergencia.
+
+**5) Plan de pruebas (30 días)**
+
+Métricas a medir (misma ruta, mismo perro, distintos días):
+
+- Precisión: error típico en ciudad (cañón urbano), parque y campo abierto.
+- Latencia: tiempo desde movimiento hasta ver punto en mapa.
+- Dropouts: % de puntos perdidos.
+- Geovalla: tiempo de detección salida/entrada con tus intervalos.
+- Autonomía: horas reales en 5 s; horas en 15–20 s; impacto de reposo adaptativo.
+- Alcance sin cobertura: radio (km reales) y degradación con obstáculos.
+
+Escenarios de test:
+
+S1) Urbano: calles con edificios + parque.
+S2) Campo abierto: ruta circular de 2–5 km.
+S3) Zona con poca cobertura móvil.
+S4) “Lost test”: alejarte del gateway y ver qué ocurre (según arquitectura).
+
+**6) Implicaciones en el backend (para no rehacer dos veces)**
+
+Recomendación: mantener un ‘pipeline único’ de localización, independientemente del origen.
+
+- Fuente A: móvil (HTTP + JWT)
+- Fuente B: dispositivo (HTTP/TCP + X-Device-Key)
+
+Todo entra a location_service.process_location_update(dog_id, lat, lon, ts, source, battery, quality).
+
+Config (valores nuevos):
+- WALK_INTERVAL_S = 5
+- GEOFENCE_INTERVAL_S = 15–20 (según decidas)
+- REST_INTERVAL_S = 300–600
+- COOL_DOWN_ALERTS (ej. 60–120 s) para evitar spam
+
+**7) Decisiones que necesito que cierres (para elegir arquitectura final)**
+
+D1) Cuando dices “sin cobertura”, ¿necesitas tracking si el dueño NO está cerca (global), o te vale que funcione sin cobertura solo si el dueño está a X km con un receptor/gateway?
+
+D2) ¿Aceptas cuota mensual (SIM) para el modo urbano?
+
+D3) ¿El modo satélite puede ser solo emergencia (1–5 min), o también quieres 5–20 s?
+
+D4) Peso máximo final realista: ¿aceptas 140–200 g en prototipo si la batería y la radio lo exigen?

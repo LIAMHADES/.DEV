@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  db:
+    image: pgvector/pgvector:pg15
+    container_name: ares_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ares_user
+      POSTGRES_PASSWORD: bF%d7ZxQdXBFGBsxA6niych8
+      POSTGRES_DB: ares_gps
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ares_user -d ares_gps" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: ares_api
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      DATABASE_URL: postgresql://ares_user:bF%d7ZxQdXBFGBsxA6niych8@db:5432/ares_gps
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./app:/app/app
+      - ./domain:/app/domain
+      - ./tools:/app/tools
+
+volumes:
+  postgres_data:

@@ -1,0 +1,113 @@
+# 📋 **ESPECIFICACIONES COMPLETAS ARES v4.0: TRACKER GPS Y SALUD PARA PERROS**
+
+**Documento oficial de funciones (Alineado con Hardwear.txt v4.0).**
+
+> **Nota de posicionamiento (decisión del usuario):** este documento usaba antes el framing "PERROS DEPORTIVOS" como eje principal. Se corrige aquí: el eje principal del producto es la **salud y el bienestar general del perro** (localización + nutrición + ejercicio + descanso ajustados a raza/edad/complexión), no el rendimiento deportivo. La capacidad de servir a perros muy activos/de trabajo es una **extrapolación del mismo motor de datos** (mismo cálculo de gasto calórico y actividad, con umbrales más altos), no la propuesta de valor principal. Ver `01_PRODUCTO_Y_NEGOCIO.md` §2 (ICP) para el detalle completo.
+
+***
+
+## **🎯 ALCANCE v4.0: ENFOQUE EN MEDIUM Y LARGE**
+*   Esta especificación detalla las funciones para los modelos **Medium (~2750 mAh)** y **Large (~4000 mAh)**.
+*   El modelo Small queda postpuesto y tendrá especificaciones reducidas.
+
+---
+
+## **🎯 FUNCIONES HARDWARE REQUERIDAS**
+
+### **1. POSICIONAMIENTO EXACTO (PRIORIDAD #1)**
+```
+✅ **Precisión objetivo <1m (pendiente de validación de campo)** → Seguimos al PERRO (no humano)
+✅ **Cobertura global** → 200+ países 
+✅ **Live tracking** → Tasa variable 2s/5s/10s/30s
+✅ **Anti-multipath** → Urbano/bosque/edificios
+```
+
+### **2. DETECCIÓN MOVIMIENTO INTELIGENTE**
+```
+✅ **Caminar vs trote vs correr** → Aceleración + velocidad
+✅ **Coche vs real** → Filtro patrones antifraude (BMI270)
+✅ **Caída/inmovilidad** → Alertas urgentes
+✅ **Valla adaptativa** → Tasa GPS por distancia al borde
+✅ **Reposo automático** → 2min inmóvil
+```
+
+### **3. GESTIÓN ENERGÍA OPTIMIZADA**
+```
+✅ **Autonomía flexible** → Packs de batería intercambiables
+✅ **Carga Magnética externa** → Cómoda y 100% impermeable
+✅ **Protección térmica** → NTC >45°C pausa
+✅ **Modos deepsleep** → <15uA reposo
+✅ **Batería modular** → **~2750mAh (Medium) / ~4000mAh (Large)**
+```
+
+### **4. COMUNICACIÓN MULTI-NIVEL**
+```
+✅ **GPS+LTE primario** → Posición mundial
+✅ **BLE** → Búsqueda cercana
+✅ **WiFi config/OTA** → Setup + updates
+✅ **eSIM IoT global** → 1NCE integrada
+```
+
+### **5. FEEDBACK VISUAL (Sistema v4)**
+```
+✅ **LEDs analógicos RGB (12x 1206)** → Batería/GPS/conexión
+✅ **Sin sensor de luz** → Control por software (Astro-Reloj)
+```
+
+### **6. MONITORIZACIÓN AMBIENTAL**
+```
+✅ **Temperatura ambiente** → Índice calor perro
+✅ **IP68 resistente** → Sumergible, lluvia/trail/bosque
+✅ **IK10 Golpes** → Carcasa PC/ABS
+```
+
+***
+
+## **🛠️ COMPONENTES HARDWARE DEFINIDOS (v4.0)**
+
+### **🔬 CEREBRO + COMUNICACIONES**
+| **Componente** | **Función específica** | **Especificaciones clave** |
+|---|---|---|
+| **LilyGo T-SIM7000G S3** | **CPU+GPS <1m+LTE-M** | ESP32-S3, GNSS multi-constelación, eSIM |
+| **Ignion A101 + LNA** | Antena GPS/LTE | Chip SMD, +18dB ganancia, omnidireccional |
+
+### **🦽 SENSORES MOVIMIENTO**
+| **Componente** | **Función específica** | **Especificaciones clave** |
+|---|---|---|
+| **Bosch BMI270** | **Antifraude + modos** | 6-ejes IMU, step counter, bajo consumo |
+| **NTC 10kΩ** | **Protección térmica** | -40°C a 125°C, ±0.5°C precisión |
+
+### **🔋 ENERGÍA + LUCES**
+| **Componente** | **Función específica** | **Especificaciones clave** |
+|---|---|---|
+| **LiPo 3.7V** | **Energía principal** | ~2750mAh / ~4000mAh, modular |
+| **BQ24040 TI** | **Carga inteligente** | Controla la carga magnética, 32°C seguridad |
+| **12x LEDs SMD 1206**| **Feedback visual** | Alta intensidad, R,G,B |
+| **3x MOSFETs (AO3400A)** | **Control de Luces**| 3 Canales PWM (R,G,B) |
+
+### **🛡️ CARCASA + CONECTORES**
+| **Componente** | **Función específica** | **Especificaciones clave** |
+|---|---|---|
+| **PCB 4 capas** | **Conexiones estables** | 37x28mm, EMI -20dB |
+| **Carcasa PC/ABS** | **IP68/IK10** | Huella unificada 36x58mm |
+| **Pogo Pins Oro** | **Conexión modular** | Contacto hermético Chip-Batería |
+| **Conector Magnético**| **Carga Externa** | Conector IP68 en Módulo Batería |
+
+***
+
+## **✅ VEREDICTO HARDWARE 100% DEFINIDO (v4.0)**
+
+```
+**FUNCIONES CRÍTICAS CUMPLIDAS:**
+✅ **GPS <1m** posición exacta perro
+✅ **BMI270** antifraude coche/caminata
+✅ **Carga Magnética** para máxima comodidad e IP68
+✅ **Baterías de alta capacidad** para uso extensivo
+✅ **Sistema de luces v4** sin partes móviles/sensores
+
+**COMPONENTES SELECCIONADOS:**
+✅ **LilyGo T-SIM7000G S3** → Comunicaciones
+✅ **Bosch BMI270 + NTC + LEDs 1206 + MOSFETs** → Sensores y luces
+✅ **LiPo Modular + BQ24040 TI** → Energía
+✅ **Conector Magnético + Pogo Pins** → Conectividad
+```

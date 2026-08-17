@@ -1,0 +1,137 @@
+# 🏗️ **DOCUMENTO MAESTRO HARDWARE ARES v4.0 - Medium & Large**
+
+**ESPECIFICACIÓN FINAL - Enero 2026**  
+**Arquitectura Unificada: Módulo Chip + Módulo Batería (2750/4000mAh) con Carga Magnética.**
+
+***
+
+## **🎯 ALCANCE v4.0: MEDIUM Y LARGE**
+*   Esta especificación se centra en los modelos **Medium (~2750 mAh)** y **Large (~4000 mAh)**.
+*   Ambos modelos comparten la misma huella de carcasa y el mismo Módulo Chip, variando solo en el grosor para acomodar la batería.
+*   El modelo **Small/Nano queda postpuesto** y su diseño no se detalla en este documento.
+
+---
+
+## **🎨 SISTEMA DE ILUMINACIÓN ARES (v4)**
+
+El diseño se basa en 12 LEDs analógicos de alta intensidad para formar dos "L" visibles a más de 50m, con un color uniforme y controlado por software.
+
+*   **Hardware:** 12x LEDs SMD 1206 (2R, 2G, 2B por cada una de las dos "L").
+*   **Alimentación:** Directa desde la batería (VBAT 3.0-4.2V) con resistencias limitadoras. **No se usa un conversor/booster**.
+*   **Control:** 3 canales PWM (R, G, B) que controlan 3 MOSFETs N-Channel, permitiendo una mezcla de colores completa.
+*   **Sensor de Luz:** **Eliminado**. El brillo se gestiona por un "Astro-Reloj" vía software (hora local del GPS).
+*   **Detalles de implementación:** Para información sobre la calibración de color, óptica y prevención de "ghosting", consultar `docs/investigacion_tracker_diy/PRODUTO/ARES_HW_V4_Especificacion_Medium_Large.md`.
+
+---
+
+## **📊 BOM FINAL ARES v4.0 (Coste total ~64-67€)**
+
+**MÓDULO CHIP 37x28mm (~43.9€):**
+| Componente | Precio | Notas |
+|------------|--------|-------|
+| LilyGo T-SIM7000G S3 | 28€ | GNSS+LTE Cat-M1 |
+| **Bosch BMI270** | 3.2€ | IMU Antifraude 99.5% |
+| **Ignion A101 + LNA** | 3.2€ | GPS Precisión objetivo <1m (pendiente de validación de campo) |
+| **eSIM 1NCE soldada** | 3€ | Conectividad Global |
+| **12x LEDs 1206 APTD** | 1€ | Alta Intensidad |
+| **3x MOSFETs (AO3400A)**| 1€ | Control canales R,G,B |
+| Resistencias (pull-down/limit) | 0.5€ | Estabilidad y control |
+| PCB 4 capas | 4€ | EMI -20dB |
+
+**MÓDULO BATERÍA (~13.5€ + Batería):**
+| Componente | Precio | Notas |
+|------------|--------|-------|
+| **BQ24040 TI** | 4€ | Seguridad de carga |
+| **Conector Magnético IP68**| **5€** | Carga externa sellada |
+| Pogo Pins oro 1.5N | 1.5€ | Contacto hermético |
+| PCB + Rail O-RING | 3€ | Cola de milano |
+
+**TOTAL (Hardware Base, sin celda LiPo): ~57.4€**
+*   **ARES Medium (2750mAh) — Coste TOTAL con celda incluida:** ~64€ (57.4€ base + ~6.5€ celda)
+*   **ARES Large (4000mAh) — Coste TOTAL con celda incluida:** ~67€ (57.4€ base + ~9.5€ celda)
+
+*Nota de reconciliación: "57.4€" es el coste de hardware SIN la celda LiPo; "64€/67€" es el coste TOTAL por SKU CON celda. Ambas cifras son correctas y consistentes entre sí — la confusión previa era no dejar explícito qué incluye cada una. Estas son también las cifras que usa `02_ESPECIFICACION_TECNICA.md` §3.2 (BOM) y §5.1 (autonomía) y `01_PRODUCTO_Y_NEGOCIO.md` §3.5 (paquetes de hardware).*
+
+---
+
+## **🏗️ ARQUITECTURA MODULAR v4.0**
+
+*   **Carcasa Unificada (Huella Interna):** 36x58 mm.
+*   El Módulo Chip es idéntico para ambos modelos. La única variable es el grosor del Módulo Batería.
+
+┌─────────────────────────────┐    🔌    ┌─────────────────────────────┐
+│ **MÓDULO A: CEREBRO**       │◄──RAIL──►│ **MÓDULO B: POWER PACK**    │
+│ 36x58mm (huella)            │ POGO     │ • Batería LiPo (2750/4000mAh)│
+│ • LilyGo, BMI270, Ignion    │ ORO 1.5N │ • BQ24040 (Gestión Carga)   │
+│ • eSIM 1NCE soldada         │          │ • **Contactos Carga Magnética** |
+│ • Indicador LED de carga    │          │   (Externos, IP68)          │
+└──────────4+4 PADS ORO───────┘          └───────Rail cola milano───────┘
+           ↑ O-RING silicona IP68 3ATM ↑
+
+---
+
+## **💾 CÓDIGO FIRMWARE: CONTROL DE LEDS v4**
+
+```cpp
+// ARES v4.0 - Control de LEDs analógicos vía MOSFETs
+#define BMI270_SDA 21
+#define BMI270_SCL 20
+
+// Pines de control para las puertas (gate) de los MOSFETs
+#define LED_R_GATE_PIN 16
+#define LED_G_GATE_PIN 17
+#define LED_B_GATE_PIN 18
+
+// Canales PWM del ESP32
+#define PWM_R_CHANNEL 0
+#define PWM_G_CHANNEL 1
+#define PWM_B_CHANNEL 2
+
+void setup_led_pwm() {
+  // Configurar canales PWM a 2kHz
+  ledcSetup(PWM_R_CHANNEL, 2000, 8); // Canal, Frecuencia, Resolución (8-bit = 0-255)
+  ledcSetup(PWM_G_CHANNEL, 2000, 8);
+  ledcSetup(PWM_B_CHANNEL, 2000, 8);
+
+  // Asignar pines a los canales PWM
+  ledcAttachPin(LED_R_GATE_PIN, PWM_R_CHANNEL);
+  ledcAttachPin(LED_G_GATE_PIN, PWM_G_CHANNEL);
+  ledcAttachPin(LED_B_GATE_PIN, PWM_B_CHANNEL);
+  
+  // Añadir resistencias de 100k Ohm (pull-down) en el PCB para evitar "ghosting"
+}
+
+void setup() {
+  // ... resto del setup ...
+  setup_led_pwm();
+  Serial.println("✓ ARES HARDWARE v4.0 FUNCIONAL");
+  Serial.println("• Carga: Magnética Externa");
+  Serial.println("• LEDs: 12x SMD 1206 vía MOSFETs");
+}
+
+// Función para controlar el color aplicando la calibración de blancos
+void set_led_color(int red, int green, int blue) {
+  // Aplicar factor de corrección para un blanco puro
+  float r_calib = red * 0.60;
+  float g_calib = green * 0.90;
+  float b_calib = blue * 1.0;
+
+  ledcWrite(PWM_R_CHANNEL, (int)r_calib);
+  ledcWrite(PWM_G_CHANNEL, (int)g_calib);
+  ledcWrite(PWM_B_CHANNEL, (int)b_calib);
+}
+```
+
+---
+
+## **🚀 VEREDICTO FINAL - v4.0**
+
+```
+**DOCUMENTO MAESTRO HARDWARE ARES APROBADO v4.0:**
+✅ **Arquitectura Modular Unificada** para Medium/Large.
+✅ **Carga Magnética + BQ24040** para la mejor experiencia de usuario y sellado.
+✅ **Sistema de Luces v4** (LEDs 1206 + MOSFETs) para máxima robustez y control.
+✅ **Coste Total Objetivo:** ~64-67€, perfectamente viable para el PVP objetivo.
+
+**Este documento representa la especificación final, reemplazando todas las versiones anteriores.**
+```

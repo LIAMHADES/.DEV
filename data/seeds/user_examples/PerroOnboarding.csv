@@ -1,0 +1,6 @@
+perro_id,usuario_id,nombre_perro,edad_meses,sexo,tamano_usuario,raza1_id,raza2_id,mix_ratio_pct,altura_cm,peso_kg,tipo_dieta_preferida,esterilizado
+DOG-001,USR-001,Luna,24,H,toy,Chihuahua,,100,18,2.4,pienso,True
+DOG-002,USR-002,Max,36,M,grande,Labrador Retriever,,100,59,32.0,pienso,False
+DOG-003,USR-003,Rex,48,M,grande,German Shepherd Dog,,100,64,38.0,mixta,True
+DOG-004,USR-004,Milo,24,M,mediano,Pug,Border Collie,50,40,12.0,mixta,False
+DOG-005,USR-005,Nala,30,H,grande,Labrador Retriever,Poodle (Standard),70,56,26.0,casera,True

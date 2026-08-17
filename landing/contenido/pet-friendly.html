@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sitios Pet-Friendly cerca de ti — ARES GPS</title>
+<meta name="description" content="+5.200 lugares pet-friendly en 26 ciudades de España. Solo datos verificados de Google Maps para España. Veterinarios, parques, tiendas, hoteles y playas que admiten perros.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/lead-capture.css">
+<link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+#hero{min-height:46vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:6rem;position:relative;overflow:hidden}
+#hero .container{position:relative;z-index:1}
+.sec-prism{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.sec-prism .prism-grid{display:grid;position:absolute;left:50%;top:50%}
+.sec-prism .prism-cell{border-right:1px solid rgba(134,187,216,0.08);border-bottom:1px solid rgba(134,187,216,0.08);transition:background 0.15s ease-out}
+.sec-prism .prism-cell.lit{transition:background 0s}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--hl);text-transform:uppercase;margin-bottom:1rem}
+#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);color:var(--t);letter-spacing:0.02em;line-height:1.25;text-transform:uppercase;max-width:760px}
+.hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.85rem,1.6vw,1rem);color:rgba(240,242,245,0.85);letter-spacing:0.04em;margin-top:1rem;max-width:560px;margin-left:auto;margin-right:auto}
+
+#search-wrap{max-width:420px;margin:2.5rem auto 0;position:relative}
+.cs-trigger{position:relative;width:100%;background:rgba(134,187,216,0.08);border:none;color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.95rem;padding:1rem 3rem 1rem 1.2rem;text-align:left;cursor:pointer;display:flex;align-items:center;gap:0.4rem;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:background 0.3s}
+.cs-trigger::before{content:'';position:absolute;inset:1px;z-index:0;background:#20303d;clip-path:polygon(7px 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%,0 7px);transition:background 0.3s}
+.cs-trigger>*{position:relative;z-index:1}
+.cs-trigger:hover{background:rgba(242,100,25,0.4)}
+.cs-trigger:hover::before{background:#1d2a36}
+.cs-trigger:focus{outline:none;}
+.cs-trigger:focus-visible{background:rgba(242,100,25,0.45)}
+.cs-trigger:focus-visible::before{background:#1d2a36}
+.cs-icon{margin-left:auto;flex-shrink:0;position:relative;z-index:1}
+
+/* === OVERLAY CIUDADES === */
+.city-overlay{position:fixed;inset:0;z-index:10001;background:rgba(21,29,37,0.97);backdrop-filter:blur(20px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.4s,visibility 0.4s;overflow-y:auto;scrollbar-width:none}
+.city-overlay::-webkit-scrollbar{display:none}
+.city-overlay.open{opacity:1;visibility:visible;pointer-events:auto}
+body.ov-open #progress-bar,body.ov-open #ticksWrapper,body.ov-open .nav-toggle,body.ov-open #pf-contexto,body.ov-open .sec-light,body.ov-open footer,body.ov-open #results-section,body.ov-open #pf-layout,body.ov-open #mini-nav,body.ov-open .back-link{opacity:0;pointer-events:none;z-index:0}
+.city-overlay-inner{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem}
+.city-overlay-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--t2);text-transform:uppercase;margin-bottom:1.5rem}
+.city-search{width:100%;max-width:360px;background:rgba(32,48,61,0.6);border:1px solid rgba(240,242,245,0.15);color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.85rem;padding:0.75rem 1.2rem;margin-bottom:2rem;border-radius:0;text-align:center;transition:border-color 0.3s;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+.city-search:focus{outline:none;border-color:var(--cta)}
+.city-search::placeholder{color:rgba(240,242,245,0.3)}
+.city-list{list-style:none;padding:0;margin:0;text-align:center;display:flex;flex-direction:column;gap:0;width:100%;max-width:500px}
+.city-list li a{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2rem,4.5vw,3rem);color:var(--t);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;padding:0.5rem 0;display:block;text-align:center;width:100%;transition:color 0.3s,transform 0.3s;opacity:0;transform:translateY(30px)}
+.city-list li a:hover{color:var(--hl);transform:scale(1.06)}
+.city-list li.hidden{display:none}
+.city-overlay.open .city-list li:not(.hidden) a{animation:cityFadeIn 0.55s cubic-bezier(0.16,1,0.3,1) both}
+@keyframes cityFadeIn{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+.city-overlay-close{position:absolute;top:3rem;right:2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:none;border:none;color:var(--t2);cursor:pointer;transition:transform 0.35s}
+.city-overlay-close:hover{transform:rotate(90deg)}
+.city-overlay-close::before,.city-overlay-close::after{content:'';position:absolute;top:50%;left:50%;width:20px;height:2px;background:var(--t2);transition:background 0.3s}
+.city-overlay-close::before{transform:translate(-50%,-50%) rotate(45deg)}
+.city-overlay-close::after{transform:translate(-50%,-50%) rotate(-45deg)}
+.city-overlay-close:hover::before,.city-overlay-close:hover::after{background:var(--cta)}
+#cityNoResults{display:none;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--t3);text-align:center;margin-top:1rem}
+@media(max-width:500px){.city-list li a{font-size:clamp(1.5rem,7vw,2.2rem)}}
+#search-hint{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.06em;color:rgba(240,242,245,0.7);text-align:center;margin-top:0.8rem;text-transform:uppercase}
+
+#results-section{display:none}
+#results-section.visible{display:block}
+.results-count{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--t3);text-transform:uppercase;margin-bottom:1.5rem}
+
+/* === FILTROS POR TIPO === */
+#type-filters{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.5rem}
+.type-filter{position:relative;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(240,242,245,0.8);background:rgba(134,187,216,0.12);border:none;padding:0.55rem 1rem;cursor:pointer;transition:color 0.3s,background 0.3s;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+.type-filter::before{content:'';position:absolute;inset:1px;z-index:0;background:rgba(21,29,37,0.92);clip-path:polygon(7px 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%,0 7px);transition:background 0.3s}
+.type-filter>*{position:relative;z-index:1}
+.type-filter:hover{color:#fff;background:rgba(134,187,216,0.22)}
+.type-filter.active{color:var(--cta);background:rgba(242,100,25,0.18)}
+.type-filter.active::before{background:rgba(21,29,37,0.88)}
+
+/* === LAYOUT MAPA + LISTA === */
+#pf-layout{display:grid;grid-template-columns:0.75fr 1.25fr;gap:2rem;align-items:start}
+#pf-map{height:360px;border:1px solid rgba(134,187,216,0.15);background:var(--bg2)}
+#pf-map .leaflet-popup-content-wrapper{background:var(--bg);color:var(--t);border-radius:4px;font-family:'Orbitron',sans-serif}
+#pf-map .leaflet-popup-content{font-size:0.8rem;line-height:1.6}
+#pf-map .leaflet-popup-content b{font-family:'Bruno Ace SC',sans-serif;font-weight:400;font-size:0.75rem;letter-spacing:0.02em}
+#pf-map .leaflet-popup-tip,#pf-map .leaflet-popup-content-wrapper{box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+
+/* Marcador custom: punto + pop de entrada (CSS puro, sin libreria extra) */
+.pf-marker-dot{width:14px;height:14px;background:var(--cta);border:2px solid var(--t);border-radius:50%;box-shadow:0 0 0 3px rgba(242,100,25,0.25);transform:scale(0);animation:pfMarkerPop 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards}
+@keyframes pfMarkerPop{to{transform:scale(1)}}
+
+.results-grid{display:grid;grid-template-columns:1fr;gap:1.2rem;max-height:360px;overflow-y:auto;padding-right:0.4rem;scrollbar-width:thin;scrollbar-color:rgba(242,100,25,0.35) transparent}
+.results-grid::-webkit-scrollbar{width:5px}
+.results-grid::-webkit-scrollbar-track{background:transparent}
+.results-grid::-webkit-scrollbar-thumb{background:rgba(242,100,25,0.35);border-radius:3px}
+.results-grid::-webkit-scrollbar-thumb:hover{background:rgba(242,100,25,0.6)}
+.pf-card{background:var(--bg);border:1px solid rgba(134,187,216,0.1);border-radius:4px;padding:1.4rem;transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;opacity:0;transform:translateY(20px);cursor:pointer}
+.pf-card.show{opacity:1;transform:translateY(0);transition:opacity 0.5s ease,transform 0.5s ease}
+.pf-card:hover,.pf-card.pf-card--active{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.3);border-color:rgba(242,100,25,0.3)}
+.pf-card .pf-type{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--hl);margin-bottom:0.6rem}
+.pf-card h4{font-size:0.95rem;margin-bottom:0.5rem;color:var(--t)}
+.pf-card .pf-addr{font-size:0.8rem;color:var(--t2);line-height:1.6}
+.pf-card .pf-pet{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.06em;color:var(--deco);text-transform:uppercase;margin-top:0.9rem;display:flex;align-items:center;gap:0.35rem}
+
+.no-results{text-align:center;padding:3rem 0;color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:11px}
+
+@media(max-width:900px){
+  #pf-layout{grid-template-columns:1fr}
+  #pf-map{height:360px}
+  .results-grid{max-height:none;overflow-y:visible}
+}
+
+#pf-cta{margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(240,242,245,0.06);text-align:center}
+.pf-cta-heading{font-family:'Bruno Ace SC',sans-serif;font-size:1.1rem;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.5rem}
+.pf-cta-sub{font-family:'Orbitron',sans-serif;font-size:0.8rem;color:var(--t2);margin-bottom:1.8rem}
+
+/* === FOOTER MAP === */
+.pf-footer-wrap{position:relative;margin-top:0}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:hidden;background:var(--bg)}
+/* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:blur(0.5px)}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(-100vw)}}
+@media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
+@media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
+.pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
+.pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
+.pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
+
+.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+.sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+section:first-of-type{clip-path:none}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<div class="scroll-indicator-horizontal" id="ticksWrapper"></div>
+
+<button class="nav-toggle" id="navToggle">
+  <span></span><span></span><span></span>
+</button>
+<nav id="mini-nav">
+  <a href="../index.html" class="nl">ARES GPS</a>
+  <img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo">
+  <a href="../index.html" class="back-link">&larr; Volver a ARES GPS</a>
+</nav>
+<div class="nav-overlay" id="navOverlay">
+  <div class="nav-overlay-inner">
+    <img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo-ov">
+    <ul class="nav-full-links">
+      <li class="nl-item"><a href="../index.html">Inicio</a></li>
+      <li class="nl-item"><a href="pricing.html">Precios</a></li>
+      <li class="nl-item"><a href="actividad.html">Actividad</a></li>
+      <li class="nl-item"><a href="descanso.html">Descanso</a></li>
+      <li class="nl-item"><a href="comunidad.html">Comunidad</a></li>
+      <li class="nl-item"><a href="geocerca.html">Geocerca</a></li>
+      <li class="nl-item"><a href="calculadora.html">Calculadora</a></li>
+      <li class="nl-item nl-current"><a>Pet-friendly</a></li>
+      <li class="nl-item"><a href="proximamente.html">Próximamente</a></li>
+    </ul>
+  </div>
+</div>
+<div class="ov-ticks" id="ovTicks"></div>
+
+<!-- HERO + BUSCADOR -->
+<section id="hero" class="sec-dark">
+  <div class="sec-prism" id="prism-hero"></div>
+  <div class="container">
+    <div class="hero-tag">Seguridad y bienestar para tu perro</div>
+    <h1>¿Dónde puedes llevar a tu perro sin dudarlo?</h1>
+    <div class="hero-sub">Restaurantes, parques y alojamientos donde de verdad es bienvenido. Verificado, no adivinado.</div>
+
+    <div id="search-wrap">
+      <button class="cs-trigger" id="csBtn" type="button">
+        <span id="csLabel">Selecciona tu ciudad&hellip;</span>
+        <svg class="cs-icon" width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="#f0f2f5" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div id="search-hint">+5.200 lugares verificados en 26 ciudades &mdash; solo España &mdash; Julio 2026</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.04em;color:rgba(240,242,245,0.45);text-align:center;margin-top:0.5rem;line-height:1.6;max-width:420px;margin-left:auto;margin-right:auto">La informaci&oacute;n proviene de Google Maps y puede variar con el tiempo. Horarios, pol&iacute;ticas de admisi&oacute;n y disponibilidad pueden cambiar sin previo aviso. Recomendamos confirmar siempre antes de visitar.</div>
+    </div>
+
+    <!-- OVERLAY CIUDADES -->
+    <div class="city-overlay" id="cityOverlay">
+      <button class="city-overlay-close" id="cityOverlayClose" aria-label="Cerrar"></button>
+      <div class="city-overlay-inner">
+        <div class="city-overlay-title">Elige tu ciudad</div>
+        <input type="text" class="city-search" id="citySearch" placeholder="Escribe para filtrar..." autocomplete="off">
+        <ul class="city-list" id="cityList"></ul>
+        <div id="cityNoResults">Ninguna ciudad coincide</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section id="results-section" class="sec-darker">
+  <div class="container">
+    <div class="results-count" id="results-count"></div>
+    <div id="type-filters"></div>
+
+    <div id="pf-layout">
+      <div id="pf-map"></div>
+      <div class="results-grid" id="results-grid"></div>
+    </div>
+
+    <div id="pf-cta">
+      <div class="pf-cta-heading">¿Buscas otra ciudad?</div>
+      <div class="pf-cta-sub">Estamos ampliando la cobertura. Apúntate y te avisamos cuando lleguemos a tu ciudad.</div>
+
+      <form data-lead-form data-lead-source="pet-friendly" class="lead-form">
+        <div class="lf-row">
+          <input type="email" placeholder="tu@email.com" data-lead="email" required>
+          <button type="submit" data-lead="submit">Avísame</button>
+        </div>
+        <div class="lf-gdpr">
+          <input type="checkbox" id="gdpr-pf" data-lead="gdpr" required>
+          <label for="gdpr-pf">Acepto recibir comunicaciones de ARES GPS sobre nuevas ciudades disponibles y el lanzamiento del producto. Puedo darme de baja cuando quiera.</label>
+        </div>
+        <span class="lead-feedback" data-lead="feedback"></span>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXTO: por qué ARES ofrece esto -->
+<section id="pf-contexto" class="sec-light light">
+  <div class="container">
+    <div class="sl">Por qué esto también es ARES</div>
+    <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">SEGURIDAD NO ES SOLO ENCONTRARLO SI SE PIERDE</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;max-width:650px;margin-top:0.5rem">Saber dónde está tu perro es una parte de cuidarlo. Saber dónde puede ir contigo — sin que le digan que no en la puerta, sin sorpresas — es la otra. Muchos dueños, sobre todo los primerizos, dejan de llevar a su perro a sitios nuevos por miedo a que no esté permitido o a que no se sienta cómodo. Esta guía resuelve esa duda antes de salir de casa. Y cuando sí salís, ARES GPS se encarga de que sepas dónde está en todo momento.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="pf-footer-wrap">
+    <div class="pf-footer-map">
+      <div class="pf-footer-track" aria-hidden="true">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+      </div>
+      <div class="pf-footer-gradient"></div>
+      <div class="pf-footer-text">
+        <div>ARES GPS &copy; 2026 — Buscador Pet-Friendly</div>
+        <div class="pf-footer-sub">+5.200 lugares solo Espa&ntilde;a &middot; 26 ciudades &middot; Datos v&iacute;a Apify + Google Maps &middot; Sujeto a cambios</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/pet-friendly-mock.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="assets/js/lead-capture.js"></script>
+<script>
+/* ============================================
+   HERO PRISM GRID — celdas que se iluminan con el cursor
+   ============================================ */
+function buildPrism(id){
+  const wrap=document.getElementById(id);if(!wrap)return;
+  const section=wrap.closest('section')||wrap.parentElement;
+  const size=40,cols=Math.ceil(section.offsetWidth/size)+4,rows=Math.ceil(section.offsetHeight/size)+4;
+  const grid=document.createElement('div');grid.className='prism-grid';
+  const gw=cols*size,gh=rows*size;
+  grid.style.cssText=`width:${gw}px;height:${gh}px;margin-left:${gw/-2}px;margin-top:${gh/-2}px;grid-template-columns:repeat(${cols},${size}px);grid-template-rows:repeat(${rows},${size}px)`;
+  const cells=[];
+  for(let i=0;i<rows*cols;i++){const c=document.createElement('div');c.className='prism-cell';c.style.cssText=`width:${size}px;height:${size}px`;grid.appendChild(c);cells.push(c)}
+  wrap.appendChild(grid);
+  const trail=[],max=18;let cc='134,187,216';
+  section.addEventListener('mousemove',e=>{
+    const rect=section.getBoundingClientRect();
+    const cx=section.offsetWidth/2,cy=section.offsetHeight/2,gl=cx-gw/2,gt=cy-gh/2;
+    const col=Math.floor((e.clientX-rect.left-gl)/size),row=Math.floor((e.clientY-rect.top-gt)/size);
+    if(col>=0&&col<cols&&row>=0&&row<rows)trail.push({col,row,life:1});
+    const el=document.querySelector(':hover');
+    if(el&&(el.tagName==='A'||el.tagName==='BUTTON'||el.closest('.btn')||el.closest('.bc')||el.closest('.pc')||el.closest('.cs-trigger')))cc='246,174,45';else cc='134,187,216';
+  });
+  section.addEventListener('mouseleave',()=>{trail.length=0;cells.forEach(c=>{c.style.background='rgba(134,187,216,0)';c.classList.remove('lit')})});
+  function anim(){
+    for(let i=trail.length-1;i>=0;i--){trail[i].life-=0.04;if(trail[i].life<=0)trail.splice(i,1)}
+    while(trail.length>max)trail.shift();
+    const lm={};trail.forEach(t=>{const k=t.row*cols+t.col;if(!lm[k]||lm[k]<t.life)lm[k]=t.life});
+    cells.forEach((c,i)=>{const l=lm[i]||0;c.style.background=l>0.01?`rgba(${cc},${l*0.3})`:'rgba(134,187,216,0)';if(l>0.01)c.classList.add('lit');else c.classList.remove('lit')});
+    requestAnimationFrame(anim);
+  }
+  anim();
+}
+buildPrism('prism-hero');
+/* ============================================
+   CITY OVERLAY — full-screen picker
+   ============================================ */
+(function(){
+  const btn = document.getElementById('csBtn');
+  const label = document.getElementById('csLabel');
+  const overlay = document.getElementById('cityOverlay');
+  const cityList = document.getElementById('cityList');
+  const closeBtn = document.getElementById('cityOverlayClose');
+  const searchInput = document.getElementById('citySearch');
+  const noResults = document.getElementById('cityNoResults');
+
+  const CITIES = [
+    {key:"madrid",name:"Madrid"},{key:"barcelona",name:"Barcelona"},
+    {key:"valencia",name:"Valencia"},{key:"sevilla",name:"Sevilla"},
+    {key:"zaragoza",name:"Zaragoza"},{key:"malaga",name:"Málaga"},
+    {key:"murcia",name:"Murcia"},{key:"palma_de_mallorca",name:"Palma de Mallorca"},
+    {key:"bilbao",name:"Bilbao"},{key:"alicante",name:"Alicante"},
+    {key:"cordoba",name:"Córdoba"},{key:"valladolid",name:"Valladolid"},
+    {key:"vigo",name:"Vigo"},{key:"girona",name:"Girona"},
+    {key:"oviedo",name:"Oviedo"},{key:"granada",name:"Granada"},
+    {key:"las_palmas",name:"Las Palmas"},{key:"santander",name:"Santander"},
+    {key:"pamplona",name:"Pamplona"},{key:"salamanca",name:"Salamanca"},
+    {key:"la_coruna",name:"A Coruña"},{key:"leon",name:"León"},
+    {key:"san_sebastian",name:"San Sebastián"},
+    {key:"santiago_de_compostela",name:"Santiago"},
+    {key:"cadiz",name:"Cádiz"},{key:"toledo",name:"Toledo"}
+  ];
+
+  function buildList(filter){
+    const f = (filter||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    let visible = 0;
+    cityList.innerHTML = CITIES.map((c,i)=>{
+      const cn = c.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+      const match = !f || cn.includes(f);
+      if(match) visible++;
+      return `<li class="${match?'':'hidden'}"><a href="#" data-key="${c.key}" data-name="${c.name}" style="animation-delay:${0.03*visible}s">${c.name}</a></li>`;
+    }).join('');
+    noResults.style.display = visible===0 ? 'block' : 'none';
+  }
+  buildList();
+
+  searchInput.addEventListener('input', ()=>{
+    buildList(searchInput.value);
+  });
+
+  function openOverlay(){
+    document.body.classList.add('ov-open');
+    overlay.classList.add('open');
+    searchInput.value = '';
+    buildList('');
+    setTimeout(()=> searchInput.focus(), 400);
+  }
+  function closeOverlay(){
+    document.body.classList.remove('ov-open');
+    overlay.classList.remove('open');
+  }
+
+  btn.addEventListener('click', openOverlay);
+  closeBtn.addEventListener('click', closeOverlay);
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeOverlay(); });
+
+  // City selection
+  cityList.addEventListener('click', e=>{
+    e.preventDefault();
+    const a = e.target.closest('a');
+    if(!a) return;
+    label.textContent = a.dataset.name;
+    closeOverlay();
+    onCityChange(a.dataset.key, a.dataset.name);
+  });
+
+  /* ============================================
+     LOGICA DE RESULTADOS
+     ============================================ */
+  const resultsSection = document.getElementById('results-section');
+  const resultsGrid = document.getElementById('results-grid');
+  const resultsCount = document.getElementById('results-count');
+  const typeFiltersEl = document.getElementById('type-filters');
+
+  let map = null;
+  let markersByType = [];
+  let activeFilters = new Set();
+  let currentCityLabel = '';
+
+  function ensureMap(){
+    if(map || !window.L) return map;
+    map = L.map('pf-map', { zoomControl: true, attributionControl: true });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    return map;
+  }
+
+  function pfIcon(){
+    return L.divIcon({ className: '', html: '<div class="pf-marker-dot"></div>', iconSize:[14,14], iconAnchor:[7,7] });
+  }
+
+  function renderTypeFilters(data){
+    const typeLabels = window.ARES_PET_FRIENDLY_TYPE_LABEL || {};
+    const typesPresent = [...new Set(data.map(s=>s.tipo))];
+    const TYPE_ORDER = ['veterinario','parque','tienda','peluqueria','adiestrador','alojamiento','protectora','playa_perros','otros'];
+    const ordered = TYPE_ORDER.filter(t=>typesPresent.includes(t));
+    typeFiltersEl.innerHTML = '';
+    activeFilters = new Set();
+
+    const allBtn = document.createElement('button');
+    allBtn.className = 'type-filter active';
+    allBtn.innerHTML = '<span>Todos</span>';
+    allBtn.dataset.type = 'all';
+    typeFiltersEl.appendChild(allBtn);
+
+    ordered.forEach(t=>{
+      const btn = document.createElement('button');
+      btn.className = 'type-filter';
+      btn.innerHTML = `<span>${typeLabels[t] || t}</span>`;
+      btn.dataset.type = t;
+      typeFiltersEl.appendChild(btn);
+    });
+
+    typeFiltersEl.querySelectorAll('.type-filter').forEach(btn=>{
+      btn.addEventListener('click', function(){
+        const t = this.dataset.type;
+        if(t === 'all'){
+          activeFilters = new Set();
+          typeFiltersEl.querySelectorAll('.type-filter').forEach(b=>b.classList.remove('active'));
+          this.classList.add('active');
+        } else {
+          typeFiltersEl.querySelector('.type-filter[data-type="all"]').classList.remove('active');
+          if(activeFilters.has(t)){
+            activeFilters.delete(t);
+            this.classList.remove('active');
+          } else {
+            activeFilters.add(t);
+            this.classList.add('active');
+          }
+          if(activeFilters.size === 0){
+            typeFiltersEl.querySelector('.type-filter[data-type="all"]').classList.add('active');
+          }
+        }
+        applyFilter();
+      });
+    });
+  }
+
+  function applyFilter(){
+    let visibleCount = 0;
+    const showAll = activeFilters.size === 0;
+    markersByType.forEach(({ type, marker, card })=>{
+      const match = showAll || activeFilters.has(type);
+      card.style.display = match ? '' : 'none';
+      if(match){
+        visibleCount++;
+        if(map && !map.hasLayer(marker)) marker.addTo(map);
+      } else if(map && map.hasLayer(marker)){
+        map.removeLayer(marker);
+      }
+    });
+    resultsCount.textContent = `${visibleCount} sitio${visibleCount===1?'':'s'} encontrado${visibleCount===1?'':'s'} en ${currentCityLabel}`;
+  }
+
+  function onCityChange(city, cityLabel){
+    currentCityLabel = cityLabel;
+
+    const data = (window.ARES_PET_FRIENDLY_MOCK && window.ARES_PET_FRIENDLY_MOCK[city]) || [];
+    const typeLabels = window.ARES_PET_FRIENDLY_TYPE_LABEL || {};
+    const center = (window.ARES_PET_FRIENDLY_CITY_CENTER && window.ARES_PET_FRIENDLY_CITY_CENTER[city]) || { lat:40.4168, lng:-3.7038, zoom:12 };
+
+    resultsGrid.innerHTML = '';
+    markersByType.forEach(({ marker })=> map && map.hasLayer(marker) && map.removeLayer(marker));
+    markersByType = [];
+    renderTypeFilters(data);
+
+    resultsSection.classList.add('visible');
+
+    requestAnimationFrame(()=>{
+      ensureMap();
+      if(map){
+        map.setView([center.lat, center.lng], center.zoom);
+        setTimeout(()=> map.invalidateSize(), 50);
+      }
+
+      if(data.length === 0){
+        resultsGrid.innerHTML = '<div class="no-results">Aún no tenemos sitios cargados para esta ciudad. Déjanos tu email abajo y te avisamos.</div>';
+        resultsCount.textContent = `0 sitios encontrados en ${cityLabel}`;
+        return;
+      }
+
+      data.forEach(site=>{
+        const card = document.createElement('div');
+        card.className = 'pf-card';
+        card.innerHTML = `
+          <div class="pf-type">${typeLabels[site.tipo] || site.tipo}</div>
+          <h4>${site.nombre}</h4>
+          <div class="pf-addr">${site.direccion}</div>
+          <div class="pf-pet"><span class="material-symbols-outlined" style="font-size:12px">pets</span> Admite perros</div>
+        `;
+        resultsGrid.appendChild(card);
+
+        let marker = null;
+        if(map && site.lat && site.lng){
+          marker = L.marker([site.lat, site.lng], { icon: pfIcon() }).addTo(map);
+          marker.bindPopup(`<b>${site.nombre}</b><br>${site.direccion}`);
+          marker.on('click', ()=>{
+            document.querySelectorAll('.pf-card').forEach(c=>c.classList.remove('pf-card--active'));
+            card.classList.add('pf-card--active');
+            card.scrollIntoView({ behavior:'smooth', block:'nearest' });
+          });
+          card.addEventListener('click', ()=>{
+            document.querySelectorAll('.pf-card').forEach(c=>c.classList.remove('pf-card--active'));
+            card.classList.add('pf-card--active');
+            map.setView([site.lat, site.lng], Math.max(map.getZoom(), 14), { animate:true });
+            marker.openPopup();
+          });
+        }
+        markersByType.push({ type: site.tipo, marker, card });
+      });
+
+      applyFilter();
+
+      const cards = [...resultsGrid.querySelectorAll('.pf-card')];
+      if(window.gsap){
+        gsap.to(cards, { opacity:1, y:0, duration:0.5, stagger:0.08, ease:'power2.out',
+          onStart: ()=> cards.forEach(c=>c.classList.add('show')) });
+      } else {
+        cards.forEach(c=>c.classList.add('show'));
+      }
+    });
+
+    resultsSection.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+})();
+
+/* ============================================
+   BARRA DE PROGRESO DE SCROLL — mismo id/estilo que landing/index.html
+   ============================================ */
+(function(){
+  const bar = document.getElementById('progress-bar');
+  const nav = document.getElementById('mini-nav');
+  if(!bar) return;
+  function update(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled/max*100) : 0) + '%';
+    // Nav transparente en reposo (mismo patron que #main-nav en landing/index.html):
+    // solo gana fondo opaco tras el pixel 0 para no tapar la barra de progreso.
+    if(nav) nav.classList.toggle('scrolled', scrolled > 20);
+  }
+  document.addEventListener('scroll', update, { passive:true });
+  update();
+})();
+
+/* ============================================
+   INDICADOR DE SCROLL HORIZONTAL (#ticksWrapper) — mismo patron visual que
+   landing/index.html (80 rayitas verticales que se activan de izquierda a
+   derecha). index.html usa Lenis para el calculo de scroll/limit; esta pagina
+   no usa Lenis, asi que se adapta a scroll nativo del navegador.
+   ============================================ */
+(function(){
+  const el = document.getElementById('ticksWrapper');
+  if(!el) return;
+  const inner = document.createElement('div');
+  inner.className = 'ti';
+  el.appendChild(inner);
+  for(let i=0;i<80;i++){
+    const t = document.createElement('div');
+    t.className = 'tick-h';
+    inner.appendChild(t);
+  }
+  const ticks = inner.querySelectorAll('.tick-h');
+  function updateTicks(){
+    const h = document.documentElement;
+    const scroll = h.scrollTop;
+    const limit = h.scrollHeight - h.clientHeight;
+    const active = limit > 0 ? Math.round(scroll/limit*80) : 0;
+    ticks.forEach((t,i)=> t.classList.toggle('active', i<active));
+  }
+  document.addEventListener('scroll', updateTicks, { passive:true });
+  updateTicks();
+})();
+</script>
+<script src="assets/js/mobile-menu.js"></script>
+<script src="assets/js/typewriter.js"></script>
+</body>
+</html>

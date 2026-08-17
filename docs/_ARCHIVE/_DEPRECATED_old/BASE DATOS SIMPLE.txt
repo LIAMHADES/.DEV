@@ -1,0 +1,313 @@
+Diseño de Base de Datos para App de Salud Canina – Informe Técnico
+1. Cálculo del IMC Canino y Rangos Ideales por Raza y Sexo
+
+El Índice de Masa Corporal (IMC) canino se define de forma análoga al humano, relacionando peso y altura. Una fórmula común es:
+IMC_perro=(peso (kg))/((altura a la cruz en metros)^2).
+
+No obstante, no existe un rango universal de IMC válido para todas las razas, ya que la contextura y proporciones varían enormemente[1][2]. Por ello, se han desarrollado valores ideales de IMC específicos por raza y sexo, calibrados con datos veterinarios. Por ejemplo, un Lebrel Afgano (altura ~68 cm, construido esbelto) tiene un peso saludable de ~26 kg, mientras que un Malamute de Alaska de la misma altura puede pesar ~38 kg; el IMC “saludable” del afgano (~56 en unidades del cálculo humano) sería peligrosamente bajo para el Malamute[3][4]. En la práctica, las calculadoras de IMC canino incorporan referencias por raza para evaluar si un valor es bajo, normal o alto[1].
+En la siguiente tabla se muestran ejemplos de rangos de IMC ideales para distintas razas y tamaños, con umbrales de bajo peso y sobrepeso, según datos publicados[5][6]:
+
+Raza (tamaño)	Altura a la cruz	IMC ideal (♂ / ♀)	Bajo peso	Sobrepeso
+Chihuahua (toy)	13–20 cm	0.74–1.19 / 0.74–1.19[7]	< 0.74	> 1.19
+Cocker Spaniel	38–43 cm	1.63–2.12 / 1.63–2.13[8]	< 1.63	> 2.13
+Labrador Retriever	55–62 cm	2.66–3.55 / 2.34–3.25[9]	< 2.34	> 3.55
+Pastor Alemán	56–66 cm	2.50–3.75 / 2.08–3.18[10]	< 2.08	> 3.75
+Gran Danés (gigante)	71–81 cm	4.37–5.84 / 3.67–5.00[11]	< 3.67	> 5.84
+
+Tabla 1. Ejemplos de rangos de IMC canino ideal por raza. El IMC se calcula con peso en kg y altura en metros. Se observa que razas pequeñas manejan valores de IMC más bajos que razas grandes. (Fuente de datos: Hundeo[7][10]).
+Como referencia, un IMC canino dentro del rango “ideal” indica peso saludable, mientras valores superiores sugieren sobrepeso y valores inferiores, bajo peso[12][13]. Por ejemplo, un Chihuahua con IMC >1.19 estaría excedido de peso para su estatura[7], mientras que un Pastor Alemán con IMC <2.08 estaría demasiado delgado[10].
+
+Estimación de grasa corporal: A diferencia del IMC humano, en perros se prefiere evaluar la grasa corporal mediante la puntuación de condición corporal (BCS) visual/palpatoria. Sin embargo, es posible correlacionar aproximadamente la grasa con el peso ideal: un perro se considera obeso cuando pesa ≥30% por encima de su peso ideal (aprox. BCS 9/9) y sobrepeso moderado con ~15–25% de exceso (BCS 6–7/9)[14][15]. En términos de porcentaje de grasa corporal, un perro en condición ideal suele tener alrededor de 15–20% de grasa. Valores de 25–35% indican sobrepeso (exceso de grasa) y por encima de 35% implican obesidad clínica[15][16]. En el otro extremo, un perro muy delgado (BCS 3/9 o menos) podría estar ≥20% por debajo de su peso ideal, con grasa corporal <10%[17].
+
+Nota: El IMC es solo una herramienta complementaria. Los veterinarios recomiendan utilizar el BCS 9 puntos de WSAVA/AAHA para evaluar la condición corporal de forma más precisa[18]. A continuación (sección 5) se detalla el uso de esta escala.
+
+2. Clasificación de Niveles de Actividad por Raza, Edad y Peso
+La actividad física de un perro influye en sus necesidades energéticas y plan de ejercicio recomendado. Podemos clasificar el nivel de actividad en bajo, moderado o alto, considerando factores como raza, edad y complexión:
+	Actividad Baja: Perros principalmente sedentarios, que pasan la mayor parte del día en interiores con poca ejercitación. Suele implicar menos de 
+
+30 minutos diarios de caminata ligera o juego suave (≈ menos de 3 km recorridos al día). Ejemplo: razas braquicéfalas tranquilas o perros ancianos. Requieren menos calorías para mantener peso[19][20].
+	Actividad Moderada: Perros con rutina diaria de ejercicio moderado, como 30–60 minutos diarios de paseo activo o juego, equivalente a ~
+
+2–3 millas (3–5 km) de caminata al día[21]. Incluye la mayoría de perros adultos sanos (razas medianas) con uno o dos paseos diarios y algo de juego. Sus necesidades calóricas son balanceadas, acorde a un gasto energético medio[22].
+	Actividad Alta: Perros muy activos o de trabajo, involucrados en ejercicio vigoroso sostenido. Pueden realizar más de 60 minutos diarios de ejercicio intenso (correr, agility, pastoreo, etc.), superando los 5 km diarios fácilmente[23]. Ejemplo: perros deportistas, de pastoreo (Border Collie, Pastor Belga) o de tiro. Requieren una ingesta calórica significativamente mayor para sostener su gasto energético[23].
+Además de la duración, la intensidad del ejercicio importa. Por ejemplo, 30 minutos de trote generan más gasto que 30 minutos de paseo[24]. En la práctica, se combinan ambos factores: un perro con
+
+“2 horas diarias” de ejercicio suave puede considerarse moderadamente activo, mientras que “2 horas de ejercicio intenso” lo ubican en actividad alta.
+Influencia de la raza y el tamaño: La genética determina en parte los niveles de energía. Razas de trabajo o caza (ej. Border Collie, Labrador) tienden a necesitar más ejercicio (si no, desarrollan conductas destructivas por energía acumulada), mientras razas pequeñas de compañía (ej. Shih Tzu, Chihuahua) suelen satisfacerse con menos actividad. Las razas gigantes (Gran Danés, Mastín) requieren ejercicio diario, pero no en exceso – típicamente ~45 min a 1 hora de ejercicio moderado – para evitar sobrecargar las articulaciones[25][26]. En cambio, razas pequeñas pueden con 30 minutos diarios y juegos cortos en casa[27].
+Influencia de la edad: Los cachorros necesitan actividad distribuida en múltiples sesiones cortas (juegos frecuentes) y no deben forzar sus articulaciones en desarrollo[26]. Los adultos jóvenes son los más activos. Perros seniors reducen su nivel de actividad; se recomienda ~30 minutos de ejercicio ligero (paseos suaves, natación) para mantener movilidad sin agotarlos[28]. Perros geriátricos o con problemas articulares requieren ejercicios de bajo impacto.
+Estimación del gasto calórico por ejercicio: De forma aproximada, un perro quema ~1,0–1,1 kcal por kg de peso corporal por cada kilómetro recorrido al caminar a ritmo ágil[29][30]. Esto equivale a ~0,8 kcal por libra por milla en unidades imperiales[31]. Por ejemplo, un perro de 30 kg gastaría ~30 kcal por km caminando[30], independientemente de si lo hace trotando o andando (las diferencias de eficiencia por velocidad son menores). Así, una caminata de 5 km podría consumir ~150 kcal en un perro de 30 kg. En general, cubrir 5 km diarios aumenta el requerimiento energético en ~7–15% sobre el mantenimiento[32]. Actividades más vigorosas elevan más el gasto: correr, jugar a la pelota o agility implican un consumo calórico mayor por minuto que caminar.
+
+Para calcular de forma personalizada, la app puede usar fórmulas basadas en la masa del perro y la distancia/tiempo de actividad. P. ej., correr 1 km puede gastar similar que caminar 1 km, pero en menos tiempo (más intensidad). Por ello, conviene registrar tanto distancia como tipo de actividad (paseo, carrera, juego, natación) para estimar calorías. Algunas referencias de gasto (para un perro ~20–25 kg): paseo 30 min = ~50–100 kcal; trote suave 30 min = ~150 kcal; carrera intensa 30 min = ~250+ kcal[33]. Estos son valores promedio; el consumo real variará según peso y condición física.
+Ejercicio y raza: Hay que adaptar el plan de actividad al perro. Perros braquicéfalos (Bulldog, Carlino) no deben hacer ejercicio intenso con calor por riesgo de golpe de calor. Perros nórdicos (Husky, Malamute) pueden ejercitar más en clima frío pero sorprendentemente tienen metabolismo eficiente (suelen requerir menos comida por kg que otras razas de similar tamaño)[34]. La app puede sugerir niveles de ejercicio acordes a la raza: ej. un Beagle (activo, propenso a obesidad) necesita al menos 1 h diaria moderada, mientras un Bulldog con 30 min puede ser suficiente, complementando con juegos mentales.
+
+
+3. Parámetros Fisiológicos Saludables según Raza/Tamaño y Condiciones Ambientales
+En esta sección se detallan constantes vitales normales de los perros y su tolerancia a factores ambientales, con particularidades por tamaño o raza.
+Constantes fisiológicas normales: Un perro sano en reposo presenta una temperatura corporal interna alrededor de 38–39 °C (promedio ~38,9 °C)[35]. La frecuencia respiratoria basal típica va de 15 a 30 respiraciones por minuto[36][37], pudiendo llegar hasta ~40 rpm en razas muy pequeñas o cachorros, y ~10–15 rpm en perros grandes dormidos. La frecuencia cardíaca en reposo oscila entre 60–160 latidos/min (razas pequeñas tienden al extremo superior, razas gigantes al inferior)[38]. Estas variaciones se deben a la relación superficie corporal/masa y al metabolismo: los perros pequeños y jóvenes tienen metabolismo más rápido y corazón más acelerado, respirando algo más deprisa que los perros de mayor tamaño[39].
+Ejemplos: Un Chihuahua puede tener pulso ~140 ppm y 30 rpm respiratorias en reposo, mientras un Gran Danés adulto puede marcar 60–80 ppm y 15 rpm, todo dentro de la normalidad. Valores en alerta: Más de ~40–50 respiraciones/min en reposo indican polipnea (posible dolor, estrés o problema respiratorio)[40][41]. La temperatura sobre 39.5 °C indica febrícula/fiebre leve, y ≥41 °C fiebre alta peligrosa; por debajo de ~37 °C, hipotermia.
+Tolerancia térmica por raza/tamaño: Los perros regulan su temperatura principalmente jadeando (no sudan significativamente), por lo que temperaturas ambientales extremas pueden ser riesgosas. En general, temperaturas templadas entre ~5 °C y 23 °C son seguras para la mayoría de perros[42][43], pero fuera de ese rango se incrementa el riesgo:
+	Calor: Por encima de ~25–29 °C, muchos perros pueden mostrar signos de estrés térmico, especialmente si hacen ejercicio[44]. Entre 29–35 °C se considera alto riesgo de sobrecalentamiento[45], y sobre 35 °C el ambiente es peligroso – puede precipitar un golpe de calor en minutos[45][46]. Factores como humedad elevada agravan el riesgo al dificultar la evaporación del jadeo[47]. Razas braquicéfalas (Bulldog, Bóxer, Pug) son extremadamente vulnerables al calor aun a temperaturas moderadas (≥25 °C) porque sus vías respiratorias reducidas limitan la disipación de calor[48]. Perros obesos también sufren más calor, pues la grasa actúa como aislante[49]. En días calurosos, se recomienda ejercicio solo en horas frescas (mañana temprano o noche)[50], disponibilidad de agua/sombra, y vigilar signos de jadeo excesivo, debilidad, o mucosas rojas, que indican sobrecalentamiento.
+	Frío: Por debajo de 0 °C, especialmente con viento o humedad, los perros pueden perder calor corporal rápidamente. Los perros de pelaje denso y subcapa (Husky, Pastor Alemán) toleran mejor bajas temperaturas, mientras que razas de pelo corto o ejemplares de talla muy pequeña (ej. Chihuahua) pierden calor antes y pueden requerir abrigo. Se considera que entre 1 °C y 7 °C no hay riesgo significativo para la mayoría[42], pero por debajo de -4 °C puede haber riesgo de hipotermia para razas sensibles o perros mojados. Una temperatura central <37.2 °C ya supone hipotermia leve[51]. Síntomas de enfriamiento incluyen temblores intensos, letargo, respiración lenta, rigidez muscular y encías pálidas[52][53]. Cachorros, seniors y perros enfermos son menos tolerantes al frío[54]. Se aconseja en invierno limitar estancias prolongadas bajo 0 °C, usar ropa de abrigo en perros pequeños o de pelo corto[55], proteger las patas del hielo/nieve (botitas)[56] y ofrecer refugio seco.
+Patas y superficies calientes: Un aspecto crítico en verano es la temperatura del suelo (asfalto, arena). El pavimento puede estar 10–20 °C por encima de la temperatura del aire bajo sol directo[57]. Así, con 30 °C de ambiente el asfalto oscuro puede superar 50 °C. A 50 °C, las almohadillas plantares pueden quemarse en ≤5 minutos[58]; a 60 °C, en <1 minuto[58][59]. De hecho, en días muy calurosos se han medido aceras >65 °C[60]. Una regla práctica: “si no puedes mantener tu mano sobre el suelo caliente por 7 segundos, está demasiado caliente para tu perro”[61]. Es fundamental evitar paseos en horas de asfalto candente (mediodía/siesta); mejor temprano o al atardecer[50]. De tener que salir, hacerlo por sombras o césped para prevenir lesiones. Síntomas de quemadura en patas: cojera, lamido excesivo de almohadillas, piel enrojecida o con ampollas[62].
+Sensibilidad individual y adaptación: Algunos perros se aclimatan parcialmente: por ejemplo, un perro acostumbrado al exterior en verano tolerará algo mejor el calor que uno que siempre está en aire acondicionado[63]. Aún así, todos necesitan precaución en condiciones extremas. La base de datos deberá contemplar atributos como “braquicéfalo (sí/no)”, “capa densa (sí/no)” o categoría de tamaño, para que la app pueda dar recomendaciones específicas (ej. “tu Bulldog no debe ejercitarse con >25 °C; riesgo de golpe de calor[48]”).
+En resumen, parametrizar la salud ambiental implica definir para cada perro: rango de temperatura segura, umbral de alerta por calor o frío, y variables como humedad o altitud. La app integrará datos climáticos (p.ej. mediante API del tiempo) y características del perro para alertar al dueño: “Riesgo: 32 °C – paseo solo muy corto y con agua disponible” o “5 °C y cachorro pequeño – usar abrigo y limitar exposición”. Estos umbrales y factores se almacenarán en la base de datos por categoría de perro.
+
+
+4. Guías de Nutrición Canina según Peso, Edad, Estado y Actividad
+La nutrición adecuada de un perro depende de su peso, etapa de la vida, nivel de actividad y condiciones especiales (condición corporal, enfermedades). A continuación se presentan lineamientos respaldados por organizaciones veterinarias (WSAVA, AAHA, NRC) para garantizar una dieta equilibrada.
+
+4.1 Requerimientos Energéticos y Macronutrientes Esenciales
+Calorías diarias (DER): Se calcula típicamente en dos pasos: primero el Requerimiento Energético en Reposo (RER), y luego se multiplica por factores según el perfil del perro (mantenimiento, crecimiento, etc.). Una fórmula válida para RER es:
+RER (kcal/día)=70×(peso corporal en kg)^0.75,
+que es aplicable a perros de cualquier tamaño[64]. Simplificadamente, para perros de 2–45 kg puede usarse RER ≈ 30 × peso(kg) + 70[65] (teniendo precaución de no sobreestimar en pesos extremos).
+Luego, el Requerimiento Energético Diario (DER) para mantenimiento se estima multiplicando el RER por un factor dependiente del estado fisiológico[66]. Según WSAVA/AAFCO[67][68]:
+	Perro adulto intacto (no esterilizado): 1.8 × RER[67].
+	Perro esterilizado o menos activo: 1.6 × RER[69].
+	Perro con tendencia a obesidad (muy sedentario, razas predispuestas): 1.3–1.4 × RER[70].
+	Cachorro en crecimiento:
+	<4 meses: 3 × RER (alto requerimiento por crecimiento acelerado)[68].
+	4 meses hasta adulto joven: 2 × RER[71].
+	Perras gestantes/lactantes: al final de la gestación y sobre todo lactancia, las necesidades se multiplican por 2 a 4× RER (dependiendo del número de cachorros).
+	Perros de trabajo/deporte: varía con la intensidad: puede ser 2–5 × RER en trabajo extremo (ej. perros de trineo)[72].
+Estos factores son puntos de partida; en la realidad individual, un perro puede necesitar un 20–30% más o menos calorías según su metabolismo y ambiente[73]. Por eso, se recomienda monitorear el peso y ajustar.
+Macronutrientes esenciales: Los perros, como omnívoros, requieren en su dieta proteínas, grasas (fuente de ácidos grasos esenciales) y idealmente fibra y carbohidratos (aunque estos últimos no son estrictamente “esenciales” si hay suficientes proteínas/grasas)[74][75]. Las guías AAFCO/NRC establecen mínimos nutritivos:
+
+	Proteína: mínimo 18% de la materia seca en dietas de mantenimiento para adultos[76] (equivalente a ~45 g de proteína por cada 1000 kcal de alimento[77]). Para cachorros y madres lactantes, mínimo 22.5% MS[78] (~56 g/1000 kcal). Estas cantidades aseguran aporte suficiente de aminoácidos esenciales (10 aminoácidos que el perro no sintetiza). En la práctica, muchos alimentos superan estos mínimos (piensos adultos suelen llevar 20–30% proteína). Proteínas de alto valor biológico (huevo, carnes magras) aportan mejor perfil de aminoácidos[79]. Ejemplo: un perro de 20 kg (~RER 662 kcal) necesita ~30 g de proteína mínima al día (lo cual suele cubrirse con ~120 g de pienso de 25% proteína).
+
+	Grasas: fuente concentrada de energía (9 kcal/g) y de ácidos grasos esenciales (AGE) omega-6 y omega-3. AAFCO recomienda mínimo 5.5% de grasa en adultos y 8.5% en crecimiento (MS). Muchos alimentos adultos tienen 10–15% grasa[80], cachorros 8–20%[80]. La grasa dietética proporciona ácido linoleico (omega-6, esencial) y en alimentos de calidad también algo de EPA/DHA (omega-3). Deficiencias de AGE son raras con piensos comerciales completos, pero se manifestarían como pelaje seco, lesiones cutáneas, problemas reproductivos[81]. Se debe equilibrar proteína y grasa según densidad energética: dietas muy energéticas deben tener suficiente proteína para evitar que se “queme” proteína como energía[82].
+
+	Carbohidratos y Fibra: Los CH no son estrictamente requeridos porque perros pueden obtener glucosa de gluconeogénesis, pero son beneficiosos en dietas comerciales. Almidones bien cocidos (arroz, maíz, patata) se digieren >90%[83] y aportan energía utilizable, preservando proteína para sus funciones. En situaciones de alta demanda (gestación, lactación, crecimiento) se recomienda que al menos 20–30% de la energía provenga de carbohidratos[84] para prevenir cetosis y optimizar rendimiento reproductivo. La fibra dietética contribuye a la salud digestiva: no se considera “nutriente esencial”, pero cierto nivel mejora la consistencia fecal y la saciedad. Las fibras solubles fermentables producen ácidos grasos de cadena corta beneficiosos para la mucosa intestinal[85]. Dietas altas en fibra (ej. para diabetes u obesidad) ayudan a reducir picos de glucosa y aportan volumen con menos calorías[86][87], aunque un exceso puede disminuir la absorción de nutrientes[88].
+
+	Vitaminas y minerales: Son esenciales en cantidades pequeñas. Un pienso completo ya contiene el balance de vitaminas (A, D, E, K, C (no estrictamente esencial), complejo B) y minerales (Ca, P, K, Na, etc.) según perfiles AAFCO. Destacan: calcio y fósforo (especial atención en razas grandes cachorros – proporción Ca/P controlada ~1.2:1 para evitar problemas óseos de crecimiento). Hierro, zinc, etc., también son vitales. La base de datos puede incluir un submódulo de nutrientes, aunque para el usuario final es más práctico enfocarse en porciones y calidad del alimento.
+Recomendaciones generales de dieta: Un perro adulto medio requiere ~110 kcal metabolizables por kg^{0.75} (que es RER) × factor actividad. En términos prácticos: un perro de 10 kg moderado precisa ~400–500 kcal/día; uno de 25 kg ~1000–1100 kcal/día. Esto se traduce en la cantidad de alimento según la densidad calórica del producto (indicada en el paquete). La app, con el peso del perro y nivel de actividad, calculará el DER y sugerirá la ración en gramos (si el usuario ingresa los datos nutricionales de su comida, o elige de una base de datos de alimentos comerciales).
+
+4.2 Ajustes Dietéticos para Sobrepeso y Patologías
+Manejo del sobrepeso/obesidad: Si un perro excede su peso ideal (p.ej. BCS 7/9 o superior), se debe instaurar un plan de adelgazamiento. Clínicamente, se recomienda calcular sus necesidades calóricas usando el peso ideal en la fórmula RER (no el peso actual)[89], y en general alimentar con un 20% menos de calorías de las de mantenimiento para ese peso (aprox. 0.8 × RER ideal)[90]. Por ejemplo, un perro que debería pesar 20 kg (RER≈662 kcal) podría iniciar con ~1.0×RER = 660 kcal/día para perder peso gradualmente, ajustando según respuesta. Es crucial que la dieta sea densa en nutrientes pero reducida en energía: por eso los piensos “light” tienen menos grasa y más fibra, permitiendo dar un volumen mayor de alimento con menos calorías[91][92]. La pérdida de peso segura es ~1-2% del peso por semana. La base de datos podría almacenar en la ficha del perro su peso objetivo y calcular automáticamente el déficit calórico necesario.
+Estados fisiológicos especiales:
+
+	Perras gestantes/lactantes: aumentar gradualmente la ración en último tercio de gestación (hasta 1.3 × mantenimiento) y mucho más en lactancia (2–4 × mantenimiento según número de cachorros). Preferir alimentos formulados para cachorro/reproducción, que tienen proteína ≥22% y grasa ≥8% para cubrir demandas[78].
+
+	Perros sénior: con la edad suele disminuir el gasto (~20% menos calorías requeridas >7 años)[93]. Muchos seniors son menos activos, pero otros pueden perder masa muscular. Se suele recomendar proteína relativamente alta (para contrarrestar sarcopenia) pero control de calorías para evitar obesidad. También se ajusta minerales: fósforo moderado para riñón, y añadidos condroprotectores en dietas senior.
+Patologías y nutrición clínica: Diversas enfermedades requieren ajustes en la dieta:
+
+	Obesidad: ya cubierto – dieta hipocalórica, alta fibra, supervisar BCS.
+
+	Diabetes mellitus: dieta alta en fibra soluble y carbohidratos complejos para estabilizar la glucemia postprandial[86]. Fraccionar comida en porciones regulares junto con insulina. Evitar azúcares simples.
+
+	Enfermedad renal crónica: dieta restringida en fósforo y proteína, aunque suficiente proteína de alta calidad para evitar desnutrición. Piensos renales típicamente ~14-18% proteína y fósforo <0.6% MS. Añadir ácidos grasos omega-3 ayuda a ralentizar el daño renal.
+
+	Enfermedad hepática: moderar proteína (pero no eliminar), alto contenido de carbohidratos de fácil digestión, limitar cobre (en ciertas hepatopatías), suplementar antioxidantes (vitamina E, zinc). Usar proteínas de alta biodisponibilidad (lácteo, soja, huevo) para reducir residuos nitrogenados.
+
+	Pancreatitis o hiperlipidemia: dieta muy baja en grasas (<10% MS) para evitar sobrecarga del páncreas. Alimentación en pequeñas tomas frecuentes.
+
+	Alergias alimentarias: utilizar dietas de proteína novel (nueva) que el perro no haya consumido antes (ej. cordero, pescado exótico) o dietas de proteína hidrolizada (fragmentada para no desencadenar reacción inmune). Estas dietas también suelen ser monoproteicas y con carbohidratos únicos (arroz, patata).
+
+	Artritis/articulaciones: suplementar con omega-3 (EPA/DHA) en cantidad elevada, condroitina, glucosamina. Mantener peso óptimo es clave para reducir carga articular. Algunas dietas comerciales “Joint support” incorporan estos elementos.
+
+	Insuficiencia cardíaca: dietas bajas en sodio para prevenir retención de líquidos, ricas en taurina, carnitina (sobre todo en razas predispuestas a miocardiopatía).
+Estos son solo ejemplos. La base de datos nutricional puede incluir un listado de “condiciones” con recomendaciones asociadas, de manera que el perfil del perro (campos booleanos o una lista de diagnósticos) active consejos específicos. Por ejemplo, marcar “tendencia a cálculos urinarios” podría sugerir dietas urinarias con control de minerales, etc.
+
+
+4.3 Alimentos Prohibidos y Tóxicos para Perros (y razones)
+Es fundamental educar al usuario sobre qué alimentos humanos no deben ingerir los perros, ya que algunos causan intoxicaciones graves. La base de datos contendrá una tabla de “Alimentos prohibidos” con la explicación de su toxicidad. A continuación, los principales:
+
+	Chocolate (cacao): Contiene teobromina, un alcaloide similar a la cafeína que los perros no metabolizan eficientemente. Tóxico desde 20 mg/kg; en chocolates negros 25 g pueden enfermar a un perro de 20 kg[94]. Provoca hiperactividad, vómitos, diarrea, taquicardia, arritmias, temblores y convulsiones[95][96]. En dosis altas, puede causar fallo cardíaco y muerte súbita. Nunca dar chocolate, y extremar cuidado en épocas festivas.
+
+	Uvas y pasas: Pueden desencadenar fallo renal agudo en perros. Incluso pocas uvas/pasas pueden ser peligrosas; el mecanismo tóxico aún no se identifica por completo[97]. Síntomas: vómitos, diarrea, letargo, falta de apetito y, a las 24-72 h, signos de insuficiencia renal (ausencia de orina, letargo profundo)[98][99]. No existe antídoto, se debe inducir vómito y administrar fluidos rápidamente si hay ingestión.
+
+	Cebolla, ajo y otros Allium (cebollino, puerro): Contienen tiosulfatos y compuestos organosulfurados que destruyen los glóbulos rojos causando anemia hemolítica[100]. Tanto crudos como cocidos o en polvo son peligrosos. El ajo en dosis bajas ocasionales probablemente no cause daño inmediato, pero dosis acumuladas sí pueden[101]. Síntomas de intoxicación aparecen días después: decaimiento, mucosas pálidas, orina rojiza, taquicardia, hiperventilación[102]. Evitar restos de comida condimentada con cebolla/ajo.
+
+	Xilitol (edulcorante): Presente en chicles sin azúcar, caramelos “light”, mantequillas de maní dietéticas, ciertos postres y dentífricos. En perros provoca una liberación masiva de insulina, resultando en hipoglucemia fulminante (bajada de azúcar) en 10-60 min tras ingestión[103][104]. También puede causar necrosis hepática aguda. Incluso pequeñas cantidades (≥50–100 mg de xilitol por kg, es decir un solo chicle en un perro pequeño) pueden ser letales si no se trata[105]. Síntomas: vómitos, debilidad, tambaleos, convulsiones y coma[106]. Emergencia veterinaria inmediata; no inducir vómito en casa sin indicación.
+
+	Alcohol y cafeína: Los perros no deben consumir bebidas alcohólicas (cerveza, vino, licores) ni café, té o refrescos cafeinados. El etanol afecta rápidamente causándoles depresión del SNC, incoordinación, vómitos, hipotermia, posible coma[107]. La dosis tóxica es mucho menor que en humanos dado su menor tamaño. La cafeína (en granos de café, posos, bebidas energéticas) puede provocar taquicardia severa, hipertensión, arritmias, temblores y convulsiones similares a la teobromina[108][109]. Mantener fuera de alcance cualquier producto con cafeína o alcohol.
+
+	Aguacate: La pulpa en sí no es altamente tóxica y en pequeñas cantidades no suele hacer daño; sin embargo, la cáscara, hojas y semilla contienen persina, fungicida tóxico para muchos animales. En perros puede ocasionar gastroenteritis (vómitos, diarrea)[110][111]. Además, el hueso presenta peligro de atragantamiento u obstrucción intestinal[111]. Mejor evitar que ingieran partes del aguacate.
+
+	Nueces de Macadamia: Altamente tóxicas para perros (mecanismo desconocido). Ingestión de ~2 g/kg puede provocar debilidad, temblores, fiebre, vómitos, ataxia y temblores en 3-12 h. No suelen ser mortales pero causan varios días de malestar. Otras nueces (nueces comunes, pecanas) no son venenosas pero ricas en grasa – pueden causar pancreatitis si se consumen en exceso; conviene evitarlas.
+
+	Otros alimentos peligrosos: Tomate verde y partes de la planta de tomate (contiene solanina, causa problemas digestivos y cardíacos)[112]; setas silvestres (algunas son mortales para perros igual que para humanos); huesos cocidos (no tóxicos químicamente pero astillas peligrosas que pueden perforar tracto digestivo); masa de levadura cruda (fermenta en el estómago produciendo gas y etanol, riesgo de bloat y toxicidad alcohólica[113][114]).
+La tabla de alimentos prohibidos en la base de datos incluirá estos y más, con columnas: alimento, principio tóxico y efectos/síntomas, permitiendo a la app advertir al usuario. Por ejemplo, si intenta registrar “premio de chocolate” la app podría alertar: “¡Cuidado! El chocolate contiene teobromina que puede provocar taquicardia y convulsiones en perros[96]. Usa alternativas seguras para premio.”
+
+
+5. Evaluación de la Condición Corporal y Cálculo del Gasto Calórico en Ejercicio
+En esta sección integramos mediciones y escalas corporales (como BCS e IMC) con las estimaciones de gasto energético por actividad, para personalizar objetivos de salud.
+
+
+5.1 Escalas de Condición Corporal (BCS) y Estado Nutricional
+La Puntuación de Condición Corporal (Body Condition Score, BCS) es la herramienta estándar recomendada por WSAVA/AAHA para evaluar la gordura o delgadez de la mascota de forma visual y táctil[18]. Se utiliza una escala de 9 puntos (a veces 5 puntos en algunas clínicas, pero la de 9 es más detallada):
+
+	BCS 1/9 – Caquéctico: Emaciación severa; costillas, vértebras, pelvis muy prominentes desde lejos; ausencia total de grasa corporal; pérdida marcada de masa muscular[115].
+
+	BCS 2/9 – Muy delgado: Costillas y huesos fácilmente visibles; muy poca grasa; ligera pérdida de masa muscular.
+
+	BCS 3/9 – Delgado: Costillas visibles a simple vista; cintura marcada visto desde arriba; abdomen muy recogido (vientre hundido)[116]. (Equivalente a ~20–30% por debajo del peso ideal[117]).
+
+	BCS 4/9 – Peso ligeramente bajo/ideal bajo: Costillas palpables con mínima capa de grasa; cintura evidente desde arriba; abdomen recogido apreciable.
+
+	BCS 5/9 – Ideal*:* Costillas no** visibles pero palpables fácilmente con leve capa de grasa[116]. Cintura bien definida visto dorsalmente; pliegue abdominal (tuck) presente. Corresponde al porcentaje de grasa corporal óptimo (~20%)[118].
+
+	BCS 6/9 – Ideal alto / ligeramente sobrepeso: Costillas palpables con algo más de dificultad por cobertura moderada de grasa; cintura discernible pero no prominente[119]. Puede haber ligera almohadilla de grasa en abdomen. (5–15% por encima del peso ideal).
+
+	BCS 7/9 – Sobrepeso: Costillas difícilmente palpables bajo grasa abundante; cintura poco visible o ausente; evidente ensanchamiento del tronco. Depósitos de grasa en zona lumbar y base de cola[14]. Equivale a ~15–25% sobre el peso ideal (sobrepeso)[15].
+
+	BCS 8/9 – Obeso: Costillas no palpables bajo gruesa capa de grasa; acumulación notable de grasa en abdomen (no hay tuck, el vientre cuelga); puede haber depósitos grasos en cuello, tórax y lumbar. El perro tiene forma ovalada visto desde arriba. (≈30–40% sobrepeso)[14].
+
+	BCS 9/9 – Obesidad severa: Volumen corporal muy por encima de lo saludable; grandes depósitos de grasa en pecho, columna, base de cola; abdomen péndulo con depósitos de grasa; ninguna cintura visible[116]. Suele corresponder a >40% de exceso de peso (grasa corporal > ~35%)[15]. Riesgo alto de comorbilidades (diabetes, problemas ortopédicos, cardiacos).
+La app utilizará esta escala para registrar la condición corporal en los chequeos (idealmente con foto y evaluación del dueño/veterinario). Integración con datos: Si el perro tiene BCS≥7, la app lo marca como “sobrepeso” y activa el modo de plan de adelgazamiento (calcula peso ideal, ajusta calorías objetivo, sugiere más ejercicio). Si BCS≤3, alerta de posible infrapeso/enfermedad y recomendará revisión veterinaria. La tabla BCS en la base de datos contendrá: puntaje, descripción y quizás % estimado sobre/sub peso para cálculos.
+Por ejemplo, un perro de 30 kg con BCS 7 (≈20% sobrepeso) tiene peso ideal ~25 kg; la app puede calcular eso y redefinir objetivos.
+
+
+5.2 Cálculo del Gasto Calórico por Ejercicio y Actividad
+Ya en la sección 2 se dieron fórmulas y valores de ejemplo para calorías gastadas en distintas actividades. Aquí se resumen en forma de integración práctica:
+Para cada sesión de actividad registrada (p.ej. por el GPS GF-07, obtenemos distancia recorrida, tiempo y quizás velocidad), la app calculará calorías quemadas usando fórmulas basadas en peso del perro. La más sencilla:
+
+	Modelo por distancia: kcal quemadas ≈ 1.0 × peso(kg) × distancia(km)[30] (válido para andar/trotar). Si la intensidad es mayor (correr rápido, jugar vigoroso), podría incrementarse a ~1.5 × peso × km equivalente.
+
+	Modelo por tiempo e intensidad: asignar un MET (equivalente metabólico) a la actividad. Ej: paseo tranquilo = 2 MET, trote = 4 MET, correr = 6 MET, etc., donde 1 MET ~ RER del perro. Luego kcal = MET × RER × (tiempo horas). Por ejemplo, un perro de 20 kg (RER~480 kcal) corriendo 0.5 h a 6 MET gastaría ~6×480×0.5 = 1440 kcal/h ×0.5 = 720 kcal (esta cifra en realidad es alta; seguramente sobrestima respecto al modelo previo, lo cual indica que habría que ajustar MET reales para perros).
+Una aproximación comprobada: perro de 45 kg caminar 3 millas (~4.8 km) quema ~240 kcal[29]. Esto concuerda con 1.1 kcal/kg/km: 45×4.8×1.1 ≈ 238 kcal. Y perro de 30 kg por 1 km ≈30 kcal[30]. Con estos datos, la app puede calcular en tiempo real las calorías de la ruta del día.
+Estos datos de gasto se integran con la ingesta calórica: el Medidor de Actividad Diaria (ver sección del archivo del perfil del proyecto) sumará las kcal gastadas y comparará contra las consumidas para ayudar al dueño a entender si el perro está en balance, déficit (bajará de peso) o superávit (subirá de peso).
+
+
+5.3 Integración de Datos y Objetivos Personalizados
+Finalmente, el sistema combinará toda la información (perfil del perro, BCS, actividad, nutrición) para proponer objetivos de salud personalizados:
+
+	Peso objetivo: A partir de la raza (peso típico) o BCS (estimación de exceso), la app define el peso ideal. Ej: “Peso ideal estimado: 25 kg” para un perro actualmente de 30 kg con BCS 7. Este dato se guarda en la BD en el perfil del perro.
+
+	Calorías objetivo diarias: calculadas según el objetivo (pérdida, mantenimiento o ganancia de peso) usando DER ajustado. Ej: “Plan de adelgazamiento: 1200 kcal/día” en vez de 1500 de mantenimiento, para un perro grande obeso.
+
+	Plan de alimentación: La app puede sugerir porciones (si el usuario selecciona qué marca de alimento utiliza, podría tener en la BD la densidad kcal/cup). O bien recomendar porcentajes de macronutrientes en caso de dietas caseras, con referencia a guías (ej. ~30% proteína, 15% grasa para adelgazar, alta fibra).
+
+	Plan de ejercicio: Basado en la clasificación de actividad (sección 2) y estado del perro. Si está obeso y con baja actividad, se propondrá aumentar gradualmente la duración de paseos un X% cada semana hasta alcanzar el nivel recomendado para su raza/edad. La app puede notificar: “Objetivo: 40 min de paseo diarios (actualmente promedias 20 min)”. También tiene en cuenta clima: no pedirá 40 min seguidos a las 2 pm en verano; sugerirá repartir o buscar horas frescas.
+
+	Seguimiento y ajustes: Cada semana o quincena, el usuario puede pesar al perro y registrar BCS aproximado. La app actualizará la tasa de cambio y ajustará calorías si el perro no está bajando/subiendo según lo esperado. Esto corresponde a un bucle de realimentación: las fórmulas dan inicio, pero se adaptan al individuo[73].
+
+	Otras metas personalizadas: Por ejemplo, perros deportistas – la app puede fijar objetivos de distancia o velocidad (ej. “correr 5 km en 30 min” si el dueño entrena canicross). O perros con patologías – objetivos como “reducir proteína a X g/día” en un perro renal, o “tomar 5 litros de agua al día” en un perro urológico. Estos objetivos se basan en datos de la BD (p. ej., necesidades hídricas ~60 ml/kg[120], ajustado si hay cálculos urinarios).
+En resumen, el sistema de base de datos almacenará: datos estáticos de referencia (tablas de razas, factores nutricionales, alimentos tóxicos, etc.) y datos dinámicos por perro (perfil, históricos de peso/BCS, ingestión y ejercicio). Esto permitirá generar recomendaciones informadas y personalizadas científicamente para cada mascota.
+
+
+6. Propuesta de Diseño de Base de Datos Relacional
+Finalmente, se presenta una estructura de tablas para implementar los datos recopilados en un esquema relacional. Estas tablas permiten almacenar la información necesaria para las funcionalidades descritas:
+
+	Tabla Razas (breeds): Contiene una entrada por raza canina con sus parámetros característicos.
+
+	Campos principales: RazaID (PK), nombre_raza, tamano_categoria (toy/pequeño/mediano/grande/gigante), altura_macho_min, altura_macho_max, altura_hembra_min, altura_hembra_max (cm), IMC_ideal_macho_min, IMC_ideal_macho_max, IMC_ideal_hembra_min, IMC_ideal_hembra_max, IMC_umbral_bajopeso, IMC_umbral_sobrepeso.
+
+	Ejemplo de fila: RazaID=101, nombre_raza="Labrador Retriever", tamano="mediano-grande", altura_macho_min=57, altura_macho_max=62, IMC_ideal_macho=2.66–3.55[9], IMC_ideal_hembra=2.34–3.25, IMC_umbral_bajopeso=2.34, IMC_umbral_sobrepeso=3.55.
+
+	(Opcionalmente se puede agregar un campo booleano es_braquicefalo para marcar razas de hocico chato, y campos de longevidad promedio, etc.)
+
+	Tabla CategoriasTamano (size_categories): Define datos generales por tamaño corporal.
+
+	Campos: categoria (toy, pequeño, mediano, grande, gigante), peso_aprox_min/max (kg), FC_en_reposo (rango lat/min), FR_en_reposo (rango resp/min), temp_normal_min, temp_normal_max (°C), riesgo_calor (umbral °C alto riesgo), riesgo_frio (umbral °C bajo riesgo).
+
+	Ej.: categoría="gigante", peso_aprox>50 kg, FC=60-100, FR=10-20, temp_normal=37.5-39.0, riesgo_calor=25 °C, riesgo_frio=-5 °C (perros gigantes toleran frío más que calor).
+
+	Esto ayuda a la app a determinar alertas según tamaño (p. ej., un Chihuahua vs un Gran Danés ante 0 °C tendrán salidas diferentes).
+
+	Tabla NivelActividad (activity_levels): Establece la clasificación de actividad.
+
+	Campos: nivel (baja, moderada, alta), descripcion (texto resumen), minutos_moderado (por día estimados), minutos_vigoroso, distancia_diaria_aprox.
+
+	Ej.: nivel="Moderada", descripcion="Ejercicio diario de 30-60 min, incluyendo paseos y juego activo", minutos_moderado=45, minutos_vigoroso=15, distancia=3 km.
+
+	La app puede usar esta tabla para guiar recomendaciones y calcular factores de DER (p. ej. podría mapear baja->1.2×RER, moderada->1.6×RER, alta->2.0×RER, o directamente usar los factores de la tabla de requerimientos).
+
+	Tabla FactoresEnergeticos (energy_requirements): Lista los factores multiplicativos para RER según estado fisiológico.
+
+	Campos: condicion (texto: ej. "Adulto esterilizado", "Adulto entero", "Obeso propenso", "Cachorro <4m", "Cachorro >4m", "Trabajo intenso"), factor_RER.
+
+	Ej.: ("Adulto entero", 1.8), ("Adulto esterilizado", 1.6), ("Obeso_prone", 1.4), ("Cachorro<4m", 3.0), ("Cachorro>4m", 2.0), ("Trabajo_ligero", 2.0), ("Trabajo_intenso", 5.0)[67][68].
+
+	La app determinará el factor aplicable según los flags del perro (edad, neutro, etc.) o permitirá ajuste manual.
+
+	Tabla NutrientesMinimos (nutrient_requirements): Almacena los requerimientos nutricionales base (AAFCO) para distintas etapas.
+
+	Campos: etapa (cachorro/gestación vs adulto mantenimiento), proteina_min_pctMS, grasa_min_pctMS, posibles otros (Ca, P, etc).
+
+	Ej.: ("Adulto", 18, 5.5), ("Cachorro/Reproducción", 22.5, 8.5)[78].
+
+	Esto se usa para verificar si una dieta casera cumple mínimos o para mostrar info educativa al usuario.
+
+	Tabla BCS (body_condition_score): Para la escala 1–9.
+
+	Campos: BCS (1..9), descripcion_resumida, percent_grasa_estimado, peso_relativo (porcentaje respecto al ideal).
+
+	Ej.: (7, "Sobrepeso moderado; costillas difíciles de palpar, sin cintura marcada", grasa~28%, peso_relativo="115-125% del ideal")[14].
+
+	Esto sirve para que al ingresar un BCS, la app calcule el peso ideal aproximado: peso_ideal = peso_actual / (peso_relativo%). Por ej, BCS 7 -> ~120% ideal, así 30 kg -> ideal ~25 kg.
+
+	Tabla AlimentosToxicos (toxic_foods): Lista negra de alimentos peligrosos.
+
+	Campos: alimento (ej. "Chocolate", "Uvas/Pasas", "Cebolla/Ajo", "Xilitol", etc), compuesto_toxico (ej. teobromina, tiosulfatos, etc), dosis_toxica (si se conoce, ej. ~20 mg/kg teobromina), sintomas (texto breve), acciones (primeros auxilios recomendados).
+
+	Ej.: ("Chocolate", "Teobromina (alcaloide)", "Tóxico a ~20 mg/kg; 50 g chocolate negro pueden matar perro 10 kg", "Vómitos, diarrea, hiperactividad, arritmias, convulsiones[96]", "Inducir vómito si <1h y acudir vet inmediatamente").
+
+	Esta tabla se usará para alertas y quizás como referencia en una sección educativa de la app.
+
+	Tabla PerfilPerro (dog_profile): Información específica de cada perro del usuario, vinculada a las tablas anteriores.
+
+	Campos: PerroID (PK), nombre, RazaID (FK a Razas), sexo, fecha_nac, peso_actual, BCS_actual, objetivo_peso, nivel_actividad (FK a NivelActividad), flags booleanos (esterilizado, patologías tipo tieneDiabetes, tieneRenal, etc. o mejor una subtabla de Diagnosticos), calorias_objetivo.
+
+	Esta tabla relaciona los datos estáticos con el individuo. Por ejemplo, para calcular calorías recomendadas: se mira raza (tamaño), peso_actual, BCS (ver si hay que ajustar a peso ideal), nivel_actividad, y factor según esterilizado -> se consulta FactorEnergeticos -> se obtiene DER. Luego se ajusta si hay sobrepeso (ej. multiplicar por 0.8 si BCS alto). Y el resultado se guarda en calorias_objetivo.
+
+	Tablas de histórico (registro): Por ejemplo, PesoHistorial (perro, fecha, peso, BCS), ActividadDiaria (perro, fecha, minutos_mod, minutos_vig, distancia, kcal_quemadas) y ConsumoDiario (perro, fecha, kcal_ingesta, notas comida). Esto permite gráficas de progreso y ajuste de la recomendación en el tiempo.
+Todas estas tablas se relacionan mediante claves foráneas (ej. PerfilPerro.RazaID → Razas.RazaID). El diseño garantiza consistencia: las recomendaciones calculadas se basan en datos científicos almacenados, que pueden actualizarse si surgen nuevas guías (por ejemplo, si WSAVA modifica factores, solo se actualiza la tabla correspondiente).
+Diagrama Entidad-Relación (resumen lógico):
+
+	Raza (1) – (∞) PerfilPerro : una raza aplica a muchos perros.
+
+	PerfilPerro (1) – (∞) PesoHistorial : un perro tiene múltiples registros de peso/BCS.
+
+	PerfilPerro (1) – (∞) ActividadDiaria y ConsumoDiario.
+
+	NivelActividad, FactoresEnergeticos, BCS, AlimentosToxicos, etc., se vinculan lógicamente por consultas (no necesariamente por FK directa, salvo NivelActividad que sí puede ser FK en PerfilPerro).
+Con esta base de datos robusta y completa, la aplicación podrá brindar funcionalidades avanzadas: calcular IMC y compararlo con rangos ideales por raza[12], evaluar condición corporal, sugerir porciones y calorías según estándar veterinario, planificar ejercicio óptimo según la raza/edad y clima, prevenir accidentes nutricionales (intoxicaciones) y en general personalizar el cuidado del perro con sustento científico. Cada recomendación o alerta estará respaldada por los datos almacenados (por ejemplo, alertar “hoy hace 30 °C, riesgo de golpe de calor para tu Bulldog” usando el umbral de 25 °C de su categoría y su condición braquicefálica[48]).
+En conclusión, la integración de fuentes veterinarias confiables (WSAVA, AAHA, NRC, estudios energéticos) en el diseño de la base de datos asegura que la app proporcionará información contrastada y recomendaciones ajustadas a cada mascota, fomentando su salud, nutrición adecuada y bienestar general de forma global.
+Referencias de datos utilizados: Las fórmulas y valores han sido obtenidos de manuales veterinarios y asociaciones de referencia, como el Manual MSD (constantes vitales normales)[121], WSAVA Global Nutrition Toolkit (BCS y requerimientos energéticos)[122][14], estudios sobre gasto calórico en ejercicio[29], y guías de toxicología alimentaria para mascotas (Purina, AniCura)[100][96], entre otros, tal como se cita a lo largo del documento. Esto garantiza que el diseño propuesto se fundamenta en información actual y validada científicamente.
+
+[1] [2] [3] [4] [18] [116] ¿Mi perro tiene sobrepeso? Cálculo de la condición corporal (BCS) frente al índice de masa corporal (IMC) del perro | NutriSource
+https://nutrisourcepetfoods.com/es/blog/padres-de-mascotas/mi-perro-tiene-sobrepeso-bcs-vs-imc-del-perro/
+[5] [6] [7] [8] [9] [10] [11] [12] [13] Calcula el IMC de los perros: Encontrar el peso ideal, el sobrepeso
+https://www.hundeo.com/es/calculadora/bmi/
+[14] Obesity | BSAVA
+https://www.bsava.com/position-statement/obesity/
+[15] [16] [17] [64] [89] [90] [117] [118] [122] Microsoft Word - 2021.01 The Manitoba Veterinary Technologists Association - Jackie Parr
+https://mymvta.ca/wp-content/uploads/2021/01/2021.01-The-Manitoba-Veterinary-Technologists-Association-Dr.-Jackie-Parr.pdf
+[19] [20] [21] [22] [23] Dog Feeding Guidelines: How to Determine Your Dog’s Activity Level. - NorthPoint Pets & Company
+https://www.northpointpets.com/dog-feeding-guidelines-how-to-determine-your-dogs-activity-level/
+[24] [34] [66] [72] [93] Identifying Activity Level for Canine Calorie Calculations
+https://perfectlyrawsome.com/raw-feeding-knowledgebase/activity-level-canine-calorie-calculations/
+[25] [26] [27] [28] How to Tell If Your Dog Is Getting Enough Exercise | Pet Ponderosa
+https://petponderosa.com/2025/02/how-to-tell-if-your-dog-is-getting-enough-exercise/
+[29] [30] [31] [32] [65] Canine Daily Calorie Esitmator — Homeskooling 4 Dogs
+https://www.homeskooling4dogs.com/daily-calorie-esitmator
+[33] Fueling Your Dog's Energy: A Guide to Understanding Activity ...
+https://www.oldguardpetco.com/fueling-your-dogs-energy-a-guide-to-understanding-activity-calories-and-nutrition/
+[35] [121] Table: Valores fisiológicos caninos normales-Manual de veterinaria de MSD
+https://www.msdvetmanual.com/es/multimedia/table/valores-fisiol%C3%B3gicos-caninos-normales
+[36] [39] [41] Guía sobre la frecuencia respiratoria de tu perro - Tractive
+https://tractive.com/blog/es/salud/guia-frecuencia-respiratoria-perros?srsltid=AfmBOorZCB62CQML_H_NiUIsn3CXAU0pd-HckKqcgLffrdm84FRDhHQR
+[37] [38] Parámetros clínicos normales en perros y gatos - Cuas Formación Veterinaria
+https://cuasveterinaria.es/blog/parametros-clinicos-normales-perros-gatos/
+[40] Consejos para valorar si tu mascota presenta problemas cardíacos
+https://www.anicura.es/consejos-de-salud/otros-animales/consejos-de-salud-para-mascotas/consejos-para-valorar-a-tu-mascota-con-problemas-cardiacos/
+[42] [43] [44] [45] [46] [47] [48] [49] [52] [53] [54] [55] [56] [63] Los riesgos de las altas y bajas temperaturas en perros | Sentido Animal
+https://www.sentidoanimal.es/los-riesgos-de-las-altas-y-bajas-temperaturas-en-perros/
+[50] [58] [59] [60] [61] [62] Advierten del peligro de los suelos calientes para las patas de los perros
+https://www.diarioveterinario.com/t/1455839/advierten-peligro-suelos-calientes-patas-perros
+[51] Hipotermia en los perros: señales, tratamiento y recuperación
+https://www.rover.com/es/blog/hipotermia-en-perros/
+[57] ¿Cuándo hace demasiado calor para pasear al perro? - Rover.com
+https://www.rover.com/es/blog/pasear-al-perro-con-calor-extremo/
+[67] [68] [69] [70] [71] [73] [74] [75] [76] [77] [78] [79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [91] [92] [120] Necesidades nutricionales de pequeños animales - Manejo y nutrición - Manual de veterinaria de MSD
+https://www.msdvetmanual.com/es/manejo-y-nutrici%C3%B3n/nutrici%C3%B3n-peque%C3%B1os-animales/necesidades-nutricionales-de-peque%C3%B1os-animales
+[94] [95] [97] [100] [101] [102] [107] Alimentos prohibidos para los perros | AniCura España
+https://www.anicura.es/consejos-de-salud/perro/consejos-de-salud/alimentos-prohibidos-para-los-perros/
+[96] [98] [99] [108] [109] [110] [111] [112] [113] [114] ¿Qué alimentos no pueden comer los perros? | Purina
+https://www.purina.com/es/articulos/perro/alimentacion/los-perros-pueden-comer/que-no-pueden-comer-los-perros
+[103] [104] [105] [106] ¿El xilitol es perjudicial para los perros? - Purina
+https://www.purina.com/es/articulos/perro/salud/nutricion/es-el-xilitol-malo-para-los-perros
+[115] [PDF] DOGS - Body Condition Score
+https://wsava.org/wp-content/uploads/2025/06/WSAVA_BCSCat_BCSDog_Nutrition_250612.pdf
+[119] [PDF] Body Condition Score
+https://wsava.org/wp-content/uploads/2020/01/Body-Condition-Score-Dog.pdf

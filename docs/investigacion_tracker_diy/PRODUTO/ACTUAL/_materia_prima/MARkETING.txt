@@ -1,0 +1,130 @@
+# 🚀 **COMERCIALIZACIÓN Y ESTRATEGIA ARES v4.0**
+
+**Estrategias de negocio basadas en el hardware final v4.0, enfocado en los modelos Medium y Large.**
+
+***
+
+## **✅ ESTADO LEGAL COMERCIALIZACIÓN ESPAÑA 2026**
+
+### **✅ LEGAL FASE 1-2 (Prototipo y Pre-order)**
+```
+✓ **"Edición limitada prototipo"** → Venta directa controlada
+✓ **LilyGo T-SIM7000G S3 CE pre-certificado (módulo)** → OK para prototipos
+✓ **eSIM 1NCE homologada** → OK
+```
+
+### **❌ REQUIERE FASE 3 (Producción en masa)**
+```
+❌ **Certificación RED completa** → ~1.500€
+❌ **Registro ROHS** → ~800€
+❌ **Pruebas EMC laboratorio** → ~2.000€
+**TOTAL CERTIFICACIÓN ESTIMADO: ~4.800€**
+```
+
+***
+
+## **📊 ESTRATEGIAS DE MONETIZACIÓN (v4.0)**
+
+| **Modelo** | **Precio** | **Margen Bruto** | **Notas** |
+|------------|------------|------------------|-----------|
+| **Hardware** | **139-159€** | **~100-130%** | Basado en coste de ~65€ |
+| **Suscripción App** | **Plan Esencial (bajo coste) + Básico/Premium** | **>95% en tiers altos** | Sin tier 100% gratuito — ver `ARES_planes_basico_vs_premium_v1.md` y `01_PRODUCTO_Y_NEGOCIO.md` §3.7 para el detalle de por qué (coste real de conectividad celular) |
+
+**RECOMENDADO: Venta de hardware con un margen saludable + modelo de suscripción (sin tier gratuito real) para la App Premium.**
+
+*Nota de reconciliación: esta tabla decía antes "Freemium App | 0€ + 4.99€/mes", en contradicción con el principio "No hay plan gratis" de `ARES_planes_basico_vs_premium_v1.md`. Corregido para que ambos documentos coincidan.*
+
+***
+
+## **🎯 HOJA DE RUTA COMERCIAL (6 MESES)**
+
+### **MES 1: PROTOTIPO + PRE-VENTA (Coste ~65€/u)**
+```
+5u PCBA → **Venta 645€** (a 139€/u) → **+320€ Ganancia**
+Grupo de WhatsApp con deportistas → **100% vendido**
+```
+
+### **MES 2: APP FLUTTER + EMQX (500€)**
+```
+✅ Mapa en tiempo real con precisión objetivo <1m (pendiente de validación de campo)
+✅ Panel de batería y estado del dispositivo
+**50u → Venta 6.450€** → **+3.200€ Ganancia**
+```
+
+### **MES 3: CERTIFICACIÓN CE (4.800€)**
+```
+✅ Inicio de trámites formales para venta masiva.
+**100u → Venta 12.900€** → **+6.400€ Ganancia**
+```
+
+### **MES 6: ESCALA INDUSTRIAL (Coste ~45€/u)**
+```
+JLCPCB SMT + moldes → **~45€/u** a 1000 unidades
+Amazon FBA → **139€ PVP**
+**1Ku → 94.000€ Ganancia**
+```
+
+***
+
+## **💸 PROYECCIONES FINANCIERAS REALISTAS (v4.0)**
+
+*Basado en un coste unitario promedio de 65€ y un PVP promedio de 139€.*
+
+| **Mes** | **Unidades** | **Ingresos** | **Coste** | **Ganancia** | **Acumulado** |
+|---------|--------------|--------------|-----------|--------------|---------------|
+| **1** | 5u | 695€ | 325€ | **+370€** | **370€** |
+| **2** | 50u | 6.950€ | 3.250€ | **+3.700€** | **4.070€** |
+| **3** | 100u | 13.900€ | 6.500€ | **+7.400€** | **11.470€** |
+| **6** | 1.000u | 139.000€| 45.000€ | **+94.000€**| **105.470€**|
+| **12**| 5.000u | 695.000€| 225.000€| **+470.000€**| **575.470€**|
+
+***
+
+## **📦 PAQUETES DE HARDWARE + GARANTÍA (v4.0)**
+
+*Basado en coste de Módulo Chip (~44€) y Módulo Batería (~13.5€).*
+
+| **Paquete** | **Hardware** | **App** | **PVP** | **Coste Total Est.** | **Margen** |
+|-------------|--------------|---------|---------|--------------------|------------|
+| **ARES Medium** | Tracker 2750mAh | Gratis | **139€** | ~64€ | **~65€ (101%)** |
+| **ARES Large** | Tracker 4000mAh | Plata 12m| **159€**| ~67€ | **~92€ (137%)**|
+| **FAMILY PACK** | 2x Medium | Oro 12m | **249€** | ~128€ | **~121€ (94%)** |
+
+***
+
+## **💎 CARRITO PROTOTIPO FINAL (v4.0)**
+
+Para construir los prototipos, el enfoque es ordenar las placas ensambladas (PCBA).
+
+```
+**PEDIDO PROTOTIPO (5 unidades):**
+🛒 **JLCPCB (PCBA):**
+  • 5x Módulo Chip (LilyGo, BMI270, etc.): ~220€
+  • 5x Módulo Batería (BQ24040, Mag-Connector, etc.): ~70€
+  • Baterías (3x Medium 2750mAh, 2x Large 4000mAh): ~40€
+🌐 **1NCE SIM (para testeo):** 10€
+---
+**TOTAL: ~340€ → 68€/unidad**
+```
+***
+
+## **🚗 ANTI-FRAUDE GPS: DETECTAR COCHE vs CAMINATA REAL (v4.0)**
+
+**Tecnología:** **Bosch BMI270** + Sensores del Teléfono.
+
+El BMI270, con su contador de pasos y detección de gestos, es clave para diferenciar el movimiento real del perro de un viaje en coche, asegurando que los rankings y calorías sean precisos.
+
+```cpp
+// Lógica de Firmware con BMI270
+if(gps.speed.kmph() > 25 && bmi.isStationary()) {
+  movement_type = "CAR"; 
+  km_valid = 0;
+} else if (gps.speed.kmph() < 20 && bmi.stepCount() > last_step_count) {
+  movement_type = "WALK_RUN";
+  km_valid += delta_km;
+  last_step_count = bmi.stepCount();
+}
+```
+***
+
+**Este documento ha sido actualizado para reflejar la arquitectura y costos de la v4.0.**

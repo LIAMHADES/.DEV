@@ -1,0 +1,59 @@
+# === ARES/GPS — git local (backup de seguridad) ===
+# Objetivo: versionar codigo y contenido; NO versionar binarios pesados ni temporales.
+
+# --- Backups del propio sistema anti-corrupcion ---
+.backups/
+
+# --- Renders / exports 3D pesados (binarios grandes) ---
+3d/renders/
+3d/exports/
+3d/_archive_pruebas/
+*.glb
+*.gltf
+*.fbx
+*.blend
+*.blend1
+*.stl
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.webm
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# --- Node / build ---
+node_modules/
+dist/
+build/
+.cache/
+
+# --- Datos / secretos ---
+*.db
+*.sqlite
+*.sqlite3
+.env
+.env.*
+*.pem
+*.key
+
+# --- Temporales de editores y del SO ---
+*~
+*.swp
+*.tmp
+*.bak
+*.orig
+Thumbs.db
+desktop.ini
+~$*
+
+# --- OneDrive ---
+*.lock

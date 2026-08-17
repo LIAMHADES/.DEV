@@ -1,0 +1,6 @@
+perro_id,edad_clase,tamano_final,tamano_fuente,raza_base,mix_activo,braquicefalo,sens_calor,sens_frio,imc_ideal_min,imc_ideal_max,bcs_objetivo,discrepancia_tamano,motivo_discrepancia,estado_integridad
+DOG-001,adulto,toy,usuario,Chihuahua,False,False,1,1,0.74,1.19,4–5,,,ok
+DOG-002,adulto,grande,usuario,Labrador Retriever,False,False,1,1,2.66,3.55,4–5,,,ok
+DOG-003,adulto,grande,usuario,German Shepherd Dog,False,False,1,1,2.5,3.75,4–5,,,ok
+DOG-004,adulto,mediano,usuario,Pug,True,True,2,1,1.22,2.43,4–5,,,ok
+DOG-005,adulto,grande,usuario,Labrador Retriever,True,False,1,1,2.14,3.11,4–5,,,ok
