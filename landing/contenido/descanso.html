@@ -97,7 +97,7 @@ section:first-of-type{clip-path:none} /* hero no se corta */
 .imp-card-bridge{display:flex;flex-direction:column;align-items:center;gap:0.35rem;flex-shrink:0;padding:0 0.3rem}
 .imp-bridge-line{width:1px;height:24px;background:linear-gradient(to bottom,transparent,#f6ae2d,transparent)}
 .imp-bridge-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:0.06em;color:#f6ae2d;text-transform:uppercase;white-space:nowrap;writing-mode:vertical-rl;text-orientation:mixed}
-@media(max-width:768px){.imp-cards{flex-direction:column;gap:1rem}.imp-card-bridge{flex-direction:row;gap:0.5rem}.imp-bridge-line{width:40px;height:1px}.imp-bridge-label{writing-mode:horizontal-tb}}
+/* responsive de #importa consolidado en el @media(max-width:768px) de abajo */
 .imp-text h4{font-size:1.1rem;margin-bottom:0.7rem;color:var(--wtext)}
 .imp-text p{font-size:0.92rem;color:var(--wtext2);line-height:1.8;margin-bottom:1.1rem}
 .imp-text p:last-child{margin-bottom:0}
@@ -181,7 +181,10 @@ section:first-of-type{clip-path:none} /* hero no se corta */
   .dif-grid{grid-template-columns:1fr}
   .casos-grid{grid-template-columns:1fr}
   .pn-wrap{grid-template-columns:1fr}
+  .imp-wrap{grid-template-columns:1fr;gap:2rem;margin-top:2rem}
+  .imp-diagram{padding:1.8rem 1rem}
   .imp-cards{flex-direction:column;gap:1rem}
+  .imp-card{max-width:100%;padding:0}
   .imp-card-bridge{flex-direction:row;gap:0.5rem}
   .imp-bridge-line{width:40px;height:1px}
   .imp-bridge-label{writing-mode:horizontal-tb}
