@@ -1,30 +1,769 @@
 <!DOCTYPE html>
-<!--
-  ⚠️ ARCHIVO PENDIENTE DE RESTAURAR
-  ============================================================
-  El contenido original de descanso.html se corrompió (quedó
-  relleno de ceros) por un apagón del PC durante un guardado
-  el 2026-08-17 ~12:30.
-
-  La copia corrupta se guardó como evidencia en:
-    .backups/corruptos_20260817/descanso.html.CORRUPTO-ceros
-
-  PARA RECUPERAR LA VERSIÓN BUENA:
-  1. Ve a onedrive.com (cuenta Liamgarsol4@gmail.com)
-  2. Navega a Desktop/ARES/GPS/landing/contenido/
-  3. Clic derecho en descanso.html → Historial de versiones
-  4. Restaura la versión de hoy ANTERIOR a las 12:30 (~48 KB)
-
-  Referencia para reconstrucción si no hubiera versión en la nube:
-    landing/docs/ANIMACIONES_PENDIENTES_DESCANSO.md
-  ============================================================
--->
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Descanso — pendiente de restaurar</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARES GPS — Descanso y reposo de tu perro</title>
+<meta name="description" content="ARES registra cuánto tiempo pasa realmente tu perro en reposo — no fases de sueño — y te avisa si un cambio en ese patrón puede ser la primera señal de que algo no va bien.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="icon" type="image/svg+xml" href="../assets/img/ares-logo-blanco.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+/* === HERO === */
+#hero{min-height:65vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:var(--bg)}
+
+/* === SECCIÓN SEPARADOR "ANILLO" (zigzag diagonal 40px, como index.html) === */
+.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+.sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+section:first-of-type{clip-path:none} /* hero no se corta */
+#hero .container{position:relative;z-index:2}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--hl);text-transform:uppercase;margin-bottom:1rem}
+#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2rem,5vw,3.5rem);color:var(--t);letter-spacing:0.02em;line-height:1.2;text-transform:uppercase;max-width:820px;margin:0 auto}
+.hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.85rem,1.6vw,1rem);color:var(--t2);letter-spacing:0.04em;margin-top:1.25rem;max-width:580px;margin-left:auto;margin-right:auto}
+
+/* === SECCION: COMO FUNCIONA (diagrama SVG) === */
+#como-funciona{background:var(--white)}
+/* Layout: chart full-width arriba + 3 pasos en fila debajo */
+.hf-wrap{display:block;margin-top:3rem}
+.hf-diagram{background:var(--bg2);border:1px solid rgba(134,187,216,0.15);padding:1.8rem 1.5rem 1.4rem;clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px)}
+.hf-chart{display:flex;align-items:flex-end;gap:5px;height:170px;padding:0 4px}
+.hf-chart-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;color:var(--t3);align-self:flex-end;padding-bottom:2px;flex-shrink:0}
+.hf-bar{flex:1;min-width:6px;background:linear-gradient(to top,rgba(134,187,216,0.2),rgba(134,187,216,0.55));clip-path:polygon(2px 0,100% 0,100% 100%,calc(100% - 2px) 100%,0 calc(100% - 2px),0 2px);transition:height 0.5s}
+.hf-bar-alert{background:linear-gradient(to top,rgba(246,174,45,0.3),#f6ae2d);box-shadow:0 0 8px rgba(246,174,45,0.3)}
+/* Pulso lento de las barras de alerta (se activa via JS tras crecer) */
+.hf-bar-alert.pulsing{animation:hfPulse 2.2s ease-in-out infinite}
+@keyframes hfPulse{0%,100%{box-shadow:0 0 8px rgba(246,174,45,0.3);filter:brightness(1)}50%{box-shadow:0 0 16px rgba(246,174,45,0.6);filter:brightness(1.15)}}
+@media(prefers-reduced-motion:reduce){.hf-bar-alert.pulsing{animation:none}}
+/* Fila inferior: eje temporal + badge de inquietud + leyenda */
+.hf-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1rem;flex-wrap:wrap}
+.hf-alert-badge{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#f6ae2d;text-align:center;padding:0.35rem 0.9rem;border:1px solid rgba(246,174,45,0.3);background:rgba(246,174,45,0.08);clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px)}
+.hf-legend{display:flex;gap:1.4rem}
+.hf-legend>span{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.03em;color:var(--wtext2);display:flex;align-items:center;gap:0.5rem}
+.hf-legend .dot{width:9px;height:9px;flex-shrink:0;clip-path:polygon(3px 0,100% 0,100% calc(100% - 3px),calc(100% - 3px) 100%,0 100%,0 3px)}
+/* 3 pasos en fila */
+.hf-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+.hf-text .hf-step{display:flex;gap:1rem;margin-bottom:0}
+.hf-text .hf-step:last-child{margin-bottom:0}
+.hf-step-num{flex-shrink:0;width:2.4rem;height:2.4rem;display:flex;align-items:center;justify-content:center;font-family:'Bruno Ace SC',sans-serif;font-size:1rem;color:var(--wtext);background:rgba(47,72,88,0.08);clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+.hf-step.on .hf-step-num{background:var(--hl);color:#151d25}
+.hf-step h4{font-size:1rem;margin-bottom:0.35rem;color:var(--wtext)}
+.hf-step p{font-size:0.88rem;color:var(--wtext2);line-height:1.7}
+
+/* === SECCION: RELOJ 24h (donut) === */
+#dia-tipico{background:var(--bg2);overflow:hidden}
+.dt-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2.5rem;max-width:700px;margin-left:auto;margin-right:auto}
+.dt-ring-wrap{display:flex;justify-content:center}
+.dt-ring-svg{width:100%;max-width:280px;height:auto}
+.dt-ring-svg .dt-arc{stroke-dasharray:1;stroke-dashoffset:1;stroke-linecap:butt}
+.dt-ring-svg .dt-hand,.dt-ring-svg .dt-hand-dot{transform-box:view-box;transform-origin:140px 140px}
+.dt-legend{display:flex;flex-direction:column;gap:0.85rem}
+.dt-item{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.03em;color:var(--t2);display:flex;align-items:center;gap:0.7rem}
+.dt-item strong{color:var(--t);font-weight:700;margin-left:auto}
+.dt-swatch{width:10px;height:10px;flex-shrink:0;clip-path:polygon(3px 0,100% 0,100% calc(100% - 3px),calc(100% - 3px) 100%,0 100%,0 3px)}
+.dt-note{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.02em;color:rgba(240,242,245,0.85);line-height:1.7;margin-top:0.6rem;padding-top:0.8rem;border-top:1px solid rgba(240,242,245,0.06)}
+@media(max-width:768px){.dt-wrap{grid-template-columns:1fr;gap:2rem;max-width:100%}.dt-ring-svg{max-width:240px}}
+
+/* === SECCION: HONESTIDAD (lo que SI / lo que NO) === */
+#honestidad{background:var(--bg2)}
+.dif-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem}
+/* HONESTIDAD — ::before border technique */
+.dif-card{position:relative;padding:2rem 1.8rem;clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);background:rgba(134,187,216,0.1)}
+.dif-card::before{content:'';position:absolute;inset:1px;z-index:0;clip-path:polygon(15px 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%,0 15px);background:var(--bg)}
+.dif-card>*{position:relative;z-index:1}
+.dif-card.good{background:rgba(246,174,45,0.2)}
+.dif-card.good::before{background:#1e262e}
+.dif-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.9rem;display:inline-block}
+.dif-card.bad .dif-tag{color:var(--t3)}
+.dif-card.good .dif-tag{color:var(--hl)}
+.dif-card h4{font-size:1.05rem;margin-bottom:0.7rem;color:var(--t)}
+.dif-card.bad h4{color:var(--t2)}
+.dif-card p{font-size:0.9rem;color:var(--t2);line-height:1.8}
+.dif-card ul{margin:0.9rem 0 0;padding-left:1.1rem}
+.dif-card li{font-size:0.87rem;color:var(--t2);line-height:1.8}
+
+/* === SECCION: POR QUE IMPORTA (senal temprana) === */
+#importa{background:var(--white)}
+.imp-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:3rem}
+.imp-diagram{background:#fff;border:1px solid rgba(47,72,88,0.1);padding:2rem 1.2rem;clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);box-shadow:0 2px 12px rgba(47,72,88,0.05)}
+.imp-cards{display:flex;align-items:center;gap:0;justify-content:center}
+.imp-card{flex:1;max-width:180px;text-align:center;padding:0 0.5rem}
+.imp-card-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:var(--wtext2);text-transform:uppercase;margin-bottom:0.75rem}
+.imp-card-icon{margin-bottom:0.75rem}
+.imp-card-icon svg{display:block;margin:0 auto}
+.imp-card-title{font-family:'Bruno Ace SC',sans-serif;font-size:0.9rem;color:var(--wtext);letter-spacing:0.03em;margin-bottom:0.5rem;text-transform:uppercase}
+.imp-card-desc{font-family:'Orbitron',sans-serif;font-size:0.78rem;color:var(--wtext2);line-height:1.6}
+.imp-card-bridge{display:flex;flex-direction:column;align-items:center;gap:0.35rem;flex-shrink:0;padding:0 0.3rem}
+.imp-bridge-line{width:1px;height:24px;background:linear-gradient(to bottom,transparent,#f6ae2d,transparent)}
+.imp-bridge-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:0.06em;color:#f6ae2d;text-transform:uppercase;white-space:nowrap;writing-mode:vertical-rl;text-orientation:mixed}
+@media(max-width:768px){.imp-cards{flex-direction:column;gap:1rem}.imp-card-bridge{flex-direction:row;gap:0.5rem}.imp-bridge-line{width:40px;height:1px}.imp-bridge-label{writing-mode:horizontal-tb}}
+.imp-text h4{font-size:1.1rem;margin-bottom:0.7rem;color:var(--wtext)}
+.imp-text p{font-size:0.92rem;color:var(--wtext2);line-height:1.8;margin-bottom:1.1rem}
+.imp-text p:last-child{margin-bottom:0}
+.imp-text strong{color:var(--cta);font-weight:600}
+
+/* === SECCION: CASOS DE USO === */
+#casos{background:var(--bg2)}
+.casos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+/* CASOS — ::before border technique */
+.caso-card{position:relative;background:rgba(134,187,216,0.08);border:none;padding:2rem 1.6rem;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);transition:transform 0.3s;opacity:0;visibility:hidden}
+.caso-card::before{content:'';position:absolute;inset:1px;z-index:0;background:var(--bg);clip-path:polygon(13px 0,100% 0,100% calc(100% - 13px),calc(100% - 13px) 100%,0 100%,0 13px)}
+.caso-card>*{position:relative;z-index:1}
+.caso-card:hover{transform:translateY(-5px)}
+.caso-icon{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--hl);margin-bottom:1rem}
+.caso-card h4{font-size:1rem;margin-bottom:0.6rem;color:var(--t)}
+.caso-card p{font-size:0.87rem;color:var(--t2);line-height:1.75}
+
+/* === SECCION: BRIDGE DESCANSO -> NUTRICION === */
+#descanso-nutricion{background:var(--bg)}
+.dn-box{position:relative;max-width:620px;margin:0 auto;padding:1.6rem 2rem;background:rgba(246,174,45,0.12);border:none;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}
+.dn-box::before{content:'';position:absolute;inset:1px;z-index:0;background:rgba(21,29,37,0.97);clip-path:polygon(13px 0,100% 0,100% calc(100% - 13px),calc(100% - 13px) 100%,0 100%,0 13px)}
+.dn-box>*{position:relative;z-index:1}
+.dn-box p{font-family:'Orbitron',sans-serif;font-size:0.88rem;color:var(--t2);line-height:1.75;margin-bottom:1rem}
+.dn-box p strong{color:var(--t)}
+.dn-link{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--hl);text-decoration:none;border-bottom:1px solid rgba(246,174,45,0.25);padding-bottom:2px;transition:color 0.3s,border-color 0.3s}
+.dn-link:hover{color:var(--cta);border-color:var(--cta)}
+
+/* === SECCION: NOTA MEDICA (timeline 3 pasos) === */
+#nota-medica{background:var(--white)}
+.nm-b-steps{display:flex;align-items:flex-start;justify-content:center;gap:0.75rem;margin-top:2.5rem;max-width:900px;margin-left:auto;margin-right:auto}
+.nm-b-step{flex:1;text-align:center;max-width:300px}
+.nm-b-circle{width:84px;height:84px;border-radius:50%;background:var(--bg2);border:2px solid rgba(134,187,216,0.35);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.nm-b-circle .material-symbols-outlined{font-size:2.2rem;color:#86bbd8}
+.nm-b-label{font-family:'Bruno Ace SC',sans-serif;font-size:1.2rem;color:var(--wtext);letter-spacing:0.03em;margin-bottom:0.5rem}
+.nm-b-desc{font-family:'Orbitron',sans-serif;font-size:1.05rem;color:var(--wtext2);line-height:1.7}
+.nm-b-arrow{display:flex;align-items:center;padding-top:1.7rem;flex-shrink:0}
+.nm-b-arrow .material-symbols-outlined{font-size:2rem;color:rgba(47,72,88,0.25)}
+@media(max-width:768px){
+  .nm-b-steps{flex-direction:column;align-items:center}
+  .nm-b-arrow{transform:rotate(90deg);padding-top:0}
+}
+
+/* === SECCION: PLANES === */
+#planes-nota{background:var(--bg)}
+.pn-wrap{max-width:820px;margin:2.5rem auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+/* === FOOTER MAP === */
+.pf-footer-wrap{position:relative;margin-top:0}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:hidden;background:var(--bg)}
+/* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:blur(0.5px)}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(-100vw)}}
+@media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
+@media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
+.pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
+.pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
+.pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
+
+/* PLANES — ::before border technique */
+.pn-card{position:relative;padding:1.6rem 1.2rem;text-align:center;background:rgba(134,187,216,0.35);border:none;clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px)}
+.pn-card::before{content:'';position:absolute;inset:1px;z-index:0;background:var(--bg);clip-path:polygon(17px 0,100% 0,100% calc(100% - 17px),calc(100% - 17px) 100%,0 100%,0 17px)}
+.pn-card>*{position:relative;z-index:1}
+.pn-card.hl{background:rgba(246,174,45,0.3)}
+.pn-card.hl::before{background:#1e262e}
+.pn-plan{font-family:'Bruno Ace SC',sans-serif;font-size:0.95rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--t2);margin-bottom:0.5rem}
+.pn-card.hl .pn-plan{color:var(--hl)}
+.pn-feat{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.02em;color:var(--t);line-height:1.85;text-align:left;padding:0 0.2rem}
+.pn-feat .pn-ch{font-family:'JetBrains Mono',monospace;color:var(--hl);font-size:9px;margin-right:0.35rem}
+.pn-feat .pn-no{font-family:'JetBrains Mono',monospace;color:var(--t3);font-size:9px;margin-right:0.35rem}
+.pn-div{width:100%;height:1px;background:rgba(240,242,245,0.08);margin:0.8rem 0}
+.pn-cta{text-align:center;margin-top:2.2rem}
+.pn-cta a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--t2);text-decoration:none;border-bottom:1px solid rgba(240,242,245,0.2);padding-bottom:2px;transition:color 0.3s,border-color 0.3s}
+.pn-cta a:hover{color:var(--hl);border-color:var(--hl)}
+
+/* === CTA FINAL === */
+#cta-final{min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:var(--bg)}
+
+@media(max-width:768px){
+  .hf-steps{grid-template-columns:1fr;gap:1.4rem}
+  .hf-foot{flex-direction:column;align-items:flex-start;gap:0.7rem}
+  .dif-grid{grid-template-columns:1fr}
+  .casos-grid{grid-template-columns:1fr}
+  .pn-wrap{grid-template-columns:1fr}
+  .imp-cards{flex-direction:column;gap:1rem}
+  .imp-card-bridge{flex-direction:row;gap:0.5rem}
+  .imp-bridge-line{width:40px;height:1px}
+  .imp-bridge-label{writing-mode:horizontal-tb}
+}
+
+/* === PRISM GRID (fondo animado, igual que inicio) === */
+.sec-prism{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.sec-prism .prism-grid{display:grid;position:absolute;left:50%;top:50%}
+.sec-prism .prism-cell{border-right:1px solid rgba(134,187,216,0.18);border-bottom:1px solid rgba(134,187,216,0.18);transition:background 0.15s ease-out}
+.sec-prism .prism-cell.lit{transition:background 0s}
+</style>
 </head>
 <body>
-  <p>Página en recuperación. Ver comentario en el código fuente.</p>
+
+<div id="progress-bar"></div>
+
+<button class="nav-toggle" id="navToggle">
+  <span></span><span></span><span></span>
+</button>
+<nav id="mini-nav">
+  <a href="../index.html" class="nl">ARES GPS</a>
+  <img src="../assets/img/ares-logo-blanco.svg" alt="ARES" class="nav-logo">
+  <ul class="inline-links">
+    <li><a href="../index.html">Inicio</a></li>
+    <li><a href="pricing.html">Precios</a></li>
+  </ul>
+</nav>
+<div class="nav-overlay" id="navOverlay">
+  <div class="nav-overlay-inner">
+    <img src="../assets/img/ares-logo-blanco.svg" alt="ARES" class="nav-logo-ov">
+    <ul class="nav-full-links">
+      <li class="nl-item"><a href="../index.html">Inicio</a></li>
+      <li class="nl-item"><a href="pricing.html">Precios</a></li>
+      <li class="nl-item ndrop-mob" id="navDropMob"><a class="ndrop-trigger">Recursos</a>
+        <div class="ndrop-sub"><a href="calculadora.html">Calculadora de peso ideal</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- 1. HERO -->
+<section id="hero" class="sec-dark" style="position:relative">
+  <div class="sec-prism" id="prism-hero"></div>
+  <div class="container">
+    <div class="hero-tag">Descanso</div>
+    <h1>CUÁNTO DESCANSA DICE MUCHO DE CÓMO ESTÁ</h1>
+    <div class="hero-sub">A veces un cambio en el descanso es la primera señal de que algo no va bien.</div>
+  </div>
+</section>
+
+<!-- 2. COMO FUNCIONA -->
+<section id="como-funciona" class="sec-light light">
+  <div class="container">
+    <div class="sl" style="text-align:center">Cómo funciona</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">REPOSO, NO FASES DE SUEÑO</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:620px;margin:0.5rem auto 0">ARES no lee ondas cerebrales. Registra algo más simple y más honesto: cuánto tiempo pasa tu perro quieto y tranquilo.</div>
+
+    <div class="hf-wrap">
+      <div class="hf-diagram">
+        <div class="hf-chart">
+          <div class="hf-chart-label">22h</div>
+          <div class="hf-bar" style="height:18%"></div>
+          <div class="hf-bar" style="height:12%"></div>
+          <div class="hf-bar" style="height:16%"></div>
+          <div class="hf-bar" style="height:10%"></div>
+          <div class="hf-bar" style="height:14%"></div>
+          <div class="hf-bar" style="height:11%"></div>
+          <div class="hf-bar" style="height:17%"></div>
+          <div class="hf-bar hf-bar-alert" style="height:62%"></div>
+          <div class="hf-bar hf-bar-alert" style="height:78%"></div>
+          <div class="hf-bar hf-bar-alert" style="height:52%"></div>
+          <div class="hf-bar" style="height:13%"></div>
+          <div class="hf-bar" style="height:16%"></div>
+          <div class="hf-bar" style="height:10%"></div>
+          <div class="hf-bar" style="height:14%"></div>
+          <div class="hf-bar" style="height:12%"></div>
+          <div class="hf-bar" style="height:17%"></div>
+          <div class="hf-chart-label">07h</div>
+        </div>
+        <div class="hf-foot">
+          <div class="hf-legend">
+            <span style="color:#f0f2f5"><span class="dot" style="background:#86bbd8"></span>Reposo tranquilo</span>
+            <span style="color:#f0f2f5"><span class="dot" style="background:#f6ae2d"></span>Inquietud &middot; fuera de patr&oacute;n</span>
+          </div>
+          <div class="hf-alert-badge" id="hfBadge">INQUIETUD DETECTADA · 02:00–03:30</div>
+        </div>
+      </div>
+
+      <div class="hf-text hf-steps">
+        <div class="hf-step on">
+          <div class="hf-step-num">1</div>
+          <div>
+            <h4>Registra el tiempo real en reposo</h4>
+            <p>El sensor de movimiento detecta cuándo tu perro está quieto durante un rato largo, sin actividad. No distingue fases de sueño (REM, sueño profundo) — mide inmovilidad, que es lo que de verdad puede medir con honestidad.</p>
+          </div>
+        </div>
+        <div class="hf-step">
+          <div class="hf-step-num">2</div>
+          <div>
+            <h4>Aprende su patrón normal</h4>
+            <p>Cada perro descansa distinto. ARES calcula su línea base individual — cuánto suele estar quieto y en qué franjas — comparando cada noche con sus noches anteriores, no con una tabla genérica.</p>
+          </div>
+        </div>
+        <div class="hf-step">
+          <div class="hf-step-num">3</div>
+          <div>
+            <h4>Te avisa si algo cambia</h4>
+            <p>Si una noche descansa mucho menos de lo normal, o se mueve e inquieta más de lo habitual, ARES lo detecta y te lo dice. No es un diagnóstico: es un aviso de "esto no es lo normal en él".</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. VISUAL: RELOJ 24h (donut con sectores) -->
+<section id="dia-tipico" class="sec-darker">
+  <div class="container">
+    <div class="sl" style="text-align:center">El día completo</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">LOS PERROS DESCANSAN A TRAMOS</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:600px;margin:0.5rem auto 0">No duermen 8h seguidas. Reparten el descanso en varios bloques. Este círculo representa 24h — cada color es un tipo de actividad que ARES registra.</div>
+
+    <div class="dt-wrap">
+      <div class="dt-ring-wrap">
+        <svg viewBox="-10 -10 300 300" xmlns="http://www.w3.org/2000/svg" class="dt-ring-svg">
+          <!-- anillo base (pista del reloj) -->
+          <circle cx="140" cy="140" r="115" fill="none" stroke="rgba(240,242,245,0.05)" stroke-width="20"/>
+
+          <!-- marcas de hora tipo reloj (cada 3h) -->
+          <g class="dt-ticks" stroke="rgba(240,242,245,0.25)" stroke-width="2" stroke-linecap="round">
+            <line x1="140.0" y1="12.0" x2="140.0" y2="21.0"/>
+            <line x1="230.5" y1="49.5" x2="224.1" y2="55.9"/>
+            <line x1="268.0" y1="140.0" x2="259.0" y2="140.0"/>
+            <line x1="230.5" y1="230.5" x2="224.1" y2="224.1"/>
+            <line x1="140.0" y1="268.0" x2="140.0" y2="259.0"/>
+            <line x1="49.5" y1="230.5" x2="55.9" y2="224.1"/>
+            <line x1="12.0" y1="140.0" x2="21.0" y2="140.0"/>
+            <line x1="49.5" y1="49.5" x2="55.9" y2="55.9"/>
+          </g>
+          <!-- etiquetas horarias (dentro del viewBox ampliado) -->
+          <g class="dt-hlabels" font-family="JetBrains Mono, monospace" font-size="8px" fill="rgba(240,242,245,0.4)" text-anchor="middle">
+            <text x="140" y="4">00</text><text x="280" y="143">06</text>
+            <text x="140" y="280">12</text><text x="0" y="143">18</text>
+          </g>
+
+          <!-- SECTORES (se trazan girando via stroke-dashoffset, pathLength=1) -->
+          <!-- sueño nocturno · azul cielo fuerte · partido en 2 tramos para que cada parte
+               se dibuje cuando la aguja pasa por su hora real (0-6h al inicio, 22-24h al final) -->
+          <path class="dt-arc dt-arc-night-a" pathLength="1" d="M140.00 25.00 A115 115 0 0 1 255.00 140.00" fill="none" stroke="#86bbd8" stroke-width="20" opacity="0.85"/>
+          <path class="dt-arc dt-arc-night-b" pathLength="1" d="M82.50 40.41 A115 115 0 0 1 140.00 25.00" fill="none" stroke="#86bbd8" stroke-width="20" opacity="0.85"/>
+          <!-- siesta mañana 9h→11h · azul apagado -->
+          <path class="dt-arc dt-arc-nap" pathLength="1" d="M221.32 221.32 A115 115 0 0 1 169.76 251.08" fill="none" stroke="#5a7d93" stroke-width="20" opacity="0.75"/>
+          <!-- siesta tarde 14h→16h · azul apagado -->
+          <path class="dt-arc dt-arc-nap2" pathLength="1" d="M82.50 239.59 A115 115 0 0 1 40.41 197.50" fill="none" stroke="#5a7d93" stroke-width="20" opacity="0.75"/>
+          <!-- ejercicio mañana ~8h · amarillo, arco enfatizado (>lineal) -->
+          <path class="dt-arc dt-arc-ex" pathLength="1" d="M253.07 160.96 A115 115 0 0 1 214.69 227.45" fill="none" stroke="#f6ae2d" stroke-width="20"/>
+          <!-- ejercicio tarde ~18h · amarillo, arco enfatizado -->
+          <path class="dt-arc dt-arc-ex2" pathLength="1" d="M31.60 178.39 A115 115 0 0 1 31.60 101.61" fill="none" stroke="#f6ae2d" stroke-width="20"/>
+
+          <!-- AGUJA que recorre las 24h -->
+          <line class="dt-hand" x1="140" y1="140" x2="140" y2="35" stroke="#f0f2f5" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+          <circle class="dt-hand-dot" cx="140" cy="35" r="4" fill="#f0f2f5"/>
+
+          <!-- centro -->
+          <circle cx="140" cy="140" r="78" fill="var(--bg2)"/>
+          <text id="dtCount" x="140" y="148" text-anchor="middle" font-family="Bruno Ace SC, sans-serif" font-size="2.9rem" fill="#f0f2f5" letter-spacing="0.02em">00h</text>
+          <text id="dtCountLabel" x="140" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9px" fill="#f0f2f5" letter-spacing="0.05em">DEL DÍA</text>
+        </svg>
+      </div>
+      <div class="dt-legend">
+        <div class="dt-item"><span class="dt-swatch" style="background:#86bbd8"></span> Sueño nocturno <strong>~8h</strong></div>
+        <div class="dt-item"><span class="dt-swatch" style="background:#5a7d93"></span> Siestas / descanso ligero <strong>~6h</strong></div>
+        <div class="dt-item"><span class="dt-swatch" style="background:#f6ae2d"></span> Ejercicio (paseos) <strong>~2h</strong></div>
+        <div class="dt-item"><span class="dt-swatch" style="background:rgba(240,242,245,0.06)"></span> Despierto, tranquilo <strong>~8h</strong></div>
+        <div class="dt-note">Patrón típico de un perro adulto. El ejercicio se resalta en el círculo por su importancia, aunque sean pocas horas. ARES aprende la línea base real del tuyo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. HONESTIDAD -->
+<section id="honestidad" class="sec-darker" style="position:relative">
+  <div class="sec-prism" id="prism-honestidad"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="sl" style="text-align:center">Sin exagerar</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">LO QUE MEDIMOS, LO QUE NO</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:600px;margin:0.5rem auto 0">Hay marcas que venden "análisis de sueño" como si tuvieran un electroencefalograma en el collar. No es nuestro caso, y preferimos decirlo claro.</div>
+
+    <div class="dif-grid">
+      <div class="dif-card bad">
+        <span class="dif-tag">Lo que ARES NO hace</span>
+        <h4>No mide fases de sueño</h4>
+        <p>No hay sensor que distinga sueño ligero, sueño profundo o fase REM. Ningún tracker de consumo lo hace de verdad, por mucho que lo prometa en el marketing.</p>
+        <ul>
+          <li>No es un electroencefalograma</li>
+          <li>No es un diagnóstico</li>
+          <li>No sustituye al veterinario</li>
+        </ul>
+      </div>
+      <div class="dif-card good">
+        <span class="dif-tag">Lo que ARES SÍ hace</span>
+        <h4>Mide tiempo real en reposo</h4>
+        <p>Cuánto tiempo pasa tu perro quieto y tranquilo, noche a noche. Y, más importante todavía, si eso cambia respecto a su propio patrón habitual.</p>
+        <ul>
+          <li>Tiempo de inmovilidad, dato real</li>
+          <li>Comparado con su línea base individual</li>
+          <li>Aviso claro cuando algo se sale de lo normal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. POR QUE IMPORTA -->
+<section id="importa" class="sec-light light">
+  <div class="container">
+    <div class="sl" style="text-align:center">Por qué importa</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">UN CAMBIO EN EL DESCANSO SUELE LLEGAR ANTES</h2>
+
+    <div class="imp-wrap">
+      <div class="imp-diagram">
+        <div class="imp-cards">
+          <div class="imp-card imp-left">
+            <div class="imp-card-tag">DÍA 1</div>
+            <div class="imp-card-icon">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="18" fill="rgba(134,187,216,0.10)" stroke="#86bbd8" stroke-width="1.5"/><path d="M24 6L12 24h7l-3 14 14-20h-8l4-12z" fill="#86bbd8" opacity="0.75" stroke="#86bbd8" stroke-width="0.8" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="imp-card-title">ARES detecta</div>
+            <div class="imp-card-desc">El patrón de descanso ha cambiado. Esta noche no es como las demás.</div>
+          </div>
+          <div class="imp-card-bridge">
+            <div class="imp-bridge-line"></div>
+            <div class="imp-bridge-label">margen para actuar</div>
+            <div class="imp-bridge-line"></div>
+          </div>
+          <div class="imp-card imp-right">
+            <div class="imp-card-tag">DÍAS DESPUÉS</div>
+            <div class="imp-card-icon">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="18" fill="rgba(242,100,25,0.07)" stroke="#f26419" stroke-width="1.5"/><rect x="9" y="16" width="26" height="12" rx="2" fill="#f26419" opacity="0.55"/><rect x="17" y="16" width="10" height="12" rx="1" fill="#f26419" opacity="0.35"/><line x1="12" y1="20" x2="12" y2="24" stroke="#fff" stroke-width="0.8" opacity="0.5"/><line x1="14" y1="18" x2="14" y2="26" stroke="#fff" stroke-width="0.8" opacity="0.5"/><line x1="32" y1="20" x2="32" y2="24" stroke="#fff" stroke-width="0.8" opacity="0.5"/><line x1="30" y1="18" x2="30" y2="26" stroke="#fff" stroke-width="0.8" opacity="0.5"/></svg>
+            </div>
+            <div class="imp-card-title">Se nota a simple vista</div>
+            <div class="imp-card-desc">Cojea, no come, está apático. Pero ya lleva días así sin que lo supieras.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="imp-text">
+        <h4>El descanso cambia antes de que se note</h4>
+        <p>Cuando un perro no está bien —molestia, dolor, estrés, algo que le incomoda— <strong>una de las primeras cosas que suele cambiar es cómo descansa</strong>, mucho antes de que cojee, deje de comer o se le note en el ánimo.</p>
+        <p>ARES compara cada noche con el patrón habitual de tu perro. Si una noche descansa mucho menos, o se mueve e inquieta de forma distinta a lo normal, te lo dice en la app.</p>
+        <p>Eso no te da un diagnóstico. Te da algo más simple y más útil: <strong>una razón concreta para estar atento</strong>, antes de que el cambio sea evidente por sí solo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. CASOS DE USO -->
+<section id="casos" class="sec-darker" style="position:relative">
+  <div class="sec-prism" id="prism-casos"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="sl" style="text-align:center">Escenas reales</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">DÓNDE MÁS SE NOTA</h2>
+
+    <div class="casos-grid">
+      <div class="caso-card">
+        <div class="caso-icon">La noche inquieta</div>
+        <h4>Se movió más de lo normal</h4>
+        <p>Abres la app por la mañana y ves un aviso: "esta noche ha descansado menos y se ha movido más de lo habitual". No sabes por qué todavía, pero sabes que anoche algo fue distinto — y eso ya es información.</p>
+      </div>
+      <div class="caso-card">
+        <div class="caso-icon">El perro mayor</div>
+        <h4>Empieza a descansar distinto</h4>
+        <p>Con la edad, el patrón de descanso de un perro cambia poco a poco. ARES lo compara con sus propias noches anteriores, así que si el cambio se acelera o se sale de lo esperado, te avisa en vez de dejar que pase desapercibido.</p>
+      </div>
+      <div class="caso-card">
+        <div class="caso-icon">Demasiado quieto</div>
+        <h4>Menos actividad de la que debería</h4>
+        <p>ARES no solo mira el reposo nocturno — también cuenta cuánto tiempo total pasa inactivo durante el día. Si está por debajo del nivel de actividad recomendado para su raza, edad y complexión, te lo dice. Es tu aviso antes de que el sobrepeso se instale.</p>
+      </div>
+      <div class="caso-card">
+        <div class="caso-icon">Recuperación controlada</div>
+        <h4>El veterinario dijo reposo. ARES lo confirma.</h4>
+        <p>Después de una cirugía o lesión, el vet recomienda "reposo 5 días". Pero no puedes estar 24h mirándolo. ARES registra el tiempo real de inmovilidad y te confirma que ha cumplido — o te avisa si se ha movido más de la cuenta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. BRIDGE: DEL DESCANSO A LA NUTRICIÓN -->
+<section id="descanso-nutricion" class="sec-dark">
+  <div class="container" style="text-align:center">
+    <div class="sl">ARES completo</div>
+    <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">CADA DATO DE DESCANSO ALIMENTA SU DIETA</h2>
+    <div class="dn-box">
+      <p>En Premium, los datos reales de actividad y reposo se cruzan con la nutrición: la ración diaria se ajusta a cómo se mueve y descansa de verdad, no a tablas genéricas.</p>
+      <a href="actividad.html#nutricion-teaser" class="dn-link">Nutrición inteligente &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- 8. NOTA MEDICA — timeline 3 pasos -->
+<section id="nota-medica" class="sec-light light" style="position:relative">
+  <div class="sec-prism" id="prism-nota"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="sl" style="text-align:center">ARES + Veterinario</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">CÓMO LLEGA LA INFORMACIÓN AL VETERINARIO</h2>
+    <div class="nm-b-steps">
+      <div class="nm-b-step">
+        <div class="nm-b-circle"><span class="material-symbols-outlined">notifications_active</span></div>
+        <div class="nm-b-label">1. ARES detecta</div>
+        <div class="nm-b-desc">El patrón de descanso cambia. La app te avisa: "esta noche no ha sido normal".</div>
+      </div>
+      <div class="nm-b-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+      <div class="nm-b-step">
+        <div class="nm-b-circle"><span class="material-symbols-outlined">person</span></div>
+        <div class="nm-b-label">2. Tú decides</div>
+        <div class="nm-b-desc">Con el dato en la mano, valoras si consultar al veterinario o seguir observando.</div>
+      </div>
+      <div class="nm-b-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+      <div class="nm-b-step">
+        <div class="nm-b-circle"><span class="material-symbols-outlined">medical_services</span></div>
+        <div class="nm-b-label">3. El veterinario actúa</div>
+        <div class="nm-b-desc">Con más información que antes, explora, diagnostica y trata. ARES no sustituye. ARES informa.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. PLANES -->
+<section id="planes-nota" class="sec-dark" style="position:relative">
+  <div class="sec-prism" id="prism-planes"></div>
+  <div class="container" style="text-align:center;position:relative;z-index:1">
+    <div class="sl">Disponibilidad por plan</div>
+    <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">QUÉ INCLUYE CADA PLAN</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;max-width:580px;margin:0.5rem auto 0">El registro básico de reposo y actividad está incluido en todos los planes. La detección de anomalías de comportamiento —el aviso de "esta noche fue distinta"— es parte del análisis avanzado de salud, disponible en Premium.</div>
+
+    <div class="pn-wrap">
+      <div class="pn-card">
+        <div class="pn-plan">Esencial</div>
+        <div class="pn-feat">
+          <span class="pn-ch">&#10003;</span>Clasificación reposo/actividad<br>
+          <span class="pn-ch">&#10003;</span>Tiempo de reposo diario<br>
+          <span class="pn-no">&#10007;</span>Línea base individual<br>
+          <span class="pn-no">&#10007;</span>Alertas de anomalías
+        </div>
+      </div>
+      <div class="pn-card hl">
+        <div class="pn-plan">Básico</div>
+        <div class="pn-feat">
+          <span class="pn-ch">&#10003;</span>Clasificación reposo/actividad<br>
+          <span class="pn-ch">&#10003;</span>Tiempo de reposo diario<br>
+          <span class="pn-ch">&#10003;</span>Historial semanal de descanso<br>
+          <span class="pn-no">&#10007;</span>Alertas de anomalías
+        </div>
+      </div>
+      <div class="pn-card">
+        <div class="pn-plan">Premium</div>
+        <div class="pn-feat">
+          <span class="pn-ch">&#10003;</span>Clasificación reposo/actividad<br>
+          <span class="pn-ch">&#10003;</span>Tiempo de reposo diario<br>
+          <span class="pn-ch">&#10003;</span>Línea base y anomalías<br>
+          <span class="pn-ch">&#10003;</span>Alerta "noche inquieta"<br>
+          <span class="pn-ch">&#10003;</span>Estimación resp. en reposo
+        </div>
+      </div>
+    </div>
+
+    <div class="pn-cta">
+      <a href="pricing.html">Ver todos los planes y precios &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- 10. CTA FINAL -->
+<section id="cta-final" class="sec-dark">
+  <div class="container" style="position:relative;z-index:1">
+    <h2 class="st">TU PERRO MERECE UN GUARDIÁN.</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;margin-top:0.75rem">El hardware aún no está a la venta. Cuéntanos qué necesitas y sé de los primeros en reservar.</div>
+    <a href="proximamente.html" class="btn btn-cta" style="margin-top:1.5rem"><span>Reserva tu ARES</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="pf-footer-wrap">
+    <div class="pf-footer-map">
+      <div class="pf-footer-track" aria-hidden="true">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+      </div>
+      <div class="pf-footer-gradient"></div>
+      <div class="pf-footer-text">
+        <div>ARES GPS &copy; 2026 — Descanso</div>
+        <div class="pf-footer-sub">Reposo real, no fases de sue&ntilde;o &middot; L&iacute;nea base individual &middot; Alertas no m&eacute;dicas</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const bar = document.getElementById('progress-bar');
+  const nav = document.getElementById('mini-nav');
+  if(!bar) return;
+  function update(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled/max*100) : 0) + '%';
+    if(nav) nav.classList.toggle('scrolled', scrolled > 20);
+  }
+  document.addEventListener('scroll', update, { passive:true });
+  update();
+})();
+</script>
+<script src="assets/js/mobile-menu.js"></script>
+<script>
+/* === PRISM GRID (fondo animado estilo inicio) === */
+gsap.registerPlugin(ScrollTrigger);
+
+function buildPrism(id) {
+  const wrap = document.getElementById(id);
+  if(!wrap) return;
+  const section = wrap.closest('section') || wrap.parentElement;
+  const size = 40,
+        cols = Math.ceil(section.offsetWidth  / size) + 4,
+        rows = Math.ceil(section.offsetHeight / size) + 4;
+  const grid = document.createElement('div');
+  grid.className = 'prism-grid';
+  const gw = cols * size, gh = rows * size;
+  grid.style.cssText = `width:${gw}px;height:${gh}px;margin-left:${gw/-2}px;margin-top:${gh/-2}px;grid-template-columns:repeat(${cols},${size}px);grid-template-rows:repeat(${rows},${size}px)`;
+  const cells = [];
+  for(let i = 0; i < rows*cols; i++){
+    const c = document.createElement('div');
+    c.className = 'prism-cell';
+    c.style.cssText = `width:${size}px;height:${size}px`;
+    grid.appendChild(c);
+    cells.push(c);
+  }
+  wrap.appendChild(grid);
+  const trail = [], max = 18;
+  let cc = '134,187,216';
+  section.addEventListener('mousemove', e => {
+    const rect = section.getBoundingClientRect();
+    const cx = section.offsetWidth/2, cy = section.offsetHeight/2,
+          gl = cx - gw/2,           gt = cy - gh/2;
+    const col = Math.floor((e.clientX - rect.left - gl) / size),
+          row = Math.floor((e.clientY - rect.top  - gt) / size);
+    if(col >= 0 && col < cols && row >= 0 && row < rows)
+      trail.push({col, row, life: 1});
+    const el = document.querySelector(':hover');
+    if(el && (el.tagName === 'A' || el.tagName === 'BUTTON' || el.closest('.btn') || el.closest('.dn-link')))
+      cc = '246,174,45';
+    else
+      cc = '134,187,216';
+  });
+  section.addEventListener('mouseleave', () => {
+    trail.length = 0;
+    cells.forEach(c => {
+      c.style.background = 'rgba(134,187,216,0)';
+      c.classList.remove('lit');
+    });
+  });
+  function anim(){
+    for(let i = trail.length-1; i >= 0; i--){
+      trail[i].life -= 0.04;
+      if(trail[i].life <= 0) trail.splice(i,1);
+    }
+    while(trail.length > max) trail.shift();
+    const lm = {};
+    trail.forEach(t => {
+      const k = t.row * cols + t.col;
+      if(!lm[k] || lm[k] < t.life) lm[k] = t.life;
+    });
+    cells.forEach((c, i) => {
+      const l = lm[i] || 0;
+      c.style.background = l > 0.01
+        ? `rgba(${cc},${l * 0.3})`
+        : 'rgba(134,187,216,0)';
+      if(l > 0.01) c.classList.add('lit');
+      else         c.classList.remove('lit');
+    });
+    requestAnimationFrame(anim);
+  }
+  anim();
+}
+
+buildPrism('prism-hero');
+buildPrism('prism-honestidad');
+buildPrism('prism-casos');
+buildPrism('prism-nota');
+buildPrism('prism-planes');
+
+/* === GSAP: animaciones al hacer scroll === */
+const REDUCE_MOTION=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(REDUCE_MOTION){
+  // estado final directo, sin animar
+  document.querySelectorAll('.dt-arc').forEach(a=>a.style.strokeDashoffset='0');
+  const c=document.getElementById('dtCount');if(c)c.textContent='~14h';
+  const cl=document.getElementById('dtCountLabel');if(cl)cl.textContent='DE REPOSO';
+  document.querySelectorAll('.caso-card').forEach(c=>{c.style.opacity='1';c.style.visibility='visible';});
+  document.querySelectorAll('.dt-hand,.dt-hand-dot').forEach(h=>h.style.opacity='0');
+  document.querySelectorAll('.hf-bar').forEach(b=>{if(b.dataset.h)b.style.height=b.dataset.h;});
+}
+if(!REDUCE_MOTION){
+ScrollTrigger.batch('.caso-card',{
+  onEnter: batch => gsap.fromTo(batch,{autoAlpha:0,y:30},{autoAlpha:1,y:0,stagger:0.12,duration:0.6,ease:'power2.out'}),
+  start:'top 85%',
+  once:true
+});
+
+/* --- 1. CHART DE BARRAS (sensor): crecen L->R, alertas pulsan, badge al final --- */
+(function(){
+  const bars=gsap.utils.toArray('#como-funciona .hf-bar');
+  if(!bars.length)return;
+  // guardar altura objetivo y arrancar a 0
+  bars.forEach(b=>{b.dataset.h=b.style.height;b.style.height='0%';});
+  const badge=document.getElementById('hfBadge');
+  if(badge){badge.style.opacity='0';}
+  const tl=gsap.timeline({scrollTrigger:{trigger:'#como-funciona .hf-diagram',start:'top 78%',once:true}});
+  tl.to(bars,{height:(i,el)=>el.dataset.h,duration:0.5,ease:'power2.out',stagger:0.045});
+  if(badge)tl.to(badge,{opacity:1,duration:0.4,ease:'power2.out'},'-=0.2');
+  // tras crecer, las de alerta empiezan a pulsar
+  tl.add(()=>document.querySelectorAll('#como-funciona .hf-bar-alert').forEach(b=>b.classList.add('pulsing')));
+})();
+
+/* --- 2. DIAGRAMA DIA 1 -> DESPUES: flujo temporal izq -> puente -> der --- */
+(function(){
+  const left=document.querySelector('#importa .imp-left');
+  const bridge=document.querySelector('#importa .imp-card-bridge');
+  const right=document.querySelector('#importa .imp-right');
+  if(!left||!right)return;
+  const tl=gsap.timeline({scrollTrigger:{trigger:'#importa',start:'top 75%',once:true}});
+  tl.fromTo(left,{autoAlpha:0,x:-30},{autoAlpha:1,x:0,duration:0.6,ease:'power2.out'});
+  if(bridge)tl.fromTo(bridge,{autoAlpha:0,scaleY:0.4,transformOrigin:'center'},{autoAlpha:1,scaleY:1,duration:0.5,ease:'power2.out'},'-=0.1');
+  tl.fromTo(right,{autoAlpha:0,x:30},{autoAlpha:1,x:0,duration:0.6,ease:'power2.out'},'-=0.15');
+})();
+
+/* --- 3. RELOJ 24h: aguja recorre 24h, contador 0->24 sigue la aguja,
+        sectores se trazan al pasar la aguja, y al final se fija en ~14h reposo --- */
+(function(){
+  const hand=document.querySelector('.dt-hand');
+  const dot=document.querySelector('.dt-hand-dot');
+  const count=document.getElementById('dtCount');
+  const label=document.getElementById('dtCountLabel');
+  if(!hand)return;
+  if(count)count.textContent='00h';
+  // cada arco: [clase, horaInicio, horaFin] · se traza cuando la aguja recorre ese tramo
+  const segs=[
+    ['dt-arc-night-a',0,6],   // sueño madrugada (se dibuja al principio)
+    ['dt-arc-ex',6.7,9.3],    // ejercicio mañana
+    ['dt-arc-nap',9,11],      // siesta mañana
+    ['dt-arc-nap2',14,16],    // siesta tarde
+    ['dt-arc-ex2',16.7,19.3], // ejercicio tarde
+    ['dt-arc-night-b',22,24]  // sueño noche (se dibuja al final)
+  ];
+  const DUR=3.2; // recorrido completo de la aguja (24h)
+  // arranca todo oculto
+  segs.forEach(([c])=>{const el=document.querySelector('.'+c);if(el)el.style.strokeDashoffset='1';});
+
+  const tl=gsap.timeline({scrollTrigger:{trigger:'#dia-tipico',start:'center 70%',once:true}});
+  // aguja recorre 0->360deg (linear = ritmo constante, coincide con el trazado)
+  const obj={deg:0};
+  tl.to(obj,{deg:360,duration:DUR,ease:'none',onUpdate:()=>{
+    const t=`rotate(${obj.deg}deg)`;
+    hand.style.transform=t; dot.style.transform=t;
+    const h=obj.deg/360*24;
+    if(count)count.textContent=String(Math.min(24,Math.floor(h))).padStart(2,'0')+'h';
+  }},0);
+  // cada arco se DIBUJA exactamente mientras la aguja recorre su tramo horario
+  segs.forEach(([c,h1,h2])=>{
+    const el=document.querySelector('.'+c);if(!el)return;
+    const at=(h1/24)*DUR;
+    const dur=((h2-h1)/24)*DUR;
+    tl.to(el,{strokeDashoffset:0,duration:dur,ease:'none'},at);
+  });
+  // al terminar: aguja se desvanece y el centro muestra el total real de reposo
+  tl.to([hand,dot],{opacity:0,duration:0.4,ease:'power2.out'});
+  tl.add(()=>{ if(count)count.textContent='~14h'; if(label)label.textContent='DE REPOSO'; });
+  tl.fromTo(count,{scale:0.85},{scale:1,duration:0.45,ease:'back.out(2)',transformOrigin:'center'},'<');
+})();
+} /* fin if(!REDUCE_MOTION) */
+</script>
 </body>
 </html>
