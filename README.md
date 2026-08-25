@@ -24,3 +24,11 @@ Dictado por voz en el navegador con Whisper WASM. Sin servidor, 100% local.
 |--------|------|
 | Web principal | [ONIX](https://LIAMHADES.github.io/.DEV/projects/onix/index.html) |
 | Aviso legal | [Aviso legal](https://LIAMHADES.github.io/.DEV/projects/onix/legal.html) |
+
+## ARES GPS
+
+Landing pública del tracker GPS y bienestar para perros.
+
+| Página | Link |
+|--------|------|
+| Landing | [ARES GPS](https://LIAMHADES.github.io/.DEV/projects/ares/index.html) |

@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Peso Ideal para tu Perro — ARES GPS</title>
+<meta name="description" content="Descubre si tu perro está en su peso ideal en menos de un minuto. Calculadora gratuita basada en datos reales de más de 160 razas.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/lead-capture.css">
+<link rel="stylesheet" href="assets/vendor/splitting.css">
+<style>
+/* === HERO CORTO ===
+   Punto 1 (ronda de ajustes de espaciado): min-height y padding-top reducidos
+   -- el hero ocupaba 60vh + 6rem de padding, dejando un salto grande hasta el
+   formulario de abajo. Tambien la seccion #form-section usa la regla general
+   de section{padding:5rem 0} de base.css, que sumaba aun mas aire por debajo
+   del hero -- se reduce especificamente su padding-top mas abajo. */
+#hero{min-height:38vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:5.5rem}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--hl);text-transform:uppercase;margin-bottom:1rem}
+#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);color:var(--t);letter-spacing:0.02em;line-height:1.2;text-transform:uppercase;max-width:780px}
+.hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.85rem,1.6vw,1rem);color:var(--t2);margin-top:1rem}
+
+/* #form-section: quita el padding vertical generico de section (5rem) y usa uno
+   propio mas compacto, para acercar el formulario al hero y al resultado. */
+#form-section{padding:1.5rem 0 3rem}
+
+/* === PROGRESO === */
+#form-progress{position:relative;height:2px;background:rgba(240,242,245,0.08);margin:0 auto 1.4rem;max-width:520px}
+#form-progress .fill{position:absolute;top:0;left:0;height:100%;background:var(--cta);width:33.33%;transition:width 0.4s ease}
+
+/* === FORMULARIO === */
+#calc-form-wrap{max-width:520px;margin:0 auto;overflow:hidden}
+.calc-step{display:none}
+.calc-step.active{display:block}
+#calc-form{position:relative}
+.calc-field{margin-bottom:1.1rem}
+.calc-field label{display:block;font-family:'Bruno Ace SC',sans-serif;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3);margin-bottom:0.6rem}
+/* Mismo tratamiento visual que el combobox de razas (fondo #20303d, borde
+   sutil, foco --cta) para que TODAS las cajas del formulario tengan el mismo
+   nivel de cuidado, no solo la de razas. */
+.calc-field input,.calc-field select{width:100%;background:#20303d;border:1px solid rgba(240,242,245,0.18);color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;border-radius:4px;transition:border-color 0.3s,background 0.3s}
+.calc-field input:hover,.calc-field select:hover{border-color:rgba(240,242,245,0.35)}
+.calc-field input:focus,.calc-field select:focus{outline:none;border-color:var(--cta);background:#243547}
+.calc-field select{appearance:none;cursor:pointer;padding-right:3rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f0f2f5' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.2rem center}
+.calc-field select option{background:#20303d;color:var(--t)}
+.calc-field input::placeholder{color:var(--t3)}
+/* Punto 3: quitar las flechas nativas de incremento/decremento en los inputs
+   numericos (peso/altura/edad) -- el usuario prefiere escribir el numero
+   directamente sin las spinner-arrows del navegador. */
+.calc-field input[type=number]{-moz-appearance:textfield}
+.calc-field input[type=number]::-webkit-inner-spin-button,
+.calc-field input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.calc-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.4rem}
+.calc-nav .btn-ghost{background:none;border:none;color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;padding:0.5rem}
+.calc-nav .btn-ghost:hover{color:var(--t)}
+.calc-error{font-family:'JetBrains Mono',monospace;font-size:10px;color:#ff8a65;margin-top:0.5rem;min-height:1.2em}
+
+/* === TOGGLE DE RANGO APROXIMADO (peso/altura) ===
+   Cambio: peso/altura siguen siendo obligatorios, pero quien no tiene
+   bascula/metro a mano puede alternar a un <select> de rangos predefinidos en
+   vez de escribir la cifra exacta. El input numerico y el select de rango
+   nunca estan visibles a la vez -- se intercambian con .visible, igual que el
+   patron ya usado en breed2-field/breed-freeform-field de arriba. */
+.calc-approx-toggle{background:none;border:none;color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;padding:0.3rem 0;margin-top:0.4rem;text-align:left;display:inline-flex;align-items:center;gap:0.3rem}
+.calc-approx-toggle:hover{color:var(--cta)}
+.calc-approx-toggle .material-symbols-outlined{font-size:12px}
+.calc-approx-select{display:none}
+.calc-approx-select.visible{display:block;margin-top:0.6rem}
+
+/* === COMBOBOX DE RAZA (autocompletado personalizado, sustituye el <select> nativo) ===
+   El <select> nativo ignora el estilo de <option> en varios navegadores (fondo blanco,
+   texto casi ilegible). Se sustituye por un input de texto + listbox propia, 100%
+   estilizable y que de paso resuelve la busqueda por texto (puntos 4 y 5). */
+.breed-combo{position:relative}
+.breed-combo input{cursor:text}
+.breed-combo input::placeholder{color:var(--t3)}
+.breed-combo-list{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:20;max-height:260px;overflow-y:auto;background:#20303d;border:1px solid rgba(240,242,245,0.18);border-radius:4px;box-shadow:0 12px 32px rgba(0,0,0,0.4);display:none}
+.breed-combo-list.open{display:block}
+.breed-combo-opt{padding:0.7rem 1rem;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:var(--t);cursor:pointer;transition:background 0.15s}
+.breed-combo-opt mark{background:none;color:var(--hl);font-weight:700}
+.breed-combo-opt:hover,.breed-combo-opt.hl-active{background:rgba(242,100,25,0.14)}
+.breed-combo-opt.no-match{color:var(--t3);cursor:default;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.04em;text-transform:uppercase}
+.breed-combo-opt.no-match:hover{background:none}
+
+/* Segunda raza (mestizo de dos razas) — misma posicion/criterio de alineado
+   (izquierda, debajo del combo, encima del boton Siguiente) que el nuevo
+   boton "Mi raza no esta aqui" de abajo, pero con color --deco (azul) para
+   diferenciarlo claramente del nuevo (--t2 + icono distinto), evitando que
+   el usuario los confunda: este es para MESTIZO DE 2 RAZAS CONOCIDAS. */
+#breed2-toggle-wrap{margin:-0.6rem 0 1.5rem;display:flex;flex-direction:column;gap:0.5rem}
+.btn-add-breed{background:none;border:none;color:var(--deco);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;padding:0.3rem 0;text-align:left;display:inline-flex;align-items:center;gap:0.35rem}
+.btn-add-breed:hover{color:var(--hl)}
+.btn-add-breed .material-symbols-outlined{font-size:13px}
+#breed2-field{display:none}
+#breed2-field.visible{display:block}
+.btn-remove-breed{background:none;border:none;color:var(--t3);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;margin-top:0.4rem;padding:0.2rem 0}
+.btn-remove-breed:hover{color:#ff8a65}
+
+/* Nuevo boton "Mi raza no esta aqui" (raza NO reconocida / no listada, distinto
+   del mestizo de 2 razas de arriba). Deliberadamente en --t2 (gris neutro, no
+   --deco) + icono "help" para que no se lea como el mismo tipo de accion que
+   "+ Añadir otra raza" -- ese suma una raza, este admite que ninguna raza del
+   listado aplica. Texto tambien mas largo/interrogativo para reforzar la
+   diferencia de intencion. */
+.btn-add-freeform{background:none;border:none;color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;padding:0.3rem 0;text-align:left;display:inline-flex;align-items:center;gap:0.35rem}
+.btn-add-freeform:hover{color:var(--cta)}
+.btn-add-freeform .material-symbols-outlined{font-size:13px}
+#breed-freeform-field{display:none;margin:-0.6rem 0 1.5rem}
+#breed-freeform-field.visible{display:block}
+.btn-remove-freeform{background:none;border:none;color:var(--t3);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;margin-top:0.4rem;padding:0.2rem 0}
+.btn-remove-freeform:hover{color:#ff8a65}
+
+/* === INDICADOR DE PASOS (puntos) === */
+#step-dots{display:flex;justify-content:center;gap:0.6rem;margin-bottom:1.6rem}
+#step-dots .dot{width:6px;height:6px;border-radius:50%;background:rgba(240,242,245,0.18);transition:background 0.3s,transform 0.3s}
+#step-dots .dot.active{background:var(--cta);transform:scale(1.4)}
+#step-dots .dot.done{background:var(--deco)}
+
+/* === RESULTADO ===
+   Punto 9: bloque mas ancho (antes 640/520/420px centrados con mucho margen
+   lateral). Se amplia el wrap a 880px y los elementos internos escalan con el,
+   dando mas jerarquia visual y aprovechando el ancho de pantalla disponible.
+   Punto 8: se reduce padding/margin vertical para quitar "dead space" entre
+   formulario -> resultado -> CTA. */
+#result-section{display:none;padding:1.8rem 0 3rem}
+#result-section.visible{display:block}
+#result-section .container{max-width:960px}
+.result-wrap{max-width:880px;margin:0 auto;text-align:center}
+#result-category{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2.8rem,8vw,5.5rem);letter-spacing:0.04em;text-transform:uppercase;color:var(--hl);line-height:1.05;margin-bottom:0.75rem}
+#result-category .char{display:inline-block}
+.result-sub{font-family:'Orbitron',sans-serif;font-size:1rem;color:var(--t2);max-width:640px;margin:0 auto 1.2rem;line-height:1.7}
+
+/* Escala horizontal — sin badges, linea/marcador (anti-patron: no fondo de color) */
+.scale-wrap{max-width:680px;margin:0 auto 1.2rem}
+.scale-track{position:relative;height:5px;background:rgba(240,242,245,0.12);margin:1.1rem 0 0.6rem}
+.scale-fill{position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--deco),var(--hl),var(--cta));width:0}
+.scale-marker{position:absolute;top:50%;width:3px;height:26px;background:var(--t);transform:translate(-50%,-50%);left:0}
+.scale-marker::after{content:'';position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:9px;height:9px;background:var(--t);border-radius:50%}
+.scale-labels{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.06em;color:var(--t3);text-transform:uppercase}
+.scale-value{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t2);margin-top:0.75rem}
+
+/* === CAJA DE DATOS CLAVE (IMC + rango) — sin badges de fondo, carácter con borde + mono === */
+#data-card{max-width:640px;margin:0 auto 1.2rem;border-top:1px solid rgba(240,242,245,0.15);border-bottom:1px solid rgba(240,242,245,0.15);padding:1rem 0;display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem 1.5rem}
+#data-card .dc-row{display:flex;flex-direction:column;gap:0.35rem;padding:0.3rem 0;text-align:center}
+#data-card .dc-row + .dc-row{border-top:none;border-left:1px solid rgba(240,242,245,0.06)}
+#data-card .dc-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3)}
+#data-card .dc-value{font-family:'Bruno Ace SC',sans-serif;font-size:1.3rem;letter-spacing:0.02em;color:var(--t)}
+#data-card .dc-value.hl{color:var(--hl)}
+#data-card .dc-note{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.04em;color:var(--deco);text-align:center;margin-top:0.3rem;grid-column:1/-1}
+/* Nota de menor precision cuando el resultado se calculo con rango aproximado
+   de peso/altura en vez de cifra exacta (ver approxInput en calculadora-engine.js) */
+#data-card .dc-note.approx{color:#ff8a65}
+@media(max-width:640px){#data-card{grid-template-columns:1fr}#data-card .dc-row + .dc-row{border-left:none;border-top:1px solid rgba(240,242,245,0.06)}}
+
+#result-cta{opacity:0;margin-top:1.1rem}
+#result-cta.visible{opacity:1;transition:opacity 0.6s ease}
+.result-cta-heading{font-family:'Bruno Ace SC',sans-serif;font-size:1.2rem;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.5rem;text-align:center}
+.result-cta-sub{font-family:'Orbitron',sans-serif;font-size:0.8rem;color:var(--t2);text-align:center;margin-bottom:1.5rem}
+/* CTA secundario de nutricion (punto 10): mismo look, acento en --deco para diferenciarlo del generico */
+.result-cta-heading.nutricion{color:var(--hl)}
+
+/* Perfilado (pregunta opcional post-email) */
+#profiling{display:none;max-width:480px;margin:2rem auto 0;text-align:center}
+#profiling.visible{display:block}
+#profiling p{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;color:var(--t3);text-transform:uppercase;margin-bottom:1rem}
+#profiling select{width:100%;background:#20303d;border:1px solid rgba(240,242,245,0.18);color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.85rem;padding:0.75rem 3rem 0.75rem 0.85rem;border-radius:4px;appearance:none;cursor:pointer;transition:border-color 0.3s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f0f2f5' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+#profiling select:hover{border-color:rgba(240,242,245,0.35)}
+#profiling select:focus{outline:none;border-color:var(--cta)}
+#profiling select option{background:#20303d;color:var(--t)}
+
+.restart-link{display:block;text-align:center;margin-top:1.4rem;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--t3);text-decoration:none}
+.restart-link:hover{color:var(--cta)}
+
+/* === COPY DE APOYO === */
+#apoyo .cl{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
+#apoyo .cc{border:1px solid rgba(134,187,216,0.35);padding:1.8rem;border-radius:4px}
+#apoyo .cc .sl{margin-bottom:0.8rem}
+#apoyo .cc p{font-size:0.85rem;color:var(--wtext2);line-height:1.8}
+
+@media(max-width:768px){
+  .calc-row{grid-template-columns:1fr}
+  #apoyo .cl{grid-template-columns:1fr}
+}
+
+/* === FOOTER MAP === */
+.pf-footer-wrap{position:relative;margin-top:0}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:visible;background:var(--bg)}
+/* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:none;image-rendering:auto;transform-origin:center bottom;transition:transform 260ms cubic-bezier(.22,1,.36,1)}
+.pf-footer-map.end-stretch .pf-footer-tile{transform:scaleY(1.08)}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px))}}
+@media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
+@media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
+.pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
+.pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
+.pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}}
+
+.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+.sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+section:first-of-type{clip-path:none}
+
+/* Encaje 45: form-section no tenia corte y rompia la continuidad. */
+#hero{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+#form-section,#result-section{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+#apoyo{margin-top:-40px}
+</style>
+</head>
+<body style="background:#151d25">
+
+<div id="progress-bar"></div>
+<div class="scroll-indicator-horizontal" id="ticksWrapper"></div>
+
+<button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="navOverlay" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<nav id="main-nav">
+  <a href="../index.html" class="nl">ARES GPS</a>
+  <a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a>
+  <ul class="inline-links">
+    <li><a href="../index.html#como-funciona">Cómo funciona</a></li>
+    <li><a href="../index.html#extras">Extras</a></li>
+    <li><a href="../index.html#planes">Planes</a></li>
+    <li><a href="pricing.html">Precios</a></li>
+    <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
+      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="proximamente.html">Geocerca (próximamente)</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
+    </li>
+  </ul>
+</nav>
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Menú principal" tabindex="-1">
+  <div class="nav-overlay-inner">
+    <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
+    <ul class="nav-full-links">
+      <li class="nl-item"><a href="../index.html#proposito">Por qué ARES</a></li><li class="nl-item"><a href="../index.html#como-funciona">Cómo funciona</a></li><li class="nl-item"><a href="../index.html#extras">Extras</a></li><li class="nl-item"><a href="../index.html#planes">Planes</a></li><li class="nl-item"><a href="pricing.html">Precios</a></li>
+      <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="proximamente.html">Geocerca (próximamente)</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
+    </ul>
+  </div>
+</div>
+<div class="ov-ticks" id="ovTicks"></div>
+
+<!-- HERO -->
+<section id="hero" class="sec-dark">
+  <div class="container">
+    <div class="hero-tag">Seguridad y bienestar para tu perro</div>
+    <h1>¿Sabes si tu perro está en su peso ideal?</h1>
+    <div class="hero-sub">Respóndelo en menos de un minuto. Sin básculas raras, sin adivinar.</div>
+  </div>
+</section>
+
+<!-- FORMULARIO -->
+<section id="form-section">
+  <div class="container">
+    <div id="form-progress"><div class="fill" id="progress-fill"></div></div>
+    <div id="step-dots">
+      <span class="dot active" data-dot="1"></span>
+      <span class="dot" data-dot="2"></span>
+      <span class="dot" data-dot="3"></span>
+    </div>
+
+    <div id="calc-form-wrap">
+      <form id="calc-form">
+        <!-- Paso 1: raza + sexo -->
+        <div class="calc-step active" data-step="1">
+          <div class="calc-field">
+            <label for="f-breed">Raza de tu perro</label>
+            <div class="breed-combo" data-breed-combo>
+              <input type="text" id="f-breed" autocomplete="off" placeholder="Escribe para buscar… (o deja en blanco si es mestizo/no sabes)">
+              <input type="hidden" id="f-breed-value">
+              <div class="breed-combo-list" id="f-breed-list" role="listbox"></div>
+            </div>
+          </div>
+
+          <div id="breed2-toggle-wrap">
+            <button type="button" class="btn-add-breed" id="btn-add-breed2"><span class="material-symbols-outlined">add</span> Añadir otra raza (mestizo de dos razas)</button>
+            <button type="button" class="btn-add-freeform" id="btn-add-freeform"><span class="material-symbols-outlined">help</span> ¿Tu raza no está en la lista?</button>
+          </div>
+
+          <div class="calc-field" id="breed2-field">
+            <label for="f-breed2">Segunda raza</label>
+            <div class="breed-combo" data-breed-combo>
+              <input type="text" id="f-breed2" autocomplete="off" placeholder="Escribe para buscar… ej. Pastor Alemán">
+              <input type="hidden" id="f-breed2-value">
+              <div class="breed-combo-list" id="f-breed2-list" role="listbox"></div>
+            </div>
+            <button type="button" class="btn-remove-breed" id="btn-remove-breed2"><span>&times; Quitar segunda raza</span></button>
+          </div>
+
+          <!-- Punto 2: raza no listada -- campo de texto libre simple (sin
+               autocompletado, ya que por definicion esta raza no existe en
+               breed-data.js). El calculo cae al mismo fallback de tamaño
+               aproximado que "Mestizo/No sé" (ver calculadora-engine.js),
+               guardando el nombre escrito solo como referencia. -->
+          <div class="calc-field" id="breed-freeform-field">
+            <label for="f-breed-freeform">Nombre de la raza (no está en la lista)</label>
+            <input type="text" id="f-breed-freeform" autocomplete="off" placeholder="ej. Perro de agua español">
+            <button type="button" class="btn-remove-freeform" id="btn-remove-freeform"><span>&times; Buscar en la lista en su lugar</span></button>
+          </div>
+
+          <div class="calc-field">
+            <label for="f-sex">Sexo</label>
+            <select id="f-sex" required>
+              <option value="U">No sé / Prefiero no decir</option>
+              <option value="F">Hembra</option>
+              <option value="M">Macho</option>
+            </select>
+          </div>
+          <div class="calc-nav">
+            <span></span>
+            <button type="button" class="btn btn-cta" data-next><span>Siguiente</span></button>
+          </div>
+          <div class="calc-error" data-error-for="1"></div>
+        </div>
+
+        <!-- Paso 2: peso + altura
+             Cambio: ambos siguen siendo obligatorios, pero cada uno tiene una
+             alternativa de "rango aproximado" para quien no tiene
+             bascula/metro a mano (boton --add-freeform del punto 2 reusa el
+             mismo patron visual/estructural). El input exacto y el select de
+             rango se excluyen mutuamente (solo uno se envia como valor real
+             al validar/enviar, ver JS mas abajo). -->
+        <div class="calc-step" data-step="2">
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="f-weight">Peso actual (kg)</label>
+              <input type="number" id="f-weight" min="0.5" max="120" step="0.1" required placeholder="ej. 24.5">
+              <select id="f-weight-range" class="calc-approx-select"></select>
+              <button type="button" class="calc-approx-toggle" id="btn-toggle-weight-approx"><span class="material-symbols-outlined">help</span> ¿No lo sabes con exactitud? Usa un rango aproximado</button>
+            </div>
+            <div class="calc-field">
+              <label for="f-height">Altura a la cruz (cm)</label>
+              <input type="number" id="f-height" min="10" max="110" step="0.5" required placeholder="ej. 55">
+              <select id="f-height-range" class="calc-approx-select"></select>
+              <button type="button" class="calc-approx-toggle" id="btn-toggle-height-approx"><span class="material-symbols-outlined">help</span> ¿No lo sabes con exactitud? Usa un rango aproximado</button>
+            </div>
+          </div>
+          <div class="calc-nav">
+            <button type="button" class="btn-ghost" data-prev><span>&larr; Atrás</span></button>
+            <button type="button" class="btn btn-cta" data-next><span>Siguiente</span></button>
+          </div>
+          <div class="calc-error" data-error-for="2"></div>
+        </div>
+
+        <!-- Paso 3: edad -->
+        <div class="calc-step" data-step="3">
+          <div class="calc-field">
+            <label for="f-age">Edad aproximada (meses)</label>
+            <input type="number" id="f-age" min="1" max="240" step="1" required placeholder="ej. 36 (3 años)">
+          </div>
+          <div class="calc-nav">
+            <button type="button" class="btn-ghost" data-prev><span>&larr; Atrás</span></button>
+            <button type="submit" class="btn btn-cta"><span>Ver resultado</span></button>
+          </div>
+          <div class="calc-error" data-error-for="3"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADO -->
+<section id="result-section" class="sec-darker">
+  <div class="container">
+    <div class="result-wrap">
+      <div class="sl">Resultado</div>
+      <h2 id="result-category">—</h2>
+      <p class="result-sub" id="result-message"></p>
+
+      <div class="scale-wrap">
+        <div class="scale-track">
+          <div class="scale-fill"></div>
+          <div class="scale-marker" id="scale-marker"></div>
+        </div>
+        <div class="scale-labels">
+          <span>Bajo peso</span><span>Ideal</span><span>Sobrepeso</span><span>Obesidad</span>
+        </div>
+      </div>
+
+      <div id="data-card">
+        <div class="dc-row">
+          <span class="dc-label">IMC estimado</span>
+          <span class="dc-value hl" id="dc-bmi">—</span>
+        </div>
+        <div class="dc-row">
+          <span class="dc-label">Rango ideal</span>
+          <span class="dc-value" id="dc-range">—</span>
+        </div>
+        <div class="dc-row">
+          <span class="dc-label">Raza de referencia</span>
+          <span class="dc-value" id="dc-breed" style="font-size:0.95rem">—</span>
+        </div>
+        <div class="dc-note" id="dc-note"></div>
+      </div>
+
+      <p class="disclaimer">Esto es una estimación basada en datos de referencia por raza, no un diagnóstico médico. Ante cualquier duda sobre la salud de tu perro, consulta siempre con tu veterinario.</p>
+
+      <!-- CTA de captura — el copy (heading/sub/boton) se adapta segun la categoria
+           de resultado (punto 10): generico para bajo_peso/ideal, nutricion para
+           sobrepeso/obesidad. Mismo formulario/lead-capture.js, solo cambia el texto. -->
+      <div id="result-cta">
+        <div class="result-cta-heading" id="result-cta-heading">Recibe seguimiento de la condición de tu perro</div>
+        <div class="result-cta-sub" id="result-cta-sub">Entérate cuando ARES esté disponible.</div>
+
+        <form data-lead-form data-lead-source="calculadora" class="lead-form">
+          <div class="lf-row">
+            <input type="email" placeholder="tu@email.com" data-lead="email" required>
+            <button type="submit" data-lead="submit" id="result-cta-submit">Quiero saber más</button>
+          </div>
+          <div class="lf-gdpr">
+            <input type="checkbox" id="gdpr-calc" data-lead="gdpr" required>
+            <label for="gdpr-calc">Acepto recibir comunicaciones de ARES GPS sobre el lanzamiento del producto y el seguimiento de la condición de mi perro. Puedo darme de baja cuando quiera.</label>
+          </div>
+          <span class="lead-feedback" data-lead="feedback"></span>
+        </form>
+
+        <!-- Pregunta de perfilado opcional -->
+        <div id="profiling">
+          <p>Opcional — nos ayuda a entender mejor a los dueños de ARES</p>
+          <select id="profiling-select">
+            <option value="">¿Dónde suele pasear tu perro?</option>
+            <option value="ciudad_parque_vallado">Ciudad / parque vallado</option>
+            <option value="campo_sin_correa">Campo o monte sin correa</option>
+            <option value="finca_propia">Finca propia</option>
+          </select>
+        </div>
+      </div>
+
+      <a href="#form-section" class="restart-link" id="restart-link">Calcular de nuevo</a>
+    </div>
+  </div>
+</section>
+
+<!-- COPY DE APOYO -->
+<section id="apoyo" class="sec-light light">
+  <div class="container">
+    <div class="sl">Por qué esta calculadora</div>
+    <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">EL PESO TE DICE MÁS DE LO QUE CREES</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;max-width:650px;margin-top:0.5rem">El peso de tu perro te dice más de lo que crees: si come de más, si le falta ejercicio, si algo ha cambiado sin que lo notaras. Esta calculadora usa su raza, edad y actividad para darte una respuesta real, no una tabla genérica de internet.</div>
+    <div class="cl">
+      <div class="cc"><p>Sabes si tu perro come lo que necesita para su tamaño y edad — sin básculas raras, sin adivinar.</p></div>
+      <div class="cc"><p>Cada raza tiene un peso ideal distinto. Lo calculamos con datos reales de más de 160 razas, no una media genérica.</p></div>
+      <div class="cc"><p>La próxima vez que el veterinario te pregunte por su peso, ya lo sabes de antemano.</p></div>
+    </div>
+    <div class="cl" style="grid-template-columns:1fr;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(134,187,216,0.4)">
+      <div class="cc" style="border:none;padding:0">
+        <p>Saber si tu perro está en su peso ideal es la mitad de cuidarlo bien. La otra mitad es saber siempre dónde está y cómo se mueve — cuánto ha corrido hoy, si ha descansado, si algo no cuadra. ARES GPS conecta esas dos mitades: la calculadora te dice dónde empezar, el dispositivo te dice si vas por buen camino, paseo a paseo.</p>
+        <a href="../index.html#conoce" class="btn btn-out" style="display:flex;width:fit-content;margin:1rem auto 0"><span>Descubre ARES GPS →</span></a>
+      </div>
+    </div>
+    <div class="cl" style="grid-template-columns:1fr;margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(246,174,45,0.5)">
+      <div class="cc" style="border:1px solid rgba(246,174,45,0.5);background:rgba(246,174,45,0.03);padding:1.8rem">
+        <div class="sl">Nutrición Premium</div>
+        <p style="font-size:0.9rem;color:var(--wtext);line-height:1.8">ARES Premium no te da una tabla genérica de "un perro de 20 kg come X". Toma los datos reales de tu perro — su actividad diaria medida por el collar, su peso, raza, edad y condición corporal — y los cruza con el análisis de macronutrientes de su comida. <strong>El resultado: una recomendación única para él, no para un perro cualquiera.</strong></p>
+        <a href="pricing.html#planes" class="btn btn-out" style="display:flex;width:fit-content;margin:1rem auto 0"><span>Ver planes Premium →</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="pf-footer-wrap">
+    <div class="pf-footer-map">
+      <div class="pf-footer-track" aria-hidden="true">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+      </div>
+      <div class="pf-footer-gradient"></div>
+      <div class="pf-footer-text">
+        <div>ARES GPS &copy; 2026 — Calculadora de Peso Ideal</div>
+        <div class="pf-footer-sub">F&oacute;rmula veterinaria &middot; 350+ razas &middot; Datos de referencia cient&iacute;fica</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/breed-data.js"></script>
+<script src="assets/js/calculadora-engine.js"></script>
+<script src="assets/vendor/splitting.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="assets/js/lead-capture.js"></script>
+<script>
+/* ============================================
+   NAV DEL FORMULARIO MULTI-PASO
+   ============================================ */
+(function(){
+  const steps = [...document.querySelectorAll('.calc-step')];
+  const progressFill = document.getElementById('progress-fill');
+  const dots = [...document.querySelectorAll('#step-dots .dot')];
+  let current = 1;
+
+  function showStep(n, direction){
+    const prevStep = steps.find(s => +s.dataset.step === current);
+    const nextStep = steps.find(s => +s.dataset.step === n);
+    progressFill.style.width = (n/3*100) + '%';
+    dots.forEach(d=>{
+      const dn = +d.dataset.dot;
+      d.classList.toggle('active', dn === n);
+      d.classList.toggle('done', dn < n);
+    });
+
+    if(window.gsap && prevStep && nextStep && prevStep !== nextStep){
+      const dir = direction === 'back' ? -1 : 1;
+      const tl = gsap.timeline();
+      tl.to(prevStep, { opacity:0, x: -24*dir, duration:0.25, ease:'power2.in',
+        onComplete: ()=>{ prevStep.classList.remove('active'); }
+      });
+      tl.set(nextStep, { opacity:0, x: 24*dir });
+      tl.call(()=> nextStep.classList.add('active'));
+      tl.to(nextStep, { opacity:1, x:0, duration:0.35, ease:'power2.out' });
+    } else {
+      steps.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
+    }
+    current = n;
+  }
+
+  /* ============================================
+     COMBOBOX DE RAZA — autocompletado personalizado (puntos 4 y 5)
+     Sustituye el <select> nativo (fondo blanco/texto ilegible en varios
+     navegadores, imposible de estilizar al 100% via CSS de <option>) por un
+     input de texto + listbox propia. Filtra en tiempo real sobre las ~160
+     razas de breed-data.js. Reutilizable para f-breed y f-breed2 (punto 6).
+     ============================================ */
+  function initBreedCombo(inputId, hiddenId, listId){
+    const input = document.getElementById(inputId);
+    const hidden = document.getElementById(hiddenId);
+    const list = document.getElementById(listId);
+    if(!input || !hidden || !list) return { clear(){} };
+
+    const names = (window.ARES_BREED_DATA && window.ARES_BREED_DATA.breedNames) || [];
+    let activeIdx = -1;
+    let filtered = [];
+
+    function render(query){
+      const q = query.trim().toLowerCase();
+      filtered = q ? names.filter(n => n.toLowerCase().includes(q)) : names;
+      list.innerHTML = '';
+      activeIdx = -1;
+
+      if(filtered.length === 0){
+        const empty = document.createElement('div');
+        empty.className = 'breed-combo-opt no-match';
+        empty.textContent = 'Sin coincidencias — prueba con otro nombre';
+        list.appendChild(empty);
+        return;
+      }
+
+      filtered.slice(0, 50).forEach((name, i)=>{
+        const opt = document.createElement('div');
+        opt.className = 'breed-combo-opt';
+        opt.setAttribute('role','option');
+        opt.dataset.idx = i;
+        // Resalta la coincidencia de texto (sin badges, solo <mark> con color de acento)
+        if(q){
+          const idx = name.toLowerCase().indexOf(q);
+          if(idx >= 0){
+            opt.innerHTML = name.slice(0,idx) + '<mark>' + name.slice(idx, idx+q.length) + '</mark>' + name.slice(idx+q.length);
+          } else { opt.textContent = name; }
+        } else { opt.textContent = name; }
+        opt.addEventListener('mousedown', (e)=>{ e.preventDefault(); select(name); });
+        list.appendChild(opt);
+      });
+    }
+
+    function select(name){
+      input.value = name;
+      hidden.value = name;
+      close();
+    }
+
+    function open(){ render(input.value); list.classList.add('open'); }
+    function close(){ list.classList.remove('open'); }
+
+    function highlight(idx){
+      [...list.querySelectorAll('.breed-combo-opt')].forEach((el,i)=> el.classList.toggle('hl-active', i===idx));
+      activeIdx = idx;
+    }
+
+    input.addEventListener('focus', open);
+    input.addEventListener('input', ()=>{ hidden.value=''; open(); });
+    input.addEventListener('keydown', (e)=>{
+      const opts = [...list.querySelectorAll('.breed-combo-opt:not(.no-match)')];
+      if(e.key === 'ArrowDown'){ e.preventDefault(); highlight(Math.min(activeIdx+1, opts.length-1)); }
+      if(e.key === 'ArrowUp'){ e.preventDefault(); highlight(Math.max(activeIdx-1, 0)); }
+      if(e.key === 'Enter'){ e.preventDefault(); if(activeIdx>=0 && filtered[activeIdx]) select(filtered[activeIdx]); }
+      if(e.key === 'Escape'){ close(); }
+    });
+    document.addEventListener('click', (e)=>{
+      if(!e.target.closest(`[data-breed-combo]`) || !input.contains(e.target) && !list.contains(e.target)){
+        if(e.target !== input && !list.contains(e.target)) close();
+      }
+    });
+
+    return {
+      clear(){ input.value=''; hidden.value=''; },
+      getValue(){ return hidden.value || ''; }
+    };
+  }
+
+  const breedCombo1 = initBreedCombo('f-breed', 'f-breed-value', 'f-breed-list');
+  const breedCombo2 = initBreedCombo('f-breed2', 'f-breed2-value', 'f-breed2-list');
+
+  /* === Segunda raza (mestizo de dos razas conocidas) — punto 6 === */
+  const breed2Field = document.getElementById('breed2-field');
+  const btnAddBreed2 = document.getElementById('btn-add-breed2');
+  const btnRemoveBreed2 = document.getElementById('btn-remove-breed2');
+  const breed2ToggleWrap = document.getElementById('breed2-toggle-wrap');
+
+  btnAddBreed2.addEventListener('click', ()=>{
+    breed2Field.classList.add('visible');
+    btnAddBreed2.style.display = 'none';
+    document.getElementById('f-breed2').focus();
+  });
+  btnRemoveBreed2.addEventListener('click', ()=>{
+    breed2Combo_clear();
+    breed2Field.classList.remove('visible');
+    btnAddBreed2.style.display = '';
+  });
+  function breed2Combo_clear(){ breedCombo2.clear(); }
+
+  /* === "Mi raza no está aquí" — raza NO reconocida en breed-data.js ===
+     Distinto del boton de mestizo de arriba: aqui el usuario escribe libremente
+     el nombre de su raza (sin autocompletado, porque por definicion no esta en
+     el dataset). El calculo cae al mismo fallback de "Mestizo/No sé" por
+     tamaño aproximado (ver calculadora-engine.js), pero el nombre escrito se
+     guarda como dato adicional (freeformBreedName) para referencia, no se
+     descarta ni se usa en el calculo numerico. */
+  const freeformField = document.getElementById('breed-freeform-field');
+  const btnAddFreeform = document.getElementById('btn-add-freeform');
+  const btnRemoveFreeform = document.getElementById('btn-remove-freeform');
+  const breedMainCombo = document.querySelector('[data-breed-combo]');
+
+  btnAddFreeform.addEventListener('click', ()=>{
+    // Limpia y desactiva el combo principal (no tiene sentido tener los dos
+    // caminos de raza principal activos a la vez: combo de lista vs texto libre).
+    breedCombo1.clear();
+    breedMainCombo.style.display = 'none';
+    freeformField.classList.add('visible');
+    btnAddFreeform.style.display = 'none';
+    document.getElementById('f-breed-freeform').focus();
+  });
+  btnRemoveFreeform.addEventListener('click', ()=>{
+    document.getElementById('f-breed-freeform').value = '';
+    freeformField.classList.remove('visible');
+    breedMainCombo.style.display = '';
+    btnAddFreeform.style.display = '';
+  });
+
+  /* ============================================
+     TOGGLE DE RANGO APROXIMADO (peso/altura)
+     Mismo patron que el toggle raza libre/mestizo de arriba: input exacto y
+     select de rango se muestran de forma excluyente. `getWeightInput()` /
+     `getHeightInput()` devuelven o bien un numero (cifra exacta) o bien
+     { rangeId } (rango aproximado) -- listo para pasar tal cual al motor de
+     calculo, que ya sabe resolver ambos casos (ver calculadora-engine.js).
+     ============================================ */
+  function initApproxToggle(numberInputId, rangeSelectId, toggleBtnId, ranges){
+    const numberInput = document.getElementById(numberInputId);
+    const rangeSelect = document.getElementById(rangeSelectId);
+    const toggleBtn = document.getElementById(toggleBtnId);
+    let usingRange = false;
+
+    rangeSelect.innerHTML = '<option value="">Selecciona un rango…</option>' +
+      ranges.map(r => `<option value="${r.id}">${r.label}</option>`).join('');
+
+    function setMode(range){
+      usingRange = range;
+      const wrap = numberInput.closest('.num-wrap') || numberInput;
+      wrap.style.display = range ? 'none' : '';
+      numberInput.required = !range;
+      rangeSelect.classList.toggle('visible', range);
+      rangeSelect.required = range;
+      toggleBtn.innerHTML = range
+        ? '<span class="material-symbols-outlined">edit</span> Prefiero escribir la cifra exacta'
+        : '<span class="material-symbols-outlined">help</span> ¿No lo sabes con exactitud? Usa un rango aproximado';
+      if(range){ numberInput.value=''; } else { rangeSelect.value=''; }
+    }
+
+    toggleBtn.addEventListener('click', ()=> setMode(!usingRange));
+
+    return {
+      isApprox(){ return usingRange; },
+      getValue(){
+        if(usingRange) return rangeSelect.value ? { rangeId: rangeSelect.value } : null;
+        const n = parseFloat(numberInput.value);
+        return Number.isFinite(n) ? n : null;
+      },
+      reset(){ setMode(false); },
+    };
+  }
+
+  const RANGES = window.ARES_CALCULATOR || {};
+  const weightApprox = initApproxToggle('f-weight', 'f-weight-range', 'btn-toggle-weight-approx', RANGES.WEIGHT_RANGES || []);
+  const heightApprox = initApproxToggle('f-height', 'f-height-range', 'btn-toggle-height-approx', RANGES.HEIGHT_RANGES || []);
+
+  function validateStep(n){
+    const errEl = document.querySelector(`[data-error-for="${n}"]`);
+    errEl.textContent = '';
+    if(n===1){
+      // La raza principal es opcional (equivalente a "Mestizo / No sé" del <select>
+      // original): si el usuario deja el campo vacio, se trata como mestizo sin raza
+      // conocida. Solo se valida que si escribio texto libre sin seleccionar de la
+      // lista, no se envie un valor no reconocido como si fuese una raza real.
+      const typed = document.getElementById('f-breed').value.trim();
+      const value = breedCombo1.getValue();
+      if(typed && !value){ errEl.textContent='Selecciona una raza de la lista o deja el campo vacío.'; return false; }
+    }
+    if(n===2){
+      const w = weightApprox.getValue();
+      const h = heightApprox.getValue();
+      if(w === null || (typeof w === 'number' && w<=0)){ errEl.textContent='Introduce un peso válido o elige un rango aproximado.'; return false; }
+      if(h === null || (typeof h === 'number' && h<=0)){ errEl.textContent='Introduce una altura válida o elige un rango aproximado.'; return false; }
+    }
+    if(n===3){
+      const a = parseFloat(document.getElementById('f-age').value);
+      if(!a || a<=0){ errEl.textContent='Introduce una edad aproximada.'; return false; }
+    }
+    return true;
+  }
+
+  document.querySelectorAll('[data-next]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(validateStep(current)) showStep(current+1, 'forward');
+    });
+  });
+  document.querySelectorAll('[data-prev]').forEach(btn=>{
+    btn.addEventListener('click', ()=> showStep(current-1, 'back'));
+  });
+
+  document.getElementById('restart-link').addEventListener('click', function(e){
+    e.preventDefault();
+    document.getElementById('result-section').classList.remove('visible');
+    document.getElementById('form-section').style.display='';
+    steps.forEach(s => s.classList.remove('active'));
+    steps[0].classList.add('active');
+    current = 1;
+    progressFill.style.width = '33.33%';
+    dots.forEach(d=>{ d.classList.toggle('active', +d.dataset.dot===1); d.classList.remove('done'); });
+    breedCombo1.clear();
+    breedCombo2.clear();
+    breed2Field.classList.remove('visible');
+    btnAddBreed2.style.display = '';
+    document.getElementById('f-breed-freeform').value = '';
+    freeformField.classList.remove('visible');
+    breedMainCombo.style.display = '';
+    btnAddFreeform.style.display = '';
+    weightApprox.reset();
+    heightApprox.reset();
+    window.scrollTo({top: document.getElementById('form-section').offsetTop - 80, behavior:'smooth'});
+  });
+
+  /* ============================================
+     ENVIO DEL FORMULARIO -> CALCULO -> REVEAL
+     ============================================ */
+  document.getElementById('calc-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!validateStep(3)) return;
+
+    // Array de 1 o 2 razas (punto 6): la principal siempre entra si esta
+    // seleccionada de la lista; la segunda solo si el bloque esta visible y
+    // tiene una raza valida seleccionada.
+    // Si el usuario esta usando "Mi raza no está aquí" (raza libre, no
+    // reconocida en breed-data.js), no se manda ninguna raza al motor de
+    // calculo -> cae automaticamente al mismo fallback de "Mestizo/No sé"
+    // (estimacion por tamaño, ver calculadora-engine.js). El nombre escrito
+    // se guarda aparte en freeformBreedName solo como referencia.
+    const usingFreeform = freeformField.classList.contains('visible');
+    const freeformBreedName = usingFreeform
+      ? document.getElementById('f-breed-freeform').value.trim()
+      : '';
+
+    const breeds = usingFreeform ? [] : [breedCombo1.getValue()].filter(Boolean);
+    if(!usingFreeform && breed2Field.classList.contains('visible')){
+      const b2 = breedCombo2.getValue();
+      if(b2) breeds.push(b2);
+    }
+
+    const input = {
+      breed: breeds, // calculadora-engine.js acepta string o array de 1-2 razas
+      sex: document.getElementById('f-sex').value,
+      weightKg: weightApprox.getValue(), // numero exacto o { rangeId } (rango aproximado)
+      heightCm: heightApprox.getValue(),
+      ageMonths: parseFloat(document.getElementById('f-age').value),
+    };
+
+    const result = window.ARES_CALCULATOR.calculate(input);
+    // Dato adicional guardado (no usado en el calculo numerico, solo referencia
+    // / registro del lead): nombre de raza libre que el usuario escribio.
+    result.freeformBreedName = freeformBreedName;
+    renderResult(result);
+
+    // Punto 2 (cambio): la sugerencia de raza no listada se registra aparte,
+    // en su propia key de localStorage (ares_breed_suggestions_v1), para que
+    // el equipo pueda revisarla mas adelante y anadirla al dataset si procede
+    // -- ver TODO(integracion real) en lead-capture.js.
+    if(freeformBreedName && window.ARES_LEAD_CAPTURE){
+      window.ARES_LEAD_CAPTURE.submitBreedSuggestion(freeformBreedName, {
+        category: result.category,
+        bmi: result.bmi,
+        approxInput: !!result.approxInput,
+      });
+    }
+
+    document.getElementById('form-section').style.display='none';
+    document.getElementById('result-section').classList.add('visible');
+    window.scrollTo({top: document.getElementById('result-section').offsetTop - 60, behavior:'smooth'});
+  });
+
+  /* CTA condicional segun categoria (punto 10): mismo formulario/lead-capture.js,
+     copy adaptado a nutricion cuando el resultado es sobrepeso/obesidad. */
+  const CTA_COPY = {
+    default: {
+      heading: 'Recibe seguimiento de la condición de tu perro',
+      sub: 'Entérate cuando ARES esté disponible.',
+      submit: 'Quiero saber más',
+    },
+    nutricion: {
+      heading: '¿Quieres una dieta ajustada a tu perro, no a una tabla genérica?',
+      sub: 'ARES Premium analiza los macros de su comida, los cruza con su actividad real (del collar), peso, raza y edad, y te recomienda exactamente qué y cuánto darle.',
+      submit: 'Quiero mi plan de nutrición',
+    },
+  };
+
+  function applyCtaCopy(category){
+    const heading = document.getElementById('result-cta-heading');
+    const sub = document.getElementById('result-cta-sub');
+    const submit = document.getElementById('result-cta-submit');
+    // Nutrición se muestra para todos los resultados — el copy se adapta solo
+    // si hay sobrepeso/obesidad para enfatizar el plan de adelgazamiento
+    const isNutricion = true; // siempre activo: todos los perros se benefician de saber qué comen
+    const copy = CTA_COPY.nutricion;
+    heading.textContent = copy.heading;
+    heading.classList.toggle('nutricion', isNutricion);
+    sub.textContent = copy.sub;
+    submit.textContent = copy.submit;
+  }
+
+  function renderResult(result){
+    const labels = window.ARES_CALCULATOR.CATEGORY_LABELS;
+    const messages = window.ARES_CALCULATOR.CATEGORY_MESSAGES;
+    const catEl = document.getElementById('result-category');
+    catEl.textContent = labels[result.category] || 'Ideal';
+    document.getElementById('result-message').textContent = messages[result.category] || '';
+    applyCtaCopy(result.category);
+
+    // Datos clave en la caja personalizada (sin badges, solo bordes + tipografia Bruno Ace SC)
+    document.getElementById('dc-bmi').textContent = '—'; // se rellena con el contador animado de abajo
+    document.getElementById('dc-range').textContent = (result.normalMin && result.normalMax)
+      ? result.normalMin + ' – ' + result.normalMax
+      : 'Sin datos suficientes';
+    // Si el usuario escribio una raza libre no reconocida, se muestra ese
+    // nombre tal cual (con nota de que el calculo fue por tamaño aproximado),
+    // en vez del generico "Estimación por tamaño" -- referencia visible, sin
+    // afectar al calculo numerico que ya cayo al fallback por tamaño.
+    document.getElementById('dc-breed').textContent = result.freeformBreedName || result.breedUsed || 'Estimación por tamaño';
+    // Nota de precision (cambio): si el peso y/o la altura vinieron de un rango
+    // aproximado en vez de una cifra exacta, se avisa de que el margen de
+    // error es mayor -- se antepone a la nota de cachorro si ambas aplican.
+    const noteEl = document.getElementById('dc-note');
+    const notes = [];
+    if(result.approxInput) notes.push('Calculado con un rango aproximado de peso/altura — el margen de error es mayor. Para más precisión, pésalo y mídelo si puedes.');
+    if(result.puppyAdjusted) notes.push('Ajustado por edad de cachorro');
+    noteEl.textContent = notes.join(' · ');
+    noteEl.classList.toggle('approx', !!result.approxInput);
+
+    // Posicion del marcador en la escala (0-100%) segun categoria
+    const positions = { bajo_peso: 10, ideal: 40, sobrepeso: 70, obesidad: 92 };
+    const targetLeft = positions[result.category];
+
+    // Splitting.js prepara los caracteres de antemano (necesario para poder
+    // animarlos despues), pero el reveal visual se retrasa hasta que termine
+    // la escala — ver secuencia GSAP mas abajo (punto 7).
+    Splitting({ target: catEl, by: 'chars' });
+
+    if(window.gsap){
+      // Estado inicial: titulo/subtitulo ocultos desde el principio, la escala
+      // y el data-card tambien parten invisibles/a cero.
+      gsap.set(catEl.querySelectorAll('.char'), { opacity:0, y:24 });
+      gsap.set('.result-sub, #data-card, .disclaimer', { opacity:0, y:16 });
+      gsap.set('.scale-fill', { width:'0%' });
+      gsap.set('#scale-marker', { left:'0%' });
+
+      const tl = gsap.timeline();
+
+      // FASE 1 (punto 7): primero termina la animacion de la escala — el fill,
+      // el marcador deslizandose a su posicion, y el contador numerico del IMC,
+      // todos en paralelo entre si (eso es "una sola fase"), pero SIN el titulo.
+      // Fill y marcador son una sola unidad visual (el marcador siempre debe
+      // quedar en el borde derecho del fill): mismo targetLeft, misma duracion
+      // y mismo ease, en paralelo ('<'), para que nunca se desincronicen
+      // durante la animacion (antes: 1.0s power2.inOut vs 1.1s cubic-bezier,
+      // mas una transition CSS duplicada en .scale-marker que competia con
+      // este tween por la propiedad `left` -> por eso llegaban a % distintos).
+      const SCALE_ANIM_DURATION = 1.1;
+      const SCALE_ANIM_EASE = 'power2.inOut';
+      tl.to('.scale-fill', { width: targetLeft + '%', duration: SCALE_ANIM_DURATION, ease: SCALE_ANIM_EASE });
+      tl.to('#scale-marker', { left: targetLeft + '%', duration: SCALE_ANIM_DURATION, ease: SCALE_ANIM_EASE }, '<');
+      const bmiEl = document.getElementById('dc-bmi');
+      const counter = { val: 0 };
+      tl.to(counter, {
+        val: result.bmi, duration: SCALE_ANIM_DURATION, ease: 'power2.out',
+        onUpdate: ()=>{ bmiEl.textContent = counter.val.toFixed(1); }
+      }, '<');
+
+      // FASE 2 (punto 7): SOLO cuando la fase 1 termina, entra el titulo/texto
+      // del resultado (reveal letra a letra de Splitting.js) — secuencial, no
+      // solapado con la fase anterior.
+      // BUGFIX: antes se usaba tl.from(chars, {opacity:0, y:24}) justo despues
+      // de gsap.set(chars, {opacity:0, y:24}) — GSAP cachea opacity:0 como el
+      // valor "actual" del elemento tras el .set(), asi que .from() interpreta
+      // que el destino (el "estado actual" al que vuelve) tambien es opacity:0,
+      // y el texto nunca llegaba a mostrarse (quedaba en opacity:0 para
+      // siempre). Fix: .to() con destino explicito opacity:1 / y:0.
+      tl.to(catEl.querySelectorAll('.char'), {
+        opacity: 1, y: 0, duration: 0.5, stagger: 0.03, ease: 'power2.out'
+      }, '+=0.1');
+      tl.to('.result-sub', { opacity: 1, y: 0, duration: 0.5 }, '-=0.2');
+      tl.to('#data-card, .disclaimer', { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 }, '-=0.2');
+      tl.to('#result-cta', { opacity: 1, duration: 0.6,
+        onStart: ()=> document.getElementById('result-cta').classList.add('visible') }, '-=0.1');
+    } else {
+      document.getElementById('scale-marker').style.left = targetLeft + '%';
+      document.querySelector('.scale-fill').style.width = targetLeft + '%';
+      document.getElementById('dc-bmi').textContent = result.bmi;
+      document.getElementById('result-cta').classList.add('visible');
+    }
+  }
+
+  // Mostrar pregunta de perfilado tras enviar el email con exito
+  const leadForm = document.querySelector('[data-lead-form="calculadora"], form[data-lead-source="calculadora"]');
+  if(leadForm){
+    leadForm.addEventListener('submit', function(){
+      setTimeout(()=>{
+        if(leadForm.classList.contains('lead-form--sent') || true){
+          document.getElementById('profiling').classList.add('visible');
+        }
+      }, 300);
+    });
+  }
+  document.getElementById('profiling-select') && document.getElementById('profiling-select').addEventListener('change', function(){
+    console.log('[ARES perfilado] Dónde pasea el perro (placeholder, guardar junto al lead):', this.value);
+  });
+})();
+
+/* ============================================
+   BARRA DE PROGRESO DE SCROLL — mismo id/estilo que landing/index.html
+   (#progress-bar, 3px, var(--cta)); index.html no trae JS propio para
+   actualizarla, asi que se replica aqui la logica minima necesaria.
+   ============================================ */
+(function(){
+  const bar = document.getElementById('progress-bar');
+  const nav = document.getElementById('main-nav');
+  if(!bar) return;
+  function update(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled/max*100) : 0) + '%';
+    // Nav transparente en reposo (mismo patron que #main-nav en landing/index.html):
+    // solo gana fondo opaco tras el pixel 0 para no tapar la barra de progreso.
+    if(nav) nav.classList.toggle('scrolled', scrolled > 20);
+  }
+  document.addEventListener('scroll', update, { passive:true });
+  update();
+})();
+
+/* ============================================
+   INDICADOR DE SCROLL HORIZONTAL (#ticksWrapper) — mismo patron visual que
+   landing/index.html (48 rayitas en todos los viewports, diagonales a 45 grados).
+   Esta pagina
+   no usa Lenis, asi que se adapta a scroll nativo del navegador.
+   ============================================ */
+(function(){
+  const el = document.getElementById('ticksWrapper');
+  if(!el) return;
+  const inner = document.createElement('div');
+  inner.className = 'ti';
+  el.appendChild(inner);
+    const count = 48;
+   for(let i=0;i<count;i++){
+    const t = document.createElement('div');
+    t.className = 'tick-h';
+    inner.appendChild(t);
+  }
+  const ticks = inner.querySelectorAll('.tick-h');
+  function updateTicks(){
+    const h = document.documentElement;
+    const scroll = h.scrollTop;
+    const limit = h.scrollHeight - h.clientHeight;
+     const active = limit > 0 ? Math.round((scroll/limit)*(count-1)) : 0;
+     ticks.forEach((t,i)=> t.classList.toggle('active', i<=active));
+  }
+  document.addEventListener('scroll', updateTicks, { passive:true });
+  updateTicks();
+})();
+</script>
+<script src="assets/js/mobile-menu.js"></script>
+<script src="assets/js/scroll-indicator.js"></script>
+<script src="assets/js/typewriter.js"></script>
+<script>
+  (() => {
+    const footerMap = document.querySelector('.pf-footer-map');
+    if (!footerMap) return;
+    let release;
+    const stretch = () => { footerMap.classList.add('end-stretch'); clearTimeout(release); release = setTimeout(() => footerMap.classList.remove('end-stretch'), 320); };
+    window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) stretch(); }, {passive:true});
+    window.addEventListener('touchmove', () => { if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) stretch(); }, {passive:true});
+    window.addEventListener('touchend', () => footerMap.classList.remove('end-stretch'), {passive:true});
+    window.addEventListener('touchcancel', () => footerMap.classList.remove('end-stretch'), {passive:true});
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+/* ============================================
+   ARES GPS — Estilos del componente de captura de lead
+   Comparte tokens de marca con landing/index.html (paleta oscura + acento naranja)
+   ============================================ */
+
+.lead-form {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+
+.lead-form .lf-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.lead-form input[type="email"] {
+  flex: 1 1 240px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(240, 242, 245, 0.25);
+  color: var(--t, #f0f2f5);
+  font-family: "Orbitron", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.85rem 0.25rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.lead-form input[type="email"]::placeholder {
+  color: rgba(240, 242, 245, 0.4);
+}
+
+.lead-form input[type="email"]:focus {
+  border-color: var(--cta, #f26419);
+}
+
+.lead-form .lf-gdpr {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+}
+
+.lead-form .lf-gdpr input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 0.15rem;
+  accent-color: var(--cta, #f26419);
+  flex-shrink: 0;
+}
+
+.lead-form .lf-gdpr label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  line-height: 1.6;
+  color: rgba(240, 242, 245, 0.55);
+  letter-spacing: 0.02em;
+}
+
+.lead-form .lf-extra {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(240, 242, 245, 0.08);
+}
+
+.lead-form .lf-extra-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(240, 242, 245, 0.45);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.lead-form select.lf-extra-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(240, 242, 245, 0.15);
+  color: var(--t, #f0f2f5);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
+  padding: 0.7rem;
+  border-radius: 4px;
+}
+
+.lead-form button[type="submit"] {
+  margin-top: 1.4rem;
+  width: 100%;
+  background: var(--cta, #f26419);
+  color: #fff;
+  border: none;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+}
+
+.lead-form button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(242, 100, 25, 0.3);
+}
+
+.lead-form button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: wait;
+  transform: none;
+  box-shadow: none;
+}
+
+.lead-feedback {
+  display: block;
+  margin-top: 0.85rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  min-height: 1.2em;
+}
+
+.lead-feedback--error {
+  color: #ff8a65;
+}
+
+.lead-feedback--ok {
+  color: var(--hl, #f6ae2d);
+}
+
+.lead-form--sent .lf-row,
+.lead-form--sent .lf-gdpr {
+  opacity: 0.5;
+}

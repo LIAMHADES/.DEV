@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARES GPS — Próximamente</title>
+<meta name="description" content="ARES GPS está en camino: localización, salud y nutrición para tu perro. Cuéntanos cómo es tu perro y sé el primero en reservar.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/lead-capture.css">
+<style>
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+#hero-bg{position:absolute;inset:0;z-index:0}
+/* Fallback CSS animado si Vanta no carga (sin red / bloqueado) — tonos oscurecidos a peticion */
+#hero-bg.css-fallback{background:linear-gradient(-45deg,#0c1116,#10161c,#1c3a4d,#0c1116);background-size:400% 400%;animation:gradientMove 14s ease infinite}
+@keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+/* Velo oscuro extra sobre el canvas de Vanta para mantener el fondo mas oscuro sin perder el efecto de olas */
+#hero-veil{position:absolute;inset:0;z-index:1;background:rgba(10,14,18,0.45);pointer-events:none}
+#hero .container{position:relative;z-index:2}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--hl);text-transform:uppercase;margin-bottom:1rem}
+#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(3.5rem,10vw,7rem);color:var(--t);letter-spacing:0.05em;line-height:1;text-transform:uppercase}
+.hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.85rem,1.6vw,1rem);color:var(--t2);letter-spacing:0.04em;margin-top:1rem;max-width:560px;margin-left:auto;margin-right:auto}
+.hero-scroll-hint{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--t3);margin-top:3rem}
+
+#expectativa{text-align:center}
+#expectativa .exp-lines{max-width:600px;margin:2rem auto 0;display:flex;flex-direction:column;gap:1.2rem}
+#expectativa .exp-line{font-family:'Orbitron',sans-serif;font-size:0.95rem;line-height:1.8;opacity:0}
+#expectativa .exp-line.show{opacity:1;transition:opacity 0.8s ease}
+#expectativa .exp-line strong{color:var(--hl);font-weight:500}
+.light #expectativa .exp-line{color:var(--wtext2)}
+
+/* === CUESTIONARIO DE PREVENTA === */
+#preventa{text-align:center}
+#preventa .wl-heading{margin-bottom:0.5rem}
+#preventa .wl-sub{margin-bottom:2.5rem;color:var(--t2);font-family:'Orbitron',sans-serif;font-size:0.85rem;max-width:560px;margin-left:auto;margin-right:auto}
+
+#pv-progress{position:relative;height:2px;background:rgba(240,242,245,0.08);margin:0 auto 3rem;max-width:520px}
+#pv-progress .fill{position:absolute;top:0;left:0;height:100%;background:var(--cta);width:0;transition:width 0.4s ease}
+
+#pv-form-wrap{max-width:520px;margin:0 auto;overflow:hidden}
+.pv-step{display:none;text-align:left}
+.pv-step.active{display:block}
+.pv-q{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.1rem,2.4vw,1.5rem);letter-spacing:0.01em;color:var(--t);margin-bottom:1.6rem;line-height:1.35;text-align:center}
+.pv-field{margin-bottom:1.5rem}
+/* Mismo tratamiento visual que el combobox de razas de la calculadora
+   (fondo #20303d, borde sutil, foco --cta) para consistencia entre las 3 paginas. */
+.pv-field input[type="number"],.pv-field select{width:100%;background:#20303d;border:1px solid rgba(240,242,245,0.18);color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;border-radius:4px;transition:border-color 0.3s,background 0.3s}
+.pv-field input[type="number"]::placeholder{color:var(--t3)}
+.pv-field input:hover,.pv-field select:hover{border-color:rgba(240,242,245,0.35)}
+.pv-field input:focus,.pv-field select:focus{outline:none;border-color:var(--cta);background:#243547}
+.pv-field select{appearance:none;cursor:pointer;padding-right:3rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f0f2f5' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.2rem center}
+.pv-field select option{background:#20303d;color:var(--t)}
+
+.pv-choices{display:flex;flex-direction:column;gap:0.75rem}
+.pv-choice{display:flex;align-items:center;gap:0.75rem;background:#20303d;border:1px solid rgba(240,242,245,0.18);padding:0.9rem 1.1rem;cursor:pointer;transition:border-color 0.3s,background 0.3s;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+.pv-choice:hover{border-color:rgba(240,242,245,0.35)}
+.pv-choice input{accent-color:var(--cta);width:16px;height:16px;flex-shrink:0}
+.pv-choice span{font-family:'Orbitron',sans-serif;font-size:0.85rem;color:var(--t2)}
+.pv-choice:has(input:checked){border-color:var(--cta);background:#243547}
+.pv-choice:has(input:checked) span{color:var(--t)}
+
+.pv-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem}
+.pv-nav .btn-ghost{background:none;border:none;color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;padding:0.5rem}
+.pv-nav .btn-ghost:hover{color:var(--t)}
+.pv-error{font-family:'JetBrains Mono',monospace;font-size:10px;color:#ff8a65;margin-top:0.5rem;min-height:1.2em;text-align:center}
+
+#pv-lead-wrap{display:none}
+#pv-lead-wrap.visible{display:block}
+
+/* === FOOTER MAP === */
+.pf-footer-wrap{position:relative;margin-top:0}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:visible;background:var(--bg)}
+/* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:none;image-rendering:auto;transform-origin:center bottom;transition:transform 260ms cubic-bezier(.22,1,.36,1)}
+.pf-footer-map.end-stretch .pf-footer-tile{transform:scaleY(1.08)}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px))}}
+@media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
+@media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
+.pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
+.pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
+.pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}}
+
+.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+.sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+section:first-of-type{clip-path:none}
+
+/* Encaje 45: la cadena usa una unica diagonal entre secciones. */
+#hero{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+#expectativa,#preventa{margin-top:-40px}
+#preventa{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<div class="scroll-indicator-horizontal" id="ticksWrapper"></div>
+
+<button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="navOverlay" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<nav id="main-nav">
+  <a href="../index.html" class="nl">ARES GPS</a>
+  <a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a>
+  <ul class="inline-links">
+    <li><a href="../index.html#como-funciona">Cómo funciona</a></li>
+    <li><a href="../index.html#extras">Extras</a></li>
+    <li><a href="../index.html#planes">Planes</a></li>
+    <li><a href="pricing.html">Precios</a></li>
+    <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
+      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="proximamente.html">Geocerca (próximamente)</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
+    </li>
+  </ul>
+</nav>
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Menú principal" tabindex="-1">
+  <div class="nav-overlay-inner">
+    <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
+    <ul class="nav-full-links">
+      <li class="nl-item"><a href="../index.html#proposito">Por qué ARES</a></li><li class="nl-item"><a href="../index.html#como-funciona">Cómo funciona</a></li><li class="nl-item"><a href="../index.html#extras">Extras</a></li><li class="nl-item"><a href="../index.html#planes">Planes</a></li><li class="nl-item"><a href="pricing.html">Precios</a></li>
+      <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="proximamente.html">Geocerca (próximamente)</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
+    </ul>
+  </div>
+</div>
+<div class="ov-ticks" id="ovTicks"></div>
+
+<!-- HERO -->
+<section id="hero" class="sec-dark">
+  <div id="hero-bg" class="css-fallback"></div>
+  <div id="hero-veil"></div>
+  <div class="container">
+    <div class="hero-tag">Próximamente</div>
+    <h1>ARES</h1>
+    <div class="hero-sub">Porque los segundos que pasas sin saber dónde está tu perro no son segundos. Son horas.</div>
+    <div class="hero-scroll-hint">Ayúdanos a construirlo &darr;</div>
+  </div>
+</section>
+
+<!-- BLOQUE DE EXPECTATIVA -->
+<section id="expectativa" class="sec-light light">
+  <div class="container">
+    <div class="sl" style="text-align:center">Qué está por venir</div>
+    <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">LOCALIZACIÓN. SALUD. NUTRICIÓN.</h2>
+    <div class="exp-lines">
+      <p class="exp-line">Sabrás exactamente dónde está tu perro, <strong>con menos de un metro de error.</strong></p>
+      <p class="exp-line">Entenderás su actividad, su descanso y su condición física <strong>con datos reales, no suposiciones.</strong></p>
+      <p class="exp-line">Y sabrás si come lo que necesita para su tamaño y su edad — <strong>sin adivinar.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- CUESTIONARIO DE PREVENTA — capta el lead y genera datos reales de validacion de mercado -->
+<section id="preventa" class="sec-darker">
+  <div class="container">
+    <div class="sl">Ayúdanos a construir ARES</div>
+    <h2 class="st wl-heading" style="font-size:clamp(1.4rem,3vw,2rem)">4 PREGUNTAS. UN MINUTO.</h2>
+    <div class="ss wl-sub" style="text-transform:none;letter-spacing:0">Cuéntanos cómo es tu perro y qué te preocupa. Con esto ajustamos ARES antes de fabricarlo — y te avisamos en cuanto esté listo para reservar.</div>
+
+    <div id="pv-progress"><div class="fill" id="pv-progress-fill"></div></div>
+
+    <div id="pv-form-wrap">
+      <form id="pv-form">
+        <!-- Paso 1: cuantos perros -->
+        <div class="pv-step active" data-pv-step="1">
+          <div class="pv-q">¿Cuántos perros tienes?</div>
+          <div class="pv-field">
+            <input type="number" id="pv-num-perros" min="1" max="20" step="1" placeholder="ej. 1" required>
+          </div>
+          <div class="pv-nav">
+            <span></span>
+            <button type="button" class="btn btn-cta" data-pv-next><span>Siguiente</span></button>
+          </div>
+          <div class="pv-error" data-pv-error-for="1"></div>
+        </div>
+
+        <!-- Paso 2: tamano -->
+        <div class="pv-step" data-pv-step="2">
+          <div class="pv-q">¿De qué tamaño es tu perro?</div>
+          <div class="pv-field">
+            <div class="pv-choices">
+              <label class="pv-choice"><input type="radio" name="pv-tamano" value="pequeno"><span>Pequeño (hasta 10 kg) — ej. Chihuahua, Yorkshire</span></label>
+              <label class="pv-choice"><input type="radio" name="pv-tamano" value="mediano"><span>Mediano (10-25 kg) — ej. Border Collie, Bulldog Francés</span></label>
+              <label class="pv-choice"><input type="radio" name="pv-tamano" value="grande"><span>Grande (25-40 kg) — ej. Labrador, Pastor Alemán</span></label>
+              <label class="pv-choice"><input type="radio" name="pv-tamano" value="gigante"><span>Gigante (más de 40 kg) — ej. Gran Danés, San Bernardo</span></label>
+            </div>
+          </div>
+          <div class="pv-nav">
+            <button type="button" class="btn-ghost" data-pv-prev>&larr; Atrás</button>
+            <button type="button" class="btn btn-cta" data-pv-next><span>Siguiente</span></button>
+          </div>
+          <div class="pv-error" data-pv-error-for="2"></div>
+        </div>
+
+        <!-- Paso 3: que preocupa -->
+        <div class="pv-step" data-pv-step="3">
+          <div class="pv-q">¿Qué te preocupa más de tu perro?</div>
+          <div class="pv-field">
+            <div class="pv-choices">
+              <label class="pv-choice"><input type="checkbox" name="pv-preocupa" value="perderlo"><span>Perderlo — que se escape o se pierda</span></label>
+              <label class="pv-choice"><input type="checkbox" name="pv-preocupa" value="alimentacion"><span>Su alimentación — si come lo que necesita</span></label>
+              <label class="pv-choice"><input type="checkbox" name="pv-preocupa" value="actividad"><span>Su nivel de actividad o ejercicio</span></label>
+              <label class="pv-choice"><input type="checkbox" name="pv-preocupa" value="salud"><span>Su salud en general</span></label>
+            </div>
+          </div>
+          <div class="pv-nav">
+            <button type="button" class="btn-ghost" data-pv-prev>&larr; Atrás</button>
+            <button type="button" class="btn btn-cta" data-pv-next><span>Siguiente</span></button>
+          </div>
+          <div class="pv-error" data-pv-error-for="3"></div>
+        </div>
+
+        <!-- Paso 4: precio -->
+        <div class="pv-step" data-pv-step="4">
+          <div class="pv-q">¿Cuánto pagarías por un dispositivo que resuelva eso?</div>
+          <div class="pv-field">
+            <div class="pv-choices">
+              <label class="pv-choice"><input type="radio" name="pv-precio" value="menos_100"><span>Menos de 100€</span></label>
+              <label class="pv-choice"><input type="radio" name="pv-precio" value="100_150"><span>Entre 100€ y 150€</span></label>
+              <label class="pv-choice"><input type="radio" name="pv-precio" value="150_200"><span>Entre 150€ y 200€</span></label>
+              <label class="pv-choice"><input type="radio" name="pv-precio" value="no_compraria"><span>No lo compraría</span></label>
+            </div>
+          </div>
+          <div class="pv-nav">
+            <button type="button" class="btn-ghost" data-pv-prev>&larr; Atrás</button>
+            <button type="submit" class="btn btn-cta"><span>Ver resultado</span></button>
+          </div>
+          <div class="pv-error" data-pv-error-for="4"></div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Paso 5: email + GDPR — mismo componente lead-capture.js reutilizado -->
+    <div id="pv-lead-wrap">
+      <div class="wl-heading" style="font-family:'Bruno Ace SC',sans-serif;font-size:1.2rem;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.5rem">Gracias. Ya casi está</div>
+      <div class="ss wl-sub" style="text-transform:none;letter-spacing:0">Déjanos tu email y te avisamos en cuanto ARES esté disponible para reservar.</div>
+
+      <form data-lead-form data-lead-source="proximamente-cuestionario" class="lead-form">
+        <div class="lf-row">
+          <input type="email" placeholder="tu@email.com" data-lead="email" required>
+          <button type="submit" data-lead="submit">Apuntarme</button>
+        </div>
+        <div class="lf-gdpr">
+          <input type="checkbox" id="gdpr-prox" data-lead="gdpr" required>
+          <label for="gdpr-prox">Acepto recibir comunicaciones de ARES GPS sobre el lanzamiento del producto. Puedo darme de baja cuando quiera.</label>
+        </div>
+        <span class="lead-feedback" data-lead="feedback"></span>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="pf-footer-wrap">
+    <div class="pf-footer-map">
+      <div class="pf-footer-track" aria-hidden="true">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+      </div>
+      <div class="pf-footer-gradient"></div>
+      <div class="pf-footer-text">
+        <div>ARES GPS &copy; 2026 — Reserva</div>
+        <div class="pf-footer-sub">S&eacute; de los primeros &middot; Sin compromiso &middot; Hecho en Espa&ntilde;a</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script>
+/* ============================================
+   FONDO ANIMADO — Vanta.js con fallback CSS
+   ============================================
+   Vanta.WAVES requiere three.js ya cargado en window.THREE antes de
+   ejecutarse. Cargamos ambos scripts en secuencia estricta:
+     1) three.js (CDN, igual que landing/index.html)
+     2) assets/vendor/vanta.waves.min.js (vendorizado, Pick4Design)
+   Si el paso 1 falla (sin red), nos quedamos con el gradiente CSS
+   ya aplicado por defecto en #hero-bg (.css-fallback) — no hay error visible.
+   ============================================ */
+(function(){
+  const bg = document.getElementById('hero-bg');
+
+  function loadScript(src){
+    return new Promise((resolve, reject)=>{
+      const s = document.createElement('script');
+      s.src = src; s.onload = resolve; s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+
+  loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
+    .then(()=> loadScript('assets/vendor/vanta.waves.min.js'))
+    .then(()=> {
+      if(window.VANTA && window.VANTA.WAVES){
+        bg.classList.remove('css-fallback');
+        // Fondo oscurecido a peticion: color de ola mas apagado + backgroundColor casi negro,
+        // en vez del velo semitransparente que ya cubre el canvas (#hero-veil) como refuerzo.
+        window.VANTA.WAVES({
+          el: '#hero-bg',
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          scale: 1,
+          color: 0x1c3a4d,
+          backgroundColor: 0x0a0e12,
+          shininess: 12,
+          waveHeight: 12,
+          waveSpeed: 0.7,
+          zoom: 0.9,
+        });
+      }
+      // si VANTA no expone WAVES por algun motivo, se queda el fallback CSS
+    })
+    .catch(()=>{ /* sin red: se queda el gradiente CSS fallback */ });
+})();
+
+/* ============================================
+   REVEAL DEL BLOQUE DE EXPECTATIVA (fade-in simple)
+   ============================================ */
+(function(){
+  const lines = [...document.querySelectorAll('.exp-line')];
+  if(!('IntersectionObserver' in window)){
+    lines.forEach(l=>l.classList.add('show'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry, i)=>{
+      if(entry.isIntersecting){
+        lines.forEach((l, idx)=> setTimeout(()=> l.classList.add('show'), idx*250));
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const section = document.getElementById('expectativa');
+  if(section) observer.observe(section);
+})();
+
+/* ============================================
+   CUESTIONARIO DE PREVENTA — multi-paso + guardado local
+   ============================================
+   TODO(validacion-mercado): las respuestas se acumulan en localStorage bajo
+   ares_preventa_responses_v1. Cuando haya volumen suficiente de respuestas,
+   exportar este localStorage y usarlo para actualizar con datos reales
+   docs/ARES_Validacion_Mercado_v1.md (hoy solo contiene supuestos razonados).
+   ============================================ */
+(function(){
+  const form = document.getElementById('pv-form');
+  if(!form) return;
+
+  const steps = [...document.querySelectorAll('.pv-step')];
+  const progressFill = document.getElementById('pv-progress-fill');
+  const TOTAL_STEPS = steps.length;
+  let current = 1;
+
+  function showStep(n, direction){
+    const prevStep = steps.find(s => +s.dataset.pvStep === current);
+    const nextStep = steps.find(s => +s.dataset.pvStep === n);
+    progressFill.style.width = (n/TOTAL_STEPS*100) + '%';
+
+    if(window.gsap && prevStep && nextStep && prevStep !== nextStep){
+      const dir = direction === 'back' ? -1 : 1;
+      const tl = gsap.timeline();
+      tl.to(prevStep, { opacity:0, x: -24*dir, duration:0.25, ease:'power2.in',
+        onComplete: ()=> prevStep.classList.remove('active') });
+      tl.set(nextStep, { opacity:0, x: 24*dir });
+      tl.call(()=> nextStep.classList.add('active'));
+      tl.to(nextStep, { opacity:1, x:0, duration:0.35, ease:'power2.out' });
+    } else {
+      steps.forEach(s => s.classList.toggle('active', +s.dataset.pvStep === n));
+    }
+    current = n;
+  }
+
+  function validateStep(n){
+    const errEl = document.querySelector(`[data-pv-error-for="${n}"]`);
+    errEl.textContent = '';
+    if(n===1){
+      const v = parseInt(document.getElementById('pv-num-perros').value, 10);
+      if(!v || v<=0){ errEl.textContent='Cuéntanos cuántos perros tienes.'; return false; }
+    }
+    if(n===2){
+      if(!form.querySelector('input[name="pv-tamano"]:checked')){ errEl.textContent='Selecciona un tamaño.'; return false; }
+    }
+    if(n===3){
+      if(!form.querySelectorAll('input[name="pv-preocupa"]:checked').length){ errEl.textContent='Selecciona al menos una opción.'; return false; }
+    }
+    if(n===4){
+      if(!form.querySelector('input[name="pv-precio"]:checked')){ errEl.textContent='Selecciona un rango de precio.'; return false; }
+    }
+    return true;
+  }
+
+  form.querySelectorAll('[data-pv-next]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(validateStep(current)) showStep(current+1, 'forward');
+    });
+  });
+  form.querySelectorAll('[data-pv-prev]').forEach(btn=>{
+    btn.addEventListener('click', ()=> showStep(current-1, 'back'));
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!validateStep(TOTAL_STEPS)) return;
+
+    const response = {
+      numPerros: parseInt(document.getElementById('pv-num-perros').value, 10),
+      tamano: form.querySelector('input[name="pv-tamano"]:checked').value,
+      preocupaciones: [...form.querySelectorAll('input[name="pv-preocupa"]:checked')].map(el=>el.value),
+      precioDispuesto: form.querySelector('input[name="pv-precio"]:checked').value,
+      createdAt: new Date().toISOString(),
+    };
+
+    // Guardado local, mismo mecanismo que lead-capture.js (localStorage, sin backend real)
+    const STORAGE_KEY = 'ares_preventa_responses_v1';
+    try {
+      const existing = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      existing.push(response);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+    } catch(err){ /* localStorage no disponible: no bloquea el flujo */ }
+
+    console.log('[ARES preventa] Respuesta de cuestionario (placeholder, guardar junto al lead):', response);
+
+    document.getElementById('pv-form-wrap').style.display = 'none';
+    document.getElementById('pv-progress').style.display = 'none';
+    document.getElementById('pv-lead-wrap').classList.add('visible');
+
+    if(window.gsap){
+      gsap.from('#pv-lead-wrap', { opacity:0, y:16, duration:0.5 });
+    }
+  });
+})();
+</script>
+<script src="assets/js/lead-capture.js"></script>
+<script>
+/* ============================================
+   BARRA DE PROGRESO DE SCROLL — mismo id/estilo que landing/index.html
+   ============================================ */
+(function(){
+  const bar = document.getElementById('progress-bar');
+  const nav = document.getElementById('main-nav');
+  if(!bar) return;
+  function update(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled/max*100) : 0) + '%';
+    // Nav transparente en reposo (mismo patron que #main-nav en landing/index.html):
+    // solo gana fondo opaco tras el pixel 0 para no tapar la barra de progreso.
+    if(nav) nav.classList.toggle('scrolled', scrolled > 20);
+  }
+  document.addEventListener('scroll', update, { passive:true });
+  update();
+})();
+
+/* ============================================
+   INDICADOR DE SCROLL HORIZONTAL (#ticksWrapper) — mismo patron visual que
+   landing/index.html (48 rayitas en todos los viewports, diagonales a 45 grados).
+   Esta pagina
+   no usa Lenis, asi que se adapta a scroll nativo del navegador.
+   ============================================ */
+(function(){
+  const el = document.getElementById('ticksWrapper');
+  if(!el) return;
+  const inner = document.createElement('div');
+  inner.className = 'ti';
+  el.appendChild(inner);
+    const count = 48;
+   for(let i=0;i<count;i++){
+    const t = document.createElement('div');
+    t.className = 'tick-h';
+    inner.appendChild(t);
+  }
+  const ticks = inner.querySelectorAll('.tick-h');
+  function updateTicks(){
+    const h = document.documentElement;
+    const scroll = h.scrollTop;
+    const limit = h.scrollHeight - h.clientHeight;
+     const active = limit > 0 ? Math.round((scroll/limit)*(count-1)) : 0;
+     ticks.forEach((t,i)=> t.classList.toggle('active', i<=active));
+  }
+  document.addEventListener('scroll', updateTicks, { passive:true });
+  updateTicks();
+})();
+</script>
+<script src="assets/js/mobile-menu.js"></script>
+<script src="assets/js/scroll-indicator.js"></script>
+<script src="assets/js/typewriter.js"></script>
+<script>
+  (() => {
+    const footerMap = document.querySelector('.pf-footer-map');
+    if (!footerMap) return;
+    let release;
+    const stretch = () => { footerMap.classList.add('end-stretch'); clearTimeout(release); release = setTimeout(() => footerMap.classList.remove('end-stretch'), 320); };
+    window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) stretch(); }, {passive:true});
+    window.addEventListener('touchmove', () => { if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) stretch(); }, {passive:true});
+    window.addEventListener('touchend', () => footerMap.classList.remove('end-stretch'), {passive:true});
+    window.addEventListener('touchcancel', () => footerMap.classList.remove('end-stretch'), {passive:true});
+  })();
+</script>
+</body>
+</html>

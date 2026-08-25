@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARES GPS — Cuidar de tu perro es mejor acompañado</title>
+<meta name="description" content="Comparte el acceso con tu familia, compite en el ranking local del barrio y únete a retos con otros dueños. La parte social de ARES, pensada para el bienestar, no para la competición.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+/* === HERO === */
+#hero{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:var(--bg)}
+#hero .container{position:relative;z-index:2}
+.sec-prism{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.sec-prism .prism-grid{display:grid;position:absolute;left:50%;top:50%}
+.sec-prism .prism-cell{border-right:1px solid rgba(134,187,216,0.08);border-bottom:1px solid rgba(134,187,216,0.08);transition:background 0.15s ease-out}
+.sec-prism .prism-cell.lit{transition:background 0s}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--hl);text-transform:uppercase;margin-bottom:1rem}
+#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2rem,5vw,3.5rem);color:var(--t);letter-spacing:0.02em;line-height:1.2;text-transform:uppercase;max-width:820px;margin:0 auto}
+.hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.85rem,1.6vw,1rem);color:var(--t2);letter-spacing:0.04em;margin-top:1.25rem;max-width:580px;margin-left:auto;margin-right:auto}
+
+/* === SECCION: QUE ENCONTRARAS (grid de funciones) === */
+#funciones{background:var(--white);position:relative;overflow:hidden}
+#funciones .container{position:relative;z-index:1}
+/* Capa de pegatinas flotantes de fondo (cuerda, huella, hueso, satelite, pelota, bowl) */
+.fn-float-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.fn-float-bg .fn-float{position:absolute;top:0;left:0;opacity:0;will-change:transform;transition:opacity 1.2s ease}
+.fn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;align-items:stretch}
+/* Wrapper sin clip-path: permite que el glow naranja se renderice completo */
+.fn-card-wrap{position:relative;display:flex;transition:transform 0.3s}
+.fn-card-wrap:hover{transform:translateY(-5px)}
+.fn-card{position:relative;z-index:1;width:100%;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(47,72,88,0.1);padding:2rem 1.6rem;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);box-shadow:0 2px 12px rgba(47,72,88,0.05);transition:box-shadow 0.3s}
+.fn-card-wrap:hover .fn-card{box-shadow:0 6px 20px rgba(47,72,88,0.1)}
+/* La etiqueta de plan siempre abajo, así todas las tarjetas cierran igual */
+.fn-card .fn-plan{margin-top:auto}
+.fn-icon{width:2.6rem;height:2.6rem;display:flex;align-items:center;justify-content:center;background:rgba(134,187,216,0.12);color:var(--deco);margin-bottom:1.1rem;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+.fn-icon .material-symbols-outlined{font-size:1.4rem}
+.fn-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3);margin-bottom:0.5rem}
+.fn-card h4{font-size:1rem;margin-bottom:0.6rem;color:var(--wtext)}
+.fn-card p{font-size:0.87rem;color:var(--wtext2);line-height:1.75}
+.fn-plan{display:inline-block;margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--deco);border:1px solid rgba(134,187,216,0.35);padding:0.2rem 0.6rem;clip-path:polygon(5px 0,100% 0,100% calc(100% - 5px),calc(100% - 5px) 100%,0 100%,0 5px)}
+.fn-plan.premium{color:var(--hl);border-color:rgba(246,174,45,0.4)}
+.light .fn-tag{color:var(--cta)}
+
+/* === SECCION: EL ANGULO (por que no es fitness competitivo) === */
+#angulo{background:var(--bg2)}
+.ang-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem}
+.ang-card{position:relative;padding:2rem 1.8rem;clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px)}
+.ang-card>*{position:relative;z-index:1}
+.ang-card::before{content:'';position:absolute;inset:1px;z-index:0;clip-path:polygon(15px 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%,0 15px);transition:background 0.3s}
+.ang-card.bad{background:rgba(134,187,216,0.14)}
+.ang-card.bad::before{background:#17222d}
+.ang-card.good{background:rgba(246,174,45,0.3)}
+.ang-card.good::before{background:#1d1f19}
+.ang-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.9rem;display:inline-block}
+.ang-card.bad .ang-tag{color:var(--t3)}
+.ang-card.good .ang-tag{color:var(--hl)}
+.ang-card h4{font-size:1.05rem;margin-bottom:0.7rem;color:var(--t)}
+.ang-card.bad h4{color:var(--t2)}
+.ang-card p{font-size:0.9rem;color:var(--t2);line-height:1.8}
+
+/* === SECCION: CASOS DE USO === */
+#casos{background:var(--white)}
+.casos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.caso-card{position:relative;z-index:1;background:#fff;border:1px solid rgba(47,72,88,0.1);padding:2rem 1.6rem;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);box-shadow:0 2px 12px rgba(47,72,88,0.05);transition:transform 0.3s,filter 0.3s}
+.caso-card:hover{transform:translateY(-5px);filter:drop-shadow(0 0 8px rgba(242,100,25,0.6)) drop-shadow(0 0 30px rgba(242,100,25,0.35)) drop-shadow(0 10px 30px rgba(242,100,25,0.22))}
+.caso-icon{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--cta);margin-bottom:1rem}
+.caso-card h4{font-size:1rem;margin-bottom:0.6rem;color:var(--wtext)}
+.caso-card p{font-size:0.87rem;color:var(--wtext2);line-height:1.75}
+
+/* === SECCION: PLANES === */
+#planes-nota{background:var(--bg)}
+.pn-wrap{max-width:760px;margin:2.5rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.pn-card{position:relative;padding:1.8rem 1.6rem;text-align:left;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}
+.pn-card>*{position:relative;z-index:1}
+.pn-card::before{content:'';position:absolute;inset:1px;z-index:0;clip-path:polygon(13px 0,100% 0,100% calc(100% - 13px),calc(100% - 13px) 100%,0 100%,0 13px);background:#17222d}
+.pn-card{background:rgba(134,187,216,0.28)}
+.pn-card.hl{background:rgba(246,174,45,0.25)}
+.pn-card.hl::before{background:#1d1f19}
+.pn-card.hl .pn-plan{color:var(--hl)}
+.pn-plan{font-family:'Bruno Ace SC',sans-serif;font-size:1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--t);margin-bottom:0.9rem}
+.pn-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.55rem}
+.pn-scope{font-family:'Bruno Ace SC',sans-serif;font-size:1.1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--hl);margin-bottom:0.5rem}
+.pn-card.hl .pn-scope{color:var(--hl)}
+.pn-desc{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.02em;color:var(--t2);line-height:1.6;margin:0}
+.pn-card.hl .pn-desc{color:var(--t)}
+.pn-card li{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.02em;color:var(--t2);display:flex;gap:0.5rem;align-items:flex-start;line-height:1.5}
+.pn-card li .material-symbols-outlined{font-size:0.95rem;color:var(--hl);flex-shrink:0;margin-top:0.1rem}
+.pn-cta{text-align:center;margin-top:2.2rem}
+.pn-cta a{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:clamp(13px,1.4vw,15px);letter-spacing:0.08em;text-transform:uppercase;color:var(--t);text-decoration:none;border:1px solid rgba(134,187,216,0.4);background:rgba(134,187,216,0.1);padding:0.8rem 1.6rem;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);transition:color 0.3s,background 0.3s,border-color 0.3s}
+.pn-cta a:hover{color:var(--bg);background:var(--deco);border-color:var(--deco)}
+
+/* === CTA FINAL === */
+#cta-final{min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:var(--bg);padding-bottom:1.5rem}
+
+/* === FOOTER MAPA === */
+.pf-footer-wrap{position:relative;margin-top:0}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:visible;background:var(--bg)}
+/* Desktop: mapa quieto (la animacion horizontal solo se activa en movil) */
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:none;image-rendering:auto;transform-origin:center bottom;transition:transform 260ms cubic-bezier(.22,1,.36,1)}
+.pf-footer-map.end-stretch .pf-footer-tile{transform:scaleY(1.08)}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px))}}
+.pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
+.pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
+.pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}}
+
+@media(max-width:768px){
+  .fn-grid{grid-template-columns:1fr}
+  .ang-wrap{grid-template-columns:1fr}
+  .casos-grid{grid-template-columns:1fr}
+  .pn-wrap{grid-template-columns:1fr}
+  .casos-video-wrap{display:none}
+  .vid-band{display:block;position:sticky;top:0;height:100vh;z-index:1;overflow:hidden;background:linear-gradient(135deg,#1c2732,#2a3a4a,#1c2732);clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+  .vid-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .vid-cap{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,242,245,0.65);background:radial-gradient(ellipse at center,rgba(12,17,22,0.15) 0%,rgba(12,17,22,0.55) 100%);pointer-events:none}
+  .vid-cap strong{font-family:'Bruno Ace SC',sans-serif;font-size:1.1rem;letter-spacing:0.06em;color:var(--hl);display:block;margin-bottom:0.4rem}
+  .vid-sec>section:not(.vid-band){position:relative;z-index:2}
+  #planes-nota{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+}
+/* Solo en tablet/movil: mapa de España desplazandose horizontalmente (rapido) */
+@media(max-width:1024px){
+  .pf-footer-track{animation:footerScroll 25s linear infinite}
+}
+@media(prefers-reduced-motion:reduce){
+  .pf-footer-track{animation:none}
+  .fn-float-bg{display:none}
+}
+
+.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+.sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+section:first-of-type{clip-path:none}
+/* Video band sticky (solo movil): se queda quieto y #planes-nota sube y lo tapa */
+.vid-sec>.vid-band{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%);background:linear-gradient(135deg,#1c2732,#2a3a4a,#1c2732)}
+@media(min-width:769px){.vid-band{display:none}}
+@media(prefers-reduced-motion:reduce){.vid-band{position:relative;height:56.25vw;min-height:220px}}
+
+/* Encaje 45: mismo sistema que index, incluido el video movil. */
+#hero{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+#funciones,#casos,#planes-nota{margin-top:-40px}
+#angulo,#cta-final{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+@media(max-width:768px){.vid-band{margin-top:-40px}}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<div class="scroll-indicator-horizontal" id="ticksWrapper"></div>
+
+<button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="navOverlay" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<nav id="main-nav">
+  <a href="../index.html" class="nl">ARES GPS</a>
+  <a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a>
+  <ul class="inline-links">
+    <li><a href="../index.html#como-funciona">Cómo funciona</a></li>
+    <li><a href="../index.html#extras">Extras</a></li>
+    <li><a href="../index.html#planes">Planes</a></li>
+    <li><a href="pricing.html">Precios</a></li>
+    <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
+      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="proximamente.html">Geocerca (próximamente)</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
+    </li>
+  </ul>
+</nav>
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Menú principal" tabindex="-1">
+  <div class="nav-overlay-inner">
+    <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
+    <ul class="nav-full-links">
+      <li class="nl-item"><a href="../index.html#proposito">Por qué ARES</a></li><li class="nl-item"><a href="../index.html#como-funciona">Cómo funciona</a></li><li class="nl-item"><a href="../index.html#extras">Extras</a></li><li class="nl-item"><a href="../index.html#planes">Planes</a></li><li class="nl-item"><a href="pricing.html">Precios</a></li>
+      <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="proximamente.html">Geocerca (próximamente)</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
+    </ul>
+  </div>
+</div>
+<div class="ov-ticks" id="ovTicks"></div>
+
+<!-- 1. HERO -->
+<section id="hero" class="sec-dark">
+  <div class="sec-prism" id="prism-hero"></div>
+  <div class="container">
+    <div class="hero-tag">Comunidad</div>
+    <h1>CUIDAR DE TU PERRO ES MEJOR ACOMPAÑADO</h1>
+    <div class="hero-sub">Comparte el acceso con quien confías, compara sin presión con otros perros del barrio y únete a algún reto cuando te apetezca.</div>
+  </div>
+</section>
+
+<!-- 2. QUE ENCONTRARAS -->
+<section id="funciones" class="sec-light light">
+  <div class="fn-float-bg" id="fnFloatBg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="sl" style="text-align:center">Qué encontrarás</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">COMPARTIR, COMPARAR Y PARTICIPAR</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:620px;margin:0.5rem auto 0">La parte social de ARES no está para presionarte. Está para que no lleves solo la responsabilidad de cuidarlo.</div>
+
+    <div class="fn-grid">
+      <div class="fn-card-wrap"><div class="fn-card">
+        <div class="fn-icon"><span class="material-symbols-outlined">group_add</span></div>
+        <div class="fn-tag">Acceso compartido</div>
+        <h4>Comparte a tu perro con quien confías</h4>
+        <p>Da acceso a tu pareja, a un familiar o al vecino que a veces se queda con él. Cada persona ve la ubicación y el estado, con el rol que tú decidas: propietario, admin o invitado.</p>
+        <span class="fn-plan">Básico · hasta 2 usuarios</span>
+      </div></div>
+      <div class="fn-card-wrap"><div class="fn-card">
+        <div class="fn-icon"><span class="material-symbols-outlined">leaderboard</span></div>
+        <div class="fn-tag">Ranking de actividad</div>
+        <h4>Compara sin agobios, solo por curiosidad</h4>
+        <p>Un ranking semanal con los perros de tu zona. No es una carrera: es una forma amable de ver si tu perro se mueve como los demás, o si hoy le tocaba un paseo más largo.</p>
+        <span class="fn-plan">Básico · ranking local semanal</span>
+      </div></div>
+      <div class="fn-card-wrap"><div class="fn-card">
+        <div class="fn-icon"><span class="material-symbols-outlined">route</span></div>
+        <div class="fn-tag">Red de confianza</div>
+        <h4>Comparte solo lo que quieras, con quien quieras</h4>
+        <p>Hazte amigo de otro dueño en la app y compartid rutas, sitios recomendados o planes de paseo. Tú decides qué compartes y con quién: un favorito, una ruta guardada, o un aviso de "hoy voy a tal parque". Nunca la ubicación en tiempo real ni datos sensibles.</p>
+        <span class="fn-plan premium">Premium</span>
+      </div></div>
+      <div class="fn-card-wrap"><div class="fn-card">
+        <div class="fn-icon"><span class="material-symbols-outlined">groups</span></div>
+        <div class="fn-tag">Grupos y desafíos</div>
+        <h4>Únete a un grupo local o crea el tuyo</h4>
+        <p>Grupos de dueños de tu barrio o de tu raza, con retos semanales o mensuales que puedes seguir a tu ritmo. Nadie te obliga a competir, solo a apuntarte si te apetece.</p>
+        <span class="fn-plan premium">Premium</span>
+      </div></div>
+      <div class="fn-card-wrap"><div class="fn-card">
+        <div class="fn-icon"><span class="material-symbols-outlined">military_tech</span></div>
+        <div class="fn-tag">Recompensas e insignias</div>
+        <h4>Un reconocimiento cuando cumples un objetivo</h4>
+        <p>Insignias por completar un reto o alcanzar una meta de actividad. Un recordatorio bonito de lo que habéis hecho juntos, no un marcador que hay que ganar.</p>
+        <span class="fn-plan premium">Premium</span>
+      </div></div>
+      <div class="fn-card-wrap"><div class="fn-card">
+        <div class="fn-icon"><span class="material-symbols-outlined">emoji_people</span></div>
+        <div class="fn-tag">Rankings nacionales</div>
+        <h4>Cómo se mueve tu perro frente a su raza</h4>
+        <p>Rankings nacionales y por raza, con datos mensuales, trimestrales y anuales. Una foto más amplia, útil para hablar con el veterinario, no un titular para presumir.</p>
+        <span class="fn-plan premium">Premium</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. EL ANGULO -->
+<section id="angulo" class="sec-darker">
+  <div class="sec-prism" id="prism-angulo"></div>
+  <div class="container">
+    <div class="sl" style="text-align:center">Nuestro enfoque</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">ACOMPAÑAMIENTO, NO COMPETICIÓN</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:600px;margin:0.5rem auto 0">Hay apps para perros que se parecen a un Strava con correa. ARES no busca eso.</div>
+
+    <div class="ang-wrap">
+      <div class="ang-card bad">
+        <span class="ang-tag">Lo que no queremos ser</span>
+        <h4>Una tabla de clasificación que te presiona</h4>
+        <p>Marcadores agresivos, comparaciones constantes, la sensación de que tu perro "pierde" si hoy ha paseado menos. Eso genera culpa, no cuidado.</p>
+      </div>
+      <div class="ang-card good">
+        <span class="ang-tag">Lo que sí es ARES</span>
+        <h4>Datos que se comparten con calma, entre gente que también quiere a su perro</h4>
+        <p>El ranking y los retos están para que no sea solo tu palabra contra la pereza del sofá. Un empujón amable, compartido con otros dueños, no una competición que hay que ganar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. CASOS DE USO -->
+<section id="casos" class="sec-light light">
+  <div class="container">
+    <div class="sl" style="text-align:center">Escenas reales</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">DÓNDE MÁS SE NOTA</h2>
+
+    <div class="casos-grid">
+      <div class="caso-card">
+        <div class="caso-icon">En pareja</div>
+        <h4>Compartir al perro con tu pareja</h4>
+        <p>Los dos veis lo mismo: dónde está, si ya ha paseado hoy, si le toca comer. Nadie tiene que preguntarle al otro "¿lo has sacado ya?".</p>
+      </div>
+      <div class="caso-card">
+        <div class="caso-icon">El vecino</div>
+        <h4>Cuando el vecino se queda con él</h4>
+        <p>Le das acceso de invitado por el fin de semana. Ve la ubicación en vivo, sin poder tocar nada más. Cuando vuelves, le quitas el acceso y listo.</p>
+      </div>
+      <div class="caso-card">
+        <div class="caso-icon">Reto del parque</div>
+        <h4>El reto semanal con los del parque</h4>
+        <p>Un grupo de dueños que se ven cada tarde deciden apuntarse al mismo desafío. No hay premio, hay la excusa perfecta para sacarlo un rato más los días de pereza.</p>
+      </div>
+    </div>
+
+    <div class="casos-video-wrap" style="position:relative;z-index:0;margin-top:-10rem;margin-left:-3rem;margin-right:-3rem">
+      <video class="casos-video" autoplay loop muted playsinline preload="metadata"
+        style="display:block;width:100%;aspect-ratio:16/8;object-fit:cover;clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px);background:linear-gradient(135deg,#1c2732,#2a3a4a,#1c2732)">
+        <source src="../assets/video/comunidad.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PLANES -->
+<div class="vid-sec">
+<section class="vid-band" aria-label="Vídeo: comunidad ARES">
+  <div class="vid-cap"><div><strong>Vídeo comunidad</strong>deja aquí el vídeo de la comunidad</div></div>
+</section>
+<section id="planes-nota" class="sec-dark">
+  <div class="sec-prism" id="prism-planes"></div>
+  <div class="container">
+    <div class="sl" style="text-align:center">Disponibilidad por plan</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">QUÉ INCLUYE CADA PLAN</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:620px;margin:0.5rem auto 0">Lo esencial para compartir y comparar ya viene en Básico. Premium amplía el círculo y añade grupos, desafíos y recompensas. Ambos planes incluyen adem&aacute;s todas las funciones de GPS, geocercas, actividad y bienestar.</div>
+
+    <div class="pn-wrap">
+      <div class="pn-card">
+        <div class="pn-plan">Básico</div>
+        <div class="pn-scope">Tu círculo</div>
+        <p class="pn-desc">Comparte con hasta 2 personas de confianza y compara la actividad de tu perro en tu zona.</p>
+      </div>
+      <div class="pn-card hl">
+        <div class="pn-plan">Premium</div>
+        <div class="pn-scope">Tu comunidad</div>
+        <p class="pn-desc">Abre el círculo completo: grupos, retos, rankings nacionales y recompensas para tu perro.</p>
+      </div>
+    </div>
+
+    <div class="pn-cta">
+      <a href="pricing.html">Ver todos los planes y precios &rarr;</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- 6. CTA FINAL -->
+<section id="cta-final" class="sec-dark">
+  <div class="sec-prism" id="prism-cta"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <h2 class="st">TU PERRO MERECE UN GUARDIÁN.</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;margin-top:0.75rem">El hardware aún no está a la venta. Cuéntanos qué necesitas y sé de los primeros en reservar.</div>
+    <a href="proximamente.html" class="btn btn-cta" style="margin-top:1.5rem"><span>Reserva tu ARES</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="pf-footer-wrap">
+    <div class="pf-footer-map">
+      <div class="pf-footer-track" aria-hidden="true">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+      </div>
+      <div class="pf-footer-gradient"></div>
+      <div class="pf-footer-text">
+        <div>ARES GPS &copy; 2026 — Comunidad</div>
+        <div class="pf-footer-sub">Comparte con quien conf&iacute;as &middot; Sin presi&oacute;n &middot; Bienestar, no competici&oacute;n</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const bar = document.getElementById('progress-bar');
+  const nav = document.getElementById('main-nav');
+  if(!bar) return;
+  function update(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled/max*100) : 0) + '%';
+    if(nav) nav.classList.toggle('scrolled', scrolled > 20);
+  }
+  document.addEventListener('scroll', update, { passive:true });
+  update();
+})();
+</script>
+<script>
+/* ============================================
+   SECTION PRISM GRIDS — hero, angulo, planes, cta
+   ============================================ */
+function buildPrism(id){
+  const wrap=document.getElementById(id);if(!wrap)return;
+  const section=wrap.closest('section')||wrap.parentElement;
+  const size=40,cols=Math.ceil(section.offsetWidth/size)+4,rows=Math.ceil(section.offsetHeight/size)+4;
+  const grid=document.createElement('div');grid.className='prism-grid';
+  const gw=cols*size,gh=rows*size;
+  grid.style.cssText=`width:${gw}px;height:${gh}px;margin-left:${gw/-2}px;margin-top:${gh/-2}px;grid-template-columns:repeat(${cols},${size}px);grid-template-rows:repeat(${rows},${size}px)`;
+  const cells=[];
+  for(let i=0;i<rows*cols;i++){const c=document.createElement('div');c.className='prism-cell';c.style.cssText=`width:${size}px;height:${size}px`;grid.appendChild(c);cells.push(c)}
+  wrap.appendChild(grid);
+  const trail=[],max=18;let cc='134,187,216';
+  section.addEventListener('mousemove',e=>{
+    const rect=section.getBoundingClientRect();
+    const cx=section.offsetWidth/2,cy=section.offsetHeight/2,gl=cx-gw/2,gt=cy-gh/2;
+    const col=Math.floor((e.clientX-rect.left-gl)/size),row=Math.floor((e.clientY-rect.top-gt)/size);
+    if(col>=0&&col<cols&&row>=0&&row<rows)trail.push({col,row,life:1});
+    const el=document.querySelector(':hover');
+    if(el&&(el.tagName==='A'||el.tagName==='BUTTON'||el.closest('.btn')||el.closest('.bc')||el.closest('.pc')))cc='246,174,45';else cc='134,187,216';
+  });
+  section.addEventListener('mouseleave',()=>{trail.length=0;cells.forEach(c=>{c.style.background='rgba(134,187,216,0)';c.classList.remove('lit')})});
+  function anim(){
+    for(let i=trail.length-1;i>=0;i--){trail[i].life-=0.04;if(trail[i].life<=0)trail.splice(i,1)}
+    while(trail.length>max)trail.shift();
+    const lm={};trail.forEach(t=>{const k=t.row*cols+t.col;if(!lm[k]||lm[k]<t.life)lm[k]=t.life});
+    cells.forEach((c,i)=>{const l=lm[i]||0;c.style.background=l>0.01?`rgba(${cc},${l*0.3})`:'rgba(134,187,216,0)';if(l>0.01)c.classList.add('lit');else c.classList.remove('lit')});
+    requestAnimationFrame(anim);
+  }
+  anim();
+}
+['prism-hero','prism-angulo','prism-planes','prism-cta'].forEach(buildPrism);
+</script>
+<script>
+/* ============================================
+   SVGs FLOTANTES — fondo de #funciones (rAF)
+   ============================================ */
+(function(){
+  const host=document.getElementById('fnFloatBg');
+  if(!host)return;
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+
+  const STICKERS=['cuerda','huella','hueso','satelite','pelota','bowl'];
+  const isMobile=window.matchMedia('(max-width:768px)').matches;
+  const COUNT=isMobile?15:12, MIN=isMobile?60:132, MAX=isMobile?100:210;
+  const PAD=48; // padding extra: las pegatinas no tocan el texto ni se acercan al h2/subtítulo
+  const rand=(a,b)=>a+Math.random()*(b-a);
+  const items=[];
+  let W=host.clientWidth, H=host.clientHeight;
+
+  // Barrera invisible: solo el bloque de cabecera (h2 + subtítulo), con padding. Las tarjetas NO se bloquean.
+  const h2El=document.querySelector('#funciones .container h2');
+  const subEl=document.querySelector('#funciones .container .ss');
+  let barrier={yTop:0, yBot:0};
+  function updateBarrier(){
+    const hr=host.getBoundingClientRect();
+    const els=[h2El,subEl].filter(Boolean);
+    if(!els.length){barrier={yTop:0,yBot:0};return;}
+    const tops=els.map(el=>el.getBoundingClientRect().top-hr.top);
+    const bots=els.map(el=>el.getBoundingClientRect().bottom-hr.top);
+    barrier.yTop=Math.min(...tops)-PAD;
+    barrier.yBot=Math.max(...bots)+PAD;
+  }
+
+  for(let i=0;i<COUNT;i++){
+    const el=document.createElement('span');
+    el.className='fn-float';
+    const size=rand(MIN,MAX);
+    el.style.width=el.style.height=size+'px';
+    const name=STICKERS[i%STICKERS.length];
+    const img=document.createElement('img');
+    img.src='../assets/stickers/'+name+'.png';
+    img.alt='';img.style.cssText='width:100%;height:100%;object-fit:contain;display:block';
+    el.appendChild(img);
+    host.appendChild(el);
+    const spd=rand(4,12);
+    // Distribución uniforme: una columna por sticker, altura variada
+    const colW=(W/COUNT);
+    const cx=colW*i+rand(-colW*0.3,colW*0.3);
+    const minY=Math.max(0,barrier.yBot);
+    const maxY=Math.max(minY,H-size);
+    const frac=i/(COUNT-1||1);
+    const cy=minY+frac*(maxY-minY)+rand(-30,30);
+    items.push({
+      el, size, r:size/2,
+      x:Math.min(Math.max(0,cx),Math.max(0,W-size)),
+      y:Math.min(Math.max(minY,cy),Math.max(minY,maxY)),
+      vx:rand(-spd,spd)/60, vy:rand(-spd,spd)/60,
+      rot:rand(0,360), vr:rand(-0.12,0.12)
+    });
+  }
+  items.forEach((it,i)=>setTimeout(()=>{it.el.style.opacity=1},120*i));
+
+  function resize(){
+    W=host.clientWidth; H=host.clientHeight;
+    updateBarrier();
+    const minY=Math.max(0,barrier.yBot);
+    for(const it of items){
+      it.x=Math.min(Math.max(0,it.x),Math.max(0,W-it.size));
+      it.y=Math.min(Math.max(minY,it.y),Math.max(minY,H-it.size));
+    }
+  }
+  window.addEventListener('resize',resize,{passive:true});
+  resize();
+
+  function collide(a,b){
+    const dx=b.x-a.x, dy=b.y-a.y;
+    const min=a.r+b.r;
+    const d2=dx*dx+dy*dy;
+    if(d2>=min*min)return;
+    const d=Math.sqrt(d2)||0.0001;
+    const nx=dx/d, ny=dy/d;
+    const push=(min-d)/2;
+    a.x-=nx*push; a.y-=ny*push;
+    b.x+=nx*push; b.y+=ny*push;
+    const dvx=a.vx-b.vx, dvy=a.vy-b.vy;
+    const dot=dvx*nx+dvy*ny;
+    if(dot>0){ a.vx-=dot*nx; a.vy-=dot*ny; b.vx+=dot*nx; b.vy+=dot*ny; }
+  }
+
+  function tick(){
+    const minY=Math.max(0,barrier.yBot);
+    for(const it of items){
+      it.x+=it.vx; it.y+=it.vy; it.rot+=it.vr;
+      if(it.x<=0){it.x=0;it.vx=Math.abs(it.vx)}
+      else if(it.x>=W-it.size){it.x=W-it.size;it.vx=-Math.abs(it.vx)}
+      if(it.y<=minY){it.y=minY;it.vy=Math.abs(it.vy)}
+      else if(it.y>=H-it.size){it.y=H-it.size;it.vy=-Math.abs(it.vy)}
+    }
+    for(let i=0;i<items.length;i++){
+      for(let j=i+1;j<items.length;j++) collide(items[i],items[j]);
+    }
+    for(const it of items){
+      it.x=Math.min(Math.max(0,it.x),Math.max(0,W-it.size));
+      it.y=Math.min(Math.max(minY,it.y),Math.max(minY,H-it.size));
+      it.el.style.transform=`translate(${it.x.toFixed(1)}px,${it.y.toFixed(1)}px) rotate(${it.rot.toFixed(1)}deg)`;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+<script src="assets/js/mobile-menu.js"></script>
+<script src="assets/js/scroll-indicator.js"></script>
+<script src="assets/js/typewriter.js"></script>
+<script>
+  (() => {
+    const footerMap = document.querySelector('.pf-footer-map');
+    if (!footerMap) return;
+    let release;
+    const stretch = () => { footerMap.classList.add('end-stretch'); clearTimeout(release); release = setTimeout(() => footerMap.classList.remove('end-stretch'), 320); };
+    window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) stretch(); }, {passive:true});
+    window.addEventListener('touchmove', () => { if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) stretch(); }, {passive:true});
+    window.addEventListener('touchend', () => footerMap.classList.remove('end-stretch'), {passive:true});
+    window.addEventListener('touchcancel', () => footerMap.classList.remove('end-stretch'), {passive:true});
+  })();
+</script>
+</body>
+</html>
