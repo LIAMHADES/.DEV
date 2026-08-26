@@ -398,6 +398,13 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
   /* Logo del footer: ~2x más grande en móvil */
   #cta-final .cta-logo-bg img{width:min(92vw,560px)}
 }
+@media(max-width:1045px){
+  .inline-links{display:none}
+  .nav-toggle{display:flex}
+}
+@media(min-width:1046px){
+  .nav-toggle{display:none}
+}
 /* Tablet grande: reducir alturas fijas que quedan grandes en horizontal estrecho */
 @media(max-width:1024px){
   #showcase-3d{height:360px}

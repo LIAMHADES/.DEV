@@ -685,11 +685,15 @@ footer {
   text-align: center;
 }
 
+@media (max-width: 1045px) {
+  #main-nav .inline-links{display:none}
+  .nav-toggle{display:flex}
+}
+
 @media (max-width: 768px) {
   section {
     padding: 3.5rem 0;
   }
-  #main-nav .inline-links{display:none}
   #main-nav .back-link{display:none}
   /* Nav: evitar que el logo tape "ARES GPS" y la hamburguesa en pantallas estrechas */
   #main-nav{padding:0.85rem 1.25rem}
@@ -722,7 +726,7 @@ footer {
   .nav-overlay-inner{padding:1.5rem 0.75rem 2.5rem}
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1046px) {
   .nav-toggle{display:none !important}
 }
 
