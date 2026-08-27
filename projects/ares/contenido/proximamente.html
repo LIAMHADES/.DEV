@@ -222,6 +222,13 @@ section:first-of-type{clip-path:none}
               <label class="pv-choice"><input type="radio" name="pv-precio" value="no_compraria"><span>No lo compraría</span></label>
             </div>
           </div>
+          <div class="pv-q">¿Qué modelo preferirías probar?</div>
+          <div class="pv-field">
+            <div class="pv-choices">
+              <label class="pv-choice"><input type="radio" name="pv-modelo" value="suscripcion_visible"><span>Precio del dispositivo + suscripción mensual</span></label>
+              <label class="pv-choice"><input type="radio" name="pv-modelo" value="conectividad_incluida"><span>Conectividad incluida durante un periodo, sin cuota inicial visible</span></label>
+            </div>
+          </div>
           <div class="pv-nav">
             <button type="button" class="btn-ghost" data-pv-prev>&larr; Atrás</button>
             <button type="submit" class="btn btn-cta"><span>Ver resultado</span></button>
@@ -389,6 +396,7 @@ section:first-of-type{clip-path:none}
     }
     if(n===4){
       if(!form.querySelector('input[name="pv-precio"]:checked')){ errEl.textContent='Selecciona un rango de precio.'; return false; }
+      if(!form.querySelector('input[name="pv-modelo"]:checked')){ errEl.textContent='Selecciona el modelo que prefieres.'; return false; }
     }
     return true;
   }
@@ -411,6 +419,7 @@ section:first-of-type{clip-path:none}
       tamano: form.querySelector('input[name="pv-tamano"]:checked').value,
       preocupaciones: [...form.querySelectorAll('input[name="pv-preocupa"]:checked')].map(el=>el.value),
       precioDispuesto: form.querySelector('input[name="pv-precio"]:checked').value,
+      modeloPreferido: form.querySelector('input[name="pv-modelo"]:checked').value,
       createdAt: new Date().toISOString(),
     };
 
@@ -423,6 +432,13 @@ section:first-of-type{clip-path:none}
     } catch(err){ /* localStorage no disponible: no bloquea el flujo */ }
 
     console.log('[ARES preventa] Respuesta de cuestionario (placeholder, guardar junto al lead):', response);
+    if(window.aresAnalytics) window.aresAnalytics.track('preventa_qualification', {
+      dogs: response.numPerros,
+      size: response.tamano,
+      concerns: response.preocupaciones.join(','),
+      price_range: response.precioDispuesto,
+      preferred_model: response.modeloPreferido,
+    });
 
     document.getElementById('pv-form-wrap').style.display = 'none';
     document.getElementById('pv-progress').style.display = 'none';
