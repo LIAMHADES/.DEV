@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentes ONIX — Que tu negocio responda solo</title>
+<script src="site-fallback.js" defer></script>
+<meta name="description" content="Agente WhatsApp, Agente Reseñas y Agente Instagram: bots con supervisión de ONIX que responden por ti, siempre revisados antes de enviarse.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Cormorant:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080705;
+  --surface:#0f0d0a;
+  --surface2:#181410;
+  --surface3:#201a13;
+  --copper:#B85420;
+  --copper-warm:#E8A044;
+  --copper-light:#F5C96A;
+  --copper-shadow:#682B0E;
+  --copper-deep:#8C3A0F;
+  --text:#F0EBE3;
+  --text2:#D1C7BA;
+  --muted:#C1B5A4;
+  --border:#211A12;
+  --border2:#2E2318;
+  --g-copper:linear-gradient(135deg,#682B0E 0%,#B85420 25%,#F5C96A 55%,#B85420 80%,#682B0E 100%);
+  --g-copper-h:linear-gradient(90deg,#8C3A0F 0%,#B85420 30%,#F5C96A 55%,#B85420 75%,#8C3A0F 100%);
+  --font-h1:'Bebas Neue',sans-serif;
+  --font-h2:'Rajdhani',sans-serif;
+  --font-body:'Raleway',sans-serif;
+  --font-accent:'Cormorant',serif;
+  --r:12px;
+  --r-sm:8px;
+  --ease-std:cubic-bezier(.16,1,.3,1);
+}
+
+html{scroll-behavior:smooth;overflow-x:hidden}
+::-webkit-scrollbar{width:7px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(140,58,15,.35),rgba(184,84,32,.35),rgba(140,58,15,.35));border-radius:100px}
+
+body{
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse 900px 600px at 15% -5%, rgba(184,84,32,.12), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 30%, rgba(184,84,32,.07), transparent 55%),
+    radial-gradient(ellipse 800px 500px at 0% 75%, rgba(184,84,32,.06), transparent 55%);
+  background-attachment:fixed;
+  color:var(--text);
+  font-family:var(--font-body),-apple-system,sans-serif;
+  font-size:16px;
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* ═══ PRELOADER ═══ */
+#preloader{
+  position:fixed;inset:0;z-index:999999;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+}
+#preloader .pl-half{
+  position:absolute;
+  width:clamp(360px,60vw,800px);
+  top:calc(50% - 120px);left:calc(50% - clamp(180px,30vw,400px));
+  overflow:hidden;pointer-events:none;
+}
+#preloader .pl-half.top{clip-path:inset(0 0 52% 0);z-index:2}
+#preloader .pl-half.bot{clip-path:inset(48% 0 0 0);z-index:1}
+#preloader .pl-half img{width:100%;display:block}
+
+.reveal-el{opacity:0;transform:translateY(18px)}
+.reveal-title{opacity:0;transform:translateY(24px)}
+.reveal-card{opacity:0;transform:translateY(12px)}
+
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  pointer-events:none;z-index:1;
+  opacity:.03;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background-image:url("img/logos/logo%20negativo.png");
+  background-size:60%;background-position:center;background-repeat:no-repeat;
+  background-attachment:fixed;
+  opacity:.25;filter:blur(4px)
+}
+@media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:blur(6px)}}
+:focus-visible{outline:2px solid var(--copper-warm);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+strong.em,.em{font-family:var(--font-accent);font-style:italic;font-weight:700;color:var(--text);font-size:1.06em;letter-spacing:.01em;-webkit-text-fill-color:var(--text)}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+
+/* ─── NAV ────────────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:max(14px,env(safe-area-inset-top)) 5% 14px;background:rgba(8,7,5,.4);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);transition:background .35s ease}
+html.scrolling nav{background:rgba(8,7,5,.75)}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo img{height:54px;mix-blend-mode:screen;filter:brightness(1.05);transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.nav-logo:hover img{transform:scale(1.08)}
+.nav-logo span{font-family:var(--font-h1);font-size:20px;letter-spacing:.08em;color:var(--copper-warm)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-family:var(--font-body);font-size:13px;font-weight:400;letter-spacing:.06em;transition:.25s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.current{color:var(--copper-warm)}
+.nav-cta{background:var(--surface2);color:var(--copper-warm);border:1px solid rgba(184,84,32,.45);padding:10px 22px;border-radius:var(--r-sm);font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:.04em;text-decoration:none;transition:.25s cubic-bezier(.16,1,.3,1)}
+.nav-cta:hover{background:var(--g-copper);color:#0a0a0a;border-color:transparent;transform:translateY(-1px);box-shadow:0 6px 18px rgba(184,84,32,.28)}
+
+.nav-hamburger{display:none!important}
+@media(max-width:900px){
+  nav{backdrop-filter:none;background:#080705}
+  .nav-hamburger{display:inline-flex!important;align-items:center;justify-content:center;position:relative;z-index:101;background:none;border:none;color:var(--copper-warm);cursor:pointer;padding:0;width:46px;height:46px;flex-shrink:0}
+  .nav-logo img{height:80px;min-height:80px}
+  .nav-hamburger svg{width:32px;height:32px;display:block;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+  .nav-hamburger svg path{transition:stroke-dasharray .5s cubic-bezier(.16,1,.3,1),stroke-dashoffset .5s cubic-bezier(.16,1,.3,1)}
+  .nav-hamburger .mh-line1{stroke-dasharray:12 63}
+  .nav-hamburger.is-open svg{transform:rotate(-45deg)}
+  .nav-hamburger.is-open .mh-line1{stroke-dasharray:20 300;stroke-dashoffset:-32.42px}
+  .nav-links{display:none!important}
+  .nav-links.open{display:flex!important;position:fixed!important;inset:0!important;z-index:100;background:#080705!important;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:max(110px,calc(env(safe-area-inset-top) + 70px)) 5% max(90px,env(safe-area-inset-bottom));animation:menuFade .3s ease both}
+  .nav-links.open::before{content:'';position:absolute;top:0;left:0;right:0;height:45%;background:radial-gradient(ellipse 100% 100% at 50% 0%,rgba(184,84,32,.12),transparent);pointer-events:none}
+  .nav-links.open::after{content:'';position:absolute;top:max(55px,calc(env(safe-area-inset-top) + 35px));left:0;right:0;margin:0 auto;width:clamp(112px,32vw,192px);height:clamp(112px,32vw,192px);background-image:url("img/logos/logo.png");background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 2px 12px rgba(184,84,32,.25));animation:slideUp .4s cubic-bezier(.16,1,.3,1) .02s both}
+  .nav-links.open a{animation:slideUp .5s cubic-bezier(.16,1,.3,1) both;font-family:var(--font-h1);font-size:clamp(44px,10vw,72px);line-height:1.02;padding:11px 0;color:var(--text2);text-decoration:none;font-weight:400;letter-spacing:.05em;text-transform:uppercase;position:relative;transition:color .25s cubic-bezier(.16,1,.3,1)}
+  .nav-links.open a:hover,
+  .nav-links.open a.active,
+  .nav-links.open a.current{
+    background:var(--g-copper);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent
+  }
+  .nav-links.open a:nth-child(1){animation-delay:.04s}
+  .nav-links.open a:nth-child(2){animation-delay:.08s}
+  .nav-links.open a:nth-child(3){animation-delay:.12s}
+  .nav-links.open a:nth-child(4){animation-delay:.16s}
+  .nav-links.open a:nth-child(5){animation-delay:.2s}
+  .nav-links.open a:nth-child(6){animation-delay:.24s}
+  .nav-cta{display:none}
+  .nav-cta.menu-visible{display:block!important;position:fixed;bottom:max(24px,env(safe-area-inset-bottom, 24px));left:5%;right:5%;z-index:110;text-align:center;padding:12px 24px;background:var(--g-copper);color:#0a0a0a;border-radius:var(--r-sm);font-family:var(--font-h1);font-size:clamp(44px,10vw,72px);line-height:1.05;font-weight:400;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;box-shadow:0 8px 30px rgba(184,84,32,.35);animation:ctaFade .5s cubic-bezier(.16,1,.3,1) .32s both}
+}
+@keyframes menuFade{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ctaFade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── HERO ───────────────────────────────────────────────────
+   Faltaba por completo tras el intento de adaptación móvil —
+   sin esto el h1/eyebrow/hero-sub se renderizaban sin estilo. */
+.hero{padding:100px 0 48px;text-align:left}
+.eyebrow{
+  display:block;font-family:var(--font-h2);font-size:12px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--copper-warm);
+  margin-bottom:14px;
+}
+h1{
+  font-family:var(--font-h1);font-weight:400;font-size:clamp(38px,6.4vw,80px);text-transform:uppercase;
+  letter-spacing:.01em;line-height:.98;margin-bottom:16px;text-wrap:balance
+}
+h1 .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:16px;font-weight:300;color:var(--text2);max-width:640px;line-height:1.75}
+.hero-sub strong{color:var(--text);font-weight:600}
+
+/* ─── ANIMACIONES SCROLL ─────────────────────────────────────── */
+.fi{
+  opacity:0;
+  transform:translateY(24px) scale(.99);
+  transition:
+    opacity .65s cubic-bezier(.16,1,.3,1),
+    transform .65s cubic-bezier(.16,1,.3,1)
+}
+.fi.vis{
+  opacity:1;
+  transform:translateY(0) scale(1)
+}
+
+.trust-strip{
+  margin-top:28px;display:flex;align-items:flex-start;gap:14px;max-width:680px;
+  background:var(--surface);border:1px solid var(--border2);border-radius:var(--r-sm);
+  padding:16px 20px;
+}
+.trust-icon{width:28px;height:28px;flex-shrink:0;color:var(--copper-warm)}
+.trust-icon svg{width:100%;height:100%}
+.trust-strip p{font-size:13px;color:var(--text2);line-height:1.65}
+.trust-strip strong{color:var(--text);font-weight:600}
+
+/* ─── SECTION GENÉRICO ───────────────────────────────────────── */
+.section{padding:56px 0}
+.section-head{margin-bottom:32px}
+.section-eyebrow{font-family:var(--font-h2);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--copper-warm);margin-bottom:8px}
+.section-title{font-family:var(--font-h2);font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:.005em;text-wrap:balance}
+.section-desc{color:var(--text2);font-size:14px;max-width:680px;margin-top:8px;line-height:1.7}
+
+/* ─── AGENTE A MEDIDA ────────────────────────────────────────── */
+.custom-agent-card{
+  background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);
+  padding:36px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+}
+.custom-agent-icon{width:48px;height:48px;flex-shrink:0;color:var(--copper-warm);background:var(--surface2);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.custom-agent-icon svg{width:24px;height:24px}
+.custom-agent-body{flex:1;min-width:240px}
+.custom-agent-body h2{font-family:var(--font-h2);font-size:20px;font-weight:700;margin-bottom:8px}
+.custom-agent-body p{font-size:14px;color:var(--text2);line-height:1.7}
+.custom-agent-cta{
+  flex-shrink:0;background:var(--surface2);color:var(--copper-warm);border:1px solid rgba(184,84,32,.45);
+  padding:13px 26px;border-radius:var(--r-sm);font-family:var(--font-body);font-size:14px;font-weight:600;
+  letter-spacing:.03em;text-decoration:none;transition:.25s var(--ease-std);
+}
+.custom-agent-cta:hover{background:var(--g-copper);color:#0a0a0a;border-color:transparent;transform:translateY(-1px);box-shadow:0 6px 18px rgba(184,84,32,.28)}
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+footer{background:var(--surface);border-top:1px solid var(--border2);padding:28px 5%;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-body);font-size:13px;font-weight:300;color:var(--muted);flex-wrap:wrap;gap:14px}
+footer .footer-logo img{height:50px;mix-blend-mode:screen;opacity:.7}
+footer a{color:var(--copper-warm);text-decoration:none}
+footer a:hover{color:var(--copper-light)}
+
+@media(max-width:768px){
+  .custom-agent-card{padding:26px;text-align:center;justify-content:center}
+  .custom-agent-body{min-width:0}
+}
+
+/* ─── AGENTES: STACK CARDS (coverflow 3D) ─────────────────────
+   3 posiciones relativas (-1 izquierda, 0 centro, 1 derecha):
+   la tarjeta central es la única a tamaño completo y sin dim;
+   las laterales se reducen, rotan levemente hacia el centro y
+   se atenúan con .stack-dim — click en una lateral la trae al
+   centro (ver JS: reasigna data-rel a las 3 en cada click). */
+.agents-stack-outer{max-width:100%;overflow:hidden;padding:60px 0}
+.agents-stack{margin:0 auto;max-width:1040px;perspective:1400px}
+.agents-stack-inner{
+  position:relative;height:520px;padding:20px 0;
+}
+.stack-card{
+  background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);
+  padding:0;width:340px;cursor:pointer;transition:.45s var(--ease-std);
+  position:absolute;top:20px;left:50%;overflow:hidden;display:flex;flex-direction:column;
+  transform-style:preserve-3d;z-index:1;margin-left:-170px
+}
+.stack-card[data-rel="0"]{
+  border-color:rgba(184,84,32,.4);outline:1px solid rgba(184,84,32,.25);
+  transform:translateX(0) translateZ(0) rotateY(0) scale(1);z-index:3;cursor:default
+}
+.stack-card[data-rel="0"]::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g-copper-h)}
+.stack-card[data-rel="-1"]{transform:translateX(64%) translateZ(-120px) rotateY(24deg) scale(.86);z-index:2}
+.stack-card[data-rel="1"]{transform:translateX(-64%) translateZ(-120px) rotateY(-24deg) scale(.86);z-index:2}
+.stack-card:not([data-rel="0"]):hover{transform:translateX(64%) translateZ(-100px) rotateY(20deg) scale(.9)}
+.stack-card[data-rel="1"]:hover{transform:translateX(-64%) translateZ(-100px) rotateY(-20deg) scale(.9)}
+.stack-dim{
+  position:absolute;inset:0;background:rgba(8,7,5,.55);opacity:0;
+  transition:opacity .45s var(--ease-std);pointer-events:none;z-index:1
+}
+.stack-card:not([data-rel="0"]) .stack-dim{opacity:1}
+.bar-expanded{display:flex;flex-direction:column;padding:28px 28px;flex:1}
+.agent-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.agent-icon{width:40px;height:40px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.agent-icon svg{width:20px;height:20px;stroke:var(--copper-warm)}
+.agent-name{font-family:var(--font-h2);font-size:18px;font-weight:700;line-height:1.2}
+.agent-channel{font-size:12px;color:var(--muted);margin-top:2px}
+.agent-desc{font-size:13px;color:var(--muted);line-height:1.7;flex:1}
+.agent-tramos-label{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--copper-warm);margin:20px 0 8px}
+.agent-tramos{display:flex;gap:4px;background:var(--surface2);padding:4px;border-radius:var(--r-sm)}
+.agent-tramos button{padding:8px 14px;border:none;border-radius:6px;background:transparent;color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;transition:.2s var(--ease-std);flex:1}
+.agent-tramos button.active{background:var(--g-copper);color:#0a0a0a}
+.agent-tramo-note{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5}
+.agent-fixed-note{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.5}
+.agent-price-box{margin-top:20px}
+.agent-price-normal{font-family:var(--font-h1);font-size:38px;font-variant-numeric:tabular-nums;line-height:1;background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.agent-price-normal small{font-family:var(--font-body);font-size:13px;color:var(--muted);font-weight:300;-webkit-text-fill-color:var(--muted)}
+.agent-price-premium{font-size:12px;color:var(--muted);margin-top:2px}
+.agent-price-premium strong{color:var(--text2)}
+.agent-cta{display:block;text-align:center;margin-top:20px;padding:13px;min-height:44px;border-radius:var(--r-sm);border:1px solid var(--border2);color:var(--text2);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:.04em;transition:.25s var(--ease-std)}
+.agent-cta:hover{border-color:rgba(184,84,32,.45);color:var(--copper-warm)}
+
+/* ─── AGENTES: PACK CALC ──────────────────────────────────── */
+.pack-calc{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:32px;margin-top:32px}
+.pack-calc h3{font-family:var(--font-h2);font-size:20px;font-weight:700;margin-bottom:16px}
+.pack-calc-options{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pack-agent-block{display:flex;flex-direction:column}
+.pack-check{
+  background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);
+  padding:18px 20px;cursor:pointer;transition:.25s var(--ease-std);
+  display:flex;align-items:center;gap:12px
+}
+.pack-check:hover{border-color:rgba(184,84,32,.3)}
+.pack-check.checked{border-color:var(--copper);outline:1px solid rgba(184,84,32,.3)}
+.pack-check input[type=checkbox]{position:absolute;opacity:0;width:0;height:0}
+.pack-check-box{
+  width:20px;height:20px;border-radius:5px;border:1.5px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s var(--ease-std)
+}
+.pack-check-box svg{width:12px;height:12px;stroke:#080705;stroke-width:3;opacity:0;transition:.15s var(--ease-std)}
+.pack-check.checked .pack-check-box{background:var(--copper-warm);border-color:var(--copper-warm)}
+.pack-check.checked .pack-check-box svg{opacity:1}
+.pack-check-label{font-size:14px;font-weight:600}
+.pack-check-label small{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:2px}
+.pack-agent-tramo{margin-top:12px;padding:0 4px}
+.pack-agent-tramo .agent-tramos{margin-bottom:0}
+.pack-calc-summary{margin-top:24px;padding-top:20px;border-top:1px solid var(--border2)}
+.pack-line{display:flex;justify-content:space-between;padding:8px 0;font-size:14px;color:var(--text2)}
+.pack-line.empty{color:var(--muted);font-style:italic}
+.pack-calc-total-row{display:none;justify-content:space-between;align-items:center;padding:16px 0;margin-top:8px;border-top:1px solid var(--border2)}
+.pack-price-old{font-size:14px;color:var(--muted);text-decoration:line-through}
+.pack-price-new{font-family:var(--font-h1);font-size:32px;line-height:1;background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block;transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.pack-price-new.bump{transform:scale(1.08)}
+.pack-price-new small{font-family:var(--font-body);font-size:13px;color:var(--muted);-webkit-text-fill-color:var(--muted)}
+.pack-save{font-size:13px;font-weight:600;color:var(--copper-light);margin-top:8px}
+
+/* ─── AGENTES: MOBILE ──────────────────────────────────────
+   El coverflow 3D (rotación + perspectiva + position:absolute)
+   no funciona bien con scroll táctil — en móvil se desactiva
+   del todo: vuelve a flujo normal en columna, las 3 tarjetas
+   a tamaño completo, sin dim ni transform. */
+@media(max-width:900px){
+  .agents-stack{perspective:none}
+  .agents-stack-inner{
+    height:auto;display:flex;flex-direction:column;align-items:center;gap:16px;padding:0
+  }
+  .stack-card,
+  .stack-card[data-rel="0"],
+  .stack-card[data-rel="-1"],
+  .stack-card[data-rel="1"]{
+    position:static;width:100%;max-width:420px;margin-left:0;
+    transform:none;cursor:default;z-index:1
+  }
+  .stack-card:hover,
+  .stack-card:not([data-rel="0"]):hover,
+  .stack-card[data-rel="1"]:hover{transform:none}
+  .stack-dim{display:none}
+  .pack-calc-options{grid-template-columns:1fr}
+  .hero{padding:75px 0 36px}
+  h1{font-size:clamp(32px,10vw,44px)}
+  .hero-sub{font-size:14px}
+  .trust-strip{flex-direction:column;gap:10px;padding:14px 16px}
+  .custom-agent-card{flex-direction:column;align-items:center;text-align:center;padding:26px;gap:16px}
+  .custom-agent-body{min-width:0}
+}</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="pl-half top"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+  <div class="pl-half bot"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+</div>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="suscripciones.html">Suscripciones</a>
+    <a href="agentes.html" class="current">Agentes</a>
+    <a href="campanas.html">Campañas</a>
+    <a href="presupuesto-web.html">Web</a>
+    <a href="index.html#contactar">Contacto</a>
+  </div>
+  <a class="nav-cta" href="index.html#contactar">Pedir diseño gratis</a>
+  <button class="nav-hamburger" id="menu-toggle" aria-label="Menú" aria-expanded="false">
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="mh-line1" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"/><path d="M7 16 27 16"/></svg>
+  </button>
+</nav>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow reveal-el">Agentes ONIX</div>
+    <h1 class="reveal-title">Que tu negocio <span class="hl">responda solo</span></h1>
+    <p class="hero-sub reveal-el">Un bot que contesta por WhatsApp, gestiona tus reseñas de Google o responde tus DMs de Instagram — sin que tengas que estar pendiente todo el día.</p>
+
+    <div class="trust-strip reveal-el">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      </div>
+      <p><strong>Cómo funciona de verdad:</strong> el agente redacta la respuesta, y nosotros la revisamos antes de que le llegue a tu cliente o se publique en tu reseña. <strong class="em">Nunca se envía nada en automático</strong> sin que alguien de ONIX lo confirme primero.</p>
+    </div>
+  </section>
+
+  <section class="section fi" id="agentes">
+    <div class="section-head">
+      <div class="section-eyebrow">Elige tu canal</div>
+      <h2 class="section-title">Un agente por cada conversación que ya tienes</h2>
+      <p class="section-desc">Haz click en las tarjetas de atrás para traerlas al frente. WhatsApp e Instagram tienen tramos según tu volumen de mensajes — si superas los 2000/mes, seguimos subiendo el precio de forma automática, lo cerramos contigo en la visita. Reseñas es <strong class="em">precio fijo</strong>, gestiones las que gestiones.</p>
+    </div>
+
+    <div class="agents-stack-outer"><div class="agents-stack"><div class="agents-stack-inner" id="agents-stack">
+
+      <!-- AGENTE WHATSAPP -->
+      <div class="stack-card" data-bar="whatsapp" data-rel="0">
+        <div class="stack-dim"></div>
+        <div class="bar-expanded">
+          <div class="agent-head">
+            <div class="agent-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <div>
+              <div class="agent-name">Agente WhatsApp</div>
+              <div class="agent-channel">WhatsApp Business</div>
+            </div>
+          </div>
+          <p class="agent-desc">Responde preguntas frecuentes, confirma citas y manda recordatorios o seguimiento después de la visita — <strong class="em">todo por WhatsApp</strong>, con tu tono y tus datos.</p>
+
+          <span class="agent-tramos-label">Volumen de mensajes</span>
+          <div class="agent-tramos" data-agent="whatsapp">
+            <button type="button" data-tramo="0" class="active">Hasta 500</button>
+            <button type="button" data-tramo="1">Hasta 1000</button>
+            <button type="button" data-tramo="2">Hasta 2000</button>
+          </div>
+          <p class="agent-tramo-note">¿Más de 2000 mensajes/mes? Seguimos subiendo de forma automática — lo ajustamos contigo en la visita.</p>
+
+          <div class="agent-price-box">
+            <div class="agent-price-normal" data-price-normal="whatsapp">50€ <small>/mes</small></div>
+          </div>
+          <div class="agent-price-premium">Con Premium: <strong data-price-premium="whatsapp">40€</strong>/mes</div>
+
+          <a href="#" id="cta-whatsapp" class="agent-cta">Quiero WhatsApp →</a>
+        </div>
+      </div>
+
+      <!-- AGENTE RESEÑAS -->
+      <div class="stack-card" data-bar="resenas" data-rel="-1">
+        <div class="stack-dim"></div>
+        <div class="bar-expanded">
+          <div class="agent-head">
+            <div class="agent-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <div>
+              <div class="agent-name">Agente Reseñas</div>
+              <div class="agent-channel">Google Business Profile</div>
+            </div>
+          </div>
+          <p class="agent-desc">Vigila tus reseñas de Google y prepara la respuesta a cada una — buena o mala. <strong class="em">Nunca se publica nada sin que lo revisemos antes</strong>: una reseña mal respondida es pública para siempre.</p>
+
+          <p class="agent-fixed-note">Precio fijo, sin tramos — gestiones las reseñas que gestiones.</p>
+
+          <div class="agent-price-box">
+            <div class="agent-price-normal">50€ <small>/mes</small></div>
+          </div>
+          <div class="agent-price-premium">Con Premium: <strong>40€</strong>/mes</div>
+
+          <a href="https://wa.me/34630910142?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20contratar%20el%20Agente%20Rese%C3%B1as%20de%20ONIX%20(50%E2%82%AC%2Fmes).%20%C2%BFQu%C3%A9%20necesit%C3%A1is%20de%20m%C3%AD%20para%20activarlo%3F" class="agent-cta">Quiero Reseñas →</a>
+        </div>
+      </div>
+
+      <!-- AGENTE INSTAGRAM -->
+      <div class="stack-card" data-bar="instagram" data-rel="1">
+        <div class="stack-dim"></div>
+        <div class="bar-expanded">
+          <div class="agent-head">
+            <div class="agent-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <div>
+              <div class="agent-name">Agente Instagram</div>
+              <div class="agent-channel">Mensajes directos</div>
+            </div>
+          </div>
+          <p class="agent-desc">Contesta los DMs de tu cuenta de Instagram <strong class="em">al momento</strong> — precios, disponibilidad, cómo llegar. Ideal si tu negocio vive de la imagen y las reservas llegan por ahí.</p>
+
+          <span class="agent-tramos-label">Volumen de mensajes</span>
+          <div class="agent-tramos" data-agent="instagram">
+            <button type="button" data-tramo="0" class="active">Hasta 500</button>
+            <button type="button" data-tramo="1">Hasta 1000</button>
+            <button type="button" data-tramo="2">Hasta 2000</button>
+          </div>
+          <p class="agent-tramo-note">¿Más de 2000 mensajes/mes? Seguimos subiendo de forma automática — lo ajustamos contigo en la visita.</p>
+
+          <div class="agent-price-box">
+            <div class="agent-price-normal" data-price-normal="instagram">50€ <small>/mes</small></div>
+          </div>
+          <div class="agent-price-premium">Con Premium: <strong data-price-premium="instagram">40€</strong>/mes</div>
+
+          <a href="#" id="cta-instagram" class="agent-cta">Quiero Instagram →</a>
+        </div>
+      </div>
+
+    </div></div></div>
+  </section>
+
+  <section class="section fi" id="packs">
+    <div class="section-head">
+      <div class="section-eyebrow">Combina y ahorra</div>
+      <h2 class="section-title">Pack de Agentes</h2>
+      <p class="section-desc">Elige qué canales quieres cubrir y, si aplica, tu volumen de mensajes — el pack siempre sale <strong class="em">un 20% más barato</strong> que contratar los agentes sueltos.</p>
+    </div>
+
+    <div class="pack-calc">
+      <div class="pack-calc-options">
+
+        <div class="pack-agent-block">
+          <label class="pack-check" data-key="whatsapp">
+            <input type="checkbox">
+            <span class="pack-check-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span class="pack-check-label">Agente WhatsApp</span>
+          </label>
+          <div class="pack-agent-tramo" data-tramo-for="whatsapp" style="display:none">
+            <div class="agent-tramos" data-pack-tramos="whatsapp">
+              <button type="button" data-tramo="0" class="active">Hasta 500</button>
+              <button type="button" data-tramo="1">Hasta 1000</button>
+              <button type="button" data-tramo="2">Hasta 2000</button>
+            </div>
+            <p class="agent-tramo-note">¿Más de 2000 msg/mes? Seguimos subiendo de forma automática — lo ajustamos contigo en la visita.</p>
+          </div>
+        </div>
+
+        <div class="pack-agent-block">
+          <label class="pack-check" data-key="resenas">
+            <input type="checkbox">
+            <span class="pack-check-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span class="pack-check-label">Agente Reseñas <small>(precio fijo, sin tramos)</small></span>
+          </label>
+        </div>
+
+        <div class="pack-agent-block">
+          <label class="pack-check" data-key="instagram">
+            <input type="checkbox">
+            <span class="pack-check-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span class="pack-check-label">Agente Instagram</span>
+          </label>
+          <div class="pack-agent-tramo" data-tramo-for="instagram" style="display:none">
+            <div class="agent-tramos" data-pack-tramos="instagram">
+              <button type="button" data-tramo="0" class="active">Hasta 500</button>
+              <button type="button" data-tramo="1">Hasta 1000</button>
+              <button type="button" data-tramo="2">Hasta 2000</button>
+            </div>
+            <p class="agent-tramo-note">¿Más de 2000 msg/mes? Seguimos subiendo de forma automática — lo ajustamos contigo en la visita.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pack-calc-summary">
+        <h4>Tu pack</h4>
+        <div id="pack-lines">
+          <p class="pack-line empty" id="pack-empty">Marca 2 o más agentes para ver tu pack →</p>
+        </div>
+        <div class="pack-calc-total-row" id="pack-total-row" style="display:none">
+          <span class="pack-price-old" id="pack-total-old">0€</span>
+          <span class="pack-price-new" id="pack-total-new">0€ <small>/mes</small></span>
+        </div>
+        <div class="pack-save" id="pack-save" style="display:none"></div>
+        <a href="#" id="cta-pack" class="agent-cta">Quiero este pack →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fi" id="a-medida">
+    <div class="custom-agent-card">
+      <div class="custom-agent-icon" style="font-family:var(--font-h1);font-size:28px;color:var(--copper-warm);line-height:1">?</div>
+      <div class="custom-agent-body">
+        <h2>¿Necesitas otra cosa?</h2>
+        <p>Si tu negocio tiene una necesidad distinta a estos 3 canales — email, gestión de socios, reservas de grupo, un flujo muy específico de tu sector — cuéntanoslo. <strong class="em">Vemos si encaja como un agente a medida</strong>.</p>
+      </div>
+      <a href="https://wa.me/34630910142?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Me%20interesan%20los%20Agentes%20de%20ONIX%2C%20pero%20ninguno%20de%20los%203%20est%C3%A1ndar%20(WhatsApp%2C%20Rese%C3%B1as%2C%20Instagram)%20cubre%20lo%20que%20necesito.%20Lo%20que%20busco%20es%3A%20" class="custom-agent-cta">Cuéntanos qué necesitas →</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='inline'">
+    <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
+  </div>
+  <span>© 2025 ONIX — Stands NFC para Negocios · Girona</span>
+  <span style="display:flex;gap:14px;flex-wrap:wrap">
+    <a href="legal.html">Aviso Legal</a>
+    <a href="legal.html">Privacidad</a>
+    <a href="legal.html">Cookies</a>
+  </span>
+  <a href="https://wa.me/34630910142">+34 630 910 142</a>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(function() {
+  var preloaderTop = document.querySelector('#preloader .pl-half.top');
+  var preloaderBot = document.querySelector('#preloader .pl-half.bot');
+  if (!preloaderTop || !preloaderBot) return;
+
+  var tl = gsap.timeline();
+  tl.fromTo(preloaderTop, {x: -560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
+  tl.fromTo(preloaderBot, {x: 560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
+  tl.to('#preloader', {opacity: 0, duration: 0.4, ease: 'power2.in'}, '-=0.2');
+  tl.set('#preloader', {display: 'none'});
+  tl.to('.reveal-title', {opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08}, '-=0.05');
+  tl.to('.reveal-el', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.06}, 0.15);
+  tl.to('.reveal-card', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05}, 0.35);
+})();
+
+(function(){
+  window.addEventListener('scroll', function(){
+    document.documentElement.classList.toggle('scrolling', window.scrollY > 10);
+  });
+})();
+</script>
+
+<script>
+(function(){
+  // Coverflow 3D: cada tarjeta tiene una posición relativa (-1 izquierda, 0 centro,
+  // 1 derecha) que rota como un carrusel circular al hacer click — la tarjeta
+  // clickeada pasa a 0, y el resto se desplaza en la misma dirección, así siempre
+  // hay exactamente una tarjeta a cada lado y ninguna desaparece.
+  var cards = document.querySelectorAll('.stack-card');
+
+  cards.forEach(function(card){
+    card.addEventListener('click', function(){
+      var rel = parseInt(card.dataset.rel, 10);
+      if (rel === 0) return;
+
+      var shift = -rel; // si clicko la de la derecha (1), todo se mueve -1 (hacia la izquierda)
+      cards.forEach(function(c){
+        var newRel = parseInt(c.dataset.rel, 10) + shift;
+        // normaliza a {-1, 0, 1} en un ciclo de 3
+        if (newRel > 1) newRel -= 3;
+        if (newRel < -1) newRel += 3;
+        c.dataset.rel = newRel;
+      });
+    });
+  });
+})();
+
+(function(){
+  // Mismos tramos para WhatsApp e Instagram: 50/75/100€ (normal), 40/60/80€ (Premium).
+  // Por encima de 2000 msg: sigue subiendo, se cotiza en la visita (no seleccionable en la web).
+  var TRAMOS = { normal: [50, 75, 100], premium: [40, 60, 80] };
+  var TRAMO_LABEL = ['hasta 500 msg/mes', 'hasta 1000 msg/mes', 'hasta 2000 msg/mes'];
+  var NOMBRE = { whatsapp: 'Agente WhatsApp', instagram: 'Agente Instagram' };
+
+  function euro(n){ return n.toLocaleString('es-ES') + '€'; }
+
+  function actualizarCTA(agent, tramo){
+    var cta = document.getElementById('cta-' + agent);
+    if (!cta) return;
+    var precio = TRAMOS.normal[tramo];
+    var msg = 'Hola, soy [nombre] de [negocio]. Quiero contratar el ' + NOMBRE[agent] + ' (' + TRAMO_LABEL[tramo] + ', ' + euro(precio) + '/mes). ¿Qué necesitáis de mí para activarlo?';
+    cta.href = 'https://wa.me/34630910142?text=' + encodeURIComponent(msg);
+  }
+
+  document.querySelectorAll('.agent-tramos').forEach(function(group){
+    var agent = group.dataset.agent;
+    var buttons = group.querySelectorAll('button');
+
+    actualizarCTA(agent, 0);
+
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        buttons.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        var tramo = parseInt(btn.dataset.tramo, 10);
+
+        var normalEl = document.querySelector('[data-price-normal="' + agent + '"]');
+        var premiumEl = document.querySelector('[data-price-premium="' + agent + '"]');
+
+        normalEl.innerHTML = euro(TRAMOS.normal[tramo]) + ' <small>/mes</small>';
+        premiumEl.textContent = euro(TRAMOS.premium[tramo]);
+
+        actualizarCTA(agent, tramo);
+      });
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var TRAMOS = [50, 75, 100];
+  var RESENAS = 50;
+  var nombres = { whatsapp: 'Agente WhatsApp', resenas: 'Agente Reseñas', instagram: 'Agente Instagram' };
+
+  function euro(n){ return n.toLocaleString('es-ES') + '€'; }
+
+  // Estado por agente: activo (checkbox), tramo (0-2: 500/1000/2000)
+  var state = {
+    whatsapp: { active: false, tramo: 0 },
+    resenas: { active: false },
+    instagram: { active: false, tramo: 0 }
+  };
+
+  document.querySelectorAll('.pack-check').forEach(function(el){
+    var key = el.dataset.key;
+    var input = el.querySelector('input');
+    var tramoBlock = document.querySelector('[data-tramo-for="' + key + '"]');
+
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      state[key].active = !state[key].active;
+      input.checked = state[key].active;
+      el.classList.toggle('checked', state[key].active);
+      if (tramoBlock) tramoBlock.style.display = state[key].active ? 'block' : 'none';
+      render();
+    });
+  });
+
+  ['whatsapp', 'instagram'].forEach(function(key){
+    var tramoButtons = document.querySelectorAll('[data-pack-tramos="' + key + '"] button');
+
+    tramoButtons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        tramoButtons.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        state[key].tramo = parseInt(btn.dataset.tramo, 10);
+        render();
+      });
+    });
+  });
+
+  function precioAgente(key){
+    if (key === 'resenas') return RESENAS;
+    return TRAMOS[state[key].tramo];
+  }
+
+  var TRAMO_LABEL = ['hasta 500 msg/mes', 'hasta 1000 msg/mes', 'hasta 2000 msg/mes'];
+
+  function actualizarCTAPack(seleccionados, packPrice){
+    var cta = document.getElementById('cta-pack');
+    if (!cta) return;
+
+    if (!seleccionados || seleccionados.length < 2) {
+      cta.href = '#';
+      cta.setAttribute('aria-disabled', 'true');
+      cta.style.opacity = '.45';
+      cta.style.pointerEvents = 'none';
+      return;
+    }
+
+    cta.removeAttribute('aria-disabled');
+    cta.style.opacity = '';
+    cta.style.pointerEvents = '';
+
+    var detalle = seleccionados.map(function(key){
+      var extra = (key === 'whatsapp' || key === 'instagram') ? ' (' + TRAMO_LABEL[state[key].tramo] + ')' : '';
+      return nombres[key] + extra;
+    }).join(' + ');
+
+    var msg = 'Hola, soy [nombre] de [negocio]. Quiero el Pack de Agentes: ' + detalle + ', ' + euro(packPrice) + '/mes. ¿Qué necesitáis de mí para activarlo?';
+    cta.href = 'https://wa.me/34630910142?text=' + encodeURIComponent(msg);
+  }
+
+  function render(){
+    var seleccionados = Object.keys(state).filter(function(k){ return state[k].active; });
+    var linesEl = document.getElementById('pack-lines');
+    var totalRow = document.getElementById('pack-total-row');
+    var saveEl = document.getElementById('pack-save');
+
+    if (seleccionados.length < 2) {
+      linesEl.innerHTML = '<p class="pack-line empty" id="pack-empty">Marca 2 o más agentes para ver tu pack →</p>';
+      totalRow.style.display = 'none';
+      saveEl.style.display = 'none';
+      actualizarCTAPack(seleccionados, 0);
+      return;
+    }
+
+    var suma = 0;
+    var lines = [];
+
+    seleccionados.forEach(function(key){
+      var precio = precioAgente(key);
+      suma += precio;
+      lines.push('<div class="pack-line"><span>' + nombres[key] + '</span><span>' + euro(precio) + '</span></div>');
+    });
+
+    var packPrice = Math.round(suma * 0.8);
+
+    linesEl.innerHTML = lines.join('');
+    document.getElementById('pack-total-old').textContent = euro(suma);
+    var packEl = document.getElementById('pack-total-new');
+    var prevPack = packEl.textContent;
+    packEl.innerHTML = euro(packPrice) + ' <small>/mes</small>';
+    if (prevPack.indexOf(euro(packPrice)) !== 0) {
+      packEl.classList.remove('bump');
+      void packEl.offsetWidth;
+      packEl.classList.add('bump');
+      setTimeout(function(){ packEl.classList.remove('bump'); }, 250);
+    }
+    totalRow.style.display = 'flex';
+    saveEl.textContent = '-20% de descuento';
+    saveEl.style.display = 'block';
+    actualizarCTAPack(seleccionados, packPrice);
+  }
+
+  render();
+})();
+</script>
+
+<script>
+// ── SCROLL ANIMATIONS ────────────────────────────────────────────────────────
+setTimeout(function() {
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, {threshold: 0.1, rootMargin: '0px 0px -80px 0px'});
+  document.querySelectorAll('.fi').forEach(function(el) { obs.observe(el); });
+}, 200);
+</script>
+
+<script>document.getElementById('menu-toggle').addEventListener('click',function(){var n=document.querySelector('.nav-links');n.classList.toggle('open');var o=n.classList.contains('open');this.classList.toggle('is-open',o);this.setAttribute('aria-expanded',o);var c=document.querySelector('.nav-cta');if(c)c.classList.toggle('menu-visible',o);});</script></body>

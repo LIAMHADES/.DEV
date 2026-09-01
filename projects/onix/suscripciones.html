@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONIX — Suscripciones Basic, Pro y Premium</title>
+<script src="site-fallback.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Cormorant:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080705;--surface:#0f0d0a;--surface2:#181410;--surface3:#201a13;
+  --copper:#B85420;--copper-warm:#E8A044;--copper-light:#F5C96A;--copper-shadow:#682B0E;--copper-deep:#8C3A0F;
+  --text:#F0EBE3;--text2:#D1C7BA;--muted:#C1B5A4;
+  --border:#211A12;--border2:#2E2318;
+  --g-copper:linear-gradient(135deg,#682B0E 0%,#B85420 25%,#F5C96A 55%,#B85420 80%,#682B0E 100%);
+  --g-copper-h:linear-gradient(90deg,#8C3A0F 0%,#B85420 30%,#F5C96A 55%,#B85420 75%,#8C3A0F 100%);
+  --font-h1:'Bebas Neue',sans-serif;--font-h2:'Rajdhani',sans-serif;--font-body:'Raleway',sans-serif;--font-accent:'Cormorant',serif;
+  --r:12px;--r-sm:8px;--ease-std:cubic-bezier(.16,1,.3,1)
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+::-webkit-scrollbar{width:7px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(140,58,15,.35),rgba(184,84,32,.35),rgba(140,58,15,.35));border-radius:100px}
+body{
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse 900px 600px at 15% -5%, rgba(184,84,32,.12), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 30%, rgba(184,84,32,.07), transparent 55%),
+    radial-gradient(ellipse 800px 500px at 0% 75%, rgba(184,84,32,.06), transparent 55%);
+  background-attachment:fixed;
+  color:var(--text);font-family:var(--font-body),-apple-system,sans-serif;
+  font-size:16px;font-weight:300;line-height:1.6;
+  -webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden
+}
+/* ═══ PRELOADER ═══ */
+#preloader{
+  position:fixed;inset:0;z-index:999999;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+}
+#preloader .pl-half{
+  position:absolute;
+  width:clamp(360px,60vw,800px);
+  top:calc(50% - 120px);left:calc(50% - clamp(180px,30vw,400px));
+  overflow:hidden;pointer-events:none;
+}
+#preloader .pl-half.top{clip-path:inset(0 0 52% 0);z-index:2}
+#preloader .pl-half.bot{clip-path:inset(48% 0 0 0);z-index:1}
+#preloader .pl-half img{width:100%;display:block}
+
+.reveal-el{opacity:0;transform:translateY(18px)}
+.reveal-title{opacity:0;transform:translateY(24px)}
+.reveal-card{opacity:0;transform:translateY(12px)}
+
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;
+  opacity:.03;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background-image:url("img/logos/logo%20negativo.png");
+  background-size:60%;background-position:center;background-repeat:no-repeat;
+  background-attachment:fixed;
+  opacity:.25;filter:blur(4px)
+}
+@media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:blur(6px)}}
+:focus-visible{outline:2px solid var(--copper-warm);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+strong.em,.em{font-family:var(--font-accent);font-style:italic;font-weight:700;color:var(--text);font-size:1.06em;letter-spacing:.01em;-webkit-text-fill-color:var(--text)}
+
+/* ─── NAV ────────────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:max(14px,env(safe-area-inset-top)) 5% 14px;background:rgba(8,7,5,.4);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo img{height:54px;mix-blend-mode:screen;filter:brightness(1.05);transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.nav-logo:hover img{transform:scale(1.08)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-family:var(--font-body);font-size:13px;font-weight:400;letter-spacing:.06em;transition:.25s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.current{color:var(--copper-warm)}
+.nav-cta{background:var(--surface2);color:var(--copper-warm);border:1px solid rgba(184,84,32,.45);padding:10px 22px;border-radius:var(--r-sm);font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:.04em;text-decoration:none;transition:.25s cubic-bezier(.16,1,.3,1)}
+.nav-cta:hover{background:var(--g-copper);color:#0a0a0a;border-color:transparent;transform:translateY(-1px);box-shadow:0 6px 18px rgba(184,84,32,.28)}
+
+.nav-hamburger{display:none!important}
+@media(max-width:900px){
+  nav{backdrop-filter:none;background:#080705}
+  .nav-hamburger{display:inline-flex!important;align-items:center;justify-content:center;position:relative;z-index:101;background:none;border:none;color:var(--copper-warm);cursor:pointer;padding:0;width:46px;height:46px;flex-shrink:0}
+  .nav-logo img{height:80px;min-height:80px}
+  .nav-hamburger svg{width:32px;height:32px;display:block;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+  .nav-hamburger svg path{transition:stroke-dasharray .5s cubic-bezier(.16,1,.3,1),stroke-dashoffset .5s cubic-bezier(.16,1,.3,1)}
+  .nav-hamburger .mh-line1{stroke-dasharray:12 63}
+  .nav-hamburger.is-open svg{transform:rotate(-45deg)}
+  .nav-hamburger.is-open .mh-line1{stroke-dasharray:20 300;stroke-dashoffset:-32.42px}
+  .nav-links{display:none!important}
+  .nav-links.open{display:flex!important;position:fixed!important;inset:0!important;z-index:100;background:#080705!important;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:max(110px,calc(env(safe-area-inset-top) + 70px)) 5% max(90px,env(safe-area-inset-bottom));animation:menuFade .3s ease both}
+  .nav-links.open::before{content:'';position:absolute;top:0;left:0;right:0;height:45%;background:radial-gradient(ellipse 100% 100% at 50% 0%,rgba(184,84,32,.12),transparent);pointer-events:none}
+  .nav-links.open::after{content:'';position:absolute;top:max(55px,calc(env(safe-area-inset-top) + 35px));left:0;right:0;margin:0 auto;width:clamp(112px,32vw,192px);height:clamp(112px,32vw,192px);background-image:url("img/logos/logo.png");background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 2px 12px rgba(184,84,32,.25));animation:slideUp .4s cubic-bezier(.16,1,.3,1) .02s both}
+  .nav-links.open a{animation:slideUp .5s cubic-bezier(.16,1,.3,1) both;font-family:var(--font-h1);font-size:clamp(44px,10vw,72px);line-height:1.02;padding:11px 0;color:var(--text2);text-decoration:none;font-weight:400;letter-spacing:.05em;text-transform:uppercase;position:relative;transition:color .25s cubic-bezier(.16,1,.3,1)}
+  .nav-links.open a:hover,
+  .nav-links.open a.active,
+  .nav-links.open a.current{
+    background:var(--g-copper);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent
+  }
+  .nav-links.open a:nth-child(1){animation-delay:.04s}
+  .nav-links.open a:nth-child(2){animation-delay:.08s}
+  .nav-links.open a:nth-child(3){animation-delay:.12s}
+  .nav-links.open a:nth-child(4){animation-delay:.16s}
+  .nav-links.open a:nth-child(5){animation-delay:.2s}
+  .nav-links.open a:nth-child(6){animation-delay:.24s}
+  .nav-cta{display:none}
+  .nav-cta.menu-visible{display:block!important;position:fixed;bottom:max(24px,env(safe-area-inset-bottom, 24px));left:5%;right:5%;z-index:110;text-align:center;padding:12px 24px;background:var(--g-copper);color:#0a0a0a;border-radius:var(--r-sm);font-family:var(--font-h1);font-size:clamp(44px,10vw,72px);line-height:1.05;font-weight:400;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;box-shadow:0 8px 30px rgba(184,84,32,.35);animation:ctaFade .5s cubic-bezier(.16,1,.3,1) .32s both}
+}
+@keyframes menuFade{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ctaFade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+#hero{min-height:52vh;display:flex;flex-direction:column;justify-content:flex-start;padding:150px 5% 60px;max-width:1100px;margin:0 auto}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;color:var(--copper-warm);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-bottom:24px}
+.hero-tag::before{content:'';display:block;width:28px;height:1.5px;background:var(--g-copper-h);flex-shrink:0}
+.hero-title{font-family:var(--font-h1);font-weight:400;font-size:clamp(38px,6.4vw,80px);line-height:.98;letter-spacing:.01em;margin-bottom:22px;text-transform:uppercase;max-width:820px;text-wrap:balance}
+.hero-title .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-family:var(--font-body);font-size:16px;font-weight:300;color:var(--text2);line-height:1.75;max-width:640px}
+
+/* ─── SECCIONES GENÉRICAS ────────────────────────────────────── */
+.section{padding:64px 5%;max-width:1100px;margin:0 auto}
+.fw{max-width:100%;padding:64px 5%;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.fw::before{content:'';display:block;position:absolute;top:0;left:0;right:0;height:2px;background:var(--g-copper-h)}
+.fw-inner{max-width:1100px;margin:0 auto}
+.section-tag{display:inline-block;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--copper-warm);margin-bottom:12px}
+.section-title{font-family:var(--font-h2);font-size:clamp(24px,3vw,38px);font-weight:700;line-height:1.15;letter-spacing:.01em;margin-bottom:16px;text-wrap:balance}
+.section-sub{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--text2);max-width:620px;line-height:1.75}
+
+/* ─── BILLING TOGGLE ───────────────────────────────────────── */
+.billing-toggle{display:flex;gap:0;border:1px solid var(--border2);border-radius:var(--r-sm);overflow:hidden}
+.bt-btn{padding:10px 20px;border:none;background:transparent;color:var(--muted);font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;border-radius:0;transition:.25s var(--ease-std)}
+.bt-badge{display:inline-block;color:var(--copper-warm);font-size:10px;margin-left:4px;font-weight:700}
+.bt-btn.active{background:rgba(184,84,32,.15);color:var(--copper-warm)}
+.bt-btn.active .bt-badge{color:var(--copper-light)}
+
+/* ─── PLAN TABS ROW ────────────────────────────────────────── */
+.plan-tabs-row{display:flex;align-items:center;gap:0;margin:36px 0 32px;flex-wrap:wrap}
+.billing-toggle{margin-left:auto}
+.ptab{padding:12px 28px;border:none;background:transparent;color:var(--muted);font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;transition:.25s var(--ease-std);margin-right:4px}
+.ptab:hover{color:var(--text2)}
+.ptab.active{color:var(--copper-warm);border-bottom-color:var(--copper)}
+.plan-badge{display:inline-block;font-family:var(--font-body);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--copper-light);margin-bottom:8px}
+
+/* ─── PLAN DETAIL ──────────────────────────────────────────── */
+.plan-detail{display:none}
+.plan-detail.active{display:block;animation:fadeUp .5s var(--ease-std) both}
+.pd-hero-block{display:grid;grid-template-columns:1fr 280px;gap:32px;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:42px;position:relative;overflow:hidden;margin-bottom:32px}
+.pd-hero-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g-copper-h)}
+.pd-name{font-family:var(--font-h1);font-size:48px;font-weight:400;letter-spacing:.02em;text-transform:uppercase;background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.pd-price-row{display:flex;align-items:baseline;gap:10px;margin:8px 0 16px;flex-wrap:wrap}
+.pd-price-big{font-family:var(--font-h1);font-size:38px;font-weight:400;font-variant-numeric:tabular-nums;background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transition:all .3s var(--ease-std)}
+.pd-price-sub{font-family:var(--font-body);font-size:14px;color:var(--muted);font-weight:300;transition:all .3s var(--ease-std)}
+.pd-save-badge{display:none;font-size:11px;color:var(--copper-warm);font-weight:600;padding:0;border-radius:0;letter-spacing:.03em;background:none;animation:fadeUp .3s var(--ease-std) both}
+.pd-save-badge.show{display:inline-block}
+.pd-hero-desc{font-size:14px;color:var(--muted);line-height:1.8;max-width:520px;margin-bottom:22px}
+.pd-hero-cta{display:inline-block;padding:14px 36px;border-radius:var(--r-sm);background:var(--g-copper);color:#0a0a0a;text-decoration:none;font-family:var(--font-body);font-size:14px;font-weight:700;letter-spacing:.03em;transition:.25s}
+.pd-hero-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(184,84,32,.3)}
+.pd-highlights{display:flex;flex-direction:column;gap:16px}
+.pd-hl-item{text-align:center;padding:20px;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r-sm)}
+.pd-hl-item.hl-accent{background:rgba(184,84,32,.06);border-color:rgba(184,84,32,.2)}
+.pd-hl-num{font-family:var(--font-h1);font-size:32px;font-weight:400;line-height:1;background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pd-hl-label{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.3}
+
+/* ─── PLAN JOURNEY ─────────────────────────────────────────── */
+.pd-journey{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:36px 42px}
+.pd-journey h3{font-family:var(--font-h2);font-size:22px;font-weight:700;margin-bottom:28px;letter-spacing:.01em}
+.pd-jline{position:relative;padding-left:0}
+.pd-jstep{display:grid;grid-template-columns:100px auto 1fr;gap:16px;padding-bottom:32px;position:relative}
+.pd-jstep:last-child{padding-bottom:0}
+.pd-jstep::after{content:'';position:absolute;left:48px;top:32px;bottom:0;width:1.5px;background:linear-gradient(180deg,var(--copper-shadow),rgba(184,84,32,.25))}
+.pd-jstep:last-child::after{display:none}
+.pd-jday{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--copper-warm);text-align:right;padding-top:2px}
+.pd-jdot{width:12px;height:12px;border-radius:50%;background:var(--copper);flex-shrink:0;margin-top:6px;position:relative;z-index:1}
+.pd-jcontent h4{font-family:var(--font-h2);font-size:16px;font-weight:700;margin-bottom:6px}
+.pd-jcontent p{font-size:13.5px;color:var(--muted);line-height:1.7;max-width:520px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── TABLA COMPARATIVA ─────────────────────────────────── */
+.compare-wrap{overflow-x:auto;margin-top:48px;border-radius:var(--r);border:1px solid var(--border2)}
+table.compare{width:100%;border-collapse:collapse;min-width:640px;background:var(--surface)}
+table.compare th,table.compare td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare thead th{font-family:var(--font-h2);font-size:15px;font-weight:700;letter-spacing:.01em;background:var(--surface2);position:sticky;top:0}
+table.compare thead th:first-child{color:var(--muted);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+table.compare tbody th{font-family:var(--font-body);font-weight:400;font-size:13.5px;color:var(--text2);white-space:nowrap}
+table.compare td{font-family:var(--font-body);font-size:13px;color:var(--muted);text-align:center}
+table.compare td.yes{color:var(--copper-light);font-weight:700}
+table.compare td.val{text-align:left;color:var(--copper-warm);font-weight:600}
+table.compare tbody tr{transition:opacity .4s var(--ease-std);transition-delay:calc(var(--i,0)*.05s)}
+table.compare tbody tr.vis{opacity:1}
+table.compare tbody tr:last-child th,table.compare tbody tr:last-child td{border-bottom:none}
+table.compare tbody tr:hover{background:rgba(184,84,32,.04)}
+.col-pro{background:rgba(184,84,32,.03)}
+
+@media(max-width:860px){
+  .plan-tabs-row{flex-direction:column;gap:8px;align-items:stretch}
+  .ptab{text-align:center;border-bottom:1px solid var(--border);padding:14px}
+  .ptab.active{border-bottom-color:var(--copper)}
+  .billing-toggle{width:fit-content}
+  .pd-hero-block{grid-template-columns:1fr;padding:28px}
+  .pd-journey{padding:24px}
+  .pd-jstep{grid-template-columns:60px auto 1fr;gap:10px}
+  .pd-jday{font-size:11px}
+}
+@media(max-width:560px){
+  #hero{padding:120px 5% 48px;min-height:30vh}
+  .pd-hero-block{padding:20px}
+  .pd-journey{padding:18px}
+  .pd-jstep{grid-template-columns:1fr;gap:8px;padding-bottom:24px}
+  .pd-jday{font-size:10px;text-align:left}
+  .pd-jdot{display:none}
+  .pd-jcontent{padding-left:0}
+  .plan-tabs-row{gap:4px}
+  .ptab{font-size:13px;padding:10px 16px}
+  .hero-title{font-size:clamp(32px,10vw,44px);line-height:.95}
+}
+
+/* ─── CTA FINAL ──────────────────────────────────────────────── */
+.cta-section{text-align:center;padding:64px 5%;background:var(--surface);border-top:1px solid var(--border);position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g-copper-h)}
+.cta-section::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 70% at 50% 0%, rgba(184,84,32,.09), transparent 70%)}
+.cta-section h2{font-family:var(--font-h1);font-size:clamp(30px,4.8vw,54px);font-weight:400;letter-spacing:.02em;text-transform:uppercase;line-height:1.05;margin-bottom:16px;position:relative;z-index:1}
+.cta-section h2 .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cta-section p{font-family:var(--font-body);font-size:16px;font-weight:300;color:var(--text2);margin-bottom:32px;position:relative;z-index:1}
+.btn-primary{background:var(--surface2);color:var(--copper-warm);border:1px solid rgba(184,84,32,.45);padding:14px 30px;border-radius:var(--r-sm);font-family:var(--font-body);font-size:14px;font-weight:600;letter-spacing:.03em;text-decoration:none;transition:.25s cubic-bezier(.16,1,.3,1);display:inline-flex;align-items:center;gap:8px;position:relative;z-index:1}
+.btn-primary:hover{background:var(--g-copper);color:#0a0a0a;border-color:transparent;transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,84,32,.3)}
+
+footer{background:var(--surface);border-top:1px solid var(--border2);padding:28px 5%;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-body);font-size:13px;font-weight:300;color:var(--muted);flex-wrap:wrap;gap:14px}
+footer .footer-logo img{height:50px;mix-blend-mode:screen;opacity:.7}
+footer a{color:var(--copper-warm);text-decoration:none}
+footer a:hover{color:var(--copper-light)}
+@keyframes menuFade{from{opacity:0}to{opacity:1}}@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="pl-half top"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+  <div class="pl-half bot"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+</div>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="suscripciones.html" class="current">Suscripciones</a>
+    <a href="agentes.html">Agentes</a>
+    <a href="campanas.html">Campañas</a>
+    <a href="presupuesto-web.html">Web</a>
+    <a href="index.html#contactar">Contacto</a>
+  </div>
+  <a class="nav-cta" href="index.html#contactar">Pedir diseño gratis</a>
+  <button class="nav-hamburger" id="menu-toggle" aria-label="Menú" aria-expanded="false">
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="mh-line1" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"/><path d="M7 16 27 16"/></svg>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag reveal-el">Cada mes, no solo el primer día</div>
+  <h1 class="hero-title reveal-title">Nos encargamos de tu stand <span class="hl">todos los meses</span></h1>
+  <p class="hero-sub reveal-el">Medimos cuándo se usa tu stand, qué canal abre y desde qué tipo de dispositivo. Cada mes te lo contamos y te proponemos qué hacer con eso. <strong class="em">Tú no tienes que pensarlo</strong> — solo decidir si sí o si no.</p>
+</section><!-- SELECTOR + DETALLE + JOURNEY INTEGRADO -->
+<section class="section fi">
+  <div class="section-tag reveal-el">Elige tu plan</div>
+  <h2 class="section-title reveal-title">Uno para cada momento del negocio</h2>
+  <p class="section-sub reveal-el">Sin permanencia. Se factura por mes completo por adelantado y puedes cancelar cuando quieras. <strong style="color:var(--copper-warm)">Paga un año y ahórrate dos meses.</strong></p>
+
+  <div class="plan-tabs-row">
+    <button class="ptab active" data-plan="basic">Basic</button>
+    <button class="ptab" data-plan="pro">Pro</button>
+    <button class="ptab" data-plan="premium">Premium</button>
+    <div class="billing-toggle">
+      <button class="bt-btn active" data-period="monthly">Mensual</button>
+      <button class="bt-btn" data-period="yearly">Anual <span class="bt-badge">-2 meses</span></button>
+    </div>
+  </div>
+
+  <!-- BASIC -->
+  <div class="plan-detail active" id="detail-basic">
+    <div class="pd-hero-block">
+      <div class="pd-hero-left">
+        <div class="pd-name">Basic</div>
+        <div class="pd-price-row">
+          <span class="pd-price-big" data-m="49.90" data-y="499">49.90€</span><span class="pd-price-sub" data-m="/mes" data-y="/año">/mes</span>
+          <span class="pd-save-badge">Ahorras ~100€/año</span>
+        </div>
+        <p class="pd-hero-desc"><strong class="em">El plan para empezar sin pensar.</strong> Tu stand registra cuándo se usa, qué canal abre y desde qué tipo de dispositivo, sin identificar a la persona. ONIX te propone mejoras sin que tengas que hacer nada. Ideal si quieres que funcione solo mientras te concentras en tu negocio.</p>
+        <a href="#" class="pd-hero-cta" data-plan="basic">Quiero Basic →</a>
+      </div>
+      <div class="pd-hero-right">
+        <div class="pd-highlights">
+          <div class="pd-hl-item"><div class="pd-hl-num">300</div><div class="pd-hl-label">interacciones en histórico</div></div>
+          <div class="pd-hl-item"><div class="pd-hl-num">1</div><div class="pd-hl-label">rediseño al mes</div></div>
+          <div class="pd-hl-item"><div class="pd-hl-num">1</div><div class="pd-hl-label">propuesta campaña/mes</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pd-journey">
+      <h3>Qué incluye Basic y qué puedes hacer con ello</h3>
+      <div class="pd-jline">
+        <div class="pd-jstep">
+          <div class="pd-jday">Dashboard</div>
+          <div class="pd-jdot"></div>
+          <div class="pd-jcontent">
+            <h4>Tu stand te habla: qui&eacute;n lo toca, cu&aacute;ndo y c&oacute;mo</h4>
+            <p>Cada vez que un cliente acerca el m&oacute;vil, lo sabes. No qui&eacute;n es, sino que alguien ha interactuado con tu negocio. <strong class="em">Saber qu&eacute; d&iacute;as y a qu&eacute; horas hay m&aacute;s actividad te permite decidir mejor</strong>: si abrir m&aacute;s tarde los jueves porque hay picos a las 19h, o si lanzar una promoci&oacute;n justo cuando m&aacute;s gente pasa por tu local. Sin apps, sin contrase&ntilde;as. Un link que se actualiza solo.</p>
+          </div>
+        </div>
+        <div class="pd-jstep">
+          <div class="pd-jday">Leads</div>
+          <div class="pd-jdot"></div>
+          <div class="pd-jcontent">
+            <h4>Hasta 300 interacciones guardadas en tu histórico</h4>
+            <p>El panel registra el uso del stand, el canal abierto, la franja horaria y el tipo de dispositivo. <strong class="em">No identifica a la persona ni obtiene su tel&eacute;fono o email sin un formulario y su consentimiento.</strong> Para hacer campa&ntilde;as puedes usar una lista propia o contratar una Landing que capte contactos de forma expresa.</p>
+          </div>
+        </div>
+        <div class="pd-jstep">
+          <div class="pd-jday">Propuestas</div>
+          <div class="pd-jdot"></div>
+          <div class="pd-jcontent">
+            <h4>Cada mes te llega una recomendaci&oacute;n basada en tus datos reales</h4>
+            <p>Analizamos el tr&aacute;fico de tu stand, lo comparamos con la estacionalidad de tu sector y te proponemos algo concreto. <em>"En octubre la gente busca m&aacute;s tu negocio los viernes. &iquest;Probamos un redise&ntilde;o del stand con un mensaje de fin de semana?"</em>. <strong class="em">T&uacute; solo decides si te interesa o no.</strong> Si dices s&iacute;, lo implementamos. Si no, seguimos igual. Sin compromiso.</p>
+          </div>
+        </div>
+        <div class="pd-jstep">
+          <div class="pd-jday">Adaptabilidad</div>
+          <div class="pd-jdot"></div>
+          <div class="pd-jcontent">
+            <h4>El mismo stand, distintos objetivos seg&uacute;n te convenga</h4>
+            <p>Imagina que durante meses has estado acumulando rese&ntilde;as de Google y ya tienes una buena reputaci&oacute;n online. <strong class="em">Ahora te interesa m&aacute;s que los clientes te escriban directamente para encargar o reservar.</strong> Puedes cambiar el destino del stand sin cambiar el dise&ntilde;o ni el mueble: donde antes iban a dejar rese&ntilde;a, ahora van a tu canal de contacto. O al rev&eacute;s. Una vez al mes, sin coste extra, y desde donde est&eacute;s. Si tienes un evento puntual, una oferta especial o una temporada distinta, adaptas el stand a lo que necesites en ese momento, no a lo que necesitabas cuando lo compraste.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRO -->
+  <div class="plan-detail" id="detail-pro">
+    <div class="pd-hero-block">
+      <div class="pd-hero-left">
+        <span class="plan-badge">El m&aacute;s equilibrado</span>
+        <div class="pd-name">Pro</div>
+        <div class="pd-price-row">
+          <span class="pd-price-big" data-m="95" data-y="950">95€</span><span class="pd-price-sub" data-m="/mes" data-y="/a&ntilde;o">/mes</span>
+          <span class="pd-save-badge">Ahorras 190€/a&ntilde;o</span>
+        </div>
+        <p class="pd-hero-desc"><strong class="em">El plan para entender c&oacute;mo se usa tu stand.</strong> Triple de historial, informe mensual con gr&aacute;ficos y una campa&ntilde;a ejecutada cada 2 meses sobre tu lista autorizada. Datos reales, no intuiciones &mdash; sin que tengas que analizarlos t&uacute;.</p>
+        <a href="#" class="pd-hero-cta" data-plan="pro">Quiero Pro &rarr;</a>
+      </div>
+      <div class="pd-hero-right">
+        <div class="pd-highlights">
+          <div class="pd-hl-item"><div class="pd-hl-num">1.000</div><div class="pd-hl-label">interacciones en histórico</div></div>
+          <div class="pd-hl-item"><div class="pd-hl-num">1</div><div class="pd-hl-label">informe PDF al mes</div></div>
+          <div class="pd-hl-item hl-accent"><div class="pd-hl-num">1</div><div class="pd-hl-label">campa&ntilde;a gratis c/2 meses</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pd-journey">
+      <h3>Qu&eacute; incluye Pro y qu&eacute; puedes hacer con ello</h3>
+      <div class="pd-jline">
+        <div class="pd-jstep">
+          <div class="pd-jday">Informe</div>
+          <div class="pd-jdot"></div>
+          <div class="pd-jcontent">
+            <h4>Un an&aacute;lisis mensual que te llega sin pedirlo</h4>
+            <p>Cada fin de mes recibes un PDF con gr&aacute;ficos claros: toques totales, desglose por d&iacute;a de la semana, horas punta, tipo de dispositivo y comparativa con el mes anterior. <strong class="em">No tienes que entrar a ning&uacute;n sitio ni acordarte de pedirlo.</strong> Es como la factura de la luz: te llega, lo miras si quieres, y sigues. Pero cuando necesitas tomar una decisi&oacute;n &mdash;contratar a alguien, ampliar horario, lanzar un servicio nuevo&mdash; tienes datos reales en la mano, no intuiciones.</p>
+          </div>
+        </div>
+        <div class="pd-jstep">
+          <div class="pd-jday">Capacidad</div>
+          <div class="pd-jdot"></div>
+          <div class="pd-jcontent">
+            <h4>Hasta 1.000 interacciones en el histórico</h4>
+            <p>Un restaurante con 12 mesas puede generar mucha actividad en un solo d&iacute;a; una peluquer&iacute;a, menos pero de forma recurrente. <strong class="em">Con 1.000 registros puedes comparar meses y detectar patrones de uso.</strong> Si necesitas m&aacute;s capacidad, se puede ampliar sin cambiar de plan.</p>
+          </div>
+        </div>
+        <div class="pd-jstep">
+          <div class="pd-jday">Campa&ntilde;as</div>
+          <div class="pd-jdot"></div>
+          <div class="pd-jcontent">
+            <h4>Cada 2 meses, ejecutamos una campa&ntilde;a real sobre tus clientes</h4>
+            <p>Analizamos tu lista autorizada, elegimos el mejor momento seg&uacute;n tus gr&aacute;ficos de tr&aacute;fico y la estacionalidad de tu sector, redactamos el mensaje y te lo presentamos. <strong class="em">T&uacute; solo decides si te gusta, si quieres cambiar algo o si prefieres esperar.</strong> Si apruebas, lo lanzamos. Es una campa&ntilde;a Simple completa (valorada en 150€) incluida sin coste extra.</p>
+          </div>
+        </div>
+        <div class="pd-jstep">
+          <div class="pd-jday">Dise&ntilde;o</div>
+          <div class="pd-jdot"></div>
+          <div class="pd-jcontent">
+            <h4>Tu stand cambia de aspecto cuando t&uacute; quieras</h4>
+            <p>Llega el verano y quieres que el dise&ntilde;o refleje la terraza. O llega Navidad y necesitas un mensaje de &quot;reserva tu cena de empresa&quot;. <strong class="em">Nos pides el cambio, preparamos el nuevo dise&ntilde;o y te lo enviamos para que lo veas.</strong> Cuando das el OK, actualizamos la imagen del stand sin que tengas que tocarlo. Conservas el mismo metacrilato, el mismo chip, la misma ubicaci&oacute;n &mdash; solo cambia lo que se ve. Una vez al mes, incluido en tu plan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREMIUM -->
+  <div class="plan-detail" id="detail-premium">
+    <div class="pd-hero-block">
+      <div class="pd-hero-left">
+        <span class="plan-badge">El m&aacute;s completo</span>
+        <div class="pd-name">Premium</div>
+        <div class="pd-price-row">
+          <span class="pd-price-big" data-m="169.90" data-y="1699">169.90€</span><span class="pd-price-sub" data-m="/mes" data-y="/a&ntilde;o">/mes</span>
+          <span class="pd-save-badge">Ahorras ~340€/a&ntilde;o</span>
+        </div>
+        <p class="pd-hero-desc"><strong class="em">El plan para crecer sin l&iacute;mites.</strong> ONIX propone campa&ntilde;as cada mes, t&uacute; solo apruebas o ajustas. 5.000 interacciones en el histórico, cr&eacute;dito mensual para campa&ntilde;as, 20% de descuento en todos los productos y mantenimiento web incluido.</p>
+        <a href="#" class="pd-hero-cta" data-plan="premium">Quiero Premium &rarr;</a>
+      </div>
+      <div class="pd-hero-right">
+        <div class="pd-highlights">
+          <div class="pd-hl-item"><div class="pd-hl-num">5.000</div><div class="pd-hl-label">interacciones en histórico</div></div>
+          <div class="pd-hl-item hl-accent"><div class="pd-hl-num">100€</div><div class="pd-hl-label">cr&eacute;dito campa&ntilde;as/mes</div></div>
+          <div class="pd-hl-item hl-accent"><div class="pd-hl-num">-20%</div><div class="pd-hl-label">en todos los productos</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pd-journey">
+      <h3>Qu&eacute; incluye Premium y qu&eacute; puedes hacer con ello</h3>
+      <div class="pd-jline">
+        <div class="pd-jstep">
+          <div class="pd-jday">Proactivo</div>
+          <div class="pd-jdot"></div>
+          <div class="pd-jcontent">
+            <h4>No esperamos a que preguntes. Cada mes te proponemos algo.</h4>
+            <p>Analizamos los contactos captados con consentimiento, el tr&aacute;fico reciente de tu stand y el calendario estacional de tu sector. Con eso, preparamos una propuesta concreta. <strong class="em">T&uacute; solo apruebas, ajustas el texto si quieres, o dices &quot;este mes no&quot;.</strong> El trabajo de pensar qu&eacute; hacer ya est&aacute; hecho.</p>
+          </div>
+        </div>
+        <div class="pd-jstep">
+          <div class="pd-jday">Flexibilidad</div>
+          <div class="pd-jdot"></div>
+          <div class="pd-jcontent">
+            <h4>100€ de cr&eacute;dito mensual. &Uacute;salo como quieras.</h4>
+            <p>Cada mes recibes 100€ para campa&ntilde;as. Con el 20% de descuento Premium, una campa&ntilde;a Simple pasa de 150€ a 120€: puedes usar 100€ de cr&eacute;dito y abonar los 20€ restantes. Tambi&eacute;n puedes acumular hasta 300€; una Landing pasa de 400€ a 320€, por lo que solo tendr&iacute;as que completar 20€. <strong class="em">T&uacute; eliges c&oacute;mo usarlo.</strong></p>
+          </div>
+        </div>
+        <div class="pd-jstep">
+          <div class="pd-jday">Ahorro</div>
+          <div class="pd-jdot"></div>
+          <div class="pd-jcontent">
+            <h4>20% de descuento en absolutamente todo + mantenimiento web gratis</h4>
+            <p>Contratas un agente que responde por ti: 50€ &rarr; 40€. Quieres una campa&ntilde;a extra: 150€ &rarr; 120€. Necesitas una landing page nueva: 450€ &rarr; 360€. Compras packs de stands para otro local: tambi&eacute;n con descuento. <strong class="em">Y si tienes una web con ONIX, el mantenimiento mensual (27€/mes) est&aacute; incluido sin coste.</strong></p>
+          </div>
+        </div>
+        <div class="pd-jstep">
+          <div class="pd-jday">Resultados</div>
+          <div class="pd-jdot"></div>
+          <div class="pd-jcontent">
+            <h4>Cada campa&ntilde;a deja huella. Y la mides.</h4>
+            <p>Tu informe mensual ahora incluye el impacto de cada campa&ntilde;a ejecutada: cu&aacute;ntos clientes la recibieron, cu&aacute;ntos respondieron, qu&eacute; mensaje funcion&oacute; mejor y cu&aacute;ntos leads nuevos se captaron. <strong class="em">No son suposiciones: son n&uacute;meros.</strong> Y como cada mes tienes datos frescos, el ciclo es continuo: ONIX propone, t&uacute; apruebas, se ejecuta, se mide, y el mes siguiente la propuesta es mejor porque tiene en cuenta lo que funcion&oacute; del mes anterior.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVA -->
+<section class="section fi">
+  <div class="section-tag reveal-el">Comparativa completa</div>
+  <h2 class="section-title reveal-title">Todas las diferencias, sin resumir</h2>
+  <p class="section-sub reveal-el">Si ya sabes que quieres suscribirte y solo dudas entre planes, esta es la tabla completa.</p>
+
+  <div class="compare-wrap">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th>Incluye</th>
+          <th>Basic — 49.90€</th>
+          <th class="col-pro">Pro — 95€</th>
+          <th>Premium — 169.90€</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th>Dashboard de toques (hoy/semana/mes)</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
+        <tr><th>Datos sin fricción (dispositivo, canal, franja horaria, recurrencia)</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
+        <tr><th>1 rediseño del stand al mes</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
+        <tr><th>1 propuesta de campaña al mes</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
+        <tr><th>1 cambio de destino del enlace al mes</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
+        <tr><th>Dashboard avanzado (gráfico por día, horas punta, dispositivo)</th><td>—</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
+        <tr><th>Informe PDF mensual con análisis</th><td>—</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
+        <tr><th>Comparativa con el mes anterior</th><td>—</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
+        <tr><th>1 campaña Simple gratis cada 2 meses</th><td>—</td><td class="yes col-pro">✓</td><td>—</td></tr>
+        <tr><th>20% descuento en todos los productos ONIX</th><td>—</td><td class="col-pro">—</td><td class="yes">✓</td></tr>
+        <tr><th>ONIX propone la campaña, no espera a que preguntes</th><td>—</td><td class="col-pro">—</td><td class="yes">✓</td></tr>
+        <tr><th>Crédito mensual para campañas (máx. 300€ acumulables)</th><td>—</td><td class="col-pro">—</td><td class="val">100€/mes</td></tr>
+        <tr><th>Mantenimiento web (si tienes una web con nosotros)</th><td>—</td><td class="col-pro">—</td><td class="val">Incluido gratis</td></tr>
+        <tr><th>Interacciones guardadas en el histórico</th><td class="val">Hasta 300</td><td class="val col-pro">Hasta 1.000</td><td class="val">Hasta 5.000</td></tr>
+        <tr><th>Permanencia mínima</th><td class="val">Ninguna</td><td class="val col-pro">Ninguna</td><td class="val">Ninguna</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-section fi">
+  <h2 class="reveal-title">¿Cuál encaja <span class="hl">con tu negocio</span>?</h2>
+  <p class="reveal-el">Empieza con Basic y sube cuando lo necesites — el cambio de plan no tiene coste.</p>
+  <a href="#" id="cta-final-whatsapp" class="btn-primary reveal-el">Hablar por WhatsApp →</a>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='inline'">
+    <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
+  </div>
+  <span>© 2025 ONIX — Stands NFC para Negocios · Girona</span>
+  <span style="display:flex;gap:14px;flex-wrap:wrap">
+    <a href="legal.html">Aviso Legal</a>
+    <a href="legal.html">Privacidad</a>
+    <a href="legal.html">Cookies</a>
+  </span>
+  <a href="https://wa.me/34630910142">+34 630 910 142</a>
+</footer>
+
+<script>
+// ── Plan tab switching ──
+document.querySelectorAll('.ptab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.plan-detail').forEach(d => d.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('detail-' + tab.dataset.plan).classList.add('active');
+    // Actualizar CTA
+    var names = {basic:'Basic',pro:'Pro',premium:'Premium'};
+    var plan = names[tab.dataset.plan];
+    var msg = encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan ' + plan + ' de ONIX. ¿Qué necesitáis de mí para activarlo?');
+    var cta = document.getElementById('cta-final-whatsapp');
+    if(cta) cta.href = 'https://wa.me/34630910142?text=' + msg;
+    // Actualizar CTA buttons dentro del detail
+    document.querySelectorAll('.pd-hero-cta').forEach(function(btn){
+      var p = btn.dataset.plan;
+      if(p === tab.dataset.plan){
+        var m = encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan ' + plan + ' de ONIX.');
+        btn.href = 'https://wa.me/34630910142?text=' + m;
+      }
+    });
+  });
+});
+
+// ── Billing toggle (Mensual/Anual) ──
+document.querySelectorAll('.bt-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.bt-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var period = btn.dataset.period;
+    var isYearly = period === 'yearly';
+    // Actualizar todos los precios visibles
+    document.querySelectorAll('.pd-price-big').forEach(el => {
+      el.textContent = isYearly ? el.dataset.y + '€' : el.dataset.m + '€';
+    });
+    document.querySelectorAll('.pd-price-sub').forEach(el => {
+      el.textContent = isYearly ? el.dataset.y : el.dataset.m;
+    });
+    document.querySelectorAll('.pd-save-badge').forEach(el => {
+      if(isYearly) { el.classList.add('show'); } else { el.classList.remove('show'); }
+    });
+  });
+});
+
+// ── CTA desktop & final
+var ctaFinal = document.getElementById('cta-final-whatsapp');
+if(ctaFinal){
+  ctaFinal.href = 'https://wa.me/34630910142?text=' + encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan Basic de ONIX. ¿Qué necesitáis de mí para activarlo?');
+}
+document.querySelectorAll('.pd-hero-cta').forEach(function(btn){
+  var plan = {basic:'Basic',pro:'Pro',premium:'Premium'}[btn.dataset.plan];
+  btn.href = 'https://wa.me/34630910142?text=' + encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan ' + plan + ' de ONIX. ¿Qué necesitáis de mí para activarlo?');
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fi').forEach(el => observer.observe(el));
+
+// Stagger: filas de la tabla comparativa
+document.querySelectorAll('table.compare tbody tr').forEach((tr, i) => { tr.style.setProperty('--i', i); });
+const staggerObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); staggerObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('table.compare tbody tr').forEach(el => staggerObs.observe(el));
+</script>
+
+<script>
+(function() {
+  var preloaderTop = document.querySelector('#preloader .pl-half.top');
+  var preloaderBot = document.querySelector('#preloader .pl-half.bot');
+  if (!preloaderTop || !preloaderBot) return;
+
+  var tl = gsap.timeline();
+  tl.fromTo(preloaderTop, {x: -560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
+  tl.fromTo(preloaderBot, {x: 560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
+  tl.to('#preloader', {opacity: 0, duration: 0.4, ease: 'power2.in'}, '-=0.2');
+  tl.set('#preloader', {display: 'none'});
+  tl.to('.reveal-title', {opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08}, '-=0.05');
+  tl.to('.reveal-el', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.06}, 0.15);
+  tl.to('.reveal-card', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05}, 0.35);
+})();
+
+// Nav scroll effect
+(function(){
+  var st;
+  document.addEventListener('scroll',function(){
+    document.documentElement.classList.add('scrolling');
+    clearTimeout(st);
+    st = setTimeout(function(){ document.documentElement.classList.remove('scrolling'); }, 800);
+  }, { passive: true });
+})();
+</script>
+<script>document.getElementById('menu-toggle').addEventListener('click',function(){var n=document.querySelector('.nav-links');n.classList.toggle('open');var o=n.classList.contains('open');this.classList.toggle('is-open',o);this.setAttribute('aria-expanded',o);var c=document.querySelector('.nav-cta');if(c)c.classList.toggle('menu-visible',o);});</script></body>

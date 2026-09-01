@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presupuesto Web ONIX — Calcula tu página a medida</title>
+<script src="site-fallback.js" defer></script>
+<meta name="description" content="Ejemplos de páginas web ONIX (menú digital, showcase de alojamiento, web de negocio) y calculadora de presupuesto según lo que necesites.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Cormorant:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080705;
+  --surface:#0f0d0a;
+  --surface2:#181410;
+  --surface3:#201a13;
+  --copper:#B85420;
+  --copper-warm:#E8A044;
+  --copper-light:#F5C96A;
+  --copper-shadow:#682B0E;
+  --copper-deep:#8C3A0F;
+  --text:#F0EBE3;
+  --text2:#D1C7BA;
+  --muted:#C1B5A4;
+  --border:#211A12;
+  --border2:#2E2318;
+  --g-copper:linear-gradient(135deg,#682B0E 0%,#B85420 25%,#F5C96A 55%,#B85420 80%,#682B0E 100%);
+  --g-copper-h:linear-gradient(90deg,#8C3A0F 0%,#B85420 30%,#F5C96A 55%,#B85420 75%,#8C3A0F 100%);
+  --font-h1:'Bebas Neue',sans-serif;
+  --font-h2:'Rajdhani',sans-serif;
+  --font-body:'Raleway',sans-serif;
+  --font-accent:'Cormorant',serif;
+  --r:12px;
+  --r-sm:8px;
+  --ease-std:cubic-bezier(.16,1,.3,1);
+}
+
+html{scroll-behavior:smooth;overflow-x:hidden}
+::-webkit-scrollbar{width:7px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(140,58,15,.35),rgba(184,84,32,.35),rgba(140,58,15,.35));border-radius:100px}
+
+body{
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse 900px 600px at 15% -5%, rgba(184,84,32,.12), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 30%, rgba(184,84,32,.07), transparent 55%),
+    radial-gradient(ellipse 800px 500px at 0% 75%, rgba(184,84,32,.06), transparent 55%);
+  background-attachment:fixed;
+  color:var(--text);
+  font-family:var(--font-body),-apple-system,sans-serif;
+  font-size:16px;
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* ═══ PRELOADER ═══ */
+#preloader{
+  position:fixed;inset:0;z-index:999999;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+}
+#preloader .pl-half{
+  position:absolute;
+  width:clamp(360px,60vw,800px);
+  top:calc(50% - 120px);left:calc(50% - clamp(180px,30vw,400px));
+  overflow:hidden;pointer-events:none;
+}
+#preloader .pl-half.top{clip-path:inset(0 0 52% 0);z-index:2}
+#preloader .pl-half.bot{clip-path:inset(48% 0 0 0);z-index:1}
+#preloader .pl-half img{width:100%;display:block}
+
+.reveal-el{opacity:0;transform:translateY(18px)}
+.reveal-title{opacity:0;transform:translateY(24px)}
+.reveal-card{opacity:0;transform:translateY(12px)}
+
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  pointer-events:none;z-index:1;
+  opacity:.03;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background-image:url("img/logos/logo%20negativo.png");
+  background-size:60%;background-position:center;background-repeat:no-repeat;
+  background-attachment:fixed;
+  opacity:.25;filter:blur(4px)
+}
+@media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:blur(6px)}}
+:focus-visible{outline:2px solid var(--copper-warm);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+strong.em,.em{font-family:var(--font-accent);font-style:italic;font-weight:700;color:var(--text);font-size:1.06em;letter-spacing:.01em;-webkit-text-fill-color:var(--text)}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
+
+/* ─── NAV ────────────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:max(14px,env(safe-area-inset-top)) 5% 14px;background:rgba(8,7,5,.4);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);transition:background .35s ease}
+html.scrolling nav{background:rgba(8,7,5,.75)}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo img{height:54px;mix-blend-mode:screen;filter:brightness(1.05);transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.nav-logo:hover img{transform:scale(1.08)}
+.nav-logo span{font-family:var(--font-h1);font-size:20px;letter-spacing:.08em;color:var(--copper-warm)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-family:var(--font-body);font-size:13px;font-weight:400;letter-spacing:.06em;transition:.25s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.current{color:var(--copper-warm)}
+.nav-cta{background:var(--surface2);color:var(--copper-warm);border:1px solid rgba(184,84,32,.45);padding:10px 22px;border-radius:var(--r-sm);font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:.04em;text-decoration:none;transition:.25s cubic-bezier(.16,1,.3,1)}
+.nav-cta:hover{background:var(--g-copper);color:#0a0a0a;border-color:transparent;transform:translateY(-1px);box-shadow:0 6px 18px rgba(184,84,32,.28)}
+
+.nav-hamburger{display:none!important}
+@media(max-width:900px){
+  nav{backdrop-filter:none;background:#080705}
+  .nav-hamburger{display:inline-flex!important;align-items:center;justify-content:center;position:relative;z-index:101;background:none;border:none;color:var(--copper-warm);cursor:pointer;padding:0;width:46px;height:46px;flex-shrink:0}
+  .nav-logo img{height:80px;min-height:80px}
+  .nav-hamburger svg{width:32px;height:32px;display:block;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+  .nav-hamburger svg path{transition:stroke-dasharray .5s cubic-bezier(.16,1,.3,1),stroke-dashoffset .5s cubic-bezier(.16,1,.3,1)}
+  .nav-hamburger .mh-line1{stroke-dasharray:12 63}
+  .nav-hamburger.is-open svg{transform:rotate(-45deg)}
+  .nav-hamburger.is-open .mh-line1{stroke-dasharray:20 300;stroke-dashoffset:-32.42px}
+  .nav-links{display:none!important}
+  .nav-links.open{display:flex!important;position:fixed!important;inset:0!important;z-index:100;background:#080705!important;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:max(110px,calc(env(safe-area-inset-top) + 70px)) 5% max(90px,env(safe-area-inset-bottom));animation:menuFade .3s ease both}
+  .nav-links.open::before{content:'';position:absolute;top:0;left:0;right:0;height:45%;background:radial-gradient(ellipse 100% 100% at 50% 0%,rgba(184,84,32,.12),transparent);pointer-events:none}
+  .nav-links.open::after{content:'';position:absolute;top:max(55px,calc(env(safe-area-inset-top) + 35px));left:0;right:0;margin:0 auto;width:clamp(112px,32vw,192px);height:clamp(112px,32vw,192px);background-image:url("img/logos/logo.png");background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 2px 12px rgba(184,84,32,.25));animation:slideUp .4s cubic-bezier(.16,1,.3,1) .02s both}
+  .nav-links.open a{animation:slideUp .5s cubic-bezier(.16,1,.3,1) both;font-family:var(--font-h1);font-size:clamp(44px,10vw,72px);line-height:1.02;padding:11px 0;color:var(--text2);text-decoration:none;font-weight:400;letter-spacing:.05em;text-transform:uppercase;position:relative;transition:color .25s cubic-bezier(.16,1,.3,1)}
+  .nav-links.open a:hover,
+  .nav-links.open a.active,
+  .nav-links.open a.current{
+    background:var(--g-copper);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent
+  }
+  .nav-links.open a:nth-child(1){animation-delay:.04s}
+  .nav-links.open a:nth-child(2){animation-delay:.08s}
+  .nav-links.open a:nth-child(3){animation-delay:.12s}
+  .nav-links.open a:nth-child(4){animation-delay:.16s}
+  .nav-links.open a:nth-child(5){animation-delay:.2s}
+  .nav-links.open a:nth-child(6){animation-delay:.24s}
+  .nav-cta{display:none}
+  .nav-cta.menu-visible{display:block!important;position:fixed;bottom:max(24px,env(safe-area-inset-bottom, 24px));left:5%;right:5%;z-index:110;text-align:center;padding:12px 24px;background:var(--g-copper);color:#0a0a0a;border-radius:var(--r-sm);font-family:var(--font-h1);font-size:clamp(44px,10vw,72px);line-height:1.05;font-weight:400;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;box-shadow:0 8px 30px rgba(184,84,32,.35);animation:ctaFade .5s cubic-bezier(.16,1,.3,1) .32s both}
+}
+@keyframes menuFade{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ctaFade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── HERO ───────────────────────────────────────────────────
+   Faltaba por completo tras el intento de adaptación móvil —
+   sin esto el logo del nav se veía enorme (sin regla que lo
+   acotara junto al resto) y el h1/eyebrow se renderizaban sin
+   tipografía ni espaciado, pegados arriba del todo. */
+.hero{padding:100px 0 48px;text-align:left}
+.eyebrow{
+  display:block;font-family:var(--font-h2);font-size:12px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--copper-warm);
+  margin-bottom:14px;
+}
+h1{
+  font-family:var(--font-h1);font-weight:400;font-size:clamp(38px,6.4vw,80px);text-transform:uppercase;
+  letter-spacing:.01em;line-height:.98;margin-bottom:16px;text-wrap:balance;
+}
+h1 .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:16px;font-weight:300;color:var(--text2);max-width:640px;line-height:1.75}
+.hero-sub strong{color:var(--text);font-weight:600}
+
+/* ─── SECTION HEADS ──────────────────────────────────────────── */
+.section{padding:56px 0}
+.section-head{margin-bottom:32px}
+.section-eyebrow{font-family:var(--font-h2);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--copper-warm);margin-bottom:8px}
+.section-title{font-family:var(--font-h2);font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:.005em;text-wrap:balance}
+.section-desc{color:var(--text2);font-size:14px;max-width:600px;margin-top:8px;line-height:1.7}
+
+/* ─── EJEMPLOS ───────────────────────────────────────────────── */
+.examples-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.example-card{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;transition:.25s var(--ease-std)}
+.example-card:hover{transform:translateY(-4px);border-color:rgba(184,84,32,.3);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.example-preview{aspect-ratio:4/3;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
+.ex-restaurante{background:linear-gradient(160deg,#241a10,#0f0d0a 70%)}
+.ex-hotel{background:linear-gradient(160deg,#1a1f18,#0f0d0a 70%)}
+.ex-simple{background:linear-gradient(160deg,#1a1410,#0f0d0a 70%)}
+.example-preview::before{content:'';position:absolute;inset:0;opacity:.5;background-image:radial-gradient(circle at 30% 20%, rgba(232,160,68,.15), transparent 55%)}
+.ex-tag{position:relative;font-family:var(--font-h2);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--copper-light);margin-bottom:6px}
+.ex-headline{position:relative;font-family:var(--font-accent);font-style:italic;font-size:22px;color:var(--text);line-height:1.2}
+.example-body{padding:20px}
+.example-body h3{font-family:var(--font-h2);font-size:17px;font-weight:700;margin-bottom:6px}
+.example-body p{font-size:13.5px;color:var(--text2);line-height:1.65;margin-bottom:14px}
+.example-pieces{list-style:none;margin-bottom:16px}
+.example-pieces li{font-size:12.5px;color:var(--muted);padding:5px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:8px}
+.example-pieces li:first-child{border-top:none}
+.example-pieces .amt{color:var(--text2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.example-total{display:flex;justify-content:space-between;align-items:baseline;padding-top:12px;border-top:1px solid var(--border2)}
+.example-total .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.example-total .price{font-family:var(--font-h1);font-size:26px;color:var(--copper-warm);font-variant-numeric:tabular-nums}
+.example-cta{display:block;text-align:center;margin-top:14px;padding:10px;border-radius:var(--r-sm);border:1px solid rgba(232,160,68,.35);color:var(--copper-light);font-size:13px;font-weight:600;text-decoration:none;transition:.2s ease}
+.example-cta:hover{background:rgba(232,160,68,.08);border-color:rgba(232,160,68,.6);color:var(--copper-warm)}
+
+/* ─── CALCULADORA ────────────────────────────────────────────── */
+.calc-box{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:32px;display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:start}
+.calc-options{display:flex;flex-direction:column;gap:10px}
+.calc-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-sm);cursor:pointer;transition:.15s ease}
+.calc-item:hover{border-color:rgba(232,160,68,.3)}
+.calc-item.base{cursor:default}
+.calc-item.base:hover{border-color:var(--border)}
+.calc-item.active{border-color:var(--copper-warm);background:rgba(232,160,68,.06)}
+.calc-item-label{display:flex;align-items:center;gap:12px;font-size:14px}
+.calc-check{width:20px;height:20px;border-radius:5px;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s ease}
+.calc-item.active .calc-check{background:var(--copper-warm);border-color:var(--copper-warm)}
+.calc-check svg{opacity:0;transition:.15s ease;width:12px;height:12px;stroke:#080705;stroke-width:3}
+.calc-item.active .calc-check svg{opacity:1}
+.calc-item-name{font-weight:600;color:var(--text)}
+.calc-item-desc{display:block;font-size:12px;color:var(--muted);margin-top:2px;font-weight:300}
+.calc-item-price{font-variant-numeric:tabular-nums;color:var(--copper-light);font-weight:600;white-space:nowrap;font-size:14px}
+.calc-item.base .calc-item-price{color:var(--copper-warm)}
+.calc-stepper{display:flex;align-items:center;gap:8px}
+.calc-stepper button{width:26px;height:26px;border-radius:6px;border:1px solid var(--border2);background:var(--surface3);color:var(--text2);font-size:16px;cursor:pointer;line-height:1}
+.calc-stepper button:hover{border-color:var(--copper-warm);color:var(--copper-warm)}
+.calc-stepper span{font-variant-numeric:tabular-nums;min-width:16px;text-align:center;font-size:13px}
+.calc-summary{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r-sm);padding:24px;display:flex;flex-direction:column}
+.calc-summary h4{font-family:var(--font-h2);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.calc-line{display:flex;justify-content:space-between;font-size:13px;color:var(--text2);padding:7px 0;border-bottom:1px solid var(--border)}
+.calc-line .n{font-variant-numeric:tabular-nums}
+.calc-line.empty{color:var(--muted);font-style:italic;border-bottom:none}
+.calc-total-row{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;padding-top:16px;border-top:1px solid var(--border2)}
+.calc-total-row .label{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.calc-total-row .price{font-family:var(--font-h1);font-size:38px;color:var(--copper-warm);font-variant-numeric:tabular-nums;display:inline-block;transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.calc-total-row .price.bump{transform:scale(1.08)}
+.calc-recurring-row{display:flex;justify-content:space-between;align-items:baseline;margin-top:6px}
+.calc-recurring-row .label{font-size:12px;color:var(--muted)}
+.calc-recurring-row .price-sm{font-family:var(--font-h2);font-size:16px;font-weight:700;color:var(--copper-light);font-variant-numeric:tabular-nums}
+.calc-note{font-size:11.5px;color:var(--muted);margin-top:14px;line-height:1.6}
+.calc-cta{display:block;text-align:center;margin-top:18px;padding:13px;border-radius:var(--r-sm);background:var(--g-copper);color:#080705;font-weight:700;font-size:14px;text-decoration:none}
+.calc-cta:hover{opacity:.92}
+.calc-item-recurring{}
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+footer{background:var(--surface);border-top:1px solid var(--border2);padding:28px 5%;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-body);font-size:13px;font-weight:300;color:var(--muted);flex-wrap:wrap;gap:14px}
+.footer-logo{display:flex;align-items:center}
+.footer-logo img{height:50px;mix-blend-mode:screen}
+footer a{color:var(--copper-warm);text-decoration:none}
+footer a:hover{color:var(--copper-light)}
+
+/* ─── ANIMACIONES SCROLL ─────────────────────────────────────── */
+.fi{
+  opacity:0;
+  transform:translateY(24px) scale(.99);
+  transition:
+    opacity .65s cubic-bezier(.16,1,.3,1),
+    transform .65s cubic-bezier(.16,1,.3,1)
+}
+.fi.vis{
+  opacity:1;
+  transform:translateY(0) scale(1)
+}
+
+@media(max-width:900px){
+  .examples-grid{grid-template-columns:1fr;gap:16px}
+  .calc-box{grid-template-columns:1fr;padding:22px}
+  .calc-item{flex-wrap:wrap;gap:8px}
+  .calc-item-label{width:100%}
+  .calc-item-price{font-size:20px}
+  .calc-item .calc-item-qty{margin-left:auto}
+  .hero{padding:75px 0 36px}
+  h1{font-size:clamp(32px,10vw,44px)}
+  .hero-sub{font-size:14px}
+}
+@media(max-width:560px){
+  .hero{padding:65px 0 32px}
+  .section{padding:40px 0}
+  .calc-box{padding:16px}
+  .section-title{font-size:20px}
+  .example-body{padding:14px}
+  .example-pieces li{font-size:11px;flex-wrap:wrap}
+  .calc-summary{padding:16px}
+  .calc-total-row .price{font-size:30px}
+  .calc-cta{font-size:13px;padding:12px}
+}</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="pl-half top"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+  <div class="pl-half bot"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+</div>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="suscripciones.html">Suscripciones</a>
+    <a href="agentes.html">Agentes</a>
+    <a href="campanas.html">Campañas</a>
+    <a href="presupuesto-web.html" class="current">Web</a>
+    <a href="index.html#contactar">Contacto</a>
+  </div>
+  <a class="nav-cta" href="index.html#contactar">Pedir diseño gratis</a>
+  <button class="nav-hamburger" id="menu-toggle" aria-label="Menú" aria-expanded="false">
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="mh-line1" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"/><path d="M7 16 27 16"/></svg>
+  </button>
+</nav>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow reveal-el">Presupuesto de página web</div>
+    <h1 class="reveal-title">Tu página, a <span class="hl">tu medida</span></h1>
+    <p class="hero-sub reveal-el"><strong class="em">Ninguna web ONIX es una plantilla.</strong> Se cotiza según lo que necesites: <strong>desde 450€</strong> la entrada, y cada pieza que añadas suma un precio fijo y transparente — sin sorpresas. Aquí tienes 3 ejemplos reales según el tipo de negocio, y una calculadora para que veas tu presupuesto exacto en el momento.</p>
+  </section>
+
+  <section class="section fi" id="ejemplos">
+    <div class="section-head">
+      <div class="section-eyebrow">Ejemplos</div>
+      <h2 class="section-title">Tres formas de usar la misma base</h2>
+      <p class="section-desc">La estructura es siempre la misma — una página a medida con tu identidad — pero lo que contiene cambia según tu negocio: una carta digital, el showcase de tu alojamiento, o una web simple de presentación.</p>
+    </div>
+
+    <div class="examples-grid">
+
+      <div class="example-card reveal-card">
+        <div class="example-preview ex-restaurante">
+          <div class="ex-tag">Una página, un sector</div>
+          <div class="ex-headline">Siempre al día, sin imprimir nada</div>
+        </div>
+        <div class="example-body">
+          <h3>Página simple — 1 sola página</h3>
+          <p>El cliente toca el stand y ve la información actualizada al momento, <strong class="em">sin reimprimir nada</strong> cada vez que algo cambia. La misma base sirve para casos muy distintos según tu sector: la carta de un restaurante, el listado de servicios y precios de una barbería/estética, las promociones activas de una tienda, o un enlace directo para reservar la siguiente cita.</p>
+          <ul class="example-pieces">
+            <li><span>Página de entrada</span><span class="amt">450€</span></li>
+          </ul>
+          <div class="example-total"><span class="label">Desde</span><span class="price">450€</span></div>
+          <a href="https://wa.me/34630910142?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20la%20web%20tipo%20%22P%C3%A1gina%20simple%22%20(1%20p%C3%A1gina%2C%20450%E2%82%AC).%20%C2%BFCu%C3%A1ndo%20podemos%20empezar%3F" class="example-cta">Pedir esta web →</a>
+        </div>
+      </div>
+
+      <div class="example-card reveal-card">
+        <div class="example-preview ex-simple">
+          <div class="ex-tag">Web simple de negocio</div>
+          <div class="ex-headline">Presentación, servicios, contacto</div>
+        </div>
+        <div class="example-body">
+          <h3>2-3 páginas — el caso más habitual</h3>
+          <p><strong class="em">El caso más habitual</strong>: logo, servicios y un enlace directo a WhatsApp o reservas, con alguna página extra según lo que necesites. Ejemplos: una clínica con "Servicios" + "Sobre nosotros"; un gimnasio con "Horarios" + "Tarifas"; una tienda con "Catálogo" + "Contacto".</p>
+          <ul class="example-pieces">
+            <li><span>Página de entrada</span><span class="amt">450€</span></li>
+            <li><span>1 página adicional (ej. "Sobre nosotros")</span><span class="amt">+100€</span></li>
+          </ul>
+          <div class="example-total"><span class="label">Total</span><span class="price">550€</span></div>
+          <a href="https://wa.me/34630910142?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20la%20web%20tipo%20%22Web%20simple%20de%20negocio%22%20(2-3%20p%C3%A1ginas%2C%20550%E2%82%AC).%20%C2%BFCu%C3%A1ndo%20podemos%20empezar%3F" class="example-cta">Pedir esta web →</a>
+        </div>
+      </div>
+
+      <div class="example-card reveal-card">
+        <div class="example-preview ex-hotel">
+          <div class="ex-tag">Web completa profesional</div>
+          <div class="ex-headline">Reserva directa, sin comisión</div>
+        </div>
+        <div class="example-body">
+          <h3>Showcase del alojamiento — proyecto grande</h3>
+          <p>Galería de habitaciones y espacios, formulario de reserva directa (<strong class="em">te ahorra la comisión de Booking</strong> en cada reserva) y SEO para aparecer en búsquedas locales. Ejemplo: un hotel rural o casa rural que quiere mostrar el alojamiento entero y captar reservas propias.</p>
+          <ul class="example-pieces">
+            <li><span>Página de entrada</span><span class="amt">450€</span></li>
+            <li><span>Galería de habitaciones/espacios</span><span class="amt">+100€</span></li>
+            <li><span>Formulario de reserva directa</span><span class="amt">+80€</span></li>
+            <li><span>SEO local básico</span><span class="amt">+100€</span></li>
+            <li><span>Mantenimiento + hosting (mensual, aparte)</span><span class="amt">27€/mes</span></li>
+          </ul>
+          <div class="example-total"><span class="label">Total entrada</span><span class="price">730€</span></div>
+          <a href="https://wa.me/34630910142?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20la%20web%20tipo%20%22Web%20completa%20profesional%22%20(showcase%20alojamiento%2C%20730%E2%82%AC%20entrada%20%2B%2027%E2%82%AC%2Fmes%20mantenimiento).%20%C2%BFCu%C3%A1ndo%20podemos%20empezar%3F" class="example-cta">Pedir esta web →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section fi" id="calculadora">
+    <div class="section-head">
+      <div class="section-eyebrow">Calculadora</div>
+      <h2 class="section-title">Arma tu presupuesto exacto</h2>
+      <p class="section-desc">Marca lo que necesitas y ve el precio sumarse en vivo — el mismo precio que te cotizaríamos en una visita.</p>
+    </div>
+
+    <div class="calc-box">
+      <div class="calc-options">
+
+        <div class="calc-item base active">
+          <div class="calc-item-label">
+            <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <span class="calc-item-name">Página de entrada</span>
+              <span class="calc-item-desc">Copy y diseño a medida — logo, servicios, enlace a WhatsApp. Siempre incluida.</span>
+            </div>
+          </div>
+          <div class="calc-item-price">450€</div>
+        </div>
+
+        <div class="calc-item" data-key="secciones" data-price="100" data-qty="true">
+          <div class="calc-item-label">
+            <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <span class="calc-item-name">Página/sección adicional</span>
+              <span class="calc-item-desc">Cada página extra más allá de la primera — carta, galería, eventos, sobre nosotros...</span>
+            </div>
+          </div>
+          <div class="calc-stepper">
+            <button type="button" data-step="-1">−</button>
+            <span data-qty-display>0</span>
+            <button type="button" data-step="1">+</button>
+          </div>
+        </div>
+
+        <div class="calc-item" data-key="blog" data-price="150">
+          <div class="calc-item-label">
+            <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <span class="calc-item-name">Blog</span>
+              <span class="calc-item-desc">Estructura + primeros 3 posts</span>
+            </div>
+          </div>
+          <div class="calc-item-price">+150€</div>
+        </div>
+
+        <div class="calc-item" data-key="seo" data-price="100">
+          <div class="calc-item-label">
+            <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <span class="calc-item-name">SEO básico</span>
+              <span class="calc-item-desc">Meta tags, sitemap, velocidad de carga</span>
+            </div>
+          </div>
+          <div class="calc-item-price">+100€</div>
+        </div>
+
+        <div class="calc-item" data-key="idiomas" data-price="150" data-qty="true">
+          <div class="calc-item-label">
+            <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <span class="calc-item-name">Idioma adicional</span>
+              <span class="calc-item-desc">Por cada idioma más allá del castellano</span>
+            </div>
+          </div>
+          <div class="calc-stepper">
+            <button type="button" data-step="-1">−</button>
+            <span data-qty-display>0</span>
+            <button type="button" data-step="1">+</button>
+          </div>
+        </div>
+
+        <div class="calc-item" data-key="formulario" data-price="80">
+          <div class="calc-item-label">
+            <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <span class="calc-item-name">Formulario avanzado / reservas</span>
+              <span class="calc-item-desc">Reserva directa, ideal para hoteles y clínicas</span>
+            </div>
+          </div>
+          <div class="calc-item-price">+80€</div>
+        </div>
+
+        <div class="calc-item" data-key="ecommerce" data-price="400">
+          <div class="calc-item-label">
+            <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <span class="calc-item-name">Tienda online básica</span>
+              <span class="calc-item-desc">Hasta 20 productos</span>
+            </div>
+          </div>
+          <div class="calc-item-price">+400€</div>
+        </div>
+
+        <div class="calc-item calc-item-recurring" data-key="mantenimiento" data-price="27" data-recurring="true">
+          <div class="calc-item-label">
+            <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <span class="calc-item-name">Mantenimiento + hosting</span>
+              <span class="calc-item-desc">Cuota mensual: cambios de contenido + alojamiento de la web incluidos</span>
+            </div>
+          </div>
+          <div class="calc-item-price">27€/mes</div>
+        </div>
+
+        <div class="calc-item calc-item-recurring" data-key="dominio" data-price="15" data-recurring="true">
+          <div class="calc-item-label">
+            <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <span class="calc-item-name">Dominio propio (.com/.es)</span>
+              <span class="calc-item-desc">ONIX lo compra y gestiona a tu nombre. Sin esto, tu web vive en un subdominio ONIX gratuito — <strong style="color:var(--text)">te beneficias del tráfico y posicionamiento</strong> que ONIX ya genera con el resto de negocios de la red, sin partir de cero en SEO.</span>
+            </div>
+          </div>
+          <div class="calc-item-price">15€/año</div>
+        </div>
+
+      </div>
+
+      <div class="calc-summary">
+        <h4>Tu presupuesto</h4>
+        <div id="calc-lines">
+          <div class="calc-line"><span>Página de entrada</span><span class="n">450€</span></div>
+          <div class="calc-line empty" id="calc-empty">Marca lo que necesites →</div>
+        </div>
+        <div class="calc-total-row">
+          <span class="label">Pago único</span>
+          <span class="price" id="calc-total">450€</span>
+        </div>
+        <div class="calc-recurring-row" id="calc-recurring-row" style="display:none">
+          <span class="label">+ cuotas recurrentes</span>
+          <span class="price-sm" id="calc-recurring-total">0€/mes</span>
+        </div>
+        <p class="calc-note">Precio orientativo según el catálogo público de ONIX. Confirmamos el presupuesto exacto en la visita, sin compromiso.</p>
+        <a href="#" id="calc-cta" class="calc-cta">Pedir este presupuesto →</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='inline'">
+    <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
+  </div>
+  <span>© 2025 ONIX — Stands NFC para Negocios · Girona</span>
+  <span style="display:flex;gap:14px;flex-wrap:wrap">
+    <a href="legal.html">Aviso Legal</a>
+    <a href="legal.html">Privacidad</a>
+    <a href="legal.html">Cookies</a>
+  </span>
+  <a href="https://wa.me/34630910142">+34 630 910 142</a>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(function() {
+  var preloaderTop = document.querySelector('#preloader .pl-half.top');
+  var preloaderBot = document.querySelector('#preloader .pl-half.bot');
+  if (!preloaderTop || !preloaderBot) return;
+
+  var tl = gsap.timeline();
+  tl.fromTo(preloaderTop, {x: -560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
+  tl.fromTo(preloaderBot, {x: 560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
+  tl.to('#preloader', {opacity: 0, duration: 0.4, ease: 'power2.in'}, '-=0.2');
+  tl.set('#preloader', {display: 'none'});
+  tl.to('.reveal-title', {opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08}, '-=0.05');
+  tl.to('.reveal-el', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.06}, 0.15);
+  tl.to('.reveal-card', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05}, 0.35);
+})();
+
+(function(){
+  var lastScroll = 0;
+  window.addEventListener('scroll', function(){
+    document.documentElement.classList.toggle('scrolling', window.scrollY > 10);
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var BASE = 450;
+  var items = {};
+
+  document.querySelectorAll('.calc-item[data-key]').forEach(function(el){
+    var key = el.dataset.key;
+    var price = parseInt(el.dataset.price, 10);
+    var hasQty = el.dataset.qty === 'true';
+    var isRecurring = el.dataset.recurring === 'true';
+    items[key] = { el: el, price: price, active: false, qty: hasQty ? 0 : 1, hasQty: hasQty, recurring: isRecurring, label: el.querySelector('.calc-item-name').textContent };
+
+    if (hasQty) {
+      el.querySelectorAll('[data-step]').forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.stopPropagation();
+          var step = parseInt(btn.dataset.step, 10);
+          var item = items[key];
+          item.qty = Math.max(0, item.qty + step);
+          item.active = item.qty > 0;
+          el.querySelector('[data-qty-display]').textContent = item.qty;
+          el.classList.toggle('active', item.active);
+          render();
+        });
+      });
+    } else {
+      el.addEventListener('click', function(){
+        var item = items[key];
+        item.active = !item.active;
+        el.classList.toggle('active', item.active);
+        render();
+      });
+    }
+  });
+
+  function euro(n){ return n.toLocaleString('es-ES') + '€'; }
+
+  function render(){
+    var linesEl = document.getElementById('calc-lines');
+    var total = BASE;
+    var monthlyTotal = 0;
+    var yearlyTotal = 0;
+    var lines = ['<div class="calc-line"><span>Página de entrada</span><span class="n">' + euro(BASE) + '</span></div>'];
+
+    Object.keys(items).forEach(function(key){
+      var item = items[key];
+      if (!item.active) return;
+      var qtyLabel = item.hasQty && item.qty > 1 ? ' ×' + item.qty : '';
+      var subtotal = item.price * item.qty;
+
+      if (item.recurring) {
+        var suffix = key === 'dominio' ? '/año' : '/mes';
+        if (key === 'dominio') { yearlyTotal += subtotal; } else { monthlyTotal += subtotal; }
+        lines.push('<div class="calc-line"><span>' + item.label + qtyLabel + '</span><span class="n">' + euro(subtotal) + suffix + '</span></div>');
+      } else {
+        total += subtotal;
+        lines.push('<div class="calc-line"><span>' + item.label + qtyLabel + '</span><span class="n">+' + euro(subtotal) + '</span></div>');
+      }
+    });
+
+    var anyActive = Object.keys(items).some(function(k){ return items[k].active; });
+    linesEl.innerHTML = lines.join('') + (anyActive ? '' : '<div class="calc-line empty" id="calc-empty">Marca lo que necesites arriba →</div>');
+    var totalEl = document.getElementById('calc-total');
+    var prevTotal = totalEl.textContent;
+    totalEl.textContent = euro(total);
+    if (prevTotal !== euro(total)) {
+      totalEl.classList.remove('bump');
+      void totalEl.offsetWidth;
+      totalEl.classList.add('bump');
+      setTimeout(function(){ totalEl.classList.remove('bump'); }, 250);
+    }
+
+    var recurringRow = document.getElementById('calc-recurring-row');
+    var recurringParts = [];
+    if (monthlyTotal > 0) recurringParts.push(euro(monthlyTotal) + '/mes');
+    if (yearlyTotal > 0) recurringParts.push(euro(yearlyTotal) + '/año');
+    if (recurringParts.length > 0) {
+      recurringRow.style.display = 'flex';
+      document.getElementById('calc-recurring-total').textContent = recurringParts.join(' + ');
+    } else {
+      recurringRow.style.display = 'none';
+    }
+
+    var resumen = 'Página de entrada (' + euro(BASE) + ')';
+    Object.keys(items).forEach(function(key){
+      var item = items[key];
+      if (!item.active) return;
+      var qtyLabel = item.hasQty && item.qty > 1 ? ' x' + item.qty : '';
+      resumen += ', ' + item.label + qtyLabel;
+    });
+    var msg = 'Hola, soy [nombre] de [negocio]. Quiero este presupuesto de web: ' + resumen + '. Total: ' + euro(total) + (recurringParts.length ? ' + ' + recurringParts.join(' + ') : '') + '. ¿Cuándo podemos empezar?';
+    document.getElementById('calc-cta').href = 'https://wa.me/34630910142?text=' + encodeURIComponent(msg);
+  }
+
+  render();
+})();
+</script>
+
+<script>
+// ── SCROLL ANIMATIONS ────────────────────────────────────────────────────────
+setTimeout(function() {
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, {threshold: 0.1, rootMargin: '0px 0px -80px 0px'});
+  document.querySelectorAll('.fi').forEach(function(el) { obs.observe(el); });
+}, 200);
+</script>
+
+<script>document.getElementById('menu-toggle').addEventListener('click',function(){var n=document.querySelector('.nav-links');n.classList.toggle('open');var o=n.classList.contains('open');this.classList.toggle('is-open',o);this.setAttribute('aria-expanded',o);var c=document.querySelector('.nav-cta');if(c)c.classList.toggle('menu-visible',o);});</script></body>
