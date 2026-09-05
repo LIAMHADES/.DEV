@@ -1144,9 +1144,34 @@ function initCardStack(){
   const rots=[0,-9,12,-6,15,-11,7,-13];
   const xs=[0,18,-22,14,-25,10,-16,20];
   const ys=[0,-10,8,-15,6,-12,10,-8];
+  const coarsePointer=window.matchMedia('(pointer:coarse)').matches;
 
   cards.forEach(c=>c.style.background=c.dataset.color||'#33658A');
   gsap.set('#dpLogo',{yPercent:-50,x:0,rotate:0});
+
+  // Mobile cards need the height of the longest copy, not a fixed viewport slice.
+  function fitStackHeight(){
+    if(!window.matchMedia('(max-width:768px)').matches){
+      stack.style.height='';
+      cards.forEach(c=>c.style.height='100%');
+      return;
+    }
+    stack.style.height='auto';
+    cards.forEach(c=>c.style.height='auto');
+    const contentHeight=Math.max(...cards.map(c=>c.scrollHeight));
+    const minimumHeight=Math.max(300,Math.round(window.innerHeight*0.45));
+    stack.style.height=`${Math.max(minimumHeight,contentHeight)}px`;
+    cards.forEach(c=>c.style.height='100%');
+  }
+
+  fitStackHeight();
+  let fitTimer=0;
+  const refitStack=()=>{
+    clearTimeout(fitTimer);
+    fitTimer=setTimeout(()=>{fitStackHeight();ScrollTrigger.refresh();},120);
+  };
+  window.addEventListener('resize',refitStack);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(refitStack);
 
   function animCards(target){
     target=target===undefined?current:target;
@@ -1177,8 +1202,10 @@ function initCardStack(){
     const el=cards[idx];
     Draggable.create(el,{
       type:'x',
-       inertia:true,
-       minimumMovement:12,
+      // A vertical finger drift must never become a card change.
+      inertia:!coarsePointer,
+      lockAxis:true,
+      minimumMovement:coarsePointer?18:12,
       allowNativeTouchScrolling:true,
       bounds:{minX:-200,maxX:200},
       edgeResistance:0.7,
@@ -1186,7 +1213,10 @@ function initCardStack(){
       onDrag(){gsap.to(el,{rotate:this.x*0.06,scale:1-Math.min(Math.abs(this.x)*0.001,0.1),duration:0.05,overwrite:'auto'})},
       onDragEnd(){
         el.classList.remove('swiping');
-        if(Math.abs(this.x)>(window.innerWidth<768?45:60)||Math.abs(this.getVelocity('x'))>150){
+        // Commit only a deliberate horizontal displacement. Do not use velocity:
+        // a short upward scroll can report a spurious negative x velocity on touch.
+        const threshold=coarsePointer?Math.max(72,Math.round(window.innerWidth*0.2)):60;
+        if(Math.abs(this.x)>=threshold){
           const dir=this.x>0?1:-1;
           gsap.to(el,{x:this.x>0?500:-500,opacity:0,duration:0.25,ease:'power2.in',
             onComplete(){
