@@ -48,8 +48,17 @@
     el._tw = { ghost: ghost, typed: typed, full: full, tick: words > 15 ? TICK / 2 : TICK };
   });
 
+  function finish(el) {
+    var t = el._tw;
+    if (!t || t.done) return;
+    t.done = true;
+    el.textContent = t.full;
+  }
+
   function type(el, done) {
     var t = el._tw;
+    if (t.started) return;
+    t.started = true;
     var cursor = document.createElement('span');
     cursor.className = 'tw-cursor';
     cursor.setAttribute('aria-hidden', 'true');
@@ -61,10 +70,7 @@
         pos++;
         setTimeout(step, t.tick);
       } else {
-        cursor.parentNode && cursor.parentNode.removeChild(cursor);
-        el.removeChild(t.ghost);
-        t.typed.style.position = 'static';
-        t.typed.removeAttribute('aria-hidden');
+        finish(el);
         if (done) setTimeout(done, 260);
       }
     })();

@@ -113,19 +113,20 @@ body.ov-open #progress-bar,body.ov-open #ticksWrapper,body.ov-open .nav-toggle,b
 .pf-cta-sub{font-family:'Orbitron',sans-serif;font-size:0.8rem;color:var(--t2);margin-bottom:1.8rem}
 
 /* === FOOTER MAP === */
-.pf-footer-wrap{position:relative;margin-top:0}
-.pf-footer-map{position:relative;width:100%;height:280px;overflow:visible;background:var(--bg)}
+.pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:hidden}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:hidden;background:var(--bg)}
 /* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
-.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px}
-.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:none;image-rendering:auto;transform-origin:center bottom;transition:transform 260ms cubic-bezier(.22,1,.36,1)}
-.pf-footer-map.end-stretch .pf-footer-tile{transform:scaleY(1.08)}
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px;overflow:visible;will-change:transform}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scaleY(calc(1 + var(--footer-stretch,0)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
+.pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
+.pf-footer-wrap,.pf-footer-map{overflow:hidden!important;contain:paint!important}
 @keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px))}}
 @media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
 @media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
 .pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
 .pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
 .pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
-@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px}}
 
 .sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
 .sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
@@ -135,6 +136,7 @@ section:first-of-type{clip-path:none}
 #hero{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
 #results-section{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
 #pf-contexto{margin-top:-40px}
+#pf-contexto{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
 </style>
 <script src="../assets/js/analytics.js"></script>
 </head>
@@ -155,7 +157,7 @@ section:first-of-type{clip-path:none}
     <li><a href="../index.html#planes">Planes</a></li>
     <li><a href="pricing.html">Precios</a></li>
     <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
-      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="proximamente.html">Geocerca (próximamente)</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
+      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
     </li>
   </ul>
 </nav>
@@ -163,8 +165,8 @@ section:first-of-type{clip-path:none}
   <div class="nav-overlay-inner">
     <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
     <ul class="nav-full-links">
-      <li class="nl-item"><a href="../index.html#proposito">Por qué ARES</a></li><li class="nl-item"><a href="../index.html#como-funciona">Cómo funciona</a></li><li class="nl-item"><a href="../index.html#extras">Extras</a></li><li class="nl-item"><a href="../index.html#planes">Planes</a></li><li class="nl-item"><a href="pricing.html">Precios</a></li>
-      <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="proximamente.html">Geocerca (próximamente)</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
+      <li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#results-section">Buscar sitios</a></li><li class="nl-item"><a href="#pf-contexto">Cómo funciona</a></li><li class="nl-item"><a href="#pf-cta">Avísame cuando lleguemos</a></li>
+       <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
     </ul>
   </div>
 </div>
@@ -617,12 +619,17 @@ buildPrism('prism-hero');
   (() => {
     const footerMap = document.querySelector('.pf-footer-map');
     if (!footerMap) return;
-    let release;
-    const stretch = () => { footerMap.classList.add('end-stretch'); clearTimeout(release); release = setTimeout(() => footerMap.classList.remove('end-stretch'), 320); };
-    window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) stretch(); }, {passive:true});
-    window.addEventListener('touchmove', () => { if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) stretch(); }, {passive:true});
-    window.addEventListener('touchend', () => footerMap.classList.remove('end-stretch'), {passive:true});
-    window.addEventListener('touchcancel', () => footerMap.classList.remove('end-stretch'), {passive:true});
+    let target = 0, current = 0, lastInput = 0, lastTouchY = null, frame = 0;
+    const maxStretch = 0.12;
+    const atEnd = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    const release = () => { target = 0; lastInput = 0; if (!frame) frame = requestAnimationFrame(tick); };
+    const push = (amount) => { target = Math.min(maxStretch, target + Math.min(maxStretch, amount)); lastInput = performance.now(); if (!frame) frame = requestAnimationFrame(tick); };
+    const tick = (now) => { const elapsed = now - lastInput; if (elapsed > 90) target = Math.max(0, target - 0.12 * Math.min(1, (elapsed - 90) / 140)); current += (target - current) * 0.22; footerMap.style.setProperty('--footer-stretch', current.toFixed(4)); if (Math.abs(current - target) > 0.0005 || target > 0.0005) frame = requestAnimationFrame(tick); else { current = 0; target = 0; footerMap.style.removeProperty('--footer-stretch'); frame = 0; } };
+    window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && atEnd()) push(Math.abs(event.deltaY) * 0.0009); else if (event.deltaY < 0) release(); }, {passive:true});
+    window.addEventListener('touchstart', (event) => { lastTouchY = event.touches[0]?.clientY ?? null; }, {passive:true});
+    window.addEventListener('touchmove', (event) => { const y = event.touches[0]?.clientY ?? lastTouchY; const delta = lastTouchY == null || y == null ? 0 : lastTouchY - y; lastTouchY = y; if (delta > 0 && atEnd()) push(delta * 0.002); else if (delta < 0) release(); }, {passive:true});
+    window.addEventListener('touchend', () => { lastTouchY = null; release(); }, {passive:true});
+    window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
   })();
 </script>
 </body>

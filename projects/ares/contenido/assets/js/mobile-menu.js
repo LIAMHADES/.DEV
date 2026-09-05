@@ -88,25 +88,36 @@
   ov.addEventListener('click', e => { if(e.target === ov) close(); });
   document.addEventListener('keydown', e => { if(e.key === 'Escape' && ov.classList.contains('open')) close(); });
 
-  // Cierra el overlay al navegar (anclas internas o links a otras paginas).
-  // IMPORTANTE: excluye .ndrop-trigger — es un <a> sin href usado solo para
-  // desplegar el submenu "Recursos", no debe cerrar el overlay al pulsarlo
-  // (mismo criterio que el navDropMob de index.html).
-  ov.querySelectorAll('a:not(.ndrop-trigger)').forEach(a => a.addEventListener('click', close));
+   // Cierra el overlay al navegar, pero no al expandir el submenu movil.
+   ov.querySelectorAll('a:not(.ndrop-trigger):not(.ndrop-trigger-static)').forEach(a => a.addEventListener('click', close));
 
   // Dropdown "Recursos" en el menu full-screen (tap para expandir/colapsar)
-  const dm = document.getElementById('navDropMob');
-  if (dm) {
-    const trigger = dm.querySelector('.ndrop-trigger');
-    const sub = dm.querySelector('.ndrop-sub');
-    if (trigger && sub) {
-      trigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        sub.classList.toggle('open');
-      });
-    }
-  }
+   const dm = ov.querySelector('.ndrop-trigger-static');
+   if (dm) {
+     const sub = dm.nextElementSibling;
+     if (sub) {
+       sub.id = sub.id || 'navDropMobSub';
+       dm.tabIndex = 0;
+       dm.setAttribute('role', 'button');
+       dm.setAttribute('aria-controls', sub.id);
+       dm.setAttribute('aria-expanded', String(sub.classList.contains('open')));
+       const toggleDrop = () => {
+         const open = sub.classList.toggle('open');
+         dm.setAttribute('aria-expanded', String(open));
+       };
+       dm.addEventListener('click', (e) => {
+         e.preventDefault();
+         e.stopPropagation();
+         toggleDrop();
+       });
+       dm.addEventListener('keydown', (e) => {
+         if (e.key === 'Enter' || e.key === ' ') {
+           e.preventDefault();
+           toggleDrop();
+         }
+       });
+     }
+   }
 
   // Indicador de scroll interno del overlay (36 ticks verticales, derecha)
   if (tc) {

@@ -10,8 +10,11 @@
    ============================================ */
 
 (function () {
-  const STORAGE_KEY = "ares_leads_v1";
-  const BREED_SUGGESTIONS_KEY = "ares_breed_suggestions_v1";
+   const STORAGE_KEY = "ares_leads_v1";
+   const QUALIFICATION_STORAGE_ID = "ares_pending_qualification_v1";
+   // Set this on the published site once the central receiver is deployed.
+   const LEAD_ENDPOINT = window.ARES_LEAD_ENDPOINT || (location.protocol === "file:" ? "" : "/v1/leads");
+   const BREED_SUGGESTIONS_STORAGE_ID = "ares_breed_suggestions_v1";
 
   function readLeads() {
     try {
@@ -43,7 +46,7 @@
    */
   function readBreedSuggestions() {
     try {
-      return JSON.parse(localStorage.getItem(BREED_SUGGESTIONS_KEY)) || [];
+       return JSON.parse(localStorage.getItem(BREED_SUGGESTIONS_STORAGE_ID)) || [];
     } catch (e) {
       return [];
     }
@@ -58,7 +61,7 @@
       timestamp: new Date().toISOString(),
       resultData: resultData || null,
     });
-    localStorage.setItem(BREED_SUGGESTIONS_KEY, JSON.stringify(suggestions));
+     localStorage.setItem(BREED_SUGGESTIONS_STORAGE_ID, JSON.stringify(suggestions));
     console.log("[ARES lead-capture] Nueva sugerencia de raza no listada (placeholder, sin backend real):", trimmed);
   }
 
@@ -75,10 +78,28 @@
    * de momento resolvemos siempre como si hubiese ido bien (placeholder).
    */
   function submitLead(lead) {
-    console.log("[ARES lead-capture] Nuevo lead (placeholder, sin backend real):", lead);
-    writeLead(lead);
-    return Promise.resolve({ ok: true });
-  }
+     let qualification = null;
+     try {
+       qualification = JSON.parse(sessionStorage.getItem(QUALIFICATION_STORAGE_ID) || "null");
+     } catch (e) {}
+     const payload = qualification ? { ...lead, qualification } : lead;
+
+     if (!LEAD_ENDPOINT) {
+       console.log("[ARES lead-capture] Lead local de prueba, sin endpoint:", payload);
+       writeLead(payload);
+       return Promise.resolve({ ok: true, local: true });
+     }
+
+      return fetch(LEAD_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }).then((response) => {
+        if (!response.ok) throw new Error("Lead endpoint returned " + response.status);
+         try { sessionStorage.removeItem(QUALIFICATION_STORAGE_ID); } catch (e) {}
+        return { ok: true, local: false };
+      });
+   }
 
   function initForm(form) {
     if (!form || form.dataset.leadBound === "1") return;

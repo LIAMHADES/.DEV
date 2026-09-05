@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora de Peso Ideal para tu Perro — ARES GPS</title>
-<meta name="description" content="Descubre si tu perro está en su peso ideal en menos de un minuto. Calculadora gratuita basada en datos reales de más de 160 razas.">
+<title>Calculadora de peso ideal para perros | ARES GPS</title>
+<meta name="description" content="Calcula el peso ideal de tu perro según su raza, edad, sexo y medidas. Obtén una primera orientación sobre su peso y posibles señales de sobrepeso.">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
 <link rel="stylesheet" href="assets/css/base.css">
@@ -25,6 +25,11 @@
 /* #form-section: quita el padding vertical generico de section (5rem) y usa uno
    propio mas compacto, para acercar el formulario al hero y al resultado. */
 #form-section{padding:1.5rem 0 3rem}
+.calc-intro{max-width:680px;margin:0 auto 1.8rem;text-align:center}
+.calc-intro h2{margin-bottom:0.65rem}
+.calc-intro p{font-size:0.94rem;line-height:1.8;color:var(--wtext2);margin:0 auto}
+#form-section .calc-intro p{color:rgba(240,242,245,0.78)}
+.calc-intro strong{color:var(--wtext);font-weight:600}
 
 /* === PROGRESO === */
 #form-progress{position:relative;height:2px;background:rgba(240,242,245,0.08);margin:0 auto 1.4rem;max-width:520px}
@@ -43,6 +48,7 @@
 .calc-field input,.calc-field select{width:100%;background:#20303d;border:1px solid rgba(240,242,245,0.18);color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;border-radius:4px;transition:border-color 0.3s,background 0.3s}
 .calc-field input:hover,.calc-field select:hover{border-color:rgba(240,242,245,0.35)}
 .calc-field input:focus,.calc-field select:focus{outline:none;border-color:var(--cta);background:#243547}
+.calc-field input:focus-visible,.calc-field select:focus-visible{outline:2px solid var(--hl);outline-offset:4px}
 .calc-field select{appearance:none;cursor:pointer;padding-right:3rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f0f2f5' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.2rem center}
 .calc-field select option{background:#20303d;color:var(--t)}
 .calc-field input::placeholder{color:var(--t3)}
@@ -77,7 +83,7 @@
 .breed-combo{position:relative}
 .breed-combo input{cursor:text}
 .breed-combo input::placeholder{color:var(--t3)}
-.breed-combo-list{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:20;max-height:260px;overflow-y:auto;background:#20303d;border:1px solid rgba(240,242,245,0.18);border-radius:4px;box-shadow:0 12px 32px rgba(0,0,0,0.4);display:none}
+.breed-combo-list{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:20;max-height:180px;overflow-y:auto;background:#20303d;border:1px solid rgba(240,242,245,0.18);border-radius:4px;box-shadow:0 12px 32px rgba(0,0,0,0.4);display:none}
 .breed-combo-list.open{display:block}
 .breed-combo-opt{padding:0.7rem 1rem;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:var(--t);cursor:pointer;transition:background 0.15s}
 .breed-combo-opt mark{background:none;color:var(--hl);font-weight:700}
@@ -181,24 +187,27 @@
 #apoyo .cc p{font-size:0.85rem;color:var(--wtext2);line-height:1.8}
 
 @media(max-width:768px){
+  #hero h1{max-width:min(100%,780px)!important;font-size:clamp(2rem,5vw,3.6rem)!important;letter-spacing:0;line-height:1.12;overflow-wrap:normal!important;word-break:keep-all!important;text-wrap:balance}
+  .calc-step[data-step="1"] .calc-nav{justify-content:center}
   .calc-row{grid-template-columns:1fr}
   #apoyo .cl{grid-template-columns:1fr}
 }
 
 /* === FOOTER MAP === */
-.pf-footer-wrap{position:relative;margin-top:0}
-.pf-footer-map{position:relative;width:100%;height:280px;overflow:visible;background:var(--bg)}
+.pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:hidden}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:hidden;background:var(--bg)}
 /* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
-.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px}
-.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:none;image-rendering:auto;transform-origin:center bottom;transition:transform 260ms cubic-bezier(.22,1,.36,1)}
-.pf-footer-map.end-stretch .pf-footer-tile{transform:scaleY(1.08)}
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px;overflow:visible;will-change:transform}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scaleY(calc(1 + var(--footer-stretch,0)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
+.pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
+.pf-footer-wrap,.pf-footer-map{overflow:hidden!important;contain:paint!important}
 @keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px))}}
 @media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
 @media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
 .pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
 .pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
 .pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
-@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px}}
 
 .sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
 .sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
@@ -208,6 +217,7 @@ section:first-of-type{clip-path:none}
 #hero{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
 #form-section,#result-section{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
 #apoyo{margin-top:-40px}
+#apoyo{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
 </style>
 <script src="../assets/js/analytics.js"></script>
 </head>
@@ -228,7 +238,7 @@ section:first-of-type{clip-path:none}
     <li><a href="../index.html#planes">Planes</a></li>
     <li><a href="pricing.html">Precios</a></li>
     <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
-      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="proximamente.html">Geocerca (próximamente)</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
+      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
     </li>
   </ul>
 </nav>
@@ -236,8 +246,8 @@ section:first-of-type{clip-path:none}
   <div class="nav-overlay-inner">
     <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
     <ul class="nav-full-links">
-      <li class="nl-item"><a href="../index.html#proposito">Por qué ARES</a></li><li class="nl-item"><a href="../index.html#como-funciona">Cómo funciona</a></li><li class="nl-item"><a href="../index.html#extras">Extras</a></li><li class="nl-item"><a href="../index.html#planes">Planes</a></li><li class="nl-item"><a href="pricing.html">Precios</a></li>
-      <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="proximamente.html">Geocerca (próximamente)</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
+      <li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#form-section">Calculadora</a></li><li class="nl-item"><a href="#result-section">Tu resultado</a></li><li class="nl-item"><a href="#apoyo">Apoyo</a></li>
+       <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
     </ul>
   </div>
 </div>
@@ -247,8 +257,8 @@ section:first-of-type{clip-path:none}
 <section id="hero" class="sec-dark">
   <div class="container">
     <div class="hero-tag">Seguridad y bienestar para tu perro</div>
-    <h1>¿Sabes si tu perro está en su peso ideal?</h1>
-    <div class="hero-sub">Respóndelo en menos de un minuto. Sin básculas raras, sin adivinar.</div>
+    <h1>¿CUÁL ES EL PESO IDEAL DE TU PERRO?</h1>
+    <div class="hero-sub">Una primera orientación sobre el peso de tu perro, sin adivinar.</div>
   </div>
 </section>
 
@@ -262,6 +272,11 @@ section:first-of-type{clip-path:none}
       <span class="dot" data-dot="3"></span>
     </div>
 
+    <div class="calc-intro">
+      <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">CALCULADORA DE PESO IDEAL PARA PERROS</h2>
+      <p>Si buscas cómo saber si tu perro está gordo, esta herramienta te ofrece una primera orientación según su raza, edad, sexo, altura y peso actual. El resultado es un rango de referencia, no un diagnóstico.</p>
+    </div>
+
     <div id="calc-form-wrap">
       <form id="calc-form">
         <!-- Paso 1: raza + sexo -->
@@ -269,7 +284,7 @@ section:first-of-type{clip-path:none}
           <div class="calc-field">
             <label for="f-breed">Raza de tu perro</label>
             <div class="breed-combo" data-breed-combo>
-              <input type="text" id="f-breed" autocomplete="off" placeholder="Escribe para buscar… (o deja en blanco si es mestizo/no sabes)">
+              <input type="text" id="f-breed" autocomplete="off" role="combobox" aria-autocomplete="list" aria-controls="f-breed-list" aria-expanded="false" placeholder="Busca una raza (opcional)">
               <input type="hidden" id="f-breed-value">
               <div class="breed-combo-list" id="f-breed-list" role="listbox"></div>
             </div>
@@ -283,7 +298,7 @@ section:first-of-type{clip-path:none}
           <div class="calc-field" id="breed2-field">
             <label for="f-breed2">Segunda raza</label>
             <div class="breed-combo" data-breed-combo>
-              <input type="text" id="f-breed2" autocomplete="off" placeholder="Escribe para buscar… ej. Pastor Alemán">
+              <input type="text" id="f-breed2" autocomplete="off" role="combobox" aria-autocomplete="list" aria-controls="f-breed2-list" aria-expanded="false" placeholder="Busca la segunda raza">
               <input type="hidden" id="f-breed2-value">
               <div class="breed-combo-list" id="f-breed2-list" role="listbox"></div>
             </div>
@@ -443,7 +458,7 @@ section:first-of-type{clip-path:none}
     <div class="cl">
       <div class="cc"><p>Sabes si tu perro come lo que necesita para su tamaño y edad — sin básculas raras, sin adivinar.</p></div>
       <div class="cc"><p>Cada raza tiene un peso ideal distinto. Lo calculamos con datos reales de más de 160 razas, no una media genérica.</p></div>
-      <div class="cc"><p>La próxima vez que el veterinario te pregunte por su peso, ya lo sabes de antemano.</p></div>
+      <div class="cc"><p>La próxima vez que el veterinario te pregunte cuánto pesa tu perro, ya tendrás una primera referencia para hablarlo con él.</p></div>
     </div>
     <div class="cl" style="grid-template-columns:1fr;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(134,187,216,0.4)">
       <div class="cc" style="border:none;padding:0">
@@ -572,15 +587,16 @@ section:first-of-type{clip-path:none}
       close();
     }
 
-    function open(){ render(input.value); list.classList.add('open'); }
-    function close(){ list.classList.remove('open'); }
+     function open(){ render(input.value); list.classList.add('open'); input.setAttribute('aria-expanded','true'); }
+     function close(){ list.classList.remove('open'); input.setAttribute('aria-expanded','false'); }
 
     function highlight(idx){
       [...list.querySelectorAll('.breed-combo-opt')].forEach((el,i)=> el.classList.toggle('hl-active', i===idx));
       activeIdx = idx;
     }
 
-    input.addEventListener('focus', open);
+     input.addEventListener('focus', open);
+     input.addEventListener('blur', ()=>{ window.setTimeout(close, 0); });
     input.addEventListener('input', ()=>{ hidden.value=''; open(); });
     input.addEventListener('keydown', (e)=>{
       const opts = [...list.querySelectorAll('.breed-combo-opt:not(.no-match)')];
@@ -1005,12 +1021,21 @@ section:first-of-type{clip-path:none}
   (() => {
     const footerMap = document.querySelector('.pf-footer-map');
     if (!footerMap) return;
-    let release;
-    const stretch = () => { footerMap.classList.add('end-stretch'); clearTimeout(release); release = setTimeout(() => footerMap.classList.remove('end-stretch'), 320); };
-    window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) stretch(); }, {passive:true});
-    window.addEventListener('touchmove', () => { if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) stretch(); }, {passive:true});
-    window.addEventListener('touchend', () => footerMap.classList.remove('end-stretch'), {passive:true});
-    window.addEventListener('touchcancel', () => footerMap.classList.remove('end-stretch'), {passive:true});
+    let target = 0;
+    let current = 0;
+    let lastInput = 0;
+    let lastTouchY = null;
+    let frame = 0;
+    const maxStretch = 0.12;
+    const atEnd = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    const release = () => { target = 0; lastInput = 0; if (!frame) frame = requestAnimationFrame(tick); };
+    const push = (amount) => { target = Math.min(maxStretch, target + Math.min(maxStretch, amount)); lastInput = performance.now(); if (!frame) frame = requestAnimationFrame(tick); };
+    const tick = (now) => { const elapsed = now - lastInput; if (elapsed > 90) target = Math.max(0, target - 0.12 * Math.min(1, (elapsed - 90) / 140)); current += (target - current) * 0.22; footerMap.style.setProperty('--footer-stretch', current.toFixed(4)); if (Math.abs(current - target) > 0.0005 || target > 0.0005) frame = requestAnimationFrame(tick); else { current = 0; target = 0; footerMap.style.removeProperty('--footer-stretch'); frame = 0; } };
+    window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && atEnd()) push(Math.abs(event.deltaY) * 0.0009); else if (event.deltaY < 0) release(); }, {passive:true});
+    window.addEventListener('touchstart', (event) => { lastTouchY = event.touches[0]?.clientY ?? null; }, {passive:true});
+    window.addEventListener('touchmove', (event) => { const y = event.touches[0]?.clientY ?? lastTouchY; const delta = lastTouchY == null || y == null ? 0 : lastTouchY - y; lastTouchY = y; if (delta > 0 && atEnd()) push(delta * 0.002); else if (delta < 0) release(); }, {passive:true});
+    window.addEventListener('touchend', () => { lastTouchY = null; release(); }, {passive:true});
+    window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
   })();
 </script>
 </body>

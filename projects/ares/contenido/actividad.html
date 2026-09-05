@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARES GPS — Calculadora de calorías quemadas por tu perro</title>
-<meta name="description" content="Prueba tú mismo cuánto quema tu perro: introduce su peso, la distancia recorrida y la intensidad, y calcula sus calorías al instante. Datos reales, no estimaciones a ojo.">
+<title>Cuánto ejercicio necesita un perro | ARES GPS</title>
+<meta name="description" content="Descubre cuánto ejercicio necesita un perro según su edad, tamaño y salud. Prueba una estimación orientativa con peso, distancia e intensidad.">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
 <link rel="stylesheet" href="assets/css/base.css">
@@ -23,7 +23,7 @@
 #hero .container{position:relative;z-index:2}
 .hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--hl);text-transform:uppercase;margin-bottom:1rem}
 #hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.9rem,4.6vw,3.1rem);color:var(--t);letter-spacing:0.02em;line-height:1.2;text-transform:uppercase;max-width:780px;margin:0 auto}
-.hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.8rem,1.4vw,0.95rem);color:var(--t2);letter-spacing:0.03em;margin-top:1rem;max-width:520px;margin-left:auto;margin-right:auto}
+ .hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.8rem,1.4vw,0.95rem);color:var(--t2);letter-spacing:0.03em;margin-top:1rem;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.7}
 .hero-arrow{margin-top:1.6rem;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--hl);text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:0.4rem;animation:bounceDown 2s ease-in-out infinite}
 .hero-arrow .material-symbols-outlined{font-size:1.1rem}
 @keyframes bounceDown{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
@@ -32,6 +32,8 @@
 #calc-hero{background:var(--bg2);padding:4rem 0 5rem;position:relative}
 .calc-hero-wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:0;align-items:stretch;max-width:1140px;margin:2rem auto 0}
 .calc-hero-head{max-width:900px;margin:0 auto;text-align:center}
+.calc-answer{max-width:700px;margin:0.8rem auto 0;font-family:'Orbitron',sans-serif;font-size:0.82rem;color:var(--t2);line-height:1.75}
+.kw-formula{font-family:'JetBrains Mono',monospace;font-size:clamp(0.72rem,1.6vw,0.95rem);letter-spacing:0.1em;color:var(--hl);margin-top:0.8rem}
 
 /* Panel principal de la calculadora — protagonista visual: fondo oscuro,
    borde sutil, chaflan 45deg, mas grande que cualquier otro bloque de la
@@ -57,6 +59,7 @@
 
 /* Slider naranja custom, coherente con --cta */
 .kw-slider{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:0;background:rgba(240,242,245,0.12);outline:none;cursor:pointer}
+.kw-slider:focus-visible{outline:2px solid var(--hl);outline-offset:6px}
 .kw-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;background:var(--cta);clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);cursor:pointer;box-shadow:0 2px 8px rgba(242,100,25,0.4);transition:transform 0.2s}
 .kw-slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
 .kw-slider::-moz-range-thumb{width:20px;height:20px;background:var(--cta);border:none;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);cursor:pointer;box-shadow:0 2px 8px rgba(242,100,25,0.4)}
@@ -83,6 +86,7 @@
 }
 .kw-int-btn small{display:block;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.05em;color:var(--t3);margin-top:0.2rem;text-transform:none}
 .kw-int-btn:hover{border-color:rgba(242,100,25,0.4);color:var(--t)}
+.kw-int-btn:focus-visible{outline:2px solid var(--hl);outline-offset:4px}
 .kw-int-btn.active{background:var(--cta);border-color:var(--cta);color:#fff;transform:translateY(-2px)}
 .kw-int-btn.active small{color:rgba(255,255,255,0.75)}
 
@@ -150,7 +154,7 @@
 .cx-point{display:flex;gap:0.9rem;margin-bottom:1.5rem;align-items:flex-start}
 .cx-point:last-child{margin-bottom:0}
 .cx-point .material-symbols-outlined{color:var(--hl);font-size:1.3rem;flex-shrink:0;margin-top:0.1rem}
-.cx-point p{font-size:0.82rem;color:var(--t2);line-height:1.65}
+.cx-point p{font-size:0.82rem;color:rgba(240,242,245,0.74);line-height:1.65}
 .cx-point strong{color:var(--t);font-weight:500}
 .cx-divider{height:1px;background:rgba(240,242,245,0.08);margin:1.6rem 0}
 
@@ -165,12 +169,13 @@
 #move-bar-section{min-height:64vh;display:flex;align-items:center;background:var(--bg);position:relative;overflow:hidden}
 .mb-wrap{max-width:900px;margin:0 auto;width:100%;text-align:center;position:relative;z-index:2}
 .mb-question{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.5rem,3.4vw,2.3rem);color:var(--t);text-transform:uppercase;letter-spacing:0.02em;margin-bottom:0.6rem}
-.mb-sub{font-family:'Orbitron',sans-serif;font-size:0.85rem;color:var(--t2);max-width:560px;margin:0 auto 2.6rem;line-height:1.7}
+.mb-sub{font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.74);max-width:560px;margin:0 auto 2.6rem;line-height:1.7}
 
 .mb-input-row{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2.6rem;flex-wrap:wrap}
 .mb-input-row label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--t3)}
-#mb-minutes-input{width:110px;background:#20303d;border:1px solid rgba(240,242,245,0.18);color:var(--t);font-family:'Bruno Ace SC',sans-serif;font-size:1.3rem;text-align:center;padding:0.6rem 0.5rem;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:border-color 0.3s}
+#mb-minutes-input{width:110px;max-width:110px;flex:0 0 110px;background:#20303d;border:1px solid rgba(240,242,245,0.18);color:var(--t);font-family:'Bruno Ace SC',sans-serif;font-size:1.3rem;text-align:center;padding:0.6rem 0.5rem;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:border-color 0.3s}
 #mb-minutes-input:focus{outline:none;border-color:var(--cta)}
+#mb-minutes-input:focus-visible{outline:2px solid var(--hl);outline-offset:4px}
 .mb-sync-btn{background:none;border:1px dashed rgba(240,242,245,0.25);color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.05em;text-transform:uppercase;padding:0.6rem 0.9rem;cursor:pointer;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);transition:border-color 0.3s,color 0.3s}
 .mb-sync-btn:hover{border-color:var(--hl);color:var(--hl)}
 
@@ -191,7 +196,7 @@
 
 #mb-verdict{margin-top:2.4rem;padding:1.4rem 2rem;border:1px solid rgba(240,242,245,0.1);clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);max-width:640px;margin-left:auto;margin-right:auto;transition:border-color 0.4s,background 0.4s}
 #mb-verdict-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;display:inline-block}
-#mb-verdict-text{font-size:0.9rem;color:var(--t2);line-height:1.7}
+#mb-verdict-text{font-size:0.9rem;color:rgba(240,242,245,0.74);line-height:1.7}
 
 /* === SECCION: NUTRICION — PUENTE A PREMIUM === */
 #nutricion-teaser{padding:4rem 0}
@@ -227,19 +232,20 @@
 #cta-final{min-height:44vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:var(--bg);padding-bottom:1.5rem}
 
 /* === FOOTER MAP === */
-.pf-footer-wrap{position:relative;margin-top:0}
-.pf-footer-map{position:relative;width:100%;height:280px;overflow:visible;background:var(--bg)}
+.pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:hidden}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:hidden;background:var(--bg)}
 /* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
-.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px}
-.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:none;image-rendering:auto;transform-origin:center bottom;transition:transform 260ms cubic-bezier(.22,1,.36,1)}
-.pf-footer-map.end-stretch .pf-footer-tile{transform:scaleY(1.08)}
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px;overflow:visible;will-change:transform}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scaleY(calc(1 + var(--footer-stretch,0)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
+.pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
+.pf-footer-wrap,.pf-footer-map{overflow:hidden!important;contain:paint!important}
 @keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px))}}
 @media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
 @media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
 .pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
 .pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
 .pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
-@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px}}
 
 /* TÉCNICA BORDE-SOMBRA — border invisible en esquinas 45° => drop-shadow */
 .nt-card,.nt-bridge,#kw-disclaimer,#kw-ares-note,#mb-verdict,.pn-inline{filter:drop-shadow(0 0 1.5px rgba(134,187,216,0.2))}
@@ -250,6 +256,7 @@
 
 /* Encaje 45: cada seccion comparte la diagonal con la anterior. */
 #calc-hero,#move-bar-section,#cta-final{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+#cta-final{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
 #nutricion-teaser,#planes-nota{margin-top:-40px}
 
 /* === PRISM (hover grid trail) === */
@@ -261,7 +268,10 @@
 @media(max-width:768px){
   .pn-inline{flex-direction:column}
   .pn-col + .pn-col{border-left:none;border-top:1px solid rgba(47,72,88,0.12)}
-  .mb-input-row{flex-direction:column;gap:0.7rem}
+  .mb-input-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0.7rem 0.9rem;max-width:420px;margin-left:auto;margin-right:auto}
+  .mb-input-row label{text-align:left}
+  #mb-minutes-input{justify-self:end}
+  .mb-sync-btn{grid-column:1 / -1;width:100%}
   #move-bar-section{min-height:auto;padding:4rem 0}
 }
 </style>
@@ -284,7 +294,7 @@
     <li><a href="../index.html#planes">Planes</a></li>
     <li><a href="pricing.html">Precios</a></li>
     <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
-      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="proximamente.html">Geocerca (próximamente)</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
+      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
     </li>
   </ul>
 </nav>
@@ -292,8 +302,8 @@
   <div class="nav-overlay-inner">
     <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
     <ul class="nav-full-links">
-      <li class="nl-item"><a href="../index.html#proposito">Por qué ARES</a></li><li class="nl-item"><a href="../index.html#como-funciona">Cómo funciona</a></li><li class="nl-item"><a href="../index.html#extras">Extras</a></li><li class="nl-item"><a href="../index.html#planes">Planes</a></li><li class="nl-item"><a href="pricing.html">Precios</a></li>
-      <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="proximamente.html">Geocerca (próximamente)</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
+      <li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#calc-hero">Calcular actividad</a></li><li class="nl-item"><a href="#nutricion-teaser">Nutrición</a></li><li class="nl-item"><a href="#move-bar-section">Movimiento diario</a></li><li class="nl-item"><a href="#planes-nota">Planes</a></li><li class="nl-item"><a href="#cta-final">Saber más</a></li>
+       <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
     </ul>
   </div>
 </div>
@@ -304,8 +314,8 @@
   <div class="sec-prism" id="prism-hero"></div>
   <div class="container">
     <div class="hero-tag">Actividad y calorías</div>
-    <h1>PRUEBA TÚ MISMO CUÁNTO QUEMA TU PERRO</h1>
-    <div class="hero-sub">Mueve los controles de abajo. El resultado cambia al instante, con la misma fórmula que usa ARES cada día.</div>
+    <h1>¿CUÁNTO EJERCICIO NECESITA UN PERRO?</h1>
+    <div class="hero-sub">La cantidad de ejercicio depende de su edad, tamaño, salud, condición física y nivel de energía. No hay una cifra universal: esta calculadora ofrece una orientación inicial.</div>
     <div class="hero-arrow"><span class="material-symbols-outlined">expand_more</span>Calcula ahora</div>
   </div>
 </section>
@@ -315,7 +325,9 @@
   <div class="container">
     <div class="calc-hero-head">
       <div class="sl">La calculadora en vivo</div>
-      <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">PESO + DISTANCIA + INTENSIDAD = CALORÍAS</h2>
+       <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">EJERCICIO PARA PERROS: QUÉ DEBES TENER EN CUENTA</h2>
+       <div class="kw-formula">PESO + DISTANCIA + INTENSIDAD = CALORÍAS</div>
+       <p class="calc-answer">Para entender cuánto ejercicio necesita tu perro, empieza por los datos que sí podemos estimar: su peso, la distancia recorrida y la intensidad. Al pasear a tu perro, el resultado te ayuda a interpretar el gasto de ese recorrido.</p>
     </div>
 
     <div class="calc-hero-wrap">
@@ -346,15 +358,15 @@
             <label>Intensidad</label>
           </div>
           <div class="kw-intensity" id="kw-intensity" role="group" aria-label="Intensidad del ejercicio">
-            <button type="button" class="kw-int-btn active" data-factor="1.0">Paseo tranquilo<small>×1.0</small></button>
-            <button type="button" class="kw-int-btn" data-factor="1.2">Trote<small>×1.2</small></button>
-            <button type="button" class="kw-int-btn" data-factor="1.4">Carrera<small>×1.4</small></button>
+             <button type="button" class="kw-int-btn active" data-factor="1.0" aria-pressed="true">Paseo tranquilo<small>×1.0</small></button>
+             <button type="button" class="kw-int-btn" data-factor="1.2" aria-pressed="false">Trote<small>×1.2</small></button>
+             <button type="button" class="kw-int-btn" data-factor="1.4" aria-pressed="false">Carrera<small>×1.4</small></button>
           </div>
         </div>
 
         <div id="kw-result">
           <div class="kw-result-label">Gasto de este paseo</div>
-          <div id="kw-kcal">60<span class="kw-kcal-unit">kcal</span></div>
+           <div id="kw-kcal" aria-live="polite">60<span class="kw-kcal-unit">kcal</span></div>
           <div id="kw-equiv"></div>
           <div class="kw-divider"></div>
 
@@ -435,7 +447,7 @@
           </span></p>
         </div>
         <div class="cx-divider"></div>
-        <div id="kw-disclaimer">Cálculo orientativo. Sin los datos reales de raza, altura y peso de tu perro no podemos conocer su gasto exacto. Cada perro es distinto.</div>
+        <div id="kw-disclaimer">Cálculo orientativo a partir del peso, la distancia y la intensidad introducidos. No sustituye una valoración veterinaria y cada perro responde de forma distinta.</div>
         <div id="kw-ares-note">ARES registra actividad, peso y raza automáticamente y calcula sus kcal reales cada día en la app — sin tablas ni cuentas manuales.</div>
       </div>
     </div>
@@ -636,11 +648,12 @@
   weightSlider.addEventListener('input', render);
   distanceSlider.addEventListener('input', render);
 
-  intensityBtns.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      intensityBtns.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      factor = parseFloat(btn.dataset.factor);
+   intensityBtns.forEach(btn=>{
+     btn.addEventListener('click', ()=>{
+       intensityBtns.forEach(b=>{ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+       btn.classList.add('active');
+       btn.setAttribute('aria-pressed','true');
+       factor = parseFloat(btn.dataset.factor);
       render();
     });
   });
@@ -801,20 +814,41 @@ buildPrism('prism-hero');
   (() => {
     const footerMap = document.querySelector('.pf-footer-map');
     if (!footerMap) return;
-    let release;
-    const stretch = () => {
-      footerMap.classList.add('end-stretch');
-      clearTimeout(release);
-      release = setTimeout(() => footerMap.classList.remove('end-stretch'), 320);
+    let target = 0;
+    let current = 0;
+    let lastInput = 0;
+    let lastTouchY = null;
+    let frame = 0;
+    const maxStretch = 0.12;
+    const atEnd = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    const release = () => { target = 0; lastInput = 0; if (!frame) frame = requestAnimationFrame(tick); };
+    const push = (amount) => {
+      target = Math.min(maxStretch, target + Math.min(maxStretch, amount));
+      lastInput = performance.now();
+      if (!frame) frame = requestAnimationFrame(tick);
+    };
+    const tick = (now) => {
+      const elapsed = now - lastInput;
+      if (elapsed > 90) target = Math.max(0, target - 0.12 * Math.min(1, (elapsed - 90) / 140));
+      current += (target - current) * 0.22;
+      footerMap.style.setProperty('--footer-stretch', current.toFixed(4));
+      if (Math.abs(current - target) > 0.0005 || target > 0.0005) frame = requestAnimationFrame(tick);
+      else { current = 0; target = 0; footerMap.style.removeProperty('--footer-stretch'); frame = 0; }
     };
     window.addEventListener('wheel', (event) => {
-      if (event.deltaY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) stretch();
+      if (event.deltaY > 0 && atEnd()) push(Math.abs(event.deltaY) * 0.0009);
+      else if (event.deltaY < 0) release();
     }, {passive:true});
-    window.addEventListener('touchmove', () => {
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) stretch();
+    window.addEventListener('touchstart', (event) => { lastTouchY = event.touches[0]?.clientY ?? null; }, {passive:true});
+    window.addEventListener('touchmove', (event) => {
+      const y = event.touches[0]?.clientY ?? lastTouchY;
+      const delta = lastTouchY == null || y == null ? 0 : lastTouchY - y;
+      lastTouchY = y;
+      if (delta > 0 && atEnd()) push(delta * 0.002);
+      else if (delta < 0) release();
     }, {passive:true});
-    window.addEventListener('touchend', () => footerMap.classList.remove('end-stretch'), {passive:true});
-    window.addEventListener('touchcancel', () => footerMap.classList.remove('end-stretch'), {passive:true});
+    window.addEventListener('touchend', () => { lastTouchY = null; release(); }, {passive:true});
+    window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
   })();
 </script>
 </body>
