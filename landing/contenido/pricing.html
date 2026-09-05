@@ -176,7 +176,7 @@
 
 @media(max-width:768px){
   #hero .container{width:100%;min-width:0}
-  #hero h1{font-size:clamp(1.7rem,6.5vw,2.2rem)!important;max-width:100%;overflow-wrap:normal;word-break:normal}
+  #hero h1{max-width:100%;overflow-wrap:anywhere;word-break:normal}
   #hero .hero-sub{width:100%;max-width:100%;font-size:0.78rem;overflow-wrap:anywhere}
   .hw-grid,.cmp-legend,.tr-stat{grid-template-columns:1fr}
   .hw-grid{display:flex;flex-direction:column}
@@ -192,14 +192,13 @@
 }
 
 /* === FOOTER MAP === */
-.pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:visible}
-.pf-footer-map{position:relative;width:100%;height:280px;overflow:visible;background:var(--bg)}
+.pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:hidden}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:hidden;background:var(--bg)}
 /* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
 .pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px;overflow:visible;will-change:transform}
 .pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scaleY(calc(1 + var(--footer-stretch,0)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
 .pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
-.pf-footer-wrap,.pf-footer-map,.pf-footer-track,footer{overflow:visible!important;contain:none!important}
-.pf-footer-wrap,.pf-footer-map,.pf-footer-track{overflow:visible!important;contain:none!important}
+.pf-footer-wrap,.pf-footer-map{overflow:hidden!important;contain:paint!important}
 @keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px))}}
 @media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
 @media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
@@ -227,7 +226,6 @@ section:first-of-type{clip-path:none}
 
 /* Encaje 45: todas las superficies comparten la misma diagonal. */
 #hero{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
-#ticksWrapper{transform:translateY(-1px)}
 .vid-band{margin-top:-40px}
 #hardware,#planes,#addons{margin-top:-40px}
 #transparencia,#faq,#cta-final{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
@@ -270,7 +268,8 @@ section:first-of-type{clip-path:none}
     <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
     <ul class="nav-full-links">
       <li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#hardware">El producto</a></li><li class="nl-item"><a href="#planes">Planes mensuales</a></li><li class="nl-item"><a href="#addons">Extras opcionales</a></li><li class="nl-item"><a href="#faq">Preguntas frecuentes</a></li><li class="nl-item"><a href="#cta-final">Elegir mi plan</a></li>
-      <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
+       <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
+       <li class="nl-item nav-subscribe"><a href="proximamente.html#preventa">¡Suscríbete!</a></li>
     </ul>
   </div>
 </div>
