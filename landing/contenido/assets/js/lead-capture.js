@@ -11,10 +11,10 @@
 
 (function () {
    const STORAGE_KEY = "ares_leads_v1";
-   const QUALIFICATION_KEY = "ares_pending_qualification_v1";
+   const QUALIFICATION_STORAGE_ID = "ares_pending_qualification_v1";
    // Set this on the published site once the central receiver is deployed.
    const LEAD_ENDPOINT = window.ARES_LEAD_ENDPOINT || (location.protocol === "file:" ? "" : "/v1/leads");
-  const BREED_SUGGESTIONS_KEY = "ares_breed_suggestions_v1";
+   const BREED_SUGGESTIONS_STORAGE_ID = "ares_breed_suggestions_v1";
 
   function readLeads() {
     try {
@@ -46,7 +46,7 @@
    */
   function readBreedSuggestions() {
     try {
-      return JSON.parse(localStorage.getItem(BREED_SUGGESTIONS_KEY)) || [];
+       return JSON.parse(localStorage.getItem(BREED_SUGGESTIONS_STORAGE_ID)) || [];
     } catch (e) {
       return [];
     }
@@ -61,7 +61,7 @@
       timestamp: new Date().toISOString(),
       resultData: resultData || null,
     });
-    localStorage.setItem(BREED_SUGGESTIONS_KEY, JSON.stringify(suggestions));
+     localStorage.setItem(BREED_SUGGESTIONS_STORAGE_ID, JSON.stringify(suggestions));
     console.log("[ARES lead-capture] Nueva sugerencia de raza no listada (placeholder, sin backend real):", trimmed);
   }
 
@@ -80,7 +80,7 @@
   function submitLead(lead) {
      let qualification = null;
      try {
-       qualification = JSON.parse(sessionStorage.getItem(QUALIFICATION_KEY) || "null");
+       qualification = JSON.parse(sessionStorage.getItem(QUALIFICATION_STORAGE_ID) || "null");
      } catch (e) {}
      const payload = qualification ? { ...lead, qualification } : lead;
 
@@ -96,7 +96,7 @@
         body: JSON.stringify(payload),
       }).then((response) => {
         if (!response.ok) throw new Error("Lead endpoint returned " + response.status);
-        try { sessionStorage.removeItem(QUALIFICATION_KEY); } catch (e) {}
+         try { sessionStorage.removeItem(QUALIFICATION_STORAGE_ID); } catch (e) {}
         return { ok: true, local: false };
       });
    }

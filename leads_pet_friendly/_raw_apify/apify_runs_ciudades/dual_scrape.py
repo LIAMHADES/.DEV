@@ -10,9 +10,16 @@ KEYWORDS = [
     "residencia canina", "paseador de perros"
 ]
 
+
+def required_token(name):
+    value = os.environ.get(name, "")
+    if not value:
+        raise RuntimeError(f"Set {name} before running the Apify scraper")
+    return value
+
 # Token 1 ($5) -> cities < 100
 T1 = {
-    "token": "apify_api_0q5JnqVLpbd6PaN6u1XsuuXbtod51N1MpG2J",
+    "token": required_token("APIFY_API_TOKEN_SMALL"),
     "cities": ["Pamplona", "Santiago de Compostela", "Santander",
                "San Sebastian", "Salamanca", "Cadiz"],
     "name": "T1-SMALL"
@@ -20,7 +27,7 @@ T1 = {
 
 # Token 2 ($5) -> cities 100-150
 T2 = {
-    "token": "apify_api_5CEECgT6tqe7js7gZgJfqKvTKCs0jc3VK0RM",
+    "token": required_token("APIFY_API_TOKEN_MEDIUM"),
     "cities": ["Toledo", "Leon", "Vigo", "Granada",
                "A Coruna", "Cordoba", "Valladolid"],
     "name": "T2-MEDIUM"

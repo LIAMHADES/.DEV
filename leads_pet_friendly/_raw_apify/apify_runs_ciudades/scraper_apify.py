@@ -6,7 +6,10 @@ import json, urllib.request, time, os, re
 
 APIFY_API = "https://api.apify.com/v2"
 ACTOR = "scrapesage~google-maps-scraper"
-TOKEN = "apify_api_Vm2h0aeCexxlzvvuQPTkcmEyg1hmfM1qEm9W"
+TOKEN = os.environ.get("APIFY_API_TOKEN", "")
+
+if not TOKEN:
+    raise RuntimeError("Set APIFY_API_TOKEN before running the Apify scraper")
 
 KEYWORDS = [
     "veterinario", "clinica veterinaria 24h", "parque para perros",

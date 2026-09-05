@@ -143,7 +143,7 @@ img {
   max-width: 100%;
   display: flex;
   justify-content: center;
-  padding: 72px 0 9px;
+  padding: 62.92px 0 9px;
   background: transparent;
   pointer-events: none;
   z-index: 1000;
@@ -156,6 +156,7 @@ img {
   gap: 1.5px;
   width: max-content;
   margin: -1px auto 0;
+  transform: translateY(0.01px);
   padding: 5px 24px 8px;
   background: rgba(21, 29, 37, 0.88);
   backdrop-filter: blur(12px);
@@ -442,7 +443,7 @@ select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 5px;
+  gap: 3px;
   width: 32px;
   height: 32px;
   background: none;
@@ -457,7 +458,8 @@ select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
 }
 .nav-toggle span {
   display: block;
-  height: 2px;
+  height: 4px;
+  min-height: 4px;
   background: var(--t);
   border-radius: 2px;
   transition: all 0.3s;
@@ -548,7 +550,7 @@ body.menu-open {
   width: 100%;
 }
 .nav-full-links > .nl-item + .nl-item {
-  border-top: 1px solid rgba(134, 187, 216, 0.14);
+  border-top: 3px solid rgba(134, 187, 216, 0.14);
   padding-top: 0.35rem;
 }
 .nav-full-links > .nl-item {
@@ -572,9 +574,6 @@ body.menu-open {
   overflow-wrap: anywhere;
   text-wrap: balance;
   transition: color 0.3s, opacity 0.3s, transform 0.3s;
-}
-.nav-full-links .nav-subscribe a {
-  color: var(--hl);
 }
 .nav-overlay .nl-item a {
   opacity: 0;
@@ -720,7 +719,7 @@ footer {
   }
   #main-nav .back-link{display:none}
   /* Nav: evitar que el logo tape "ARES GPS" y la hamburguesa en pantallas estrechas */
-  #main-nav{padding:0.85rem 1.25rem}
+   #main-nav{padding:0.85rem 1.25rem;border-bottom:0}
   #main-nav .nl{font-size:1.15rem}
   #main-nav .nav-logo{height:42px}
   .nav-toggle{right:1.25rem}
@@ -730,7 +729,7 @@ footer {
   .nav-full-links a,.nav-full-links .ndrop-trigger{font-size:clamp(1.5rem,6vw,2.1rem);padding:0.45rem 0}
   .nav-overlay .nav-logo-ov{height:56px;margin-bottom:1rem}
   /* Indicador: misma lengüeta completa y diagonal que index.html */
-   #ticksWrapper{padding:68px 0 7px}
+   #ticksWrapper{padding:53.01px 0 7px}
   #ticksWrapper .ti{width:100%;max-width:100%;margin:-1px 0 0;gap:1.5px;justify-content:center;padding-inline:1rem}
   .container{padding-inline:1.25rem}
   .pf-footer-map{overflow:hidden}
@@ -792,6 +791,7 @@ footer {
   #main-nav {
     min-height: 52px;
     padding: 0.85rem 1.25rem;
+    border-bottom: 0;
   }
   #main-nav .nl {
     font-size: 0.72rem;
@@ -817,11 +817,11 @@ footer {
   }
   .nav-toggle span {
     width: 24px;
-    height: 2px;
-    flex: 0 0 2px;
+    height: 4px;
+    flex: 0 0 4px;
   }
   #ticksWrapper {
-    padding-top: 68px;
+    padding-top: 53.01px;
   }
 }
 
@@ -834,11 +834,11 @@ footer {
 
   #hero h1 {
     width: 100%;
-    max-width: min(100%, 280px) !important;
+    max-width: min(100%, 340px) !important;
     padding-inline: 0.25rem;
-    font-size: 20px !important;
-    letter-spacing: 0.01em;
-    line-height: 1.15;
+    font-size: clamp(2.5rem, 12vw, 4.2rem) !important;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
     text-wrap: balance;
     white-space: normal !important;
     overflow-wrap: anywhere;

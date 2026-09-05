@@ -28,6 +28,7 @@
 .calc-intro{max-width:680px;margin:0 auto 1.8rem;text-align:center}
 .calc-intro h2{margin-bottom:0.65rem}
 .calc-intro p{font-size:0.94rem;line-height:1.8;color:var(--wtext2);margin:0 auto}
+#form-section .calc-intro p{color:rgba(240,242,245,0.78)}
 .calc-intro strong{color:var(--wtext);font-weight:600}
 
 /* === PROGRESO === */
@@ -186,6 +187,8 @@
 #apoyo .cc p{font-size:0.85rem;color:var(--wtext2);line-height:1.8}
 
 @media(max-width:768px){
+  #hero h1{max-width:min(100%,780px)!important;font-size:clamp(2rem,5vw,3.6rem)!important;letter-spacing:0;line-height:1.12;overflow-wrap:normal!important;word-break:keep-all!important;text-wrap:balance}
+  .calc-step[data-step="1"] .calc-nav{justify-content:center}
   .calc-row{grid-template-columns:1fr}
   #apoyo .cl{grid-template-columns:1fr}
 }
@@ -243,9 +246,8 @@ section:first-of-type{clip-path:none}
   <div class="nav-overlay-inner">
     <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
     <ul class="nav-full-links">
-      <li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#form-section">Calculadora</a></li><li class="nl-item"><a href="#result-section">Tu resultado</a></li><li class="nl-item"><a href="#apoyo">Acompañamiento</a></li>
+      <li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#form-section">Calculadora</a></li><li class="nl-item"><a href="#result-section">Tu resultado</a></li><li class="nl-item"><a href="#apoyo">Apoyo</a></li>
        <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
-       <li class="nl-item nav-subscribe"><a href="proximamente.html#preventa">¡Suscríbete!</a></li>
     </ul>
   </div>
 </div>
