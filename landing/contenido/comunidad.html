@@ -81,32 +81,46 @@
 .pn-card.hl .pn-plan{color:var(--hl)}
 .pn-plan{font-family:'Bruno Ace SC',sans-serif;font-size:1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--t);margin-bottom:0.9rem}
 .pn-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.55rem}
+.pn-scope{font-family:'Bruno Ace SC',sans-serif;font-size:1.1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--hl);margin-bottom:0.5rem}
+.pn-card.hl .pn-scope{color:var(--hl)}
+.pn-desc{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.02em;color:var(--t2);line-height:1.6;margin:0}
+.pn-card.hl .pn-desc{color:var(--t)}
 .pn-card li{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.02em;color:var(--t2);display:flex;gap:0.5rem;align-items:flex-start;line-height:1.5}
 .pn-card li .material-symbols-outlined{font-size:0.95rem;color:var(--hl);flex-shrink:0;margin-top:0.1rem}
 .pn-cta{text-align:center;margin-top:2.2rem}
-.pn-cta a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--t2);text-decoration:none;border-bottom:1px solid rgba(240,242,245,0.2);padding-bottom:2px;transition:color 0.3s,border-color 0.3s}
-.pn-cta a:hover{color:var(--hl);border-color:var(--hl)}
+.pn-cta a{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:clamp(13px,1.4vw,15px);letter-spacing:0.08em;text-transform:uppercase;color:var(--t);text-decoration:none;border:1px solid rgba(134,187,216,0.4);background:rgba(134,187,216,0.1);padding:0.8rem 1.6rem;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);transition:color 0.3s,background 0.3s,border-color 0.3s}
+.pn-cta a:hover{color:var(--bg);background:var(--deco);border-color:var(--deco)}
 
 /* === CTA FINAL === */
-#cta-final{min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:var(--bg)}
+#cta-final{min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:var(--bg);padding-bottom:1.5rem}
 
 /* === FOOTER MAPA === */
-.pf-footer-wrap{position:relative;margin-top:0}
-.pf-footer-map{position:relative;width:100%;height:280px;overflow:hidden;background:var(--bg)}
+.pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:visible}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:visible;background:var(--bg)}
 /* Desktop: mapa quieto (la animacion horizontal solo se activa en movil) */
-.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content}
-.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:blur(0.5px)}
-@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(-100vw)}}
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px;overflow:visible;will-change:transform}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scaleY(calc(1 + var(--footer-stretch,0)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
+.pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
+.pf-footer-wrap,.pf-footer-map,.pf-footer-track,footer{overflow:visible!important;contain:none!important}
+.pf-footer-wrap,.pf-footer-map,.pf-footer-track{overflow:visible!important;contain:none!important}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px))}}
 .pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
 .pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
 .pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px}}
 
 @media(max-width:768px){
   .fn-grid{grid-template-columns:1fr}
   .ang-wrap{grid-template-columns:1fr}
   .casos-grid{grid-template-columns:1fr}
   .pn-wrap{grid-template-columns:1fr}
-  .casos-video-wrap{margin-top:-2rem!important;margin-left:-1rem!important;margin-right:-1rem!important}
+  .casos-video-wrap{display:none}
+  .vid-band{display:block;position:sticky;top:0;height:100vh;z-index:1;overflow:hidden;background:linear-gradient(135deg,#1c2732,#2a3a4a,#1c2732);clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+  .vid-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .vid-cap{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,242,245,0.65);background:radial-gradient(ellipse at center,rgba(12,17,22,0.15) 0%,rgba(12,17,22,0.55) 100%);pointer-events:none}
+  .vid-cap strong{font-family:'Bruno Ace SC',sans-serif;font-size:1.1rem;letter-spacing:0.06em;color:var(--hl);display:block;margin-bottom:0.4rem}
+  .vid-sec>section:not(.vid-band){position:relative;z-index:2}
+  #planes-nota{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
 }
 /* Solo en tablet/movil: mapa de España desplazandose horizontalmente (rapido) */
 @media(max-width:1024px){
@@ -120,39 +134,51 @@
 .sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
 .sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
 section:first-of-type{clip-path:none}
+/* Video band sticky (solo movil): se queda quieto y #planes-nota sube y lo tapa */
+.vid-sec>.vid-band{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%);background:linear-gradient(135deg,#1c2732,#2a3a4a,#1c2732)}
+@media(min-width:769px){.vid-band{display:none}}
+@media(prefers-reduced-motion:reduce){.vid-band{position:relative;height:56.25vw;min-height:220px}}
+
+/* Encaje 45: mismo sistema que index, incluido el video movil. */
+#hero{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+#funciones,#casos,#planes-nota{margin-top:-40px}
+#angulo,#cta-final{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+#cta-final{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
+@media(max-width:768px){.vid-band{margin-top:-40px}}
 </style>
+<script src="../assets/js/analytics.js"></script>
 </head>
 <body>
 
 <div id="progress-bar"></div>
+<div class="scroll-indicator-horizontal" id="ticksWrapper"></div>
 
-<button class="nav-toggle" id="navToggle">
+<button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="navOverlay" aria-expanded="false">
   <span></span><span></span><span></span>
 </button>
-<nav id="mini-nav">
+<nav id="main-nav">
   <a href="../index.html" class="nl">ARES GPS</a>
-  <img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo">
+  <a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a>
   <ul class="inline-links">
-    <li><a href="../index.html">Inicio</a></li>
+    <li><a href="../index.html#como-funciona">Cómo funciona</a></li>
+    <li><a href="../index.html#extras">Extras</a></li>
+    <li><a href="../index.html#planes">Planes</a></li>
     <li><a href="pricing.html">Precios</a></li>
+    <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
+      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
+    </li>
   </ul>
 </nav>
-<div class="nav-overlay" id="navOverlay">
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Menú principal" tabindex="-1">
   <div class="nav-overlay-inner">
-    <img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo-ov">
+    <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
     <ul class="nav-full-links">
-      <li class="nl-item"><a href="../index.html">Inicio</a></li>
-      <li class="nl-item"><a href="pricing.html">Precios</a></li>
-      <li class="nl-item"><a href="actividad.html">Actividad</a></li>
-      <li class="nl-item"><a href="descanso.html">Descanso</a></li>
-      <li class="nl-item nl-current"><a>Comunidad</a></li>
-      <li class="nl-item"><a href="geocerca.html">Geocerca</a></li>
-      <li class="nl-item"><a href="calculadora.html">Calculadora</a></li>
-      <li class="nl-item"><a href="pet-friendly.html">Pet-friendly</a></li>
-      <li class="nl-item"><a href="proximamente.html">Próximamente</a></li>
+      <li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#funciones">Funciones</a></li><li class="nl-item"><a href="#angulo">Cómo se comparte</a></li><li class="nl-item"><a href="#casos">Casos de uso</a></li><li class="nl-item"><a href="#planes-nota">Planes</a></li><li class="nl-item"><a href="#cta-final">Participar</a></li>
+      <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
     </ul>
   </div>
 </div>
+<div class="ov-ticks" id="ovTicks"></div>
 
 <!-- 1. HERO -->
 <section id="hero" class="sec-dark">
@@ -276,6 +302,10 @@ section:first-of-type{clip-path:none}
 </section>
 
 <!-- 5. PLANES -->
+<div class="vid-sec">
+<section class="vid-band" aria-label="Vídeo: comunidad ARES">
+  <div class="vid-cap"><div><strong>Vídeo comunidad</strong>deja aquí el vídeo de la comunidad</div></div>
+</section>
 <section id="planes-nota" class="sec-dark">
   <div class="sec-prism" id="prism-planes"></div>
   <div class="container">
@@ -286,19 +316,13 @@ section:first-of-type{clip-path:none}
     <div class="pn-wrap">
       <div class="pn-card">
         <div class="pn-plan">Básico</div>
-        <ul>
-          <li><span class="material-symbols-outlined">check</span>Compartir con hasta 2 usuarios, con roles</li>
-          <li><span class="material-symbols-outlined">check</span>Ranking de actividad local, semanal</li>
-        </ul>
+        <div class="pn-scope">Tu círculo</div>
+        <p class="pn-desc">Comparte con hasta 2 personas de confianza y compara la actividad de tu perro en tu zona.</p>
       </div>
       <div class="pn-card hl">
         <div class="pn-plan">Premium</div>
-        <ul>
-          <li><span class="material-symbols-outlined">check</span>Compartir con más usuarios y roles</li>
-          <li><span class="material-symbols-outlined">check</span>Rankings nacionales y por raza</li>
-          <li><span class="material-symbols-outlined">check</span>Rutas de amigos, grupos y desafíos</li>
-          <li><span class="material-symbols-outlined">check</span>Recompensas, insignias y eventos VIP</li>
-        </ul>
+        <div class="pn-scope">Tu comunidad</div>
+        <p class="pn-desc">Abre el círculo completo: grupos, retos, rankings nacionales y recompensas para tu perro.</p>
       </div>
     </div>
 
@@ -307,6 +331,7 @@ section:first-of-type{clip-path:none}
     </div>
   </div>
 </section>
+</div>
 
 <!-- 6. CTA FINAL -->
 <section id="cta-final" class="sec-dark">
@@ -338,7 +363,7 @@ section:first-of-type{clip-path:none}
 <script>
 (function(){
   const bar = document.getElementById('progress-bar');
-  const nav = document.getElementById('mini-nav');
+  const nav = document.getElementById('main-nav');
   if(!bar) return;
   function update(){
     const h = document.documentElement;
@@ -496,6 +521,24 @@ function buildPrism(id){
 })();
 </script>
 <script src="assets/js/mobile-menu.js"></script>
+<script src="assets/js/scroll-indicator.js"></script>
 <script src="assets/js/typewriter.js"></script>
+<script>
+  (() => {
+    const footerMap = document.querySelector('.pf-footer-map');
+    if (!footerMap) return;
+    let target = 0, current = 0, lastInput = 0, lastTouchY = null, frame = 0;
+    const maxStretch = 0.12;
+    const atEnd = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    const release = () => { target = 0; lastInput = 0; if (!frame) frame = requestAnimationFrame(tick); };
+    const push = (amount) => { target = Math.min(maxStretch, target + Math.min(maxStretch, amount)); lastInput = performance.now(); if (!frame) frame = requestAnimationFrame(tick); };
+    const tick = (now) => { const elapsed = now - lastInput; if (elapsed > 90) target = Math.max(0, target - 0.12 * Math.min(1, (elapsed - 90) / 140)); current += (target - current) * 0.22; footerMap.style.setProperty('--footer-stretch', current.toFixed(4)); if (Math.abs(current - target) > 0.0005 || target > 0.0005) frame = requestAnimationFrame(tick); else { current = 0; target = 0; footerMap.style.removeProperty('--footer-stretch'); frame = 0; } };
+    window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && atEnd()) push(Math.abs(event.deltaY) * 0.0009); else if (event.deltaY < 0) release(); }, {passive:true});
+    window.addEventListener('touchstart', (event) => { lastTouchY = event.touches[0]?.clientY ?? null; }, {passive:true});
+    window.addEventListener('touchmove', (event) => { const y = event.touches[0]?.clientY ?? lastTouchY; const delta = lastTouchY == null || y == null ? 0 : lastTouchY - y; lastTouchY = y; if (delta > 0 && atEnd()) push(delta * 0.002); else if (delta < 0) release(); }, {passive:true});
+    window.addEventListener('touchend', () => { lastTouchY = null; release(); }, {passive:true});
+    window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
+  })();
+</script>
 </body>
 </html>

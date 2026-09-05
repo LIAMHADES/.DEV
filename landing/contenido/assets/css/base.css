@@ -48,6 +48,10 @@
 
 html {
   scrollbar-width: none;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 html::-webkit-scrollbar {
   display: none;
@@ -60,6 +64,59 @@ body {
   color: var(--t);
   line-height: 1.7;
   overflow-x: hidden;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  max-width: 100%;
+  position: relative;
+}
+
+@supports (overflow: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
+/* Keep shared surfaces fluid when children have intrinsic desktop sizes. */
+main,
+section,
+.container,
+.vid-sec,
+.vid-band,
+.pf-footer-wrap,
+.pf-footer-map {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* The animated footer uses two viewport-wide tiles; contain them so they
+   cannot increase the document scrollWidth. */
+.pf-footer-wrap,
+.pf-footer-map {
+  overflow: hidden !important;
+  contain: paint;
+}
+
+.pf-footer-track {
+  max-width: none;
+  contain: layout paint;
+}
+
+section > *,
+.container > *,
+.vid-sec > * {
+  min-width: 0;
+}
+
+body > section,
+body > .vid-sec,
+body > footer {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 img {
@@ -77,37 +134,42 @@ img {
   width: 0;
 }
 
-/* === SCROLL INDICATOR HORIZONTAL (idéntico a #ticksWrapper de
-   landing/index.html) — 80 rayitas verticales que se activan de izquierda a
-   derecha segun el progreso de scroll. padding-top igual al de index.html
-   (77px). El fondo con degradado va en el wrapper completo (igual que
-   index.html), no en .ti — index.html no aplica ningun fondo extra a .ti. === */
+/* === SCROLL INDICATOR HORIZONTAL — misma pieza visual que index.html === */
 #ticksWrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: center;
-  padding: 77px 0 6px;
-  background: linear-gradient(180deg, rgba(13, 15, 18, 0.5) 0%, transparent 100%);
+  padding: 62px 0 9px;
+  background: transparent;
   pointer-events: none;
-  z-index: 999;
+  z-index: 1000;
 }
 #ticksWrapper .ti {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  gap: 3px;
-  width: 50%;
-  margin: 0 25%;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5px;
+  width: max-content;
+  margin: -1px auto 0;
+  padding: 5px 24px 8px;
+  background: rgba(21, 29, 37, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 24px) 100%, 24px 100%);
 }
 .tick-h {
-  flex: 1;
-  height: 14px;
+  flex: 0 1 11px;
+  width: clamp(5px, 2.1vw, 11px);
+  height: 4px;
   background: rgba(242, 100, 25, 0.08);
   border-radius: 1px;
-  transition: background 0.1s;
+  transform: rotate(-45deg);
+  transition: background 0.1s, box-shadow 0.1s;
 }
 .tick-h.active {
   background: #f26419;
@@ -115,16 +177,21 @@ img {
 }
 
 /* Logo del nav — idéntico al de index.html (.nav-logo, linea 70) */
-#mini-nav .nav-logo {
+#main-nav .nav-logo {
   height: 58px;
   width: auto;
   position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   opacity: 0.9;
   transition: opacity 0.3s;
 }
-#mini-nav .nav-logo:hover {
+#main-nav .nav-logo-link {
+  display: block;
+  line-height: 0;
+}
+#main-nav .nav-logo:hover {
   opacity: 1;
 }
 
@@ -201,6 +268,9 @@ section {
   padding: 5rem 0;
   position: relative;
   z-index: 1;
+}
+section[id] {
+  scroll-margin-top: 72px;
 }
 
 .btn {
@@ -295,7 +365,7 @@ section {
    transparente para no tapar la franja superior de 3px donde vive
    #progress-bar -- si el nav es opaco desde el pixel 0, la barra de progreso
    nunca se llega a ver aunque su JS funcione correctamente. */
-#mini-nav {
+#main-nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -305,22 +375,26 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: transparent;
+   background: rgba(21, 29, 37, 0.88);
   transition: background 0.4s;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
-#mini-nav.scrolled {
-  background: rgba(21, 29, 37, 0.75);
+#main-nav.scrolled {
+  background: rgba(21, 29, 37, 0.88);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(134, 187, 216, 0.08);
 }
-#mini-nav .nl {
+#main-nav .nl {
   font-family: "Bruno Ace SC", sans-serif;
   font-size: 1.1rem;
   letter-spacing: 0.08em;
   color: var(--t);
   text-decoration: none;
 }
-#mini-nav .back-link {
+#main-nav .back-link {
   font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   letter-spacing: 0.1em;
@@ -330,13 +404,18 @@ section {
   opacity: 0.65;
   transition: opacity 0.3s;
 }
-#mini-nav .back-link:hover {
+#main-nav .back-link:hover {
   opacity: 1;
   color: var(--cta);
 }
-#mini-nav .inline-links{display:flex;gap:1.5rem;list-style:none;margin-left:auto;margin-right:3rem}
-#mini-nav .inline-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--t);opacity:0.65;transition:opacity 0.3s}
-#mini-nav .inline-links a:hover{opacity:1;color:var(--cta)}
+#main-nav .inline-links{display:flex;gap:1.5rem;list-style:none;margin-left:auto;margin-right:3rem}
+#main-nav .inline-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--t);opacity:0.65;transition:opacity 0.3s}
+#main-nav .inline-links a:hover{opacity:1;color:var(--cta)}
+#main-nav .ndrop{position:relative}
+#main-nav .ndrop-trigger{cursor:pointer}
+#main-nav .ndrop-menu{position:absolute;top:calc(100% + 0.4rem);right:0;min-width:230px;background:rgba(21,29,37,0.96);backdrop-filter:blur(12px);border:1px solid rgba(134,187,216,0.14);padding:0.4rem;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity 0.25s,visibility 0.25s,transform 0.25s}
+#main-nav .ndrop.open .ndrop-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+#main-nav .ndrop-menu a{display:block;padding:0.65rem 0.85rem;white-space:nowrap}
 
 /* === NUMBER INPUTS — botones +/- personalizados naranjas === */
 input[type=number]{-moz-appearance:textfield}
@@ -344,7 +423,7 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button{display:none}
 .num-wrap{position:relative;display:flex;width:100%}
 .num-wrap input[type=number]{flex:1;padding-right:4rem}
-.num-btn{position:absolute;right:0;width:2.2rem;border:2px solid var(--cta);font-size:1.2rem;font-weight:700;cursor:pointer;z-index:2;color:var(--cta);background:transparent}
+.num-btn{position:absolute;right:0;width:2.2rem;border:1px solid var(--cta);font-size:1.2rem;font-weight:700;cursor:pointer;z-index:2;color:var(--cta);background:transparent}
 .num-btn:hover{background:var(--cta);color:#fff}
 .num-inc{top:0;height:50%;border-radius:0 4px 0 0}
 .num-dec{bottom:0;height:50%;border-radius:0 0 4px 0}
@@ -374,6 +453,7 @@ select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   position: fixed;
   top: 1rem;
   right: 2rem;
+  will-change: transform;
 }
 .nav-toggle span {
   display: block;
@@ -385,6 +465,10 @@ select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
 }
 .nav-toggle:hover span {
   background: var(--cta);
+}
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--hl);
+  outline-offset: 4px;
 }
 .nav-toggle.active span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
@@ -399,20 +483,24 @@ select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
 
 .nav-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   z-index: 1002;
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: none;
   background: rgba(21, 29, 37, 0.96);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.4s, visibility 0.4s;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
 }
 .nav-overlay::-webkit-scrollbar {
   display: none;
@@ -423,7 +511,8 @@ select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   pointer-events: auto;
 }
 .nav-overlay-inner {
-  min-height: calc(100vh + 1px);
+  min-height: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -431,11 +520,22 @@ select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   padding: 10rem 0 20rem;
   width: 100%;
 }
-.nav-overlay .nav-logo-ov {
+html.menu-open,
+body.menu-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+.nav-overlay .nav-logo-ov,
+.nav-overlay .ov-logo {
   height: 58px;
   width: auto;
   opacity: 0.9;
   margin-bottom: 2rem;
+}
+.ov-logo-link {
+  display: block;
+  line-height: 0;
+  margin-bottom: 1.2rem;
 }
 .nav-full-links {
   list-style: none;
@@ -446,6 +546,9 @@ select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   flex-direction: column;
   gap: 0.1rem;
   width: 100%;
+}
+.nav-full-links > .nl-item + .nl-item {
+  border-top: 1px solid rgba(134, 187, 216, 0.14);
 }
 .nav-full-links a {
   font-family: "Bruno Ace SC", sans-serif;
@@ -522,7 +625,7 @@ select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   opacity: 0;
 }
 .nav-full-links .ndrop-sub.open {
-  max-height: 200px;
+  max-height: 600px;
   opacity: 1;
 }
 .nav-full-links .ndrop-sub a {
@@ -558,6 +661,7 @@ select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   height: 10px;
   background: rgba(242, 100, 25, 0.08);
   border-radius: 1px;
+  transform: rotate(-45deg);
   transition: background 0.15s, box-shadow 0.15s;
 }
 .ov-ticks .ov-t.on {
@@ -575,6 +679,11 @@ footer {
   letter-spacing: 0.12em;
 }
 
+/* Secondary pages keep the animated map, but at a quieter footprint than Home. */
+.pf-footer-map {
+  height: 224px !important;
+}
+
 /* Estimacion / disclaimer, comun a las 3 paginas */
 .disclaimer {
   font-family: "JetBrains Mono", monospace;
@@ -587,42 +696,48 @@ footer {
   text-align: center;
 }
 
+@media (max-width: 1045px) {
+  #main-nav .inline-links{display:none}
+  .nav-toggle{display:flex}
+}
+
 @media (max-width: 768px) {
   section {
     padding: 3.5rem 0;
   }
-  #mini-nav .inline-links{display:none}
-  #mini-nav .back-link{display:none}
+  #main-nav .back-link{display:none}
   /* Nav: evitar que el logo tape "ARES GPS" y la hamburguesa en pantallas estrechas */
-  #mini-nav{padding:0.85rem 1.25rem}
-  #mini-nav .nl{font-size:1.15rem}
-  #mini-nav .nav-logo{height:42px}
+  #main-nav{padding:0.85rem 1.25rem}
+  #main-nav .nl{font-size:1.15rem}
+  #main-nav .nav-logo{height:42px}
   .nav-toggle{right:1.25rem}
   /* Overlay del menú: texto que quepa sin cortarse por los lados */
-  .nav-overlay-inner{padding:2rem 1.25rem 3rem;min-height:100dvh}
+  .nav-overlay-inner{padding: max(5.5rem,calc(env(safe-area-inset-top) + 4rem)) 1.25rem max(4rem,env(safe-area-inset-bottom));min-height:100%}
   .nav-full-links{gap:0.2rem}
   .nav-full-links a,.nav-full-links .ndrop-trigger{font-size:clamp(1.5rem,6vw,2.1rem);padding:0.45rem 0}
   .nav-overlay .nav-logo-ov{height:56px;margin-bottom:1rem}
-  /* Barras de scroll: ensanchar y subir para que se vean en móvil */
-  #ticksWrapper{padding:60px 0 5px}
-  #ticksWrapper .ti{width:calc(100% - 2rem);margin:0 1rem;gap:2px}
+  /* Indicador: misma lengüeta completa y diagonal que index.html */
+  #ticksWrapper{padding:55px 0 7px}
+  #ticksWrapper .ti{width:100%;max-width:100%;margin:-1px 0 0;gap:1.5px;justify-content:center;padding-inline:1rem}
+  .container{padding-inline:1.25rem}
+  .pf-footer-map{overflow:hidden}
 }
 
 @media (max-width: 480px) {
-  #mini-nav{padding:0.8rem 1rem}
-  #mini-nav .nl{font-size:1.05rem;letter-spacing:0.05em}
-  #mini-nav .nav-logo{height:38px}
+  #main-nav{padding:0.8rem 1rem}
+  #main-nav .nl{font-size:1.05rem;letter-spacing:0.05em}
+  #main-nav .nav-logo{height:38px}
   .nav-toggle{right:1rem}
 }
 
 @media (max-width: 400px) {
-  #mini-nav .nl{font-size:0.95rem;letter-spacing:0.03em}
-  #mini-nav .nav-logo{height:32px}
+  #main-nav .nl{font-size:0.95rem;letter-spacing:0.03em}
+  #main-nav .nav-logo{height:32px}
   .nav-full-links a,.nav-full-links .ndrop-trigger{font-size:clamp(1.25rem,6.5vw,1.7rem)}
   .nav-overlay-inner{padding:1.5rem 0.75rem 2.5rem}
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1046px) {
   .nav-toggle{display:none !important}
 }
 
@@ -634,4 +749,105 @@ footer {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Keep the content-page overlay identical to the landing overlay. */
+@media (max-width: 768px) {
+  .nav-overlay-inner {
+    padding: 4vh 1rem 5rem;
+    max-width: 90vw;
+    margin: 0 auto;
+    min-height: auto;
+  }
+  .nav-overlay .nav-logo-ov,
+  .nav-overlay .ov-logo {
+    height: 84px;
+    margin-bottom: 1rem;
+  }
+  .nav-full-links a,
+  .nav-full-links .ndrop-trigger,
+  .nav-full-links .ndrop-trigger-static {
+    font-size: clamp(1.5rem, 6vw, 2.4rem);
+  }
+  .nav-full-links .ndrop-sub a {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+  }
+}
+
+/* Final mobile overrides must come after the legacy 768/480 rules above. */
+@media (max-width: 900px) {
+  #main-nav {
+    min-height: 52px;
+    padding: 0.85rem 1.25rem;
+  }
+  #main-nav .nl {
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+  }
+  #main-nav .nav-logo {
+    height: 42px;
+  }
+  #main-nav .inline-links,
+  #main-nav .back-link {
+    display: none;
+  }
+  .nav-toggle {
+    display: flex;
+    top: 1rem;
+    right: 1.25rem;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    transform: none;
+    transform-origin: center;
+    align-items: stretch;
+  }
+  .nav-toggle span {
+    width: 24px;
+    height: 2px;
+    flex: 0 0 2px;
+  }
+  #ticksWrapper {
+    padding-top: 52px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ares-consent-banner {
+    left: 0.75rem !important;
+    right: 0.75rem !important;
+    bottom: 0.75rem !important;
+    max-width: calc(100% - 1.5rem) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+    padding: 0.85rem !important;
+  }
+  .ares-consent-copy { max-width: none !important; }
+  .ares-consent-actions {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 0.5rem !important;
+  }
+  .ares-consent-actions button {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0.65rem 0.45rem !important;
+    font-size: 9px !important;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  #main-nav { padding: 0.8rem 1rem; }
+  #main-nav .nav-logo { height: 38px; }
+  .nav-toggle { right: 1rem; }
+}
+
+@media (max-width: 400px) {
+  #main-nav .nav-logo { height: 32px; }
 }

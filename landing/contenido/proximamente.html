@@ -69,53 +69,66 @@
 #pv-lead-wrap.visible{display:block}
 
 /* === FOOTER MAP === */
-.pf-footer-wrap{position:relative;margin-top:0}
-.pf-footer-map{position:relative;width:100%;height:280px;overflow:hidden;background:var(--bg)}
+.pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:visible}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:visible;background:var(--bg)}
 /* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
-.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content}
-.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:blur(0.5px)}
-@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(-100vw)}}
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px;overflow:visible;will-change:transform}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scaleY(calc(1 + var(--footer-stretch,0)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
+.pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
+.pf-footer-wrap,.pf-footer-map,.pf-footer-track,footer{overflow:visible!important;contain:none!important}
+.pf-footer-wrap,.pf-footer-map,.pf-footer-track{overflow:visible!important;contain:none!important}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px))}}
 @media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
 @media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
 .pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
 .pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
 .pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px}}
+
+@media(max-width:768px){
+  #hero{min-height:clamp(520px,72svh,680px)}
+  #hero-bg canvas{height:100%!important;min-height:0!important}
+}
 
 .sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
 .sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
 section:first-of-type{clip-path:none}
+
+/* Encaje 45: la cadena usa una unica diagonal entre secciones. */
+#hero{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+#expectativa,#preventa{margin-top:-40px}
+#preventa{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+#preventa{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
 </style>
+<script src="../assets/js/analytics.js"></script>
 </head>
 <body>
 
 <div id="progress-bar"></div>
 <div class="scroll-indicator-horizontal" id="ticksWrapper"></div>
 
-<button class="nav-toggle" id="navToggle">
+<button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="navOverlay" aria-expanded="false">
   <span></span><span></span><span></span>
 </button>
-<nav id="mini-nav">
+<nav id="main-nav">
   <a href="../index.html" class="nl">ARES GPS</a>
-  <img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo">
+  <a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a>
   <ul class="inline-links">
-    <li><a href="../index.html">Inicio</a></li>
-    <li><a href="../index.html#conoce">Dispositivo</a></li>
+    <li><a href="../index.html#como-funciona">Cómo funciona</a></li>
+    <li><a href="../index.html#extras">Extras</a></li>
+    <li><a href="../index.html#planes">Planes</a></li>
     <li><a href="pricing.html">Precios</a></li>
+    <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
+      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
+    </li>
   </ul>
 </nav>
-<div class="nav-overlay" id="navOverlay">
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Menú principal" tabindex="-1">
   <div class="nav-overlay-inner">
-    <img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo-ov">
+    <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
     <ul class="nav-full-links">
-      <li class="nl-item"><a href="../index.html">Inicio</a></li>
-      <li class="nl-item"><a href="pricing.html">Precios</a></li>
-      <li class="nl-item"><a href="actividad.html">Actividad</a></li>
-      <li class="nl-item"><a href="descanso.html">Descanso</a></li>
-      <li class="nl-item"><a href="comunidad.html">Comunidad</a></li>
-      <li class="nl-item"><a href="geocerca.html">Geocerca</a></li>
-      <li class="nl-item"><a href="calculadora.html">Calculadora</a></li>
-      <li class="nl-item"><a href="pet-friendly.html">Pet-friendly</a></li>
-      <li class="nl-item nl-current"><a>Próximamente</a></li>
+      <li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#expectativa">Qué viene</a></li><li class="nl-item"><a href="#preventa">Reservar mi ARES</a></li>
+      <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
     </ul>
   </div>
 </div>
@@ -215,6 +228,13 @@ section:first-of-type{clip-path:none}
               <label class="pv-choice"><input type="radio" name="pv-precio" value="100_150"><span>Entre 100€ y 150€</span></label>
               <label class="pv-choice"><input type="radio" name="pv-precio" value="150_200"><span>Entre 150€ y 200€</span></label>
               <label class="pv-choice"><input type="radio" name="pv-precio" value="no_compraria"><span>No lo compraría</span></label>
+            </div>
+          </div>
+          <div class="pv-q">¿Qué modelo preferirías probar?</div>
+          <div class="pv-field">
+            <div class="pv-choices">
+              <label class="pv-choice"><input type="radio" name="pv-modelo" value="suscripcion_visible"><span>Precio del dispositivo + suscripción mensual</span></label>
+              <label class="pv-choice"><input type="radio" name="pv-modelo" value="suscripcion_incluida"><span>Dispositivo con suscripción mensual incluida en el servicio</span></label>
             </div>
           </div>
           <div class="pv-nav">
@@ -317,6 +337,10 @@ section:first-of-type{clip-path:none}
    ============================================ */
 (function(){
   const lines = [...document.querySelectorAll('.exp-line')];
+  if(!('IntersectionObserver' in window)){
+    lines.forEach(l=>l.classList.add('show'));
+    return;
+  }
   const observer = new IntersectionObserver((entries)=>{
     entries.forEach((entry, i)=>{
       if(entry.isIntersecting){
@@ -380,6 +404,7 @@ section:first-of-type{clip-path:none}
     }
     if(n===4){
       if(!form.querySelector('input[name="pv-precio"]:checked')){ errEl.textContent='Selecciona un rango de precio.'; return false; }
+      if(!form.querySelector('input[name="pv-modelo"]:checked')){ errEl.textContent='Selecciona el modelo que prefieres.'; return false; }
     }
     return true;
   }
@@ -402,6 +427,7 @@ section:first-of-type{clip-path:none}
       tamano: form.querySelector('input[name="pv-tamano"]:checked').value,
       preocupaciones: [...form.querySelectorAll('input[name="pv-preocupa"]:checked')].map(el=>el.value),
       precioDispuesto: form.querySelector('input[name="pv-precio"]:checked').value,
+      modeloPreferido: form.querySelector('input[name="pv-modelo"]:checked').value,
       createdAt: new Date().toISOString(),
     };
 
@@ -414,8 +440,16 @@ section:first-of-type{clip-path:none}
     } catch(err){ /* localStorage no disponible: no bloquea el flujo */ }
 
     console.log('[ARES preventa] Respuesta de cuestionario (placeholder, guardar junto al lead):', response);
+     if(window.aresAnalytics) window.aresAnalytics.track('preventa_qualification', {
+       dogs: response.numPerros,
+       size: response.tamano,
+       concerns: response.preocupaciones.join(','),
+       price_range: response.precioDispuesto,
+       preferred_model: response.modeloPreferido,
+     });
+     try { sessionStorage.setItem('ares_pending_qualification_v1', JSON.stringify(response)); } catch(err) {}
 
-    document.getElementById('pv-form-wrap').style.display = 'none';
+     document.getElementById('pv-form-wrap').style.display = 'none';
     document.getElementById('pv-progress').style.display = 'none';
     document.getElementById('pv-lead-wrap').classList.add('visible');
 
@@ -432,7 +466,7 @@ section:first-of-type{clip-path:none}
    ============================================ */
 (function(){
   const bar = document.getElementById('progress-bar');
-  const nav = document.getElementById('mini-nav');
+  const nav = document.getElementById('main-nav');
   if(!bar) return;
   function update(){
     const h = document.documentElement;
@@ -449,8 +483,8 @@ section:first-of-type{clip-path:none}
 
 /* ============================================
    INDICADOR DE SCROLL HORIZONTAL (#ticksWrapper) — mismo patron visual que
-   landing/index.html (80 rayitas verticales que se activan de izquierda a
-   derecha). index.html usa Lenis para el calculo de scroll/limit; esta pagina
+   landing/index.html (48 rayitas en todos los viewports, diagonales a 45 grados).
+   Esta pagina
    no usa Lenis, asi que se adapta a scroll nativo del navegador.
    ============================================ */
 (function(){
@@ -459,7 +493,8 @@ section:first-of-type{clip-path:none}
   const inner = document.createElement('div');
   inner.className = 'ti';
   el.appendChild(inner);
-  for(let i=0;i<80;i++){
+    const count = 48;
+   for(let i=0;i<count;i++){
     const t = document.createElement('div');
     t.className = 'tick-h';
     inner.appendChild(t);
@@ -469,14 +504,32 @@ section:first-of-type{clip-path:none}
     const h = document.documentElement;
     const scroll = h.scrollTop;
     const limit = h.scrollHeight - h.clientHeight;
-    const active = limit > 0 ? Math.round(scroll/limit*80) : 0;
-    ticks.forEach((t,i)=> t.classList.toggle('active', i<active));
+     const active = limit > 0 ? Math.round((scroll/limit)*(count-1)) : 0;
+     ticks.forEach((t,i)=> t.classList.toggle('active', i<=active));
   }
   document.addEventListener('scroll', updateTicks, { passive:true });
   updateTicks();
 })();
 </script>
 <script src="assets/js/mobile-menu.js"></script>
+<script src="assets/js/scroll-indicator.js"></script>
 <script src="assets/js/typewriter.js"></script>
+<script>
+  (() => {
+    const footerMap = document.querySelector('.pf-footer-map');
+    if (!footerMap) return;
+    let target = 0, current = 0, lastInput = 0, lastTouchY = null, frame = 0;
+    const maxStretch = 0.12;
+    const atEnd = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    const release = () => { target = 0; lastInput = 0; if (!frame) frame = requestAnimationFrame(tick); };
+    const push = (amount) => { target = Math.min(maxStretch, target + Math.min(maxStretch, amount)); lastInput = performance.now(); if (!frame) frame = requestAnimationFrame(tick); };
+    const tick = (now) => { const elapsed = now - lastInput; if (elapsed > 90) target = Math.max(0, target - 0.12 * Math.min(1, (elapsed - 90) / 140)); current += (target - current) * 0.22; footerMap.style.setProperty('--footer-stretch', current.toFixed(4)); if (Math.abs(current - target) > 0.0005 || target > 0.0005) frame = requestAnimationFrame(tick); else { current = 0; target = 0; footerMap.style.removeProperty('--footer-stretch'); frame = 0; } };
+    window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && atEnd()) push(Math.abs(event.deltaY) * 0.0009); else if (event.deltaY < 0) release(); }, {passive:true});
+    window.addEventListener('touchstart', (event) => { lastTouchY = event.touches[0]?.clientY ?? null; }, {passive:true});
+    window.addEventListener('touchmove', (event) => { const y = event.touches[0]?.clientY ?? lastTouchY; const delta = lastTouchY == null || y == null ? 0 : lastTouchY - y; lastTouchY = y; if (delta > 0 && atEnd()) push(delta * 0.002); else if (delta < 0) release(); }, {passive:true});
+    window.addEventListener('touchend', () => { lastTouchY = null; release(); }, {passive:true});
+    window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
+  })();
+</script>
 </body>
 </html>

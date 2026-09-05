@@ -36,7 +36,7 @@
 .city-overlay{position:fixed;inset:0;z-index:10001;background:rgba(21,29,37,0.97);backdrop-filter:blur(20px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.4s,visibility 0.4s;overflow-y:auto;scrollbar-width:none}
 .city-overlay::-webkit-scrollbar{display:none}
 .city-overlay.open{opacity:1;visibility:visible;pointer-events:auto}
-body.ov-open #progress-bar,body.ov-open #ticksWrapper,body.ov-open .nav-toggle,body.ov-open #pf-contexto,body.ov-open .sec-light,body.ov-open footer,body.ov-open #results-section,body.ov-open #pf-layout,body.ov-open #mini-nav,body.ov-open .back-link{opacity:0;pointer-events:none;z-index:0}
+body.ov-open #progress-bar,body.ov-open #ticksWrapper,body.ov-open .nav-toggle,body.ov-open #pf-contexto,body.ov-open .sec-light,body.ov-open footer,body.ov-open #results-section,body.ov-open #pf-layout,body.ov-open #main-nav,body.ov-open .back-link{opacity:0;pointer-events:none;z-index:0}
 .city-overlay-inner{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem}
 .city-overlay-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--t2);text-transform:uppercase;margin-bottom:1.5rem}
 .city-search{width:100%;max-width:360px;background:rgba(32,48,61,0.6);border:1px solid rgba(240,242,245,0.15);color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.85rem;padding:0.75rem 1.2rem;margin-bottom:2rem;border-radius:0;text-align:center;transition:border-color 0.3s;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
@@ -94,7 +94,11 @@ body.ov-open #progress-bar,body.ov-open #ticksWrapper,body.ov-open .nav-toggle,b
 .pf-card .pf-type{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--hl);margin-bottom:0.6rem}
 .pf-card h4{font-size:0.95rem;margin-bottom:0.5rem;color:var(--t)}
 .pf-card .pf-addr{font-size:0.8rem;color:var(--t2);line-height:1.6}
-.pf-card .pf-pet{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.06em;color:var(--deco);text-transform:uppercase;margin-top:0.9rem;display:flex;align-items:center;gap:0.35rem}
+.pf-card .pf-actions{display:flex;gap:0.5rem;margin-top:0.9rem}
+.pf-card .pf-action{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--deco);background:transparent;border:1px solid rgba(134,187,216,0.25);padding:0.35rem 0.7rem;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);cursor:pointer;display:inline-flex;align-items:center;gap:0.35rem;transition:border-color 0.3s,color 0.3s}
+.pf-card .pf-action:hover{border-color:rgba(134,187,216,0.6)}
+.pf-card .pf-action .material-symbols-outlined{font-size:12px}
+.pf-card .pf-action.pf-copy-done{color:var(--hl)}
 
 .no-results{text-align:center;padding:3rem 0;color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:11px}
 
@@ -109,49 +113,61 @@ body.ov-open #progress-bar,body.ov-open #ticksWrapper,body.ov-open .nav-toggle,b
 .pf-cta-sub{font-family:'Orbitron',sans-serif;font-size:0.8rem;color:var(--t2);margin-bottom:1.8rem}
 
 /* === FOOTER MAP === */
-.pf-footer-wrap{position:relative;margin-top:0}
-.pf-footer-map{position:relative;width:100%;height:280px;overflow:hidden;background:var(--bg)}
+.pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:visible}
+.pf-footer-map{position:relative;width:100%;height:280px;overflow:visible;background:var(--bg)}
 /* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
-.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content}
-.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:contain;opacity:0.45;filter:blur(0.5px)}
-@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(-100vw)}}
+.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px;overflow:visible;will-change:transform}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scaleY(calc(1 + var(--footer-stretch,0)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
+.pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
+.pf-footer-wrap,.pf-footer-map,.pf-footer-track,footer{overflow:visible!important;contain:none!important}
+.pf-footer-wrap,.pf-footer-map,.pf-footer-track{overflow:visible!important;contain:none!important}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px))}}
 @media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
 @media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
 .pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
 .pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
 .pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px}}
 
 .sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
 .sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
 section:first-of-type{clip-path:none}
+
+/* Encaje 45: las dos uniones quedan solapadas y sin fondo expuesto. */
+#hero{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+#results-section{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+#pf-contexto{margin-top:-40px}
+#pf-contexto{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
 </style>
+<script src="../assets/js/analytics.js"></script>
 </head>
 <body>
 
 <div id="progress-bar"></div>
 <div class="scroll-indicator-horizontal" id="ticksWrapper"></div>
 
-<button class="nav-toggle" id="navToggle">
+<button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="navOverlay" aria-expanded="false">
   <span></span><span></span><span></span>
 </button>
-<nav id="mini-nav">
+<nav id="main-nav">
   <a href="../index.html" class="nl">ARES GPS</a>
-  <img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo">
-  <a href="../index.html" class="back-link">&larr; Volver a ARES GPS</a>
+  <a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a>
+  <ul class="inline-links">
+    <li><a href="../index.html#como-funciona">Cómo funciona</a></li>
+    <li><a href="../index.html#extras">Extras</a></li>
+    <li><a href="../index.html#planes">Planes</a></li>
+    <li><a href="pricing.html">Precios</a></li>
+    <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
+      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
+    </li>
+  </ul>
 </nav>
-<div class="nav-overlay" id="navOverlay">
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Menú principal" tabindex="-1">
   <div class="nav-overlay-inner">
-    <img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo-ov">
+    <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
     <ul class="nav-full-links">
-      <li class="nl-item"><a href="../index.html">Inicio</a></li>
-      <li class="nl-item"><a href="pricing.html">Precios</a></li>
-      <li class="nl-item"><a href="actividad.html">Actividad</a></li>
-      <li class="nl-item"><a href="descanso.html">Descanso</a></li>
-      <li class="nl-item"><a href="comunidad.html">Comunidad</a></li>
-      <li class="nl-item"><a href="geocerca.html">Geocerca</a></li>
-      <li class="nl-item"><a href="calculadora.html">Calculadora</a></li>
-      <li class="nl-item nl-current"><a>Pet-friendly</a></li>
-      <li class="nl-item"><a href="proximamente.html">Próximamente</a></li>
+      <li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#results-section">Buscar sitios</a></li><li class="nl-item"><a href="#pf-contexto">Cómo funciona</a></li><li class="nl-item"><a href="#pf-cta">Avísame cuando lleguemos</a></li>
+      <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
     </ul>
   </div>
 </div>
@@ -366,6 +382,17 @@ buildPrism('prism-hero');
   let activeFilters = new Set();
   let currentCityLabel = '';
 
+  function fallbackCopy(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta);
+  }
+
   function ensureMap(){
     if(map || !window.L) return map;
     map = L.map('pf-map', { zoomControl: true, attributionControl: true });
@@ -477,9 +504,30 @@ buildPrism('prism-hero');
           <div class="pf-type">${typeLabels[site.tipo] || site.tipo}</div>
           <h4>${site.nombre}</h4>
           <div class="pf-addr">${site.direccion}</div>
-          <div class="pf-pet"><span class="material-symbols-outlined" style="font-size:12px">pets</span> Admite perros</div>
+          <div class="pf-actions">
+            <button type="button" class="pf-action pf-copy" data-addr="${site.direccion.replace(/"/g,'&quot;')}" aria-label="Copiar dirección"><span class="material-symbols-outlined" style="font-size:12px">content_copy</span> <span class="pf-copy-label">Copiar</span></button>
+          </div>
         `;
         resultsGrid.appendChild(card);
+
+        const copyBtn = card.querySelector('.pf-copy');
+        copyBtn.addEventListener('click', (e)=>{
+          e.stopPropagation();
+          const addr = copyBtn.dataset.addr;
+          const done = ()=>{
+            copyBtn.classList.add('pf-copy-done');
+            copyBtn.querySelector('.pf-copy-label').textContent = '¡Copiada!';
+            setTimeout(()=>{
+              copyBtn.classList.remove('pf-copy-done');
+              copyBtn.querySelector('.pf-copy-label').textContent = 'Copiar';
+            }, 1600);
+          };
+          if(navigator.clipboard && navigator.clipboard.writeText){
+            navigator.clipboard.writeText(addr).then(done).catch(()=>{ fallbackCopy(addr); done(); });
+          } else {
+            fallbackCopy(addr); done();
+          }
+        });
 
         let marker = null;
         if(map && site.lat && site.lng){
@@ -520,7 +568,7 @@ buildPrism('prism-hero');
    ============================================ */
 (function(){
   const bar = document.getElementById('progress-bar');
-  const nav = document.getElementById('mini-nav');
+  const nav = document.getElementById('main-nav');
   if(!bar) return;
   function update(){
     const h = document.documentElement;
@@ -537,8 +585,8 @@ buildPrism('prism-hero');
 
 /* ============================================
    INDICADOR DE SCROLL HORIZONTAL (#ticksWrapper) — mismo patron visual que
-   landing/index.html (80 rayitas verticales que se activan de izquierda a
-   derecha). index.html usa Lenis para el calculo de scroll/limit; esta pagina
+   landing/index.html (48 rayitas en todos los viewports, diagonales a 45 grados).
+   Esta pagina
    no usa Lenis, asi que se adapta a scroll nativo del navegador.
    ============================================ */
 (function(){
@@ -547,7 +595,8 @@ buildPrism('prism-hero');
   const inner = document.createElement('div');
   inner.className = 'ti';
   el.appendChild(inner);
-  for(let i=0;i<80;i++){
+    const count = 48;
+   for(let i=0;i<count;i++){
     const t = document.createElement('div');
     t.className = 'tick-h';
     inner.appendChild(t);
@@ -557,14 +606,32 @@ buildPrism('prism-hero');
     const h = document.documentElement;
     const scroll = h.scrollTop;
     const limit = h.scrollHeight - h.clientHeight;
-    const active = limit > 0 ? Math.round(scroll/limit*80) : 0;
-    ticks.forEach((t,i)=> t.classList.toggle('active', i<active));
+     const active = limit > 0 ? Math.round((scroll/limit)*(count-1)) : 0;
+     ticks.forEach((t,i)=> t.classList.toggle('active', i<=active));
   }
   document.addEventListener('scroll', updateTicks, { passive:true });
   updateTicks();
 })();
 </script>
 <script src="assets/js/mobile-menu.js"></script>
+<script src="assets/js/scroll-indicator.js"></script>
 <script src="assets/js/typewriter.js"></script>
+<script>
+  (() => {
+    const footerMap = document.querySelector('.pf-footer-map');
+    if (!footerMap) return;
+    let target = 0, current = 0, lastInput = 0, lastTouchY = null, frame = 0;
+    const maxStretch = 0.12;
+    const atEnd = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    const release = () => { target = 0; lastInput = 0; if (!frame) frame = requestAnimationFrame(tick); };
+    const push = (amount) => { target = Math.min(maxStretch, target + Math.min(maxStretch, amount)); lastInput = performance.now(); if (!frame) frame = requestAnimationFrame(tick); };
+    const tick = (now) => { const elapsed = now - lastInput; if (elapsed > 90) target = Math.max(0, target - 0.12 * Math.min(1, (elapsed - 90) / 140)); current += (target - current) * 0.22; footerMap.style.setProperty('--footer-stretch', current.toFixed(4)); if (Math.abs(current - target) > 0.0005 || target > 0.0005) frame = requestAnimationFrame(tick); else { current = 0; target = 0; footerMap.style.removeProperty('--footer-stretch'); frame = 0; } };
+    window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && atEnd()) push(Math.abs(event.deltaY) * 0.0009); else if (event.deltaY < 0) release(); }, {passive:true});
+    window.addEventListener('touchstart', (event) => { lastTouchY = event.touches[0]?.clientY ?? null; }, {passive:true});
+    window.addEventListener('touchmove', (event) => { const y = event.touches[0]?.clientY ?? lastTouchY; const delta = lastTouchY == null || y == null ? 0 : lastTouchY - y; lastTouchY = y; if (delta > 0 && atEnd()) push(delta * 0.002); else if (delta < 0) release(); }, {passive:true});
+    window.addEventListener('touchend', () => { lastTouchY = null; release(); }, {passive:true});
+    window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
+  })();
+</script>
 </body>
 </html>

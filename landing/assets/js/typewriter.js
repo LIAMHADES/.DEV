@@ -30,7 +30,6 @@
   }
 
   var TICK = 18;
-  var i = 0;
 
   els.forEach(function (el) {
     var full = el.getAttribute('data-type');
@@ -49,8 +48,17 @@
     el._tw = { ghost: ghost, typed: typed, full: full, tick: words > 15 ? TICK / 2 : TICK };
   });
 
+  function finish(el) {
+    var t = el._tw;
+    if (!t || t.done) return;
+    t.done = true;
+    el.textContent = t.full;
+  }
+
   function type(el, done) {
     var t = el._tw;
+    if (t.started) return;
+    t.started = true;
     var cursor = document.createElement('span');
     cursor.className = 'tw-cursor';
     cursor.setAttribute('aria-hidden', 'true');
@@ -62,21 +70,20 @@
         pos++;
         setTimeout(step, t.tick);
       } else {
-        cursor.parentNode && cursor.parentNode.removeChild(cursor);
-        el.removeChild(t.ghost);
-        t.typed.style.position = 'static';
-        t.typed.removeAttribute('aria-hidden');
-        setTimeout(done, 260);
+        finish(el);
+        if (done) setTimeout(done, 260);
       }
     })();
   }
 
   function next() {
-    if (i < els.length) {
-      var el = els[i++];
-      type(el, next);
-    }
+    els.forEach(function (el) { type(el); });
   }
 
-  setTimeout(next, 650);
+  var intro = document.getElementById('intro-overlay');
+  if (intro && !intro.classList.contains('hidden')) {
+    document.getElementById('intro-btn').addEventListener('click', function () { next(); }, { once: true });
+  } else {
+    setTimeout(next, 650);
+  }
 })();
