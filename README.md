@@ -32,3 +32,7 @@ Landing pública del tracker GPS y bienestar para perros.
 | Página | Link |
 |--------|------|
 | Landing | [ARES GPS](https://LIAMHADES.github.io/.DEV/projects/ares/index.html) |
+
+> Estado: la URL pública estable es la anterior y no necesita `?deploy=0f90ce9`.
+>
+> Pendiente: renombrar `projects/ares/index.html` a un nombre más descriptivo, por ejemplo `ares-gps-home.html`, y actualizar las rutas internas y este enlace.
