@@ -136,8 +136,9 @@ html.menu-open,body.menu-open{overflow:hidden;overscroll-behavior:none}
  .ov-logo-link{display:block;line-height:0}
 .nav-overlay.open .ov-logo{opacity:1;transform:translateY(0);transition-delay:0.5s}
 .nav-full-links{list-style:none;padding:0;margin:0;text-align:center;display:flex;flex-direction:column;gap:0.1rem;width:100%;perspective:600px}
-.nav-full-links>.nl-item{width:min(100%,42rem);margin-inline:auto;min-width:0}
- .nav-full-links>.nl-item+.nl-item{border-top:3px solid rgba(134,187,216,0.14);padding-top:0.35rem}
+ .nav-full-links>.nl-item{width:min(100%,42rem);margin-inline:auto;min-width:0;position:relative}
+  .nav-full-links>.nl-item+.nl-item{padding-top:0.35rem}
+ .nav-overlay .nl-item+.nl-item::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:rgba(134,187,216,0.14);opacity:0;transform:scaleX(0);transform-origin:center}
 .nav-full-links a{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(3.8rem,8vw,4.5rem);color:var(--t);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;padding:0.3rem 0;display:block;text-align:center;width:100%;transition:color 0.3s,opacity 0.3s,transform 0.4s}
 .nav-full-links a{min-width:0;max-width:100%;overflow-wrap:anywhere;text-wrap:balance}
 .nav-full-links a:hover{color:var(--hl);transform:rotateX(-8deg) rotateY(15deg) scale(1.08)}
@@ -150,8 +151,16 @@ html.menu-open,body.menu-open{overflow:hidden;overscroll-behavior:none}
 .nav-overlay.open .nl-item:nth-child(5) a{animation-delay:0.26s}
 .nav-overlay.open .nl-item:nth-child(6) a{animation-delay:0.19s}
 .nav-overlay.open .nl-item:nth-child(7) a{animation-delay:0.12s}
-.nav-overlay.open .nl-item:nth-child(8) a{animation-delay:0.05s}
-@keyframes navStagger{0%{opacity:0;transform:translateY(-40px)}100%{opacity:1;transform:translateY(0)}}
+ .nav-overlay.open .nl-item:nth-child(8) a{animation-delay:0.05s}
+ .nav-overlay.open .nl-item:nth-child(2)::before{animation:navDividerStagger 0.5s both;animation-delay:0.47s}
+ .nav-overlay.open .nl-item:nth-child(3)::before{animation:navDividerStagger 0.5s both;animation-delay:0.4s}
+ .nav-overlay.open .nl-item:nth-child(4)::before{animation:navDividerStagger 0.5s both;animation-delay:0.33s}
+ .nav-overlay.open .nl-item:nth-child(5)::before{animation:navDividerStagger 0.5s both;animation-delay:0.26s}
+ .nav-overlay.open .nl-item:nth-child(6)::before{animation:navDividerStagger 0.5s both;animation-delay:0.19s}
+ .nav-overlay.open .nl-item:nth-child(7)::before{animation:navDividerStagger 0.5s both;animation-delay:0.12s}
+ .nav-overlay.open .nl-item:nth-child(8)::before{animation:navDividerStagger 0.5s both;animation-delay:0.05s}
+ @keyframes navStagger{0%{opacity:0;transform:translateY(-40px)}100%{opacity:1;transform:translateY(0)}}
+ @keyframes navDividerStagger{0%{opacity:0;transform:scaleX(0)}100%{opacity:1;transform:scaleX(1)}}
 .nav-full-links a:hover{color:var(--hl)}
 .nav-full-links .ndrop-trigger{font-size:clamp(3.8rem,8vw,4.5rem);cursor:pointer;color:var(--t);background:none;border:none;padding:0.3rem 0;display:block;letter-spacing:0.06em;text-transform:uppercase;text-align:center;width:100%}
 .nav-full-links .ndrop-trigger::after{content:'';display:inline-block;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-left:0.4rem;margin-bottom:0.4rem;transition:transform 0.3s;vertical-align:middle}
@@ -198,8 +207,8 @@ html.menu-open,body.menu-open{overflow:hidden;overscroll-behavior:none}
 @media(prefers-reduced-motion:reduce){.vid-band{position:relative;height:56.25vw;min-height:220px}}
 
 /* === STATIC HERO TITLE === */
-#hero h1 .ares-tag{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(3rem,23vw,8rem);color:var(--t);letter-spacing:0.05em;display:inline-block;text-align:center;will-change:transform}
-@media(max-width:768px){#hero h1 .ares-tag{font-size:clamp(3.5rem,18vw,6rem);letter-spacing:-0.02em;max-width:100%}}
+#hero h1 .ares-tag{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(3.78rem,27.6vw,10.08rem);color:var(--t);letter-spacing:0.05em;display:inline-block;text-align:center;will-change:transform}
+@media(max-width:768px){#hero h1 .ares-tag{font-size:clamp(4.07rem,20.9vw,6.93rem);letter-spacing:-0.02em;max-width:100%}}
 .seo-keyword{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* === HERO === */
@@ -282,8 +291,11 @@ html.menu-open,body.menu-open{overflow:hidden;overscroll-behavior:none}
 .cs-card .cs-idx{position:absolute;top:0.7rem;right:1rem;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;background:rgba(0,0,0,0.25);color:rgba(255,255,255,0.4);padding:0.15rem 0.5rem;clip-path:polygon(4px 0,100% 0,100% calc(100% - 4px),calc(100% - 4px) 100%,0 100%,0 4px)}
 .cs-ctrls{display:flex;align-items:center;gap:1rem;margin-top:1rem}
 .cs-hint{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;opacity:0.5;color:var(--wtext2)}
-.dp-logo{position:absolute;left:calc(100% + 120px + 10%);top:25%;width:500px;z-index:1;pointer-events:none;will-change:transform}
-.dp-logo canvas{width:100%;height:auto;display:block}
+ .dp-logo{position:absolute;left:calc(100% + 120px + 10%);top:25%;width:500px;z-index:1;pointer-events:none;will-change:transform}
+ .dp-logo canvas{width:100%;height:auto;display:block}
+ #showcase-3d{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+ #showcase-3d.is-dragging{cursor:grabbing}
+ #showcase-3d canvas{display:block;width:100%;height:100%}
 
 /* === VSCROLL (scroll-synced product) === */
 #vscroll{position:relative;background:var(--bg)}
@@ -909,12 +921,34 @@ lenis.on('scroll',({scroll})=>{if(scroll>40)nav.classList.add('scrolled');else n
   group.add(body,screen,ant,led,ring);
   scene.add(group);
 
-  let rotX=0,rotY=0,targetX=0,targetY=0;
-  container.addEventListener('mousemove',e=>{
-    const rect=container.getBoundingClientRect();
-    targetX=((e.clientY-rect.top)/rect.height-0.5)*1.5;
-    targetY=((e.clientX-rect.left)/rect.width-0.5)*2;
-  });
+   let rotX=0,rotY=0,targetX=0,targetY=0;
+   let dragging=false,lastX=0,lastY=0;
+   const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
+   const updateHover=(clientX,clientY)=>{
+     const rect=container.getBoundingClientRect();
+     targetX=((clientY-rect.top)/rect.height-0.5)*1.5;
+     targetY=((clientX-rect.left)/rect.width-0.5)*2;
+   };
+   container.addEventListener('pointerdown',e=>{
+     if(e.pointerType==='mouse'&&e.button!==0)return;
+     dragging=true;lastX=e.clientX;lastY=e.clientY;
+     container.classList.add('is-dragging');
+     if(container.setPointerCapture)container.setPointerCapture(e.pointerId);
+     e.preventDefault();
+   });
+   container.addEventListener('pointermove',e=>{
+     if(!dragging){if(e.pointerType==='mouse')updateHover(e.clientX,e.clientY);return;}
+     targetY=clamp(targetY+(e.clientX-lastX)*0.012,-2,2);
+     targetX=clamp(targetX+(e.clientY-lastY)*0.012,-1.5,1.5);
+     lastX=e.clientX;lastY=e.clientY;
+   });
+   const endDrag=e=>{
+     if(!dragging)return;
+     dragging=false;container.classList.remove('is-dragging');
+     if(e.pointerId!==undefined&&container.releasePointerCapture&&container.hasPointerCapture&&container.hasPointerCapture(e.pointerId))container.releasePointerCapture(e.pointerId);
+   };
+   container.addEventListener('pointerup',endDrag);
+   container.addEventListener('pointercancel',endDrag);
 
   /* === SUBRAYADOR AMARILLO — highlighter en scroll (se arma en initGSAP, tras el intro) === */
 
@@ -1186,16 +1220,61 @@ function initCardStack(){
     });
   }
 
-  animCards(0);
+   animCards(0);
 
-  ScrollTrigger.create({trigger:'#despiece',pin:stack,start:'78px 75',end:()=>matchMedia('(max-width:768px)').matches?'+=150%':'+=350%',invalidateOnRefresh:true,onUpdate:self=>{
-    const p=self.progress;
-    gsap.set('#dpLogo',{yPercent:-50,x:-200*p,rotate:-45*p});
-    const d=Draggable.get(cards[current]);
-    if(d&&d.isDragging)return;
-    const t=Math.round(p*(total-1));
-    if(t!==current){current=t;animCards(t);attachDrag(current)}
-  }});
+   const cardStep=1/(total-1);
+   let mobileSnapTarget=0,mobileSnapPending=false,lastProgress=0,touchStartY=0,touchDirection=0;
+   const cardSection=document.getElementById('despiece');
+   if(coarsePointer&&cardSection){
+     cardSection.addEventListener('touchstart',e=>{
+       touchStartY=e.touches[0]?.clientY||0;
+       touchDirection=0;
+     },{passive:true});
+     cardSection.addEventListener('touchmove',e=>{
+       const y=e.touches[0]?.clientY||touchStartY;
+       if(Math.abs(y-touchStartY)>=12)touchDirection=y<touchStartY?1:-1;
+     },{passive:true});
+   }
+   function snapMobile(value,self){
+     if(!coarsePointer)return cardStep;
+     const direction=touchDirection|| (value>lastProgress?1:-1);
+     if(mobileSnapPending)return mobileSnapTarget*cardStep;
+     if(Math.abs(value-current*cardStep)<cardStep*0.12){lastProgress=value;return current*cardStep}
+     if((direction<0&&current===0)||(direction>0&&current===total-1)){lastProgress=value;return value}
+     mobileSnapTarget=Math.max(0,Math.min(total-1,current+direction));
+     mobileSnapPending=true;
+     lastProgress=value;
+     return mobileSnapTarget*cardStep;
+   }
+
+   ScrollTrigger.create({trigger:'#despiece',pin:true,pinSpacing:true,anticipatePin:1,start:'top 78px',end:()=>{
+     const step=matchMedia('(max-width:768px)').matches?Math.max(window.innerHeight*0.72,420):Math.max(window.innerHeight*0.58,420);
+     return '+='+(total-1)*step;
+   },snap:{snapTo:coarsePointer?snapMobile:cardStep,inertia:!coarsePointer,duration:{min:0.2,max:0.45},delay:0.06,ease:'power1.inOut'},invalidateOnRefresh:true,onSnapComplete:()=>{
+     if(!coarsePointer||!mobileSnapPending)return;
+      current=mobileSnapTarget;
+      lastProgress=current*cardStep;
+      animCards(current);
+      attachDrag(current);
+      mobileSnapPending=false;
+      touchDirection=0;
+   },onUpdate:self=>{
+     const p=self.progress;
+     gsap.set('#dpLogo',{yPercent:-50,x:-200*p,rotate:-45*p});
+     const d=Draggable.get(cards[current]);
+     if(d&&d.isDragging)return;
+     if(coarsePointer){
+        const direction=touchDirection|| (p>lastProgress?1:-1);
+       if(!mobileSnapPending&&Math.abs(p-current*cardStep)>=cardStep*0.12&&!(direction<0&&current===0)&&!(direction>0&&current===total-1)){
+         mobileSnapTarget=Math.max(0,Math.min(total-1,current+direction));
+         mobileSnapPending=true;
+       }
+       lastProgress=p;
+       if(mobileSnapPending)return;
+     }
+     const t=Math.round(p*(total-1));
+     if(t!==current){current=t;animCards(t);attachDrag(current)}
+   }});
 
   function attachDrag(idx){
     cards.forEach(c=>{const d=Draggable.get(c);if(d)d.kill()});
@@ -1205,8 +1284,8 @@ function initCardStack(){
       // A vertical finger drift must never become a card change.
       inertia:!coarsePointer,
       lockAxis:true,
-      minimumMovement:coarsePointer?18:12,
-      allowNativeTouchScrolling:true,
+       minimumMovement:coarsePointer?28:12,
+       allowNativeTouchScrolling:coarsePointer?'y':false,
       bounds:{minX:-200,maxX:200},
       edgeResistance:0.7,
       onDragStart(){el.classList.add('swiping')},
