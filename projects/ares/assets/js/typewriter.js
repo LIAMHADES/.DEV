@@ -81,9 +81,25 @@
   }
 
   var intro = document.getElementById('intro-overlay');
-  if (intro && !intro.classList.contains('hidden')) {
-    document.getElementById('intro-btn').addEventListener('click', function () { next(); }, { once: true });
+  function start() { next(); }
+  if (intro) {
+    // Escribir cuando el intro se cierra: por click en el boton O al auto-cerrarse (hidden).
+    var btn = document.getElementById('intro-btn');
+    if (btn) btn.addEventListener('click', function () { start(); }, { once: true });
+    if (intro.classList.contains('hidden')) {
+      setTimeout(start, 650);
+    } else {
+      var mo = new MutationObserver(function () {
+        if (intro.classList.contains('hidden')) { mo.disconnect(); setTimeout(start, 650); }
+      });
+      mo.observe(intro, { attributes: true, attributeFilter: ['class'] });
+      // Fallback por si el observer no se dispara (p. ej. se desmonta el nodo).
+      var iv = setInterval(function () {
+        if (intro.classList.contains('hidden')) { clearInterval(iv); start(); }
+      }, 300);
+      setTimeout(function () { clearInterval(iv); if (mo) mo.disconnect(); }, 8000);
+    }
   } else {
-    setTimeout(next, 650);
+    setTimeout(start, 650);
   }
 })();

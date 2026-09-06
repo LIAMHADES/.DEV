@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GPS para perros y bienestar canino | ARES GPS</title>
   <meta name="description" content="ARES GPS combina localización, geocerca y bienestar canino para ayudarte a saber dónde está tu perro y cómo se encuentra cada día.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Cómo funciona un GPS para perros?","acceptedAnswer":{"@type":"Answer","text":"ARES es un localizador para perros con conexión propia: combina GPS, geocerca y bienestar canino para decirte dónde está tu perro y cómo está cada día."}},
+    {"@type":"Question","name":"¿Qué cobertura tiene el localizador para perros?","acceptedAnswer":{"@type":"Answer","text":"El dispositivo usa conectividad LTE de cobertura global (la SIM cubre +160 países). La disponibilidad real depende de la cobertura celular del lugar donde te encuentres."}},
+    {"@type":"Question","name":"¿Cuánto dura la batería de ARES?","acceptedAnswer":{"@type":"Answer","text":"La autonomía estimada es de hasta 20 días según el uso, el modo de energía y la configuración del dispositivo. Puede variar en función de la actividad del perro y la señal."}},
+    {"@type":"Question","name":"¿Qué pasa si mi perro sale de la zona segura?","acceptedAnswer":{"@type":"Answer","text":"Si configuras una geocerca, recibes un aviso cuando tu perro se acerca al límite o la abandona, para poder reaccionar a tiempo. ARES no crea una barrera física."}}
+  ]
+}
+</script>
 <link id="favicon" rel="icon" type="image/svg+xml" href="assets/img/logo-simple-blanco.svg">
 <link rel="preload" as="script" href="assets/js/three.min.js">
 <style>
@@ -291,7 +303,7 @@ html.menu-open,body.menu-open{overflow:hidden;overscroll-behavior:none}
 .cs-card .cs-idx{position:absolute;top:0.7rem;right:1rem;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;background:rgba(0,0,0,0.25);color:rgba(255,255,255,0.4);padding:0.15rem 0.5rem;clip-path:polygon(4px 0,100% 0,100% calc(100% - 4px),calc(100% - 4px) 100%,0 100%,0 4px)}
 .cs-ctrls{display:flex;align-items:center;gap:1rem;margin-top:1rem}
 .cs-hint{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;opacity:0.5;color:var(--wtext2)}
- .dp-logo{position:absolute;left:calc(100% + 120px + 10%);top:25%;width:500px;z-index:1;pointer-events:none;will-change:transform}
+ .dp-logo{position:absolute;left:calc(100% + 165px);top:20%;width:650px;z-index:1;pointer-events:none;will-change:transform}
  .dp-logo canvas{width:100%;height:auto;display:block}
  #showcase-3d{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
  #showcase-3d.is-dragging{cursor:grabbing}
@@ -436,6 +448,10 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
 @media(min-width:1046px){
   .nav-toggle{display:none}
 }
+/* Pantallas muy anchas: el logo 3D se mantiene cortado ~a la mitad por la derecha */
+@media(min-width:1600px){
+  .dp-logo{left:calc(100% + (100vw - 1440px)*0.5 + 165px)}
+}
 /* Tablet grande: reducir alturas fijas que quedan grandes en horizontal estrecho */
 @media(max-width:1024px){
   #showcase-3d{height:360px}
@@ -466,6 +482,16 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
 }
+
+/* === FAQ index === */
+#faq{background:var(--bg)}
+.idx-faq-list{max-width:720px;margin:2rem auto 0;display:flex;flex-direction:column;gap:0.75rem}
+.idx-faq-item{background:rgba(255,255,255,0.03);border:1px solid rgba(240,242,245,0.08);border-radius:6px;overflow:hidden;text-align:left}
+.idx-faq-item summary{list-style:none;cursor:pointer;padding:1rem 1.3rem;font-family:'Orbitron',sans-serif;font-size:0.88rem;color:var(--t);font-weight:500;display:flex;justify-content:space-between;align-items:center}
+.idx-faq-item summary::-webkit-details-marker{display:none}
+.idx-faq-item summary::after{content:'+';font-size:1.1rem;color:var(--hl);transition:transform 0.25s}
+.idx-faq-item[open] summary::after{transform:rotate(45deg)}
+.idx-faq-item p{padding:0 1.3rem 1.1rem;margin:0;font-size:0.85rem;color:var(--t2);line-height:1.8}
 </style>
 <script src="assets/js/analytics.js"></script>
 </head>
@@ -523,10 +549,10 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
   <div class="container">
     <div class="hero-tag">Seguridad y bienestar para tu perro</div>
     <h1><span class="ares-tag">ARES</span><span class="seo-keyword">GPS PARA PERROS</span></h1>
-    <div class="hero-sub">Para quien se preocupa de verdad: saber si se ejercita lo necesario, si su alimentación es la correcta y si está viviendo su mejor vida.</div>
+    <div class="hero-sub">ARES es un localizador para perros que combina GPS, geocerca y bienestar canino en un solo dispositivo. Para quien se preocupa de verdad: saber si se ejercita lo necesario, si su alimentación es la correcta y si está viviendo su mejor vida.</div>
     <div class="hero-stats">
       <div class="hs"><div class="val">+160 países</div><div class="lab">COBERTURA GLOBAL 4G</div></div>
-      <div class="hs"><div class="val">14 días</div><div class="lab">BATERÍA</div></div>
+      <div class="hs"><div class="val">20 días</div><div class="lab">BATERÍA</div></div>
       <div class="hs"><div class="val">Alerta</div><div class="lab">CALOR · CAÍDA · GEOCERCA</div></div>
        <div class="hs"><div class="val">Salud</div><div class="lab">ACTIVIDAD · DESCANSO · NUTRICIÓN</div></div>
     </div>
@@ -590,7 +616,7 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
         <div class="cpr">
           <div class="pi"><div class="val">~64g</div><div class="lab">APENAS LO NOTA</div></div>
           <div class="pi"><div class="val">IP68</div><div class="lab">NADA, LLUEVE, SE REVUELCA</div></div>
-          <div class="pi"><div class="val">+7 días</div><div class="lab">SIN CARGAR CADA DÍA</div></div>
+          <div class="pi"><div class="val">~20 días</div><div class="lab">AUTONOMÍA</div></div>
           <div class="pi"><div class="val">~1m</div><div class="lab">PRECISIÓN REAL</div></div>
         </div>
       </div>
@@ -718,6 +744,35 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq" class="sec-darker">
+  <div class="sec-prism" id="prism-faq"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="sl" style="text-align:center">Preguntas frecuentes</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.5rem,3vw,2rem)">DUDAS SOBRE ARES GPS</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:620px;margin:0.5rem auto 0">Respondemos las dudas más habituales antes de reservar.</div>
+
+    <div class="idx-faq-list">
+      <details class="idx-faq-item" open>
+        <summary>¿Cómo funciona un GPS para perros?</summary>
+        <p>ARES es un localizador para perros con conexión propia: combina GPS, geocerca y bienestar canino para decirte dónde está tu perro y cómo está cada día.</p>
+      </details>
+      <details class="idx-faq-item">
+        <summary>¿Qué cobertura tiene el localizador para perros?</summary>
+        <p>El dispositivo usa conectividad LTE de cobertura global (la SIM cubre +160 países). La disponibilidad real depende de la cobertura celular del lugar donde te encuentres.</p>
+      </details>
+      <details class="idx-faq-item">
+        <summary>¿Cuánto dura la batería de ARES?</summary>
+        <p>La autonomía estimada es de hasta 20 días según el uso, el modo de energía y la configuración del dispositivo. Puede variar en función de la actividad del perro y la señal.</p>
+      </details>
+      <details class="idx-faq-item">
+        <summary>¿Qué pasa si mi perro sale de la zona segura?</summary>
+        <p>Si configuras una geocerca, recibes un aviso cuando tu perro se acerca al límite o la abandona, para poder reaccionar a tiempo. ARES no crea una barrera física.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section id="cta-final" class="sec-darker">
   <div class="sec-prism" id="prism-cta"></div>
@@ -725,7 +780,7 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
   <div class="container" style="position:relative;z-index:1">
     <h2 class="st">TU PERRO MERECE UN GUARDIÁN.</h2>
     <div class="ss" style="text-transform:none;letter-spacing:0">No entiende de tecnología. Entiende de confianza. De salir a correr y volver a casa.</div>
-    <p style="font-family:'Orbitron',sans-serif;font-weight:500;font-size:0.9rem;letter-spacing:0.04em;color:var(--hl);margin-top:1.5rem">ARES GPS te ayuda a estar ahí. Siempre.</p>
+    <p style="font-family:'Orbitron',sans-serif;font-weight:500;font-size:0.9rem;letter-spacing:0.04em;color:var(--hl);margin-top:1.5rem">Más que un rastreador para tu perro: un guardián que te dice dónde está y cómo está.</p>
     <a href="contenido/proximamente.html" class="btn btn-cta" style="margin-top:1.5rem"><span>Reserva tu ARES</span></a>
   </div>
 </section>
