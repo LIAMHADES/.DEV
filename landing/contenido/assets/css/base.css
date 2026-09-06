@@ -550,13 +550,25 @@ body.menu-open {
   width: 100%;
 }
 .nav-full-links > .nl-item + .nl-item {
-  border-top: 3px solid rgba(134, 187, 216, 0.14);
   padding-top: 0.35rem;
 }
 .nav-full-links > .nl-item {
   width: min(100%, 42rem);
   margin-inline: auto;
   min-width: 0;
+  position: relative;
+}
+.nav-overlay .nl-item + .nl-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(134, 187, 216, 0.14);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
 }
 .nav-full-links a {
   font-family: "Bruno Ace SC", sans-serif;
@@ -600,6 +612,40 @@ body.menu-open {
 .nav-overlay.open .nl-item:nth-child(6) a {
   animation-delay: 0.19s;
 }
+.nav-overlay.open .nl-item:nth-child(7) a {
+  animation-delay: 0.12s;
+}
+.nav-overlay.open .nl-item:nth-child(8) a {
+  animation-delay: 0.05s;
+}
+.nav-overlay.open .nl-item:nth-child(2)::before {
+  animation: navDividerStagger 0.5s both;
+  animation-delay: 0.47s;
+}
+.nav-overlay.open .nl-item:nth-child(3)::before {
+  animation: navDividerStagger 0.5s both;
+  animation-delay: 0.4s;
+}
+.nav-overlay.open .nl-item:nth-child(4)::before {
+  animation: navDividerStagger 0.5s both;
+  animation-delay: 0.33s;
+}
+.nav-overlay.open .nl-item:nth-child(5)::before {
+  animation: navDividerStagger 0.5s both;
+  animation-delay: 0.26s;
+}
+.nav-overlay.open .nl-item:nth-child(6)::before {
+  animation: navDividerStagger 0.5s both;
+  animation-delay: 0.19s;
+}
+.nav-overlay.open .nl-item:nth-child(7)::before {
+  animation: navDividerStagger 0.5s both;
+  animation-delay: 0.12s;
+}
+.nav-overlay.open .nl-item:nth-child(8)::before {
+  animation: navDividerStagger 0.5s both;
+  animation-delay: 0.05s;
+}
 @keyframes navStagger {
   0% {
     opacity: 0;
@@ -608,6 +654,16 @@ body.menu-open {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes navDividerStagger {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
   }
 }
 .nav-full-links a:hover {
