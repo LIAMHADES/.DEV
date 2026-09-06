@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GPS para perros: precios y planes | ARES GPS</title>
 <meta name="description" content="Consulta el precio de ARES GPS para perros: dispositivo Medium o Large, planes de conectividad y el coste total de cada opción sin sorpresas.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Cuánto cuesta un GPS para perros?","acceptedAnswer":{"@type":"Answer","text":"En ARES pagas el dispositivo una vez (desde 120€, o 199€ el pack de dos) y después una cuota mensual desde 6€/mes. La cuota incluye la conectividad y las funciones del plan. No hay permanencia obligatoria: puedes cancelar mes a mes."}},
+    {"@type":"Question","name":"¿ARES avisa de un golpe de calor?","acceptedAnswer":{"@type":"Answer","text":"Si sospechas que tu perro sufre un golpe de calor, actúa de inmediato y consulta al veterinario. Para prevenir, ARES mide el índice térmico real —no solo la temperatura ambiente— y te avisa antes de que el paseo se vuelva peligroso. Esta alerta está en los planes Básico y Premium."}},
+    {"@type":"Question","name":"¿ARES me recuerda las vacunas y la desparasitación?","acceptedAnswer":{"@type":"Answer","text":"En el plan Premium, el plan de salud preventivo te recuerda las vacunas, la desparasitación y los chequeos pendientes, y guarda el historial en la app. No sustituye al veterinario: te ayuda a no olvidar las citas que ya tienes planificadas."}}
+  ]
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
 <link rel="stylesheet" href="assets/css/base.css">
@@ -92,6 +103,9 @@
 .cmp-cta-row td{text-align:center;padding-top:0.5rem;padding-bottom:1.6rem}
 .cmp-legend{display:flex;justify-content:center;gap:2rem;margin-top:1.5rem;flex-wrap:wrap}
 .cmp-legend span{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.05em;color:var(--t3);display:flex;align-items:center;gap:0.35rem}
+.salud-plan-block{max-width:720px;margin:1.75rem auto 0;padding:1.1rem 1.3rem;background:rgba(134,187,216,0.06);border:1px solid rgba(134,187,216,0.18);border-radius:6px;text-align:left}
+.salud-plan-block p{font-size:0.85rem;color:var(--t2);line-height:1.7;margin:0}
+.salud-plan-block strong{color:var(--t);font-weight:600}
 
 /* Vista resumida por defecto: oculta todo lo que no sea clave, precio o CTA */
 .cmp-table tbody tr{display:table-row}
@@ -281,7 +295,7 @@ section:first-of-type{clip-path:none}
   <div class="container">
     <div class="hero-tag">Precios y planes</div>
      <h1>ELIGE TU <span class="hero-h1-device">DISPOSITIVO<span class="hero-h1-divider">.</span></span> ELIGE TU PLAN.</h1>
-    <div class="hero-sub">El dispositivo se paga una vez, desde 120€ (o 199€ el pack de dos). La suscripción empieza en 6€/mes — y en los planes superiores ARES cuida la salud de tu perro: calorías reales, dieta personalizada, ejercicio y descanso. No solo saber dónde está: saber cómo está.</div>
+    <div class="hero-sub">Un GPS para perros con cuota mensual desde 6€/mes, además del dispositivo que se paga una vez desde 120€ (o 199€ el pack de dos). Esa cuota se convierte en salud preventiva: aviso de golpe de calor, recordatorio de vacunas y detección de cambios en su rutina. No solo saber dónde está: saber cómo está.</div>
   </div>
 </section>
 
@@ -450,6 +464,9 @@ section:first-of-type{clip-path:none}
       <span><span class="material-symbols-outlined" style="font-size:0.9rem;color:var(--hl)">check</span> Incluido</span>
       <span>— No incluido en ese plan</span>
     </div>
+    <div class="salud-plan-block">
+      <p><strong>Plan de salud preventivo (Premium):</strong> ARES te recuerda el calendario de vacunas de tu perro, la desparasitación y los chequeos pendientes, y guarda el historial en la app. No sustituye al veterinario: te ayuda a no olvidar las citas que ya tienes planificadas.</p>
+    </div>
   </div>
 </section>
 </div>
@@ -543,29 +560,40 @@ section:first-of-type{clip-path:none}
     <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">DUDAS SOBRE EL PRECIO</h2>
 
     <div class="faq-list">
-      <!-- PLACEHOLDER: contenido de FAQ pendiente de redacción final, respuestas genéricas provisionales -->
+      <details class="faq-item">
+        <summary><span>¿Cuánto cuesta un GPS para perros?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
+        <div class="faq-body">En ARES pagas el dispositivo una vez (desde 120€, o 199€ el pack de dos) y después una cuota mensual desde 6€/mes. La cuota incluye la conectividad y las funciones del plan. No hay permanencia obligatoria: puedes cancelar mes a mes.</div>
+      </details>
+      <details class="faq-item">
+        <summary><span>¿ARES avisa de un golpe de calor?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
+        <div class="faq-body">Si sospechas que tu perro sufre un golpe de calor, actúa de inmediato y consulta al veterinario. Para prevenir, ARES mide el índice térmico real —no solo la temperatura ambiente— y te avisa antes de que el paseo se vuelva peligroso. Esta alerta está en los planes Básico y Premium.</div>
+      </details>
+      <details class="faq-item">
+        <summary><span>¿ARES me recuerda las vacunas y la desparasitación?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
+        <div class="faq-body">En el plan Premium, el plan de salud preventivo te recuerda las vacunas, la desparasitación y los chequeos pendientes, y guarda el historial en la app. No sustituye al veterinario: te ayuda a no olvidar las citas que ya tienes planificadas.</div>
+      </details>
       <details class="faq-item">
         <summary><span>¿Puedo cambiar de plan más adelante?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
-        <div class="faq-body">Sí. Podrás subir o bajar de plan (Esencial, Básico, Premium) desde la app cuando quieras. El cambio se aplicará en el siguiente ciclo de facturación. <em>(Respuesta provisional, pendiente de confirmar condiciones exactas.)</em></div>
+        <div class="faq-body">Sí. Podrás subir o bajar de plan (Esencial, Básico, Premium) desde la app cuando quieras. El cambio se aplicará en el siguiente ciclo de facturación.</div>
       </details>
       <details class="faq-item">
         <summary><span>¿Hay permanencia mínima?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
-        <div class="faq-body">La suscripción se planea sin permanencia obligatoria, con posibilidad de cancelar mes a mes. <em>(Respuesta provisional, pendiente de confirmar condiciones exactas de facturación y SIM.)</em></div>
+        <div class="faq-body">No. La suscripción se contrata sin permanencia obligatoria y puedes cancelarla mes a mes.</div>
       </details>
       <details class="faq-item">
         <summary><span>¿Qué pasa si no pago la suscripción?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
-        <div class="faq-body">El dispositivo seguirá encendido, pero sin conectividad activa no podrá enviar su ubicación ni datos a la app. Es probable que exista un aviso previo antes de suspender el servicio. <em>(Respuesta provisional, pendiente de definir el flujo exacto de impago.)</em></div>
+        <div class="faq-body">El dispositivo seguirá encendido, pero sin conectividad activa no podrá enviar su ubicación ni los datos a la app. Si dejas de pagar, se suspende el servicio hasta regularizar la suscripción.</div>
       </details>
       <details class="faq-item">
         <summary><span>¿Puedo cancelar en cualquier momento?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
-        <div class="faq-body">Sí, desde la app, sin necesidad de llamar a soporte. <em>(Respuesta provisional, pendiente de confirmar plazos de preaviso si los hubiera.)</em></div>
+        <div class="faq-body">Sí, desde la app, sin necesidad de llamar a soporte.</div>
       </details>
       <details class="faq-item">
         <summary><span>¿El Family Pack tiene descuento en la suscripción?</span><span class="material-symbols-outlined faq-chevron">expand_more</span></summary>
-        <div class="faq-body">Por ahora, no: el descuento del Family Pack aplica solo al hardware (desde 199€ por 2 dispositivos, según la combinación). Cada dispositivo necesita su propia suscripción. <em>(Pendiente de decisión explícita sobre una posible tarifa familiar.)</em></div>
+        <div class="faq-body">El descuento del Family Pack aplica solo al hardware (desde 199€ por 2 dispositivos, según la combinación). Cada dispositivo necesita su propia suscripción.</div>
       </details>
     </div>
-    <div class="faq-provisional-note">Contenido de FAQ provisional — se ampliará y ajustará con preguntas reales de usuarios antes del lanzamiento.</div>
+    <div class="faq-provisional-note">Las respuestas comerciales se ajustarán con las condiciones definitivas antes del lanzamiento.</div>
   </div>
 </section>
 
