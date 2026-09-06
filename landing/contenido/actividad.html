@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cuánto ejercicio necesita un perro | ARES GPS</title>
 <meta name="description" content="Descubre cuánto ejercicio necesita un perro según su edad, tamaño y salud. Prueba una estimación orientativa con peso, distancia e intensidad.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Cuánto ejercicio necesita un perro?","acceptedAnswer":{"@type":"Answer","text":"Depende de su edad, tamaño, salud, condición física y nivel de energía. No hay una cifra universal: la calculadora de ARES ofrece una orientación inicial a partir del peso, la distancia y la intensidad del paseo."}},
+    {"@type":"Question","name":"¿Cuántas calorías quema mi perro al pasear?","acceptedAnswer":{"@type":"Answer","text":"Depende del peso, la distancia recorrida y la intensidad (paseo tranquilo, trote o carrera). Puedes estimarlo con la calculadora de actividad ajustando esos tres valores."}},
+    {"@type":"Question","name":"¿Cuántos minutos de ejercicio al día necesita mi perro?","acceptedAnswer":{"@type":"Answer","text":"Como orientación, entre 20 y 60 minutos al día se considera actividad baja, entre 60 y 120 moderada y entre 120 y 180 alta. Lo importante es compararlo con el nivel de actividad habitual de tu perro."}},
+    {"@type":"Question","name":"¿Cuánto debe pasear un cachorro?","acceptedAnswer":{"@type":"Answer","text":"Los cachorros necesitan paseos cortos y frecuentes, adaptados a su edad y crecimiento, en lugar de recorridos largos. Consulta con tu veterinario el ritmo adecuado para el tuyo."}}
+  ]
+}
+</script>
 
 <link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
 <link rel="stylesheet" href="assets/css/base.css">
@@ -173,9 +185,6 @@
 
 .mb-input-row{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2.6rem;flex-wrap:wrap}
 .mb-input-row label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--t3)}
-#mb-minutes-input{width:110px;max-width:110px;flex:0 0 110px;background:#20303d;border:1px solid rgba(240,242,245,0.18);color:var(--t);font-family:'Bruno Ace SC',sans-serif;font-size:1.3rem;text-align:center;padding:0.6rem 0.5rem;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:border-color 0.3s}
-#mb-minutes-input:focus{outline:none;border-color:var(--cta)}
-#mb-minutes-input:focus-visible{outline:2px solid var(--hl);outline-offset:4px}
 .mb-sync-btn{background:none;border:1px dashed rgba(240,242,245,0.25);color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.05em;text-transform:uppercase;padding:0.6rem 0.9rem;cursor:pointer;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);transition:border-color 0.3s,color 0.3s}
 .mb-sync-btn:hover{border-color:var(--hl);color:var(--hl)}
 
@@ -269,11 +278,20 @@
   .pn-inline{flex-direction:column}
   .pn-col + .pn-col{border-left:none;border-top:1px solid rgba(47,72,88,0.12)}
   .mb-input-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0.7rem 0.9rem;max-width:420px;margin-left:auto;margin-right:auto}
-  .mb-input-row label{text-align:left}
-  #mb-minutes-input{justify-self:end}
+.mb-input-row label{text-align:left}
   .mb-sync-btn{grid-column:1 / -1;width:100%}
-  #move-bar-section{min-height:auto;padding:4rem 0}
+#move-bar-section{min-height:auto;padding:4rem 0}
 }
+
+/* === FAQ actividad === */
+#act-faq{background:var(--bg2)}
+.act-faq-list{max-width:720px;margin:2rem auto 0;display:flex;flex-direction:column;gap:0.75rem}
+.act-faq-item{background:rgba(255,255,255,0.03);border:1px solid rgba(240,242,245,0.08);border-radius:6px;overflow:hidden;text-align:left}
+.act-faq-item summary{list-style:none;cursor:pointer;padding:1rem 1.3rem;font-family:'Orbitron',sans-serif;font-size:0.88rem;color:var(--t);font-weight:500;display:flex;justify-content:space-between;align-items:center}
+.act-faq-item summary::-webkit-details-marker{display:none}
+.act-faq-item summary::after{content:'+';font-size:1.1rem;color:var(--hl);transition:transform 0.25s}
+.act-faq-item[open] summary::after{transform:rotate(45deg)}
+.act-faq-item p{padding:0 1.3rem 1.1rem;margin:0;font-size:0.85rem;color:var(--t2);line-height:1.8}
 </style>
 <script src="../assets/js/analytics.js"></script>
 </head>
@@ -554,6 +572,34 @@
     <h2 class="st">TU PERRO MERECE UN GUARDIÁN.</h2>
     <div class="ss" style="text-transform:none;letter-spacing:0;margin-top:0.75rem">El hardware aún no está a la venta. Cuéntanos qué necesitas y sé de los primeros en reservar.</div>
     <a href="proximamente.html" class="btn btn-cta" style="margin-top:1.5rem"><span>Reserva tu ARES</span></a>
+  </div>
+</section>
+
+<!-- 6. FAQ -->
+<section id="act-faq" class="sec-darker">
+  <div class="container">
+    <div class="sl" style="text-align:center">Preguntas frecuentes</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">DUDAS SOBRE EL EJERCICIO DEL PERRO</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:620px;margin:0.5rem auto 0">Estas respuestas sirven como orientación general. Cada perro es distinto: la edad, la salud y el nivel de actividad marcan su rutina.</div>
+
+    <div class="act-faq-list">
+      <details class="act-faq-item" open>
+        <summary>¿Cuánto ejercicio necesita un perro?</summary>
+        <p>Depende de su edad, tamaño, salud, condición física y nivel de energía. No hay una cifra universal: la calculadora de ARES ofrece una orientación inicial a partir del peso, la distancia y la intensidad del paseo.</p>
+      </details>
+      <details class="act-faq-item">
+        <summary>¿Cuántas calorías quema mi perro al pasear?</summary>
+        <p>Depende del peso, la distancia recorrida y la intensidad (paseo tranquilo, trote o carrera). Puedes estimarlo con la calculadora de actividad ajustando esos tres valores.</p>
+      </details>
+      <details class="act-faq-item">
+        <summary>¿Cuántos minutos de ejercicio al día necesita mi perro?</summary>
+        <p>Como orientación, entre 20 y 60 minutos al día se considera actividad baja, entre 60 y 120 moderada y entre 120 y 180 alta. Lo importante es compararlo con el nivel de actividad habitual de tu perro.</p>
+      </details>
+      <details class="act-faq-item">
+        <summary>¿Cuánto debe pasear un cachorro?</summary>
+        <p>Los cachorros necesitan paseos cortos y frecuentes, adaptados a su edad y crecimiento, en lugar de recorridos largos. Consulta con tu veterinario el ritmo adecuado para el tuyo.</p>
+      </details>
+    </div>
   </div>
 </section>
 

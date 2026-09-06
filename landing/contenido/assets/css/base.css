@@ -450,12 +450,20 @@ section[id] {
 input[type=number]{-moz-appearance:textfield}
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button{display:none}
-.num-wrap{position:relative;display:flex;width:100%}
-.num-wrap input[type=number]{flex:1;padding-right:4rem}
-.num-btn{position:absolute;right:0;width:2.2rem;border:1px solid var(--cta);font-size:1.2rem;font-weight:700;cursor:pointer;z-index:2;color:var(--cta);background:transparent}
-.num-btn:hover{background:var(--cta);color:#fff}
-.num-inc{top:0;height:50%;border-radius:0 4px 0 0}
-.num-dec{bottom:0;height:50%;border-radius:0 0 4px 0}
+/* Bloque numero + botones +/-: piezas unidas en fila, sin huecos ni solapamientos.
+   mobile-menu.js envuelve cada input[type=number] en .num-wrap con 2 .num-btn.
+   !important para ganar a estilos de pagina (.pv-field input, etc). */
+.num-wrap{display:inline-flex!important;align-items:stretch!important;flex-shrink:0!important;width:max-content!important;max-width:100%!important;border:1px solid rgba(240,242,245,0.18)!important;background:#20303d!important;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)!important;transition:border-color 0.3s}
+.num-wrap:focus-within{border-color:var(--cta)}
+.num-wrap .num-btn{flex:0 0 40px!important;width:40px!important;min-width:40px!important;border:none!important;background:rgba(134,187,216,0.08)!important;color:var(--t)!important;font-family:'Bruno Ace SC',sans-serif!important;font-size:1.4rem!important;line-height:1!important;cursor:pointer!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;transition:background 0.2s,color 0.2s;touch-action:manipulation}
+.num-wrap .num-btn:hover{background:rgba(246,174,45,0.25)!important;color:var(--hl)!important}
+.num-wrap .num-btn:active{background:rgba(246,174,45,0.4)!important}
+.num-wrap .num-dec{border-right:1px solid rgba(240,242,245,0.12)!important;order:-1!important}
+.num-wrap .num-inc{border-left:1px solid rgba(240,242,245,0.12)!important}
+.num-wrap input[type=number]{order:0!important;width:72px!important;max-width:72px!important;min-width:72px!important;flex:0 0 72px!important;border:none!important;background:transparent!important;color:var(--t)!important;font-family:'Bruno Ace SC',sans-serif!important;font-size:1.3rem!important;text-align:center!important;padding:0.55rem 0!important;height:auto!important;-moz-appearance:textfield;appearance:textfield}
+.num-wrap input[type=number]::-webkit-outer-spin-button,.num-wrap input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.num-wrap input[type=number]:focus{outline:none}
+.num-wrap input[type=number]:focus-visible{outline:2px solid var(--hl);outline-offset:2px}
 
 /* === SELECTS — flecha naranja personalizada (abajo→cerrado, arriba→abierto) === */
 select{-webkit-appearance:none;-moz-appearance:none;appearance:none!important;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='11' viewBox='0 0 16 11'%3E%3Cpath d='M2 3.5l6 6 6-6' stroke='%23f26419' stroke-width='2.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 1rem center!important;padding-right:3.5rem}
