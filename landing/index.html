@@ -10,8 +10,8 @@
 <link rel="preload" as="script" href="assets/js/three.min.js">
 <style>
 /* === CUSTOM FONTS === */
-@font-face{font-family:'Bruno Ace SC';src:url('assets/fonts/BrunoAceSC-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-@font-face{font-family:'Orbitron';src:url('assets/fonts/Orbitron-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Bruno Ace SC';src:url('assets/fonts/BrunoAceSC-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Orbitron';src:url('assets/fonts/Orbitron-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
 @font-face{font-family:'Material Symbols Outlined';src:url('assets/fonts/ms-01.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
 .material-symbols-outlined{font-family:'Material Symbols Outlined';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased}
 
@@ -1464,7 +1464,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
     el.style.width=el.style.height=size+'px';
     const img=document.createElement('img');
     const sticker=STICKERS[i%STICKERS.length];
-    img.src='assets/stickers/floats/'+sticker+(isMobile?'-mobile.webp':'.png');
+    img.src='assets/stickers/floats/'+sticker+(isMobile?'-mobile.webp':'.webp');
     img.alt='';
     el.appendChild(img);
     host.appendChild(el);

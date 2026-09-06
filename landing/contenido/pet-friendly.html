@@ -3,8 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sitios Pet-Friendly cerca de ti — ARES GPS</title>
-<meta name="description" content="+5.200 lugares pet-friendly en 26 ciudades de España. Solo datos verificados de Google Maps para España. Veterinarios, parques, tiendas, hoteles y playas que admiten perros.">
+<title>Sitios pet friendly y lugares para perros en España | ARES GPS</title>
+<meta name="description" content="Encuentra sitios pet friendly para ir con tu perro: restaurantes, parques caninos, playas y hoteles que admiten perros en España. Datos procedentes de Google Maps; confirma antes de visitar.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Dónde puedo ir con mi perro?","acceptedAnswer":{"@type":"Answer","text":"Puedes ir a restaurantes con terraza que admitan perros, parques caninos, playas para perros y hoteles pet friendly. En esta página puedes buscar por ciudad y ver los sitios pet friendly cerca de ti."}},
+    {"@type":"Question","name":"¿Qué restaurantes admiten perros?","acceptedAnswer":{"@type":"Answer","text":"Cada vez más restaurantes pet friendly permiten perros, normalmente en la terraza o en el exterior. Lo mejor es confirmar antes de ir si aceptan mascotas y en qué zonas."}},
+    {"@type":"Question","name":"¿Qué playas permiten perros?","acceptedAnswer":{"@type":"Answer","text":"Las playas caninas están delimitadas y suelen tener horarios de acceso según la temporada. No todas las comunidades tienen la misma oferta, así que conviene consultar las playas para perros de tu zona antes de ir."}},
+    {"@type":"Question","name":"¿Los hoteles admiten perros?","acceptedAnswer":{"@type":"Answer","text":"Sí, muchos hoteles y alojamientos son pet friendly, aunque suelen aplicar condiciones: suplemento, tamaño máximo o zonas concretas. Revisa siempre la política de mascotas del hotel antes de reservar."}}
+  ]
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/lead-capture.css">
@@ -137,6 +149,24 @@ section:first-of-type{clip-path:none}
 #results-section{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
 #pf-contexto{margin-top:-40px}
 #pf-contexto{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
+
+/* === CATEGORÍAS PET-FRIENDLY (editorial) === */
+#pf-categorias{margin-top:-40px}
+.pf-cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2.5rem;max-width:860px;margin-left:auto;margin-right:auto}
+.pf-cat{background:rgba(134,187,216,0.05);border:1px solid rgba(134,187,216,0.15);border-radius:8px;padding:1.4rem 1.4rem 1.2rem;text-align:left}
+.pf-cat h3{font-family:'Bruno Ace SC',sans-serif;font-size:1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--t);margin-bottom:0.6rem}
+.pf-cat p{font-size:0.86rem;color:var(--t2);line-height:1.7;margin:0}
+@media(max-width:768px){.pf-cat-grid{grid-template-columns:1fr;gap:1rem}}
+
+/* === FAQ PET-FRIENDLY === */
+#pf-faq{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+.pf-faq-list{max-width:720px;margin:2rem auto 0;display:flex;flex-direction:column;gap:0.75rem}
+.pf-faq-item{background:rgba(255,255,255,0.03);border:1px solid rgba(240,242,245,0.08);border-radius:6px;overflow:hidden;text-align:left}
+.pf-faq-item summary{list-style:none;cursor:pointer;padding:1rem 1.3rem;font-family:'Orbitron',sans-serif;font-size:0.88rem;color:var(--t);font-weight:500;display:flex;justify-content:space-between;align-items:center}
+.pf-faq-item summary::-webkit-details-marker{display:none}
+.pf-faq-item summary::after{content:'+';font-size:1.1rem;color:var(--hl);transition:transform 0.25s}
+.pf-faq-item[open] summary::after{transform:rotate(45deg)}
+.pf-faq-item p{padding:0 1.3rem 1.1rem;margin:0;font-size:0.85rem;color:var(--t2);line-height:1.8}
 </style>
 <script src="../assets/js/analytics.js"></script>
 </head>
@@ -177,15 +207,15 @@ section:first-of-type{clip-path:none}
   <div class="sec-prism" id="prism-hero"></div>
   <div class="container">
     <div class="hero-tag">Seguridad y bienestar para tu perro</div>
-    <h1>¿Dónde puedes llevar a tu perro sin dudarlo?</h1>
-    <div class="hero-sub">Restaurantes, parques y alojamientos donde de verdad es bienvenido. Verificado, no adivinado.</div>
+    <h1>Sitios pet friendly para ir con tu perro</h1>
+    <div class="hero-sub">Restaurantes, parques, playas y hoteles donde de verdad es bienvenido. Busca por ciudad y descubre sitios pet friendly cerca de ti.</div>
 
     <div id="search-wrap">
       <button class="cs-trigger" id="csBtn" type="button">
         <span id="csLabel">Selecciona tu ciudad&hellip;</span>
         <svg class="cs-icon" width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="#f0f2f5" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <div id="search-hint">+5.200 lugares verificados en 26 ciudades &mdash; solo España &mdash; Julio 2026</div>
+      <div id="search-hint">Datos procedentes de Google Maps para Espa&ntilde;a &mdash; confirma antes de visitar</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.04em;color:rgba(240,242,245,0.45);text-align:center;margin-top:0.5rem;line-height:1.6;max-width:420px;margin-left:auto;margin-right:auto">La informaci&oacute;n proviene de Google Maps y puede variar con el tiempo. Horarios, pol&iacute;ticas de admisi&oacute;n y disponibilidad pueden cambiar sin previo aviso. Recomendamos confirmar siempre antes de visitar.</div>
     </div>
 
@@ -241,6 +271,60 @@ section:first-of-type{clip-path:none}
   </div>
 </section>
 
+<!-- CATEGORÍAS PET-FRIENDLY (editorial, estructura SEO) -->
+<section id="pf-categorias" class="sec-dark">
+  <div class="container">
+    <div class="sl" style="text-align:center">Dónde ir con tu perro</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">SITIOS PET FRIENDLY POR TIPO</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:620px;margin:0.5rem auto 0">Cada vez hay más lugares que admiten perros en España. Te contamos qué tener en cuenta en cada tipo, y el buscador de arriba te muestra los de tu ciudad.</div>
+
+    <div class="pf-cat-grid">
+      <article class="pf-cat">
+        <h3>Restaurantes pet friendly</h3>
+        <p>Los restaurantes que admiten perros suelen permitirlos en la terraza o en zonas exteriores. Antes de reservar, conviene confirmar si aceptan mascotas en el interior o solo en el exterior, y si hay límite de tamaño. Busca restaurantes pet friendly cerca de ti y evita sorpresas en la puerta.</p>
+      </article>
+      <article class="pf-cat">
+        <h3>Parques para perros</h3>
+        <p>Los parques caninos (pipican) son zonas valladas donde los perros pueden correr sueltos. Muchas ciudades tienen varios, y algunos incluyen áreas de agility. Encuentra un parque canino cerca de ti para que tu perro socialice y se desfogue con seguridad.</p>
+      </article>
+      <article class="pf-cat">
+        <h3>Playas para perros</h3>
+        <p>Las playas caninas permiten bañarse a los perros en zonas delimitadas, con horarios según temporada. Algunas comunidades tienen más oferta que otras. Consulta las playas caninas de tu zona y respeta las normas de acceso para que sigan siendo pet friendly.</p>
+      </article>
+      <article class="pf-cat">
+        <h3>Hoteles que admiten perros</h3>
+        <p>Los hoteles y alojamientos pet friendly aceptan mascotas con condiciones: suplemento, tamaño máximo o zonas habilitadas. Al reservar, revisa la política de mascotas del hotel para no llevarte una sorpresa. Busca hoteles con perros en tu destino antes de viajar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ PET-FRIENDLY -->
+<section id="pf-faq" class="sec-light light">
+  <div class="container">
+    <div class="sl" style="text-align:center">Preguntas frecuentes</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">DUDAS SOBRE SITIOS PET FRIENDLY</h2>
+    <div class="pf-faq-list">
+      <details class="pf-faq-item" open>
+        <summary>¿Dónde puedo ir con mi perro?</summary>
+        <p>Puedes ir a restaurantes con terraza que admitan perros, parques caninos, playas para perros y hoteles pet friendly. En esta página puedes buscar por ciudad y ver los sitios pet friendly cerca de ti.</p>
+      </details>
+      <details class="pf-faq-item">
+        <summary>¿Qué restaurantes admiten perros?</summary>
+        <p>Cada vez más restaurantes pet friendly permiten perros, normalmente en la terraza o en el exterior. Lo mejor es confirmar antes de ir si aceptan mascotas y en qué zonas. El buscador te muestra restaurantes que admiten perros en tu ciudad.</p>
+      </details>
+      <details class="pf-faq-item">
+        <summary>¿Qué playas permiten perros?</summary>
+        <p>Las playas caninas están delimitadas y suelen tener horarios de acceso según la temporada. No todas las comunidades tienen la misma oferta, así que conviene consultar las playas para perros de tu zona antes de ir.</p>
+      </details>
+      <details class="pf-faq-item">
+        <summary>¿Los hoteles admiten perros?</summary>
+        <p>Sí, muchos hoteles y alojamientos son pet friendly, aunque suelen aplicar condiciones: suplemento, tamaño máximo o zonas concretas. Revisa siempre la política de mascotas del hotel antes de reservar.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="pf-footer-wrap">
     <div class="pf-footer-map">
@@ -252,14 +336,14 @@ section:first-of-type{clip-path:none}
       <div class="pf-footer-gradient"></div>
       <div class="pf-footer-text">
         <div>ARES GPS &copy; 2026 — Buscador Pet-Friendly</div>
-        <div class="pf-footer-sub">+5.200 lugares solo Espa&ntilde;a &middot; 26 ciudades &middot; Datos v&iacute;a Apify + Google Maps &middot; Sujeto a cambios</div>
+        <div class="pf-footer-sub">Lugares para ir con tu perro solo Espa&ntilde;a &middot; Datos v&iacute;a Apify + Google Maps &middot; Confirma antes de visitar &middot; Sujeto a cambios</div>
       </div>
     </div>
   </div>
 </footer>
 
 <script src="assets/js/pet-friendly-mock.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="../assets/js/gsap.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="assets/js/lead-capture.js"></script>
 <script>
