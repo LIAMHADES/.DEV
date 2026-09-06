@@ -7,7 +7,7 @@
   <meta name="description" content="ARES GPS combina localización, geocerca y bienestar canino para ayudarte a saber dónde está tu perro y cómo se encuentra cada día.">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link id="favicon" rel="icon" type="image/svg+xml" href="assets/img/logo-simple-blanco.svg">
-<link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
+<link rel="preload" as="script" href="assets/js/three.min.js">
 <style>
 /* === CUSTOM FONTS === */
 @font-face{font-family:'Bruno Ace SC';src:url('assets/fonts/BrunoAceSC-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
@@ -207,7 +207,7 @@ html.menu-open,body.menu-open{overflow:hidden;overscroll-behavior:none}
 @media(prefers-reduced-motion:reduce){.vid-band{position:relative;height:56.25vw;min-height:220px}}
 
 /* === STATIC HERO TITLE === */
-#hero h1 .ares-tag{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(3.78rem,27.6vw,10.08rem);color:var(--t);letter-spacing:0.05em;display:inline-block;text-align:center;will-change:transform}
+#hero h1 .ares-tag{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(3.78rem,27.6vw,10.08rem);color:var(--t);letter-spacing:0.05em;display:inline-block;text-align:center;will-change:transform;min-width:3.85em;max-width:100%}
 @media(max-width:768px){#hero h1 .ares-tag{font-size:clamp(4.07rem,20.9vw,6.93rem);letter-spacing:-0.02em;max-width:100%}}
 .seo-keyword{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -279,8 +279,8 @@ html.menu-open,body.menu-open{overflow:hidden;overscroll-behavior:none}
 
 /* === DESPIECE — SWIPE STACK 3D === */
 .cs-wrap{max-width:460px;margin:1.25rem auto 0;position:relative;display:flex;flex-direction:column;align-items:center}
-.card-stack{position:relative;width:100%;height:min(440px,52vh);perspective:1000px;transform-style:preserve-3d;z-index:3}
-.cs-card{position:absolute;width:100%;height:100%;border-radius:14px;padding:0.8rem 1.5rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:grab;backface-visibility:hidden;transform-style:preserve-3d;will-change:transform,opacity;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.card-stack{position:relative;width:100%;height:min(390px,46vh);perspective:1000px;transform-style:preserve-3d;z-index:3}
+.cs-card{position:absolute;width:100%;height:100%;border-radius:14px;padding:0.5rem 1.5rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:grab;backface-visibility:hidden;transform-style:preserve-3d;will-change:transform,opacity;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:pan-y}
 .cs-card:active{cursor:grabbing}
 .cs-card::after{content:'';position:absolute;inset:0;border-radius:14px;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,0.06) 0%,transparent 50%)}
 .cs-card.swiping{transition:none!important}
@@ -326,7 +326,7 @@ html.menu-open,body.menu-open{overflow:hidden;overscroll-behavior:none}
 
 /* === SCROLL INDICATOR HORIZONTAL (Radian) === */
 #ticksWrapper{position:fixed;top:0;left:0;width:100vw;max-width:100vw;display:flex;justify-content:center;padding:77.51px 0 9px;background:transparent;pointer-events:none;z-index:1000}
-#ticksWrapper .ti{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:1.5px;width:max-content;margin:-1px auto 0;padding:5px 24px 8px;background:rgba(21,29,37,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transform:translateY(0.01px);-webkit-transform:translateY(0.01px);clip-path:polygon(0 0,100% 0,calc(100% - 24px) 100%,24px 100%)}
+#ticksWrapper .ti{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:1.5px;width:max-content;margin:0 auto;padding:5px 24px 8px;background:rgba(21,29,37,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transform:translateY(0.01px);-webkit-transform:translateY(0.01px);clip-path:polygon(0 0,100% 0,calc(100% - 24px) 100%,24px 100%)}
 .tick-h{flex:0 1 11px;width:clamp(5px,2.1vw,11px);height:4px;background:rgba(242,100,25,0.08);border-radius:1px;transform:rotate(-45deg);transition:background 0.1s,box-shadow 0.1s}
 .tick-h.active{background:#F26419;box-shadow:0 0 5px rgba(242,100,25,0.4)}
 
@@ -381,7 +381,7 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
 
 #como-funciona{padding:3rem 0}
 #despiece .st{color:#fff;position:relative;z-index:2}
-#despiece{padding-top:calc(80px + 0.75rem);padding-bottom:1.25rem;min-height:100vh;display:flex;align-items:center;box-sizing:border-box;overflow-x:clip}
+#despiece{padding-top:calc(48px + 0.3rem);padding-bottom:0.75rem;min-height:100vh;display:flex;align-items:center;box-sizing:border-box;overflow-x:clip}
 #despiece .container{padding-top:0}
 #despiece .sl{margin-bottom:0.4rem;position:relative;z-index:2}
 #despiece .ss{position:relative;z-index:2}
@@ -401,15 +401,15 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
   .hero-stats{gap:1.5rem}
   #hero .container{padding-left:2rem;padding-right:2rem}
   section{padding:4rem 0}
-  .card-stack{height:min(300px,36vh)}
-  .cs-card{padding:0.3rem 1.2rem 0.6rem}
+  .card-stack{height:min(260px,33vh)}
+  .cs-card{padding:0.55rem 1.2rem 0.9rem}
   /* Render 3D del dispositivo: igual que desktop — a la derecha, opaco, detrás de las cards
      (z-index 1), más grande y cortado por el borde derecho de la sección. Las cards quedan
      como al principio (anchas y centradas); el dispositivo asoma por debajo de ellas y por
      el borde derecho (se ve ~la mitad). transform:none!important inmoviliza el translate/
      rotate que GSAP aplica en escritorio. */
   .dp-logo{display:block;left:5px;right:auto;top:-325px;bottom:0;width:792px!important;height:642px!important;transform:none!important;opacity:1;z-index:1;filter:brightness(0.9) saturate(0.85)}
-  #despiece{padding-top:calc(64px + 0.5rem);padding-bottom:1rem;overflow:clip}
+  #despiece{padding-top:calc(38px + 0.2rem);padding-bottom:0.5rem;overflow:clip}
   #despiece .st{font-size:clamp(1.3rem,6vw,1.8rem)}
   #despiece .ss{color:rgba(18,31,40,0.95)}
   /* Overlay del menú: compacto y centrado */
@@ -418,7 +418,7 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
   .ov-logo{height:72px}
   /* Barras de scroll: ensanchar y subir para que se vean en móvil */
      #ticksWrapper{padding:52.45px 0 7px}
-  #ticksWrapper .ti{width:100vw;max-width:100vw;margin:-1px 0 0;gap:1.5px;justify-content:center}
+  #ticksWrapper .ti{width:100vw;max-width:100vw;margin:0;gap:1.5px;justify-content:center}
   #vscroll .bg-img img{height:90%;margin-left:-20px}
   /* Logo del footer: ~2x más grande en móvil */
   #cta-final .cta-logo-bg img{width:min(92vw,560px)}
@@ -732,10 +732,10 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
 
 <footer><div class="container"><div class="footer-links"><a href="contenido/calculadora.html">Calculadora de peso ideal</a><a href="contenido/pet-friendly.html">Sitios pet-friendly</a><a href="contenido/proximamente.html">Reserva anticipada</a></div>ARES GPS &copy; 2026</div></footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="assets/js/three.min.js"></script>
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/ScrollTrigger.min.js"></script>
+<script src="assets/js/lenis.min.js"></script>
 <script src="assets/js/TextPlugin.min.js"></script>
 <script src="assets/js/CustomEase.min.js"></script>
 <script src="assets/js/InertiaPlugin.min.js"></script>
@@ -805,7 +805,12 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
     entered=true;
     o.classList.add('hidden'); document.body.style.overflow='';
      setTimeout(()=>{ running=false; try{cancelAnimationFrame(raf);if(pinTimer)clearInterval(pinTimer);if(renderer){renderer.dispose();renderer.domElement.remove();}}catch(e){} },900);
-    initGSAP();
+    // Espera a que las librerias estean listas: si un CDN/asset aun no cargo (movil lento),
+    // initGSAP no debe reventar con 'gsap is not defined' y dejar la pagina rota.
+    (function waitLibs(n){
+      if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){try{initGSAP();}catch(e){console.warn('initGSAP retry',e);setTimeout(()=>waitLibs(n+1),250)}return;}
+      if(n<120)setTimeout(()=>waitLibs(n+1),250); // ~30s max
+    })(0);
   }
   b.addEventListener('click',enter);
   setTimeout(enter,3000);
@@ -814,9 +819,9 @@ footer{background:#101820;padding:3.25rem 0 2rem;text-align:center;font-family:'
 /* ============================================
    LENIS + GSAP
    ============================================ */
-gsap.registerPlugin(ScrollTrigger);
+if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined')gsap.registerPlugin(ScrollTrigger);
 const desktopSmoothScroll=window.matchMedia('(min-width:769px)').matches;
-const lenis=desktopSmoothScroll
+const lenis=typeof Lenis!=='undefined'&&desktopSmoothScroll
   ? new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),smoothWheel:true,prevent:node=>node.closest&&node.closest('[data-lenis-prevent]')})
   : {on(){},raf(){},scrollTo(target,options={}){const el=typeof target==='string'?document.querySelector(target):target;if(!el)return;const offset=Number(options.offset)||0;const top=el.getBoundingClientRect().top+window.scrollY+offset;window.scrollTo({top,behavior:options.behavior||'smooth'})},start(){},stop(){}};
 
@@ -824,6 +829,16 @@ const lenis=desktopSmoothScroll
 (function(){
   const el=document.getElementById('ticksWrapper');
   if(!el)return;
+  // El indicador debe quedar JUSTO debajo de la barra de navegacion (0px de hueco).
+  // La altura del nav varia segun ancho, asi que se mide en vez de usar un valor fijo.
+  const nav=document.getElementById('main-nav');
+  function placeTicks(){
+    if(!nav)return;
+    const h=nav.getBoundingClientRect().height;
+    if(h>0)el.style.paddingTop=h+'px';
+  }
+  placeTicks();
+  window.addEventListener('resize',()=>{clearTimeout(window.__tickPlace);window.__tickPlace=setTimeout(placeTicks,120)});
   const inner=document.createElement('div');inner.className='ti';el.appendChild(inner);
   const count=window.matchMedia('(min-width:769px)').matches?48:32;
   for(let i=0;i<count;i++){const t=document.createElement('div');t.className='tick-h';inner.appendChild(t)}
@@ -1004,7 +1019,8 @@ function initGLTFModel(){
   const dl3=new THREE.DirectionalLight(0xF6AE2D,0.3);dl3.position.set(1,-2,1);scene3d.add(dl3);
   let modelG;
   var b64=window.__ARES_MODEL;
-  if(b64){
+  function mountModel(){
+    if(!b64)return false;
     var binStr=atob(b64),bytes=new Uint8Array(binStr.length);
     for(var i=0;i<binStr.length;i++)bytes[i]=binStr.charCodeAt(i);
     var loader=new THREE.GLTFLoader();
@@ -1025,6 +1041,15 @@ function initGLTFModel(){
         }
       });
     },function(err){console.warn('GLTF parse err:',err);});
+    return true;
+  }
+  if(!mountModel()){
+    // base.glb.js (1.5MB) puede tardar en movil: reintentar hasta que este
+    var tries=0;
+    (function waitModel(){
+      if(window.__ARES_MODEL){b64=window.__ARES_MODEL;mountModel();return;}
+      if(tries<120){tries++;setTimeout(waitModel,250);}
+    })();
   }
   var spinExtra=0;
   var lastSy=window.scrollY;
@@ -1190,10 +1215,10 @@ function initCardStack(){
       cards.forEach(c=>c.style.height='100%');
       return;
     }
-    stack.style.height='auto';
+stack.style.height='auto';
     cards.forEach(c=>c.style.height='auto');
     const contentHeight=Math.max(...cards.map(c=>c.scrollHeight));
-    const minimumHeight=Math.max(300,Math.round(window.innerHeight*0.45));
+    const minimumHeight=Math.max(240,Math.round(window.innerHeight*0.32));
     stack.style.height=`${Math.max(minimumHeight,contentHeight)}px`;
     cards.forEach(c=>c.style.height='100%');
   }
@@ -1222,57 +1247,22 @@ function initCardStack(){
 
    animCards(0);
 
-   const cardStep=1/(total-1);
-   let mobileSnapTarget=0,mobileSnapPending=false,lastProgress=0,touchStartY=0,touchDirection=0;
-   const cardSection=document.getElementById('despiece');
-   if(coarsePointer&&cardSection){
-     cardSection.addEventListener('touchstart',e=>{
-       touchStartY=e.touches[0]?.clientY||0;
-       touchDirection=0;
-     },{passive:true});
-     cardSection.addEventListener('touchmove',e=>{
-       const y=e.touches[0]?.clientY||touchStartY;
-       if(Math.abs(y-touchStartY)>=12)touchDirection=y<touchStartY?1:-1;
-     },{passive:true});
-   }
-   function snapMobile(value,self){
-     if(!coarsePointer)return cardStep;
-     const direction=touchDirection|| (value>lastProgress?1:-1);
-     if(mobileSnapPending)return mobileSnapTarget*cardStep;
-     if(Math.abs(value-current*cardStep)<cardStep*0.12){lastProgress=value;return current*cardStep}
-     if((direction<0&&current===0)||(direction>0&&current===total-1)){lastProgress=value;return value}
-     mobileSnapTarget=Math.max(0,Math.min(total-1,current+direction));
-     mobileSnapPending=true;
-     lastProgress=value;
-     return mobileSnapTarget*cardStep;
-   }
+const cardStep=1/(total-1);
 
    ScrollTrigger.create({trigger:'#despiece',pin:true,pinSpacing:true,anticipatePin:1,start:'top 78px',end:()=>{
      const step=matchMedia('(max-width:768px)').matches?Math.max(window.innerHeight*0.72,420):Math.max(window.innerHeight*0.58,420);
      return '+='+(total-1)*step;
-   },snap:{snapTo:coarsePointer?snapMobile:cardStep,inertia:!coarsePointer,duration:{min:0.2,max:0.45},delay:0.06,ease:'power1.inOut'},invalidateOnRefresh:true,onSnapComplete:()=>{
-     if(!coarsePointer||!mobileSnapPending)return;
-      current=mobileSnapTarget;
-      lastProgress=current*cardStep;
-      animCards(current);
-      attachDrag(current);
-      mobileSnapPending=false;
-      touchDirection=0;
-   },onUpdate:self=>{
+   },snap:{snapTo:cardStep,inertia:!coarsePointer,duration:{min:0.2,max:0.45},delay:0.06,ease:'power1.inOut'},invalidateOnRefresh:true,onUpdate:self=>{
      const p=self.progress;
      gsap.set('#dpLogo',{yPercent:-50,x:-200*p,rotate:-45*p});
      const d=Draggable.get(cards[current]);
      if(d&&d.isDragging)return;
+     let t=Math.round(p*(total-1));
      if(coarsePointer){
-        const direction=touchDirection|| (p>lastProgress?1:-1);
-       if(!mobileSnapPending&&Math.abs(p-current*cardStep)>=cardStep*0.12&&!(direction<0&&current===0)&&!(direction>0&&current===total-1)){
-         mobileSnapTarget=Math.max(0,Math.min(total-1,current+direction));
-         mobileSnapPending=true;
-       }
-       lastProgress=p;
-       if(mobileSnapPending)return;
+       // Un gesto nunca salta más de una tarjeta, aunque el scroll vaya rápido.
+       if(t>current+1)t=current+1;
+       else if(t<current-1)t=current-1;
      }
-     const t=Math.round(p*(total-1));
      if(t!==current){current=t;animCards(t);attachDrag(current)}
    }});
 
@@ -1600,15 +1590,15 @@ function loadScript(src){
     if(loaded)return;
     loaded=true;
     try{
-      await loadScript('https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js');
+      await loadScript('assets/js/GLTFLoader.js');
       await loadScript('assets/3d/base.glb.js');
       initGLTFModel();
-    }catch(e){loaded=false;console.warn('GLTF lazy load failed:',e)}
+    }catch(e){loaded=false;console.warn('GLTF lazy load failed, retry on next intersect:',e)}
   };
   if('IntersectionObserver' in window){
     const observer=new IntersectionObserver(entries=>{
-      if(entries[0].isIntersecting){observer.disconnect();load();}
-    },{rootMargin:'300px 0px'});
+      if(entries[0].isIntersecting){load();}
+    },{rootMargin:'900px 0px'}); // precarga antes de llegar (logo listo al entrar en la seccion)
     observer.observe(target);
   }else{load();}
 })();
