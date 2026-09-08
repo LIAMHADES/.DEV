@@ -5358,6 +5358,7 @@ window.ARES_PET_FRIENDLY_TYPE_LABEL = {
   peluqueria: "Peluqueria canina",
   playa_perros: "Playa para perros",
   protectora: "Protectora de animales",
+  restaurante: "Restaurante pet friendly",
   tienda: "Tienda de mascotas",
   veterinario: "Veterinario",
 };

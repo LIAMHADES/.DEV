@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sitios pet friendly y lugares para perros en España | ARES GPS</title>
 <meta name="description" content="Encuentra sitios pet friendly para ir con tu perro: restaurantes, parques caninos, playas y hoteles que admiten perros en España. Datos procedentes de Google Maps; confirma antes de visitar.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sitios pet friendly y lugares para perros en España | ARES GPS">
+<meta property="og:description" content="Encuentra restaurantes, parques, playas y alojamientos pet friendly para disfrutar con tu perro en España.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sitios pet friendly y lugares para perros en España | ARES GPS">
+<meta name="twitter:description" content="Encuentra restaurantes, parques, playas y alojamientos pet friendly para disfrutar con tu perro en España.">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -19,6 +26,7 @@
 </script>
 
 <link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/footer-common.css">
 <link rel="stylesheet" href="assets/css/lead-capture.css">
 <link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
@@ -30,8 +38,8 @@
 .sec-prism .prism-cell{border-right:1px solid rgba(134,187,216,0.08);border-bottom:1px solid rgba(134,187,216,0.08);transition:background 0.15s ease-out}
 .sec-prism .prism-cell.lit{transition:background 0s}
 .hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--hl);text-transform:uppercase;margin-bottom:1rem}
-#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);color:var(--t);letter-spacing:0.02em;line-height:1.25;text-transform:uppercase;max-width:760px}
-.hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.85rem,1.6vw,1rem);color:rgba(240,242,245,0.85);letter-spacing:0.04em;margin-top:1rem;max-width:560px;margin-left:auto;margin-right:auto}
+#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);color:var(--t);letter-spacing:0.02em;line-height:1.25;text-transform:uppercase;width:100%;max-width:760px;margin:0 auto;overflow-wrap:normal;word-break:normal;hyphens:none}
+.hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.85rem,1.6vw,1rem);color:rgba(240,242,245,0.85);letter-spacing:0.04em;margin-top:1rem;width:100%;max-width:560px;margin-left:auto;margin-right:auto;overflow-wrap:anywhere}
 
 #search-wrap{max-width:420px;margin:2.5rem auto 0;position:relative}
 .cs-trigger{position:relative;width:100%;background:rgba(134,187,216,0.08);border:none;color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.95rem;padding:1rem 3rem 1rem 1.2rem;text-align:left;cursor:pointer;display:flex;align-items:center;gap:0.4rem;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:background 0.3s}
@@ -51,23 +59,29 @@
 body.ov-open #progress-bar,body.ov-open #ticksWrapper,body.ov-open .nav-toggle,body.ov-open #pf-contexto,body.ov-open .sec-light,body.ov-open footer,body.ov-open #results-section,body.ov-open #pf-layout,body.ov-open #main-nav,body.ov-open .back-link{opacity:0;pointer-events:none;z-index:0}
 .city-overlay-inner{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem}
 .city-overlay-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--t2);text-transform:uppercase;margin-bottom:1.5rem}
-.city-search{width:100%;max-width:360px;background:rgba(32,48,61,0.6);border:1px solid rgba(240,242,245,0.15);color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.85rem;padding:0.75rem 1.2rem;margin-bottom:2rem;border-radius:0;text-align:center;transition:border-color 0.3s;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
-.city-search:focus{outline:none;border-color:var(--cta)}
+.city-search-frame{width:100%;max-width:360px;margin-bottom:2rem;padding:1px;background:rgba(240,242,245,0.15);clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:background 0.3s,box-shadow 0.3s}
+.city-search-frame:focus-within,.city-search-frame.has-value{background:var(--cta);box-shadow:0 0 16px rgba(242,100,25,0.25)}
+.city-search{display:block;width:100%;max-width:none;background:rgba(32,48,61,0.6);border:none;color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.85rem;padding:0.75rem 1.2rem;border-radius:0;text-align:center;clip-path:polygon(7px 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%,0 7px);transition:background 0.3s;outline:none}
+.city-search:focus{outline:none}
 .city-search::placeholder{color:rgba(240,242,245,0.3)}
-.city-list{list-style:none;padding:0;margin:0;text-align:center;display:flex;flex-direction:column;gap:0;width:100%;max-width:500px}
-.city-list li a{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2rem,4.5vw,3rem);color:var(--t);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;padding:0.5rem 0;display:block;text-align:center;width:100%;transition:color 0.3s,transform 0.3s;opacity:0;transform:translateY(30px)}
+.city-list{list-style:none;padding:0;margin:0;text-align:center;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0.35rem 1rem;width:100%;max-width:900px}
+.city-list li a{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.25rem,2.35vw,2.2rem);line-height:1.2;color:var(--t);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;padding:0.55rem 0.25rem;display:block;text-align:center;width:100%;transition:color 0.3s,transform 0.3s;opacity:0;transform:translateY(30px)}
 .city-list li a:hover{color:var(--hl);transform:scale(1.06)}
 .city-list li.hidden{display:none}
 .city-overlay.open .city-list li:not(.hidden) a{animation:cityFadeIn 0.55s cubic-bezier(0.16,1,0.3,1) both}
 @keyframes cityFadeIn{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
-.city-overlay-close{position:absolute;top:3rem;right:2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:none;border:none;color:var(--t2);cursor:pointer;transition:transform 0.35s}
+.city-overlay-close{position:absolute;top:3rem;right:2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:none;border:none;color:var(--t2);cursor:pointer;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1),opacity 0.3s}
 .city-overlay-close:hover{transform:rotate(90deg)}
 .city-overlay-close::before,.city-overlay-close::after{content:'';position:absolute;top:50%;left:50%;width:20px;height:2px;background:var(--t2);transition:background 0.3s}
 .city-overlay-close::before{transform:translate(-50%,-50%) rotate(45deg)}
 .city-overlay-close::after{transform:translate(-50%,-50%) rotate(-45deg)}
 .city-overlay-close:hover::before,.city-overlay-close:hover::after{background:var(--cta)}
+.nav-overlay.open{z-index:10020}
+.nav-toggle.active{z-index:10021}
 #cityNoResults{display:none;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--t3);text-align:center;margin-top:1rem}
-@media(max-width:500px){.city-list li a{font-size:clamp(1.5rem,7vw,2.2rem)}}
+@media(max-width:900px){.city-list{grid-template-columns:repeat(3,minmax(0,1fr));max-width:720px}}
+@media(max-width:600px){.city-list{grid-template-columns:1fr;gap:0;max-width:360px}.city-list li a{font-size:clamp(1.5rem,7vw,2.2rem)}}
+@media(max-width:768px){#hero{padding-inline:1rem}#hero .container{width:100%;max-width:100%;padding-inline:0}#hero h1{max-width:min(100%,292px)!important;padding-inline:.25rem;font-size:clamp(1.55rem,7vw,1.85rem)!important;line-height:1.12;letter-spacing:0.01em;text-wrap:balance}#hero .hero-tag{font-size:9px;letter-spacing:0.12em;line-height:1.5;max-width:100%;overflow-wrap:anywhere}.hero-sub{max-width:min(100%,290px)!important;font-size:clamp(.78rem,3.8vw,.9rem);line-height:1.55}#search-wrap{width:100%;max-width:320px;margin-inline:auto}#search-hint{max-width:290px;margin-inline:auto;line-height:1.5;overflow-wrap:anywhere}#search-wrap>div:last-child{max-width:290px!important;font-size:7px!important;line-height:1.5!important}}
 #search-hint{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.06em;color:rgba(240,242,245,0.7);text-align:center;margin-top:0.8rem;text-transform:uppercase}
 
 #results-section{display:none}
@@ -125,20 +139,20 @@ body.ov-open #progress-bar,body.ov-open #ticksWrapper,body.ov-open .nav-toggle,b
 .pf-cta-sub{font-family:'Orbitron',sans-serif;font-size:0.8rem;color:var(--t2);margin-bottom:1.8rem}
 
 /* === FOOTER MAP === */
-.pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:hidden}
-.pf-footer-map{position:relative;width:100%;height:280px;overflow:hidden;background:var(--bg)}
+.pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:hidden;--footer-bg-stretch:0;--footer-svg-stretch:0;--footer-rise:0px;--footer-svg-base-scale:1;--footer-tile-height:calc(100% / var(--footer-svg-base-scale));--footer-scroll-extra:0px}
+.pf-footer-map{position:relative;width:100%;height:calc(280px * (1 + var(--footer-bg-stretch)));margin-top:calc(0px - var(--footer-rise));overflow:hidden;background:var(--bg)}
 /* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
-.pf-footer-track{position:absolute;top:0;left:0;height:100%;display:flex;width:max-content;gap:16px;overflow:visible;will-change:transform}
-.pf-footer-tile{flex-shrink:0;width:100vw;height:100%;object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scaleY(calc(1 + var(--footer-stretch,0)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
+.pf-footer-track{position:absolute;bottom:0;left:0;height:100%;display:flex;align-items:flex-end;width:max-content;gap:16px;overflow:visible;will-change:transform}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:var(--footer-tile-height, calc(100% / var(--footer-svg-base-scale)));object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
 .pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
 .pf-footer-wrap,.pf-footer-map{overflow:hidden!important;contain:paint!important}
-@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px))}}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px - var(--footer-scroll-extra,0px)))}}
 @media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
 @media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
 .pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
 .pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
 .pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
-@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px}}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px;--footer-svg-base-scale:1}.pf-footer-map{height:240px;--footer-scroll-extra:calc(var(--footer-svg-stretch) * 100vw)}.pf-footer-track{gap:calc(16px + var(--footer-scroll-extra))}.pf-footer-tile{transform:translate3d(0,10px,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)))}#pf-faq.sec-light{clip-path:polygon(0 24px,100% 0,100% calc(100% - 24px),0 100%)}}
 
 .sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
 .sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
@@ -151,7 +165,7 @@ section:first-of-type{clip-path:none}
 #pf-contexto{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
 
 /* === CATEGORÍAS PET-FRIENDLY (editorial) === */
-#pf-categorias{margin-top:-40px}
+#pf-categorias{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
 .pf-cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2.5rem;max-width:860px;margin-left:auto;margin-right:auto}
 .pf-cat{background:rgba(134,187,216,0.05);border:1px solid rgba(134,187,216,0.15);border-radius:8px;padding:1.4rem 1.4rem 1.2rem;text-align:left}
 .pf-cat h3{font-family:'Bruno Ace SC',sans-serif;font-size:1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--t);margin-bottom:0.6rem}
@@ -161,12 +175,13 @@ section:first-of-type{clip-path:none}
 /* === FAQ PET-FRIENDLY === */
 #pf-faq{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
 .pf-faq-list{max-width:720px;margin:2rem auto 0;display:flex;flex-direction:column;gap:0.75rem}
-.pf-faq-item{background:rgba(255,255,255,0.03);border:1px solid rgba(240,242,245,0.08);border-radius:6px;overflow:hidden;text-align:left}
-.pf-faq-item summary{list-style:none;cursor:pointer;padding:1rem 1.3rem;font-family:'Orbitron',sans-serif;font-size:0.88rem;color:var(--t);font-weight:500;display:flex;justify-content:space-between;align-items:center}
+.pf-faq-item{background:rgba(47,72,88,0.04);border:1px solid rgba(47,72,88,0.12);border-radius:6px;overflow:hidden;text-align:left}
+.pf-faq-item summary{list-style:none;cursor:pointer;padding:1rem 1.3rem;font-family:'Orbitron',sans-serif;font-size:0.88rem;color:var(--wtext);font-weight:500;display:flex;justify-content:space-between;align-items:center;gap:1rem;user-select:none}
 .pf-faq-item summary::-webkit-details-marker{display:none}
-.pf-faq-item summary::after{content:'+';font-size:1.1rem;color:var(--hl);transition:transform 0.25s}
-.pf-faq-item[open] summary::after{transform:rotate(45deg)}
-.pf-faq-item p{padding:0 1.3rem 1.1rem;margin:0;font-size:0.85rem;color:var(--t2);line-height:1.8}
+.pf-faq-item summary::after{content:'+';font-size:1.3rem;line-height:1;color:var(--hl);flex-shrink:0;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),color 0.3s}
+.pf-faq-item[open] summary::after{transform:rotate(45deg);color:var(--cta)}
+.pf-faq-item p{padding:0 1.3rem 1.1rem;margin:0;font-size:0.85rem;color:var(--wtext2);line-height:1.8;animation:pfFaqFade 0.3s ease}
+@keyframes pfFaqFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 </style>
 <script src="../assets/js/analytics.js"></script>
 </head>
@@ -224,7 +239,9 @@ section:first-of-type{clip-path:none}
       <button class="city-overlay-close" id="cityOverlayClose" aria-label="Cerrar"></button>
       <div class="city-overlay-inner">
         <div class="city-overlay-title">Elige tu ciudad</div>
-        <input type="text" class="city-search" id="citySearch" placeholder="Escribe para filtrar..." autocomplete="off">
+        <div class="city-search-frame" id="citySearchFrame">
+          <input type="text" class="city-search" id="citySearch" placeholder="Escribe para filtrar..." autocomplete="off">
+        </div>
         <ul class="city-list" id="cityList"></ul>
         <div id="cityNoResults">Ninguna ciudad coincide</div>
       </div>
@@ -274,8 +291,8 @@ section:first-of-type{clip-path:none}
 <!-- CATEGORÍAS PET-FRIENDLY (editorial, estructura SEO) -->
 <section id="pf-categorias" class="sec-dark">
   <div class="container">
-    <div class="sl" style="text-align:center">Dónde ir con tu perro</div>
-    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">SITIOS PET FRIENDLY POR TIPO</h2>
+    <div class="sl" style="text-align:center">Planes para salir juntos</div>
+    <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">DÓNDE IR CON TU PERRO EN ESPAÑA</h2>
     <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:620px;margin:0.5rem auto 0">Cada vez hay más lugares que admiten perros en España. Te contamos qué tener en cuenta en cada tipo, y el buscador de arriba te muestra los de tu ciudad.</div>
 
     <div class="pf-cat-grid">
@@ -336,7 +353,7 @@ section:first-of-type{clip-path:none}
       <div class="pf-footer-gradient"></div>
       <div class="pf-footer-text">
         <div>ARES GPS &copy; 2026 — Buscador Pet-Friendly</div>
-        <div class="pf-footer-sub">Lugares para ir con tu perro solo Espa&ntilde;a &middot; Datos v&iacute;a Apify + Google Maps &middot; Confirma antes de visitar &middot; Sujeto a cambios</div>
+        <div class="pf-footer-sub">Restaurantes, parques y playas &middot; Datos de Google Maps &middot; Confirma antes de visitar</div>
       </div>
     </div>
   </div>
@@ -390,6 +407,7 @@ buildPrism('prism-hero');
   const cityList = document.getElementById('cityList');
   const closeBtn = document.getElementById('cityOverlayClose');
   const searchInput = document.getElementById('citySearch');
+  const searchFrame = document.getElementById('citySearchFrame');
   const noResults = document.getElementById('cityNoResults');
 
   const CITIES = [
@@ -407,7 +425,7 @@ buildPrism('prism-hero');
     {key:"san_sebastian",name:"San Sebastián"},
     {key:"santiago_de_compostela",name:"Santiago"},
     {key:"cadiz",name:"Cádiz"},{key:"toledo",name:"Toledo"}
-  ];
+  ].sort((a,b)=>a.name.localeCompare(b.name,'es'));
 
   function buildList(filter){
     const f = (filter||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
@@ -424,12 +442,14 @@ buildPrism('prism-hero');
 
   searchInput.addEventListener('input', ()=>{
     buildList(searchInput.value);
+    searchFrame.classList.toggle('has-value', searchInput.value.length > 0);
   });
 
   function openOverlay(){
     document.body.classList.add('ov-open');
     overlay.classList.add('open');
     searchInput.value = '';
+    searchFrame.classList.remove('has-value');
     buildList('');
     setTimeout(()=> searchInput.focus(), 400);
   }
@@ -493,7 +513,7 @@ buildPrism('prism-hero');
   function renderTypeFilters(data){
     const typeLabels = window.ARES_PET_FRIENDLY_TYPE_LABEL || {};
     const typesPresent = [...new Set(data.map(s=>s.tipo))];
-    const TYPE_ORDER = ['veterinario','parque','tienda','peluqueria','adiestrador','alojamiento','protectora','playa_perros','otros'];
+    const TYPE_ORDER = ['restaurante','veterinario','parque','tienda','peluqueria','adiestrador','alojamiento','protectora','playa_perros','otros'];
     const ordered = TYPE_ORDER.filter(t=>typesPresent.includes(t));
     typeFiltersEl.innerHTML = '';
     activeFilters = new Set();
@@ -704,11 +724,15 @@ buildPrism('prism-hero');
     const footerMap = document.querySelector('.pf-footer-map');
     if (!footerMap) return;
     let target = 0, current = 0, lastInput = 0, lastTouchY = null, frame = 0;
-    const maxStretch = 0.12;
+     const maxStretch = window.innerWidth <= 768 ? 0.16 : 0.12;
+     const bgFactor = window.innerWidth <= 768 ? 0 : 0.65;
+     const svgFactor = window.innerWidth <= 768 ? 1 : 0.65;
+     const baseHeight = footerMap.offsetHeight;
+     const baseScale = parseFloat(getComputedStyle(footerMap).getPropertyValue('--footer-svg-base-scale')) || 1;
     const atEnd = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
     const release = () => { target = 0; lastInput = 0; if (!frame) frame = requestAnimationFrame(tick); };
     const push = (amount) => { target = Math.min(maxStretch, target + Math.min(maxStretch, amount)); lastInput = performance.now(); if (!frame) frame = requestAnimationFrame(tick); };
-    const tick = (now) => { const elapsed = now - lastInput; if (elapsed > 90) target = Math.max(0, target - 0.12 * Math.min(1, (elapsed - 90) / 140)); current += (target - current) * 0.22; footerMap.style.setProperty('--footer-stretch', current.toFixed(4)); if (Math.abs(current - target) > 0.0005 || target > 0.0005) frame = requestAnimationFrame(tick); else { current = 0; target = 0; footerMap.style.removeProperty('--footer-stretch'); frame = 0; } };
+     const tick = (now) => { const elapsed = now - lastInput; if (elapsed > 90) target = Math.max(0, target - 0.12 * Math.min(1, (elapsed - 90) / 140)); current += (target - current) * 0.22; footerMap.style.setProperty('--footer-bg-stretch', (current * bgFactor).toFixed(4)); footerMap.style.setProperty('--footer-svg-stretch', (current * svgFactor).toFixed(4)); footerMap.style.setProperty('--footer-rise', (current * bgFactor * baseHeight).toFixed(2) + 'px'); if (window.innerWidth > 768) footerMap.style.setProperty('--footer-tile-height', (footerMap.offsetHeight / (baseScale + current * svgFactor)).toFixed(2) + 'px'); else footerMap.style.removeProperty('--footer-tile-height'); if (Math.abs(current - target) > 0.0005 || target > 0.0005) frame = requestAnimationFrame(tick); else { current = 0; target = 0; footerMap.style.removeProperty('--footer-bg-stretch'); footerMap.style.removeProperty('--footer-svg-stretch'); footerMap.style.removeProperty('--footer-rise'); footerMap.style.removeProperty('--footer-tile-height'); frame = 0; } };
     window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && atEnd()) push(Math.abs(event.deltaY) * 0.0009); else if (event.deltaY < 0) release(); }, {passive:true});
     window.addEventListener('touchstart', (event) => { lastTouchY = event.touches[0]?.clientY ?? null; }, {passive:true});
     window.addEventListener('touchmove', (event) => { const y = event.touches[0]?.clientY ?? lastTouchY; const delta = lastTouchY == null || y == null ? 0 : lastTouchY - y; lastTouchY = y; if (delta > 0 && atEnd()) push(delta * 0.002); else if (delta < 0) release(); }, {passive:true});
@@ -716,5 +740,6 @@ buildPrism('prism-hero');
     window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
   })();
 </script>
+<script src="../assets/js/footer-common.js"></script>
 </body>
 </html>
