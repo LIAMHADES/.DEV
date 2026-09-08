@@ -1,0 +1,94 @@
+/* Shared footer utility row. Page-specific footer copy stays in the page markup. */
+.ares-footer-meta {
+  position: relative;
+  z-index: 3;
+  padding: 1.15rem 1.25rem 1.4rem;
+  background: #101820;
+  border-top: 1px solid rgba(134, 187, 216, 0.14);
+  text-align: center;
+  color: rgba(240, 242, 245, 0.48);
+  font: 500 8px/1.6 "JetBrains Mono", monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ares-footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.2rem;
+  margin: 0;
+}
+
+.ares-footer-nav a,
+.ares-footer-data a {
+  color: rgba(240, 242, 245, 0.72);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ares-footer-nav a:hover,
+.ares-footer-nav a:focus-visible,
+.ares-footer-data a:hover,
+.ares-footer-data a:focus-visible {
+  color: #f6ae2d;
+}
+
+.ares-footer-data {
+  max-width: 760px;
+  margin: 0.75rem auto 0;
+  color: rgba(240, 242, 245, 0.36);
+  letter-spacing: 0.025em;
+  text-transform: none;
+}
+
+.ares-footer-data button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(240, 242, 245, 0.72);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(240, 242, 245, 0.25);
+  text-underline-offset: 0.2em;
+}
+
+.ares-footer-data button:hover,
+.ares-footer-data button:focus-visible {
+  color: #f6ae2d;
+}
+
+.ares-footer-plain {
+  margin-top: 0;
+  clip-path: none;
+}
+
+.ares-footer-plain .ares-footer-meta {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 560px) {
+  .ares-footer-meta {
+    padding-inline: 1rem;
+  }
+
+  .ares-footer-nav {
+    gap: 0.45rem 0.85rem;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 768px) {
+  .pf-footer-wrap {
+    --footer-svg-base-scale: 0.9 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ares-footer-nav a,
+  .ares-footer-data a {
+    transition: none;
+  }
+}
