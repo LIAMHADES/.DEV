@@ -5363,6 +5363,35 @@ window.ARES_PET_FRIENDLY_TYPE_LABEL = {
   veterinario: "Veterinario",
 };
 
+window.ARES_PET_FRIENDLY_CITY_CATALOG = [
+  { key: "alicante", name: "Alicante", region: "Comunidad Valenciana" },
+  { key: "barcelona", name: "Barcelona", region: "Cataluña" },
+  { key: "bilbao", name: "Bilbao", region: "País Vasco" },
+  { key: "cadiz", name: "Cádiz", region: "Andalucía" },
+  { key: "cordoba", name: "Córdoba", region: "Andalucía" },
+  { key: "girona", name: "Girona", region: "Cataluña" },
+  { key: "granada", name: "Granada", region: "Andalucía" },
+  { key: "la_coruna", name: "A Coruña", region: "Galicia" },
+  { key: "las_palmas", name: "Las Palmas", region: "Canarias" },
+  { key: "leon", name: "León", region: "Castilla y León" },
+  { key: "malaga", name: "Málaga", region: "Andalucía" },
+  { key: "madrid", name: "Madrid", region: "Comunidad de Madrid" },
+  { key: "murcia", name: "Murcia", region: "Región de Murcia" },
+  { key: "oviedo", name: "Oviedo", region: "Asturias" },
+  { key: "palma_de_mallorca", name: "Palma de Mallorca", region: "Illes Balears" },
+  { key: "pamplona", name: "Pamplona", region: "Navarra" },
+  { key: "salamanca", name: "Salamanca", region: "Castilla y León" },
+  { key: "san_sebastian", name: "San Sebastián", region: "País Vasco" },
+  { key: "santiago_de_compostela", name: "Santiago de Compostela", region: "Galicia" },
+  { key: "santander", name: "Santander", region: "Cantabria" },
+  { key: "sevilla", name: "Sevilla", region: "Andalucía" },
+  { key: "toledo", name: "Toledo", region: "Castilla-La Mancha" },
+  { key: "valencia", name: "Valencia", region: "Comunidad Valenciana" },
+  { key: "valladolid", name: "Valladolid", region: "Castilla y León" },
+  { key: "vigo", name: "Vigo", region: "Galicia" },
+  { key: "zaragoza", name: "Zaragoza", region: "Aragón" },
+];
+
 window.ARES_PET_FRIENDLY_CITY_CENTER = {
   "madrid": { lat: 40.4168, lng: -3.7038, zoom: 12 },
   "barcelona": { lat: 41.3874, lng: 2.1686, zoom: 12 },
