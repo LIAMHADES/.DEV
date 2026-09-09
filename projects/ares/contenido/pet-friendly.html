@@ -53,10 +53,12 @@
 .cs-icon{margin-left:auto;flex-shrink:0;position:relative;z-index:1}
 
 /* === OVERLAY CIUDADES === */
-.city-overlay{position:fixed;inset:0;z-index:10001;background:rgba(21,29,37,0.97);backdrop-filter:blur(20px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.4s,visibility 0.4s;overflow-y:auto;scrollbar-width:none}
+ .city-overlay{position:fixed;inset:0;z-index:2147483000;width:100%;height:100dvh;max-height:100dvh;background:#151d25;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.4s,visibility 0.4s;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;scrollbar-width:none;isolation:isolate}
 .city-overlay::-webkit-scrollbar{display:none}
 .city-overlay.open{opacity:1;visibility:visible;pointer-events:auto}
-body.ov-open #progress-bar,body.ov-open #ticksWrapper,body.ov-open .nav-toggle,body.ov-open #pf-contexto,body.ov-open .sec-light,body.ov-open footer,body.ov-open #results-section,body.ov-open #pf-layout,body.ov-open #main-nav,body.ov-open .back-link{opacity:0;pointer-events:none;z-index:0}
+ html.ov-open,body.ov-open{overflow:hidden;overscroll-behavior:none}
+ body.ov-open > :not(#cityOverlay){visibility:hidden;pointer-events:none}
+ body.ov-open #progress-bar,body.ov-open #ticksWrapper,body.ov-open .nav-toggle,body.ov-open #pf-contexto,body.ov-open .sec-light,body.ov-open footer,body.ov-open #results-section,body.ov-open #pf-layout,body.ov-open #main-nav,body.ov-open .back-link{opacity:0;pointer-events:none;z-index:0}
 .city-overlay-inner{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem}
 .city-overlay-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--t2);text-transform:uppercase;margin-bottom:1.5rem}
 .city-search-frame{width:100%;max-width:360px;margin-bottom:2rem;padding:1px;background:rgba(240,242,245,0.15);clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:background 0.3s,box-shadow 0.3s}
@@ -64,13 +66,19 @@ body.ov-open #progress-bar,body.ov-open #ticksWrapper,body.ov-open .nav-toggle,b
 .city-search{display:block;width:100%;max-width:none;background:rgba(32,48,61,0.6);border:none;color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.85rem;padding:0.75rem 1.2rem;border-radius:0;text-align:center;clip-path:polygon(7px 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%,0 7px);transition:background 0.3s;outline:none}
 .city-search:focus{outline:none}
 .city-search::placeholder{color:rgba(240,242,245,0.3)}
-.city-list{list-style:none;padding:0;margin:0;text-align:center;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0.35rem 1rem;width:100%;max-width:900px}
-.city-list li a{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.25rem,2.35vw,2.2rem);line-height:1.2;color:var(--t);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;padding:0.55rem 0.25rem;display:block;text-align:center;width:100%;transition:color 0.3s,transform 0.3s;opacity:0;transform:translateY(30px)}
-.city-list li a:hover{color:var(--hl);transform:scale(1.06)}
-.city-list li.hidden{display:none}
-.city-overlay.open .city-list li:not(.hidden) a{animation:cityFadeIn 0.55s cubic-bezier(0.16,1,0.3,1) both}
+ .city-list{width:100%;max-width:980px;text-align:center}
+ .city-group{display:grid;grid-template-columns:minmax(145px,0.7fr) minmax(0,3fr);align-items:start;gap:1rem 2rem;padding:1.2rem 0 1.45rem;border-top:1px solid rgba(134,187,216,0.22)}
+ .city-group:first-child{padding-top:0;border-top:0}
+ .city-group-title{display:flex;align-items:center;gap:0.7rem;padding-top:0.65rem;font-family:'JetBrains Mono',monospace;font-size:9px;line-height:1.4;letter-spacing:0.14em;color:var(--t2);text-align:left;text-transform:uppercase}
+ .city-group-title::before{content:'';width:6px;height:6px;flex:0 0 6px;background:var(--cta);transform:rotate(45deg);box-shadow:0 0 10px rgba(242,100,25,0.35)}
+ .city-group-title::after{content:'';height:1px;flex:1;background:rgba(134,187,216,0.18)}
+ .city-group-cities{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.35rem 1rem}
+ .city-group-cities li a{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.1rem,2.1vw,2rem);line-height:1.2;color:var(--t);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;padding:0.55rem 0.25rem;display:block;text-align:center;width:100%;transition:color 0.3s,transform 0.3s;opacity:0;transform:translateY(30px)}
+ .city-group-cities li a:hover{color:var(--hl);transform:scale(1.06)}
+ .city-group-cities li.hidden{display:none}
+ .city-overlay.open .city-group-cities li:not(.hidden) a{animation:cityFadeIn 0.55s cubic-bezier(0.16,1,0.3,1) both}
 @keyframes cityFadeIn{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
-.city-overlay-close{position:absolute;top:3rem;right:2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:none;border:none;color:var(--t2);cursor:pointer;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1),opacity 0.3s}
+ .city-overlay-close{position:fixed;top:max(1.25rem,env(safe-area-inset-top));right:max(1rem,env(safe-area-inset-right));z-index:2;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:none;border:none;color:var(--t2);cursor:pointer;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1),opacity 0.3s}
 .city-overlay-close:hover{transform:rotate(90deg)}
 .city-overlay-close::before,.city-overlay-close::after{content:'';position:absolute;top:50%;left:50%;width:20px;height:2px;background:var(--t2);transition:background 0.3s}
 .city-overlay-close::before{transform:translate(-50%,-50%) rotate(45deg)}
@@ -79,8 +87,8 @@ body.ov-open #progress-bar,body.ov-open #ticksWrapper,body.ov-open .nav-toggle,b
 .nav-overlay.open{z-index:10020}
 .nav-toggle.active{z-index:10021}
 #cityNoResults{display:none;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--t3);text-align:center;margin-top:1rem}
-@media(max-width:900px){.city-list{grid-template-columns:repeat(3,minmax(0,1fr));max-width:720px}}
-@media(max-width:600px){.city-list{grid-template-columns:1fr;gap:0;max-width:360px}.city-list li a{font-size:clamp(1.5rem,7vw,2.2rem)}}
+ @media(max-width:900px){.city-group{grid-template-columns:1fr;gap:0.35rem}.city-group-title{padding-top:0}.city-group-cities{grid-template-columns:repeat(3,minmax(0,1fr))}}
+ @media(max-width:600px){.city-list{max-width:360px}.city-group{padding:1rem 0 1.2rem}.city-group-cities{grid-template-columns:1fr;gap:0}.city-group-cities li a{font-size:clamp(1.5rem,7vw,2.2rem)}}
 @media(max-width:768px){#hero{padding-inline:1rem}#hero .container{width:100%;max-width:100%;padding-inline:0}#hero h1{max-width:min(100%,292px)!important;padding-inline:.25rem;font-size:clamp(1.55rem,7vw,1.85rem)!important;line-height:1.12;letter-spacing:0.01em;text-wrap:balance}#hero .hero-tag{font-size:9px;letter-spacing:0.12em;line-height:1.5;max-width:100%;overflow-wrap:anywhere}.hero-sub{max-width:min(100%,290px)!important;font-size:clamp(.78rem,3.8vw,.9rem);line-height:1.55}#search-wrap{width:100%;max-width:320px;margin-inline:auto}#search-hint{max-width:290px;margin-inline:auto;line-height:1.5;overflow-wrap:anywhere}#search-wrap>div:last-child{max-width:290px!important;font-size:7px!important;line-height:1.5!important}}
 #search-hint{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.06em;color:rgba(240,242,245,0.7);text-align:center;margin-top:0.8rem;text-transform:uppercase}
 
@@ -183,7 +191,7 @@ section:first-of-type{clip-path:none}
 .pf-faq-item p{padding:0 1.3rem 1.1rem;margin:0;font-size:0.85rem;color:var(--wtext2);line-height:1.8;animation:pfFaqFade 0.3s ease}
 @keyframes pfFaqFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 </style>
-<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/analytics.js" defer></script>
 </head>
 <body>
 
@@ -216,6 +224,18 @@ section:first-of-type{clip-path:none}
   </div>
 </div>
 <div class="ov-ticks" id="ovTicks"></div>
+<!-- OVERLAY CIUDADES: fuera de #hero para no quedar recortado por overflow:hidden -->
+<div class="city-overlay" id="cityOverlay">
+  <button class="city-overlay-close" id="cityOverlayClose" aria-label="Cerrar"></button>
+  <div class="city-overlay-inner">
+    <div class="city-overlay-title">Elige tu ciudad</div>
+    <div class="city-search-frame" id="citySearchFrame">
+      <input type="text" class="city-search" id="citySearch" placeholder="Escribe para filtrar..." autocomplete="off">
+    </div>
+    <div class="city-list" id="cityList" role="list" aria-label="Ciudades disponibles"></div>
+    <div id="cityNoResults">Ninguna ciudad coincide</div>
+  </div>
+</div>
 
 <!-- HERO + BUSCADOR -->
 <section id="hero" class="sec-dark">
@@ -234,18 +254,6 @@ section:first-of-type{clip-path:none}
       <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.04em;color:rgba(240,242,245,0.45);text-align:center;margin-top:0.5rem;line-height:1.6;max-width:420px;margin-left:auto;margin-right:auto">La informaci&oacute;n proviene de Google Maps y puede variar con el tiempo. Horarios, pol&iacute;ticas de admisi&oacute;n y disponibilidad pueden cambiar sin previo aviso. Recomendamos confirmar siempre antes de visitar.</div>
     </div>
 
-    <!-- OVERLAY CIUDADES -->
-    <div class="city-overlay" id="cityOverlay">
-      <button class="city-overlay-close" id="cityOverlayClose" aria-label="Cerrar"></button>
-      <div class="city-overlay-inner">
-        <div class="city-overlay-title">Elige tu ciudad</div>
-        <div class="city-search-frame" id="citySearchFrame">
-          <input type="text" class="city-search" id="citySearch" placeholder="Escribe para filtrar..." autocomplete="off">
-        </div>
-        <ul class="city-list" id="cityList"></ul>
-        <div id="cityNoResults">Ninguna ciudad coincide</div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -410,34 +418,31 @@ buildPrism('prism-hero');
   const searchFrame = document.getElementById('citySearchFrame');
   const noResults = document.getElementById('cityNoResults');
 
-  const CITIES = [
-    {key:"madrid",name:"Madrid"},{key:"barcelona",name:"Barcelona"},
-    {key:"valencia",name:"Valencia"},{key:"sevilla",name:"Sevilla"},
-    {key:"zaragoza",name:"Zaragoza"},{key:"malaga",name:"Málaga"},
-    {key:"murcia",name:"Murcia"},{key:"palma_de_mallorca",name:"Palma de Mallorca"},
-    {key:"bilbao",name:"Bilbao"},{key:"alicante",name:"Alicante"},
-    {key:"cordoba",name:"Córdoba"},{key:"valladolid",name:"Valladolid"},
-    {key:"vigo",name:"Vigo"},{key:"girona",name:"Girona"},
-    {key:"oviedo",name:"Oviedo"},{key:"granada",name:"Granada"},
-    {key:"las_palmas",name:"Las Palmas"},{key:"santander",name:"Santander"},
-    {key:"pamplona",name:"Pamplona"},{key:"salamanca",name:"Salamanca"},
-    {key:"la_coruna",name:"A Coruña"},{key:"leon",name:"León"},
-    {key:"san_sebastian",name:"San Sebastián"},
-    {key:"santiago_de_compostela",name:"Santiago"},
-    {key:"cadiz",name:"Cádiz"},{key:"toledo",name:"Toledo"}
-  ].sort((a,b)=>a.name.localeCompare(b.name,'es'));
+   const CITIES = (window.ARES_PET_FRIENDLY_CITY_CATALOG || []).slice().sort((a,b)=>{
+     const region = a.region.localeCompare(b.region,'es');
+     return region || a.name.localeCompare(b.name,'es');
+   });
 
-  function buildList(filter){
-    const f = (filter||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-    let visible = 0;
-    cityList.innerHTML = CITIES.map((c,i)=>{
-      const cn = c.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-      const match = !f || cn.includes(f);
-      if(match) visible++;
-      return `<li class="${match?'':'hidden'}"><a href="#" data-key="${c.key}" data-name="${c.name}" style="animation-delay:${0.03*visible}s">${c.name}</a></li>`;
-    }).join('');
-    noResults.style.display = visible===0 ? 'block' : 'none';
-  }
+   function buildList(filter){
+     const f = (filter||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+     let visible = 0;
+     const groups = new Map();
+     CITIES.forEach(c=>{
+       const cn = c.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+       if(f && !cn.includes(f)) return;
+       if(!groups.has(c.region)) groups.set(c.region, []);
+       groups.get(c.region).push(c);
+     });
+     cityList.innerHTML = [...groups.entries()].map(([region,cities])=>{
+       const links = cities.map(c=>{
+         visible++;
+         return `<li role="listitem"><a href="#" data-key="${c.key}" data-name="${c.name}" style="animation-delay:${0.03*visible}s">${c.name}</a></li>`;
+       }).join('');
+       const regionKey = region.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-');
+       return `<section class="city-group" aria-labelledby="city-region-${regionKey}"><h3 class="city-group-title" id="city-region-${regionKey}">${region}</h3><ul class="city-group-cities">${links}</ul></section>`;
+     }).join('');
+     noResults.style.display = visible===0 ? 'block' : 'none';
+   }
   buildList();
 
   searchInput.addEventListener('input', ()=>{
@@ -445,16 +450,18 @@ buildPrism('prism-hero');
     searchFrame.classList.toggle('has-value', searchInput.value.length > 0);
   });
 
-  function openOverlay(){
-    document.body.classList.add('ov-open');
+   function openOverlay(){
+     document.documentElement.classList.add('ov-open');
+     document.body.classList.add('ov-open');
     overlay.classList.add('open');
     searchInput.value = '';
     searchFrame.classList.remove('has-value');
     buildList('');
     setTimeout(()=> searchInput.focus(), 400);
   }
-  function closeOverlay(){
-    document.body.classList.remove('ov-open');
+   function closeOverlay(){
+     document.documentElement.classList.remove('ov-open');
+     document.body.classList.remove('ov-open');
     overlay.classList.remove('open');
   }
 
@@ -740,6 +747,6 @@ buildPrism('prism-hero');
     window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
   })();
 </script>
-<script src="../assets/js/footer-common.js"></script>
+<script src="../assets/js/footer-common.js" defer></script>
 </body>
 </html>
