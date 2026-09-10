@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="view-transition" content="same-origin">
+<script>(function(){try{if(sessionStorage.getItem('onix-nav-transition')==='1'){document.documentElement.classList.add('onix-nav-transition');sessionStorage.removeItem('onix-nav-transition')}}catch(e){}})();</script>
 <title>Agentes ONIX — Que tu negocio responda solo</title>
-<script src="site-fallback.js" defer></script>
-<script src="menu-lock.js?v=a12eaa0" defer></script>
 <meta name="description" content="Agente WhatsApp, Agente Reseñas y Agente Instagram: bots con supervisión de ONIX que responden por ti, siempre revisados antes de enviarse.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Cormorant:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/Bebas_Neue.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Rajdhani_Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="manifest" href="manifest.json">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -32,7 +37,6 @@
   --font-h1:'Bebas Neue',sans-serif;
   --font-h2:'Rajdhani',sans-serif;
   --font-body:'Raleway',sans-serif;
-  --font-accent:'Cormorant',serif;
   --r:12px;
   --r-sm:8px;
   --ease-std:cubic-bezier(.16,1,.3,1);
@@ -97,7 +101,7 @@ body::after{
 @media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:blur(6px)}}
 :focus-visible{outline:2px solid var(--copper-warm);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
-strong.em,.em{font-family:var(--font-accent);font-style:italic;font-weight:700;color:var(--text);font-size:1.06em;letter-spacing:.01em;-webkit-text-fill-color:var(--text)}
+strong.em,.em{font-family:var(--font-body);font-style:normal;font-weight:600;color:var(--text);font-size:1em;letter-spacing:normal;-webkit-text-fill-color:var(--text)}
 
 .wrap{max-width:1100px;margin:0 auto;padding:0 5%;position:relative;z-index:2}
 
@@ -172,14 +176,26 @@ h1 .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill
 /* ─── ANIMACIONES SCROLL ─────────────────────────────────────── */
 .fi{
   opacity:0;
-  transform:translateY(24px) scale(.99);
+  transform:translateY(24px);
   transition:
     opacity .65s cubic-bezier(.16,1,.3,1),
     transform .65s cubic-bezier(.16,1,.3,1)
 }
 .fi.vis{
   opacity:1;
-  transform:translateY(0) scale(1)
+  transform:translateY(0)
+}
+
+.section-head{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1);
+}
+
+.fi.vis .section-head{
+  opacity:1;
+  transform:translateY(0);
+  transition-delay:.08s;
 }
 
 .trust-strip{
@@ -202,8 +218,9 @@ h1 .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill
 /* ─── AGENTE A MEDIDA ────────────────────────────────────────── */
 .custom-agent-card{
   background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);
-  padding:36px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  padding:36px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease-std),transform .55s var(--ease-std)
 }
+.fi.vis .custom-agent-card{opacity:1;transform:translateY(0);transition-delay:.12s}
 .custom-agent-icon{width:48px;height:48px;flex-shrink:0;color:var(--copper-warm);background:var(--surface2);border-radius:50%;display:flex;align-items:center;justify-content:center}
 .custom-agent-icon svg{width:24px;height:24px}
 .custom-agent-body{flex:1;min-width:240px}
@@ -218,14 +235,23 @@ h1 .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill
 
 /* ─── FOOTER ─────────────────────────────────────────────────── */
 footer{background:var(--surface);border-top:1px solid var(--border2);padding:28px 5%;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-body);font-size:13px;font-weight:300;color:var(--muted);flex-wrap:wrap;gap:14px}
-footer .footer-logo img{height:50px;mix-blend-mode:screen;opacity:.7}
+footer .footer-logo{display:flex;align-items:center;min-height:50px;height:clamp(50px,6vw,72px)}
+footer .footer-logo img{display:block;width:auto;height:100%;min-height:0;max-height:72px;max-width:100%;object-fit:contain;mix-blend-mode:screen;opacity:.7}
 footer a{color:var(--copper-warm);text-decoration:none}
 footer a:hover{color:var(--copper-light)}
 
 @media(max-width:768px){
   .custom-agent-card{padding:26px;text-align:center;justify-content:center}
   .custom-agent-body{min-width:0}
-}
+  }
+ @media(min-width:901px){
+   .agents-stack-inner{height:590px}
+   .stack-card{height:auto;min-height:540px;overflow:visible}
+   .bar-expanded{padding-bottom:30px}
+ }
+ @media(max-width:900px){
+   .agent-cta{width:100%;box-sizing:border-box}
+ }
 
 /* ─── AGENTES: STACK CARDS (coverflow 3D) ─────────────────────
    3 posiciones relativas (-1 izquierda, 0 centro, 1 derecha):
@@ -233,17 +259,22 @@ footer a:hover{color:var(--copper-light)}
    las laterales se reducen, rotan levemente hacia el centro y
    se atenúan con .stack-dim — click en una lateral la trae al
    centro (ver JS: reasigna data-rel a las 3 en cada click). */
-.agents-stack-outer{max-width:100%;overflow:hidden;padding:60px 0}
+.agents-stack-outer{max-width:100%;overflow:hidden;padding:60px 0;opacity:0;transition:opacity .55s var(--ease-std)}
+.fi.vis .agents-stack-outer{opacity:1;transition-delay:.16s}
 .agents-stack{margin:0 auto;max-width:1040px;perspective:1400px}
 .agents-stack-inner{
   position:relative;height:520px;padding:20px 0;
 }
 .stack-card{
   background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);
-  padding:0;width:340px;cursor:pointer;transition:.45s var(--ease-std);
+  padding:0;width:340px;cursor:pointer;opacity:0;transition:opacity .45s var(--ease-std),transform .45s var(--ease-std),border-color .45s var(--ease-std),outline-color .45s var(--ease-std);
   position:absolute;top:20px;left:50%;overflow:hidden;display:flex;flex-direction:column;
   transform-style:preserve-3d;z-index:1;margin-left:-170px
 }
+.fi.vis .stack-card{opacity:1}
+.fi.vis .stack-card:nth-child(1){transition-delay:.2s}
+.fi.vis .stack-card:nth-child(2){transition-delay:.28s}
+.fi.vis .stack-card:nth-child(3){transition-delay:.36s}
 .stack-card[data-rel="0"]{
   border-color:rgba(184,84,32,.4);outline:1px solid rgba(184,84,32,.25);
   transform:translateX(0) translateZ(0) rotateY(0) scale(1);z-index:3;cursor:default
@@ -280,7 +311,8 @@ footer a:hover{color:var(--copper-light)}
 .agent-cta:hover{border-color:rgba(184,84,32,.45);color:var(--copper-warm)}
 
 /* ─── AGENTES: PACK CALC ──────────────────────────────────── */
-.pack-calc{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:32px;margin-top:32px}
+.pack-calc{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:32px;margin-top:32px;opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease-std),transform .55s var(--ease-std)}
+.fi.vis .pack-calc{opacity:1;transform:translateY(0);transition-delay:.16s}
 .pack-calc h3{font-family:var(--font-h2);font-size:20px;font-weight:700;margin-bottom:16px}
 .pack-calc-options{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .pack-agent-block{display:flex;flex-direction:column}
@@ -341,7 +373,17 @@ footer a:hover{color:var(--copper-light)}
   .trust-strip{flex-direction:column;gap:10px;padding:14px 16px}
   .custom-agent-card{flex-direction:column;align-items:center;text-align:center;padding:26px;gap:16px}
   .custom-agent-body{min-width:0}
-}</style>
+ }
+/* ─── PAGE TRANSITIONS (View Transitions API) ────────────────── */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:v-out .4s cubic-bezier(.16,1,.3,1) both}
+::view-transition-new(root){animation:v-in .4s cubic-bezier(.16,1,.3,1) both}
+@keyframes v-out{from{opacity:1;transform:scale(1);filter:blur(0)}to{opacity:0;transform:scale(1.04);filter:blur(6px)}}
+@keyframes v-in{from{opacity:0;transform:scale(.96);filter:blur(6px)}to{opacity:1;transform:scale(1);filter:blur(0)}}
+ </style>
+<link rel="stylesheet" href="onix-shared.css">
+<script src="onix-shared.js" defer></script>
+<script src="menu-lock.js?v=a12eaa0" defer></script>
 </head>
 <body>
 
@@ -357,6 +399,7 @@ footer a:hover{color:var(--copper-light)}
   </a>
   <div class="nav-links">
     <a href="index.html">Inicio</a>
+    <a href="producto.html">Producto</a>
     <a href="suscripciones.html">Suscripciones</a>
     <a href="agentes.html" class="current">Agentes</a>
     <a href="campanas.html">Campañas</a>
@@ -373,7 +416,7 @@ footer a:hover{color:var(--copper-light)}
 
   <section class="hero">
     <div class="eyebrow reveal-el">Agentes ONIX</div>
-    <h1 class="reveal-title">Que tu negocio <span class="hl">responda solo</span></h1>
+    <h1 class="reveal-title onix-typewriter-title"><span class="onix-tw-line">Que tu negocio</span><br><span class="onix-tw-line hl">responda solo</span></h1>
     <p class="hero-sub reveal-el">Un bot que contesta por WhatsApp, gestiona tus reseñas de Google o responde tus DMs de Instagram — sin que tengas que estar pendiente todo el día.</p>
 
     <div class="trust-strip reveal-el">
@@ -447,7 +490,7 @@ footer a:hover{color:var(--copper-light)}
           </div>
           <div class="agent-price-premium">Con Premium: <strong>40€</strong>/mes</div>
 
-          <a href="https://wa.me/34630910142?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20contratar%20el%20Agente%20Rese%C3%B1as%20de%20ONIX%20(50%E2%82%AC%2Fmes).%20%C2%BFQu%C3%A9%20necesit%C3%A1is%20de%20m%C3%AD%20para%20activarlo%3F" class="agent-cta">Quiero Reseñas →</a>
+          <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20contratar%20el%20Agente%20Rese%C3%B1as%20de%20ONIX%20(50%E2%82%AC%2Fmes).%20%C2%BFQu%C3%A9%20necesit%C3%A1is%20de%20m%C3%AD%20para%20activarlo%3F" class="agent-cta">Quiero Reseñas →</a>
         </div>
       </div>
 
@@ -560,7 +603,7 @@ footer a:hover{color:var(--copper-light)}
         <h2>¿Necesitas otra cosa?</h2>
         <p>Si tu negocio tiene una necesidad distinta a estos 3 canales — email, gestión de socios, reservas de grupo, un flujo muy específico de tu sector — cuéntanoslo. <strong class="em">Vemos si encaja como un agente a medida</strong>.</p>
       </div>
-      <a href="https://wa.me/34630910142?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Me%20interesan%20los%20Agentes%20de%20ONIX%2C%20pero%20ninguno%20de%20los%203%20est%C3%A1ndar%20(WhatsApp%2C%20Rese%C3%B1as%2C%20Instagram)%20cubre%20lo%20que%20necesito.%20Lo%20que%20busco%20es%3A%20" class="custom-agent-cta">Cuéntanos qué necesitas →</a>
+      <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Me%20interesan%20los%20Agentes%20de%20ONIX%2C%20pero%20ninguno%20de%20los%203%20est%C3%A1ndar%20(WhatsApp%2C%20Rese%C3%B1as%2C%20Instagram)%20cubre%20lo%20que%20necesito.%20Lo%20que%20busco%20es%3A%20" class="custom-agent-cta">Cuéntanos qué necesitas →</a>
     </div>
   </section>
 
@@ -577,26 +620,11 @@ footer a:hover{color:var(--copper-light)}
     <a href="legal.html">Privacidad</a>
     <a href="legal.html">Cookies</a>
   </span>
-  <a href="https://wa.me/34630910142">+34 630 910 142</a>
+  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contactar con ONIX por WhatsApp">Contáctanos</a>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
-(function() {
-  var preloaderTop = document.querySelector('#preloader .pl-half.top');
-  var preloaderBot = document.querySelector('#preloader .pl-half.bot');
-  if (!preloaderTop || !preloaderBot) return;
-
-  var tl = gsap.timeline();
-  tl.fromTo(preloaderTop, {x: -560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
-  tl.fromTo(preloaderBot, {x: 560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
-  tl.to('#preloader', {opacity: 0, duration: 0.4, ease: 'power2.in'}, '-=0.2');
-  tl.set('#preloader', {display: 'none'});
-  tl.to('.reveal-title', {opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08}, '-=0.05');
-  tl.to('.reveal-el', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.06}, 0.15);
-  tl.to('.reveal-card', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05}, 0.35);
-})();
-
 (function(){
   window.addEventListener('scroll', function(){
     document.documentElement.classList.toggle('scrolling', window.scrollY > 10);
@@ -643,7 +671,7 @@ footer a:hover{color:var(--copper-light)}
     if (!cta) return;
     var precio = TRAMOS.normal[tramo];
     var msg = 'Hola, soy [nombre] de [negocio]. Quiero contratar el ' + NOMBRE[agent] + ' (' + TRAMO_LABEL[tramo] + ', ' + euro(precio) + '/mes). ¿Qué necesitáis de mí para activarlo?';
-    cta.href = 'https://wa.me/34630910142?text=' + encodeURIComponent(msg);
+    cta.href = 'https://wa.me/34631879550?text=' + encodeURIComponent(msg);
   }
 
   document.querySelectorAll('.agent-tramos').forEach(function(group){
@@ -743,7 +771,7 @@ footer a:hover{color:var(--copper-light)}
     }).join(' + ');
 
     var msg = 'Hola, soy [nombre] de [negocio]. Quiero el Pack de Agentes: ' + detalle + ', ' + euro(packPrice) + '/mes. ¿Qué necesitáis de mí para activarlo?';
-    cta.href = 'https://wa.me/34630910142?text=' + encodeURIComponent(msg);
+    cta.href = 'https://wa.me/34631879550?text=' + encodeURIComponent(msg);
   }
 
   function render(){
@@ -802,4 +830,4 @@ setTimeout(function() {
 }, 200);
 </script>
 
-<script>document.getElementById('menu-toggle').addEventListener('click',function(){var n=document.querySelector('.nav-links');n.classList.toggle('open');var o=n.classList.contains('open');this.classList.toggle('is-open',o);this.setAttribute('aria-expanded',o);var c=document.querySelector('.nav-cta');if(c)c.classList.toggle('menu-visible',o);});</script></body>
+<script>(function(){var b=document.getElementById('menu-toggle'),n=document.querySelector('.nav-links'),c=document.querySelector('.nav-cta');if(!b||!n)return;function close(){n.classList.remove('open');b.classList.remove('is-open');b.setAttribute('aria-expanded','false');if(c)c.classList.remove('menu-visible')}b.addEventListener('click',function(){var o=n.classList.toggle('open');b.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));if(c)c.classList.toggle('menu-visible',o)});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape')close()})})();</script></body>

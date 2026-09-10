@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="view-transition" content="same-origin">
+<script>(function(){try{if(sessionStorage.getItem('onix-nav-transition')==='1'){document.documentElement.classList.add('onix-nav-transition');sessionStorage.removeItem('onix-nav-transition')}}catch(e){}})();</script>
 <title>ONIX — Recomienda y gana: sistema de referidos</title>
-<script src="site-fallback.js" defer></script>
-<script src="menu-lock.js?v=a12eaa0" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Cormorant:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/Bebas_Neue.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Rajdhani_Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -19,7 +21,7 @@
   --border:#211A12;--border2:#2E2318;
   --g-copper:linear-gradient(135deg,#682B0E 0%,#B85420 25%,#F5C96A 55%,#B85420 80%,#682B0E 100%);
   --g-copper-h:linear-gradient(90deg,#8C3A0F 0%,#B85420 30%,#F5C96A 55%,#B85420 75%,#8C3A0F 100%);
-  --font-h1:'Bebas Neue',sans-serif;--font-h2:'Rajdhani',sans-serif;--font-body:'Raleway',sans-serif;--font-accent:'Cormorant',serif;
+  --font-h1:'Bebas Neue',sans-serif;--font-h2:'Rajdhani',sans-serif;--font-body:'Raleway',sans-serif;
   --r:12px;--r-sm:8px;
   --ease-std:cubic-bezier(.16,1,.3,1)
 }
@@ -73,7 +75,7 @@ body::after{
 @media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:blur(6px)}}
 :focus-visible{outline:2px solid var(--copper-warm);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
-strong.em,.em{font-family:var(--font-accent);font-style:italic;font-weight:700;color:var(--text);font-size:1.06em;letter-spacing:.01em;-webkit-text-fill-color:var(--text)}
+strong.em,.em{font-family:var(--font-body);font-style:normal;font-weight:600;color:var(--text);font-size:1em;letter-spacing:normal;-webkit-text-fill-color:var(--text)}
 
 /* ─── NAV ────────────────────────────────────────────────────── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 5%;background:rgba(8,7,5,.4);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
@@ -233,11 +235,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .btn-primary:hover{background:var(--g-copper);color:#0a0a0a;border-color:transparent;transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,84,32,.3)}
 
 footer{background:var(--surface);border-top:1px solid var(--border2);padding:28px 5%;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-body);font-size:13px;font-weight:300;color:var(--muted);flex-wrap:wrap;gap:14px}
-footer .footer-logo img{height:50px;mix-blend-mode:screen;opacity:.7}
+footer .footer-logo{display:flex;align-items:center;min-height:50px;height:clamp(50px,6vw,72px)}
+footer .footer-logo img{display:block;width:auto;height:100%;min-height:0;max-height:72px;max-width:100%;object-fit:contain;mix-blend-mode:screen;opacity:.7}
 footer a{color:var(--copper-warm);text-decoration:none}
 footer a:hover{color:var(--copper-light)}
+/* ─── PAGE TRANSITIONS (View Transitions API) ────────────────── */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:v-out .4s cubic-bezier(.16,1,.3,1) both}
+::view-transition-new(root){animation:v-in .4s cubic-bezier(.16,1,.3,1) both}
+@keyframes v-out{from{opacity:1;transform:scale(1);filter:blur(0)}to{opacity:0;transform:scale(1.04);filter:blur(6px)}}
+@keyframes v-in{from{opacity:0;transform:scale(.96);filter:blur(6px)}to{opacity:1;transform:scale(1);filter:blur(0)}}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<link rel="stylesheet" href="onix-shared.css">
+<script src="onix-shared.js" defer></script>
+<script src="menu-lock.js?v=a12eaa0" defer></script>
 </head>
 <body>
 
@@ -253,8 +265,12 @@ footer a:hover{color:var(--copper-light)}
   </a>
   <div class="nav-links">
     <a href="index.html">Inicio</a>
+    <a href="producto.html">Producto</a>
     <a href="referidos.html" class="current">Referidos</a>
     <a href="suscripciones.html">Suscripciones</a>
+    <a href="agentes.html">Agentes</a>
+    <a href="campanas.html">Campañas</a>
+    <a href="presupuesto-web.html">Web</a>
     <a href="index.html#contactar">Contacto</a>
   </div>
   <button class="nav-hamburger" id="menu-toggle" aria-label="Menú" aria-expanded="false">
@@ -266,7 +282,7 @@ footer a:hover{color:var(--copper-light)}
 <!-- HERO -->
 <section id="hero">
   <div class="hero-tag reveal-el">Para clientes con stand ONIX</div>
-  <h1 class="hero-title reveal-title">Recomienda un negocio, <span class="hl">gana algo real</span></h1>
+  <h1 class="hero-title reveal-title onix-typewriter-title"><span class="onix-tw-line">Recomienda un negocio,</span><br><span class="onix-tw-line hl">gana algo real</span></h1>
   <p class="hero-sub reveal-el">Si conoces a otro negocio al que le pueda interesar ONIX, dile que venga de tu parte. <strong class="em">Nunca en efectivo</strong> — siempre en servicios: stands, meses de suscripción o campañas de marketing, según cuántos traigas cada mes.</p>
 </section>
 
@@ -369,7 +385,7 @@ footer a:hover{color:var(--copper-light)}
 <div class="cta-section fi">
   <h2 class="reveal-title">¿A quién le <span class="hl">recomiendas</span> hoy?</h2>
   <p class="reveal-el">Si ya tienes tu stand instalado, pídenos tu código por WhatsApp.</p>
-  <a href="https://wa.me/34630910142?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Ya%20soy%20cliente%20ONIX%20y%20quiero%20mi%20c%C3%B3digo%20de%20referido." class="btn-primary reveal-el">Pedir mi código →</a>
+  <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Ya%20soy%20cliente%20ONIX%20y%20quiero%20mi%20c%C3%B3digo%20de%20referido." class="btn-primary reveal-el">Pedir mi código →</a>
 </div>
 
 <footer>
@@ -383,28 +399,8 @@ footer a:hover{color:var(--copper-light)}
     <a href="legal.html">Privacidad</a>
     <a href="legal.html">Cookies</a>
   </span>
-  <a href="https://wa.me/34630910142">+34 630 910 142</a>
+  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contactar con ONIX por WhatsApp">Contáctanos</a>
 </footer>
-
-<!-- ═══ PRELOADER + STAGGERED REVEAL ═══ -->
-<script>
-(function() {
-  var preloaderTop = document.querySelector('#preloader .pl-half.top');
-  var preloaderBot = document.querySelector('#preloader .pl-half.bot');
-
-  var tl = gsap.timeline();
-
-  tl.fromTo(preloaderTop, {x: -560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
-  tl.fromTo(preloaderBot, {x: 560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
-
-  tl.to('#preloader', {opacity: 0, duration: 0.4, ease: 'power2.in'}, '-=0.2');
-  tl.set('#preloader', {display: 'none'});
-
-  tl.to('.reveal-title', {opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08}, '-=0.05');
-  tl.to('.reveal-el', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.06}, 0.15);
-  tl.to('.reveal-card', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05}, 0.35);
-})();
-</script>
 
 <script>
 // Stagger de niveles: se revelan en secuencia al entrar en viewport
@@ -438,4 +434,4 @@ document.querySelectorAll('.fi').forEach(el => observer.observe(el));
 (function(){var st;document.addEventListener('scroll',function(){document.documentElement.classList.add('scrolling');clearTimeout(st);st=setTimeout(function(){document.documentElement.classList.remove('scrolling')},800)},{passive:!0})})();
 </script>
 
-<script>document.getElementById('menu-toggle').addEventListener('click',function(){var n=document.querySelector('.nav-links');n.classList.toggle('open');var o=n.classList.contains('open');this.classList.toggle('is-open',o);this.setAttribute('aria-expanded',o);var c=document.querySelector('.nav-cta');if(c)c.classList.toggle('menu-visible',o);});</script></body>
+<script>(function(){var b=document.getElementById('menu-toggle'),n=document.querySelector('.nav-links'),c=document.querySelector('.nav-cta');if(!b||!n)return;function close(){n.classList.remove('open');b.classList.remove('is-open');b.setAttribute('aria-expanded','false');if(c)c.classList.remove('menu-visible')}b.addEventListener('click',function(){var o=n.classList.toggle('open');b.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));if(c)c.classList.toggle('menu-visible',o)});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape')close()})})();</script></body>

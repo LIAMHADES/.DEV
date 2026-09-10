@@ -1,0 +1,592 @@
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('fonts/Bebas_Neue.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ONIX Nav';
+  src: url('fonts/Bebas_Neue.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('fonts/Rajdhani_Bold.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 600 700;
+  font-style: normal;
+}
+
+nav .nav-links > a,
+nav .nav-cta {
+  font-family: 'ONIX Nav', var(--font-h1), sans-serif !important;
+}
+
+/* Never leave a page trapped behind the remote GSAP preloader. */
+@keyframes onixPreloaderFailsafe {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+@keyframes onixRevealFailsafe {
+  to { opacity: 1; transform: none; }
+}
+
+#preloader {
+  animation: onixPreloaderFailsafe 3.1s ease forwards;
+}
+
+/* The split-logo transition is navigation feedback, not a page-load tax. */
+html:not(.onix-nav-transition) #preloader {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+html:not(.onix-nav-transition) body {
+  animation: none !important;
+}
+
+/* Sections already inside the first viewport must wait for the shared intro. */
+html:not(.onix-motion-ready) .fi {
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+}
+
+/* Page-specific observers can mark a section visible before the H1 starts.
+   Hold that state until the shared 0.5s reveal checkpoint. */
+html.onix-shared-motion:not(.onix-rest-ready) .fi.vis {
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+}
+
+.reveal-title {
+  animation: onixRevealFailsafe .01s linear 3.2s forwards;
+}
+
+.reveal-el,
+.reveal-card {
+  animation: onixRevealFailsafe .01s linear 3.35s forwards;
+}
+
+/* The minified Red ONIX page keeps its old preloader shell. Prevent its
+   legacy inline reveal from racing the shared typewriter until it is ready. */
+html.onix-legacy-red:not(.onix-motion-ready) .reveal-title,
+html.onix-legacy-red:not(.onix-motion-ready) .reveal-el,
+html.onix-legacy-red:not(.onix-motion-ready) .reveal-card {
+  opacity: 0 !important;
+  transform: translateY(18px) !important;
+  animation: none !important;
+}
+
+nav .nav-links {
+  gap: 24px !important;
+  align-items: center;
+}
+
+nav .nav-links > a {
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+nav .nav-cta {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 11px 20px !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap;
+}
+
+/* Highlighted copy uses the same Raleway body face everywhere. */
+body strong.em,
+body .em {
+  font-family: var(--font-body) !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 1em !important;
+  letter-spacing: normal !important;
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+
+body .hero-sub strong.em,
+body .hero-sub .em {
+  font-family: var(--font-body) !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 1em !important;
+  letter-spacing: normal !important;
+}
+
+.onix-typewriter-title .onix-tw-line {
+  display: block;
+}
+
+.onix-typewriter-title > br {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .onix-typewriter-title .onix-tw-line {
+    white-space: nowrap;
+  }
+
+  .onix-single-line-desktop {
+    max-width: none !important;
+    white-space: nowrap !important;
+  }
+
+  .onix-single-line-desktop .onix-tw-line {
+    display: inline;
+  }
+
+  .onix-single-line-desktop .onix-tw-line + .onix-tw-line::before {
+    content: ' ';
+  }
+}
+
+.onix-mobile-break {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  .onix-mobile-break {
+    display: inline;
+  }
+}
+
+/* Headings may wrap between words, but never split a word on narrow screens. */
+h1,
+.hero-title {
+  max-width: 100%;
+  width: 100%;
+  font-size: clamp(68px, 8.5vw, 132px) !important;
+  line-height: .9 !important;
+  letter-spacing: -.01em;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  white-space: normal !important;
+  text-wrap: wrap;
+}
+
+#hero,
+.hero {
+  width: 100%;
+}
+
+/* Repeated cards share one readable title/copy rhythm across the site. */
+:root {
+  --card-title-size: 18px;
+  --card-copy-size: 13px;
+}
+
+.ex-headline {
+  font-family: var(--font-h2) !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: clamp(20px, 1.7vw, 24px) !important;
+  line-height: 1.15 !important;
+  letter-spacing: .005em !important;
+  text-wrap: balance;
+}
+
+.examples-grid > .example-card,
+.cal-examples > .cal-card,
+.catalog-grid > .product-card,
+.service-grid > .service-card,
+.steps-grid > .step,
+.steps > .step,
+.process-steps > .process-step,
+.proceso-grid > .proceso-step,
+.d1-grid > .d1-card,
+.d2-grid > .d2-card,
+.d6-grid > .d6-card {
+  height: 100%;
+}
+
+.example-card,
+.cal-card,
+.stack-card,
+.d1-card,
+.d2-card,
+.d6-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.example-body h3,
+.card-name,
+.step h3 {
+  font-size: var(--card-title-size) !important;
+}
+
+.example-body p,
+.example-pieces li,
+.cal-card p,
+.card-desc,
+.step p,
+.d1-card p,
+.d2-card p,
+.d6-card ul {
+  font-size: var(--card-copy-size) !important;
+}
+
+.example-cta {
+  margin-top: auto !important;
+}
+
+.cal-card p {
+  flex: 1;
+}
+
+.stack-card {
+  height: auto;
+}
+
+/* Shared footer: a deliberate closing surface instead of a loose row of links. */
+footer {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: minmax(170px, 1fr) minmax(220px, 1.2fr) minmax(220px, 1fr) auto;
+  gap: 22px 34px !important;
+  align-items: end !important;
+  margin: 72px 0 0 !important;
+  padding: 44px max(5%, calc((100% - 1180px) / 2)) 30px !important;
+  background:
+    radial-gradient(ellipse 70% 100% at 8% 100%, rgba(184, 84, 32, .12), transparent 62%),
+    linear-gradient(180deg, rgba(25, 16, 11, .96), rgba(8, 7, 5, .98));
+  border-top: 1px solid rgba(184, 84, 32, .3) !important;
+  box-shadow: 0 -18px 50px rgba(0, 0, 0, .16);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+footer .footer-logo {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex !important;
+  align-items: center;
+  height: 58px !important;
+  min-height: 0 !important;
+}
+
+footer .footer-logo img {
+  display: block;
+  width: min(170px, 100%) !important;
+  height: auto !important;
+  max-height: 58px !important;
+  object-fit: contain;
+  object-position: left center;
+  mix-blend-mode: screen;
+  opacity: .9;
+}
+
+footer > span:first-of-type {
+  grid-column: 1;
+  grid-row: 2;
+  max-width: 250px;
+  font-size: 12px;
+  color: rgba(231, 226, 217, .58);
+}
+
+footer > span:nth-of-type(2) {
+  grid-column: 2 / span 2;
+  grid-row: 1 / span 2;
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start !important;
+  align-self: center;
+  gap: 10px 20px !important;
+  flex-wrap: wrap;
+  max-width: 430px;
+}
+
+footer > span:nth-of-type(2)::before {
+  content: 'Explora ONIX';
+  flex-basis: 100%;
+  color: var(--text2);
+  font-family: var(--font-h1);
+  font-size: 15px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+footer > a:last-child,
+footer > .footer-contact {
+  grid-column: 4;
+  grid-row: 1 / span 2;
+  align-self: center;
+  justify-self: end;
+  padding: 11px 15px;
+  border: 1px solid rgba(184, 84, 32, .38);
+  border-radius: var(--r-sm);
+  background: rgba(184, 84, 32, .08);
+  color: var(--copper-warm) !important;
+  font-family: var(--font-h1);
+  font-size: 16px;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+/* Fallback for the compact minified Red ONIX page until its footer is expanded. */
+footer > a:last-child:not(.footer-contact) {
+  font-size: 0 !important;
+}
+
+footer > a:last-child:not(.footer-contact)::after {
+  content: 'Contáctanos';
+  font-size: 16px;
+}
+
+footer a {
+  color: var(--copper-warm) !important;
+  text-decoration: none;
+  transition: color .16s linear, border-color .16s linear, background .16s linear;
+}
+
+footer a:hover {
+  color: var(--copper-light) !important;
+}
+
+/* CTAs stay direct: no glow, lift, or delayed text swap on hover. */
+.btn-primary,
+.btn-ghost,
+.card-cta,
+.nav-cta,
+.custom-agent-cta,
+.service-guide-cta {
+  transition: background .14s linear, color 0s linear, border-color .14s linear !important;
+}
+
+.btn-primary:hover,
+.btn-ghost:hover,
+.card-cta:hover,
+.nav-cta:hover,
+.custom-agent-cta:hover,
+.service-guide-cta:hover {
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+@media (max-width: 900px) {
+  #hero,
+  .hero {
+    width: 100vw !important;
+    max-width: 100%;
+  }
+
+  nav {
+    background: rgba(8, 7, 5, .52) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(110%);
+    backdrop-filter: blur(16px) saturate(110%);
+  }
+
+  nav .nav-logo {
+    min-width: 0;
+    max-width: calc(100% - 70px);
+  }
+
+  nav .nav-logo img {
+    width: auto !important;
+    height: clamp(52px, 16vw, 72px) !important;
+    min-height: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* The nav owns the open state so only its link list can scroll. */
+  html:has(.nav-links.open),
+  body:has(.nav-links.open) {
+    height: 100%;
+    overflow: hidden !important;
+    overscroll-behavior: none;
+  }
+
+  nav:has(.nav-links.open) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100dvh !important;
+    min-height: 100svh;
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: rgba(8, 7, 5, .72) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(110%) !important;
+    backdrop-filter: blur(18px) saturate(110%) !important;
+  }
+
+  nav:has(.nav-links.open) > .nav-logo {
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  nav:has(.nav-links.open) > .nav-hamburger {
+    position: absolute !important;
+    top: max(14px, env(safe-area-inset-top)) !important;
+    right: 5% !important;
+    z-index: 102 !important;
+  }
+
+  .nav-links.open {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0;
+    flex: 1 1 auto;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    padding: max(175px, calc(env(safe-area-inset-top) + 155px)) 5% max(24px, env(safe-area-inset-bottom) + 12px) !important;
+    background: rgba(8, 7, 5, .72) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(110%) !important;
+    backdrop-filter: blur(18px) saturate(110%) !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+
+  .nav-links.open::before {
+    display: none !important;
+  }
+
+  .nav-links.open::after {
+    top: max(26px, calc(env(safe-area-inset-top) + 18px)) !important;
+    width: clamp(100px, 27vw, 132px) !important;
+    height: clamp(100px, 27vw, 132px) !important;
+  }
+
+  .nav-links.open > a {
+    font-size: clamp(44px, 10vw, 72px) !important;
+    line-height: 1 !important;
+    padding: 8px 0 !important;
+  }
+
+  .nav-cta:not(.menu-visible) {
+    display: none !important;
+  }
+
+  /* The CTA is the final item in the nav flow, never a floating overlay. */
+  .nav-cta.menu-visible {
+    position: static !important;
+    display: flex !important;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
+    margin: 0 5% max(24px, env(safe-area-inset-bottom)) !important;
+    font-size: 15px !important;
+    line-height: 1.2 !important;
+    padding: 12px 24px !important;
+    z-index: 102 !important;
+  }
+
+  footer {
+    grid-template-columns: 1fr auto;
+    gap: 20px 16px !important;
+    align-items: start !important;
+    margin-top: 54px !important;
+    padding: 34px 5% 24px !important;
+  }
+
+  footer .footer-logo {
+    grid-column: 1;
+    grid-row: 1;
+    height: 48px !important;
+  }
+
+  footer .footer-logo img {
+    max-height: 48px !important;
+  }
+
+  footer > a:last-child,
+  footer > .footer-contact {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    font-size: 14px;
+  }
+
+  footer > a:last-child:not(.footer-contact)::after {
+    font-size: 14px;
+  }
+
+  h1,
+  .hero-title {
+    width: calc(100vw - 48px) !important;
+    max-width: calc(100vw - 48px) !important;
+    font-size: clamp(54px, 14.5vw, 84px) !important;
+    line-height: .9 !important;
+    letter-spacing: -.01em;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  /* Keep the first headline below the fixed mobile navigation and its safe area. */
+  #hero,
+  .hero {
+    padding-top: max(120px, calc(106px + env(safe-area-inset-top))) !important;
+  }
+
+  #tw-line1,
+  #tw-line2 {
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: none;
+  }
+
+  .hero-title .hl {
+    display: block;
+    width: 100%;
+  }
+
+  footer > span:first-of-type {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    max-width: none;
+  }
+
+  footer > span:nth-of-type(2) {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    max-width: none;
+  }
+
+  .hero-sub,
+  .section-sub {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .stack-card {
+    height: auto;
+  }
+}

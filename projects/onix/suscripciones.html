@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="view-transition" content="same-origin">
+<script>(function(){try{if(sessionStorage.getItem('onix-nav-transition')==='1'){document.documentElement.classList.add('onix-nav-transition');sessionStorage.removeItem('onix-nav-transition')}}catch(e){}})();</script>
 <title>ONIX — Suscripciones Basic, Pro y Premium</title>
-<script src="site-fallback.js" defer></script>
-<script src="menu-lock.js?v=a12eaa0" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Cormorant:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/Bebas_Neue.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Rajdhani_Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -19,7 +21,7 @@
   --border:#211A12;--border2:#2E2318;
   --g-copper:linear-gradient(135deg,#682B0E 0%,#B85420 25%,#F5C96A 55%,#B85420 80%,#682B0E 100%);
   --g-copper-h:linear-gradient(90deg,#8C3A0F 0%,#B85420 30%,#F5C96A 55%,#B85420 75%,#8C3A0F 100%);
-  --font-h1:'Bebas Neue',sans-serif;--font-h2:'Rajdhani',sans-serif;--font-body:'Raleway',sans-serif;--font-accent:'Cormorant',serif;
+  --font-h1:'Bebas Neue',sans-serif;--font-h2:'Rajdhani',sans-serif;--font-body:'Raleway',sans-serif;
   --r:12px;--r-sm:8px;--ease-std:cubic-bezier(.16,1,.3,1)
 }
 html{scroll-behavior:smooth;overflow-x:hidden}
@@ -72,7 +74,7 @@ body::after{
 @media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:blur(6px)}}
 :focus-visible{outline:2px solid var(--copper-warm);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
-strong.em,.em{font-family:var(--font-accent);font-style:italic;font-weight:700;color:var(--text);font-size:1.06em;letter-spacing:.01em;-webkit-text-fill-color:var(--text)}
+strong.em,.em{font-family:var(--font-body);font-style:normal;font-weight:600;color:var(--text);font-size:1em;letter-spacing:normal;-webkit-text-fill-color:var(--text)}
 
 /* ─── NAV ────────────────────────────────────────────────────── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:max(14px,env(safe-area-inset-top)) 5% 14px;background:rgba(8,7,5,.4);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
@@ -148,7 +150,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .bt-btn.active .bt-badge{color:var(--copper-light)}
 
 /* ─── PLAN TABS ROW ────────────────────────────────────────── */
-.plan-tabs-row{display:flex;align-items:center;gap:0;margin:36px 0 32px;flex-wrap:wrap}
+.plan-tabs-row{display:flex;align-items:center;gap:0;margin:36px 0 32px;flex-wrap:wrap;opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease-std),transform .55s var(--ease-std)}
+.fi.vis .plan-tabs-row{opacity:1;transform:translateY(0);transition-delay:.08s}
 .billing-toggle{margin-left:auto}
 .ptab{padding:12px 28px;border:none;background:transparent;color:var(--muted);font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;transition:.25s var(--ease-std);margin-right:4px}
 .ptab:hover{color:var(--text2)}
@@ -157,7 +160,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* ─── PLAN DETAIL ──────────────────────────────────────────── */
 .plan-detail{display:none}
-.plan-detail.active{display:block;animation:fadeUp .5s var(--ease-std) both}
+.plan-detail.active{display:block;opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease-std),transform .55s var(--ease-std)}
+.fi.vis .plan-detail.active{opacity:1;transform:translateY(0);transition-delay:.16s}
 .pd-hero-block{display:grid;grid-template-columns:1fr 280px;gap:32px;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:42px;position:relative;overflow:hidden;margin-bottom:32px}
 .pd-hero-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g-copper-h)}
 .pd-name{font-family:var(--font-h1);font-size:48px;font-weight:400;letter-spacing:.02em;text-transform:uppercase;background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
@@ -200,11 +204,26 @@ table.compare tbody th{font-family:var(--font-body);font-weight:400;font-size:13
 table.compare td{font-family:var(--font-body);font-size:13px;color:var(--muted);text-align:center}
 table.compare td.yes{color:var(--copper-light);font-weight:700}
 table.compare td.val{text-align:left;color:var(--copper-warm);font-weight:600}
-table.compare tbody tr{transition:opacity .4s var(--ease-std);transition-delay:calc(var(--i,0)*.05s)}
+table.compare tbody tr{opacity:0;transform:translateY(10px);transition:opacity .4s var(--ease-std),transform .4s var(--ease-std);transition-delay:calc(var(--i,0)*.05s)}
 table.compare tbody tr.vis{opacity:1}
 table.compare tbody tr:last-child th,table.compare tbody tr:last-child td{border-bottom:none}
 table.compare tbody tr:hover{background:rgba(184,84,32,.04)}
 .col-pro{background:rgba(184,84,32,.03)}
+
+.compare-mobile{display:none}
+.compare-plan-mobile{
+  opacity:0;transform:translateY(14px);
+  background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);
+  padding:22px 20px;transition:opacity .5s var(--ease-std),transform .5s var(--ease-std)
+}
+.fi.vis .compare-plan-mobile{opacity:1;transform:translateY(0)}
+.fi.vis .compare-plan-mobile:nth-child(2){transition-delay:.1s}
+.fi.vis .compare-plan-mobile:nth-child(3){transition-delay:.2s}
+.compare-plan-mobile h3{font-family:var(--font-h1);font-size:32px;font-weight:400;line-height:1;color:var(--copper-light);margin-bottom:6px}
+.compare-plan-mobile p{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.compare-plan-mobile ul{display:flex;flex-direction:column;gap:9px;list-style:none}
+.compare-plan-mobile li{position:relative;padding-left:18px;font-size:13px;color:var(--text2);line-height:1.5}
+.compare-plan-mobile li::before{content:'+';position:absolute;left:0;color:var(--copper-warm);font-weight:700}
 
 @media(max-width:860px){
   .plan-tabs-row{flex-direction:column;gap:8px;align-items:stretch}
@@ -219,6 +238,7 @@ table.compare tbody tr:hover{background:rgba(184,84,32,.04)}
 @media(max-width:560px){
   #hero{padding:120px 5% 48px;min-height:30vh}
   .pd-hero-block{padding:20px}
+  .pd-hero-cta{display:flex;justify-content:center;width:100%;box-sizing:border-box}
   .pd-journey{padding:18px}
   .pd-jstep{grid-template-columns:1fr;gap:8px;padding-bottom:24px}
   .pd-jday{font-size:10px;text-align:left}
@@ -227,6 +247,32 @@ table.compare tbody tr:hover{background:rgba(184,84,32,.04)}
   .plan-tabs-row{gap:4px}
   .ptab{font-size:13px;padding:10px 16px}
   .hero-title{font-size:clamp(32px,10vw,44px);line-height:.95}
+}
+
+@media(max-width:680px){
+  .plan-tabs-row{margin-top:26px}
+  .ptab{width:100%;margin-right:0}
+  .billing-toggle{width:100%;margin-left:0}
+  .ptab,
+  .bt-btn{
+    min-height:56px;
+    padding:14px 16px;
+    font-family:var(--font-h1);
+    font-size:clamp(22px,7vw,30px);
+    font-weight:400;
+    line-height:1;
+    letter-spacing:.04em;
+    color:var(--text);
+  }
+  .ptab.active,
+  .bt-btn.active{color:#fff;text-shadow:0 0 12px rgba(245,201,106,.18)}
+  .bt-btn{flex:1}
+  .bt-badge{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:0}
+  .pd-hero-block{gap:24px}
+  .pd-highlights{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .pd-hl-item{padding:14px 10px}
+  .compare-wrap{display:none}
+  .compare-mobile{display:grid;gap:12px;margin-top:32px}
 }
 
 /* ─── CTA FINAL ──────────────────────────────────────────────── */
@@ -240,11 +286,21 @@ table.compare tbody tr:hover{background:rgba(184,84,32,.04)}
 .btn-primary:hover{background:var(--g-copper);color:#0a0a0a;border-color:transparent;transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,84,32,.3)}
 
 footer{background:var(--surface);border-top:1px solid var(--border2);padding:28px 5%;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-body);font-size:13px;font-weight:300;color:var(--muted);flex-wrap:wrap;gap:14px}
-footer .footer-logo img{height:50px;mix-blend-mode:screen;opacity:.7}
+footer .footer-logo{display:flex;align-items:center;min-height:50px;height:clamp(50px,6vw,72px)}
+footer .footer-logo img{display:block;width:auto;height:100%;min-height:0;max-height:72px;max-width:100%;object-fit:contain;mix-blend-mode:screen;opacity:.7}
 footer a{color:var(--copper-warm);text-decoration:none}
 footer a:hover{color:var(--copper-light)}
-@keyframes menuFade{from{opacity:0}to{opacity:1}}@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}</style>
+ @keyframes menuFade{from{opacity:0}to{opacity:1}}@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+ /* ─── PAGE TRANSITIONS (View Transitions API) ────────────────── */
+ @view-transition{navigation:auto}
+ ::view-transition-old(root){animation:v-out .4s cubic-bezier(.16,1,.3,1) both}
+ ::view-transition-new(root){animation:v-in .4s cubic-bezier(.16,1,.3,1) both}
+ @keyframes v-out{from{opacity:1;transform:scale(1);filter:blur(0)}to{opacity:0;transform:scale(1.04);filter:blur(6px)}}
+ @keyframes v-in{from{opacity:0;transform:scale(.96);filter:blur(6px)}to{opacity:1;transform:scale(1);filter:blur(0)}}</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<link rel="stylesheet" href="onix-shared.css">
+<script src="onix-shared.js" defer></script>
+<script src="menu-lock.js?v=a12eaa0" defer></script>
 </head>
 <body>
 
@@ -260,6 +316,7 @@ footer a:hover{color:var(--copper-light)}
   </a>
   <div class="nav-links">
     <a href="index.html">Inicio</a>
+    <a href="producto.html">Producto</a>
     <a href="suscripciones.html" class="current">Suscripciones</a>
     <a href="agentes.html">Agentes</a>
     <a href="campanas.html">Campañas</a>
@@ -275,13 +332,13 @@ footer a:hover{color:var(--copper-light)}
 <!-- HERO -->
 <section id="hero">
   <div class="hero-tag reveal-el">Cada mes, no solo el primer día</div>
-  <h1 class="hero-title reveal-title">Nos encargamos de tu stand <span class="hl">todos los meses</span></h1>
-  <p class="hero-sub reveal-el">Medimos cuándo se usa tu stand, qué canal abre y desde qué tipo de dispositivo. Cada mes te lo contamos y te proponemos qué hacer con eso. <strong class="em">Tú no tienes que pensarlo</strong> — solo decidir si sí o si no.</p>
+  <h1 class="hero-title reveal-title onix-typewriter-title"><span class="onix-tw-line">Nos encargamos de tu stand</span><br><span class="onix-tw-line hl">todos los meses</span></h1>
+  <p class="hero-sub reveal-el">Sabemos quién toca tu stand, cuándo y desde qué móvil. Cada mes te lo contamos y te proponemos qué hacer con eso. <strong class="em">Tú no tienes que pensarlo</strong> — solo decidir si sí o si no.</p>
 </section><!-- SELECTOR + DETALLE + JOURNEY INTEGRADO -->
 <section class="section fi">
   <div class="section-tag reveal-el">Elige tu plan</div>
   <h2 class="section-title reveal-title">Uno para cada momento del negocio</h2>
-  <p class="section-sub reveal-el">Sin permanencia. Se factura por mes completo por adelantado y puedes cancelar cuando quieras. <strong style="color:var(--copper-warm)">Paga un año y ahórrate dos meses.</strong></p>
+  <p class="section-sub reveal-el">Sin permanencia. Se factura por mes completo por adelantado y puedes cancelar cuando quieras. <strong style="color:var(--copper-warm)">Paga un año y ahórrate un mes.</strong></p>
 
   <div class="plan-tabs-row">
     <button class="ptab active" data-plan="basic">Basic</button>
@@ -289,7 +346,7 @@ footer a:hover{color:var(--copper-light)}
     <button class="ptab" data-plan="premium">Premium</button>
     <div class="billing-toggle">
       <button class="bt-btn active" data-period="monthly">Mensual</button>
-      <button class="bt-btn" data-period="yearly">Anual <span class="bt-badge">-2 meses</span></button>
+      <button class="bt-btn" data-period="yearly">Anual <span class="bt-badge">-1 mes</span></button>
     </div>
   </div>
 
@@ -302,12 +359,12 @@ footer a:hover{color:var(--copper-light)}
           <span class="pd-price-big" data-m="49.90" data-y="499">49.90€</span><span class="pd-price-sub" data-m="/mes" data-y="/año">/mes</span>
           <span class="pd-save-badge">Ahorras ~100€/año</span>
         </div>
-        <p class="pd-hero-desc"><strong class="em">El plan para empezar sin pensar.</strong> Tu stand registra cuándo se usa, qué canal abre y desde qué tipo de dispositivo, sin identificar a la persona. ONIX te propone mejoras sin que tengas que hacer nada. Ideal si quieres que funcione solo mientras te concentras en tu negocio.</p>
-        <a href="#" class="pd-hero-cta" data-plan="basic">Quiero Basic →</a>
+        <p class="pd-hero-desc"><strong class="em">El plan para empezar sin pensar.</strong> Tu stand captura quién lo toca, cuándo y desde qué dispositivo. ONIX te propone mejoras sin que tengas que hacer nada. Ideal si quieres que funcione solo mientras te concentras en tu negocio.</p>
+        <a href="#contactar" class="pd-hero-cta" data-plan="basic">Quiero Basic →</a>
       </div>
       <div class="pd-hero-right">
         <div class="pd-highlights">
-          <div class="pd-hl-item"><div class="pd-hl-num">300</div><div class="pd-hl-label">interacciones en histórico</div></div>
+          <div class="pd-hl-item"><div class="pd-hl-num">300</div><div class="pd-hl-label">leads guardados</div></div>
           <div class="pd-hl-item"><div class="pd-hl-num">1</div><div class="pd-hl-label">rediseño al mes</div></div>
           <div class="pd-hl-item"><div class="pd-hl-num">1</div><div class="pd-hl-label">propuesta campaña/mes</div></div>
         </div>
@@ -328,8 +385,8 @@ footer a:hover{color:var(--copper-light)}
           <div class="pd-jday">Leads</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>Hasta 300 interacciones guardadas en tu histórico</h4>
-            <p>El panel registra el uso del stand, el canal abierto, la franja horaria y el tipo de dispositivo. <strong class="em">No identifica a la persona ni obtiene su tel&eacute;fono o email sin un formulario y su consentimiento.</strong> Para hacer campa&ntilde;as puedes usar una lista propia o contratar una Landing que capte contactos de forma expresa.</p>
+            <h4>Hasta 300 clientes distintos almacenados sin pedir nada</h4>
+            <p>El stand detecta cu&aacute;ndo un mismo dispositivo vuelve, y cuenta las visitas. <strong class="em">Sin formularios, sin pedir el n&uacute;mero, sin que el cliente haga nada raro.</strong> Simplemente se acumulan. Cuando quieras hacer una campa&ntilde;a de marketing, ya tienes a qui&eacute;n dirigirte. Si tu negocio crece y necesitas m&aacute;s capacidad, puedes ampliarla sin cambiar de plan.</p>
           </div>
         </div>
         <div class="pd-jstep">
@@ -362,12 +419,12 @@ footer a:hover{color:var(--copper-light)}
           <span class="pd-price-big" data-m="95" data-y="950">95€</span><span class="pd-price-sub" data-m="/mes" data-y="/a&ntilde;o">/mes</span>
           <span class="pd-save-badge">Ahorras 190€/a&ntilde;o</span>
         </div>
-        <p class="pd-hero-desc"><strong class="em">El plan para entender c&oacute;mo se usa tu stand.</strong> Triple de historial, informe mensual con gr&aacute;ficos y una campa&ntilde;a ejecutada cada 2 meses sobre tu lista autorizada. Datos reales, no intuiciones &mdash; sin que tengas que analizarlos t&uacute;.</p>
-        <a href="#" class="pd-hero-cta" data-plan="pro">Quiero Pro &rarr;</a>
+        <p class="pd-hero-desc"><strong class="em">El plan para entender de verdad a tus clientes.</strong> Triple de leads, informe mensual con gr&aacute;ficos y una campa&ntilde;a ejecutada cada 2 meses. Datos reales, no intuiciones &mdash; sin que tengas que analizar nada t&uacute;.</p>
+        <a href="#contactar" class="pd-hero-cta" data-plan="pro">Quiero Pro &rarr;</a>
       </div>
       <div class="pd-hero-right">
         <div class="pd-highlights">
-          <div class="pd-hl-item"><div class="pd-hl-num">1.000</div><div class="pd-hl-label">interacciones en histórico</div></div>
+          <div class="pd-hl-item"><div class="pd-hl-num">1.000</div><div class="pd-hl-label">leads guardados</div></div>
           <div class="pd-hl-item"><div class="pd-hl-num">1</div><div class="pd-hl-label">informe PDF al mes</div></div>
           <div class="pd-hl-item hl-accent"><div class="pd-hl-num">1</div><div class="pd-hl-label">campa&ntilde;a gratis c/2 meses</div></div>
         </div>
@@ -388,8 +445,8 @@ footer a:hover{color:var(--copper-light)}
           <div class="pd-jday">Capacidad</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>Hasta 1.000 interacciones en el histórico</h4>
-            <p>Un restaurante con 12 mesas puede generar mucha actividad en un solo d&iacute;a; una peluquer&iacute;a, menos pero de forma recurrente. <strong class="em">Con 1.000 registros puedes comparar meses y detectar patrones de uso.</strong> Si necesitas m&aacute;s capacidad, se puede ampliar sin cambiar de plan.</p>
+            <h4>Hasta 1.000 clientes distintos. Sin l&iacute;mite de tiempo.</h4>
+            <p>Un restaurante con 12 mesas puede ver pasar 200 personas en un solo d&iacute;a. Una peluquer&iacute;a con 3 empleados, 30. <strong class="em">Con 1.000 leads no te preocupas por el espacio durante meses.</strong> Y si alg&uacute;n d&iacute;a necesitas m&aacute;s, la capacidad se ampl&iacute;a sin cambiar de plan. Los datos se acumulan solos, sin formularios, sin pedir nada a nadie.</p>
           </div>
         </div>
         <div class="pd-jstep">
@@ -397,7 +454,7 @@ footer a:hover{color:var(--copper-light)}
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
             <h4>Cada 2 meses, ejecutamos una campa&ntilde;a real sobre tus clientes</h4>
-            <p>Analizamos tu lista autorizada, elegimos el mejor momento seg&uacute;n tus gr&aacute;ficos de tr&aacute;fico y la estacionalidad de tu sector, redactamos el mensaje y te lo presentamos. <strong class="em">T&uacute; solo decides si te gusta, si quieres cambiar algo o si prefieres esperar.</strong> Si apruebas, lo lanzamos. Es una campa&ntilde;a Simple completa (valorada en 150€) incluida sin coste extra.</p>
+            <p>Analizamos tu base de datos, elegimos el mejor momento seg&uacute;n tus gr&aacute;ficos de tr&aacute;fico y la estacionalidad de tu sector, redactamos el mensaje y te lo presentamos. <strong class="em">T&uacute; solo decides si te gusta, si quieres cambiar algo o si prefieres esperar.</strong> Si apruebas, lo lanzamos. Es una campa&ntilde;a Simple completa (valorada en 100€) incluida sin coste extra. &iquest;El objetivo? Que tus clientes sepan que existes, vuelvan m&aacute;s a menudo y te recomienden.</p>
           </div>
         </div>
         <div class="pd-jstep">
@@ -422,12 +479,12 @@ footer a:hover{color:var(--copper-light)}
           <span class="pd-price-big" data-m="169.90" data-y="1699">169.90€</span><span class="pd-price-sub" data-m="/mes" data-y="/a&ntilde;o">/mes</span>
           <span class="pd-save-badge">Ahorras ~340€/a&ntilde;o</span>
         </div>
-        <p class="pd-hero-desc"><strong class="em">El plan para crecer sin l&iacute;mites.</strong> ONIX propone campa&ntilde;as cada mes, t&uacute; solo apruebas o ajustas. 5.000 interacciones en el histórico, cr&eacute;dito mensual para campa&ntilde;as, 20% de descuento en todos los productos y mantenimiento web incluido.</p>
-        <a href="#" class="pd-hero-cta" data-plan="premium">Quiero Premium &rarr;</a>
+        <p class="pd-hero-desc"><strong class="em">El plan para crecer sin l&iacute;mites.</strong> ONIX propone campa&ntilde;as cada mes, t&uacute; solo apruebas o ajustas. 5.000 leads, cr&eacute;dito mensual para campa&ntilde;as, 20% de descuento en todos los productos y mantenimiento web incluido. Para quien quiere que el marketing se haga solo.</p>
+        <a href="#contactar" class="pd-hero-cta" data-plan="premium">Quiero Premium &rarr;</a>
       </div>
       <div class="pd-hero-right">
         <div class="pd-highlights">
-          <div class="pd-hl-item"><div class="pd-hl-num">5.000</div><div class="pd-hl-label">interacciones en histórico</div></div>
+          <div class="pd-hl-item"><div class="pd-hl-num">5.000</div><div class="pd-hl-label">leads guardados</div></div>
           <div class="pd-hl-item hl-accent"><div class="pd-hl-num">100€</div><div class="pd-hl-label">cr&eacute;dito campa&ntilde;as/mes</div></div>
           <div class="pd-hl-item hl-accent"><div class="pd-hl-num">-20%</div><div class="pd-hl-label">en todos los productos</div></div>
         </div>
@@ -441,7 +498,7 @@ footer a:hover{color:var(--copper-light)}
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
             <h4>No esperamos a que preguntes. Cada mes te proponemos algo.</h4>
-            <p>Analizamos los contactos captados con consentimiento, el tr&aacute;fico reciente de tu stand y el calendario estacional de tu sector. Con eso, preparamos una propuesta concreta. <strong class="em">T&uacute; solo apruebas, ajustas el texto si quieres, o dices &quot;este mes no&quot;.</strong> El trabajo de pensar qu&eacute; hacer ya est&aacute; hecho.</p>
+            <p>Analizamos tus leads acumulados, el tr&aacute;fico reciente de tu stand y el calendario estacional de tu sector. Con eso, preparamos una propuesta concreta: <em>&quot;Tienes 47 leads nuevos este mes que a&uacute;n no han dejado rese&ntilde;a. Hemos preparado un mensaje para pedirles opini&oacute;n. &iquest;Lo lanzamos?&quot;</em>. <strong class="em">T&uacute; solo apruebas, ajustas el texto si quieres, o dices &quot;este mes no&quot;.</strong> El trabajo de pensar qu&eacute; hacer ya est&aacute; hecho.</p>
           </div>
         </div>
         <div class="pd-jstep">
@@ -449,7 +506,7 @@ footer a:hover{color:var(--copper-light)}
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
             <h4>100€ de cr&eacute;dito mensual. &Uacute;salo como quieras.</h4>
-            <p>Cada mes recibes 100€ para campa&ntilde;as. Con el 20% de descuento Premium, una campa&ntilde;a Simple pasa de 150€ a 120€: puedes usar 100€ de cr&eacute;dito y abonar los 20€ restantes. Tambi&eacute;n puedes acumular hasta 300€; una Landing pasa de 400€ a 320€, por lo que solo tendr&iacute;as que completar 20€. <strong class="em">T&uacute; eliges c&oacute;mo usarlo.</strong></p>
+            <p>Cada mes recibes 100€ para campa&ntilde;as. Puedes gastarlos ya mismo en una campa&ntilde;a Simple (100€ justos, no pones nada m&aacute;s). Puedes ahorrarlos durante 3 meses (300€) y pagar una campa&ntilde;a Landing completa sin poner un euro. O puedes combinarlos con tu 20% de descuento en todo ONIX: una Simple te sale por 80€ con el descuento, usas 80€ de cr&eacute;dito y a&uacute;n te sobran 20€ para el mes siguiente. <strong class="em">La flexibilidad es total.</strong></p>
           </div>
         </div>
         <div class="pd-jstep">
@@ -457,7 +514,7 @@ footer a:hover{color:var(--copper-light)}
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
             <h4>20% de descuento en absolutamente todo + mantenimiento web gratis</h4>
-            <p>Contratas un agente que responde por ti: 50€ &rarr; 40€. Quieres una campa&ntilde;a extra: 150€ &rarr; 120€. Necesitas una landing page nueva: 450€ &rarr; 360€. Compras packs de stands para otro local: tambi&eacute;n con descuento. <strong class="em">Y si tienes una web con ONIX, el mantenimiento mensual (27€/mes) est&aacute; incluido sin coste.</strong></p>
+            <p>Contratas un agente que responde por ti: 50€ &rarr; 40€. Quieres una campa&ntilde;a extra: 100€ &rarr; 80€. Necesitas una landing page nueva: 450€ &rarr; 360€. Compras packs de stands para otro local: tambi&eacute;n con descuento. <strong class="em">Y si tienes una web con ONIX, el mantenimiento mensual (27€/mes) est&aacute; incluido sin coste.</strong> El descuento se amortiza solo con lo que ahorras en mantenimiento, y todo lo dem&aacute;s es ganancia neta.</p>
           </div>
         </div>
         <div class="pd-jstep">
@@ -474,7 +531,7 @@ footer a:hover{color:var(--copper-light)}
 </section>
 
 <!-- COMPARATIVA -->
-<section class="section fi">
+<section class="section fi" id="comparativa">
   <div class="section-tag reveal-el">Comparativa completa</div>
   <h2 class="section-title reveal-title">Todas las diferencias, sin resumir</h2>
   <p class="section-sub reveal-el">Si ya sabes que quieres suscribirte y solo dudas entre planes, esta es la tabla completa.</p>
@@ -490,7 +547,7 @@ footer a:hover{color:var(--copper-light)}
         </tr>
       </thead>
       <tbody>
-        <tr><th>Dashboard de toques (hoy/semana/mes)</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
+        <tr><th>Dashboard de toques (hoy/semana/mes)</th><td class="yes" data-plan="Basic">✓</td><td class="yes col-pro" data-plan="Pro">✓</td><td class="yes" data-plan="Premium">✓</td></tr>
         <tr><th>Datos sin fricción (dispositivo, canal, franja horaria, recurrencia)</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
         <tr><th>1 rediseño del stand al mes</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
         <tr><th>1 propuesta de campaña al mes</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
@@ -503,15 +560,53 @@ footer a:hover{color:var(--copper-light)}
         <tr><th>ONIX propone la campaña, no espera a que preguntes</th><td>—</td><td class="col-pro">—</td><td class="yes">✓</td></tr>
         <tr><th>Crédito mensual para campañas (máx. 300€ acumulables)</th><td>—</td><td class="col-pro">—</td><td class="val">100€/mes</td></tr>
         <tr><th>Mantenimiento web (si tienes una web con nosotros)</th><td>—</td><td class="col-pro">—</td><td class="val">Incluido gratis</td></tr>
-        <tr><th>Interacciones guardadas en el histórico</th><td class="val">Hasta 300</td><td class="val col-pro">Hasta 1.000</td><td class="val">Hasta 5.000</td></tr>
+        <tr><th>Leads guardados en tu base de datos</th><td class="val">Hasta 300</td><td class="val col-pro">Hasta 1.000</td><td class="val">Hasta 5.000</td></tr>
         <tr><th>Permanencia mínima</th><td class="val">Ninguna</td><td class="val col-pro">Ninguna</td><td class="val">Ninguna</td></tr>
       </tbody>
     </table>
   </div>
+
+  <div class="compare-mobile" aria-label="Comparativa acumulativa de planes">
+    <article class="compare-plan-mobile">
+      <h3>Basic</h3>
+      <p>La base para empezar a medir y mantener tu stand actualizado.</p>
+      <ul>
+        <li>Dashboard de toques y datos sin fricción</li>
+        <li>1 rediseño del stand al mes</li>
+        <li>1 propuesta de campaña al mes</li>
+        <li>1 cambio de destino del enlace al mes</li>
+        <li>Hasta 300 leads guardados</li>
+        <li>Sin permanencia mínima</li>
+      </ul>
+    </article>
+    <article class="compare-plan-mobile">
+      <h3>Pro</h3>
+      <p>Todo lo de Basic, más análisis mensual y una campaña ejecutada cada dos meses.</p>
+      <ul>
+        <li>Todo lo incluido en Basic</li>
+        <li>Dashboard avanzado e informe PDF mensual</li>
+        <li>Comparativa con el mes anterior</li>
+        <li>1 campaña Simple gratis cada 2 meses</li>
+        <li>Hasta 1.000 leads guardados</li>
+      </ul>
+    </article>
+    <article class="compare-plan-mobile">
+      <h3>Premium</h3>
+      <p>Todo lo de Pro, con marketing proactivo, crédito y mantenimiento web.</p>
+      <ul>
+        <li>Todo lo incluido en Pro</li>
+        <li>20% de descuento en todos los productos ONIX</li>
+        <li>ONIX propone la campaña cada mes</li>
+        <li>100€ de crédito mensual para campañas</li>
+        <li>Mantenimiento web incluido</li>
+        <li>Hasta 5.000 leads guardados</li>
+      </ul>
+    </article>
+  </div>
 </section>
 
 <!-- CTA FINAL -->
-<div class="cta-section fi">
+<div class="cta-section fi" id="contactar">
   <h2 class="reveal-title">¿Cuál encaja <span class="hl">con tu negocio</span>?</h2>
   <p class="reveal-el">Empieza con Basic y sube cuando lo necesites — el cambio de plan no tiene coste.</p>
   <a href="#" id="cta-final-whatsapp" class="btn-primary reveal-el">Hablar por WhatsApp →</a>
@@ -528,7 +623,7 @@ footer a:hover{color:var(--copper-light)}
     <a href="legal.html">Privacidad</a>
     <a href="legal.html">Cookies</a>
   </span>
-  <a href="https://wa.me/34630910142">+34 630 910 142</a>
+  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contactar con ONIX por WhatsApp">Contáctanos</a>
 </footer>
 
 <script>
@@ -544,13 +639,13 @@ document.querySelectorAll('.ptab').forEach(tab => {
     var plan = names[tab.dataset.plan];
     var msg = encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan ' + plan + ' de ONIX. ¿Qué necesitáis de mí para activarlo?');
     var cta = document.getElementById('cta-final-whatsapp');
-    if(cta) cta.href = 'https://wa.me/34630910142?text=' + msg;
+    if(cta) cta.href = 'https://wa.me/34631879550?text=' + msg;
     // Actualizar CTA buttons dentro del detail
     document.querySelectorAll('.pd-hero-cta').forEach(function(btn){
       var p = btn.dataset.plan;
       if(p === tab.dataset.plan){
         var m = encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan ' + plan + ' de ONIX.');
-        btn.href = 'https://wa.me/34630910142?text=' + m;
+        btn.href = 'https://wa.me/34631879550?text=' + m;
       }
     });
   });
@@ -579,11 +674,14 @@ document.querySelectorAll('.bt-btn').forEach(btn => {
 // ── CTA desktop & final
 var ctaFinal = document.getElementById('cta-final-whatsapp');
 if(ctaFinal){
-  ctaFinal.href = 'https://wa.me/34630910142?text=' + encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan Basic de ONIX. ¿Qué necesitáis de mí para activarlo?');
+  ctaFinal.href = 'https://wa.me/34631879550?text=' + encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan Basic de ONIX. ¿Qué necesitáis de mí para activarlo?');
 }
-document.querySelectorAll('.pd-hero-cta').forEach(function(btn){
+
+// Cada CTA de plan debe ser válido incluso si no se cambia la pestaña activa.
+document.querySelectorAll('.pd-hero-cta[data-plan]').forEach(function(btn){
   var plan = {basic:'Basic',pro:'Pro',premium:'Premium'}[btn.dataset.plan];
-  btn.href = 'https://wa.me/34630910142?text=' + encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan ' + plan + ' de ONIX. ¿Qué necesitáis de mí para activarlo?');
+  if (!plan) return;
+  btn.href = 'https://wa.me/34631879550?text=' + encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan ' + plan + ' de ONIX.');
 });
 
 const observer = new IntersectionObserver((entries) => {
@@ -600,21 +698,6 @@ document.querySelectorAll('table.compare tbody tr').forEach(el => staggerObs.obs
 </script>
 
 <script>
-(function() {
-  var preloaderTop = document.querySelector('#preloader .pl-half.top');
-  var preloaderBot = document.querySelector('#preloader .pl-half.bot');
-  if (!preloaderTop || !preloaderBot) return;
-
-  var tl = gsap.timeline();
-  tl.fromTo(preloaderTop, {x: -560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
-  tl.fromTo(preloaderBot, {x: 560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
-  tl.to('#preloader', {opacity: 0, duration: 0.4, ease: 'power2.in'}, '-=0.2');
-  tl.set('#preloader', {display: 'none'});
-  tl.to('.reveal-title', {opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08}, '-=0.05');
-  tl.to('.reveal-el', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.06}, 0.15);
-  tl.to('.reveal-card', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05}, 0.35);
-})();
-
 // Nav scroll effect
 (function(){
   var st;
@@ -625,4 +708,4 @@ document.querySelectorAll('table.compare tbody tr').forEach(el => staggerObs.obs
   }, { passive: true });
 })();
 </script>
-<script>document.getElementById('menu-toggle').addEventListener('click',function(){var n=document.querySelector('.nav-links');n.classList.toggle('open');var o=n.classList.contains('open');this.classList.toggle('is-open',o);this.setAttribute('aria-expanded',o);var c=document.querySelector('.nav-cta');if(c)c.classList.toggle('menu-visible',o);});</script></body>
+<script>(function(){var b=document.getElementById('menu-toggle'),n=document.querySelector('.nav-links'),c=document.querySelector('.nav-cta');if(!b||!n)return;function close(){n.classList.remove('open');b.classList.remove('is-open');b.setAttribute('aria-expanded','false');if(c)c.classList.remove('menu-visible')}b.addEventListener('click',function(){var o=n.classList.toggle('open');b.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));if(c)c.classList.toggle('menu-visible',o)});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape')close()})})();</script></body>

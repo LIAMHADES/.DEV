@@ -3,15 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="view-transition" content="same-origin">
+<script>(function(){try{if(sessionStorage.getItem('onix-nav-transition')==='1'){document.documentElement.classList.add('onix-nav-transition');sessionStorage.removeItem('onix-nav-transition')}}catch(e){}})();</script>
 <title>Aviso Legal, Privacidad y Cookies — ONIX</title>
-<script src="site-fallback.js" defer></script>
-<script src="menu-lock.js?v=a12eaa0" defer></script>
 <meta name="description" content="Aviso legal, política de privacidad y cookies de ONIX — stands NFC para negocios locales en Girona.">
 <meta name="robots" content="noindex,follow">
 <meta name="theme-color" content="#080705">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Cormorant:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/Bebas_Neue.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Rajdhani_Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="manifest" href="manifest.json">
@@ -23,7 +25,7 @@
   --text:#F0EBE3;--text2:#D1C7BA;--muted:#C1B5A4;--border:#211A12;--border2:#2E2318;
   --g-copper:linear-gradient(135deg,#682B0E 0%,#B85420 25%,#F5C96A 55%,#B85420 80%,#682B0E 100%);
   --g-copper-h:linear-gradient(90deg,#8C3A0F 0%,#B85420 30%,#F5C96A 55%,#B85420 75%,#8C3A0F 100%);
-  --font-h1:'Bebas Neue',sans-serif;--font-h2:'Rajdhani',sans-serif;--font-body:'Raleway',sans-serif;--font-accent:'Cormorant',serif;
+  --font-h1:'Bebas Neue',sans-serif;--font-h2:'Rajdhani',sans-serif;--font-body:'Raleway',sans-serif;
   --r:12px;--r-sm:8px;--ease-std:cubic-bezier(.16,1,.3,1)
 }
 html{scroll-behavior:smooth;overflow-x:hidden}
@@ -96,11 +98,22 @@ p{color:var(--text2);margin-bottom:14px}
 ul{margin:0 0 14px 20px;color:var(--text2)}
 a{color:var(--copper-warm)}
 footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border2);font-size:13px;color:var(--muted)}
+footer .footer-logo{display:flex;align-items:center;min-height:50px;height:clamp(50px,6vw,72px)}
+footer .footer-logo img{display:block;width:auto;height:100%!important;min-height:0;max-height:72px;max-width:100%;object-fit:contain}
 /* Scroll reveal */
 .fi{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .fi.vis{opacity:1;transform:translateY(0)}
+/* ─── PAGE TRANSITIONS (View Transitions API) ────────────────── */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:v-out .4s cubic-bezier(.16,1,.3,1) both}
+::view-transition-new(root){animation:v-in .4s cubic-bezier(.16,1,.3,1) both}
+@keyframes v-out{from{opacity:1;transform:scale(1);filter:blur(0)}to{opacity:0;transform:scale(1.04);filter:blur(6px)}}
+@keyframes v-in{from{opacity:0;transform:scale(.96);filter:blur(6px)}to{opacity:1;transform:scale(1);filter:blur(0)}}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<link rel="stylesheet" href="onix-shared.css">
+<script src="onix-shared.js" defer></script>
+<script src="menu-lock.js?v=a12eaa0" defer></script>
 </head>
 <body>
 
@@ -116,6 +129,7 @@ footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border2);font
   </a>
   <div class="nav-links">
     <a href="index.html">Inicio</a>
+    <a href="producto.html">Producto</a>
     <a href="suscripciones.html">Suscripciones</a>
     <a href="agentes.html">Agentes</a>
     <a href="campanas.html">Campañas</a>
@@ -138,7 +152,7 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
 .nav-links a:hover{color:var(--text)}
 .nav-hamburger{display:none!important}
 @media(max-width:900px){
-  nav{backdrop-filter:none;background:#080705}
+  nav{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:rgba(8,7,5,.38)}
   .nav-hamburger{display:inline-flex!important;align-items:center;justify-content:center;position:relative;z-index:101;background:none;border:none;color:var(--copper-warm);cursor:pointer;padding:0;width:46px;height:46px;flex-shrink:0}
   .nav-hamburger svg{width:32px;height:32px;display:block;transition:transform .5s cubic-bezier(.16,1,.3,1)}
   .nav-hamburger svg path{transition:stroke-dasharray .5s cubic-bezier(.16,1,.3,1),stroke-dashoffset .5s cubic-bezier(.16,1,.3,1)}
@@ -174,7 +188,7 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
 @media(max-width:560px){h1{font-size:clamp(32px,10vw,44px);line-height:.95}}
 </style>
 
-<h1 class="fi reveal-title reveal-el">Aviso Legal, Privacidad y Cookies</h1>
+<h1 class="fi reveal-title onix-typewriter-title"><span class="onix-tw-line">Aviso Legal, Privacidad y Cookies</span></h1>
 
 <div class="aviso fi reveal-el">
   <strong>Nota de transparencia:</strong> ONIX es actualmente un proyecto en fase de
@@ -186,7 +200,7 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
 
 <h2 class="fi reveal-el">Aviso Legal</h2>
 <p class="fi reveal-el"><strong>Titular del sitio web:</strong> ONIX — proyecto de stands NFC para negocios locales, en fase de constitución legal (pendiente de alta como autónomo o sociedad).</p>
-<p class="fi reveal-el"><strong>Contacto:</strong> <a href="https://wa.me/34630910142">WhatsApp +34 630 910 142</a></p>
+<p class="fi reveal-el"><strong>Contacto:</strong> <a href="https://wa.me/34631879550">WhatsApp +34 631 879 550</a></p>
 <p class="fi reveal-el"><strong>Actividad:</strong> venta e instalación de expositores con tecnología NFC/QR para negocios locales (barberías, restaurantes, hoteles, tiendas, etc.), incluyendo diseño personalizado y servicios digitales adicionales (landing web, automatización de mensajería).</p>
 <p class="fi reveal-el">Esta web tiene finalidad meramente comercial e informativa. El uso del formulario de contacto implica la aceptación de las condiciones descritas en esta página.</p>
 
@@ -213,24 +227,10 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
     <a href="index.html" style="color:var(--copper-warm);text-decoration:none">Inicio</a>
     <a href="suscripciones.html" style="color:var(--copper-warm);text-decoration:none">Suscripciones</a>
   </span>
-  <a href="https://wa.me/34630910142" style="color:var(--copper-warm);text-decoration:none">+34 630 910 142</a>
+  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contactar con ONIX por WhatsApp" style="color:var(--copper-warm);text-decoration:none">Contáctanos</a>
 </footer>
 
 <script>
-// ═══ PRELOADER + STAGGER REVEAL ═══
-(function(){
-  var t = document.querySelector('#preloader .pl-half.top');
-  var b = document.querySelector('#preloader .pl-half.bot');
-  if(!t||!b) return;
-  var tl = gsap.timeline();
-  tl.fromTo(t,{x:-560},{x:0,duration:1.6,ease:'power4.out'},0);
-  tl.fromTo(b,{x:560},{x:0,duration:1.6,ease:'power4.out'},0);
-  tl.to('#preloader',{opacity:0,duration:0.4,ease:'power2.in'},'-=0.2');
-  tl.set('#preloader',{display:'none'});
-  tl.to('.reveal-title',{opacity:1,y:0,duration:0.7,ease:'power3.out'},'-=0.05');
-  tl.to('.reveal-el',{opacity:1,y:0,duration:0.6,ease:'power3.out',stagger:0.06},0.15);
-})();
-
 // Scroll reveal
 var obs = new IntersectionObserver(function(entries){
   entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('vis'); });
@@ -245,4 +245,4 @@ document.addEventListener('scroll', function(){
   st2 = setTimeout(function(){ document.documentElement.classList.remove('scrolling'); }, 800);
 }, { passive: true });
 </script>
-<script>document.getElementById('menu-toggle').addEventListener('click',function(){var n=document.querySelector('.nav-links');n.classList.toggle('open');var o=n.classList.contains('open');this.classList.toggle('is-open',o);this.setAttribute('aria-expanded',o);var c=document.querySelector('.nav-cta');if(c)c.classList.toggle('menu-visible',o);});</script></body>
+<script>(function(){var b=document.getElementById('menu-toggle'),n=document.querySelector('.nav-links'),c=document.querySelector('.nav-cta');if(!b||!n)return;function close(){n.classList.remove('open');b.classList.remove('is-open');b.setAttribute('aria-expanded','false');if(c)c.classList.remove('menu-visible')}b.addEventListener('click',function(){var o=n.classList.toggle('open');b.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));if(c)c.classList.toggle('menu-visible',o)});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape')close()})})();</script></body>

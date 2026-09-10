@@ -4,17 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ONIX — Campañas de Marketing para Negocios Locales</title>
-<script src="site-fallback.js" defer></script>
-<script src="menu-lock.js?v=a12eaa0" defer></script>
-<meta name="description" content="Campañas de marketing por WhatsApp y email para negocios locales. Desde 150€. ONIX diseña, segmenta y envía — tú solo apruebas.">
+<meta name="description" content="Campañas de marketing por WhatsApp y email para negocios locales. Desde 100€. ONIX diseña, segmenta y envía — tú solo apruebas.">
 <meta property="og:title" content="ONIX — Campañas de Marketing">
 <meta property="og:description" content="WhatsApp y email marketing para tu negocio local. Simple, Landing o Completa.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#080705">
 <meta name="view-transition" content="same-origin">
+<script>(function(){try{if(sessionStorage.getItem('onix-nav-transition')==='1'){document.documentElement.classList.add('onix-nav-transition');sessionStorage.removeItem('onix-nav-transition')}}catch(e){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Raleway:wght@300;400;600&family=Cormorant:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/Bebas_Neue.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Rajdhani_Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="manifest" href="manifest.json">
@@ -27,7 +28,7 @@
   --border:#211A12;--border2:#2E2318;
   --g-copper:linear-gradient(135deg,#682B0E 0%,#B85420 25%,#F5C96A 55%,#B85420 80%,#682B0E 100%);
   --g-copper-h:linear-gradient(90deg,#8C3A0F 0%,#B85420 30%,#F5C96A 55%,#B85420 75%,#8C3A0F 100%);
-  --font-h1:'Bebas Neue',sans-serif;--font-h2:'Rajdhani',sans-serif;--font-body:'Raleway',sans-serif;--font-accent:'Cormorant',serif;
+   --font-h1:'Bebas Neue',sans-serif;--font-h2:'Rajdhani',sans-serif;--font-body:'Raleway',sans-serif;
   --r:12px;--r-sm:8px;--ease-std:cubic-bezier(.16,1,.3,1)
 }
 html{scroll-behavior:smooth;overflow-x:hidden}
@@ -162,7 +163,7 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
 .hero-title .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;backface-visibility:hidden;-webkit-backface-visibility:hidden;background-attachment:scroll}
 
 /* ─── ÉNFASIS ────────────────────────────────────────────────── */
-strong.em,.em{font-family:var(--font-accent);font-style:italic;font-weight:700;color:var(--text);font-size:1.06em;letter-spacing:.01em;-webkit-text-fill-color:var(--text)}
+strong.em,.em{font-family:var(--font-body);font-style:normal;font-weight:600;color:var(--text);font-size:1em;letter-spacing:normal;-webkit-text-fill-color:var(--text)}
 
 /* ─── SECCIONES GENÉRICAS ────────────────────────────────────── */
 .section{padding:64px 5%;max-width:1100px;margin:0 auto}
@@ -186,10 +187,12 @@ strong.em,.em{font-family:var(--font-accent);font-style:italic;font-weight:700;c
 .ladder-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1}
 .rung{
   background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);
-  padding:0;transition:.3s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;
+  padding:0;opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),border-color .3s cubic-bezier(.16,1,.3,1),box-shadow .3s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;
   display:flex;flex-direction:column
 }
+.fi.vis .ladder-row .rung{opacity:1;transform:translateY(0)}
 .rung:hover{transform:translateY(-4px);border-color:rgba(184,84,32,.35);box-shadow:0 20px 44px rgba(0,0,0,.45)}
+.fi.vis .ladder-row .rung:hover{transform:translateY(-4px)}
 .rung-head{display:flex;align-items:center;gap:14px;padding:22px 24px 0}
 .rung-dot{
   width:14px;height:14px;border-radius:50%;flex-shrink:0;
@@ -237,45 +240,19 @@ strong.em,.em{font-family:var(--font-accent);font-style:italic;font-weight:700;c
   .ladder-row{grid-template-columns:1fr}
 }
 
-/* ─── CALENDARIO — LÍNEA DE TIEMPO DE 12 MESES ─────────────────
-   Aquí sí hay una secuencia real (un año natural), así que un
-   dispositivo ordenado por tiempo está justificado. */
-.timeline{margin-top:56px;position:relative;padding-top:8px}
-.timeline-track{
-  display:grid;grid-template-columns:repeat(12,1fr);gap:0;
-  border-top:1px solid var(--border2);position:relative
-}
-.timeline-track::before{
-  content:'';position:absolute;top:-1px;left:0;right:0;height:1.5px;
-  background:var(--g-copper-h);transform-origin:left center;
-  transform:scaleX(0);transition:transform 1.1s cubic-bezier(.16,1,.3,1)
-}
-.timeline.vis .timeline-track::before{transform:scaleX(1)}
-.tl-month{
-  padding:20px 10px 0;text-align:left;position:relative;
-  border-left:1px solid var(--border)
-}
-.tl-month:first-child{border-left:none}
-.tl-month::before{
-  content:'';position:absolute;top:-1px;left:-1px;width:1px;height:9px;
-  background:var(--border2)
-}
-.tl-label{font-family:var(--font-body);font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.tl-month.hl-month .tl-label{color:var(--copper-warm)}
-.tl-dot{width:7px;height:7px;border-radius:50%;background:var(--border2);margin:8px 0 0}
-.tl-month.hl-month .tl-dot{background:var(--g-copper);box-shadow:0 0 10px rgba(184,84,32,.55)}
-@media(max-width:900px){
-  .timeline-track{grid-template-columns:repeat(6,1fr);row-gap:20px}
-  .tl-month:nth-child(6n+1){border-left:none}
-}
-@media(max-width:560px){
-  .timeline-track{grid-template-columns:repeat(3,1fr)}
-  .tl-month:nth-child(3n+1){border-left:none}
-  .hero-title{font-size:clamp(32px,10vw,44px);line-height:.95}
-}
+/* ─── CALENDARIO — HITOS REPRESENTATIVOS DEL AÑO ─────────────── */
+ @media(max-width:560px){
+   .hero-title{font-size:clamp(32px,10vw,44px);line-height:.95}
+ }
 
 .cal-examples{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
-.cal-card{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:26px;position:relative;overflow:hidden}
+.cal-card{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:26px;position:relative;overflow:hidden;opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),border-color .3s cubic-bezier(.16,1,.3,1)}
+.fi.vis .cal-card{opacity:1;transform:translateY(0)}
+.fi.vis .cal-card:nth-child(2){transition-delay:.06s}
+.fi.vis .cal-card:nth-child(3){transition-delay:.12s}
+.fi.vis .cal-card:nth-child(4){transition-delay:.18s}
+.fi.vis .cal-card:nth-child(5){transition-delay:.24s}
+.fi.vis .cal-card:nth-child(6){transition-delay:.3s}
 .cal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g-copper-h)}
 .cal-month{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--copper-warm);margin-bottom:10px}
 .cal-card h4{font-family:var(--font-h2);font-size:18px;font-weight:700;margin-bottom:9px}
@@ -299,7 +276,8 @@ strong.em,.em{font-family:var(--font-accent);font-style:italic;font-weight:700;c
 
 /* ─── FOOTER ─────────────────────────────────────────────────── */
 footer{background:var(--surface);border-top:1px solid var(--border2);padding:28px 5%;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-body);font-size:13px;font-weight:300;color:var(--muted);flex-wrap:wrap;gap:14px}
-footer .footer-logo img{height:50px;mix-blend-mode:screen;opacity:.7}
+footer .footer-logo{display:flex;align-items:center;min-height:50px;height:clamp(50px,6vw,72px)}
+footer .footer-logo img{display:block;width:auto;height:100%;min-height:0;max-height:72px;max-width:100%;object-fit:contain;mix-blend-mode:screen;opacity:.7}
 footer a{color:var(--copper-warm);text-decoration:none}
 footer a:hover{color:var(--copper-light)}
 
@@ -307,15 +285,13 @@ footer a:hover{color:var(--copper-light)}
 .fi{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
 .fi.vis{opacity:1;transform:translateY(0)}
 
-/* ─── TIMELINE DOT ANIMATION ─────────────────────────────────── */
-.tl-month.hl-month .tl-dot{animation:pulse-dot 2s ease infinite}
-@keyframes pulse-dot{0%,100%{box-shadow:0 0 6px rgba(184,84,32,.4)}50%{box-shadow:0 0 14px rgba(184,84,32,.8)}}
-
-/* Stagger fade-in para rungs */
-.ladder-row .rung{transition-delay:calc(var(--i,0)*.12s)}
-@media(prefers-reduced-motion:reduce){.tl-month.hl-month .tl-dot{animation:none}}
+ /* Stagger fade-in para rungs */
+ .ladder-row .rung{transition-delay:calc(var(--i,0)*.12s)}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<link rel="stylesheet" href="onix-shared.css">
+<script src="onix-shared.js" defer></script>
+<script src="menu-lock.js?v=a12eaa0" defer></script>
 </head>
 <body>
 
@@ -334,6 +310,7 @@ footer a:hover{color:var(--copper-light)}
   </button>
   <div class="nav-links" role="navigation" aria-label="Secciones">
     <a href="index.html">Inicio</a>
+    <a href="producto.html">Producto</a>
     <a href="suscripciones.html">Suscripciones</a>
     <a href="agentes.html">Agentes</a>
     <a href="campanas.html" class="current">Campañas</a>
@@ -346,58 +323,61 @@ footer a:hover{color:var(--copper-light)}
 <!-- HERO -->
 <section id="hero">
   <div class="hero-tag reveal-el">Marketing sobre tu base de clientes</div>
-  <h1 class="hero-title reveal-title">Cada cliente que se va, <span class="hl">se puede recuperar</span></h1>
+  <h1 class="hero-title reveal-title onix-typewriter-title"><span class="onix-tw-line">Haz que tus clientes</span><br><span class="onix-tw-line hl">vuelvan a comprarte</span></h1>
   <p class="hero-sub reveal-el">Un mensaje puntual llega una vez. Una lista de clientes propia te sirve <strong class="em">toda la vida</strong>: cada contacto que capturas hoy es una venta futura que ya no tienes que pagar dos veces. Las 3 campañas de ONIX están pensadas para eso, no solo para "enviar algo".</p>
 </section>
 
 <!-- ESCALERA DE NIVELES -->
 <div class="fw fi">
   <div class="fw-inner">
-    <div class="section-tag">No es "más contactos" — es qué te llevas</div>
-    <h2 class="section-title">Ejecutar, construir, o dejar de improvisar</h2>
-    <p class="section-sub">Cada nivel incluye todo el anterior. La diferencia real no es el alcance — es lo que tienes después de la campaña: nada nuevo, una lista de clientes propia, o datos para decidir la siguiente.</p>
+    <div class="section-tag">Campañas que podemos activar contigo</div>
+    <h2 class="section-title">Tres formas de mover a tus clientes</h2>
+    <p class="section-sub">No enviamos mensajes genéricos. Elegimos un momento, un público y una acción concreta: recuperar a quien se fue, captar a quien aún no tienes, o aprender qué convierte mejor.</p>
     <div class="ladder">
       <div class="ladder-rail"></div>
       <div class="ladder-row">
         <div class="rung lvl1" style="--i:0">
-          <div class="rung-head"><div class="rung-dot"></div><div class="rung-step">Ejecutar</div></div>
+          <div class="rung-head"><div class="rung-dot"></div><div class="rung-step">Reactivar</div></div>
           <div class="rung-body">
-            <div class="rung-name">Simple</div>
+            <div class="rung-name">Clientes dormidos</div>
             <div class="rung-price">150€</div>
-            <p class="rung-desc">Un mensaje a los contactos que ya tienes, en el mejor momento según los datos de tu stand. No construye nada nuevo.</p>
+            <p class="rung-desc">Una campaña puntual para volver a activar a quienes ya te compraron, reservaron o visitaron y llevan semanas sin volver.</p>
             <ul class="rung-incl">
-              <li>Copy y diseño del mensaje</li>
-              <li>Envío al día y hora óptimos</li>
-              <li>50 contactos de tu lista actual</li>
+              <li>Oferta clara con fecha límite</li>
+              <li>Envío a los 50 contactos adecuados</li>
+              <li>Copy listo para WhatsApp o email</li>
             </ul>
-            <p class="rung-limit">Necesitas ya una lista de clientes (reservas, pacientes, socios). Si no la tienes, no hay a quién enviarlo — el nivel que te la construye es Landing.</p>
+            <p class="rung-limit"><strong>Ejemplo:</strong> “Hace 90 días que no vienes. Esta semana tienes un 15% en tu próximo servicio.”</p>
           </div>
         </div>
         <div class="rung lvl2" style="--i:1">
-          <div class="rung-head"><div class="rung-dot"></div><div class="rung-step">Construir</div></div>
+          <div class="rung-head"><div class="rung-dot"></div><div class="rung-step">Captar</div></div>
           <div class="rung-body">
-            <div class="rung-name">Landing</div>
+            <div class="rung-name">Cupón que trae contactos</div>
             <div class="rung-price">400€ <sub>320€ con Premium</sub></div>
-            <p class="rung-desc">Suma una página propia — formulario, sorteo o cupón — que capta teléfonos y emails nuevos. Cada contacto capturado hoy es una venta futura que ya no pagas dos veces.</p>
+            <p class="rung-desc">Una landing vinculada a tu stand convierte una visita en contacto: cupón, sorteo o reserva para captar nombre, teléfono y email.</p>
             <ul class="rung-incl">
-              <li class="inherited">Todo lo de Simple</li>
-              <li>Página que capta contactos nuevos</li>
-              <li>Tu lista queda tuya para todas las campañas siguientes</li>
+              <li class="inherited">Todo lo de Reactivar</li>
+              <li>QR en tu stand con una oferta concreta</li>
+              <li>Landing con formulario y consentimiento</li>
+              <li>Tu lista queda tuya para la siguiente campaña</li>
             </ul>
+            <p class="rung-limit"><strong>Ejemplo:</strong> “Escanea, deja tu teléfono y consigue un bono para tu próxima visita.”</p>
           </div>
         </div>
         <div class="rung lvl3" style="--i:2">
-          <div class="rung-head"><div class="rung-dot"></div><div class="rung-step">Decidir con datos</div></div>
+          <div class="rung-head"><div class="rung-dot"></div><div class="rung-step">Aprender</div></div>
           <div class="rung-body">
-            <div class="rung-name">Completa</div>
+            <div class="rung-name">Temporada que se optimiza</div>
             <div class="rung-price">950€ <sub>760€ con Premium</sub></div>
-            <p class="rung-desc">Suma A/B testing (sabes qué mensaje convierte mejor, no lo adivinas), segmentación por tipo de cliente, e informe de resultados para que la próxima campaña parta de datos, no de intuición.</p>
+            <p class="rung-desc">Una campaña de temporada con segmentos y dos mensajes para saber qué convierte mejor y repetirlo con más precisión.</p>
             <ul class="rung-incl">
-              <li class="inherited">Todo lo de Landing</li>
-              <li>A/B test: qué mensaje funciona de verdad</li>
-              <li>Segmentación por tipo de cliente</li>
-              <li>Informe que alimenta tu próxima campaña</li>
+              <li class="inherited">Todo lo de Captar</li>
+              <li>Segmentos: nuevos, frecuentes y dormidos</li>
+              <li>A/B test de oferta y mensaje</li>
+              <li>Informe con la siguiente acción</li>
             </ul>
+            <p class="rung-limit"><strong>Ejemplo:</strong> dos ofertas de verano para descubrir cuál llena más reservas sin regalar margen.</p>
           </div>
         </div>
       </div>
@@ -414,43 +394,41 @@ footer a:hover{color:var(--copper-light)}
 </div>
 
 <!-- CALENDARIO -->
-<section class="section fi">
-  <div class="section-tag">Un año, no un mes suelto</div>
-  <h2 class="section-title">El calendario ya está pensado</h2>
-  <p class="section-sub">Doce meses, cada uno con una campaña estacional y una recurrente ya definidas para tu sector — nunca partimos de cero.</p>
-
-  <div class="timeline">
-    <div class="timeline-track">
-      <div class="tl-month"><div class="tl-label">Ene</div><div class="tl-dot"></div></div>
-      <div class="tl-month"><div class="tl-label">Feb</div><div class="tl-dot"></div></div>
-      <div class="tl-month"><div class="tl-label">Mar</div><div class="tl-dot"></div></div>
-      <div class="tl-month"><div class="tl-label">Abr</div><div class="tl-dot"></div></div>
-      <div class="tl-month"><div class="tl-label">May</div><div class="tl-dot"></div></div>
-      <div class="tl-month"><div class="tl-label">Jun</div><div class="tl-dot"></div></div>
-      <div class="tl-month"><div class="tl-label">Jul</div><div class="tl-dot"></div></div>
-      <div class="tl-month hl-month"><div class="tl-label">Ago</div><div class="tl-dot"></div></div>
-      <div class="tl-month"><div class="tl-label">Sep</div><div class="tl-dot"></div></div>
-      <div class="tl-month"><div class="tl-label">Oct</div><div class="tl-dot"></div></div>
-      <div class="tl-month hl-month"><div class="tl-label">Nov</div><div class="tl-dot"></div></div>
-      <div class="tl-month hl-month"><div class="tl-label">Dic</div><div class="tl-dot"></div></div>
-    </div>
-  </div>
+<section class="section fi" id="ejemplos-campanas">
+  <div class="section-tag">Ejemplos reales de campaña</div>
+  <h2 class="section-title">No partimos de una plantilla</h2>
+  <p class="section-sub">Cada campaña parte de un momento del negocio, un público concreto y una acción que se puede medir. Estos son ejemplos del tipo de trabajo que haríamos contigo.</p>
 
   <div class="cal-examples">
     <div class="cal-card">
+      <div class="cal-month">Enero</div>
+      <h4>Reactivar enero</h4>
+      <p><strong>Para:</strong> clientes que compraron antes de Navidad. <strong>Acción:</strong> recuperar huecos de agenda con una oferta de vuelta. <strong>Mensaje:</strong> “Vuelve esta semana y retoma tu rutina con un detalle para ti.”</p>
+    </div>
+    <div class="cal-card">
+      <div class="cal-month">Marzo</div>
+      <h4>Primera visita de primavera</h4>
+      <p><strong>Para:</strong> contactos que aún no han reservado. <strong>Acción:</strong> cupón de primera visita captado desde el QR del stand. <strong>Objetivo:</strong> convertir curiosidad en contacto propio.</p>
+    </div>
+    <div class="cal-card">
+      <div class="cal-month">Junio</div>
+      <h4>Bono de verano</h4>
+      <p><strong>Para:</strong> clientes frecuentes. <strong>Acción:</strong> bono limitado de tres servicios o reservas anticipadas. <strong>Objetivo:</strong> llenar fechas antes del pico de demanda.</p>
+    </div>
+    <div class="cal-card">
+      <div class="cal-month">Septiembre</div>
+      <h4>Vuelta a la rutina</h4>
+      <p><strong>Para:</strong> clientes dormidos desde hace 60–90 días. <strong>Acción:</strong> mensaje personalizado con una fecha límite. <strong>Objetivo:</strong> recuperar frecuencia, no solo conseguir un clic.</p>
+    </div>
+    <div class="cal-card">
       <div class="cal-month">Diciembre</div>
-      <h4>Navidad</h4>
-      <p>Cenas de empresa, regalos y reservas anticipadas — la campaña de mayor impacto del año para hostelería y estética.</p>
+      <h4>Regalo que trae otra visita</h4>
+      <p><strong>Para:</strong> clientes actuales y sus contactos. <strong>Acción:</strong> tarjeta regalo o bono compartible. <strong>Objetivo:</strong> que una compra navideña abra una segunda visita en enero.</p>
     </div>
     <div class="cal-card">
       <div class="cal-month">Noviembre</div>
-      <h4>Black Friday</h4>
-      <p>Ofertas limitadas a 24-48h, con el descuento y el copy ya preparados para tu tipo de negocio.</p>
-    </div>
-    <div class="cal-card">
-      <div class="cal-month">Agosto</div>
-      <h4>Reactivación</h4>
-      <p>Temporada baja: campaña pensada para recuperar clientes que no han vuelto antes de septiembre.</p>
+      <h4>Black Friday sin perder margen</h4>
+      <p><strong>Para:</strong> segmentos con distinta sensibilidad al precio. <strong>Acción:</strong> dos ofertas y dos mensajes durante 48 horas. <strong>Objetivo:</strong> saber qué convierte antes de repetir el descuento.</p>
     </div>
   </div>
   <p class="section-sub" style="margin-top:28px;max-width:100%">Si todavía no tienes teléfonos ni emails de tus clientes, tu primera campaña siempre es <strong class="em">Landing</strong>: la página de sorteo o cupón en tu stand capta los primeros contactos, y desde ahí ya puedes lanzar Simple sobre esa misma lista cuando quieras.</p>
@@ -459,8 +437,8 @@ footer a:hover{color:var(--copper-light)}
 <!-- CTA FINAL -->
 <div class="cta-section fi">
   <h2>¿Empezamos con tu <span class="hl">primera campaña</span>?</h2>
-  <p>Pro incluye una campaña Simple cada 2 meses; Premium incluye 100€ de crédito mensual para campañas.</p>
-  <a href="suscripciones.html" class="btn-primary">Ver suscripciones →</a>
+  <p>Con la suscripción Pro o Premium, tu primera campaña ya está incluida.</p>
+  <a href="index.html#suscripciones" class="btn-primary">Ver suscripciones →</a>
 </div>
 
 <footer>
@@ -474,25 +452,10 @@ footer a:hover{color:var(--copper-light)}
     <a href="legal.html">Privacidad</a>
     <a href="legal.html">Cookies</a>
   </span>
-  <a href="https://wa.me/34630910142">+34 630 910 142</a>
+  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contactar con ONIX por WhatsApp">Contáctanos</a>
 </footer>
 
 <script>
-(function() {
-  var preloaderTop = document.querySelector('#preloader .pl-half.top');
-  var preloaderBot = document.querySelector('#preloader .pl-half.bot');
-  if (!preloaderTop || !preloaderBot) return;
-
-  var tl = gsap.timeline();
-  tl.fromTo(preloaderTop, {x: -560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
-  tl.fromTo(preloaderBot, {x: 560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
-  tl.to('#preloader', {opacity: 0, duration: 0.4, ease: 'power2.in'}, '-=0.2');
-  tl.set('#preloader', {display: 'none'});
-  tl.to('.reveal-title', {opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08}, '-=0.05');
-  tl.to('.reveal-el', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.06}, 0.15);
-  tl.to('.reveal-card', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05}, 0.35);
-})();
-
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
 }, { threshold: 0.15 });
@@ -506,22 +469,6 @@ document.addEventListener('scroll', () => {
   st = setTimeout(() => document.documentElement.classList.remove('scrolling'), 800);
 }, { passive: true });
 
-// Current month highlight on timeline
-(function(){
-  var months = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-  var now = new Date();
-  var currentMonth = months[now.getMonth()];
-  var dots = document.querySelectorAll('.tl-month');
-  dots.forEach(function(d){
-    var label = d.querySelector('.tl-label');
-    if(label && label.textContent.trim() === currentMonth){
-      // Remove hl-month from others, add to this
-      dots.forEach(function(m){ m.classList.remove('hl-month'); });
-      d.classList.add('hl-month');
-    }
-  });
-})();
-
 // Stagger: apply transition-delay to rungs when visible
 var rungObserver = new IntersectionObserver(function(entries){
   entries.forEach(function(e){
@@ -533,16 +480,6 @@ var rungObserver = new IntersectionObserver(function(entries){
 }, { threshold: 0.1 });
 document.querySelectorAll('.rung').forEach(function(el){ rungObserver.observe(el); });
 
-// Draw-on de la línea de tiempo al entrar en viewport
-var timelineObserver = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      e.target.classList.add('vis');
-      timelineObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelectorAll('.timeline').forEach(function(el){ timelineObserver.observe(el); });
 </script>
 
-<script>document.getElementById('menu-toggle').addEventListener('click',function(){var n=document.querySelector('.nav-links');n.classList.toggle('open');var o=n.classList.contains('open');this.classList.toggle('is-open',o);this.setAttribute('aria-expanded',o);var c=document.querySelector('.nav-cta');if(c)c.classList.toggle('menu-visible',o);});</script></body>
+<script>(function(){var b=document.getElementById('menu-toggle'),n=document.querySelector('.nav-links'),c=document.querySelector('.nav-cta');if(!b||!n)return;function close(){n.classList.remove('open');b.classList.remove('is-open');b.setAttribute('aria-expanded','false');if(c)c.classList.remove('menu-visible')}b.addEventListener('click',function(){var o=n.classList.toggle('open');b.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));if(c)c.classList.toggle('menu-visible',o)});n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape')close()})})();</script></body>
