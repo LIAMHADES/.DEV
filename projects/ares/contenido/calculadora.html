@@ -168,6 +168,12 @@
 .result-cta-sub{font-family:'Orbitron',sans-serif;font-size:0.8rem;color:var(--t2);text-align:center;margin-bottom:1.5rem}
 /* CTA secundario de nutricion (punto 10): mismo look, acento en --deco para diferenciarlo del generico */
 .result-cta-heading.nutricion{color:var(--hl)}
+.result-cta-actions{display:flex;justify-content:center;gap:0.8rem;flex-wrap:wrap;margin-top:1.1rem}
+.result-cta-actions .btn{margin:0}
+.result-activity-link{font-size:10px!important;padding:0.8rem 1rem!important}
+.report-download{display:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--t2);text-decoration:none;border-bottom:1px solid rgba(240,242,245,0.25);padding:0.8rem 0.4rem}
+.report-download.visible{display:inline-flex;align-items:center}
+.report-download:hover{color:var(--hl);border-color:var(--hl)}
 
 /* Perfilado (pregunta opcional post-email) */
 #profiling{display:none;max-width:480px;margin:2rem auto 0;text-align:center}
@@ -220,7 +226,7 @@ section:first-of-type{clip-path:none}
 #apoyo{margin-top:-40px}
 #apoyo{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
 </style>
-<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/analytics.js" defer></script>
 </head>
 <body style="background:#151d25">
 
@@ -417,23 +423,34 @@ section:first-of-type{clip-path:none}
       <!-- CTA de captura — el copy (heading/sub/boton) se adapta segun la categoria
            de resultado (punto 10): generico para bajo_peso/ideal, nutricion para
            sobrepeso/obesidad. Mismo formulario/lead-capture.js, solo cambia el texto. -->
-      <div id="result-cta">
-        <div class="result-cta-heading" id="result-cta-heading">Recibe seguimiento de la condición de tu perro</div>
-        <div class="result-cta-sub" id="result-cta-sub">Entérate cuando ARES esté disponible.</div>
+       <div id="result-cta">
+         <div class="result-cta-heading" id="result-cta-heading">Recibe tu mini informe personalizado</div>
+         <div class="result-cta-sub" id="result-cta-sub">Te resumimos el resultado y las siguientes preguntas útiles para cuidar mejor de tu perro.</div>
 
-        <form data-lead-form data-lead-source="calculadora" class="lead-form">
-          <div class="lf-row">
-            <input type="email" placeholder="tu@email.com" data-lead="email" required>
-            <button type="submit" data-lead="submit" id="result-cta-submit">Quiero saber más</button>
-          </div>
+         <form data-lead-form data-lead-source="calculadora" class="lead-form">
+           <input type="hidden" data-lead-extra="weightKg" id="lead-weight-kg">
+           <input type="hidden" data-lead-extra="heightCm" id="lead-height-cm">
+           <input type="hidden" data-lead-extra="ageMonths" id="lead-age-months">
+           <input type="hidden" data-lead-extra="breed" id="lead-breed">
+           <input type="hidden" data-lead-extra="category" id="lead-category">
+           <input type="hidden" data-lead-extra="bmi" id="lead-bmi">
+           <div class="lf-row">
+             <input type="email" placeholder="tu@email.com" data-lead="email" required>
+             <button type="submit" data-lead="submit" id="result-cta-submit">Quiero mi mini informe</button>
+           </div>
           <div class="lf-gdpr">
             <input type="checkbox" id="gdpr-calc" data-lead="gdpr" required>
             <label for="gdpr-calc">Acepto recibir comunicaciones de ARES GPS sobre el lanzamiento del producto y el seguimiento de la condición de mi perro. Puedo darme de baja cuando quiera.</label>
           </div>
-          <span class="lead-feedback" data-lead="feedback"></span>
-        </form>
+           <span class="lead-feedback" data-lead="feedback"></span>
+         </form>
 
-        <!-- Pregunta de perfilado opcional -->
+         <div class="result-cta-actions">
+           <a id="activity-link" class="btn btn-out result-activity-link" href="actividad.html">Ver qué significa para su actividad →</a>
+           <a id="report-download" class="report-download" href="#" download="ares-mini-informe.txt">Descargar el mini informe</a>
+         </div>
+
+         <!-- Pregunta de perfilado opcional -->
         <div id="profiling">
           <p>Opcional — nos ayuda a entender mejor a los dueños de ARES</p>
           <select id="profiling-select">
@@ -808,7 +825,7 @@ section:first-of-type{clip-path:none}
     // Dato adicional guardado (no usado en el calculo numerico, solo referencia
     // / registro del lead): nombre de raza libre que el usuario escribio.
     result.freeformBreedName = freeformBreedName;
-    renderResult(result);
+     renderResult(result, input);
 
     // Punto 2 (cambio): la sugerencia de raza no listada se registra aparte,
     // en su propia key de localStorage (ares_breed_suggestions_v1), para que
@@ -831,9 +848,9 @@ section:first-of-type{clip-path:none}
      copy adaptado a nutricion cuando el resultado es sobrepeso/obesidad. */
   const CTA_COPY = {
     default: {
-      heading: 'Recibe seguimiento de la condición de tu perro',
-      sub: 'Entérate cuando ARES esté disponible.',
-      submit: 'Quiero saber más',
+       heading: 'Recibe tu mini informe personalizado',
+       sub: 'Te resumimos el resultado y las siguientes preguntas útiles para cuidar mejor de tu perro.',
+       submit: 'Quiero mi mini informe',
     },
     nutricion: {
       heading: '¿Quieres una dieta ajustada a tu perro, no a una tabla genérica?',
@@ -856,7 +873,40 @@ section:first-of-type{clip-path:none}
     submit.textContent = copy.submit;
   }
 
-  function renderResult(result){
+   let reportObjectUrl = '';
+
+   function inputDisplayValue(value){
+     if(value && typeof value === 'object') return 'rango-' + (value.rangeId || 'aproximado');
+     return value == null ? '' : String(value);
+   }
+
+   function prepareReportDownload(result, input){
+     const reportLink = document.getElementById('report-download');
+     if(!reportLink) return;
+     if(reportObjectUrl) URL.revokeObjectURL(reportObjectUrl);
+     const label = window.ARES_CALCULATOR.CATEGORY_LABELS[result.category] || result.category;
+     const lines = [
+       'ARES GPS — MINI INFORME DE PESO',
+       '',
+       'Resultado: ' + label,
+       'IMC estimado: ' + result.bmi,
+       'Rango de referencia: ' + ((result.normalMin && result.normalMax) ? result.normalMin + ' - ' + result.normalMax : 'No disponible'),
+       'Raza de referencia: ' + (result.freeformBreedName || result.breedUsed || 'Estimacion por tamano'),
+       'Peso introducido: ' + inputDisplayValue(input.weightKg) + ' kg',
+       'Altura introducida: ' + inputDisplayValue(input.heightCm) + ' cm',
+       'Edad introducida: ' + inputDisplayValue(input.ageMonths) + ' meses',
+       '',
+       'Siguiente paso: prueba la calculadora de actividad con el peso de este resultado.',
+       new URL('actividad.html', window.location.href).href,
+       '',
+       'Orientacion general. No sustituye una valoracion veterinaria.',
+     ];
+     reportObjectUrl = URL.createObjectURL(new Blob([lines.join('\n')], {type:'text/plain;charset=utf-8'}));
+     reportLink.href = reportObjectUrl;
+     reportLink.classList.remove('visible');
+   }
+
+   function renderResult(result, input){
     const labels = window.ARES_CALCULATOR.CATEGORY_LABELS;
     const messages = window.ARES_CALCULATOR.CATEGORY_MESSAGES;
     const catEl = document.getElementById('result-category');
@@ -881,8 +931,29 @@ section:first-of-type{clip-path:none}
     const notes = [];
     if(result.approxInput) notes.push('Calculado con un rango aproximado de peso/altura — el margen de error es mayor. Para más precisión, pésalo y mídelo si puedes.');
     if(result.puppyAdjusted) notes.push('Ajustado por edad de cachorro');
-    noteEl.textContent = notes.join(' · ');
-    noteEl.classList.toggle('approx', !!result.approxInput);
+     noteEl.textContent = notes.join(' · ');
+     noteEl.classList.toggle('approx', !!result.approxInput);
+
+     const leadValues = {
+       weightKg: inputDisplayValue(input.weightKg),
+       heightCm: inputDisplayValue(input.heightCm),
+       ageMonths: inputDisplayValue(input.ageMonths),
+       breed: result.freeformBreedName || result.breedUsed || 'Estimacion por tamano',
+       category: result.category,
+       bmi: result.bmi,
+     };
+     Object.entries(leadValues).forEach(([key, value])=>{
+       const field = document.getElementById('lead-' + key.replace(/[A-Z]/g, m => '-' + m.toLowerCase()));
+       if(field) field.value = value;
+     });
+
+     const activityLink = document.getElementById('activity-link');
+     if(activityLink){
+       const params = new URLSearchParams({source:'weight-calculator'});
+       if(typeof input.weightKg === 'number' && Number.isFinite(input.weightKg)) params.set('weight', input.weightKg);
+       activityLink.href = 'actividad.html?' + params.toString();
+     }
+     prepareReportDownload(result, input);
 
     // Posicion del marcador en la escala (0-100%) segun categoria
     const positions = { bajo_peso: 10, ideal: 40, sobrepeso: 70, obesidad: 92 };
@@ -947,17 +1018,14 @@ section:first-of-type{clip-path:none}
     }
   }
 
-  // Mostrar pregunta de perfilado tras enviar el email con exito
-  const leadForm = document.querySelector('[data-lead-form="calculadora"], form[data-lead-source="calculadora"]');
-  if(leadForm){
-    leadForm.addEventListener('submit', function(){
-      setTimeout(()=>{
-        if(leadForm.classList.contains('lead-form--sent') || true){
-          document.getElementById('profiling').classList.add('visible');
-        }
-      }, 300);
-    });
-  }
+   // Mostrar pregunta de perfilado y desbloquear el mini informe tras enviar el email con exito
+   const leadForm = document.querySelector('[data-lead-form="calculadora"], form[data-lead-source="calculadora"]');
+   if(leadForm){
+     leadForm.addEventListener('ares:lead-sent', function(){
+       document.getElementById('profiling').classList.add('visible');
+       document.getElementById('report-download').classList.add('visible');
+     });
+   }
   document.getElementById('profiling-select') && document.getElementById('profiling-select').addEventListener('change', function(){
     console.log('[ARES perfilado] Dónde pasea el perro (placeholder, guardar junto al lead):', this.value);
   });
@@ -1043,6 +1111,6 @@ section:first-of-type{clip-path:none}
     window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
   })();
 </script>
-<script src="../assets/js/footer-common.js"></script>
+<script src="../assets/js/footer-common.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "La Parada Bar de tapas",
+    "tipo": "cafeteria_bar",
+    "direccion": "Av. Antonio Mairena, 26",
+    "telefono": "+34 698 97 19 81",
+    "valoracion": 4.6,
+    "resenas": 682,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3381576,
+    "lng": -5.8399959,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=La%20Parada%20Bar%20de%20tapas&query_place_id=ChIJKagwjsZkEg0Rd75r0G9rXbM",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

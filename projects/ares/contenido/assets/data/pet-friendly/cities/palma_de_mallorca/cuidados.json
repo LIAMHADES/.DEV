@@ -1,0 +1,261 @@
+[
+  {
+    "nombre": "Kukies peluquería canina y felina",
+    "tipo": "peluqueria",
+    "direccion": "Carrer de Bartomeu Sureda i Miserol, 1",
+    "lat": 39.5882346,
+    "lng": 2.6227291999999998
+  },
+  {
+    "nombre": "PerrosXpert Guarderia y Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "C. de Manacor, 36",
+    "lat": 39.5713781,
+    "lng": 2.6627263
+  },
+  {
+    "nombre": "Adiestramiento canino Mallorca - Educación Canina Con Empatía",
+    "tipo": "adiestrador",
+    "direccion": "Carrer del General Riera, 112",
+    "lat": 39.587958199999996,
+    "lng": 2.6460323
+  },
+  {
+    "nombre": "Balanced Dogs Mallorca Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "Av. Mexico",
+    "lat": 39.5709963,
+    "lng": 2.6395839999999997
+  },
+  {
+    "nombre": "Samaritana Suites",
+    "tipo": "alojamiento",
+    "direccion": "Carrer del Pes de la Farina, 2",
+    "lat": 39.5702208,
+    "lng": 2.6531946
+  },
+  {
+    "nombre": "Concepció by Nobis",
+    "tipo": "alojamiento",
+    "direccion": "C/ de la Concepció, 34",
+    "lat": 39.574501,
+    "lng": 2.6456798
+  },
+  {
+    "nombre": "Can Bordoy Grand House & Garden",
+    "tipo": "alojamiento",
+    "direccion": "Carrer del Forn de la Glòria, 14",
+    "lat": 39.569659699999995,
+    "lng": 2.6444226
+  },
+  {
+    "nombre": "Posada Terra Santa",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de la Posada de Terra Santa, 5",
+    "lat": 39.56989,
+    "lng": 2.6533949999999997
+  },
+  {
+    "nombre": "Terreno Barrio Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Avinguda de Joan Miró, 73",
+    "lat": 39.559905,
+    "lng": 2.624457
+  },
+  {
+    "nombre": "Hotel Hospes Maricel & Spa",
+    "tipo": "alojamiento",
+    "direccion": "Ctra. Andratx, 11",
+    "lat": 39.54728,
+    "lng": 2.5963776999999997
+  },
+  {
+    "nombre": "Palma Suites Hotel Residence",
+    "tipo": "alojamiento",
+    "direccion": "Plaça del Mercadal, 8",
+    "lat": 39.5704308,
+    "lng": 2.6537148
+  },
+  {
+    "nombre": "AH Art Hotel Palma",
+    "tipo": "alojamiento",
+    "direccion": "Costa d'En Sintes, 6",
+    "lat": 39.5723972,
+    "lng": 2.6511296
+  },
+  {
+    "nombre": "Nivia Born Boutique Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Carrer dels Paraires, 24",
+    "lat": 39.5701222,
+    "lng": 2.6471308
+  },
+  {
+    "nombre": "Palacio Ca Sa Galesa",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Miramar, 8",
+    "lat": 39.5671567,
+    "lng": 2.6500380999999997
+  },
+  {
+    "nombre": "Castillo Hotel Son Vida, a Luxury Collection Hotel, Mallorca",
+    "tipo": "alojamiento",
+    "direccion": "Carrer Raixa, 2, Urbanizacion",
+    "lat": 39.5917983,
+    "lng": 2.5959141
+  },
+  {
+    "nombre": "Hotel Bon Sol Resort & Spa",
+    "tipo": "alojamiento",
+    "direccion": "Paseo de Illetas, 30",
+    "lat": 39.5405807,
+    "lng": 2.5924579999999997
+  },
+  {
+    "nombre": "Nakar Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Jaume III, 21",
+    "lat": 39.5722064,
+    "lng": 2.6433172
+  },
+  {
+    "nombre": "Hotel Palau Sa Font",
+    "tipo": "alojamiento",
+    "direccion": "Carrer dels Apuntadors, 38",
+    "lat": 39.569626899999996,
+    "lng": 2.643779
+  },
+  {
+    "nombre": "Puro Grand Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Montenegro, 10",
+    "lat": 39.5694784,
+    "lng": 2.6451862
+  },
+  {
+    "nombre": "Petit Palace Hotel Tres",
+    "tipo": "alojamiento",
+    "direccion": "Carrer dels Apuntadors, 3",
+    "lat": 39.5689865,
+    "lng": 2.6455343
+  },
+  {
+    "nombre": "Nobis Hotel Palma",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de les Caputxines, 9",
+    "lat": 39.5725264,
+    "lng": 2.6487591999999998
+  },
+  {
+    "nombre": "Palacio Can Marqués",
+    "tipo": "alojamiento",
+    "direccion": "Carrer dels Apuntadors, 15",
+    "lat": 39.5692909,
+    "lng": 2.6444042999999997
+  },
+  {
+    "nombre": "ICON Rosetó",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Can Campaner, 6",
+    "lat": 39.572075999999996,
+    "lng": 2.6494958
+  },
+  {
+    "nombre": "Hotel De Mar Gran Meliá",
+    "tipo": "alojamiento",
+    "direccion": "Passeig Illetes, 7",
+    "lat": 39.543886,
+    "lng": 2.5962449999999997
+  },
+  {
+    "nombre": "Sheraton Mallorca Arabella Golf Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Carrer Vinagrella",
+    "lat": 39.5866644,
+    "lng": 2.5993321
+  },
+  {
+    "nombre": "Hotel Feliz",
+    "tipo": "alojamiento",
+    "direccion": "Avinguda de Joan Miró, 74",
+    "lat": 39.5608785,
+    "lng": 2.6246240999999997
+  },
+  {
+    "nombre": "Hotel Araxa",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Pilar Juncosa, 22",
+    "lat": 39.5697136,
+    "lng": 2.6258266999999997
+  },
+  {
+    "nombre": "Hotel Cappuccino - Palma",
+    "tipo": "alojamiento",
+    "direccion": "Plaça de Cort",
+    "lat": 39.569717399999995,
+    "lng": 2.6502664
+  },
+  {
+    "nombre": "INNSiDE by Meliá Palma Bosque",
+    "tipo": "alojamiento",
+    "direccion": "Carrer Camilo José Cela, 5",
+    "lat": 39.56678,
+    "lng": 2.6259699999999997
+  },
+  {
+    "nombre": "Hotel Cort",
+    "tipo": "alojamiento",
+    "direccion": "Plaça de Cort, 11",
+    "lat": 39.5697389,
+    "lng": 2.6499949
+  },
+  {
+    "nombre": "Hotel Catalonia Majórica",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de la Garita, 3",
+    "lat": 39.5560812,
+    "lng": 2.6223717
+  },
+  {
+    "nombre": "Hotel Joan Miró Museum",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Bartomeu Fons, 8",
+    "lat": 39.5534347,
+    "lng": 2.610638
+  },
+  {
+    "nombre": "Belle Zurbarán Palma Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Josep Villalonga, 16",
+    "lat": 39.5645841,
+    "lng": 2.6244129
+  },
+  {
+    "nombre": "Gomila Palma Apartments",
+    "tipo": "alojamiento",
+    "direccion": "Avinguda de Joan Miró, 5",
+    "lat": 39.5664556,
+    "lng": 2.62711
+  },
+  {
+    "nombre": "Brondo Architect Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Can Brondo, 4",
+    "lat": 39.5710872,
+    "lng": 2.6479323
+  },
+  {
+    "nombre": "Cream homes Santa Catalina, ETV",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Murillo, 19",
+    "lat": 39.5732882,
+    "lng": 2.6390979
+  },
+  {
+    "nombre": "Balearic Hostel Group",
+    "tipo": "alojamiento",
+    "direccion": "Carrer del Pinar, 1",
+    "lat": 39.6055972,
+    "lng": 2.6346179999999997
+  }
+]

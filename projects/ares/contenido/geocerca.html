@@ -188,7 +188,7 @@ section:first-of-type{clip-path:none}
 .pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.06em;color:rgba(240,242,245,.4);margin-top:.5rem;text-transform:uppercase}
 @media(max-width:768px){.pf-footer-sub{margin-top:.2rem}.pf-footer-wrap{padding-top:28px;--footer-svg-base-scale:1}.pf-footer-map{height:240px;--footer-scroll-extra:calc(var(--footer-svg-stretch) * 100vw)}.pf-footer-track{gap:calc(16px + var(--footer-scroll-extra))}.pf-footer-tile{transform:translate3d(0,10px,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)))}}
 </style>
-<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/analytics.js" defer></script>
 </head>
 <body>
 
@@ -243,7 +243,7 @@ section:first-of-type{clip-path:none}
 
     <div class="hf-wrap">
       <div>
-        <div class="hf-diagram">
+        <div class="hf-diagram angle-border">
           <svg viewBox="0 0 400 280" id="geoSvg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Demostrador interactivo de geocerca: zona azul segura, zona amarilla de aviso ajustable, zona roja fuera">
             <defs>
               <pattern id="hatchRed" width="11" height="11" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
@@ -411,7 +411,7 @@ section:first-of-type{clip-path:none}
     <div class="ss" style="text-transform:none;letter-spacing:0;max-width:560px;margin:0.5rem auto 0">El Modo Guardia (el aviso antes de cruzar) está incluido en todos los planes. Lo que cambia es cuántas zonas seguras puedes tener a la vez.</div>
 
     <div class="pn-wrap">
-      <div class="pn-card">
+      <div class="pn-card angle-border">
         <div class="pn-plan">Esencial</div>
         <div class="pn-zonas">1</div>
         <div class="pn-label">zona segura</div>
@@ -420,7 +420,7 @@ section:first-of-type{clip-path:none}
           <li>Alertas al instante</li>
         </ul>
       </div>
-      <div class="pn-card hl">
+      <div class="pn-card hl angle-border">
         <div class="pn-tag">Recomendado</div>
         <div class="pn-plan">Básico</div>
         <div class="pn-zonas">3</div>
@@ -431,7 +431,7 @@ section:first-of-type{clip-path:none}
           <li>Historial de avisos</li>
         </ul>
       </div>
-      <div class="pn-card">
+      <div class="pn-card angle-border">
         <div class="pn-plan">Premium</div>
         <div class="pn-zonas">10</div>
         <div class="pn-label">zonas seguras</div>
@@ -713,6 +713,6 @@ section:first-of-type{clip-path:none}
     window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
   })();
 </script>
-<script src="../assets/js/footer-common.js"></script>
+<script src="../assets/js/footer-common.js" defer></script>
 </body>
 </html>

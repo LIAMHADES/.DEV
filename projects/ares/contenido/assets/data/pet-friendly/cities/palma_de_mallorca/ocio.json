@@ -1,0 +1,149 @@
+[
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "796-Caracas",
+    "lat": 39.5696647,
+    "lng": 2.6658687
+  },
+  {
+    "nombre": "Parque Canino Bendinat",
+    "tipo": "parque",
+    "direccion": "Carrer Upt4-P1",
+    "lat": 39.5383542,
+    "lng": 2.5853595
+  },
+  {
+    "nombre": "Platja per cans",
+    "tipo": "parque",
+    "direccion": "Passeig Cala Gamba",
+    "lat": 39.5437921,
+    "lng": 2.7002923
+  },
+  {
+    "nombre": "Son Perera i Son Martorell",
+    "tipo": "parque",
+    "direccion": "Parc de Son Parera",
+    "lat": 39.5552302,
+    "lng": 2.6882226
+  },
+  {
+    "nombre": "Playa perros Es Carnatge",
+    "tipo": "parque",
+    "direccion": "Carrer Prol Denton, 52",
+    "lat": 39.5438232,
+    "lng": 2.7001537
+  },
+  {
+    "nombre": "Parque de la Riera",
+    "tipo": "parque",
+    "direccion": "C. de Joan Dameto, s/n",
+    "lat": 39.585309699999996,
+    "lng": 2.6372297
+  },
+  {
+    "nombre": "Plaza de La Feixina",
+    "tipo": "parque",
+    "direccion": "Avinguda Argentina, s/n",
+    "lat": 39.5707218,
+    "lng": 2.6402639999999997
+  },
+  {
+    "nombre": "Parque de Convivencia Son Dameto de Dalt",
+    "tipo": "parque",
+    "direccion": "Carrer d'Andalusia, 14",
+    "lat": 39.586017399999996,
+    "lng": 2.6248978
+  },
+  {
+    "nombre": "Parc de sa Riera",
+    "tipo": "parque",
+    "direccion": "C/ de Jesús, 27A",
+    "lat": 39.5833544,
+    "lng": 2.6411001
+  },
+  {
+    "nombre": "Parque canino, Plaza de la Guardia Civil",
+    "tipo": "parque",
+    "direccion": "Carrer de Manuel Azaña, 14",
+    "lat": 39.569351499999996,
+    "lng": 2.6649865999999998
+  },
+  {
+    "nombre": "Parc de les Sorts",
+    "tipo": "parque",
+    "direccion": "Parque público Ses Sorts",
+    "lat": 39.5790078,
+    "lng": 2.6768208
+  },
+  {
+    "nombre": "Parc de Convivència La Ribera",
+    "tipo": "parque",
+    "direccion": "Carrer del Flamenc",
+    "lat": 39.529649899999995,
+    "lng": 2.7329695
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "Son Martorell",
+    "lat": 39.5558069,
+    "lng": 2.6896367
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "Carrer de l'Àliga",
+    "lat": 39.499882899999996,
+    "lng": 2.5009929
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "Ponent",
+    "lat": 39.5970212,
+    "lng": 2.6119291
+  },
+  {
+    "nombre": "“Pi-Pi Can” Son Forteza",
+    "tipo": "parque",
+    "direccion": "Carrer Jacint Verdaguer, 136",
+    "lat": 39.587024199999995,
+    "lng": 2.669257
+  },
+  {
+    "nombre": "Parque de ocio canino de Son Fuster",
+    "tipo": "parque",
+    "direccion": "Carrer de Gabriel Alzamora, 35",
+    "lat": 39.592317,
+    "lng": 2.6785493
+  },
+  {
+    "nombre": "Parque de Convivenvia Canina Cas Capiscol",
+    "tipo": "parque",
+    "direccion": "Norte",
+    "lat": 39.5949885,
+    "lng": 2.6507088
+  },
+  {
+    "nombre": "Parque de perros",
+    "tipo": "parque",
+    "direccion": "Ponent",
+    "lat": 39.580735,
+    "lng": 2.642369
+  },
+  {
+    "nombre": "Pipican",
+    "tipo": "parque",
+    "direccion": "Carrer de Francesc Martí i Móra, 73",
+    "lat": 39.5856089,
+    "lng": 2.6333321
+  },
+  {
+    "nombre": "Parque de la Riera",
+    "tipo": "parque",
+    "direccion": "C/ de Jesús, 27A",
+    "lat": 39.5833544,
+    "lng": 2.6411001
+  }
+]

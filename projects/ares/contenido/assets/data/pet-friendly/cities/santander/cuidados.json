@@ -1,0 +1,254 @@
+[
+  {
+    "nombre": "Comunicanis educadora canina y veterinaria",
+    "tipo": "adiestrador",
+    "direccion": "C. Hernán Cortés, 63",
+    "lat": 43.4633377,
+    "lng": -3.7968493
+  },
+  {
+    "nombre": "PASIONCAN - Educación Canina",
+    "tipo": "adiestrador",
+    "direccion": "Ctra. Revilla a Peñacastillo, 41c",
+    "lat": 43.4274214,
+    "lng": -3.8757279999999996
+  },
+  {
+    "nombre": "Servicios Caninos",
+    "tipo": "adiestrador",
+    "direccion": "C/Cueto 2",
+    "lat": 43.4841121,
+    "lng": -3.8040008
+  },
+  {
+    "nombre": "Anny And Dogs Educación y Adiestramiento Canino Profesional",
+    "tipo": "adiestrador",
+    "direccion": "Av. de los Castros",
+    "lat": 43.4692795,
+    "lng": -3.8066126
+  },
+  {
+    "nombre": "Grupo Operativo de Rescate Con Perro de Cantabria",
+    "tipo": "adiestrador",
+    "direccion": "C. Corbanera",
+    "lat": 43.484262799999996,
+    "lng": -3.8198602
+  },
+  {
+    "nombre": "Akindi Cantabria - Adiestramiento canino",
+    "tipo": "adiestrador",
+    "direccion": "Barrio Hornedo- Corral. Polígono 10, Cinco Cagigas.",
+    "lat": 43.368766699999995,
+    "lng": -3.6248856999999997
+  },
+  {
+    "nombre": "Wolfhouse",
+    "tipo": "alojamiento",
+    "direccion": "C. Mies de La Ran, 41",
+    "lat": 43.452403,
+    "lng": -3.7245272999999997
+  },
+  {
+    "nombre": "Dormir En Cantabria | Posada La Morena | Dormir En Cantabria",
+    "tipo": "alojamiento",
+    "direccion": "Av. Playa San Juan de la Canal, 49",
+    "lat": 43.4741698,
+    "lng": -3.895234
+  },
+  {
+    "nombre": "Alojamiento Villa Playa San Juan",
+    "tipo": "alojamiento",
+    "direccion": "Av. Playa San Juan de la Canal, 43, B",
+    "lat": 43.4732974,
+    "lng": -3.8951938
+  },
+  {
+    "nombre": "Loredo Surf House",
+    "tipo": "alojamiento",
+    "direccion": "El",
+    "lat": 43.4620657,
+    "lng": -3.7204591999999996
+  },
+  {
+    "nombre": "Posada Petfriendly El Molino de Cantabria (Hotel Rural B&B)",
+    "tipo": "alojamiento",
+    "direccion": "Barrio Vayondo, 10",
+    "lat": 43.3677036,
+    "lng": -3.6459829999999998
+  },
+  {
+    "nombre": "Cantabrican Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "Bo. Valles, 48",
+    "lat": 43.3548325,
+    "lng": -4.1136832
+  },
+  {
+    "nombre": "Peluquería Carpe Diem Santander",
+    "tipo": "peluqueria",
+    "direccion": "C. Florida, 4",
+    "lat": 43.462409099999995,
+    "lng": -3.8135111999999998
+  },
+  {
+    "nombre": "Le Petit Boutique Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Av. de los Castros, 10",
+    "lat": 43.473696,
+    "lng": -3.7869099999999998
+  },
+  {
+    "nombre": "HOTEL BED4U SANTANDER",
+    "tipo": "alojamiento",
+    "direccion": "Av. Parayas, 2a",
+    "lat": 43.4524584,
+    "lng": -3.8282532999999996
+  },
+  {
+    "nombre": "Sol Boutique",
+    "tipo": "alojamiento",
+    "direccion": "C. del Sol, 31",
+    "lat": 43.465353199999996,
+    "lng": -3.7997680999999996
+  },
+  {
+    "nombre": "centro canino educando",
+    "tipo": "adiestrador",
+    "direccion": "C. Veridiano Rojo Herrero, s/n",
+    "lat": 43.4766398,
+    "lng": -3.8104394
+  },
+  {
+    "nombre": "Hotel Posada de Pedreña",
+    "tipo": "alojamiento",
+    "direccion": "Bo. Onso, 178",
+    "lat": 43.4407887,
+    "lng": -3.7687038
+  },
+  {
+    "nombre": "ibis Styles Santander",
+    "tipo": "alojamiento",
+    "direccion": "Av. Parayas, 2A",
+    "lat": 43.4524816,
+    "lng": -3.8283083999999996
+  },
+  {
+    "nombre": "Las Carolinas Garden",
+    "tipo": "alojamiento",
+    "direccion": "P.º de Altamira, 115",
+    "lat": 43.463508,
+    "lng": -3.8218682
+  },
+  {
+    "nombre": "Apartamentos Art Suite Santander",
+    "tipo": "alojamiento",
+    "direccion": "En la Plaza Pombo",
+    "lat": 43.462889399999995,
+    "lng": -3.8015721
+  },
+  {
+    "nombre": "Alda Don Carlos",
+    "tipo": "alojamiento",
+    "direccion": "C. Duque Santo Mauro, 20",
+    "lat": 43.470661,
+    "lng": -3.781113
+  },
+  {
+    "nombre": "HOTEL COSTA MAR",
+    "tipo": "alojamiento",
+    "direccion": "C. el Puente, 53",
+    "lat": 43.4617645,
+    "lng": -3.7187422999999997
+  },
+  {
+    "nombre": "Hotel Soho Boutique Palacio de Pombo",
+    "tipo": "alojamiento",
+    "direccion": "C. Marcelino Sanz de Sautuola, 2",
+    "lat": 43.462426699999995,
+    "lng": -3.8034228999999997
+  },
+  {
+    "nombre": "Hotel NH Ciudad de Santander",
+    "tipo": "alojamiento",
+    "direccion": "P.º Menéndez Pelayo, 13-15",
+    "lat": 43.465450999999995,
+    "lng": -3.798762
+  },
+  {
+    "nombre": "abba Santander Hotel",
+    "tipo": "alojamiento",
+    "direccion": "C. Calderón de la Barca, 3",
+    "lat": 43.4593513,
+    "lng": -3.8091087
+  },
+  {
+    "nombre": "Hotel Hoyuela",
+    "tipo": "alojamiento",
+    "direccion": "Av. Hoteles, 7",
+    "lat": 43.471834199999996,
+    "lng": -3.7836752999999996
+  },
+  {
+    "nombre": "Hostal del Carmen",
+    "tipo": "alojamiento",
+    "direccion": "C. San Fernando, 48",
+    "lat": 43.459682799999996,
+    "lng": -3.8228149
+  },
+  {
+    "nombre": "Hotel Bemon Playa",
+    "tipo": "alojamiento",
+    "direccion": "LA FUENTE 3 LA FUENTE, 3",
+    "lat": 43.453916799999995,
+    "lng": -3.7410904
+  },
+  {
+    "nombre": "Arena Surf Hotel",
+    "tipo": "alojamiento",
+    "direccion": "C. los Beatos, 20",
+    "lat": 43.4542013,
+    "lng": -3.7257238999999998
+  },
+  {
+    "nombre": "Hostería Santander",
+    "tipo": "alojamiento",
+    "direccion": "C. Joaquín Costa, 43",
+    "lat": 43.4712702,
+    "lng": -3.7825522
+  },
+  {
+    "nombre": "Hotel San Millán",
+    "tipo": "alojamiento",
+    "direccion": "C. José Ortega y Gasset, 94",
+    "lat": 43.447098499999996,
+    "lng": -3.8647502
+  },
+  {
+    "nombre": "Villa Olas y Llamas",
+    "tipo": "alojamiento",
+    "direccion": "Bajada de Polio, 4",
+    "lat": 43.4680587,
+    "lng": -3.8099227
+  },
+  {
+    "nombre": "Apartamentos 3000",
+    "tipo": "alojamiento",
+    "direccion": "Avenida Cerrada, 24A",
+    "lat": 43.421739599999995,
+    "lng": -3.8367575
+  },
+  {
+    "nombre": "Hotel Arha Santander",
+    "tipo": "alojamiento",
+    "direccion": "Calle Ruiz de Alda, 15",
+    "lat": 43.455453999999996,
+    "lng": -3.815013
+  },
+  {
+    "nombre": "Adiestrador Canino",
+    "tipo": "adiestrador",
+    "direccion": "C. Veridiano Rojo Herrero, 17",
+    "lat": 43.477084,
+    "lng": -3.810412
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Hospital Veterinario Rof Codina",
+    "tipo": "veterinario",
+    "direccion": "Est. da Granxa, 51",
+    "telefono": "982 82 09 20",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto las 24 horas",
+    "lat": 42.992905799999996,
+    "lng": -7.5498598999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJhXhFxDzMMQ0RpgbH3Oq-Gh4",
+    "fuenteConsulta": "veterinario Santiago de Compostela",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

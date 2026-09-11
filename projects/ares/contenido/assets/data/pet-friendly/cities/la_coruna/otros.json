@@ -1,0 +1,359 @@
+[
+  {
+    "nombre": "Farmaveterinaria anifarma",
+    "tipo": "otros",
+    "direccion": "Rda. de Outeiro, 95, bajo dcha",
+    "lat": 43.351457599999996,
+    "lng": -8.4030442
+  },
+  {
+    "nombre": "Zazacan Centro De Cría",
+    "tipo": "otros",
+    "direccion": "Rúa Condes de Andrade, 2",
+    "lat": 43.315573799999996,
+    "lng": -8.383436099999999
+  },
+  {
+    "nombre": "Asociación Coruña",
+    "tipo": "otros",
+    "direccion": "Rúa Sagrada Familia, 28",
+    "lat": 43.3575324,
+    "lng": -8.4153127
+  },
+  {
+    "nombre": "La Extinción",
+    "tipo": "otros",
+    "direccion": "pasadizo",
+    "lat": 43.3708126,
+    "lng": -8.400972
+  },
+  {
+    "nombre": "ERDS",
+    "tipo": "otros",
+    "direccion": "Lugar de Figaredo",
+    "lat": 43.154586599999995,
+    "lng": -9.0813478
+  },
+  {
+    "nombre": "Caminando Juntos Galicia",
+    "tipo": "otros",
+    "direccion": "C. Rueiro",
+    "lat": 42.8607078,
+    "lng": -8.6528374
+  },
+  {
+    "nombre": "Centro Canino Segundo Hogar",
+    "tipo": "otros",
+    "direccion": "15199 Culleredo",
+    "lat": 43.2768617,
+    "lng": -8.390954299999999
+  },
+  {
+    "nombre": "D CANS SCHOOL_k9 Somos tu escuela Canina",
+    "tipo": "otros",
+    "direccion": "Rua Seijeda, 45",
+    "lat": 43.3435057,
+    "lng": -8.2750355
+  },
+  {
+    "nombre": "Residencia canina Lar do belelle",
+    "tipo": "otros",
+    "direccion": "DP-3503, s/n",
+    "lat": 43.4647316,
+    "lng": -8.1093839
+  },
+  {
+    "nombre": "Della Rocha Residencia canina",
+    "tipo": "otros",
+    "direccion": "Lugar Fumiñeo, 46",
+    "lat": 43.068996999999996,
+    "lng": -9.1640978
+  },
+  {
+    "nombre": "RESIDENCIA CANINA VEIGA DO ULLA",
+    "tipo": "otros",
+    "direccion": "15880 Vedra",
+    "lat": 42.7506634,
+    "lng": -8.4323595
+  },
+  {
+    "nombre": "castroseis",
+    "tipo": "otros",
+    "direccion": "Rúa Emilia Pardo Bazán, 12",
+    "lat": 43.363415599999996,
+    "lng": -8.4071976
+  },
+  {
+    "nombre": "Coruña Flat -Alojamiento Corporativo y Turístico-",
+    "tipo": "otros",
+    "direccion": "Rúa Sinfónica de Galicia, 13",
+    "lat": 43.3639042,
+    "lng": -8.40955
+  },
+  {
+    "nombre": "COSTA ARTABRA GOLDEN RETRIEVER",
+    "tipo": "otros",
+    "direccion": "C/ A",
+    "lat": 43.4272199,
+    "lng": -8.248582899999999
+  },
+  {
+    "nombre": "Adican",
+    "tipo": "otros",
+    "direccion": "Carretera CP-0605, 20",
+    "lat": 42.882374299999995,
+    "lng": -8.264896499999999
+  },
+  {
+    "nombre": "La Cabaña de la Zarpa",
+    "tipo": "otros",
+    "direccion": "lugar de bendrade, 33",
+    "lat": 43.2399597,
+    "lng": -8.2133884
+  },
+  {
+    "nombre": "Xanuska",
+    "tipo": "otros",
+    "direccion": "Chan Aldea, 19B",
+    "lat": 43.3754084,
+    "lng": -8.2992447
+  },
+  {
+    "nombre": "Hotel do Can",
+    "tipo": "otros",
+    "direccion": "Lugar",
+    "lat": 43.217000399999996,
+    "lng": -8.6674712
+  },
+  {
+    "nombre": "Animalia Formación",
+    "tipo": "otros",
+    "direccion": "Pr. Pontevedra, 10, 1ºA",
+    "lat": 43.3672532,
+    "lng": -8.4081409
+  },
+  {
+    "nombre": "Hayedo",
+    "tipo": "otros",
+    "direccion": "Rúa Gil Vicente, 10",
+    "lat": 43.3649863,
+    "lng": -8.4200638
+  },
+  {
+    "nombre": "Mi Segunda Caseta",
+    "tipo": "otros",
+    "direccion": "Lugar de Tarrio, 10",
+    "lat": 43.2814233,
+    "lng": -8.395281899999999
+  },
+  {
+    "nombre": "Residencia Canina El Bosque",
+    "tipo": "otros",
+    "direccion": "Lugar",
+    "lat": 43.5397782,
+    "lng": -8.1733221
+  },
+  {
+    "nombre": "Residencia Canina Amarok",
+    "tipo": "otros",
+    "direccion": "Rosende, 19",
+    "lat": 42.971002,
+    "lng": -8.527783
+  },
+  {
+    "nombre": "Canine Mera Club | Hotel y Guardería Canina",
+    "tipo": "otros",
+    "direccion": "Rua Curros Enriquez, 120",
+    "lat": 43.3752803,
+    "lng": -8.317030599999999
+  },
+  {
+    "nombre": "Hotel Canino Obradoiro",
+    "tipo": "otros",
+    "direccion": "Rúa Marcelino Pedreira Fernández, 10",
+    "lat": 43.31661,
+    "lng": -8.4277599
+  },
+  {
+    "nombre": "Jardines de Méndez Núñez",
+    "tipo": "otros",
+    "direccion": "Av. Jardines de Méndez Núñez, S/N",
+    "lat": 43.366821699999996,
+    "lng": -8.403983499999999
+  },
+  {
+    "nombre": "Playa de San Roque",
+    "tipo": "otros",
+    "direccion": "Av. San Roque de Afuera",
+    "lat": 43.372296999999996,
+    "lng": -8.418902899999999
+  },
+  {
+    "nombre": "Playa de los Moros",
+    "tipo": "otros",
+    "direccion": "15002 La Coruña",
+    "lat": 43.384484099999995,
+    "lng": -8.3928265
+  },
+  {
+    "nombre": "Pensión Santa Clara",
+    "tipo": "otros",
+    "direccion": "Rúa Arquitecto Rey Pedreira, 19",
+    "lat": 43.3674909,
+    "lng": -8.423152
+  },
+  {
+    "nombre": "Nubika",
+    "tipo": "otros",
+    "direccion": "Rúa Comandante Fontanes, 11",
+    "lat": 43.369337699999996,
+    "lng": -8.405796
+  },
+  {
+    "nombre": "HC Apartamentos",
+    "tipo": "otros",
+    "direccion": "Estrada de Mesoiro, 49-50",
+    "lat": 43.3315425,
+    "lng": -8.4259142
+  },
+  {
+    "nombre": "Playa de Bens",
+    "tipo": "otros",
+    "direccion": "Estrada Bens",
+    "lat": 43.359778999999996,
+    "lng": -8.4564002
+  },
+  {
+    "nombre": "Hospital Quirónsalud A Coruña - Urgencias",
+    "tipo": "otros",
+    "direccion": "Rúa Londres, 2",
+    "lat": 43.329025699999995,
+    "lng": -8.3999732
+  },
+  {
+    "nombre": "Kuokka Mascotas Sl.",
+    "tipo": "otros",
+    "direccion": "Rúa Rosalía de Castro, 22",
+    "lat": 43.3661302,
+    "lng": -8.4076714
+  },
+  {
+    "nombre": "Perrunos A Coruña",
+    "tipo": "otros",
+    "direccion": "Avenida Finisterre, 1",
+    "lat": 43.366893999999995,
+    "lng": -8.409116899999999
+  },
+  {
+    "nombre": "Zona Mascotas",
+    "tipo": "otros",
+    "direccion": "Av. Buenos Aires, 12",
+    "lat": 43.3679547,
+    "lng": -8.4131324
+  },
+  {
+    "nombre": "El valle del corso",
+    "tipo": "otros",
+    "direccion": "Lugar Galteiros, 4A",
+    "lat": 43.3420622,
+    "lng": -8.0728705
+  },
+  {
+    "nombre": "Centro Canino CoraLita. Caniche Toy. Cria Legal.",
+    "tipo": "otros",
+    "direccion": "Costeira - Chousa, 14",
+    "lat": 43.5892651,
+    "lng": -8.1413736
+  },
+  {
+    "nombre": "LA VIDA ES HUELLA",
+    "tipo": "otros",
+    "direccion": "Calle E 30",
+    "lat": 43.2985998,
+    "lng": -8.3639909
+  },
+  {
+    "nombre": "A BARBERIA CORUÑA - Pajaritas",
+    "tipo": "otros",
+    "direccion": "R. José Miñones Bernardez, 4",
+    "lat": 43.348387699999996,
+    "lng": -8.4068297
+  },
+  {
+    "nombre": "Campo de la Rata",
+    "tipo": "otros",
+    "direccion": "Paseo dos Menhires",
+    "lat": 43.3848044,
+    "lng": -8.3934784
+  },
+  {
+    "nombre": "Playa de la Magdalena",
+    "tipo": "otros",
+    "direccion": "P.º da Madalena, 6",
+    "lat": 43.4170661,
+    "lng": -8.1724652
+  },
+  {
+    "nombre": "Marineda City",
+    "tipo": "otros",
+    "direccion": "Est. Baños de Arteixo, 43",
+    "lat": 43.345411399999996,
+    "lng": -8.4292933
+  },
+  {
+    "nombre": "Centro de Recuperación da Fauna Silvestre da Coruña",
+    "tipo": "otros",
+    "direccion": "C/Emilia Pardo Bazán, 20",
+    "lat": 43.3433709,
+    "lng": -8.3420953
+  },
+  {
+    "nombre": "Residencia canina y felina Catro Patas",
+    "tipo": "otros",
+    "direccion": "Esquina",
+    "lat": 43.4918469,
+    "lng": -8.2044946
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "otros",
+    "direccion": "15570 Narón",
+    "lat": 43.4895448,
+    "lng": -8.1953934
+  },
+  {
+    "nombre": "Centro de Cría canino. Caniches Vinha do Monte",
+    "tipo": "otros",
+    "direccion": "Avenida Rosalia de Castro",
+    "lat": 43.3629464,
+    "lng": -8.2560466
+  },
+  {
+    "nombre": "PELUQUERÍA CANINA",
+    "tipo": "otros",
+    "direccion": "La Coruña",
+    "lat": 43.352454099999996,
+    "lng": -8.400941999999999
+  },
+  {
+    "nombre": "DA COSTA VERDECENTE",
+    "tipo": "otros",
+    "direccion": "Lugar do Cruceiro, Camino da Pita s/n",
+    "lat": 43.4515047,
+    "lng": -8.2160883
+  },
+  {
+    "nombre": "Pet House",
+    "tipo": "otros",
+    "direccion": "Rúa da Travesía, 5",
+    "lat": 42.784573099999996,
+    "lng": -8.8853301
+  },
+  {
+    "nombre": "Residencia de mayores La Ciudad | DomusVi",
+    "tipo": "otros",
+    "direccion": "C. de Santo Domingo, 11, 15",
+    "lat": 43.370025999999996,
+    "lng": -8.391689999999999
+  }
+]

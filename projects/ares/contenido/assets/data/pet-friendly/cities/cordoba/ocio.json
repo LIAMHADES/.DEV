@@ -1,0 +1,172 @@
+[
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "14711 Córdoba",
+    "lat": 37.835808199999995,
+    "lng": -4.9263047
+  },
+  {
+    "nombre": "Parque de la Asomadilla",
+    "tipo": "parque",
+    "direccion": "Escultor Pablo Gargallo, s/n",
+    "lat": 37.905274299999995,
+    "lng": -4.7787627
+  },
+  {
+    "nombre": "Parque canino Fidiana",
+    "tipo": "parque",
+    "direccion": "Av. de Libia, 27",
+    "lat": 37.8922011,
+    "lng": -4.7542778
+  },
+  {
+    "nombre": "Parque canino Cruz Conde (Zona de Expansión Canina, ZEC)",
+    "tipo": "parque",
+    "direccion": "14004 Córdoba",
+    "lat": 37.8739382,
+    "lng": -4.7905926
+  },
+  {
+    "nombre": "Parque canino Fray Albino",
+    "tipo": "parque",
+    "direccion": "Avda. del Corregiddor DC, 14009",
+    "lat": 37.8712649,
+    "lng": -4.7805618
+  },
+  {
+    "nombre": "ZEC (Zona de Expansión Canina)",
+    "tipo": "parque",
+    "direccion": "C. Isla Madeira, 7",
+    "lat": 37.8878345,
+    "lng": -4.8003528
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "C. Cantábrico",
+    "lat": 37.8878755,
+    "lng": -4.8003548
+  },
+  {
+    "nombre": "El Flamenco Dog Park",
+    "tipo": "parque",
+    "direccion": "V5WW+WM",
+    "lat": 37.8972882,
+    "lng": -4.8033733
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "Ronda Ramon y Cajal, 3D",
+    "lat": 37.674956,
+    "lng": -4.9352233
+  },
+  {
+    "nombre": "Parque canino Paraíso Arenal",
+    "tipo": "parque",
+    "direccion": "14014 Córdoba",
+    "lat": 37.9303762,
+    "lng": -4.7567508
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque_canino",
+    "direccion": "14711 Córdoba",
+    "telefono": "",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.835808199999995,
+    "lng": -4.9263047,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJMeHnN_kpbQ0RcXsE5EY0_w8",
+    "fuenteConsulta": "parque para perros en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Cruz Conde (Zona de Expansión Canina, ZEC)",
+    "tipo": "parque_canino",
+    "direccion": "14004 Córdoba",
+    "telefono": "957 76 20 00",
+    "valoracion": 4.3,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 37.8739382,
+    "lng": -4.7905926,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ47NdZaIgbQ0RSbEIIHOfdKQ",
+    "fuenteConsulta": "parque para perros en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Fray Albino",
+    "tipo": "parque_canino",
+    "direccion": "Avda. del Corregiddor DC, 14009",
+    "telefono": "",
+    "valoracion": 4.2,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 37.8712649,
+    "lng": -4.7805618,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ5eJyCWQhbQ0Rk4wMsMnyimY",
+    "fuenteConsulta": "parque para perros en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Paraíso Arenal",
+    "tipo": "parque_canino",
+    "direccion": "14014 Córdoba",
+    "telefono": "",
+    "valoracion": null,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.9303762,
+    "lng": -4.7567508,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJKWpGQADfbA0RyUhRhNTaMd8",
+    "fuenteConsulta": "parque para perros en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "El Flamenco Dog Park",
+    "tipo": "parque_canino",
+    "direccion": "V5WW+WM",
+    "telefono": "",
+    "valoracion": 2.9,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto las 24 horas",
+    "lat": 37.8972882,
+    "lng": -4.8033733,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ6w-621zfbA0RIVDdmR_cVQI",
+    "fuenteConsulta": "parque para perros Cordoba",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

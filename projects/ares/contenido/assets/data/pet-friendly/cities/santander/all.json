@@ -1,0 +1,1141 @@
+[
+  {
+    "nombre": "Bella Lola | Peluquería canina",
+    "tipo": "tienda",
+    "direccion": "Av Herrera Oria, 124",
+    "lat": 43.4554384,
+    "lng": -3.8549096
+  },
+  {
+    "nombre": "Comunicanis educadora canina y veterinaria",
+    "tipo": "adiestrador",
+    "direccion": "C. Hernán Cortés, 63",
+    "lat": 43.4633377,
+    "lng": -3.7968493
+  },
+  {
+    "nombre": "La Boutique De Simba",
+    "tipo": "tienda",
+    "direccion": "C. Manuel González Hoyos, 7",
+    "lat": 43.4810215,
+    "lng": -3.7961232999999996
+  },
+  {
+    "nombre": "PASIONCAN - Educación Canina",
+    "tipo": "adiestrador",
+    "direccion": "Ctra. Revilla a Peñacastillo, 41c",
+    "lat": 43.4274214,
+    "lng": -3.8757279999999996
+  },
+  {
+    "nombre": "Bagheera Santander",
+    "tipo": "tienda",
+    "direccion": "C. San Fernando, 86",
+    "lat": 43.4589627,
+    "lng": -3.8260558999999996
+  },
+  {
+    "nombre": "Mundog",
+    "tipo": "otros",
+    "direccion": "C. Campogiro, 1",
+    "lat": 43.454571099999995,
+    "lng": -3.8409087
+  },
+  {
+    "nombre": "La Bañera de Eva · Peluquería Canina Santander",
+    "tipo": "tienda",
+    "direccion": "C. Juan José Pérez del Molino, 13",
+    "lat": 43.4652288,
+    "lng": -3.8138978
+  },
+  {
+    "nombre": "La Nueva Maltesa",
+    "tipo": "tienda",
+    "direccion": "P.º Canalejas, 86",
+    "lat": 43.46677,
+    "lng": -3.7870299999999997
+  },
+  {
+    "nombre": "Servicios Caninos",
+    "tipo": "adiestrador",
+    "direccion": "C/Cueto 2",
+    "lat": 43.4841121,
+    "lng": -3.8040008
+  },
+  {
+    "nombre": "PetPeluches",
+    "tipo": "tienda",
+    "direccion": "Av. Dr. Diego Madrazo, 15",
+    "lat": 43.482355899999995,
+    "lng": -3.7970978
+  },
+  {
+    "nombre": "Anny And Dogs Educación y Adiestramiento Canino Profesional",
+    "tipo": "adiestrador",
+    "direccion": "Av. de los Castros",
+    "lat": 43.4692795,
+    "lng": -3.8066126
+  },
+  {
+    "nombre": "My Dear Pet",
+    "tipo": "tienda",
+    "direccion": "C. Guevara, 29",
+    "lat": 43.4638667,
+    "lng": -3.8050132999999997
+  },
+  {
+    "nombre": "Parque Canino el Refugio",
+    "tipo": "parque",
+    "direccion": "Avenida Julio Jaurena, 6",
+    "lat": 43.458213099999995,
+    "lng": -3.8585594999999997
+  },
+  {
+    "nombre": "Arcualia",
+    "tipo": "tienda",
+    "direccion": "C. Vargas, 61",
+    "lat": 43.4589919,
+    "lng": -3.8234928999999998
+  },
+  {
+    "nombre": "Animalia Santander",
+    "tipo": "tienda",
+    "direccion": "C. Floranes, 40",
+    "lat": 43.4607542,
+    "lng": -3.8225776
+  },
+  {
+    "nombre": "Peluquería Canina y Escuela de peluqueria PLUCKING en Santander",
+    "tipo": "tienda",
+    "direccion": "Av de la Reina Victoria, 9",
+    "lat": 43.4636962,
+    "lng": -3.7910709999999996
+  },
+  {
+    "nombre": "Tu Estilo Peluquería Canina & Felina",
+    "tipo": "tienda",
+    "direccion": "C. Valliciergo, 9",
+    "lat": 43.464780999999995,
+    "lng": -3.8001207999999997
+  },
+  {
+    "nombre": "Grupo Operativo de Rescate Con Perro de Cantabria",
+    "tipo": "adiestrador",
+    "direccion": "C. Corbanera",
+    "lat": 43.484262799999996,
+    "lng": -3.8198602
+  },
+  {
+    "nombre": "Casa Hachiko",
+    "tipo": "otros",
+    "direccion": "Bo. las Escuelas, 5",
+    "lat": 43.4337198,
+    "lng": -3.8833172
+  },
+  {
+    "nombre": "Pet House",
+    "tipo": "tienda",
+    "direccion": "Av Herrera Oria, 31A",
+    "lat": 43.4583443,
+    "lng": -3.8419751
+  },
+  {
+    "nombre": "Bonnie and Clyde Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. los Abedules, 8",
+    "lat": 43.4572471,
+    "lng": -3.85341
+  },
+  {
+    "nombre": "Playa El Puntal de Somo",
+    "tipo": "otros",
+    "direccion": "Calle el Puntal",
+    "lat": 43.4573961,
+    "lng": -3.7769820999999997
+  },
+  {
+    "nombre": "Noni Pets, Peluquería Canina, Terapias de Reiki, ozonoterapia y spa para mascotas",
+    "tipo": "tienda",
+    "direccion": "C. Fernando de los Ríos, 72, bajo",
+    "lat": 43.4689657,
+    "lng": -3.8046742
+  },
+  {
+    "nombre": "Akindi Cantabria - Adiestramiento canino",
+    "tipo": "adiestrador",
+    "direccion": "Barrio Hornedo- Corral. Polígono 10, Cinco Cagigas.",
+    "lat": 43.368766699999995,
+    "lng": -3.6248856999999997
+  },
+  {
+    "nombre": "Wolfhouse",
+    "tipo": "alojamiento",
+    "direccion": "C. Mies de La Ran, 41",
+    "lat": 43.452403,
+    "lng": -3.7245272999999997
+  },
+  {
+    "nombre": "Estudio 12",
+    "tipo": "otros",
+    "direccion": "C. Alberico Pardo, 65B",
+    "lat": 43.446246699999996,
+    "lng": -3.8609331
+  },
+  {
+    "nombre": "Playa Liencres",
+    "tipo": "playa_perros",
+    "direccion": "39120",
+    "lat": 43.449609699999996,
+    "lng": -3.9663283
+  },
+  {
+    "nombre": "Segunda Playa",
+    "tipo": "playa_perros",
+    "direccion": "Santander",
+    "lat": 43.478608,
+    "lng": -3.7876444
+  },
+  {
+    "nombre": "Dormir En Cantabria | Posada La Morena | Dormir En Cantabria",
+    "tipo": "alojamiento",
+    "direccion": "Av. Playa San Juan de la Canal, 49",
+    "lat": 43.4741698,
+    "lng": -3.895234
+  },
+  {
+    "nombre": "Cuquipet",
+    "tipo": "tienda",
+    "direccion": "Pl. Progreso, 9",
+    "lat": 43.457260999999995,
+    "lng": -3.8114331999999997
+  },
+  {
+    "nombre": "Playa de Valdearenas",
+    "tipo": "playa_perros",
+    "direccion": "39120",
+    "lat": 43.4477652,
+    "lng": -3.9722412
+  },
+  {
+    "nombre": "Playa de Los Molinucos",
+    "tipo": "playa_perros",
+    "direccion": "39012 Santander",
+    "lat": 43.4838982,
+    "lng": -3.7848001
+  },
+  {
+    "nombre": "Isla Can",
+    "tipo": "tienda",
+    "direccion": "C. Floranes, 29",
+    "lat": 43.4606686,
+    "lng": -3.821747
+  },
+  {
+    "nombre": "Maruxin",
+    "tipo": "tienda",
+    "direccion": "P.º de Altamira, 326",
+    "lat": 43.461666199999996,
+    "lng": -3.8299548
+  },
+  {
+    "nombre": "Playa de San Juan de la Canal",
+    "tipo": "playa_perros",
+    "direccion": "Av San Juan de la Canal, 85",
+    "lat": 43.4738159,
+    "lng": -3.8936268999999997
+  },
+  {
+    "nombre": "Alojamiento Villa Playa San Juan",
+    "tipo": "alojamiento",
+    "direccion": "Av. Playa San Juan de la Canal, 43, B",
+    "lat": 43.4732974,
+    "lng": -3.8951938
+  },
+  {
+    "nombre": "Playa de los Peligros",
+    "tipo": "playa_perros",
+    "direccion": "Santander",
+    "lat": 43.4650365,
+    "lng": -3.7800211999999997
+  },
+  {
+    "nombre": "Playa de la Magdalena",
+    "tipo": "playa_perros",
+    "direccion": "Santander",
+    "lat": 43.4661565,
+    "lng": -3.7779567999999997
+  },
+  {
+    "nombre": "Playa De Somo",
+    "tipo": "playa_perros",
+    "direccion": "Cantabria",
+    "lat": 43.4587412,
+    "lng": -3.7336711
+  },
+  {
+    "nombre": "Parque Canino Público de Ciriego",
+    "tipo": "parque",
+    "direccion": "C. San Román Rostrío, 52",
+    "lat": 43.4752708,
+    "lng": -3.8672484
+  },
+  {
+    "nombre": "Parque Canino Público de Cros",
+    "tipo": "parque",
+    "direccion": "C. Gutiérrez Solana, 39",
+    "lat": 43.426188499999995,
+    "lng": -3.8451128999999997
+  },
+  {
+    "nombre": "Loredo Surf House",
+    "tipo": "alojamiento",
+    "direccion": "El",
+    "lat": 43.4620657,
+    "lng": -3.7204591999999996
+  },
+  {
+    "nombre": "Posada Petfriendly El Molino de Cantabria (Hotel Rural B&B)",
+    "tipo": "alojamiento",
+    "direccion": "Barrio Vayondo, 10",
+    "lat": 43.3677036,
+    "lng": -3.6459829999999998
+  },
+  {
+    "nombre": "Mapi's miguau- peluqueria canina y servicios veterinarios a domicilio",
+    "tipo": "tienda",
+    "direccion": "Barrio",
+    "lat": 43.457602,
+    "lng": -3.8963579999999998
+  },
+  {
+    "nombre": "Cantabrican Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "Bo. Valles, 48",
+    "lat": 43.3548325,
+    "lng": -4.1136832
+  },
+  {
+    "nombre": "Suite Haus Vargas",
+    "tipo": "otros",
+    "direccion": "C. Vargas, 55, B",
+    "lat": 43.4594099,
+    "lng": -3.821506
+  },
+  {
+    "nombre": "Peluquería Carpe Diem Santander",
+    "tipo": "peluqueria",
+    "direccion": "C. Florida, 4",
+    "lat": 43.462409099999995,
+    "lng": -3.8135111999999998
+  },
+  {
+    "nombre": "Centro Canino Valdáliga",
+    "tipo": "otros",
+    "direccion": "Bo. la Herrería, 60",
+    "lat": 43.310902999999996,
+    "lng": -4.2919958
+  },
+  {
+    "nombre": "Happy Dog España",
+    "tipo": "tienda",
+    "direccion": "Av. Parayas, 132",
+    "lat": 43.4199652,
+    "lng": -3.8140693
+  },
+  {
+    "nombre": "Le Petit Boutique Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Av. de los Castros, 10",
+    "lat": 43.473696,
+    "lng": -3.7869099999999998
+  },
+  {
+    "nombre": "Ecolaundry (+Pet) Santander",
+    "tipo": "otros",
+    "direccion": "C. Peñas Redondas, 3",
+    "lat": 43.4614973,
+    "lng": -3.8164919999999998
+  },
+  {
+    "nombre": "Clínica Veterinaria Santander",
+    "tipo": "veterinario",
+    "direccion": "CLINICA VETERINARIA SANTANDER",
+    "lat": 43.460943199999996,
+    "lng": -3.8150309
+  },
+  {
+    "nombre": "Parque de Mataleñas",
+    "tipo": "parque",
+    "direccion": "Av. del Faro, 12",
+    "lat": 43.4833204,
+    "lng": -3.7863369999999996
+  },
+  {
+    "nombre": "Center Suite Santander",
+    "tipo": "otros",
+    "direccion": "C. Burgos, 38, 1º Izquierda",
+    "lat": 43.461121299999995,
+    "lng": -3.8171519
+  },
+  {
+    "nombre": "Jardines de Piquío",
+    "tipo": "otros",
+    "direccion": "Av. Castañeda, 5",
+    "lat": 43.4738848,
+    "lng": -3.7839498
+  },
+  {
+    "nombre": "Parque La Maruca",
+    "tipo": "parque",
+    "direccion": "Bo. Monte-Corbanera, 106",
+    "lat": 43.478262099999995,
+    "lng": -3.8375472999999998
+  },
+  {
+    "nombre": "HOTEL BED4U SANTANDER",
+    "tipo": "alojamiento",
+    "direccion": "Av. Parayas, 2a",
+    "lat": 43.4524584,
+    "lng": -3.8282532999999996
+  },
+  {
+    "nombre": "Sol Boutique",
+    "tipo": "alojamiento",
+    "direccion": "C. del Sol, 31",
+    "lat": 43.465353199999996,
+    "lng": -3.7997680999999996
+  },
+  {
+    "nombre": "Playa de la Virgen del Mar",
+    "tipo": "otros",
+    "direccion": "C. Virgen del Mar, 160",
+    "lat": 43.4773496,
+    "lng": -3.8762114
+  },
+  {
+    "nombre": "Hotel Canino Gandarilla",
+    "tipo": "otros",
+    "direccion": "Gandarilla, 124",
+    "lat": 43.3509635,
+    "lng": -4.4222488
+  },
+  {
+    "nombre": "Floristería Mascotas Jungla",
+    "tipo": "tienda",
+    "direccion": "C. Calderón de la Barca, 4",
+    "lat": 43.4588087,
+    "lng": -3.8100772
+  },
+  {
+    "nombre": "centro canino educando",
+    "tipo": "adiestrador",
+    "direccion": "C. Veridiano Rojo Herrero, s/n",
+    "lat": 43.4766398,
+    "lng": -3.8104394
+  },
+  {
+    "nombre": "Playa del Camello",
+    "tipo": "playa_perros",
+    "direccion": "Santander",
+    "lat": 43.4694795,
+    "lng": -3.7757883999999997
+  },
+  {
+    "nombre": "Parque de Las Llamas",
+    "tipo": "parque",
+    "direccion": "Av. de la Constitución, 52A",
+    "lat": 43.4738152,
+    "lng": -3.8020457
+  },
+  {
+    "nombre": "Hotel Posada de Pedreña",
+    "tipo": "alojamiento",
+    "direccion": "Bo. Onso, 178",
+    "lat": 43.4407887,
+    "lng": -3.7687038
+  },
+  {
+    "nombre": "Dogville Peluquería Canina y Autolavado",
+    "tipo": "tienda",
+    "direccion": "P.º Menéndez Pelayo, 1",
+    "lat": 43.4645084,
+    "lng": -3.7993477999999996
+  },
+  {
+    "nombre": "La Casa de las Mascotas Santander",
+    "tipo": "tienda",
+    "direccion": "C. Castilla, 69",
+    "lat": 43.454682999999996,
+    "lng": -3.8200073999999997
+  },
+  {
+    "nombre": "ibis Styles Santander",
+    "tipo": "alojamiento",
+    "direccion": "Av. Parayas, 2A",
+    "lat": 43.4524816,
+    "lng": -3.8283083999999996
+  },
+  {
+    "nombre": "Muelle de Somo",
+    "tipo": "parque",
+    "direccion": "C. Peñas Blancas, 19A",
+    "lat": 43.451800299999995,
+    "lng": -3.7467156999999998
+  },
+  {
+    "nombre": "Parque Canino de la Vaca",
+    "tipo": "parque",
+    "direccion": "Barrio Campogiro, 4",
+    "lat": 43.4553204,
+    "lng": -3.8410254
+  },
+  {
+    "nombre": "Parque del Doctor Morales",
+    "tipo": "parque",
+    "direccion": "C. Cajo, 27",
+    "lat": 43.455620599999996,
+    "lng": -3.8386817
+  },
+  {
+    "nombre": "Sociedad Canina Montañesa",
+    "tipo": "otros",
+    "direccion": "Gran Zoco de Santander Centro Empresarial",
+    "lat": 43.440998099999995,
+    "lng": -3.8604026
+  },
+  {
+    "nombre": "Parque Canino de Torrelavega",
+    "tipo": "parque",
+    "direccion": "39300 Campuzano",
+    "lat": 43.3372812,
+    "lng": -4.0535263
+  },
+  {
+    "nombre": "Las Carolinas Garden",
+    "tipo": "alojamiento",
+    "direccion": "P.º de Altamira, 115",
+    "lat": 43.463508,
+    "lng": -3.8218682
+  },
+  {
+    "nombre": "Apartamentos Art Suite Santander",
+    "tipo": "alojamiento",
+    "direccion": "En la Plaza Pombo",
+    "lat": 43.462889399999995,
+    "lng": -3.8015721
+  },
+  {
+    "nombre": "Alda Don Carlos",
+    "tipo": "alojamiento",
+    "direccion": "C. Duque Santo Mauro, 20",
+    "lat": 43.470661,
+    "lng": -3.781113
+  },
+  {
+    "nombre": "HOTEL COSTA MAR",
+    "tipo": "alojamiento",
+    "direccion": "C. el Puente, 53",
+    "lat": 43.4617645,
+    "lng": -3.7187422999999997
+  },
+  {
+    "nombre": "Centro Canino Parayas (Cecapa)",
+    "tipo": "otros",
+    "direccion": "Av. Parayas, 132",
+    "lat": 43.4199652,
+    "lng": -3.8140693
+  },
+  {
+    "nombre": "Peluquería Canina y Tienda-Clínica Bahía",
+    "tipo": "tienda",
+    "direccion": "C. Antonio López, 18",
+    "lat": 43.4570796,
+    "lng": -3.8103081
+  },
+  {
+    "nombre": "Hotel Soho Boutique Palacio de Pombo",
+    "tipo": "alojamiento",
+    "direccion": "C. Marcelino Sanz de Sautuola, 2",
+    "lat": 43.462426699999995,
+    "lng": -3.8034228999999997
+  },
+  {
+    "nombre": "Hotel NH Ciudad de Santander",
+    "tipo": "alojamiento",
+    "direccion": "P.º Menéndez Pelayo, 13-15",
+    "lat": 43.465450999999995,
+    "lng": -3.798762
+  },
+  {
+    "nombre": "Playa Rosamunda",
+    "tipo": "playa_perros",
+    "direccion": "39012 Santander",
+    "lat": 43.483882099999995,
+    "lng": -3.8324346
+  },
+  {
+    "nombre": "abba Santander Hotel",
+    "tipo": "alojamiento",
+    "direccion": "C. Calderón de la Barca, 3",
+    "lat": 43.4593513,
+    "lng": -3.8091087
+  },
+  {
+    "nombre": "Hotel Hoyuela",
+    "tipo": "alojamiento",
+    "direccion": "Av. Hoteles, 7",
+    "lat": 43.471834199999996,
+    "lng": -3.7836752999999996
+  },
+  {
+    "nombre": "Hostal del Carmen",
+    "tipo": "alojamiento",
+    "direccion": "C. San Fernando, 48",
+    "lat": 43.459682799999996,
+    "lng": -3.8228149
+  },
+  {
+    "nombre": "Hotel Bemon Playa",
+    "tipo": "alojamiento",
+    "direccion": "LA FUENTE 3 LA FUENTE, 3",
+    "lat": 43.453916799999995,
+    "lng": -3.7410904
+  },
+  {
+    "nombre": "Plaza Pombo B&B",
+    "tipo": "otros",
+    "direccion": "C. Hernán Cortés, 25",
+    "lat": 43.462894999999996,
+    "lng": -3.801698
+  },
+  {
+    "nombre": "Parque para perros antigua estación N.Montaña",
+    "tipo": "parque",
+    "direccion": "39011 Santander",
+    "lat": 43.4413492,
+    "lng": -3.8384312
+  },
+  {
+    "nombre": "Arena Surf Hotel",
+    "tipo": "alojamiento",
+    "direccion": "C. los Beatos, 20",
+    "lat": 43.4542013,
+    "lng": -3.7257238999999998
+  },
+  {
+    "nombre": "Parque Las Carolinas",
+    "tipo": "parque",
+    "direccion": "C. San Juan Bautista de la Salle, 10",
+    "lat": 43.462764,
+    "lng": -3.8214731
+  },
+  {
+    "nombre": "Apartamentos Dos Robles",
+    "tipo": "otros",
+    "direccion": "C. Latas, 26",
+    "lat": 43.4548288,
+    "lng": -3.7256861
+  },
+  {
+    "nombre": "Parque Marino de la Magdalena",
+    "tipo": "parque",
+    "direccion": "39005 Santander",
+    "lat": 43.4704852,
+    "lng": -3.7717612
+  },
+  {
+    "nombre": "Hospedaje Aurelio Botín Padeiro",
+    "tipo": "otros",
+    "direccion": "Calle Isabel II, º 1, 1°",
+    "lat": 43.4629462,
+    "lng": -3.8093144999999997
+  },
+  {
+    "nombre": "Lavakan Santander | Spa para mascotas",
+    "tipo": "tienda",
+    "direccion": "Calle El Empalme Centro Comercial Peñacastillo (local L11",
+    "lat": 43.4450558,
+    "lng": -3.8548172
+  },
+  {
+    "nombre": "Hostería Santander",
+    "tipo": "alojamiento",
+    "direccion": "C. Joaquín Costa, 43",
+    "lat": 43.4712702,
+    "lng": -3.7825522
+  },
+  {
+    "nombre": "Zona De Recreo Para Perros",
+    "tipo": "parque",
+    "direccion": "Av. de Severiano Ballesteros, 11",
+    "lat": 43.4637636,
+    "lng": -3.7846952999999997
+  },
+  {
+    "nombre": "Hotel San Millán",
+    "tipo": "alojamiento",
+    "direccion": "C. José Ortega y Gasset, 94",
+    "lat": 43.447098499999996,
+    "lng": -3.8647502
+  },
+  {
+    "nombre": "Playa de la Maza (admite perros)",
+    "tipo": "parque",
+    "direccion": "Av. Francisco Giner de los Ríos, 1001",
+    "lat": 43.3829707,
+    "lng": -4.3897039
+  },
+  {
+    "nombre": "Zona de recreo para perros",
+    "tipo": "parque",
+    "direccion": "39008 Santander",
+    "lat": 43.4597043,
+    "lng": -3.8128511
+  },
+  {
+    "nombre": "Playa de la Fenómeno",
+    "tipo": "otros",
+    "direccion": "Av. de Severiano Ballesteros, 12",
+    "lat": 43.4630672,
+    "lng": -3.785366
+  },
+  {
+    "nombre": "Hotel Canino La Valleja",
+    "tipo": "otros",
+    "direccion": "Barrio el Pino, 4",
+    "lat": 43.4600048,
+    "lng": -3.9315667
+  },
+  {
+    "nombre": "Parque Canino Público de Peñacastillo",
+    "tipo": "parque",
+    "direccion": "Calle Voluntariado",
+    "lat": 43.4447504,
+    "lng": -3.8646236
+  },
+  {
+    "nombre": "Villa Olas y Llamas",
+    "tipo": "alojamiento",
+    "direccion": "Bajada de Polio, 4",
+    "lat": 43.4680587,
+    "lng": -3.8099227
+  },
+  {
+    "nombre": "Zona de recreo para perros",
+    "tipo": "parque",
+    "direccion": "39008 Santander",
+    "lat": 43.4558189,
+    "lng": -3.8228807
+  },
+  {
+    "nombre": "Hi! Apartaments Santander 3000",
+    "tipo": "otros",
+    "direccion": "Polígono La Cerrada, 26",
+    "lat": 43.421862,
+    "lng": -3.8368602999999997
+  },
+  {
+    "nombre": "Apartamentos 3000",
+    "tipo": "alojamiento",
+    "direccion": "Avenida Cerrada, 24A",
+    "lat": 43.421739599999995,
+    "lng": -3.8367575
+  },
+  {
+    "nombre": "Camping Mola Loredo",
+    "tipo": "otros",
+    "direccion": "C. Bajada a la Playa, 19",
+    "lat": 43.462984,
+    "lng": -3.722959
+  },
+  {
+    "nombre": "Hotel Arha Santander",
+    "tipo": "alojamiento",
+    "direccion": "Calle Ruiz de Alda, 15",
+    "lat": 43.455453999999996,
+    "lng": -3.815013
+  },
+  {
+    "nombre": "Bahia Rooms Cantabria 3000",
+    "tipo": "otros",
+    "direccion": "C. Marqués de la Hermida, 70",
+    "lat": 43.452888099999996,
+    "lng": -3.8234333
+  },
+  {
+    "nombre": "La Riberuca",
+    "tipo": "playa_perros",
+    "direccion": "playa la riberuca",
+    "lat": 43.4287831,
+    "lng": -4.0346943
+  },
+  {
+    "nombre": "Playa Canina",
+    "tipo": "parque",
+    "direccion": "Calle Comillas, 15B",
+    "lat": 43.4247637,
+    "lng": -4.0328069
+  },
+  {
+    "nombre": "Playa canina de Trengandín",
+    "tipo": "parque",
+    "direccion": "39180 Noja",
+    "lat": 43.4693058,
+    "lng": -3.4808458
+  },
+  {
+    "nombre": "Pipican (parque para perros)",
+    "tipo": "parque",
+    "direccion": "Lugar Campus Universitario, 54",
+    "lat": 43.470655099999995,
+    "lng": -3.8009597
+  },
+  {
+    "nombre": "Adiestrador Canino",
+    "tipo": "adiestrador",
+    "direccion": "C. Veridiano Rojo Herrero, 17",
+    "lat": 43.477084,
+    "lng": -3.810412
+  },
+  {
+    "nombre": "Parque canino San Martín del Pino",
+    "tipo": "parque",
+    "direccion": "Bo. San Martín del Pino, 23, bajo 0",
+    "lat": 43.447114,
+    "lng": -3.8475598
+  },
+  {
+    "nombre": "Paseo a tu Perro",
+    "tipo": "otros",
+    "direccion": "C. Peñota",
+    "lat": 43.4609168,
+    "lng": -3.71934
+  },
+  {
+    "nombre": "AdiestraCan",
+    "tipo": "otros",
+    "direccion": "C. Francisco Tomás y Valiente, 9B",
+    "lat": 43.438778,
+    "lng": -3.8397778
+  },
+  {
+    "nombre": "Salvaje Santander",
+    "tipo": "restaurante",
+    "direccion": "Calle Ataúlfo Argenta, 31",
+    "telefono": "+34 942 78 61 75",
+    "valoracion": 4.4,
+    "resenas": 1462,
+    "horario": "",
+    "estado": "",
+    "lat": 43.462733,
+    "lng": -3.7990104,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Salvaje%20Santander&query_place_id=ChIJJVMXOShLSQ0RMA7FFDIs8Qk",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "La Tienduca Restaurante-Bar",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Río de la Pila, 17",
+    "telefono": "+34 629 11 28 88",
+    "valoracion": 4.2,
+    "resenas": 294,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4649327,
+    "lng": -3.8047533,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=La%20Tienduca%20Restaurante-Bar&query_place_id=ChIJ0Tkv4clLSQ0RmDSFfXcFWQY",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Restaurante La Cañía",
+    "tipo": "restaurante",
+    "direccion": "C. Joaquín Costa, 45",
+    "telefono": "+34 942 27 04 91",
+    "valoracion": 4.2,
+    "resenas": 3483,
+    "horario": "",
+    "estado": "",
+    "lat": 43.471396,
+    "lng": -3.782437,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Restaurante%20La%20Ca%C3%B1%C3%ADa&query_place_id=ChIJMbJJUAhLSQ0Ru72S0cTPZSU",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Querida Margarita Santander",
+    "tipo": "restaurante",
+    "direccion": "C. Andrés del Río, 7",
+    "telefono": "+34 630 34 17 43",
+    "valoracion": 4.5,
+    "resenas": 1542,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4650315,
+    "lng": -3.7958028,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Querida%20Margarita%20Santander&query_place_id=ChIJPwIx6rFLSQ0RMZHGLSKI_qo",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "EcoTierruca",
+    "tipo": "restaurante",
+    "direccion": "C. Honduras, 16",
+    "telefono": "+34 686 88 78 19",
+    "valoracion": 4.9,
+    "resenas": 116,
+    "horario": "",
+    "estado": "",
+    "lat": 43.471128,
+    "lng": -3.7963212,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=EcoTierruca&query_place_id=ChIJTVgPaGFLSQ0RcRDp3U2l1i8",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Salitre",
+    "tipo": "restaurante",
+    "direccion": "C. Hernán Cortés, 14",
+    "telefono": "+34 942 13 32 20",
+    "valoracion": 4.2,
+    "resenas": 921,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4627529,
+    "lng": -3.8011472,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Salitre&query_place_id=ChIJS6KgR7RLSQ0RK8oBWHiwamc",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Café Las Meninas",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. del Sol, 1",
+    "telefono": "+34 942 07 40 78",
+    "valoracion": 4.7,
+    "resenas": 165,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4651755,
+    "lng": -3.802437,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9%20Las%20Meninas&query_place_id=ChIJm4F5Z7ZLSQ0R6dd3eNU3gEI",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Cafetería Lealtad 3",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Lealtad, 3",
+    "telefono": "+34 942 79 38 90",
+    "valoracion": 4.8,
+    "resenas": 133,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4625121,
+    "lng": -3.8083173,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cafeter%C3%ADa%20Lealtad%203&query_place_id=ChIJ2Xo36g1LSQ0Rr7f0_IePaPQ",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Suncafé Santander",
+    "tipo": "cafeteria_bar",
+    "direccion": "Pl. de la Esperanza, 6",
+    "telefono": "",
+    "valoracion": 4.7,
+    "resenas": 143,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4633187,
+    "lng": -3.8102626,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Suncaf%C3%A9%20Santander&query_place_id=ChIJT43bA6NLSQ0RJ49TwVrCWhU",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "With Love",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Joaquín Costa, 18A",
+    "telefono": "+34 633 06 53 19",
+    "valoracion": 4.7,
+    "resenas": 733,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4686834,
+    "lng": -3.7848316,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=With%20Love&query_place_id=ChIJP0h8lYJLSQ0R8TWmft1IUsk",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "BODI Ayuntamiento",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Amos de Escalante, 6",
+    "telefono": "+34 942 56 51 88",
+    "valoracion": 3.3,
+    "resenas": 399,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4621242,
+    "lng": -3.8110873,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=BODI%20Ayuntamiento&query_place_id=ChIJi81tTJJLSQ0Rl8jjxZ1xpc8",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Restaurante Soul Simancas",
+    "tipo": "restaurante",
+    "direccion": "C. Vargas, 57E",
+    "telefono": "+34 942 18 91 75",
+    "valoracion": 4.3,
+    "resenas": 1065,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4591752,
+    "lng": -3.8228444,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Restaurante%20Soul%20Simancas&query_place_id=ChIJZxDKGb5LSQ0RG6V1aSP1mSw",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Bar la Crisis",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Juan José Pérez del Molino, 26",
+    "telefono": "+34 657 97 65 34",
+    "valoracion": 4.5,
+    "resenas": 626,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4650087,
+    "lng": -3.8157856,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar%20la%20Crisis&query_place_id=ChIJfbCYwdFLSQ0RcXG70yAWn_g",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Dulce Cerezo",
+    "tipo": "heladeria_pasteleria",
+    "direccion": "C. San Francisco, 16",
+    "telefono": "+34 842 90 61 21",
+    "valoracion": 4.7,
+    "resenas": 71,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4617709,
+    "lng": -3.8078144,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dulce%20Cerezo&query_place_id=ChIJqSbqXRNLSQ0RsFTAevJtg9U",
+    "fuenteConsulta": "pasteleria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Heladería Vacanze Romane",
+    "tipo": "heladeria_pasteleria",
+    "direccion": "P.º de Pereda, 23",
+    "telefono": "+34 942 10 61 94",
+    "valoracion": 4.2,
+    "resenas": 2356,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4622539,
+    "lng": -3.8007207,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Helader%C3%ADa%20Vacanze%20Romane&query_place_id=ChIJ-3euQrRLSQ0R81SR3z95LfA",
+    "fuenteConsulta": "heladeria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Lo que Diga la Rubia",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Pasadizo Zorrilla, 30",
+    "telefono": "+34 630 16 06 79",
+    "valoracion": 4.4,
+    "resenas": 400,
+    "horario": "",
+    "estado": "",
+    "lat": 43.4641854,
+    "lng": -3.7995414,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lo%20que%20Diga%20la%20Rubia&query_place_id=ChIJw_qB2l5LSQ0RzR_iiWm9tAw",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

@@ -1,0 +1,1389 @@
+[
+  {
+    "nombre": "Amigo Canino Santiago",
+    "tipo": "adiestrador",
+    "direccion": "Camiño do Chan de Curros, 57",
+    "lat": 42.894841799999995,
+    "lng": -8.5368978
+  },
+  {
+    "nombre": "Francis Barbershop",
+    "tipo": "tienda",
+    "direccion": "Rúa das Galeras, 30, 2a",
+    "lat": 42.8818379,
+    "lng": -8.5487009
+  },
+  {
+    "nombre": "Aprendiendo a Ladrar",
+    "tipo": "adiestrador",
+    "direccion": "Rúa de Sahagún, 4",
+    "lat": 42.8661641,
+    "lng": -8.5423172
+  },
+  {
+    "nombre": "CEREC",
+    "tipo": "veterinario",
+    "direccion": "Aldea Mourentans",
+    "lat": 42.878951,
+    "lng": -8.7298634
+  },
+  {
+    "nombre": "Farmagra",
+    "tipo": "otros",
+    "direccion": "Costa de San Marcos, 3",
+    "lat": 42.8894151,
+    "lng": -8.501925
+  },
+  {
+    "nombre": "Cienpets - Tienda online de productos para mascotas",
+    "tipo": "tienda",
+    "direccion": "Av. de Rosalía de Castro, 52",
+    "lat": 42.8746438,
+    "lng": -8.5517468
+  },
+  {
+    "nombre": "Gali+cotas",
+    "tipo": "tienda",
+    "direccion": "R. da República Arxentina, 46",
+    "lat": 42.872003199999995,
+    "lng": -8.5508407
+  },
+  {
+    "nombre": "Residencia Canina CanGal",
+    "tipo": "otros",
+    "direccion": "Lugar Roan, 27",
+    "lat": 42.935849999999995,
+    "lng": -8.5931199
+  },
+  {
+    "nombre": "Lo blanco, es blanco Mascotas (centro de lavado de mascotas de autoservicio)",
+    "tipo": "tienda",
+    "direccion": "Av. de Castelao, 28",
+    "lat": 42.892324699999996,
+    "lng": -8.5408674
+  },
+  {
+    "nombre": "Dermatología Veterinaria DERMAPET",
+    "tipo": "veterinario",
+    "direccion": "Praza da Nsa. Sra. da Mercé de Conxo, 8, Bajo 3",
+    "lat": 42.865272,
+    "lng": -8.5560061
+  },
+  {
+    "nombre": "Zoolandia Costa Vella",
+    "tipo": "tienda",
+    "direccion": "Pol. Costa Vella",
+    "lat": 42.9019858,
+    "lng": -8.5069783
+  },
+  {
+    "nombre": "Euskogal",
+    "tipo": "adiestrador",
+    "direccion": "15897 Santiago de Compostela",
+    "lat": 42.8969011,
+    "lng": -8.5840069
+  },
+  {
+    "nombre": "Peluqueria Canina Andrés Martinez Professional Dog Groomer",
+    "tipo": "tienda",
+    "direccion": "Rúa de Feliciano Barrera Fernández, 9A, Bajo",
+    "lat": 42.865217699999995,
+    "lng": -8.5584066
+  },
+  {
+    "nombre": "Alejandro González Groomer (Peixecan)",
+    "tipo": "tienda",
+    "direccion": "R. de París, 19G, Bajo",
+    "lat": 42.884325499999996,
+    "lng": -8.5254639
+  },
+  {
+    "nombre": "Aristopets",
+    "tipo": "tienda",
+    "direccion": "Av. de Vilagarcía, 21",
+    "lat": 42.8726403,
+    "lng": -8.5518089
+  },
+  {
+    "nombre": "Mascotas Modernas",
+    "tipo": "tienda",
+    "direccion": "Rúa das Condomiñas",
+    "lat": 42.856968599999995,
+    "lng": -8.5394989
+  },
+  {
+    "nombre": "Peluquería canina Pelo chulo",
+    "tipo": "tienda",
+    "direccion": "Rúa de Alfredo Brañas, 33 Baixo",
+    "lat": 42.873212699999996,
+    "lng": -8.547259
+  },
+  {
+    "nombre": "VÚO oftalmología veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Rúa de Estocolmo, 8, bajo B",
+    "lat": 42.886019,
+    "lng": -8.5245492
+  },
+  {
+    "nombre": "Área canina",
+    "tipo": "parque",
+    "direccion": "15705 Santiago de Compostela",
+    "lat": 42.8843566,
+    "lng": -8.549139499999999
+  },
+  {
+    "nombre": "Facultade de Veterinaria",
+    "tipo": "otros",
+    "direccion": "Av. Carvallo Calero, s/n",
+    "lat": 42.9948927,
+    "lng": -7.547129699999999
+  },
+  {
+    "nombre": "Parque da Alameda (Santiago de Compostela)",
+    "tipo": "parque",
+    "direccion": "Rúa do Campiño da Ferradura",
+    "lat": 42.876943,
+    "lng": -8.547609399999999
+  },
+  {
+    "nombre": "Hospital Veterinario Rof Codina",
+    "tipo": "veterinario",
+    "direccion": "Est. da Granxa, 51",
+    "lat": 42.992905799999996,
+    "lng": -7.5498598999999995
+  },
+  {
+    "nombre": "A Casa do Can",
+    "tipo": "tienda",
+    "direccion": "Tr.ª de San Pedro, n° 5",
+    "lat": 42.8814901,
+    "lng": -8.5381459
+  },
+  {
+    "nombre": "Parque Eugenio Granell (Santiago de Compostela)",
+    "tipo": "parque",
+    "direccion": "Rúa de Luis Iglesias Iglesias, 5",
+    "lat": 42.8654539,
+    "lng": -8.5460859
+  },
+  {
+    "nombre": "Clínica Veterinaria San Roque",
+    "tipo": "veterinario",
+    "direccion": "Av. de Rodríguez de Viguri, 45, bajo Izquierda",
+    "lat": 42.8899736,
+    "lng": -8.53252
+  },
+  {
+    "nombre": "Baraka Animal - Boutique Peluqueria Canina & Spa",
+    "tipo": "tienda",
+    "direccion": "Rua de Diego de Muros, nº13",
+    "lat": 42.8731132,
+    "lng": -8.5487627
+  },
+  {
+    "nombre": "Clínica Veterinaria La Rosa",
+    "tipo": "veterinario",
+    "direccion": "R. da Rosa, 36, Bajo",
+    "lat": 42.87104,
+    "lng": -8.54882
+  },
+  {
+    "nombre": "CAN CAT Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Rúa do Restollal, 15",
+    "lat": 42.864660699999995,
+    "lng": -8.5428907
+  },
+  {
+    "nombre": "P.A.C. Veterinario San Lázaro",
+    "tipo": "veterinario",
+    "direccion": "Rúa de San Lázaro, 108",
+    "lat": 42.8861816,
+    "lng": -8.5132853
+  },
+  {
+    "nombre": "Bichos",
+    "tipo": "tienda",
+    "direccion": "Rúa de Sánchez Freire, 62",
+    "lat": 42.865629,
+    "lng": -8.5550623
+  },
+  {
+    "nombre": "Agrobotica Santiago",
+    "tipo": "tienda",
+    "direccion": "Rúa do Cruceiro da Coruña, 22",
+    "lat": 42.893521299999996,
+    "lng": -8.5320441
+  },
+  {
+    "nombre": "Hospital Veterinario A Media Lúa",
+    "tipo": "veterinario",
+    "direccion": "Rúa Costa Grande, 6",
+    "lat": 42.844831,
+    "lng": -8.5755755
+  },
+  {
+    "nombre": "AniCura IMAVET ~ Hospital Veterinario",
+    "tipo": "veterinario",
+    "direccion": "Rúa de Polonia, 9",
+    "lat": 42.903603,
+    "lng": -8.508058
+  },
+  {
+    "nombre": "Clínica Veterinaria Guvet (Urgencias 24 horas)",
+    "tipo": "veterinario",
+    "direccion": "Av. de Santiago, 45",
+    "lat": 43.0315322,
+    "lng": -8.8002901
+  },
+  {
+    "nombre": "Ronroneos Clinica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Travesía da Ramallosa, 10, Bajo B",
+    "lat": 42.7977913,
+    "lng": -8.548951299999999
+  },
+  {
+    "nombre": "Canil parque Belvís",
+    "tipo": "parque",
+    "direccion": "Rúa do Olvido, 18B",
+    "lat": 42.8760761,
+    "lng": -8.538577
+  },
+  {
+    "nombre": "Casa Rural Rio Sarela En Santiago de Compostela",
+    "tipo": "otros",
+    "direccion": "Rúa da Ponte do Romaño, 58, A",
+    "lat": 42.906647799999995,
+    "lng": -8.5444214
+  },
+  {
+    "nombre": "Casa do Cebro",
+    "tipo": "alojamiento",
+    "direccion": "Rúa do Marco de Covas, N° 10",
+    "lat": 42.8926388,
+    "lng": -8.577122899999999
+  },
+  {
+    "nombre": "Casa rural Peón de Pardaces",
+    "tipo": "alojamiento",
+    "direccion": "Lugar, 4",
+    "lat": 42.9145852,
+    "lng": -8.5618151
+  },
+  {
+    "nombre": "Budadog",
+    "tipo": "adiestrador",
+    "direccion": "Aldea Coira",
+    "lat": 42.8560333,
+    "lng": -8.589115099999999
+  },
+  {
+    "nombre": "Centro Veterinario Os Durans",
+    "tipo": "veterinario",
+    "direccion": "Rúa Otero Pedrayo, 7",
+    "lat": 42.5984275,
+    "lng": -8.760551399999999
+  },
+  {
+    "nombre": "Clínica Veterinaria Gran Vía",
+    "tipo": "veterinario",
+    "direccion": "Rúa Gran Vía, 194",
+    "lat": 43.2197509,
+    "lng": -8.6855095
+  },
+  {
+    "nombre": "Clínica Veterinara Don Can",
+    "tipo": "veterinario",
+    "direccion": "Avenida Juan Carlos I, 15, Bajo",
+    "lat": 42.598126799999996,
+    "lng": -8.7643396
+  },
+  {
+    "nombre": "Hostal Alfonso",
+    "tipo": "otros",
+    "direccion": "Rúa do Pombal, 40",
+    "lat": 42.8785149,
+    "lng": -8.5481258
+  },
+  {
+    "nombre": "Comercial Gómez",
+    "tipo": "tienda",
+    "direccion": "Costa de San Marcos, 11",
+    "lat": 42.8898485,
+    "lng": -8.5011887
+  },
+  {
+    "nombre": "Hostal Nomade Santiago",
+    "tipo": "alojamiento",
+    "direccion": "Acceso Nomade Bar de Viños",
+    "lat": 42.8777524,
+    "lng": -8.5455388
+  },
+  {
+    "nombre": "Clínica Veterinaria Vigo Grovalvet",
+    "tipo": "veterinario",
+    "direccion": "Rúa García Olloqui, 4, bajo",
+    "lat": 42.239671099999995,
+    "lng": -8.723985299999999
+  },
+  {
+    "nombre": "Clínica Veterinaria Tucan",
+    "tipo": "veterinario",
+    "direccion": "Avenida de Ourense, 30",
+    "lat": 42.3933927,
+    "lng": -8.6954496
+  },
+  {
+    "nombre": "Clínica Veterinaria Bichopolis",
+    "tipo": "veterinario",
+    "direccion": "Est. de Castela, 360, Bajo",
+    "lat": 43.49456,
+    "lng": -8.2072224
+  },
+  {
+    "nombre": "O Papafigos Servizos Veterinarios",
+    "tipo": "veterinario",
+    "direccion": "Praza Chavián, s/n, Bloque 2, Portal 3, Bajo",
+    "lat": 42.8583516,
+    "lng": -8.658245299999999
+  },
+  {
+    "nombre": "Centro Veterinario Pontevedra",
+    "tipo": "veterinario",
+    "direccion": "Rúa Javier Puig Llamas, 9",
+    "lat": 42.43049,
+    "lng": -8.63856
+  },
+  {
+    "nombre": "HVS - Hospital Veterinario do Salnés - Vilagarcía",
+    "tipo": "veterinario",
+    "direccion": "Xardín",
+    "lat": 42.5955862,
+    "lng": -8.7625751
+  },
+  {
+    "nombre": "B&B HOTEL Santiago Milladoiro",
+    "tipo": "alojamiento",
+    "direccion": "Rua das Palmeiras",
+    "lat": 42.8492543,
+    "lng": -8.5831906
+  },
+  {
+    "nombre": "Puppy Park Santiago",
+    "tipo": "otros",
+    "direccion": "Rúa do Cruceiro da Coruña, 199A",
+    "lat": 42.9069086,
+    "lng": -8.51349
+  },
+  {
+    "nombre": "Hotel Spa A Quinta Da Auga Relais & Châteaux",
+    "tipo": "alojamiento",
+    "direccion": "Paseo da Amaia, 23B",
+    "lat": 42.8703296,
+    "lng": -8.5825816
+  },
+  {
+    "nombre": "Cabañas Compostela",
+    "tipo": "alojamiento",
+    "direccion": "Rúa do Casal de Horta, 32",
+    "lat": 42.8974048,
+    "lng": -8.5504607
+  },
+  {
+    "nombre": "Centro Veterinario ADRISA (SERVICIO DE URGENCIAS DERIVADO AL HOSPITAL VETERINARIO IMAVET)",
+    "tipo": "veterinario",
+    "direccion": "Av. Fisterra, 144",
+    "lat": 42.953815999999996,
+    "lng": -9.192553
+  },
+  {
+    "nombre": "Parque de Galeras (Santiago de Compostela)",
+    "tipo": "parque",
+    "direccion": "Rúa das Galeras, 13, 3°,oficina 1",
+    "lat": 42.8826566,
+    "lng": -8.5504327
+  },
+  {
+    "nombre": "HVS - Hospital veterinario do Salnés - Caldas",
+    "tipo": "veterinario",
+    "direccion": "Calle Doutor",
+    "lat": 42.6032748,
+    "lng": -8.6453697
+  },
+  {
+    "nombre": "Parque de Bonaval",
+    "tipo": "parque",
+    "direccion": "Costa de San Domingos, 3",
+    "lat": 42.8833609,
+    "lng": -8.5379139
+  },
+  {
+    "nombre": "AniCura Canido Clínica Veterinaria // Urgencias 24 horas",
+    "tipo": "veterinario",
+    "direccion": "Carretera de Joane, 34",
+    "lat": 43.49205,
+    "lng": -8.233856
+  },
+  {
+    "nombre": "Casa Juancito",
+    "tipo": "otros",
+    "direccion": "Rúa da Cima da Eira, 4",
+    "lat": 42.894348099999995,
+    "lng": -8.5391555
+  },
+  {
+    "nombre": "Parque Belvís",
+    "tipo": "parque",
+    "direccion": "-5,",
+    "lat": 42.8773878,
+    "lng": -8.538610799999999
+  },
+  {
+    "nombre": "Paseo del río Sarela",
+    "tipo": "otros",
+    "direccion": "15705 Santiago de Compostela",
+    "lat": 42.884819199999995,
+    "lng": -8.549754799999999
+  },
+  {
+    "nombre": "Mas Cuidados",
+    "tipo": "otros",
+    "direccion": "As Neves, 33",
+    "lat": 43.4359307,
+    "lng": -8.0717874
+  },
+  {
+    "nombre": "Parque da Música en Compostela",
+    "tipo": "parque",
+    "direccion": "15705 Santiago de Compostela",
+    "lat": 42.8882938,
+    "lng": -8.5449942
+  },
+  {
+    "nombre": "Parque Granxa do Xesto",
+    "tipo": "parque",
+    "direccion": "Santo Ignacio do Monte, 93",
+    "lat": 42.893355299999996,
+    "lng": -8.5600179
+  },
+  {
+    "nombre": "Bosque de Galicia",
+    "tipo": "parque",
+    "direccion": "Cidade da Cultura de Galicia",
+    "lat": 42.8700663,
+    "lng": -8.5305418
+  },
+  {
+    "nombre": "HVS - Hospital Veterinario do Salnés - Barrantes",
+    "tipo": "veterinario",
+    "direccion": "Av. Bouza Martín, 42",
+    "lat": 42.499975299999996,
+    "lng": -8.7700824
+  },
+  {
+    "nombre": "HVS - Hospital Veterinario do Salnés - Portonovo",
+    "tipo": "veterinario",
+    "direccion": "Carr. de la Lanzada, 28",
+    "lat": 42.396942599999996,
+    "lng": -8.8282033
+  },
+  {
+    "nombre": "Clinica Veterinaria Amigos",
+    "tipo": "veterinario",
+    "direccion": "R. de Rosalía de Castro, 51",
+    "lat": 42.2379819,
+    "lng": -8.7139402
+  },
+  {
+    "nombre": "Alda Bonaval",
+    "tipo": "alojamiento",
+    "direccion": "R. de Bonaval, 2",
+    "lat": 42.881856,
+    "lng": -8.538473
+  },
+  {
+    "nombre": "Hotel Vïa AetcaL",
+    "tipo": "alojamiento",
+    "direccion": "Rúa das Casas Reais, 20",
+    "lat": 42.8816588,
+    "lng": -8.5414124
+  },
+  {
+    "nombre": "Parque de Carlomagno",
+    "tipo": "parque",
+    "direccion": "Rúa de Roma, 11",
+    "lat": 42.882117799999996,
+    "lng": -8.524527299999999
+  },
+  {
+    "nombre": "Abeiro Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Rúa Rafael Dieste, 4",
+    "lat": 43.347868999999996,
+    "lng": -8.344814
+  },
+  {
+    "nombre": "Parque Finca del Espino",
+    "tipo": "parque",
+    "direccion": "Estrada Corredoira Espiño, 1",
+    "lat": 42.8828563,
+    "lng": -8.5516303
+  },
+  {
+    "nombre": "Centro Veterinario Area Central Sl",
+    "tipo": "veterinario",
+    "direccion": "R. de París, 7, Local 31 P",
+    "lat": 42.8834065,
+    "lng": -8.5274596
+  },
+  {
+    "nombre": "Parque Begoña Caamaño (anteriormente do Cotaredo)",
+    "tipo": "parque",
+    "direccion": "Rúa do Cotaredo, 6",
+    "lat": 42.8851236,
+    "lng": -8.530219599999999
+  },
+  {
+    "nombre": "Servet Urgencias",
+    "tipo": "veterinario",
+    "direccion": "Regoufe 5",
+    "lat": 42.800810899999995,
+    "lng": -8.5907745
+  },
+  {
+    "nombre": "Clínica Veterinaria Tea San Antón Vigo",
+    "tipo": "veterinario",
+    "direccion": "R. de Pizarro, 57",
+    "lat": 42.2315003,
+    "lng": -8.7134805
+  },
+  {
+    "nombre": "Apartamentos Alda Fogar Natural",
+    "tipo": "alojamiento",
+    "direccion": "Rúa de San Pedro, 37",
+    "lat": 42.881464099999995,
+    "lng": -8.5385334
+  },
+  {
+    "nombre": "Centro Quirúrgico Veterinario A Chico",
+    "tipo": "veterinario",
+    "direccion": "Rúa Napoleón Bonaparte, 4, Bajos",
+    "lat": 43.353393499999996,
+    "lng": -8.4158779
+  },
+  {
+    "nombre": "Parque Infantil de Belvís",
+    "tipo": "parque",
+    "direccion": "Parque de Belvís",
+    "lat": 42.880690699999995,
+    "lng": -8.5389485
+  },
+  {
+    "nombre": "GaliciAway - V.T. Alojamiento Santa Maria",
+    "tipo": "alojamiento",
+    "direccion": "Rúa Agro do Medio, 2",
+    "lat": 42.843772,
+    "lng": -8.577499999999999
+  },
+  {
+    "nombre": "Centro Veterinario San Miguel",
+    "tipo": "veterinario",
+    "direccion": "Av. Cambados, 53, BAJO",
+    "lat": 42.5470976,
+    "lng": -8.811795499999999
+  },
+  {
+    "nombre": "Clinica Veterinaria Wecan Cosmopet",
+    "tipo": "veterinario",
+    "direccion": "Av. de Rosalía de Castro, 106",
+    "lat": 42.873517799999995,
+    "lng": -8.553153499999999
+  },
+  {
+    "nombre": "Hotel OCA Puerta del Camino",
+    "tipo": "alojamiento",
+    "direccion": "C/ Miguel Ferro Caaveiro, s/n",
+    "lat": 42.884076199999996,
+    "lng": -8.5131414
+  },
+  {
+    "nombre": "Centro Veterinario Equino Casal Do Río",
+    "tipo": "veterinario",
+    "direccion": "Rua Vilanoviña, 15B",
+    "lat": 42.5509959,
+    "lng": -8.7013108
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "R. de Eslovenia, 3",
+    "lat": 42.901548399999996,
+    "lng": -8.508975999999999
+  },
+  {
+    "nombre": "Parque do Monte de Conxo",
+    "tipo": "otros",
+    "direccion": "R. de José Ángel Valente, 11",
+    "lat": 42.868545499999996,
+    "lng": -8.556117
+  },
+  {
+    "nombre": "Lairoside",
+    "tipo": "veterinario",
+    "direccion": "Rúa Marqués de Amboage, 24",
+    "lat": 43.3543109,
+    "lng": -8.4059622
+  },
+  {
+    "nombre": "AniCura Abros Hospital Veterinario",
+    "tipo": "veterinario",
+    "direccion": "Parque empresarial",
+    "lat": 42.321692,
+    "lng": -7.809442
+  },
+  {
+    "nombre": "Consultorio Veterinario Low Cost",
+    "tipo": "veterinario",
+    "direccion": "Rda. Nelle, 81",
+    "lat": 43.3605182,
+    "lng": -8.4152732
+  },
+  {
+    "nombre": "Pensión A Casa do Peregrino",
+    "tipo": "otros",
+    "direccion": "Rúa da Acibechería, 2",
+    "lat": 42.8812717,
+    "lng": -8.5430222
+  },
+  {
+    "nombre": "Apartamentos Duerming Casas Reales",
+    "tipo": "alojamiento",
+    "direccion": "Calle Casas Reales, 18",
+    "lat": 42.8815853,
+    "lng": -8.5414605
+  },
+  {
+    "nombre": "Centro Veterinario Valentina del Río",
+    "tipo": "veterinario",
+    "direccion": "Rúa de Ramón",
+    "lat": 42.872916599999996,
+    "lng": -8.5490423
+  },
+  {
+    "nombre": "Motel Montecarlo Teo",
+    "tipo": "otros",
+    "direccion": "Tr.ª de Montouto, 33",
+    "lat": 42.834699099999995,
+    "lng": -8.5451681
+  },
+  {
+    "nombre": "Meiga backpackers Hostel",
+    "tipo": "alojamiento",
+    "direccion": "Rúa dos Basquiños, 67",
+    "lat": 42.887428199999995,
+    "lng": -8.5388621
+  },
+  {
+    "nombre": "Abeiro Hospital Veterinario",
+    "tipo": "veterinario",
+    "direccion": "Rúa Marqués de Amboage, 24",
+    "lat": 43.3542846,
+    "lng": -8.4060388
+  },
+  {
+    "nombre": "O Refuxio de Bando",
+    "tipo": "protectora",
+    "direccion": "s/n, Lugar Zarramacedo-Bando",
+    "lat": 42.878245,
+    "lng": -8.4677366
+  },
+  {
+    "nombre": "PR Badalada",
+    "tipo": "alojamiento",
+    "direccion": "Rúa de Xelmírez, 30",
+    "lat": 42.8796821,
+    "lng": -8.542505499999999
+  },
+  {
+    "nombre": "Hotel San Lázaro",
+    "tipo": "alojamiento",
+    "direccion": "Rúa do Valiño, 1",
+    "lat": 42.8871421,
+    "lng": -8.526114
+  },
+  {
+    "nombre": "Loop Inn Hostel Santiago de Compostela",
+    "tipo": "alojamiento",
+    "direccion": "Rúa de Tras Santa Clara, 2",
+    "lat": 42.884473799999995,
+    "lng": -8.540288
+  },
+  {
+    "nombre": "Xardíns dos Agros de Ramírez",
+    "tipo": "parque",
+    "direccion": "Rua de Diego de Muros, 3",
+    "lat": 42.8737937,
+    "lng": -8.5495024
+  },
+  {
+    "nombre": "Centro Veterinario MG Vet (Santiago de Compostela)",
+    "tipo": "veterinario",
+    "direccion": "Rúa das Galeras, 13",
+    "lat": 42.8834869,
+    "lng": -8.5485299
+  },
+  {
+    "nombre": "Clínica Veterinaria Amigos (Santiago de Compostela)",
+    "tipo": "veterinario",
+    "direccion": "Av. de Lugo, 2",
+    "lat": 42.8715757,
+    "lng": -8.5444903
+  },
+  {
+    "nombre": "Hostal Charo II",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Vilagarcía, 2",
+    "lat": 42.8734836,
+    "lng": -8.5524603
+  },
+  {
+    "nombre": "Zoolandia",
+    "tipo": "tienda",
+    "direccion": "Rúa de Concepción Arenal, 8",
+    "lat": 42.876475,
+    "lng": -8.543455999999999
+  },
+  {
+    "nombre": "Guardería Aldrei",
+    "tipo": "otros",
+    "direccion": "Rúa do Carballo de Aldrei, 30",
+    "lat": 42.837539799999995,
+    "lng": -8.5028472
+  },
+  {
+    "nombre": "Hostal As Margaritas",
+    "tipo": "otros",
+    "direccion": "Rúa do Pombal, 44",
+    "lat": 42.8783209,
+    "lng": -8.5480412
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "Av. do Camiño Francés, 3",
+    "lat": 42.8894436,
+    "lng": -8.5264454
+  },
+  {
+    "nombre": "Hotel Universal",
+    "tipo": "alojamiento",
+    "direccion": "Plaza de Galicia, 2",
+    "lat": 42.8763339,
+    "lng": -8.544602099999999
+  },
+  {
+    "nombre": "PS VET DAIRYQUALITY",
+    "tipo": "veterinario",
+    "direccion": "Calle de Sergude, 18B",
+    "lat": 42.829188699999996,
+    "lng": -8.4774189
+  },
+  {
+    "nombre": "Hospital Veterinario Atlántico | MiVet",
+    "tipo": "veterinario",
+    "direccion": "Rúa Zaragoza, 1",
+    "lat": 43.3433438,
+    "lng": -8.4426797
+  },
+  {
+    "nombre": "Pensión Da Estrela",
+    "tipo": "otros",
+    "direccion": "Pl. de San Martiño, 5, 2º",
+    "lat": 42.8825048,
+    "lng": -8.5436996
+  },
+  {
+    "nombre": "Camping As Cancelas",
+    "tipo": "otros",
+    "direccion": "15704",
+    "lat": 42.889694,
+    "lng": -8.52473
+  },
+  {
+    "nombre": "pension obradoiro",
+    "tipo": "alojamiento",
+    "direccion": "Rúa do Pombal, 44",
+    "lat": 42.8783203,
+    "lng": -8.547987299999999
+  },
+  {
+    "nombre": "Hotel Santiago Apóstol",
+    "tipo": "alojamiento",
+    "direccion": "Costa de San Marcos, 1",
+    "lat": 42.88915,
+    "lng": -8.50245
+  },
+  {
+    "nombre": "Canil parque Eugenio Granell",
+    "tipo": "parque",
+    "direccion": "15702 Santiago de Compostela",
+    "lat": 42.86598,
+    "lng": -8.5470847
+  },
+  {
+    "nombre": "Albergue A Fonte de Compostela",
+    "tipo": "alojamiento",
+    "direccion": "Rúa de Estocolmo",
+    "lat": 42.8866857,
+    "lng": -8.5262602
+  },
+  {
+    "nombre": "CASA ANGLICANA DEL PEREGRINO",
+    "tipo": "otros",
+    "direccion": "Rúa da Porta da Pena, 3",
+    "lat": 42.882657699999996,
+    "lng": -8.5434784
+  },
+  {
+    "nombre": "Parque Para Cáns Estación Bombeo",
+    "tipo": "parque",
+    "direccion": "A",
+    "lat": 42.842435099999996,
+    "lng": -8.5751349
+  },
+  {
+    "nombre": "Hotel SPA Congreso",
+    "tipo": "alojamiento",
+    "direccion": "Rúa das Mámoas de Montouto, 4",
+    "lat": 42.8360822,
+    "lng": -8.5465261
+  },
+  {
+    "nombre": "Alda O Fogar de Teodomiro",
+    "tipo": "alojamiento",
+    "direccion": "Praza da Algalia de Arriba, 3, Bajo",
+    "lat": 42.8826156,
+    "lng": -8.5420723
+  },
+  {
+    "nombre": "Hostal San Pelayo",
+    "tipo": "otros",
+    "direccion": "Calle de",
+    "lat": 42.8809821,
+    "lng": -8.5431166
+  },
+  {
+    "nombre": "Hotel Faranda Los Tilos, Ascend Hotel Collection",
+    "tipo": "alojamiento",
+    "direccion": "Urbanización Los Tilos, Carretera La Estrada",
+    "lat": 42.8464174,
+    "lng": -8.5407364
+  },
+  {
+    "nombre": "Hostal Forest",
+    "tipo": "alojamiento",
+    "direccion": "Rua de Abril Ares, 7",
+    "lat": 42.8818862,
+    "lng": -8.543603899999999
+  },
+  {
+    "nombre": "Apartamentos turísticos Cancelas",
+    "tipo": "otros",
+    "direccion": "Rúa dos Salgueiriños de Abaixo, 28",
+    "lat": 42.8947165,
+    "lng": -8.5300186
+  },
+  {
+    "nombre": "Hospital Clínico Veterinario Ultramar Urgencias 24h",
+    "tipo": "veterinario",
+    "direccion": "Rúa Nova de Caranza, 169",
+    "lat": 43.4904795,
+    "lng": -8.216842399999999
+  },
+  {
+    "nombre": "Manuel Romero Nieto",
+    "tipo": "veterinario",
+    "direccion": "Rúa de Ramón Piñeiro, 11",
+    "lat": 42.873599,
+    "lng": -8.5431514
+  },
+  {
+    "nombre": "M Martínez Antelo",
+    "tipo": "veterinario",
+    "direccion": "Rúa do Xeneral Pardiñas, 7",
+    "lat": 42.875582,
+    "lng": -8.546052399999999
+  },
+  {
+    "nombre": "Kawanda urban",
+    "tipo": "veterinario",
+    "direccion": "Rúa do Vilar, 70",
+    "lat": 42.8777535,
+    "lng": -8.545028799999999
+  },
+  {
+    "nombre": "Area Canina",
+    "tipo": "parque",
+    "direccion": "Parque Anne Frank",
+    "lat": 42.8609502,
+    "lng": -8.5370736
+  },
+  {
+    "nombre": "Sociedad de Acuariofilia de Galicia",
+    "tipo": "protectora",
+    "direccion": "Rúa do Casal de Horta, 3",
+    "lat": 42.9000748,
+    "lng": -8.5524884
+  },
+  {
+    "nombre": "peluqueria perros",
+    "tipo": "otros",
+    "direccion": "Rúa do Cruceiro da Coruña, 54",
+    "lat": 42.895966699999995,
+    "lng": -8.5301757
+  },
+  {
+    "nombre": "Rua de Alfredo Vicenti",
+    "tipo": "parque",
+    "direccion": "Rúa de Alfredo Vicenti",
+    "lat": 42.859255,
+    "lng": -8.5365587
+  },
+  {
+    "nombre": "Animalia",
+    "tipo": "tienda",
+    "direccion": "Rúa do Ulla, 28",
+    "lat": 42.8686393,
+    "lng": -8.5451838
+  },
+  {
+    "nombre": "MPS Unión Protectora",
+    "tipo": "otros",
+    "direccion": "Calle Do",
+    "lat": 42.875674599999996,
+    "lng": -8.543801799999999
+  },
+  {
+    "nombre": "Hotel Sarela Natura",
+    "tipo": "alojamiento",
+    "direccion": "Rúa da Codeseira de Vidán, 1",
+    "lat": 42.8697255,
+    "lng": -8.5692117
+  },
+  {
+    "nombre": "Hostal Suso",
+    "tipo": "alojamiento",
+    "direccion": "Rúa do Vilar, 65, 1º",
+    "lat": 42.8778988,
+    "lng": -8.544990499999999
+  },
+  {
+    "nombre": "Hotel Costa Vella",
+    "tipo": "alojamiento",
+    "direccion": "Rúa da Porta da Pena, 17",
+    "lat": 42.8831049,
+    "lng": -8.543365699999999
+  },
+  {
+    "nombre": "Hotel San Miguel",
+    "tipo": "alojamiento",
+    "direccion": "Praza de San Miguel dos Agros, 9",
+    "lat": 42.882148799999996,
+    "lng": -8.5429669
+  },
+  {
+    "nombre": "Parador de Santiago de Compostela",
+    "tipo": "alojamiento",
+    "direccion": "Praza do Obradoiro, 1",
+    "lat": 42.881053699999995,
+    "lng": -8.5458558
+  },
+  {
+    "nombre": "Hotel NH Collection Santiago de Compostela",
+    "tipo": "alojamiento",
+    "direccion": "Av. do Burgo das Nacións, 4",
+    "lat": 42.889553899999996,
+    "lng": -8.5433563
+  },
+  {
+    "nombre": "Gran Hotel Los Abetos",
+    "tipo": "alojamiento",
+    "direccion": "Rúa de San Lázaro, s/n",
+    "lat": 42.8849097,
+    "lng": -8.5047587
+  },
+  {
+    "nombre": "Miradoiro de Belvís",
+    "tipo": "alojamiento",
+    "direccion": "Rúa das Trompas, 5",
+    "lat": 42.878991299999996,
+    "lng": -8.5403164
+  },
+  {
+    "nombre": "Alda San Bieito",
+    "tipo": "alojamiento",
+    "direccion": "Cantón de San Bieito, 1",
+    "lat": 42.881045,
+    "lng": -8.5415754
+  },
+  {
+    "nombre": "Hospedería San Martín Pinario",
+    "tipo": "otros",
+    "direccion": "Praza da Inmaculada, 3",
+    "lat": 42.881401,
+    "lng": -8.5447438
+  },
+  {
+    "nombre": "Hotel Gelmírez",
+    "tipo": "alojamiento",
+    "direccion": "Rúa do Hórreo, 92",
+    "lat": 42.873958699999996,
+    "lng": -8.544896699999999
+  },
+  {
+    "nombre": "PR 25 de Julio",
+    "tipo": "otros",
+    "direccion": "Av. de Rodrigo del Padrón, 4",
+    "lat": 42.878563,
+    "lng": -8.5458538
+  },
+  {
+    "nombre": "Hotel Santiago Plaza Affiliated by Meliá",
+    "tipo": "alojamiento",
+    "direccion": "Rúa do Restollal, 24",
+    "lat": 42.8648241,
+    "lng": -8.5438207
+  },
+  {
+    "nombre": "Hotel Eurostars Araguaney",
+    "tipo": "alojamiento",
+    "direccion": "Rúa de Alfredo Brañas, 5",
+    "lat": 42.875245199999995,
+    "lng": -8.547481699999999
+  },
+  {
+    "nombre": "Compostela Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Rúa do Hórreo, 1",
+    "lat": 42.8768564,
+    "lng": -8.543830999999999
+  },
+  {
+    "nombre": "Alda San Carlos",
+    "tipo": "alojamiento",
+    "direccion": "Rúa do Hórreo, 106",
+    "lat": 42.8727774,
+    "lng": -8.5449781
+  },
+  {
+    "nombre": "Hotel Lux Santiago",
+    "tipo": "alojamiento",
+    "direccion": "Rúa do Doutor Teixeiro, 4",
+    "lat": 42.875616,
+    "lng": -8.545030299999999
+  },
+  {
+    "nombre": "Hotel A Tafona do Peregrino",
+    "tipo": "alojamiento",
+    "direccion": "Rúa da Virxe da Cerca, 7",
+    "lat": 42.880798299999995,
+    "lng": -8.5402384
+  },
+  {
+    "nombre": "Hotel Exe Area Central",
+    "tipo": "alojamiento",
+    "direccion": "Área Central",
+    "lat": 42.882311099999995,
+    "lng": -8.5268031
+  },
+  {
+    "nombre": "Hotel Ciudad de Compostela",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Lugo, 213",
+    "lat": 42.880998399999996,
+    "lng": -8.533374799999999
+  },
+  {
+    "nombre": "Stellae Luscofusco",
+    "tipo": "otros",
+    "direccion": "Rúa dos Concheiros, 6",
+    "lat": 42.8820128,
+    "lng": -8.5346239
+  },
+  {
+    "nombre": "Oasis Ponte San Lazaro",
+    "tipo": "alojamiento",
+    "direccion": "Rúa da Ponte de San Lázaro, 21",
+    "lat": 42.8866624,
+    "lng": -8.507837199999999
+  },
+  {
+    "nombre": "LINARES ROOMS SANTIAGO",
+    "tipo": "alojamiento",
+    "direccion": "Rúa da Algalia de Abaixo, 34",
+    "lat": 42.8828442,
+    "lng": -8.5416334
+  },
+  {
+    "nombre": "CHOIVA CAFE",
+    "tipo": "restaurante",
+    "direccion": "Rúa de Aller Ulloa, 3",
+    "telefono": "+34 695 89 26 27",
+    "valoracion": 4.7,
+    "resenas": 149,
+    "horario": "",
+    "estado": "",
+    "lat": 42.8817316,
+    "lng": -8.5398994,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=CHOIVA%20CAFE&query_place_id=ChIJ51H1wZf_Lg0R64Aaokhwcs8",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Casa 12 | Specialty Coffee, Pastries & Brunch",
+    "tipo": "cafeteria_bar",
+    "direccion": "Rúa do Preguntoiro, 12",
+    "telefono": "+34 694 91 03 72",
+    "valoracion": 4.8,
+    "resenas": 261,
+    "horario": "",
+    "estado": "",
+    "lat": 42.8806581,
+    "lng": -8.5425948,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Casa%2012%20%7C%20Specialty%20Coffee%2C%20Pastries%20%26%20Brunch&query_place_id=ChIJEcx5MVH_Lg0RPYKYf8Eafo4",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "NÖMADA CAFÉ SANTIAGO",
+    "tipo": "cafeteria_bar",
+    "direccion": "Rúa da Espiñeira, 2",
+    "telefono": "+34 676 71 38 23",
+    "valoracion": 4.8,
+    "resenas": 153,
+    "horario": "",
+    "estado": "",
+    "lat": 42.8718966,
+    "lng": -8.5568341,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=N%C3%96MADA%20CAF%C3%89%20SANTIAGO&query_place_id=ChIJWRWfKJD_Lg0RVIoED1ZFHlw",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "El Point",
+    "tipo": "cafeteria_bar",
+    "direccion": "R. da Caldeirería, 26",
+    "telefono": "+34 881 94 13 96",
+    "valoracion": 4.7,
+    "resenas": 114,
+    "horario": "",
+    "estado": "",
+    "lat": 42.8791676,
+    "lng": -8.542563,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=El%20Point&query_place_id=ChIJE-0o8Lb_Lg0RaUk4ZMyRu3I",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Viruxe Café",
+    "tipo": "cafeteria_bar",
+    "direccion": "Av. de Romero Donallo, 7",
+    "telefono": "+34 689 52 56 86",
+    "valoracion": 5,
+    "resenas": 75,
+    "horario": "",
+    "estado": "",
+    "lat": 42.8727834,
+    "lng": -8.5527042,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Viruxe%20Caf%C3%A9&query_place_id=ChIJH5DSn2b_Lg0REEQXZxEkHFE",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "LA CUCA BRUNCH SANTIAGO",
+    "tipo": "restaurante",
+    "direccion": "Rúa de Lisboa, 8",
+    "telefono": "",
+    "valoracion": 4.7,
+    "resenas": 370,
+    "horario": "",
+    "estado": "",
+    "lat": 42.8826838,
+    "lng": -8.5283938,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=LA%20CUCA%20BRUNCH%20SANTIAGO&query_place_id=ChIJQ4q5JgD_Lg0RO1cfksO3Vvg",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Bar Las Betanceiras",
+    "tipo": "cafeteria_bar",
+    "direccion": "Rúa Nova, 42",
+    "telefono": "+34 881 94 51 34",
+    "valoracion": 3.7,
+    "resenas": 742,
+    "horario": "",
+    "estado": "",
+    "lat": 42.8780807,
+    "lng": -8.5439688,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar%20Las%20Betanceiras&query_place_id=ChIJ7RxPf6b_Lg0RZs0fw6JaRQU",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Bar A Novena Porta",
+    "tipo": "cafeteria_bar",
+    "direccion": "Rúa do Cardeal Payá, 3",
+    "telefono": "+34 981 57 48 19",
+    "valoracion": 4.5,
+    "resenas": 1483,
+    "horario": "",
+    "estado": "",
+    "lat": 42.8780921,
+    "lng": -8.5429177,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar%20A%20Novena%20Porta&query_place_id=ChIJO6JR5kb-Lg0RvWkwLEZ7C60",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Sabores bakery and pastry",
+    "tipo": "heladeria_pasteleria",
+    "direccion": "Rúa da Fonte de Santo Antonio, 6",
+    "telefono": "+34 634 43 22 13",
+    "valoracion": 4.9,
+    "resenas": 175,
+    "horario": "",
+    "estado": "",
+    "lat": 42.8773606,
+    "lng": -8.542887,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sabores%20bakery%20and%20pastry&query_place_id=ChIJqcoeBwD_Lg0R2ZVjfA816ds",
+    "fuenteConsulta": "pasteleria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Cuore Di Gelato",
+    "tipo": "heladeria_pasteleria",
+    "direccion": "Rúa do Castro, 2",
+    "telefono": "+34 981 07 84 36",
+    "valoracion": 4.1,
+    "resenas": 149,
+    "horario": "",
+    "estado": "",
+    "lat": 42.8796221,
+    "lng": -8.5422683,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cuore%20Di%20Gelato&query_place_id=ChIJpd7vxZb_Lg0Ry-q4X5f87iU",
+    "fuenteConsulta": "heladeria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Cáscara Café & Brunch",
+    "tipo": "cafeteria_bar",
+    "direccion": "Rúa da Troia, 6",
+    "telefono": "",
+    "valoracion": 4.8,
+    "resenas": 578,
+    "horario": "",
+    "estado": "",
+    "lat": 42.8814405,
+    "lng": -8.543247,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=C%C3%A1scara%20Caf%C3%A9%20%26%20Brunch&query_place_id=ChIJM0fBn3v_Lg0RY1OwbmPau1c",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Adèlia Café",
+    "tipo": "cafeteria_bar",
+    "direccion": "Praza de San Miguel dos Agros, 6",
+    "telefono": "+34 602 44 60 34",
+    "valoracion": 4.7,
+    "resenas": 995,
+    "horario": "",
+    "estado": "",
+    "lat": 42.88224,
+    "lng": -8.54329,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ad%C3%A8lia%20Caf%C3%A9&query_place_id=ChIJGVHy3N7_Lg0Rb0a5qepdN78",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Moito Coffee",
+    "tipo": "cafeteria_bar",
+    "direccion": "Rúa de Melide, 17, BAJO",
+    "telefono": "+34 683 19 88 94",
+    "valoracion": 4.8,
+    "resenas": 183,
+    "horario": "",
+    "estado": "",
+    "lat": 42.8962177,
+    "lng": -8.5329628,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Moito%20Coffee&query_place_id=ChIJYYThoa__Lg0RFrTyrmwb_MU",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

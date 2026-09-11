@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque_canino",
+    "direccion": "Praza Don Bosco, 1",
+    "telefono": "",
+    "valoracion": 4.1,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 42.343824399999995,
+    "lng": -7.8684823999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJyyiBbrT-Lw0RSLy97psh8Nk",
+    "fuenteConsulta": "parque para perros en Ourense, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

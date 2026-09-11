@@ -285,7 +285,7 @@ section:first-of-type{clip-path:none} /* hero no se corta */
 .sec-prism .prism-cell{border-right:1px solid rgba(134,187,216,0.18);border-bottom:1px solid rgba(134,187,216,0.18);transition:background 0.15s ease-out}
 .sec-prism .prism-cell.lit{transition:background 0s}
 </style>
-<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/analytics.js" defer></script>
 </head>
 <body>
 
@@ -337,7 +337,7 @@ section:first-of-type{clip-path:none} /* hero no se corta */
     <div class="ss" style="text-transform:none;letter-spacing:0;text-align:center;max-width:620px;margin:0.5rem auto 0">ARES no lee ondas cerebrales. Registra algo más simple y más honesto: el reposo del perro, la actividad y cuánto tiempo pasa quieto y tranquilo.</div>
 
     <div class="hf-wrap">
-      <div class="hf-diagram">
+      <div class="hf-diagram angle-border">
         <div class="hf-chart">
           <div class="hf-chart-label">22h</div>
           <div class="hf-bar" style="height:18%"></div>
@@ -948,6 +948,6 @@ if(MOTION_READY){
     window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
   })();
 </script>
-<script src="../assets/js/footer-common.js"></script>
+<script src="../assets/js/footer-common.js" defer></script>
 </body>
 </html>

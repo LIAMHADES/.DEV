@@ -1,0 +1,477 @@
+[
+  {
+    "nombre": "MNcan | Educador Canino Zaragoza",
+    "tipo": "adiestrador",
+    "direccion": "C. de la Colegiata de Bolea, 10, 1ºB",
+    "lat": 41.6415416,
+    "lng": -0.8637111
+  },
+  {
+    "nombre": "Torrelobato Peluquería Canina",
+    "tipo": "peluqueria",
+    "direccion": "C. de Gaspar Torrente, 66",
+    "lat": 41.6677153,
+    "lng": -0.8250489
+  },
+  {
+    "nombre": "General Dog",
+    "tipo": "adiestrador",
+    "direccion": "C. del Valle de Broto",
+    "lat": 41.6667876,
+    "lng": -0.8840796999999999
+  },
+  {
+    "nombre": "RUDOG Adiestramiento Canino Zaragoza",
+    "tipo": "adiestrador",
+    "direccion": "Cam. Torre Escolapios, 8",
+    "lat": 41.642873,
+    "lng": -0.7813854
+  },
+  {
+    "nombre": "Adiestramiento EDUCAN en Zaragoza",
+    "tipo": "adiestrador",
+    "direccion": "Pl. de San Pedro Nolasco, 1",
+    "lat": 41.6527569,
+    "lng": -0.8772774999999999
+  },
+  {
+    "nombre": "DIVERTIDOG",
+    "tipo": "adiestrador",
+    "direccion": "Parque del Agua Luis Buñuel",
+    "lat": 41.666244999999996,
+    "lng": -0.9119221999999999
+  },
+  {
+    "nombre": "Adiestramiento Ranger-K9",
+    "tipo": "adiestrador",
+    "direccion": "50000",
+    "lat": 41.6572105,
+    "lng": -0.8908381
+  },
+  {
+    "nombre": "Sitplas Adiestramiento canino",
+    "tipo": "adiestrador",
+    "direccion": "Parque deportivo ebro",
+    "lat": 41.6721946,
+    "lng": -0.9190012999999999
+  },
+  {
+    "nombre": "Kyokan Educación Canina y Felina",
+    "tipo": "adiestrador",
+    "direccion": "Cam. de Vistabella, 188",
+    "lat": 41.6667073,
+    "lng": -0.9581657
+  },
+  {
+    "nombre": "Club Canino Open de España",
+    "tipo": "adiestrador",
+    "direccion": "Urb. el Soto II",
+    "lat": 41.771534599999995,
+    "lng": -0.8010396
+  },
+  {
+    "nombre": "Pet's Kangoo",
+    "tipo": "adiestrador",
+    "direccion": "C. de Bailén, 4",
+    "lat": 41.6380792,
+    "lng": -0.87679
+  },
+  {
+    "nombre": "Universal Dog Adiestramiento y Educación canina",
+    "tipo": "adiestrador",
+    "direccion": "C. de Pablo Ruiz Picasso, 32",
+    "lat": 41.673476,
+    "lng": -0.888021
+  },
+  {
+    "nombre": "Hotel Catalonia El Pilar",
+    "tipo": "alojamiento",
+    "direccion": "C. de la Manifestación, 16",
+    "lat": 41.656020399999996,
+    "lng": -0.8813057999999999
+  },
+  {
+    "nombre": "Escuela Adiestramiento los Galachos",
+    "tipo": "adiestrador",
+    "direccion": "Polígono Agrario 203 Paraje Soto de Juslibo, Parcela 118",
+    "lat": 41.695468299999995,
+    "lng": -0.9221501999999999
+  },
+  {
+    "nombre": "Hotel NH Collection Gran Hotel de Zaragoza",
+    "tipo": "alojamiento",
+    "direccion": "Calle de Joaquín Costa, 5",
+    "lat": 41.649153999999996,
+    "lng": -0.88147
+  },
+  {
+    "nombre": "INNSiDE by Meliá Zaragoza",
+    "tipo": "alojamiento",
+    "direccion": "Av. de César Augusto, 13",
+    "lat": 41.651756,
+    "lng": -0.885952
+  },
+  {
+    "nombre": "Hotel NH Ciudad de Zaragoza",
+    "tipo": "alojamiento",
+    "direccion": "Av. de César Augusto, 125",
+    "lat": 41.657755,
+    "lng": -0.8819779999999999
+  },
+  {
+    "nombre": "Palacio los sitios",
+    "tipo": "alojamiento",
+    "direccion": "C. del Pozo, 7",
+    "lat": 41.6512169,
+    "lng": -0.8725949
+  },
+  {
+    "nombre": "B&B HOTEL Zaragoza Los Enlaces Estación",
+    "tipo": "alojamiento",
+    "direccion": "C. de Pilar Miró, 1",
+    "lat": 41.649235999999995,
+    "lng": -0.9205993
+  },
+  {
+    "nombre": "VTZ San Valero Boutique Hotel",
+    "tipo": "alojamiento",
+    "direccion": "C. de la Manifestación, 27",
+    "lat": 41.6558183,
+    "lng": -0.8804557
+  },
+  {
+    "nombre": "Hotel Ilunion Romareda",
+    "tipo": "alojamiento",
+    "direccion": "C. de Asín y Palacios, 11",
+    "lat": 41.6375909,
+    "lng": -0.903839
+  },
+  {
+    "nombre": "B&B HOTEL Zaragoza Centro",
+    "tipo": "alojamiento",
+    "direccion": "C. de Sobrarbe, 2",
+    "lat": 41.6586901,
+    "lng": -0.8742076999999999
+  },
+  {
+    "nombre": "Hostal Cumbre",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Cataluña, 24",
+    "lat": 41.6591084,
+    "lng": -0.8712
+  },
+  {
+    "nombre": "Hotel Avenida",
+    "tipo": "alojamiento",
+    "direccion": "Av. de César Augusto, 55",
+    "lat": 41.6551062,
+    "lng": -0.8842974
+  },
+  {
+    "nombre": "Hotel Gran Vía",
+    "tipo": "alojamiento",
+    "direccion": "P.º Gran Vía, 38",
+    "lat": 41.6456026,
+    "lng": -0.8903686
+  },
+  {
+    "nombre": "Hostal El Carmen",
+    "tipo": "alojamiento",
+    "direccion": "P.º de María Agustín, 13",
+    "lat": 41.6503471,
+    "lng": -0.8892526
+  },
+  {
+    "nombre": "U-Hotel Villa Gomá",
+    "tipo": "alojamiento",
+    "direccion": "C. del Padre Arrupe, 1",
+    "lat": 41.633728999999995,
+    "lng": -0.9009244
+  },
+  {
+    "nombre": "B&B HOTEL Zaragoza Plaza Mozart",
+    "tipo": "alojamiento",
+    "direccion": "Hostal",
+    "lat": 41.6604631,
+    "lng": -0.8627941
+  },
+  {
+    "nombre": "Hotel Río Arga",
+    "tipo": "alojamiento",
+    "direccion": "C. de Contamina, 20",
+    "lat": 41.654831,
+    "lng": -0.8809079999999999
+  },
+  {
+    "nombre": "Hotel Hesperia Zaragoza Centro",
+    "tipo": "alojamiento",
+    "direccion": "C. del Conde de Aranda, 48",
+    "lat": 41.655175299999996,
+    "lng": -0.8876527999999999
+  },
+  {
+    "nombre": "iStay by NH Zaragoza Sport Hotel",
+    "tipo": "alojamiento",
+    "direccion": "C. del Moncayo, 5",
+    "lat": 41.649837999999995,
+    "lng": -0.895415
+  },
+  {
+    "nombre": "ibis Styles Zaragoza Centro",
+    "tipo": "alojamiento",
+    "direccion": "C. del Coso, 123",
+    "lat": 41.6514421,
+    "lng": -0.8745744999999999
+  },
+  {
+    "nombre": "VTZ The Orus Factory Hotel",
+    "tipo": "alojamiento",
+    "direccion": "C. de Escoriaza y Fabro, 45",
+    "lat": 41.650106699999995,
+    "lng": -0.8948362
+  },
+  {
+    "nombre": "Hotel Zenit Don Yo",
+    "tipo": "alojamiento",
+    "direccion": "C. de Juan Bruil, 4, 6",
+    "lat": 41.648520999999995,
+    "lng": -0.8836896
+  },
+  {
+    "nombre": "Hostal San Jorge",
+    "tipo": "alojamiento",
+    "direccion": "Cl. Mayor, 4",
+    "lat": 41.654040099999996,
+    "lng": -0.877342
+  },
+  {
+    "nombre": "Albergue de Zaragoza Hostel",
+    "tipo": "alojamiento",
+    "direccion": "C. de los Predicadores, 70",
+    "lat": 41.6576996,
+    "lng": -0.8859363
+  },
+  {
+    "nombre": "Hotel Goya, Zaragoza",
+    "tipo": "alojamiento",
+    "direccion": "C. del Cinco de Marzo, 5",
+    "lat": 41.651634,
+    "lng": -0.8826666
+  },
+  {
+    "nombre": "Hotel Cogullada",
+    "tipo": "alojamiento",
+    "direccion": "C. de Albert Einstein, 3",
+    "lat": 41.6705116,
+    "lng": -0.8619836
+  },
+  {
+    "nombre": "Hostal Central Zaragoza",
+    "tipo": "alojamiento",
+    "direccion": "Av. de César Augusto, 72",
+    "lat": 41.655024499999996,
+    "lng": -0.8838332999999999
+  },
+  {
+    "nombre": "Apartamentos Gran Confort Zaragoza: Apartamentos por horas",
+    "tipo": "alojamiento",
+    "direccion": "C. de San Blas, 29",
+    "lat": 41.656119499999996,
+    "lng": -0.8849488999999999
+  },
+  {
+    "nombre": "Apartahotel Augusta Centro",
+    "tipo": "alojamiento",
+    "direccion": "C. de San Pablo, 24",
+    "lat": 41.6557521,
+    "lng": -0.8850047
+  },
+  {
+    "nombre": "Hotel La Ferroviaria",
+    "tipo": "alojamiento",
+    "direccion": "C. de la Madre Sacramento, 63",
+    "lat": 41.650549,
+    "lng": -0.8931962
+  },
+  {
+    "nombre": "Adiestramiento canino BEC",
+    "tipo": "adiestrador",
+    "direccion": "C. Cruz Roja, 4",
+    "lat": 41.8675438,
+    "lng": -0.7854943
+  },
+  {
+    "nombre": "Doguea Educación Canina",
+    "tipo": "adiestrador",
+    "direccion": "Paseo Del Canal s/n",
+    "lat": 41.6066536,
+    "lng": -0.8438694
+  },
+  {
+    "nombre": "VALBALAT Equipo de IGP- SchutzHund Los Llanos. Adiestramiento canino deportivo",
+    "tipo": "adiestrador",
+    "direccion": "Cam. de Copao",
+    "lat": 41.6806711,
+    "lng": -0.9886822999999999
+  },
+  {
+    "nombre": "Dididog - Guardería Canina",
+    "tipo": "guarderia_canina",
+    "direccion": "Torre de los Navarros",
+    "telefono": "670 26 48 81",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "",
+    "estado": "Abierto ahora",
+    "lat": 41.7147241,
+    "lng": -1.0646558,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJa7v7wFdlWQ0RCX1rqXwwRlY",
+    "fuenteConsulta": "guarderia canina en Zaragoza, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia Canina Happy Dogs",
+    "tipo": "guarderia_canina",
+    "direccion": "Acequia de Alfajarín, s/n",
+    "telefono": "647 27 68 33",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "10:00–13:00",
+    "estado": "Abierto · Cierre: 19:30",
+    "lat": 41.5957107,
+    "lng": -0.7027167,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJa-j9_pwYWQ0R1_IqgJwio78",
+    "fuenteConsulta": "guarderia canina en Zaragoza, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Centro Canino Sa Roca - Guardería Canina",
+    "tipo": "guarderia_canina",
+    "direccion": "Cam. Cabañera",
+    "telefono": "629 62 99 29",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "10:00–13:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 41.7429304,
+    "lng": -0.7905082,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJNTzrHMYRWQ0RfI0BSdiLbig",
+    "fuenteConsulta": "guarderia canina en Zaragoza, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "El Refugio de Zarcan, Guardería Canina Pinseque",
+    "tipo": "guarderia_canina",
+    "direccion": "C. Río Isuela, 3",
+    "telefono": "663 32 20 90",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "10:00–13:00",
+    "estado": "Abierto · Cierre: 19:00",
+    "lat": 41.728975899999995,
+    "lng": -1.0566461999999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJo0Bz5gMPWQ0RISVu44RgAzM",
+    "fuenteConsulta": "guarderia canina en Zaragoza, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia mascotas Alaguau",
+    "tipo": "guarderia_canina",
+    "direccion": "Ctra. de Cabañas, Km 1, 4, 50630",
+    "telefono": "667 16 65 73",
+    "valoracion": 4.5,
+    "resenas": null,
+    "horario": "",
+    "estado": "Abierto ahora",
+    "lat": 41.7791213,
+    "lng": -1.1445724,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJpyCoaTR7WQ0R_LO2HTu5JYE",
+    "fuenteConsulta": "residencia canina en Zaragoza, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia Canina Don Perro y Doña Gata",
+    "tipo": "guarderia_canina",
+    "direccion": "Cam. de la Canal, 130",
+    "telefono": "976 32 98 00",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "9:00–12:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 41.655757,
+    "lng": -0.9681559999999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ382srdVrWQ0Rdrl_rZJZlMA",
+    "fuenteConsulta": "guarderia canina en Zaragoza, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Dog Garden Centro Canino",
+    "tipo": "guarderia_canina",
+    "direccion": "C. el Vado, s/n",
+    "telefono": "976 58 29 05",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "8:00–14:00",
+    "estado": "Abierto · Cierre: 21:00",
+    "lat": 41.6566708,
+    "lng": -0.8428049999999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJn-P6U_UUWQ0RkyJRHIrFvKc",
+    "fuenteConsulta": "guarderia canina en Zaragoza, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Desvio Residencia Canina",
+    "tipo": "guarderia_canina",
+    "direccion": "Cam. de Épila, 2",
+    "telefono": "",
+    "valoracion": null,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 41.6586041,
+    "lng": -0.9387587,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJs8ErZ3NrWQ0R_u8IFA-Vso8",
+    "fuenteConsulta": "residencia canina en Zaragoza, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "nombre": "RESIDENCIA CANINA CACERES EL POLIGONO",
+    "tipo": "guarderia_canina",
+    "direccion": "Polígono Ganadero",
+    "telefono": "649 91 64 62",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 39.5182163,
+    "lng": -6.3554672,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJpSrbFtjhFQ0RFHE7S8cwO2s",
+    "fuenteConsulta": "residencia canina en Cáceres, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia Canina Tomás Manzano",
+    "tipo": "guarderia_canina",
+    "direccion": "Poligono Ganadero",
+    "telefono": "679 35 82 38",
+    "valoracion": 4,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 39.5222731,
+    "lng": -6.3579522,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ0VDPBX4KFg0RyH_Yn0z7J1s",
+    "fuenteConsulta": "guarderia canina en Cáceres, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

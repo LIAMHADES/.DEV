@@ -1,0 +1,653 @@
+[
+  {
+    "nombre": "Pet Chic",
+    "tipo": "tienda",
+    "direccion": "C Sagasta, 1",
+    "lat": 37.9839835,
+    "lng": -1.1356206
+  },
+  {
+    "nombre": "Doogsy | Peluquería Canina Murcia",
+    "tipo": "tienda",
+    "direccion": "Av. Alto de las Atalayas, 5",
+    "lat": 38.0243922,
+    "lng": -1.1311111999999999
+  },
+  {
+    "nombre": "Cientotrece Peluquería canina",
+    "tipo": "tienda",
+    "direccion": "Pl. Joaquin Olmedo, 2",
+    "lat": 37.9457109,
+    "lng": -1.1033296
+  },
+  {
+    "nombre": "Peluquería Canina BECK Dog Grooming",
+    "tipo": "tienda",
+    "direccion": "C. Mayor, 76",
+    "lat": 37.939872099999995,
+    "lng": -1.1621101999999999
+  },
+  {
+    "nombre": "Casa Aroco",
+    "tipo": "tienda",
+    "direccion": "Cam. del Armao",
+    "lat": 37.5828402,
+    "lng": -1.7459851
+  },
+  {
+    "nombre": "Peluquería canina Murcia Patitas Felices",
+    "tipo": "tienda",
+    "direccion": "C. Cuatro Caminos",
+    "lat": 37.9971694,
+    "lng": -1.115809
+  },
+  {
+    "nombre": "Cucos y Coquetos Peluqueria Canina",
+    "tipo": "tienda",
+    "direccion": "C. Pintor Muñoz Barberán, 8",
+    "lat": 37.937917399999996,
+    "lng": -1.1709511
+  },
+  {
+    "nombre": "Soapy",
+    "tipo": "tienda",
+    "direccion": "C. Argilico, 1",
+    "lat": 37.9876442,
+    "lng": -1.1365148999999999
+  },
+  {
+    "nombre": "Mr. Rufo Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. Juan Aguilar Amat, 15",
+    "lat": 38.023122,
+    "lng": -1.1375761
+  },
+  {
+    "nombre": "La tienda de las mascotas",
+    "tipo": "tienda",
+    "direccion": "Carr. de la Fuensanta, 206, bajo",
+    "lat": 37.9619504,
+    "lng": -1.1276232
+  },
+  {
+    "nombre": "Peluquería canina BarberDog.Murcia",
+    "tipo": "tienda",
+    "direccion": "C. José Maria Pemán, 4",
+    "lat": 37.998182799999995,
+    "lng": -1.1278823
+  },
+  {
+    "nombre": "Saltando Hormigas",
+    "tipo": "tienda",
+    "direccion": "Calle Emigrante, 3, 1 D",
+    "lat": 37.9917985,
+    "lng": -1.1395122
+  },
+  {
+    "nombre": "Las Hoyuelas Residencia Canina",
+    "tipo": "tienda",
+    "direccion": "Paraje El Jabonero, s/n",
+    "lat": 38.0203525,
+    "lng": -1.7219689999999999
+  },
+  {
+    "nombre": "C. Los cautivos",
+    "tipo": "protectora",
+    "direccion": "C-15",
+    "lat": 37.729217899999995,
+    "lng": -1.7804426
+  },
+  {
+    "nombre": "Peluquería y estética canina Laika",
+    "tipo": "tienda",
+    "direccion": "C. Mayor, 89",
+    "lat": 37.956322799999995,
+    "lng": -1.0939451999999998
+  },
+  {
+    "nombre": "Peluquería canina El Perro Barbero",
+    "tipo": "tienda",
+    "direccion": "C. Pío XII, 28",
+    "lat": 37.971980599999995,
+    "lng": -1.1225171999999999
+  },
+  {
+    "nombre": "WOF",
+    "tipo": "tienda",
+    "direccion": "Av. de la Region Murciana, 71, bajo",
+    "lat": 37.981277999999996,
+    "lng": -1.1039735
+  },
+  {
+    "nombre": "Mapache Dog House",
+    "tipo": "tienda",
+    "direccion": "Plaza Preciosa",
+    "lat": 37.990088799999995,
+    "lng": -1.1308618
+  },
+  {
+    "nombre": "Miscota",
+    "tipo": "tienda",
+    "direccion": "Avenida de la Constitución, junto",
+    "lat": 37.990263,
+    "lng": -1.1311381
+  },
+  {
+    "nombre": "PROTECTORA VIDA",
+    "tipo": "protectora",
+    "direccion": "Mirador del Cigarralejo",
+    "lat": 38.0545598,
+    "lng": -1.4699923
+  },
+  {
+    "nombre": "Peluquería Canina Corto & Cambio / Peluquería Canina en Las Torres de Cotillas",
+    "tipo": "tienda",
+    "direccion": "Frente supermercado MASYMAS",
+    "lat": 38.0212497,
+    "lng": -1.2372902
+  },
+  {
+    "nombre": "Planet Piensos Servicios 2.0",
+    "tipo": "tienda",
+    "direccion": "Cam. de Salabosque, 153",
+    "lat": 37.942609999999995,
+    "lng": -1.1434548
+  },
+  {
+    "nombre": "LA PERRUQUERIA MONA - Peluquería canina y felina",
+    "tipo": "tienda",
+    "direccion": "C. Laurel, n14",
+    "lat": 38.015162499999995,
+    "lng": -1.1623027
+  },
+  {
+    "nombre": "Espíritu Animal",
+    "tipo": "tienda",
+    "direccion": "Av. Reyes Católicos, 23",
+    "lat": 37.9981462,
+    "lng": -1.1476823999999999
+  },
+  {
+    "nombre": "Estilismo Canino Jeni Illescas",
+    "tipo": "tienda",
+    "direccion": "C. Miguel Vivancos, 1",
+    "lat": 38.0045761,
+    "lng": -1.1298740999999999
+  },
+  {
+    "nombre": "Peluquería de Mascotas Merlín",
+    "tipo": "tienda",
+    "direccion": "Cmo de la Fuensanta, 61",
+    "lat": 37.9736924,
+    "lng": -1.1260904999999999
+  },
+  {
+    "nombre": "Estilistas Caninos Thai",
+    "tipo": "tienda",
+    "direccion": "C. José Antonio Camacho, 6",
+    "lat": 37.9697338,
+    "lng": -1.1326196
+  },
+  {
+    "nombre": "Protectora APAMA NATURE",
+    "tipo": "protectora",
+    "direccion": "C. Encomienda",
+    "lat": 38.2061646,
+    "lng": -1.0420817
+  },
+  {
+    "nombre": "Doña Eva",
+    "tipo": "tienda",
+    "direccion": "C. Arcipreste Mariano Aroca",
+    "lat": 37.977204199999996,
+    "lng": -1.1263262
+  },
+  {
+    "nombre": "Autolavado y peluquería de Mascotas Aqualadra",
+    "tipo": "tienda",
+    "direccion": "C. Mayor, 138, Izquierda",
+    "lat": 37.994541399999996,
+    "lng": -1.098919
+  },
+  {
+    "nombre": "San Roque Mascotas, Peluquería Canina y tienda especializada",
+    "tipo": "tienda",
+    "direccion": "Pl. de la Cruz Roja, 2",
+    "lat": 37.9822998,
+    "lng": -1.1261588999999999
+  },
+  {
+    "nombre": "Peluqueria Canina Ana Escribano",
+    "tipo": "tienda",
+    "direccion": "P.º Joaquín Garrigues Walker, 3, bajo",
+    "lat": 38.0014567,
+    "lng": -1.1384958
+  },
+  {
+    "nombre": "Al Agua Pato",
+    "tipo": "tienda",
+    "direccion": "C. Atleta Antonio Peñalver, 3",
+    "lat": 37.994033099999996,
+    "lng": -1.1039295
+  },
+  {
+    "nombre": "FashionPets",
+    "tipo": "tienda",
+    "direccion": "Carril Huerto Quintano, 17",
+    "lat": 38.014337,
+    "lng": -1.1470645
+  },
+  {
+    "nombre": "Peluqueria Canina Cora",
+    "tipo": "tienda",
+    "direccion": "Calle Ardal, 3, Loc 1",
+    "lat": 37.935898,
+    "lng": -1.1576441
+  },
+  {
+    "nombre": "Dama y Golfo Peluqueria Canina Murcia",
+    "tipo": "tienda",
+    "direccion": "C. San Nicolás, 17",
+    "lat": 37.985669699999995,
+    "lng": -1.1351326
+  },
+  {
+    "nombre": "WonderPets (antes Terranova)",
+    "tipo": "tienda",
+    "direccion": "C. Huerto Manu, 3",
+    "lat": 37.9902325,
+    "lng": -1.1396294999999999
+  },
+  {
+    "nombre": "Jackie peluquería canina",
+    "tipo": "tienda",
+    "direccion": "C. Pintor Saura Pacheco, 3",
+    "lat": 37.9747396,
+    "lng": -1.1204878999999999
+  },
+  {
+    "nombre": "GOS PELUQUERIA CANINA",
+    "tipo": "tienda",
+    "direccion": "Av. Reino de Murcia, 46",
+    "lat": 38.0736284,
+    "lng": -1.1576521
+  },
+  {
+    "nombre": "Iguazú mascotas",
+    "tipo": "tienda",
+    "direccion": "tiensa de animales",
+    "lat": 37.9383361,
+    "lng": -1.168256
+  },
+  {
+    "nombre": "Albergue Municipal Animales Abandonados",
+    "tipo": "protectora",
+    "direccion": "Cam. del Cementerio",
+    "lat": 38.484909099999996,
+    "lng": -1.33189
+  },
+  {
+    "nombre": "Familycan Ronda Sur",
+    "tipo": "tienda",
+    "direccion": "Junto a La Olla Sur",
+    "lat": 37.9697187,
+    "lng": -1.1319218
+  },
+  {
+    "nombre": "Peluquería canina Murcia La Chata",
+    "tipo": "tienda",
+    "direccion": "Pl. Aurora, 1",
+    "lat": 37.9881501,
+    "lng": -1.1314937
+  },
+  {
+    "nombre": "Guaupísimos peluquería y estética canina",
+    "tipo": "tienda",
+    "direccion": "C. Heráclito, bajo 7",
+    "lat": 37.9615714,
+    "lng": -1.0856
+  },
+  {
+    "nombre": "Mascotas Jc1 Tienda para mascotas, servicios veterinarios y peluqueria canina",
+    "tipo": "tienda",
+    "direccion": "Pl. Dentistas Murcianos, n°15",
+    "lat": 38.0003011,
+    "lng": -1.1379664999999999
+  },
+  {
+    "nombre": "Peluquería Canina Cachito Guau",
+    "tipo": "tienda",
+    "direccion": "Av. de la Libertad, 6, Blq 4",
+    "lat": 37.990722399999996,
+    "lng": -1.1331423
+  },
+  {
+    "nombre": "Autolavado cotas",
+    "tipo": "tienda",
+    "direccion": "Pl. Pintor Mariano Ballester",
+    "lat": 37.977975199999996,
+    "lng": -1.1272384
+  },
+  {
+    "nombre": "Asoc. Protectora de Animales de Molina de Segura",
+    "tipo": "protectora",
+    "direccion": "Unnamed Road, 30627",
+    "lat": 38.1111708,
+    "lng": -1.1369567999999999
+  },
+  {
+    "nombre": "PELUQUERÍA CANINA AMIGOS",
+    "tipo": "tienda",
+    "direccion": "Calle Antonio Garrigós",
+    "lat": 37.989126899999995,
+    "lng": -1.1270992
+  },
+  {
+    "nombre": "Distrito Animal - Clínica Veterinaria",
+    "tipo": "tienda",
+    "direccion": "C. Pasos de Santiago, Nº13-14, Bajo",
+    "lat": 37.990221999999996,
+    "lng": -1.1358219999999999
+  },
+  {
+    "nombre": "Aguiproan",
+    "tipo": "protectora",
+    "direccion": "Diseminado el Charcon, 52",
+    "lat": 37.4619415,
+    "lng": -1.6573607
+  },
+  {
+    "nombre": "Suministros Alquibla",
+    "tipo": "tienda",
+    "direccion": "Carril de los Gonzalez, 25",
+    "lat": 37.958922199999996,
+    "lng": -1.099395
+  },
+  {
+    "nombre": "Pajarería Y Acuario Antonio Molina",
+    "tipo": "tienda",
+    "direccion": "C. Julián Calvo, 2, BAJO",
+    "lat": 37.9847385,
+    "lng": -1.1355355999999999
+  },
+  {
+    "nombre": "Asociación protectora Por Un Amigo Fiel",
+    "tipo": "protectora",
+    "direccion": "Polígono P-2.Apto.Urban.Industr, 252C",
+    "lat": 38.2109094,
+    "lng": -1.38009
+  },
+  {
+    "nombre": "Murcia Dog",
+    "tipo": "tienda",
+    "direccion": "Cam. del Rio Nubla, 7",
+    "lat": 37.9471,
+    "lng": -1.1674543
+  },
+  {
+    "nombre": "I Love Dog Wash | Murcia",
+    "tipo": "tienda",
+    "direccion": "C. Intendente Patiño, 5",
+    "lat": 37.993781999999996,
+    "lng": -1.1210106
+  },
+  {
+    "nombre": "Servimascota 2000",
+    "tipo": "tienda",
+    "direccion": "C. Almte. Churruca, 1, bajo",
+    "lat": 37.9957419,
+    "lng": -1.1216943
+  },
+  {
+    "nombre": "Mountain View Luxury Boarding Kennels/Cattery and Pet Villa",
+    "tipo": "tienda",
+    "direccion": "Paraje el espinar, 10",
+    "lat": 37.7091907,
+    "lng": -1.1419880999999998
+  },
+  {
+    "nombre": "Aquarium Centrofama",
+    "tipo": "tienda",
+    "direccion": "C. Teniente Gral. Gutierrez Mellado, 9",
+    "lat": 37.990345,
+    "lng": -1.1282111
+  },
+  {
+    "nombre": "Planeta Pez Murcia",
+    "tipo": "tienda",
+    "direccion": "C. Historiador Juan Torres Fontes, 10",
+    "lat": 37.9750139,
+    "lng": -1.1214312
+  },
+  {
+    "nombre": "Mascotas Moñino, S.L.U.",
+    "tipo": "tienda",
+    "direccion": "Av. de Alicante, 7",
+    "lat": 38.0111302,
+    "lng": -1.1031798
+  },
+  {
+    "nombre": "Comercial Buendía",
+    "tipo": "tienda",
+    "direccion": "Carril Aragones, 46",
+    "lat": 38.015439799999996,
+    "lng": -1.0914639
+  },
+  {
+    "nombre": "Peluquería Canina A Patitas y Rizos",
+    "tipo": "tienda",
+    "direccion": "C. Huerto Manu, 13",
+    "lat": 37.9919199,
+    "lng": -1.1407577
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Calle Pp Montevida, 1201",
+    "lat": 37.9366627,
+    "lng": -1.1513240999999999
+  },
+  {
+    "nombre": "ADOPTA VIDA CARTAGENA",
+    "tipo": "protectora",
+    "direccion": "C. Pollensa, 30, bajo",
+    "lat": 37.6134,
+    "lng": -0.97797
+  },
+  {
+    "nombre": "Cachorros Murcia",
+    "tipo": "tienda",
+    "direccion": "Av. Gutiérrez Mellado, 31, bajo C",
+    "lat": 38.0617989,
+    "lng": -1.208475
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "C. de Molina de Segura, 10",
+    "lat": 37.992032699999996,
+    "lng": -1.1129143
+  },
+  {
+    "nombre": "Macro Fauna",
+    "tipo": "tienda",
+    "direccion": "Vereda del Capitán, 6B",
+    "lat": 38.001581,
+    "lng": -1.0836318
+  },
+  {
+    "nombre": "ASOCIACIÓN MURCIANA DE RESCATE DE ANIMALES MARA",
+    "tipo": "protectora",
+    "direccion": "Ctra. de Pliego",
+    "lat": 38.0314421,
+    "lng": -1.4961486
+  },
+  {
+    "nombre": "Albergue De Animales",
+    "tipo": "protectora",
+    "direccion": "Lugar la Condesa, 139",
+    "lat": 37.8351974,
+    "lng": -0.9098134
+  },
+  {
+    "nombre": "Maxmascota",
+    "tipo": "tienda",
+    "direccion": "Carril de los Chornos, 142",
+    "lat": 37.984818499999996,
+    "lng": -1.1594573
+  },
+  {
+    "nombre": "Kechy",
+    "tipo": "tienda",
+    "direccion": "C. Moncayo, 6",
+    "lat": 37.9939271,
+    "lng": -1.1398799
+  },
+  {
+    "nombre": "Andrea's Animal Rescue & The Henrietta Foundation",
+    "tipo": "tienda",
+    "direccion": "Av. Constitución, 57",
+    "lat": 37.6004066,
+    "lng": -1.3147182
+  },
+  {
+    "nombre": "ANERPA Asociación Nacional Española de Rehabilitación y Protección Animal",
+    "tipo": "protectora",
+    "direccion": "anerpa.org, No se admiten visitas sin cita previa",
+    "lat": 38.0544802,
+    "lng": -1.2541837999999998
+  },
+  {
+    "nombre": "Refugio Desert Hearts",
+    "tipo": "protectora",
+    "direccion": "30876 Lorca",
+    "lat": 37.5346823,
+    "lng": -1.5008682999999998
+  },
+  {
+    "nombre": "SPANDY. Centro de Protección Animal 1",
+    "tipo": "protectora",
+    "direccion": "30510 Yecla",
+    "lat": 38.5890778,
+    "lng": -1.1223379
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Autovia Del Mediterráneo",
+    "lat": 38.041641899999995,
+    "lng": -1.1482963
+  },
+  {
+    "nombre": "El Cobijo",
+    "tipo": "protectora",
+    "direccion": "Fundacion Protectora El Cobijo",
+    "lat": 37.9770825,
+    "lng": -1.2554112
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "Av. Juan de Borbón, Loc B - 87",
+    "lat": 38.031902599999995,
+    "lng": -1.148297
+  },
+  {
+    "nombre": "Peludog",
+    "tipo": "tienda",
+    "direccion": "C. Almohajar, 8, Loc 2",
+    "lat": 37.9810782,
+    "lng": -1.1319985
+  },
+  {
+    "nombre": "Centro de Protección Animal 2",
+    "tipo": "protectora",
+    "direccion": "HVMH+X5",
+    "lat": 38.584990399999995,
+    "lng": -1.1220838
+  },
+  {
+    "nombre": "Novecan - ORTOPEDIA CANINA",
+    "tipo": "tienda",
+    "direccion": "C. Mayor, 31, bajo",
+    "lat": 37.9919933,
+    "lng": -1.1066577
+  },
+  {
+    "nombre": "Protectora Caminando con ellos",
+    "tipo": "protectora",
+    "direccion": "los infiernos",
+    "lat": 37.8350489,
+    "lng": -0.9099212999999999
+  },
+  {
+    "nombre": "Zococan",
+    "tipo": "tienda",
+    "direccion": "Paseo Florencia",
+    "lat": 37.9691893,
+    "lng": -1.1291949
+  },
+  {
+    "nombre": "Colombinatura",
+    "tipo": "tienda",
+    "direccion": "Cam. de Tiñosa, 45",
+    "lat": 37.9686283,
+    "lng": -1.0967407999999998
+  },
+  {
+    "nombre": "Patitas Unidas Los Alcázares",
+    "tipo": "protectora",
+    "direccion": "C/ los Luisos, 46",
+    "lat": 37.73881,
+    "lng": -0.85102
+  },
+  {
+    "nombre": "Centro Municipal de Control de Zoonosis - CEPROAMUR",
+    "tipo": "protectora",
+    "direccion": "Carril Torre Molina, 110",
+    "lat": 37.9962034,
+    "lng": -1.1533489
+  },
+  {
+    "nombre": "Santuario Animalista OTTeandO el Horizonte (Otto’s Animal Sanctuary)",
+    "tipo": "protectora",
+    "direccion": "Lugar Saladillo, 5",
+    "lat": 37.67742,
+    "lng": -1.3375
+  },
+  {
+    "nombre": "Tienda de animales",
+    "tipo": "tienda",
+    "direccion": "C. del Pensionista, 25",
+    "lat": 38.0514738,
+    "lng": -1.212664
+  },
+  {
+    "nombre": "BIENESTAR ANIMAL STORE",
+    "tipo": "tienda",
+    "direccion": "30002 Murcia",
+    "lat": 37.9796456,
+    "lng": -1.1316865999999999
+  },
+  {
+    "nombre": "Asociación Protectora Rescate Amigos Peludos",
+    "tipo": "protectora",
+    "direccion": "QQ4J+QH",
+    "lat": 37.756986999999995,
+    "lng": -1.2185679999999999
+  },
+  {
+    "nombre": "ECOTOY",
+    "tipo": "tienda",
+    "direccion": "C. Navegante Juan Fernández",
+    "lat": 37.996083399999996,
+    "lng": -1.1239134
+  },
+  {
+    "nombre": "Paws on hearts rehoming",
+    "tipo": "protectora",
+    "direccion": "C. Jaime I el Conquistador, 11",
+    "lat": 37.9891072,
+    "lng": -1.1319101999999999
+  }
+]

@@ -1,0 +1,289 @@
+[
+  {
+    "nombre": "Peluquería Canina Dogs N' Roses",
+    "tipo": "tienda",
+    "direccion": "Junto a bar 'Me Aptc",
+    "lat": 43.3548433,
+    "lng": -5.8630718
+  },
+  {
+    "nombre": "La Patita Presumida",
+    "tipo": "tienda",
+    "direccion": "C. Augusto Junquera, 4",
+    "lat": 43.3704454,
+    "lng": -5.8533257
+  },
+  {
+    "nombre": "De Vil Salón Canino",
+    "tipo": "tienda",
+    "direccion": "C. Emilio Alarcos Llorach, 4, bajo",
+    "lat": 43.3669667,
+    "lng": -5.8423378999999995
+  },
+  {
+    "nombre": "Oviedoaqua",
+    "tipo": "tienda",
+    "direccion": "C. Joaquín Villa Cañal",
+    "lat": 43.355434699999996,
+    "lng": -5.861517
+  },
+  {
+    "nombre": "Petstyle House",
+    "tipo": "tienda",
+    "direccion": "Av. Padre Vinjoy, 6",
+    "lat": 43.356949199999995,
+    "lng": -5.8563627
+  },
+  {
+    "nombre": "Fartucan",
+    "tipo": "tienda",
+    "direccion": "C. Torrecerredo, 27",
+    "lat": 43.370555499999995,
+    "lng": -5.8547962
+  },
+  {
+    "nombre": "Pet Shopping",
+    "tipo": "tienda",
+    "direccion": "C. González Besada, 47",
+    "lat": 43.3559408,
+    "lng": -5.8525703
+  },
+  {
+    "nombre": "Zampazampa",
+    "tipo": "tienda",
+    "direccion": "C. Foncalada, 19",
+    "lat": 43.3659745,
+    "lng": -5.8464865999999995
+  },
+  {
+    "nombre": "Pet´s Show peluquería canina",
+    "tipo": "tienda",
+    "direccion": "C. Joaquín Vaquero Palacios, 5",
+    "lat": 43.367684499999996,
+    "lng": -5.844326499999999
+  },
+  {
+    "nombre": "La Perruquería de Oviedo - Peluquería para perros",
+    "tipo": "tienda",
+    "direccion": "C. Virrey Abascal, 9",
+    "lat": 43.353594099999995,
+    "lng": -5.8452189
+  },
+  {
+    "nombre": "Mas Can Pumarin - Tienda y Peluqueria canina y felina",
+    "tipo": "tienda",
+    "direccion": "C. Tirso de Avilés, 5",
+    "lat": 43.3712455,
+    "lng": -5.8389871
+  },
+  {
+    "nombre": "L'Arbazana",
+    "tipo": "tienda",
+    "direccion": "Calle Ciriaco Miguel Vigil, 10",
+    "lat": 43.359111999999996,
+    "lng": -5.8620325
+  },
+  {
+    "nombre": "OvieDog",
+    "tipo": "tienda",
+    "direccion": "P.º de la Florida, 5",
+    "lat": 43.3680571,
+    "lng": -5.8696632
+  },
+  {
+    "nombre": "GLAMDOG Salón canino",
+    "tipo": "tienda",
+    "direccion": "C. Marcelino Suárez, 18, 4 Bjo",
+    "lat": 43.3664341,
+    "lng": -5.8668531
+  },
+  {
+    "nombre": "Chokolino Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. Foncalada, 13",
+    "lat": 43.365511399999995,
+    "lng": -5.8463601999999995
+  },
+  {
+    "nombre": "Mr & Mrs Dog - Peluquería Canina y Alimentación Natural",
+    "tipo": "tienda",
+    "direccion": "C. San Pedro de Mestallón, 11",
+    "lat": 43.358840199999996,
+    "lng": -5.8408726
+  },
+  {
+    "nombre": "Ciudad Mascota",
+    "tipo": "tienda",
+    "direccion": "C. Ramiro I Rey, 17",
+    "lat": 43.3649428,
+    "lng": -5.8605882
+  },
+  {
+    "nombre": "Guaw Oviedo Los Prados",
+    "tipo": "tienda",
+    "direccion": "95C9+6M, C.C. Los Prados",
+    "lat": 43.3705625,
+    "lng": -5.8308124999999995
+  },
+  {
+    "nombre": "Limpiadog Buenavista. Peluquería canina, Autolavado y tienda.",
+    "tipo": "tienda",
+    "direccion": "C. Rafael Altamira, 4",
+    "lat": 43.3571968,
+    "lng": -5.8629166
+  },
+  {
+    "nombre": "Mas Can General Elorza - Tienda y Peluqueria canina y felina",
+    "tipo": "tienda",
+    "direccion": "C/ del Gral. Elorza, 89",
+    "lat": 43.3672987,
+    "lng": -5.8517765
+  },
+  {
+    "nombre": "Paraíso Peludo - Peluquería canina y Tienda de Alimentación Natural",
+    "tipo": "tienda",
+    "direccion": "C/ Darío de Regoyos, 21",
+    "lat": 43.362581299999995,
+    "lng": -5.8358436
+  },
+  {
+    "nombre": "Dogger Dog Designers S.L",
+    "tipo": "tienda",
+    "direccion": "C. Sta. Susana, 31",
+    "lat": 43.3601466,
+    "lng": -5.8514338
+  },
+  {
+    "nombre": "MascotAstur - Tienda Fisica y Online, Clinica Veterinaria Redivet - Oviedo",
+    "tipo": "tienda",
+    "direccion": "C. San Pedro de Mestallón, 12, Bajo",
+    "lat": 43.3578718,
+    "lng": -5.8404036
+  },
+  {
+    "nombre": "El Gato Persa",
+    "tipo": "tienda",
+    "direccion": "C. Joaquín Blume, 1",
+    "lat": 43.3660663,
+    "lng": -5.8313805
+  },
+  {
+    "nombre": "Pululis tu tienda de animales en Oviedo",
+    "tipo": "tienda",
+    "direccion": "C. Suárez de la Riva, 1",
+    "lat": 43.360347999999995,
+    "lng": -5.847128
+  },
+  {
+    "nombre": "Perros Premium",
+    "tipo": "tienda",
+    "direccion": "Calle Celestino Álvarez, 5",
+    "lat": 43.354120699999996,
+    "lng": -5.8627693
+  },
+  {
+    "nombre": "Dogger MG, Dog Designers",
+    "tipo": "tienda",
+    "direccion": "C. Muñoz Degraín, 20",
+    "lat": 43.3554307,
+    "lng": -5.8492438
+  },
+  {
+    "nombre": "Nunchican",
+    "tipo": "tienda",
+    "direccion": "Calle Marqués de Pidal, 8",
+    "lat": 43.3634878,
+    "lng": -5.852322699999999
+  },
+  {
+    "nombre": "Fundación Protectora de Animales del Principado de Asturias",
+    "tipo": "protectora",
+    "direccion": "C/ Folgueras 24B",
+    "lat": 43.3871195,
+    "lng": -5.796468399999999
+  },
+  {
+    "nombre": "Pet Grooming & Shopping",
+    "tipo": "tienda",
+    "direccion": "C. González Besada, 47",
+    "lat": 43.3560474,
+    "lng": -5.8525105
+  },
+  {
+    "nombre": "Animalandia Tienda de Animales",
+    "tipo": "tienda",
+    "direccion": "C. Padre Suarez, 3",
+    "lat": 43.3602169,
+    "lng": -5.8424309
+  },
+  {
+    "nombre": "Pet Shower | Autolavado de mascotas | Lava tu mismo a tu perro",
+    "tipo": "tienda",
+    "direccion": "C. Pravia, 1, Bajo n 2",
+    "lat": 43.3666281,
+    "lng": -5.875537
+  },
+  {
+    "nombre": "Pajarería Amazonas",
+    "tipo": "tienda",
+    "direccion": "Av. de Santander, 18",
+    "lat": 43.3677618,
+    "lng": -5.851589
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "Kivet Salud Animal, Autovía A-66",
+    "lat": 43.3922624,
+    "lng": -5.7957291
+  },
+  {
+    "nombre": "Albergue de Animales de Oviedo",
+    "tipo": "protectora",
+    "direccion": "Lugar Bolgachina, 0 S N",
+    "lat": 43.3431846,
+    "lng": -5.8522397
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "95QV+QXX",
+    "lat": 43.3894875,
+    "lng": -5.8050156
+  },
+  {
+    "nombre": "Estilo canino",
+    "tipo": "tienda",
+    "direccion": "Calle Reyes Católicos, 5",
+    "lat": 43.3729192,
+    "lng": -5.8349277
+  },
+  {
+    "nombre": "LimpiaDog",
+    "tipo": "tienda",
+    "direccion": "Av. Torrelavega, 54",
+    "lat": 43.3648471,
+    "lng": -5.8320525
+  },
+  {
+    "nombre": "Peluqueria Canina Alma Dog",
+    "tipo": "tienda",
+    "direccion": "C. Picasso, 2",
+    "lat": 43.3673846,
+    "lng": -5.8461199
+  },
+  {
+    "nombre": "Mi Mascota",
+    "tipo": "tienda",
+    "direccion": "Calle Dr. Pedro Quirós",
+    "lat": 43.3777566,
+    "lng": -5.831679299999999
+  },
+  {
+    "nombre": "Residencia canina LosAmigos",
+    "tipo": "tienda",
+    "direccion": "Lugar Ayones",
+    "lat": 43.337480299999996,
+    "lng": -5.8912873
+  }
+]

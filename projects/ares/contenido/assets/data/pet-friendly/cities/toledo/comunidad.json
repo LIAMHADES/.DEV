@@ -1,0 +1,163 @@
+[
+  {
+    "nombre": "Residencia canina D'AQUIVELT",
+    "tipo": "tienda",
+    "direccion": "Camino del Monte pol 17 parc 19",
+    "lat": 39.701329799999996,
+    "lng": -3.9932982999999997
+  },
+  {
+    "nombre": "Rescata Esquivias",
+    "tipo": "protectora",
+    "direccion": "45221 Esquivias",
+    "lat": 40.103387999999995,
+    "lng": -3.7676201999999996
+  },
+  {
+    "nombre": "GUAU_PETES PERRUQUERIA CANINA",
+    "tipo": "tienda",
+    "direccion": "C. Gascón y Marín, 3A",
+    "lat": 39.939984599999995,
+    "lng": -3.9158150999999997
+  },
+  {
+    "nombre": "Autoservicio Y Peluquería Canina Cloe",
+    "tipo": "tienda",
+    "direccion": "Av. del Madroño, 6, Loc 4",
+    "lat": 39.8904922,
+    "lng": -4.0546616
+  },
+  {
+    "nombre": "MI SENDA DE HUELLAS. Peluquería CANINA en Toledo. Bienestar animal. Stripping.",
+    "tipo": "tienda",
+    "direccion": "Pl. Poeta Federico García Lorca, 8",
+    "lat": 39.8649738,
+    "lng": -3.9465407999999997
+  },
+  {
+    "nombre": "Hotel Mascotas 5 Huellas",
+    "tipo": "tienda",
+    "direccion": "45222 Borox",
+    "lat": 40.0568588,
+    "lng": -3.7402579
+  },
+  {
+    "nombre": "Clau Clau Peluqueria Canina",
+    "tipo": "tienda",
+    "direccion": "Calle Burdeos, 8",
+    "lat": 39.8702483,
+    "lng": -4.0319560999999995
+  },
+  {
+    "nombre": "Peluqueria canina Runa",
+    "tipo": "tienda",
+    "direccion": "C. Río Fresnedoso",
+    "lat": 39.863308499999995,
+    "lng": -3.9443941
+  },
+  {
+    "nombre": "COME Y LADRA Peluquería Canina y Tienda de Animales y Pesca",
+    "tipo": "tienda",
+    "direccion": "C. Río Mesa, 1, Local 20",
+    "lat": 39.861681499999996,
+    "lng": -3.9428606999999998
+  },
+  {
+    "nombre": "IBERICANMADRID ADIESTRAMIENTO CANINO AVANZADO",
+    "tipo": "tienda",
+    "direccion": "Cam. Lominchar",
+    "lat": 40.0467935,
+    "lng": -3.9053544
+  },
+  {
+    "nombre": "Peluquería canina TheDogSpa",
+    "tipo": "tienda",
+    "direccion": "C. Dalia, 10",
+    "lat": 40.049211799999995,
+    "lng": -4.2131605
+  },
+  {
+    "nombre": "Cuidado de Mascotas Pawtitas - Perros y gatos",
+    "tipo": "tienda",
+    "direccion": "C. Cristóbal Colón",
+    "lat": 40.109152,
+    "lng": -3.6911098
+  },
+  {
+    "nombre": "La Perrukeria Casasbuenas",
+    "tipo": "tienda",
+    "direccion": "C. Noez, 20",
+    "lat": 39.7608552,
+    "lng": -4.1287044
+  },
+  {
+    "nombre": "Miss Rumba Guardería y Peluquería Canina by María Casillas",
+    "tipo": "tienda",
+    "direccion": "Plaza Poeta Pedro Jiménez de Castro,4 Esquina",
+    "lat": 39.967388299999996,
+    "lng": -4.8216277
+  },
+  {
+    "nombre": "Guaw",
+    "tipo": "tienda",
+    "direccion": "Centro Comercial Luz del Tajo",
+    "lat": 39.8630481,
+    "lng": -3.9762193
+  },
+  {
+    "nombre": "Puppy Smiles Centro estético Canino y Felino.",
+    "tipo": "tienda",
+    "direccion": "C. de Gante, 3",
+    "lat": 39.8701283,
+    "lng": -4.0307566
+  },
+  {
+    "nombre": "Haruko Centro Canino",
+    "tipo": "tienda",
+    "direccion": "Camino de Toledo, km 2",
+    "lat": 40.1466442,
+    "lng": -4.1991515
+  },
+  {
+    "nombre": "CUKITOS Peluqueria canina,tienda y floristeria",
+    "tipo": "tienda",
+    "direccion": "C. Trinitarios, 17",
+    "lat": 39.865524799999996,
+    "lng": -4.022397
+  },
+  {
+    "nombre": "DOGHORSECITY Asociación protectora de animales y centro de adopciones.",
+    "tipo": "protectora",
+    "direccion": "C. Oca, 6",
+    "lat": 40.255912599999995,
+    "lng": -4.2371077
+  },
+  {
+    "nombre": "Guardería Canina Mucho Mejor Que En Casa",
+    "tipo": "tienda",
+    "direccion": "C. Virgen del Rocío, 4",
+    "lat": 40.0902154,
+    "lng": -3.9063215
+  },
+  {
+    "nombre": "Asociación Ucrit",
+    "tipo": "protectora",
+    "direccion": "C. Cervantes, 15",
+    "lat": 39.5820334,
+    "lng": -3.8670066
+  },
+  {
+    "nombre": "Alosan Recogida De Animales Abandonados Sl",
+    "tipo": "protectora",
+    "direccion": "Paraje Cerro Enmedio,Poligono 32,parcelas A,B.C",
+    "lat": 39.7131225,
+    "lng": -3.6472322999999998
+  },
+  {
+    "nombre": "De Perros Cobisa Peluqueria Canina",
+    "tipo": "tienda",
+    "direccion": "C. San Ildefonso, 33",
+    "lat": 39.807772299999996,
+    "lng": -4.0331649
+  }
+]

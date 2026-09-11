@@ -1,0 +1,42 @@
+[
+  {
+    "nombre": "Centro Canino \"El Jardín de Quercus\"",
+    "tipo": "guarderia_canina",
+    "direccion": "Casas aisladas de",
+    "telefono": "605 12 09 91",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 38.9206171,
+    "lng": -6.9589238,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJnUj8UM7lFg0RxHV5XCtS-XU",
+    "fuenteConsulta": "guarderia canina en Badajoz, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia Canina el hogar del perro",
+    "tipo": "guarderia_canina",
+    "direccion": "Calle Reyes Huertas, 3",
+    "telefono": "617 55 07 15",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "",
+    "estado": "Abierto ahora",
+    "lat": 38.8788889,
+    "lng": -6.9591667,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJS04XEMzlFg0RfMaJIwSDDR0",
+    "fuenteConsulta": "guarderia canina en Badajoz, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

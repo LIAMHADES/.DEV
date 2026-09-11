@@ -1,0 +1,149 @@
+[
+  {
+    "nombre": "Kabican/ Hotel y Guardería Canina",
+    "tipo": "otros",
+    "direccion": "Donostia Ibilbidea, 52",
+    "lat": 43.282625599999996,
+    "lng": -1.9502225
+  },
+  {
+    "nombre": "Legazpi Doce Rooms & Suites",
+    "tipo": "otros",
+    "direccion": "Legazpi K., 12",
+    "lat": 43.321788399999996,
+    "lng": -1.9822796999999999
+  },
+  {
+    "nombre": "Pensión Bule",
+    "tipo": "otros",
+    "direccion": "Sarriegi Plaza, nº 1, Piso 2",
+    "lat": 43.322776,
+    "lng": -1.983468
+  },
+  {
+    "nombre": "Pension Urkia",
+    "tipo": "otros",
+    "direccion": "Urbieta Kalea, 12",
+    "lat": 43.3178631,
+    "lng": -1.9836945
+  },
+  {
+    "nombre": "La Perla",
+    "tipo": "otros",
+    "direccion": "Loiola Kalea, 10",
+    "lat": 43.3177179,
+    "lng": -1.9824543
+  },
+  {
+    "nombre": "MILIMARA Suites",
+    "tipo": "otros",
+    "direccion": "Illarra Bidea, 111",
+    "lat": 43.3022199,
+    "lng": -2.0200183
+  },
+  {
+    "nombre": "Pensión AlojaDonosti - Mejor Precio Garantizado",
+    "tipo": "otros",
+    "direccion": "C. de San Jerónimo, 17, 1º Izda",
+    "lat": 43.3231545,
+    "lng": -1.9854085
+  },
+  {
+    "nombre": "abba Apartments Playa de Gros San Sebastián",
+    "tipo": "otros",
+    "direccion": "Ategorrietako Galtzada Zaharra, 35",
+    "lat": 43.324483,
+    "lng": -1.9677985
+  },
+  {
+    "nombre": "Aussie II",
+    "tipo": "otros",
+    "direccion": "Elgoibar Kalea, 10",
+    "lat": 43.2958235,
+    "lng": -1.9657703
+  },
+  {
+    "nombre": "Orekan Borda . Txakur Egoitza - Residencia Canina",
+    "tipo": "otros",
+    "direccion": "Goiburu Auzoa 4, B",
+    "lat": 43.2439099,
+    "lng": -1.9749763999999999
+  },
+  {
+    "nombre": "Casa Rural Arratzain - SIDRERIA-",
+    "tipo": "otros",
+    "direccion": "Diseminados Usurbil Barreiatua, 21",
+    "lat": 43.29092,
+    "lng": -2.0521149999999997
+  },
+  {
+    "nombre": "Pensión Atxiki",
+    "tipo": "otros",
+    "direccion": "Zemoria Kalea, Kalea 13",
+    "lat": 43.3266407,
+    "lng": -1.9704001999999998
+  },
+  {
+    "nombre": "Pensión Beizama",
+    "tipo": "otros",
+    "direccion": "Plaza de Ergobia, 12, 1°",
+    "lat": 43.2765371,
+    "lng": -1.9549398
+  },
+  {
+    "nombre": "Hostal Bahia",
+    "tipo": "otros",
+    "direccion": "San Martin Kalea, 54 bis",
+    "lat": 43.316200599999995,
+    "lng": -1.9856452999999998
+  },
+  {
+    "nombre": "wecamp San Sebastián",
+    "tipo": "otros",
+    "direccion": "Padre Orkolaga Ibilbidea, 69",
+    "lat": 43.304733899999995,
+    "lng": -2.0457953
+  },
+  {
+    "nombre": "Pensión Amara",
+    "tipo": "otros",
+    "direccion": "Isabel II.a Etorb., 2",
+    "lat": 43.3051576,
+    "lng": -1.9752808
+  },
+  {
+    "nombre": "Hostel UZTURRE",
+    "tipo": "otros",
+    "direccion": "Peña y Goñi Kalea, 13",
+    "lat": 43.323219699999996,
+    "lng": -1.9773668
+  },
+  {
+    "nombre": "ECAM ·· Adiestramiento de Perros en San Sebastian ··",
+    "tipo": "otros",
+    "direccion": "Jauregi Jeneralaren K., 11",
+    "lat": 43.324987899999996,
+    "lng": -1.9823856999999998
+  },
+  {
+    "nombre": "C.a paseadora y cuidadora de mascotas",
+    "tipo": "otros",
+    "direccion": "Eustasio Amilibia Kalea",
+    "lat": 43.3064785,
+    "lng": -1.9755657
+  },
+  {
+    "nombre": "Clínica perruna",
+    "tipo": "otros",
+    "direccion": "Juan de Olazabal Kalea",
+    "lat": 43.3136741,
+    "lng": -1.9035285
+  },
+  {
+    "nombre": "Pasaiako Marina",
+    "tipo": "otros",
+    "direccion": "Ricardo Arrillaga Kalea, 1",
+    "lat": 43.323637,
+    "lng": -1.9300153999999998
+  }
+]

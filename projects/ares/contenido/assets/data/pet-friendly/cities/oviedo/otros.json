@@ -1,0 +1,65 @@
+[
+  {
+    "nombre": "Ovi-can",
+    "tipo": "otros",
+    "direccion": "C/la carrera, 1-a",
+    "lat": 43.3503629,
+    "lng": -5.9097272
+  },
+  {
+    "nombre": "Pajareria Granero",
+    "tipo": "otros",
+    "direccion": "C. de María Neira, 27",
+    "lat": 43.3624175,
+    "lng": -5.865050699999999
+  },
+  {
+    "nombre": "Estatua de Rufo, el perro de Oviedo",
+    "tipo": "otros",
+    "direccion": "C. Dr. Casal, 3",
+    "lat": 43.3641486,
+    "lng": -5.8512343
+  },
+  {
+    "nombre": "H Viella Asturias",
+    "tipo": "otros",
+    "direccion": "Carretera Estación de Viella, 10",
+    "lat": 43.384845999999996,
+    "lng": -5.7838169
+  },
+  {
+    "nombre": "Oviedo Real Spa",
+    "tipo": "otros",
+    "direccion": "AS-375, 28",
+    "lat": 43.322331299999995,
+    "lng": -5.8232688999999995
+  },
+  {
+    "nombre": "El Carbayón, Residencia Canina",
+    "tipo": "otros",
+    "direccion": "Aldea Pedruño, S/N",
+    "lat": 43.355211999999995,
+    "lng": -5.9059621
+  },
+  {
+    "nombre": "Residencia Canina La Belga",
+    "tipo": "otros",
+    "direccion": "33429 La Belga",
+    "lat": 43.4069815,
+    "lng": -5.7707429
+  },
+  {
+    "nombre": "Amican Asturias Escuela y Hotel Canino",
+    "tipo": "otros",
+    "direccion": "Aramil",
+    "lat": 43.3804397,
+    "lng": -5.618689799999999
+  },
+  {
+    "nombre": "Pensión Romero",
+    "tipo": "otros",
+    "direccion": "C. Uría, 36-38, Planta 2",
+    "lat": 43.3639223,
+    "lng": -5.8509033
+  }
+]

@@ -1,0 +1,338 @@
+[
+  {
+    "nombre": "CEREC",
+    "tipo": "veterinario",
+    "direccion": "Aldea Mourentans",
+    "lat": 42.878951,
+    "lng": -8.7298634
+  },
+  {
+    "nombre": "Dermatología Veterinaria DERMAPET",
+    "tipo": "veterinario",
+    "direccion": "Praza da Nsa. Sra. da Mercé de Conxo, 8, Bajo 3",
+    "lat": 42.865272,
+    "lng": -8.5560061
+  },
+  {
+    "nombre": "VÚO oftalmología veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Rúa de Estocolmo, 8, bajo B",
+    "lat": 42.886019,
+    "lng": -8.5245492
+  },
+  {
+    "nombre": "Hospital Veterinario Rof Codina",
+    "tipo": "veterinario",
+    "direccion": "Est. da Granxa, 51",
+    "lat": 42.992905799999996,
+    "lng": -7.5498598999999995
+  },
+  {
+    "nombre": "Clínica Veterinaria San Roque",
+    "tipo": "veterinario",
+    "direccion": "Av. de Rodríguez de Viguri, 45, bajo Izquierda",
+    "lat": 42.8899736,
+    "lng": -8.53252
+  },
+  {
+    "nombre": "Clínica Veterinaria La Rosa",
+    "tipo": "veterinario",
+    "direccion": "R. da Rosa, 36, Bajo",
+    "lat": 42.87104,
+    "lng": -8.54882
+  },
+  {
+    "nombre": "CAN CAT Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Rúa do Restollal, 15",
+    "lat": 42.864660699999995,
+    "lng": -8.5428907
+  },
+  {
+    "nombre": "P.A.C. Veterinario San Lázaro",
+    "tipo": "veterinario",
+    "direccion": "Rúa de San Lázaro, 108",
+    "lat": 42.8861816,
+    "lng": -8.5132853
+  },
+  {
+    "nombre": "Hospital Veterinario A Media Lúa",
+    "tipo": "veterinario",
+    "direccion": "Rúa Costa Grande, 6",
+    "lat": 42.844831,
+    "lng": -8.5755755
+  },
+  {
+    "nombre": "AniCura IMAVET ~ Hospital Veterinario",
+    "tipo": "veterinario",
+    "direccion": "Rúa de Polonia, 9",
+    "lat": 42.903603,
+    "lng": -8.508058
+  },
+  {
+    "nombre": "Clínica Veterinaria Guvet (Urgencias 24 horas)",
+    "tipo": "veterinario",
+    "direccion": "Av. de Santiago, 45",
+    "lat": 43.0315322,
+    "lng": -8.8002901
+  },
+  {
+    "nombre": "Ronroneos Clinica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Travesía da Ramallosa, 10, Bajo B",
+    "lat": 42.7977913,
+    "lng": -8.548951299999999
+  },
+  {
+    "nombre": "Centro Veterinario Os Durans",
+    "tipo": "veterinario",
+    "direccion": "Rúa Otero Pedrayo, 7",
+    "lat": 42.5984275,
+    "lng": -8.760551399999999
+  },
+  {
+    "nombre": "Clínica Veterinaria Gran Vía",
+    "tipo": "veterinario",
+    "direccion": "Rúa Gran Vía, 194",
+    "lat": 43.2197509,
+    "lng": -8.6855095
+  },
+  {
+    "nombre": "Clínica Veterinara Don Can",
+    "tipo": "veterinario",
+    "direccion": "Avenida Juan Carlos I, 15, Bajo",
+    "lat": 42.598126799999996,
+    "lng": -8.7643396
+  },
+  {
+    "nombre": "Clínica Veterinaria Vigo Grovalvet",
+    "tipo": "veterinario",
+    "direccion": "Rúa García Olloqui, 4, bajo",
+    "lat": 42.239671099999995,
+    "lng": -8.723985299999999
+  },
+  {
+    "nombre": "Clínica Veterinaria Tucan",
+    "tipo": "veterinario",
+    "direccion": "Avenida de Ourense, 30",
+    "lat": 42.3933927,
+    "lng": -8.6954496
+  },
+  {
+    "nombre": "Clínica Veterinaria Bichopolis",
+    "tipo": "veterinario",
+    "direccion": "Est. de Castela, 360, Bajo",
+    "lat": 43.49456,
+    "lng": -8.2072224
+  },
+  {
+    "nombre": "O Papafigos Servizos Veterinarios",
+    "tipo": "veterinario",
+    "direccion": "Praza Chavián, s/n, Bloque 2, Portal 3, Bajo",
+    "lat": 42.8583516,
+    "lng": -8.658245299999999
+  },
+  {
+    "nombre": "Centro Veterinario Pontevedra",
+    "tipo": "veterinario",
+    "direccion": "Rúa Javier Puig Llamas, 9",
+    "lat": 42.43049,
+    "lng": -8.63856
+  },
+  {
+    "nombre": "HVS - Hospital Veterinario do Salnés - Vilagarcía",
+    "tipo": "veterinario",
+    "direccion": "Xardín",
+    "lat": 42.5955862,
+    "lng": -8.7625751
+  },
+  {
+    "nombre": "Centro Veterinario ADRISA (SERVICIO DE URGENCIAS DERIVADO AL HOSPITAL VETERINARIO IMAVET)",
+    "tipo": "veterinario",
+    "direccion": "Av. Fisterra, 144",
+    "lat": 42.953815999999996,
+    "lng": -9.192553
+  },
+  {
+    "nombre": "HVS - Hospital veterinario do Salnés - Caldas",
+    "tipo": "veterinario",
+    "direccion": "Calle Doutor",
+    "lat": 42.6032748,
+    "lng": -8.6453697
+  },
+  {
+    "nombre": "AniCura Canido Clínica Veterinaria // Urgencias 24 horas",
+    "tipo": "veterinario",
+    "direccion": "Carretera de Joane, 34",
+    "lat": 43.49205,
+    "lng": -8.233856
+  },
+  {
+    "nombre": "HVS - Hospital Veterinario do Salnés - Barrantes",
+    "tipo": "veterinario",
+    "direccion": "Av. Bouza Martín, 42",
+    "lat": 42.499975299999996,
+    "lng": -8.7700824
+  },
+  {
+    "nombre": "HVS - Hospital Veterinario do Salnés - Portonovo",
+    "tipo": "veterinario",
+    "direccion": "Carr. de la Lanzada, 28",
+    "lat": 42.396942599999996,
+    "lng": -8.8282033
+  },
+  {
+    "nombre": "Clinica Veterinaria Amigos",
+    "tipo": "veterinario",
+    "direccion": "R. de Rosalía de Castro, 51",
+    "lat": 42.2379819,
+    "lng": -8.7139402
+  },
+  {
+    "nombre": "Abeiro Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Rúa Rafael Dieste, 4",
+    "lat": 43.347868999999996,
+    "lng": -8.344814
+  },
+  {
+    "nombre": "Centro Veterinario Area Central Sl",
+    "tipo": "veterinario",
+    "direccion": "R. de París, 7, Local 31 P",
+    "lat": 42.8834065,
+    "lng": -8.5274596
+  },
+  {
+    "nombre": "Servet Urgencias",
+    "tipo": "veterinario",
+    "direccion": "Regoufe 5",
+    "lat": 42.800810899999995,
+    "lng": -8.5907745
+  },
+  {
+    "nombre": "Clínica Veterinaria Tea San Antón Vigo",
+    "tipo": "veterinario",
+    "direccion": "R. de Pizarro, 57",
+    "lat": 42.2315003,
+    "lng": -8.7134805
+  },
+  {
+    "nombre": "Centro Quirúrgico Veterinario A Chico",
+    "tipo": "veterinario",
+    "direccion": "Rúa Napoleón Bonaparte, 4, Bajos",
+    "lat": 43.353393499999996,
+    "lng": -8.4158779
+  },
+  {
+    "nombre": "Centro Veterinario San Miguel",
+    "tipo": "veterinario",
+    "direccion": "Av. Cambados, 53, BAJO",
+    "lat": 42.5470976,
+    "lng": -8.811795499999999
+  },
+  {
+    "nombre": "Clinica Veterinaria Wecan Cosmopet",
+    "tipo": "veterinario",
+    "direccion": "Av. de Rosalía de Castro, 106",
+    "lat": 42.873517799999995,
+    "lng": -8.553153499999999
+  },
+  {
+    "nombre": "Centro Veterinario Equino Casal Do Río",
+    "tipo": "veterinario",
+    "direccion": "Rua Vilanoviña, 15B",
+    "lat": 42.5509959,
+    "lng": -8.7013108
+  },
+  {
+    "nombre": "Lairoside",
+    "tipo": "veterinario",
+    "direccion": "Rúa Marqués de Amboage, 24",
+    "lat": 43.3543109,
+    "lng": -8.4059622
+  },
+  {
+    "nombre": "AniCura Abros Hospital Veterinario",
+    "tipo": "veterinario",
+    "direccion": "Parque empresarial",
+    "lat": 42.321692,
+    "lng": -7.809442
+  },
+  {
+    "nombre": "Consultorio Veterinario Low Cost",
+    "tipo": "veterinario",
+    "direccion": "Rda. Nelle, 81",
+    "lat": 43.3605182,
+    "lng": -8.4152732
+  },
+  {
+    "nombre": "Centro Veterinario Valentina del Río",
+    "tipo": "veterinario",
+    "direccion": "Rúa de Ramón",
+    "lat": 42.872916599999996,
+    "lng": -8.5490423
+  },
+  {
+    "nombre": "Abeiro Hospital Veterinario",
+    "tipo": "veterinario",
+    "direccion": "Rúa Marqués de Amboage, 24",
+    "lat": 43.3542846,
+    "lng": -8.4060388
+  },
+  {
+    "nombre": "Centro Veterinario MG Vet (Santiago de Compostela)",
+    "tipo": "veterinario",
+    "direccion": "Rúa das Galeras, 13",
+    "lat": 42.8834869,
+    "lng": -8.5485299
+  },
+  {
+    "nombre": "Clínica Veterinaria Amigos (Santiago de Compostela)",
+    "tipo": "veterinario",
+    "direccion": "Av. de Lugo, 2",
+    "lat": 42.8715757,
+    "lng": -8.5444903
+  },
+  {
+    "nombre": "PS VET DAIRYQUALITY",
+    "tipo": "veterinario",
+    "direccion": "Calle de Sergude, 18B",
+    "lat": 42.829188699999996,
+    "lng": -8.4774189
+  },
+  {
+    "nombre": "Hospital Veterinario Atlántico | MiVet",
+    "tipo": "veterinario",
+    "direccion": "Rúa Zaragoza, 1",
+    "lat": 43.3433438,
+    "lng": -8.4426797
+  },
+  {
+    "nombre": "Hospital Clínico Veterinario Ultramar Urgencias 24h",
+    "tipo": "veterinario",
+    "direccion": "Rúa Nova de Caranza, 169",
+    "lat": 43.4904795,
+    "lng": -8.216842399999999
+  },
+  {
+    "nombre": "Manuel Romero Nieto",
+    "tipo": "veterinario",
+    "direccion": "Rúa de Ramón Piñeiro, 11",
+    "lat": 42.873599,
+    "lng": -8.5431514
+  },
+  {
+    "nombre": "M Martínez Antelo",
+    "tipo": "veterinario",
+    "direccion": "Rúa do Xeneral Pardiñas, 7",
+    "lat": 42.875582,
+    "lng": -8.546052399999999
+  },
+  {
+    "nombre": "Kawanda urban",
+    "tipo": "veterinario",
+    "direccion": "Rúa do Vilar, 70",
+    "lat": 42.8777535,
+    "lng": -8.545028799999999
+  }
+]

@@ -1,0 +1,1549 @@
+[
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "796-Caracas",
+    "lat": 39.5696647,
+    "lng": 2.6658687
+  },
+  {
+    "nombre": "Kukies peluquería canina y felina",
+    "tipo": "peluqueria",
+    "direccion": "Carrer de Bartomeu Sureda i Miserol, 1",
+    "lat": 39.5882346,
+    "lng": 2.6227291999999998
+  },
+  {
+    "nombre": "Espevet Referencia Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Cala Blanca, 11",
+    "lat": 39.5970991,
+    "lng": 2.6769225999999997
+  },
+  {
+    "nombre": "PerrosXpert Guarderia y Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "C. de Manacor, 36",
+    "lat": 39.5713781,
+    "lng": 2.6627263
+  },
+  {
+    "nombre": "Neurología y Neurocirugía Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Carrer de la Reina Esclaramunda, 6, baixos",
+    "lat": 39.5761211,
+    "lng": 2.650095
+  },
+  {
+    "nombre": "KEEP CAN MALLORCA",
+    "tipo": "otros",
+    "direccion": "MP5F+HR9",
+    "lat": 39.658905499999996,
+    "lng": 2.7246018999999997
+  },
+  {
+    "nombre": "Elena Castillo",
+    "tipo": "tienda",
+    "direccion": "C/ de Jaume Vidal Alcover",
+    "lat": 39.589721399999995,
+    "lng": 2.6505986
+  },
+  {
+    "nombre": "JUANITO's PETS",
+    "tipo": "tienda",
+    "direccion": "Carrer de son Espanyolet, 15, Loc 2",
+    "lat": 39.573808899999996,
+    "lng": 2.6311228
+  },
+  {
+    "nombre": "RehabilitaCans",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Juan Gris, 77, Loc 6",
+    "lat": 39.5876358,
+    "lng": 2.6352765
+  },
+  {
+    "nombre": "Clínica Veterinaria S'Arenal",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Joan Homs, 11",
+    "lat": 39.5099872,
+    "lng": 2.7524683
+  },
+  {
+    "nombre": "EUTANASIA PROFESIONAL A DOMICILIO MALLORCA - PALMAVET",
+    "tipo": "veterinario",
+    "direccion": "C. de Manacor",
+    "lat": 39.571450999999996,
+    "lng": 2.6702181
+  },
+  {
+    "nombre": "Alba. Centro de estética y bienestar animal",
+    "tipo": "tienda",
+    "direccion": "Carrer de Marbella, 20",
+    "lat": 39.527895,
+    "lng": 2.732493
+  },
+  {
+    "nombre": "Sweet Dogs",
+    "tipo": "tienda",
+    "direccion": "Carrer Jordi Andreu Alcover, 12",
+    "lat": 39.5830257,
+    "lng": 2.6628924
+  },
+  {
+    "nombre": "Miguel Angel Sánchez Mas",
+    "tipo": "veterinario",
+    "direccion": "Carrer dels Ocells, 36",
+    "lat": 39.583442999999995,
+    "lng": 2.6335593
+  },
+  {
+    "nombre": "SofiCan Peluquería Canina Móvil Mallorca",
+    "tipo": "tienda",
+    "direccion": "07240 Montuïri",
+    "lat": 39.5718179,
+    "lng": 2.9875203999999997
+  },
+  {
+    "nombre": "ASSOCIACIÓ ILLES BALEARS D’ADOPCIONS",
+    "tipo": "otros",
+    "direccion": "Carrer de la Rosa, 3",
+    "lat": 39.5718762,
+    "lng": 2.6490671
+  },
+  {
+    "nombre": "Dimoni Dogsitter cuidador de cans",
+    "tipo": "otros",
+    "direccion": "Platja de Palma i Pla de Sant Jordi",
+    "lat": 39.5749995,
+    "lng": 2.8321676
+  },
+  {
+    "nombre": "Fisiovet Mallorca",
+    "tipo": "veterinario",
+    "direccion": "Carrer Vasco Da Gama, 5",
+    "lat": 39.570246,
+    "lng": 2.6317459
+  },
+  {
+    "nombre": "Peluquería Canina Bel's Bella Can",
+    "tipo": "tienda",
+    "direccion": "Carrer de Joan Homs, 11",
+    "lat": 39.5100154,
+    "lng": 2.7525323
+  },
+  {
+    "nombre": "Peluquería canina",
+    "tipo": "tienda",
+    "direccion": "Camí de Son Rapinya, 105",
+    "lat": 39.5887667,
+    "lng": 2.6120527
+  },
+  {
+    "nombre": "Coquetes",
+    "tipo": "tienda",
+    "direccion": "Carrer Joan Muntaner i Bujosa, 35",
+    "lat": 39.5841154,
+    "lng": 2.6349503
+  },
+  {
+    "nombre": "Adiestramiento canino Mallorca - Educación Canina Con Empatía",
+    "tipo": "adiestrador",
+    "direccion": "Carrer del General Riera, 112",
+    "lat": 39.587958199999996,
+    "lng": 2.6460323
+  },
+  {
+    "nombre": "Guarderia Canina",
+    "tipo": "otros",
+    "direccion": "Carrer Torrentó",
+    "lat": 39.5735919,
+    "lng": 2.6293170999999997
+  },
+  {
+    "nombre": "Mairata Veterinari",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Joan Alcover, 64",
+    "lat": 39.5654411,
+    "lng": 2.6587177
+  },
+  {
+    "nombre": "Canet Perruqueria D Animals",
+    "tipo": "tienda",
+    "direccion": "Carrer de l'Infant Jaume, 7",
+    "lat": 39.5971779,
+    "lng": 2.6415436
+  },
+  {
+    "nombre": "Centro Veterinario Friendly Vets",
+    "tipo": "veterinario",
+    "direccion": "Carrer Isidoro Antillón, 71",
+    "lat": 39.577098299999996,
+    "lng": 2.6641993
+  },
+  {
+    "nombre": "SALUD Y MASCOTAS",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Cristina Valls, 9",
+    "lat": 39.5510285,
+    "lng": 2.6941544
+  },
+  {
+    "nombre": "Satya Animal",
+    "tipo": "otros",
+    "direccion": "Pl. d'Espanya",
+    "lat": 39.5757645,
+    "lng": 2.6538716
+  },
+  {
+    "nombre": "Parque Canino Bendinat",
+    "tipo": "parque",
+    "direccion": "Carrer Upt4-P1",
+    "lat": 39.5383542,
+    "lng": 2.5853595
+  },
+  {
+    "nombre": "Patitas Palma",
+    "tipo": "tienda",
+    "direccion": "Carrer d'Ausiàs March, 33",
+    "lat": 39.5819079,
+    "lng": 2.6472599999999997
+  },
+  {
+    "nombre": "Balanced Dogs Mallorca Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "Av. Mexico",
+    "lat": 39.5709963,
+    "lng": 2.6395839999999997
+  },
+  {
+    "nombre": "Happy Dogs Mallorca",
+    "tipo": "tienda",
+    "direccion": "Camí Can Parrisco, 20",
+    "lat": 39.6251527,
+    "lng": 2.7738752
+  },
+  {
+    "nombre": "Xammy Dogs",
+    "tipo": "tienda",
+    "direccion": "Passeig Illetes, 2, Loc 10",
+    "lat": 39.544322,
+    "lng": 2.594826
+  },
+  {
+    "nombre": "Palma Paws",
+    "tipo": "tienda",
+    "direccion": "Ctra. Andratx, 30",
+    "lat": 39.5354506,
+    "lng": 2.5715604
+  },
+  {
+    "nombre": "Estil Animal",
+    "tipo": "tienda",
+    "direccion": "Carrer de Garrigó, 2",
+    "lat": 39.5886956,
+    "lng": 2.6121665999999997
+  },
+  {
+    "nombre": "Tucán",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Teodor Llorente, 8",
+    "lat": 39.572496199999996,
+    "lng": 2.6409944
+  },
+  {
+    "nombre": "Clínica Veterinària Simon Seguí",
+    "tipo": "veterinario",
+    "direccion": "Carrer Hondures, 1",
+    "lat": 39.5748606,
+    "lng": 2.6293981
+  },
+  {
+    "nombre": "Palma Dog",
+    "tipo": "otros",
+    "direccion": "Carrer de la Corderia, 20",
+    "lat": 39.570357699999995,
+    "lng": 2.6526004
+  },
+  {
+    "nombre": "Pets Place Mallorca",
+    "tipo": "tienda",
+    "direccion": "C. de Blanquerna, 27, B",
+    "lat": 39.5800664,
+    "lng": 2.6495387
+  },
+  {
+    "nombre": "Como en Casa 🐕 Hostel | Guardería Canina",
+    "tipo": "otros",
+    "direccion": "Diseminado. Polígono, 6, Parcela 68",
+    "lat": 39.7601503,
+    "lng": 2.9542891
+  },
+  {
+    "nombre": "Boutique Animal",
+    "tipo": "tienda",
+    "direccion": "Carrer de Jaume Lladó i Ferragut,08 Carrefour",
+    "lat": 39.5825722,
+    "lng": 2.6327365
+  },
+  {
+    "nombre": "La Barbuda Salón Canino",
+    "tipo": "tienda",
+    "direccion": "Carrer del Cardenal Rossell, 15, Derecha",
+    "lat": 39.5540671,
+    "lng": 2.6935281
+  },
+  {
+    "nombre": "Sa Indioteria Clinica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Camí Nou, 45, BAJO",
+    "lat": 39.6058089,
+    "lng": 2.6791213
+  },
+  {
+    "nombre": "OH MY DOG! Palma Peluquería canina y guarderia",
+    "tipo": "tienda",
+    "direccion": "C. del Roser, 10",
+    "lat": 39.5856675,
+    "lng": 2.6539322999999997
+  },
+  {
+    "nombre": "Sa Riera Centro Veterinario",
+    "tipo": "veterinario",
+    "direccion": "Carrer d'Eivissa, 4",
+    "lat": 39.575263899999996,
+    "lng": 2.642749
+  },
+  {
+    "nombre": "veterinària sa palla",
+    "tipo": "veterinario",
+    "direccion": "plaça del pes de sa palla 5",
+    "lat": 39.568349999999995,
+    "lng": 2.6548575
+  },
+  {
+    "nombre": "Peluquería Canina Art CA",
+    "tipo": "tienda",
+    "direccion": "Carrer Emili Darder, 12",
+    "lat": 39.577862499999995,
+    "lng": 2.6394808999999997
+  },
+  {
+    "nombre": "DOG LOVERS PELUQUERÍA CANINA",
+    "tipo": "tienda",
+    "direccion": "Carrer de Joaquim Togores, 5",
+    "lat": 39.586562099999995,
+    "lng": 2.6522104
+  },
+  {
+    "nombre": "Van Dog",
+    "tipo": "tienda",
+    "direccion": "Carrer de Selva, 3",
+    "lat": 39.5830406,
+    "lng": 2.6817604
+  },
+  {
+    "nombre": "Amanecer Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Carrer San Francisco de Sales, 74",
+    "lat": 39.5909148,
+    "lng": 2.6562805999999997
+  },
+  {
+    "nombre": "Clínica veterinaria Es Camp Rodó",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Ramon Muntaner, 52",
+    "lat": 39.5842094,
+    "lng": 2.6501197
+  },
+  {
+    "nombre": "Vicente Busquets Castañer",
+    "tipo": "veterinario",
+    "direccion": "Camí Nou, 45",
+    "lat": 39.605829,
+    "lng": 2.6791088
+  },
+  {
+    "nombre": "Pequelusas",
+    "tipo": "tienda",
+    "direccion": "Carrer Tomàs Luis de Victòria, 1, local2",
+    "lat": 39.5868882,
+    "lng": 2.6642873
+  },
+  {
+    "nombre": "Animal dreams",
+    "tipo": "tienda",
+    "direccion": "Carrer de Berenguer de Sant Joan, 3",
+    "lat": 39.573631299999995,
+    "lng": 2.6448093
+  },
+  {
+    "nombre": "Pichichus: Peluqueria Canina en Mallorca",
+    "tipo": "tienda",
+    "direccion": "Carrer de Miquel Arcas, 1, Loc 5",
+    "lat": 39.5880388,
+    "lng": 2.6506392
+  },
+  {
+    "nombre": "Clínica Veterinaria Inca",
+    "tipo": "veterinario",
+    "direccion": "Carrer dels Malferits, 34, BAJO",
+    "lat": 39.7189306,
+    "lng": 2.9059518
+  },
+  {
+    "nombre": "Sa Caseta Guardería Canina - Sin jaulas",
+    "tipo": "otros",
+    "direccion": "Camí de Sa Caiassa, s/n",
+    "lat": 39.5734922,
+    "lng": 2.9069201
+  },
+  {
+    "nombre": "Cans i Moixos",
+    "tipo": "tienda",
+    "direccion": "Plaça Guillem Moragues, 5, Bajo",
+    "lat": 39.573601,
+    "lng": 2.6671071
+  },
+  {
+    "nombre": "Ca Sa Nina LIBRES Y FELICES COMO EN CASA",
+    "tipo": "otros",
+    "direccion": "39.6160228, 2.8653160",
+    "lat": 39.616028299999996,
+    "lng": 2.8651345999999998
+  },
+  {
+    "nombre": "Peluquería Canina Cinco Lobitos",
+    "tipo": "tienda",
+    "direccion": "Carrer de Pablo Iglesias, 106",
+    "lat": 39.587013,
+    "lng": 2.6578123
+  },
+  {
+    "nombre": "Huellas Y Raices",
+    "tipo": "tienda",
+    "direccion": "Carrer del Capità Vila, 38",
+    "lat": 39.5719347,
+    "lng": 2.6652286999999997
+  },
+  {
+    "nombre": "Can Patas Mallorca",
+    "tipo": "protectora",
+    "direccion": "Camí de ses Erasses",
+    "lat": 39.525045,
+    "lng": 3.113848
+  },
+  {
+    "nombre": "Blanquerna Centre Clínic Veterinari",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Pere Martell, 12",
+    "lat": 39.5804256,
+    "lng": 2.6515793
+  },
+  {
+    "nombre": "Clínica Palmanord",
+    "tipo": "veterinario",
+    "direccion": "Carrer dels Ocells, 36",
+    "lat": 39.583405,
+    "lng": 2.6336087999999997
+  },
+  {
+    "nombre": "Diamond Style Dogs",
+    "tipo": "tienda",
+    "direccion": "Carrer de Joan Crespí, 34",
+    "lat": 39.575663399999996,
+    "lng": 2.6346483
+  },
+  {
+    "nombre": "Peluqueria canina wapos",
+    "tipo": "tienda",
+    "direccion": "Av. San Fernando, 23",
+    "lat": 39.5796086,
+    "lng": 2.6372374
+  },
+  {
+    "nombre": "Clinica Veterinària Arxiduc",
+    "tipo": "veterinario",
+    "direccion": "Carrer Arxiduc Lluís Salvador, 99",
+    "lat": 39.5854941,
+    "lng": 2.6578086
+  },
+  {
+    "nombre": "THE ANIMAL WORLD",
+    "tipo": "tienda",
+    "direccion": "Avinguda de Joan Miró, 293",
+    "lat": 39.5524583,
+    "lng": 2.6032894
+  },
+  {
+    "nombre": "Veterinari Establiments",
+    "tipo": "veterinario",
+    "direccion": "Camí de Can Pau Cella, 2",
+    "lat": 39.6208251,
+    "lng": 2.6263905999999997
+  },
+  {
+    "nombre": "PERRUKYS",
+    "tipo": "tienda",
+    "direccion": "C. de Josep Rover Motta, 8",
+    "lat": 39.5661493,
+    "lng": 2.6585505
+  },
+  {
+    "nombre": "Aragó",
+    "tipo": "veterinario",
+    "direccion": "Carrer del Cirerer, 2",
+    "lat": 39.5864609,
+    "lng": 2.6747826
+  },
+  {
+    "nombre": "Kverd | Mascotas Felices",
+    "tipo": "tienda",
+    "direccion": "Carrer d'Eusebi Estada, 82",
+    "lat": 39.585020199999995,
+    "lng": 2.6627497
+  },
+  {
+    "nombre": "Clínica Veterinaria Son Rapinya",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Mateu Fiol, 45",
+    "lat": 39.5876686,
+    "lng": 2.6207213
+  },
+  {
+    "nombre": "Refugi d'animals de Pollença",
+    "tipo": "protectora",
+    "direccion": "Camí de Can Bregat",
+    "lat": 39.8856128,
+    "lng": 3.0454236999999997
+  },
+  {
+    "nombre": "Pito De Oro",
+    "tipo": "tienda",
+    "direccion": "Carrer del Gran i General Consell, 19, BAJO",
+    "lat": 39.5006675,
+    "lng": 2.7524249999999997
+  },
+  {
+    "nombre": "+ Cotas Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Carrer Poima, 22",
+    "lat": 39.596644,
+    "lng": 2.6313457
+  },
+  {
+    "nombre": "Clinica Veterinaria Es Secar",
+    "tipo": "veterinario",
+    "direccion": "Carrer de l'Infant Jaume, 1, BAJO",
+    "lat": 39.5970867,
+    "lng": 2.6411454
+  },
+  {
+    "nombre": "La Ribera Veterinaris",
+    "tipo": "veterinario",
+    "direccion": "Carrer de la Fotja, 8, Loc 12",
+    "lat": 39.528039,
+    "lng": 2.736056
+  },
+  {
+    "nombre": "Meus Amics Coll",
+    "tipo": "tienda",
+    "direccion": "Carrer de les Illes Pitiüses, 2",
+    "lat": 39.553068499999995,
+    "lng": 2.6946247
+  },
+  {
+    "nombre": "Taba peluqueria canina",
+    "tipo": "tienda",
+    "direccion": "Carrer de Caro, 76, Loc 2",
+    "lat": 39.574133499999995,
+    "lng": 2.6342015
+  },
+  {
+    "nombre": "Ornibalear Pets",
+    "tipo": "tienda",
+    "direccion": "Av. Gaspar de Bennazar, 54",
+    "lat": 39.5840373,
+    "lng": 2.6552648
+  },
+  {
+    "nombre": "AcuariosKa",
+    "tipo": "tienda",
+    "direccion": "Carrer del Marquès de la Fontsanta, 38",
+    "lat": 39.577667399999996,
+    "lng": 2.6578592999999997
+  },
+  {
+    "nombre": "Lord Perrum",
+    "tipo": "tienda",
+    "direccion": "Carrer de Manuel Azaña, 22",
+    "lat": 39.5682799,
+    "lng": 2.6641098
+  },
+  {
+    "nombre": "VIP Very Important Perros",
+    "tipo": "tienda",
+    "direccion": "C/ de Miquel dels Sants Oliver, 25",
+    "lat": 39.5801531,
+    "lng": 2.6418299999999997
+  },
+  {
+    "nombre": "Clínica Veterinaria Vivero",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Bach, 9",
+    "lat": 39.5918241,
+    "lng": 2.6830566
+  },
+  {
+    "nombre": "Clínica Veterinària Foners",
+    "tipo": "veterinario",
+    "direccion": "Carrer Gral. Ricardo Ortega, 24",
+    "lat": 39.569494299999995,
+    "lng": 2.6612446
+  },
+  {
+    "nombre": "EmaVetexotic, Clinica Veterinaria animales exóticos y tienda de productos para mascotas",
+    "tipo": "veterinario",
+    "direccion": "Carrer de José Vargas Ponce, 29",
+    "lat": 39.5543355,
+    "lng": 2.6935381
+  },
+  {
+    "nombre": "Clínica Veterinaria Portixol",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Santueri, 2",
+    "lat": 39.5612632,
+    "lng": 2.6715106
+  },
+  {
+    "nombre": "CLÍNICA VETERINARIA LA VILETA",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Bolonya, 2",
+    "lat": 39.5934567,
+    "lng": 2.6151725999999997
+  },
+  {
+    "nombre": "Ankawa Peluquería Canina y Pajareria",
+    "tipo": "tienda",
+    "direccion": "Carrer de Bartomeu Calatayud, 3",
+    "lat": 39.5991119,
+    "lng": 2.6765733
+  },
+  {
+    "nombre": "Clínica Veterinària Aragó 368",
+    "tipo": "veterinario",
+    "direccion": "Carrer Aragó, 368",
+    "lat": 39.5952081,
+    "lng": 2.6874661
+  },
+  {
+    "nombre": "Clínica Veterinaria Arol | MiVet",
+    "tipo": "veterinario",
+    "direccion": "Carrer d'Andreu Feliu, 23, bajos",
+    "lat": 39.583196799999996,
+    "lng": 2.6495233
+  },
+  {
+    "nombre": "Clínica Veterinaria Son Moix",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Bartomeu Sureda i Miserol, 1, BAJO",
+    "lat": 39.5880922,
+    "lng": 2.6228591
+  },
+  {
+    "nombre": "Clínica Veterinaria El Parc",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Joan Mas, 4",
+    "lat": 39.589080599999996,
+    "lng": 2.6505483
+  },
+  {
+    "nombre": "Platja per cans",
+    "tipo": "parque",
+    "direccion": "Passeig Cala Gamba",
+    "lat": 39.5437921,
+    "lng": 2.7002923
+  },
+  {
+    "nombre": "TUCAN. Peluquería Canina y Felina.",
+    "tipo": "tienda",
+    "direccion": "Carrer de la Indústria, 48",
+    "lat": 39.575696199999996,
+    "lng": 2.6372819
+  },
+  {
+    "nombre": "Clínica Veterinaria Pérez Galdós S.L.P.",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Pérez Galdós, 31",
+    "lat": 39.566099799999996,
+    "lng": 2.6617029999999997
+  },
+  {
+    "nombre": "Exotely, Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Joan Alcover, 64",
+    "lat": 39.5653704,
+    "lng": 2.6589434
+  },
+  {
+    "nombre": "Huellas Peluqueria Canina",
+    "tipo": "otros",
+    "direccion": "Ponent",
+    "lat": 39.584634199999996,
+    "lng": 2.6356075
+  },
+  {
+    "nombre": "Dogma",
+    "tipo": "tienda",
+    "direccion": "Avinguda Argentina, 77",
+    "lat": 39.5753324,
+    "lng": 2.6406798
+  },
+  {
+    "nombre": "PIENSOS CA'NTONI",
+    "tipo": "tienda",
+    "direccion": "Camí dels Reis, 115",
+    "lat": 39.585741999999996,
+    "lng": 2.6191533
+  },
+  {
+    "nombre": "El Arca de TIA VIVI",
+    "tipo": "tienda",
+    "direccion": "Disseminat son Ds 8424",
+    "lat": 39.590944199999996,
+    "lng": 2.7216063999999998
+  },
+  {
+    "nombre": "Mascotasana Palma",
+    "tipo": "tienda",
+    "direccion": "C. de la Fàbrica, 30",
+    "lat": 39.572829,
+    "lng": 2.6371265999999998
+  },
+  {
+    "nombre": "Son Batlet",
+    "tipo": "otros",
+    "direccion": "Camí de S'Era Esfondrada, s/n",
+    "lat": 39.626039299999995,
+    "lng": 2.8603210999999997
+  },
+  {
+    "nombre": "Central Vet Palma S.L.",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Francesc Martí i Móra, 3, Loc 20",
+    "lat": 39.5784716,
+    "lng": 2.6395716
+  },
+  {
+    "nombre": "Guau Club",
+    "tipo": "tienda",
+    "direccion": "Carrer del 31 de Desembre, 8",
+    "lat": 39.578226099999995,
+    "lng": 2.6525695
+  },
+  {
+    "nombre": "MascotaSana Mallorca",
+    "tipo": "tienda",
+    "direccion": "Carrer Poima, 26",
+    "lat": 39.597183,
+    "lng": 2.6309404
+  },
+  {
+    "nombre": "Centre Veterinari Son Cotoner",
+    "tipo": "veterinario",
+    "direccion": "Calle de Francisco Martí i Mora, 50",
+    "lat": 39.583026,
+    "lng": 2.6374714
+  },
+  {
+    "nombre": "Clínica Veterinaria Son Oliva",
+    "tipo": "veterinario",
+    "direccion": "Carrer Emilio Serrano, 2",
+    "lat": 39.5840548,
+    "lng": 2.664199
+  },
+  {
+    "nombre": "Clínica Veterinaria Manuel Marín",
+    "tipo": "veterinario",
+    "direccion": "Carrer del Marquès de la Fontsanta, 63",
+    "lat": 39.5788059,
+    "lng": 2.6621677999999998
+  },
+  {
+    "nombre": "Sociedad Protectora de Animales Y Plantas de Mallorca",
+    "tipo": "protectora",
+    "direccion": "Llevant",
+    "lat": 39.6022521,
+    "lng": 2.6816781
+  },
+  {
+    "nombre": "Asociación de Defensa de Animales de Mallorca",
+    "tipo": "tienda",
+    "direccion": "Carrer d'Adrià Ferran, 2",
+    "lat": 39.5736534,
+    "lng": 2.6671367
+  },
+  {
+    "nombre": "Clínica Veterinaria Domesticos y Exóticos Peludets",
+    "tipo": "veterinario",
+    "direccion": "C/ de Jesús, 36",
+    "lat": 39.5822161,
+    "lng": 2.6437863
+  },
+  {
+    "nombre": "Dogma",
+    "tipo": "tienda",
+    "direccion": "Career Nuredduna, 7",
+    "lat": 39.572994,
+    "lng": 2.658525
+  },
+  {
+    "nombre": "Son Perera i Son Martorell",
+    "tipo": "parque",
+    "direccion": "Parc de Son Parera",
+    "lat": 39.5552302,
+    "lng": 2.6882226
+  },
+  {
+    "nombre": "Clínica Veterinaria Son Dureta",
+    "tipo": "veterinario",
+    "direccion": "Camí de Gènova, 4",
+    "lat": 39.5728325,
+    "lng": 2.6199635
+  },
+  {
+    "nombre": "Clínica Veterinaria Metropólitan",
+    "tipo": "veterinario",
+    "direccion": "Carrer Benet Pons i Fàbregues, 3",
+    "lat": 39.573253,
+    "lng": 2.6674574
+  },
+  {
+    "nombre": "CENTRO VETERINARIO ES FORTÍ",
+    "tipo": "veterinario",
+    "direccion": "joans pons i",
+    "lat": 39.5793086,
+    "lng": 2.6416312
+  },
+  {
+    "nombre": "aquatropolis",
+    "tipo": "tienda",
+    "direccion": "La Rambla, 4",
+    "lat": 39.5726345,
+    "lng": 2.650905
+  },
+  {
+    "nombre": "Playa perros Es Carnatge",
+    "tipo": "parque",
+    "direccion": "Carrer Prol Denton, 52",
+    "lat": 39.5438232,
+    "lng": 2.7001537
+  },
+  {
+    "nombre": "Servicio Veterinario A Domicilio 24 Horas",
+    "tipo": "veterinario",
+    "direccion": "Carrer Joan Pons Marquès, 4A",
+    "lat": 39.5792585,
+    "lng": 2.6415481
+  },
+  {
+    "nombre": "SOS Animal Mallorca",
+    "tipo": "protectora",
+    "direccion": "Camino Sa Canera, 11",
+    "lat": 39.535130599999995,
+    "lng": 2.5190194
+  },
+  {
+    "nombre": "Pajareria Son Gotleu",
+    "tipo": "otros",
+    "direccion": "Carrer Santa Florentina, 44",
+    "lat": 39.575669999999995,
+    "lng": 2.6736
+  },
+  {
+    "nombre": "Parque de la Riera",
+    "tipo": "parque",
+    "direccion": "C. de Joan Dameto, s/n",
+    "lat": 39.585309699999996,
+    "lng": 2.6372297
+  },
+  {
+    "nombre": "Plaza de La Feixina",
+    "tipo": "parque",
+    "direccion": "Avinguda Argentina, s/n",
+    "lat": 39.5707218,
+    "lng": 2.6402639999999997
+  },
+  {
+    "nombre": "MENUTS PELUTS",
+    "tipo": "tienda",
+    "direccion": "Carrer de Jaume Balmes, 23",
+    "lat": 39.5794952,
+    "lng": 2.6603388999999997
+  },
+  {
+    "nombre": "Animales De Compañía Tucán",
+    "tipo": "tienda",
+    "direccion": "Carrer del Marquès de la Fontsanta, 38",
+    "lat": 39.577603599999996,
+    "lng": 2.6579029999999997
+  },
+  {
+    "nombre": "COOKI PET SHOP",
+    "tipo": "tienda",
+    "direccion": "Avinguda de Sant Ferran, 40",
+    "lat": 39.5781619,
+    "lng": 2.633917
+  },
+  {
+    "nombre": "Peluquería Canina Rulos",
+    "tipo": "otros",
+    "direccion": "Carrer del Marquès de la Sènia, 6",
+    "lat": 39.5699,
+    "lng": 2.6323624
+  },
+  {
+    "nombre": "Magnum and Friends",
+    "tipo": "tienda",
+    "direccion": "Carrer d'Andrea Doria, 12A",
+    "lat": 39.5706606,
+    "lng": 2.6310265999999998
+  },
+  {
+    "nombre": "Residència Canina i Felina 'Von Falkenau'",
+    "tipo": "otros",
+    "direccion": "Camí de Son Lluch, parcela 81",
+    "lat": 39.5734906,
+    "lng": 2.8758304
+  },
+  {
+    "nombre": "Pajarería mascotas la rambla",
+    "tipo": "tienda",
+    "direccion": "La Rambla, 8",
+    "lat": 39.5727836,
+    "lng": 2.6505739999999998
+  },
+  {
+    "nombre": "Hospital Veterinario Canis - Mallorca",
+    "tipo": "veterinario",
+    "direccion": "Carrer d'Agnès de Pacs, 12",
+    "lat": 39.5956417,
+    "lng": 2.6529024
+  },
+  {
+    "nombre": "Parque de Convivencia Son Dameto de Dalt",
+    "tipo": "parque",
+    "direccion": "Carrer d'Andalusia, 14",
+    "lat": 39.586017399999996,
+    "lng": 2.6248978
+  },
+  {
+    "nombre": "Clínica Veterinaria Canis - Palma de Mallorca",
+    "tipo": "veterinario",
+    "direccion": "Carrer Vasco Da Gama, 5",
+    "lat": 39.5702053,
+    "lng": 2.6318145
+  },
+  {
+    "nombre": "Centro Canino Internacional",
+    "tipo": "protectora",
+    "direccion": "Platja de Palma i Pla de Sant Jordi",
+    "lat": 39.526953,
+    "lng": 2.7775488
+  },
+  {
+    "nombre": "Parc de sa Riera",
+    "tipo": "parque",
+    "direccion": "C/ de Jesús, 27A",
+    "lat": 39.5833544,
+    "lng": 2.6411001
+  },
+  {
+    "nombre": "Orión Peluqueria de Mascotas",
+    "tipo": "tienda",
+    "direccion": "C. de Manacor, 365",
+    "lat": 39.57145,
+    "lng": 2.7185303
+  },
+  {
+    "nombre": "Parque canino, Plaza de la Guardia Civil",
+    "tipo": "parque",
+    "direccion": "Carrer de Manuel Azaña, 14",
+    "lat": 39.569351499999996,
+    "lng": 2.6649865999999998
+  },
+  {
+    "nombre": "Memvet - Centre de referència veterinària",
+    "tipo": "veterinario",
+    "direccion": "Carrer de la Reina Esclaramunda, 6, baixos",
+    "lat": 39.5761618,
+    "lng": 2.6502585
+  },
+  {
+    "nombre": "Clinica Veterinaria San Fernando, Palma de Mallorca",
+    "tipo": "veterinario",
+    "direccion": "Avinguda de Sant Ferran, 49",
+    "lat": 39.5779657,
+    "lng": 2.6340269
+  },
+  {
+    "nombre": "CEPAD Centre De Proteccio D'animals Domestics",
+    "tipo": "protectora",
+    "direccion": "Carretera Palma a, Km 15, 7",
+    "lat": 39.6091105,
+    "lng": 2.8378444999999997
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Parque Comercial",
+    "lat": 39.6286188,
+    "lng": 2.7331265
+  },
+  {
+    "nombre": "Parc de les Sorts",
+    "tipo": "parque",
+    "direccion": "Parque público Ses Sorts",
+    "lat": 39.5790078,
+    "lng": 2.6768208
+  },
+  {
+    "nombre": "merCat&Dog",
+    "tipo": "tienda",
+    "direccion": "Carrer Gremi de Boters, 5",
+    "lat": 39.6053071,
+    "lng": 2.6629377
+  },
+  {
+    "nombre": "Guau Look",
+    "tipo": "tienda",
+    "direccion": "Carrer de la Reina Maria Cristina, 64",
+    "lat": 39.581596,
+    "lng": 2.656722
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Carrer Sor de Catalina Maura",
+    "lat": 39.596458999999996,
+    "lng": 2.6501745999999997
+  },
+  {
+    "nombre": "Centro Veterinario Las Columnas",
+    "tipo": "veterinario",
+    "direccion": "Plaça Francesc García i Orell, 14, BAJO",
+    "lat": 39.5727615,
+    "lng": 2.6605995
+  },
+  {
+    "nombre": "Parc de Convivència La Ribera",
+    "tipo": "parque",
+    "direccion": "Carrer del Flamenc",
+    "lat": 39.529649899999995,
+    "lng": 2.7329695
+  },
+  {
+    "nombre": "Pájaros Arnaiz",
+    "tipo": "tienda",
+    "direccion": "Urbanización Can Mayol, parcela 34",
+    "lat": 39.6029449,
+    "lng": 2.6856301
+  },
+  {
+    "nombre": "Balmes Hospital Veterinari",
+    "tipo": "veterinario",
+    "direccion": "Carrer de Jaume Balmes, 55",
+    "lat": 39.580524499999996,
+    "lng": 2.6572286999999997
+  },
+  {
+    "nombre": "AniCura Aragó Hospital Veterinari | Urgències 24h",
+    "tipo": "veterinario",
+    "direccion": "Carrer Son Morro, 4",
+    "lat": 39.574121999999996,
+    "lng": 2.687182
+  },
+  {
+    "nombre": "Clínica Veterinaria Armadans",
+    "tipo": "veterinario",
+    "direccion": "Avinguda de Joan Miró, 3",
+    "lat": 39.5674656,
+    "lng": 2.6278256
+  },
+  {
+    "nombre": "Amics dels Animals d'Esporles - Amigos de los animales de Esporles",
+    "tipo": "otros",
+    "direccion": "Son Quint",
+    "lat": 39.6596809,
+    "lng": 2.5904929
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "Son Martorell",
+    "lat": 39.5558069,
+    "lng": 2.6896367
+  },
+  {
+    "nombre": "Fauna Palma",
+    "tipo": "tienda",
+    "direccion": "Platja de Palma i Pla de Sant Jordi",
+    "lat": 39.5529024,
+    "lng": 2.706537
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "Carrer de l'Àliga",
+    "lat": 39.499882899999996,
+    "lng": 2.5009929
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "Ponent",
+    "lat": 39.5970212,
+    "lng": 2.6119291
+  },
+  {
+    "nombre": "“Pi-Pi Can” Son Forteza",
+    "tipo": "parque",
+    "direccion": "Carrer Jacint Verdaguer, 136",
+    "lat": 39.587024199999995,
+    "lng": 2.669257
+  },
+  {
+    "nombre": "Parque de ocio canino de Son Fuster",
+    "tipo": "parque",
+    "direccion": "Carrer de Gabriel Alzamora, 35",
+    "lat": 39.592317,
+    "lng": 2.6785493
+  },
+  {
+    "nombre": "Sabuesos",
+    "tipo": "tienda",
+    "direccion": "Av. Gaspar de Bennazar, 57",
+    "lat": 39.5835224,
+    "lng": 2.6557339
+  },
+  {
+    "nombre": "Parque de Convivenvia Canina Cas Capiscol",
+    "tipo": "parque",
+    "direccion": "Norte",
+    "lat": 39.5949885,
+    "lng": 2.6507088
+  },
+  {
+    "nombre": "Perrera Municipal Son Reus",
+    "tipo": "protectora",
+    "direccion": "Camí de Son Reus",
+    "lat": 39.642272399999996,
+    "lng": 2.6763897
+  },
+  {
+    "nombre": "Parque de perros",
+    "tipo": "parque",
+    "direccion": "Ponent",
+    "lat": 39.580735,
+    "lng": 2.642369
+  },
+  {
+    "nombre": "Canyplant",
+    "tipo": "tienda",
+    "direccion": "Gran Via Asima, 14",
+    "lat": 39.6038803,
+    "lng": 2.6712305
+  },
+  {
+    "nombre": "Pipican",
+    "tipo": "parque",
+    "direccion": "Carrer de Francesc Martí i Móra, 73",
+    "lat": 39.5856089,
+    "lng": 2.6333321
+  },
+  {
+    "nombre": "Veterinario De Caballos Urgencias 24h",
+    "tipo": "veterinario",
+    "direccion": "Carrer d'Agustí Buades, 7",
+    "lat": 39.5838836,
+    "lng": 2.6525833
+  },
+  {
+    "nombre": "Peluqueria Canina Sweet Pet",
+    "tipo": "otros",
+    "direccion": "Carrer d'Orient, 2",
+    "lat": 39.581900999999995,
+    "lng": 2.6677076
+  },
+  {
+    "nombre": "PELUQUERIA CANINA FELINA",
+    "tipo": "otros",
+    "direccion": "Carrer de Pere Martell, 14",
+    "lat": 39.5803084,
+    "lng": 2.6513459999999998
+  },
+  {
+    "nombre": "Hospital Veterinario Calandri Urgencias 24 horas",
+    "tipo": "veterinario",
+    "direccion": "Carrer de la Reina Esclaramunda, 6",
+    "lat": 39.576225699999995,
+    "lng": 2.6502022
+  },
+  {
+    "nombre": "Protectora de animales",
+    "tipo": "protectora",
+    "direccion": "Norte",
+    "lat": 39.602310599999996,
+    "lng": 2.6665354
+  },
+  {
+    "nombre": "Guarderia canina y felina Miau",
+    "tipo": "otros",
+    "direccion": "Carrer de Son Sureda, 114",
+    "lat": 39.611192599999995,
+    "lng": 2.7104565
+  },
+  {
+    "nombre": "Forvetex",
+    "tipo": "otros",
+    "direccion": "Carrer de Joan Alcover, 64",
+    "lat": 39.5654411,
+    "lng": 2.6587177
+  },
+  {
+    "nombre": "Ocho Suites & Kitchen",
+    "tipo": "otros",
+    "direccion": "Carrer de la Mar, 24",
+    "lat": 39.5678781,
+    "lng": 2.6452809999999998
+  },
+  {
+    "nombre": "Samaritana Suites",
+    "tipo": "alojamiento",
+    "direccion": "Carrer del Pes de la Farina, 2",
+    "lat": 39.5702208,
+    "lng": 2.6531946
+  },
+  {
+    "nombre": "Concepció by Nobis",
+    "tipo": "alojamiento",
+    "direccion": "C/ de la Concepció, 34",
+    "lat": 39.574501,
+    "lng": 2.6456798
+  },
+  {
+    "nombre": "Can Bordoy Grand House & Garden",
+    "tipo": "alojamiento",
+    "direccion": "Carrer del Forn de la Glòria, 14",
+    "lat": 39.569659699999995,
+    "lng": 2.6444226
+  },
+  {
+    "nombre": "Posada Terra Santa",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de la Posada de Terra Santa, 5",
+    "lat": 39.56989,
+    "lng": 2.6533949999999997
+  },
+  {
+    "nombre": "Palma Riad",
+    "tipo": "otros",
+    "direccion": "Carrer de Sant Jaume, 5",
+    "lat": 39.572061999999995,
+    "lng": 2.6472883
+  },
+  {
+    "nombre": "Terreno Barrio Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Avinguda de Joan Miró, 73",
+    "lat": 39.559905,
+    "lng": 2.624457
+  },
+  {
+    "nombre": "Hotel Hospes Maricel & Spa",
+    "tipo": "alojamiento",
+    "direccion": "Ctra. Andratx, 11",
+    "lat": 39.54728,
+    "lng": 2.5963776999999997
+  },
+  {
+    "nombre": "Palma Suites Hotel Residence",
+    "tipo": "alojamiento",
+    "direccion": "Plaça del Mercadal, 8",
+    "lat": 39.5704308,
+    "lng": 2.6537148
+  },
+  {
+    "nombre": "AH Art Hotel Palma",
+    "tipo": "alojamiento",
+    "direccion": "Costa d'En Sintes, 6",
+    "lat": 39.5723972,
+    "lng": 2.6511296
+  },
+  {
+    "nombre": "Nivia Born Boutique Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Carrer dels Paraires, 24",
+    "lat": 39.5701222,
+    "lng": 2.6471308
+  },
+  {
+    "nombre": "Palacio Ca Sa Galesa",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Miramar, 8",
+    "lat": 39.5671567,
+    "lng": 2.6500380999999997
+  },
+  {
+    "nombre": "Castillo Hotel Son Vida, a Luxury Collection Hotel, Mallorca",
+    "tipo": "alojamiento",
+    "direccion": "Carrer Raixa, 2, Urbanizacion",
+    "lat": 39.5917983,
+    "lng": 2.5959141
+  },
+  {
+    "nombre": "Hotel Bon Sol Resort & Spa",
+    "tipo": "alojamiento",
+    "direccion": "Paseo de Illetas, 30",
+    "lat": 39.5405807,
+    "lng": 2.5924579999999997
+  },
+  {
+    "nombre": "Nakar Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Jaume III, 21",
+    "lat": 39.5722064,
+    "lng": 2.6433172
+  },
+  {
+    "nombre": "Hotel Palau Sa Font",
+    "tipo": "alojamiento",
+    "direccion": "Carrer dels Apuntadors, 38",
+    "lat": 39.569626899999996,
+    "lng": 2.643779
+  },
+  {
+    "nombre": "Puro Grand Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Montenegro, 10",
+    "lat": 39.5694784,
+    "lng": 2.6451862
+  },
+  {
+    "nombre": "Cannbis Paradise | Natural Paradise C B D",
+    "tipo": "tienda",
+    "direccion": "Carrer Aragó, 24",
+    "lat": 39.5747351,
+    "lng": 2.6589698999999998
+  },
+  {
+    "nombre": "Petit Palace Hotel Tres",
+    "tipo": "alojamiento",
+    "direccion": "Carrer dels Apuntadors, 3",
+    "lat": 39.5689865,
+    "lng": 2.6455343
+  },
+  {
+    "nombre": "Nobis Hotel Palma",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de les Caputxines, 9",
+    "lat": 39.5725264,
+    "lng": 2.6487591999999998
+  },
+  {
+    "nombre": "Palacio Can Marqués",
+    "tipo": "alojamiento",
+    "direccion": "Carrer dels Apuntadors, 15",
+    "lat": 39.5692909,
+    "lng": 2.6444042999999997
+  },
+  {
+    "nombre": "ICON Rosetó",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Can Campaner, 6",
+    "lat": 39.572075999999996,
+    "lng": 2.6494958
+  },
+  {
+    "nombre": "Hotel De Mar Gran Meliá",
+    "tipo": "alojamiento",
+    "direccion": "Passeig Illetes, 7",
+    "lat": 39.543886,
+    "lng": 2.5962449999999997
+  },
+  {
+    "nombre": "Sheraton Mallorca Arabella Golf Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Carrer Vinagrella",
+    "lat": 39.5866644,
+    "lng": 2.5993321
+  },
+  {
+    "nombre": "Ca'n León",
+    "tipo": "tienda",
+    "direccion": "C. de Manacor, 319",
+    "lat": 39.5714894,
+    "lng": 2.7148477
+  },
+  {
+    "nombre": "ANIMALS",
+    "tipo": "tienda",
+    "direccion": "Carrer Saragossa, 1",
+    "lat": 39.52909,
+    "lng": 2.5456722
+  },
+  {
+    "nombre": "zona EQUUS-Equestrian shop-Palma de Mallorca",
+    "tipo": "tienda",
+    "direccion": "Carrer d'Alfons el Magnànim, 69",
+    "lat": 39.5933558,
+    "lng": 2.6539547999999997
+  },
+  {
+    "nombre": "Hotel Feliz",
+    "tipo": "alojamiento",
+    "direccion": "Avinguda de Joan Miró, 74",
+    "lat": 39.5608785,
+    "lng": 2.6246240999999997
+  },
+  {
+    "nombre": "The Boc Suites",
+    "tipo": "otros",
+    "direccion": "Carrer de la Reina Maria Cristina, 51",
+    "lat": 39.580338,
+    "lng": 2.6557618
+  },
+  {
+    "nombre": "Hotel Araxa",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Pilar Juncosa, 22",
+    "lat": 39.5697136,
+    "lng": 2.6258266999999997
+  },
+  {
+    "nombre": "The Boc Hostels - City",
+    "tipo": "otros",
+    "direccion": "Carrer de Son Pontivic, 16",
+    "lat": 39.57004,
+    "lng": 2.6622873
+  },
+  {
+    "nombre": "Hotel Cappuccino - Palma",
+    "tipo": "alojamiento",
+    "direccion": "Plaça de Cort",
+    "lat": 39.569717399999995,
+    "lng": 2.6502664
+  },
+  {
+    "nombre": "INNSiDE by Meliá Palma Bosque",
+    "tipo": "alojamiento",
+    "direccion": "Carrer Camilo José Cela, 5",
+    "lat": 39.56678,
+    "lng": 2.6259699999999997
+  },
+  {
+    "nombre": "Fronda General Riera",
+    "tipo": "tienda",
+    "direccion": "Carrer del General Riera, 158",
+    "lat": 39.596508,
+    "lng": 2.6426084
+  },
+  {
+    "nombre": "Parque de la Riera",
+    "tipo": "parque",
+    "direccion": "C/ de Jesús, 27A",
+    "lat": 39.5833544,
+    "lng": 2.6411001
+  },
+  {
+    "nombre": "Hotel Cort",
+    "tipo": "alojamiento",
+    "direccion": "Plaça de Cort, 11",
+    "lat": 39.5697389,
+    "lng": 2.6499949
+  },
+  {
+    "nombre": "El Corte Inglés Alexandre Rosselló",
+    "tipo": "otros",
+    "direccion": "Avinguda d'Alexandre Rosselló, 12-16",
+    "lat": 39.5733744,
+    "lng": 2.6563944
+  },
+  {
+    "nombre": "Hotel Catalonia Majórica",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de la Garita, 3",
+    "lat": 39.5560812,
+    "lng": 2.6223717
+  },
+  {
+    "nombre": "Hotel Joan Miró Museum",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Bartomeu Fons, 8",
+    "lat": 39.5534347,
+    "lng": 2.610638
+  },
+  {
+    "nombre": "Mercadona",
+    "tipo": "otros",
+    "direccion": "Mercado del Olivar",
+    "lat": 39.5737873,
+    "lng": 2.653639
+  },
+  {
+    "nombre": "Belle Zurbarán Palma Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Josep Villalonga, 16",
+    "lat": 39.5645841,
+    "lng": 2.6244129
+  },
+  {
+    "nombre": "Gomila Palma Apartments",
+    "tipo": "alojamiento",
+    "direccion": "Avinguda de Joan Miró, 5",
+    "lat": 39.5664556,
+    "lng": 2.62711
+  },
+  {
+    "nombre": "Brondo Architect Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Can Brondo, 4",
+    "lat": 39.5710872,
+    "lng": 2.6479323
+  },
+  {
+    "nombre": "Cream homes Santa Catalina, ETV",
+    "tipo": "alojamiento",
+    "direccion": "Carrer de Murillo, 19",
+    "lat": 39.5732882,
+    "lng": 2.6390979
+  },
+  {
+    "nombre": "TEDi",
+    "tipo": "tienda",
+    "direccion": "Carrer Aragó, 43",
+    "lat": 39.5769935,
+    "lng": 2.6600292999999997
+  },
+  {
+    "nombre": "EROSKI city",
+    "tipo": "tienda",
+    "direccion": "Felipe",
+    "lat": 39.569131999999996,
+    "lng": 2.646497
+  },
+  {
+    "nombre": "Balearic Hostel Group",
+    "tipo": "alojamiento",
+    "direccion": "Carrer del Pinar, 1",
+    "lat": 39.6055972,
+    "lng": 2.6346179999999997
+  },
+  {
+    "nombre": "Animalia Peluqueria Canina en Mallorca",
+    "tipo": "tienda",
+    "direccion": "Carrer de l'Arquebisbe Aspàreg, 53",
+    "lat": 39.5762991,
+    "lng": 2.6675242999999997
+  }
+]

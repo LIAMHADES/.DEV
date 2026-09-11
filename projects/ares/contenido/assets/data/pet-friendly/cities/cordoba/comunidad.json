@@ -1,0 +1,485 @@
+[
+  {
+    "nombre": "MasKoteando",
+    "tipo": "tienda",
+    "direccion": "Paseo de la Victoria, kiosco",
+    "lat": 37.884958999999995,
+    "lng": -4.78546
+  },
+  {
+    "nombre": "SCOOBYSFARMA",
+    "tipo": "tienda",
+    "direccion": "C. José Tejero 'El Guarda'', nº 1",
+    "lat": 37.8302882,
+    "lng": -4.9280034
+  },
+  {
+    "nombre": "Naturaleza, la tienda de tus animales",
+    "tipo": "tienda",
+    "direccion": "Isla Gomera, 3",
+    "lat": 37.8896249,
+    "lng": -4.7988007999999995
+  },
+  {
+    "nombre": "Maskotas Hotel Canino",
+    "tipo": "tienda",
+    "direccion": "Av. las Quemadas",
+    "lat": 37.8853985,
+    "lng": -4.713345599999999
+  },
+  {
+    "nombre": "NaturZoo |1| 🐶 ||💈Peluquería Canina || Tienda mascotas y Alimentación Natural-Barf||🛍🥩",
+    "tipo": "tienda",
+    "direccion": "Avenida Cañito Bazán, N2 Bis",
+    "lat": 37.8946945,
+    "lng": -4.799122
+  },
+  {
+    "nombre": "Amascotados Trassierra",
+    "tipo": "tienda",
+    "direccion": "Carret. de Trassierra, 58",
+    "lat": 37.8932161,
+    "lng": -4.7970298
+  },
+  {
+    "nombre": "Grupo de protección animal de Rute 'GPAR'",
+    "tipo": "protectora",
+    "direccion": "14960 Rute",
+    "lat": 37.3271071,
+    "lng": -4.3784526999999995
+  },
+  {
+    "nombre": "Ornicor S.L.",
+    "tipo": "tienda",
+    "direccion": "Ctra.del aeropuerto N-437 km 4,5",
+    "lat": 37.8573744,
+    "lng": -4.8290415
+  },
+  {
+    "nombre": "Kiwoko Animal World",
+    "tipo": "tienda",
+    "direccion": "C. del Compositor Mozart",
+    "lat": 37.878062899999996,
+    "lng": -4.8362267999999995
+  },
+  {
+    "nombre": "VIDA MASCOTA",
+    "tipo": "tienda",
+    "direccion": "Av. Gran Vía Parque, 25",
+    "lat": 37.8818474,
+    "lng": -4.7935643
+  },
+  {
+    "nombre": "La Casa de los Bigotes",
+    "tipo": "tienda",
+    "direccion": "Av. Ronda de los Tejares, 19, Loc 4",
+    "lat": 37.887153399999995,
+    "lng": -4.7819278
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Av. del Arcángel, s/n",
+    "lat": 37.8786759,
+    "lng": -4.7663668999999995
+  },
+  {
+    "nombre": "Mascotas y Campo",
+    "tipo": "tienda",
+    "direccion": "Av. de Medina Azahara, 18",
+    "lat": 37.8854587,
+    "lng": -4.792119
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "Sur",
+    "lat": 37.860018,
+    "lng": -4.78428
+  },
+  {
+    "nombre": "TOC TOC DOG",
+    "tipo": "tienda",
+    "direccion": "Centro",
+    "lat": 37.888221,
+    "lng": -4.781959
+  },
+  {
+    "nombre": "HobbyZoo",
+    "tipo": "tienda",
+    "direccion": "C. Poeta Emilio Prados, s/n, local 13 - 14",
+    "lat": 37.8958936,
+    "lng": -4.7911912999999995
+  },
+  {
+    "nombre": "La Guarida Protectora",
+    "tipo": "protectora",
+    "direccion": "C. Montemayor, 8",
+    "lat": 37.3943614,
+    "lng": -4.7661144
+  },
+  {
+    "nombre": "Perrera Municipal De Lucena",
+    "tipo": "protectora",
+    "direccion": "14900 Lucena",
+    "lat": 37.3617322,
+    "lng": -4.4586143
+  },
+  {
+    "nombre": "Pienso y Mascotas",
+    "tipo": "tienda",
+    "direccion": "C. Astrónomo Azarquiel, 31",
+    "lat": 37.9116183,
+    "lng": -4.7222773
+  },
+  {
+    "nombre": "Finca Buen Aqua",
+    "tipo": "protectora",
+    "direccion": "Unnamed Road, 14299",
+    "lat": 38.1505647,
+    "lng": -5.2964407
+  },
+  {
+    "nombre": "PELUQUERÍA CANINA MK GROOMERS",
+    "tipo": "tienda",
+    "direccion": "Fernando Amor y Mayor, 1",
+    "lat": 37.8878858,
+    "lng": -4.796073799999999
+  },
+  {
+    "nombre": "Macarena Montero | Estilismo Canino y academia de peluquería canina.",
+    "tipo": "tienda",
+    "direccion": "Centro de Peluquería y Estética Canina Macarena Montero",
+    "lat": 37.880153,
+    "lng": -4.7987747999999995
+  },
+  {
+    "nombre": "Elite Animal by alybell",
+    "tipo": "tienda",
+    "direccion": "Av. de Carlos III, 28",
+    "lat": 37.8963752,
+    "lng": -4.7590902
+  },
+  {
+    "nombre": "Peluquería Canina Mis Consentidos",
+    "tipo": "tienda",
+    "direccion": "frente farmacia",
+    "lat": 37.884752399999996,
+    "lng": -4.8146015
+  },
+  {
+    "nombre": "Peluquería canina y spa Pluto",
+    "tipo": "tienda",
+    "direccion": "C. Virgen de la Salud, 1",
+    "lat": 37.877972299999996,
+    "lng": -4.7893381
+  },
+  {
+    "nombre": "Peluquería Canina Renovecan",
+    "tipo": "tienda",
+    "direccion": "C. Álvaro Paulo, 13, Loc 3",
+    "lat": 37.8907514,
+    "lng": -4.7643327
+  },
+  {
+    "nombre": "NaturZoo |2| 🐶 ||💈Peluquería Canina || Tienda mascotas y Alimentación Natural-Barf||🛍🥩",
+    "tipo": "tienda",
+    "direccion": "Calle Huerta de Sta. Isabel, 4",
+    "lat": 37.891063599999995,
+    "lng": -4.8130333
+  },
+  {
+    "nombre": "Pizca y Trufa. Bienestar animal",
+    "tipo": "tienda",
+    "direccion": "Av. de Manolete, 15",
+    "lat": 37.879761699999996,
+    "lng": -4.796039899999999
+  },
+  {
+    "nombre": "Peluquería Canina Es Uno +",
+    "tipo": "tienda",
+    "direccion": "C. Escañuela, s/n",
+    "lat": 37.8866861,
+    "lng": -4.7679225999999995
+  },
+  {
+    "nombre": "Peluquería Canina Kingo",
+    "tipo": "tienda",
+    "direccion": "C. Infanta Doña María, 68",
+    "lat": 37.8798396,
+    "lng": -4.7914173
+  },
+  {
+    "nombre": "New Happy Dog",
+    "tipo": "tienda",
+    "direccion": "C. Prof. Tierno Galván, 6",
+    "lat": 37.900953799999996,
+    "lng": -4.7582553999999995
+  },
+  {
+    "nombre": "Tu Kasa K9",
+    "tipo": "tienda",
+    "direccion": "Av. Amargacena, parcela 19, modulo 2A",
+    "lat": 37.846495,
+    "lng": -4.7952072999999995
+  },
+  {
+    "nombre": "A2",
+    "tipo": "tienda",
+    "direccion": "dozi",
+    "lat": 37.850668999999996,
+    "lng": -4.793819
+  },
+  {
+    "nombre": "💈🐶 Unai Guijo Groomer || Peluquería Canina en Córdoba",
+    "tipo": "tienda",
+    "direccion": "Calle Dr. Gregorio Marañón, 3",
+    "lat": 37.8777423,
+    "lng": -4.7840409
+  },
+  {
+    "nombre": "Perruquería Cuatro Patas",
+    "tipo": "tienda",
+    "direccion": "Pje. Poeta Baena Yuste, 3, Local",
+    "lat": 37.8991566,
+    "lng": -4.755080899999999
+  },
+  {
+    "nombre": "Peluquería Canina RASTAdog Córdoba. Especializada en Perro de Agua Español. Estética canina. (Cita Previa)",
+    "tipo": "tienda",
+    "direccion": "Pje. San Sebastián, 2, Loc RASTAdog",
+    "lat": 37.8914085,
+    "lng": -4.7874397
+  },
+  {
+    "nombre": "Dogavari peluquería canina",
+    "tipo": "tienda",
+    "direccion": "Calle Dr. José Altolaguirre, N1, LOCALES 5-7",
+    "lat": 37.8720432,
+    "lng": -4.7930401
+  },
+  {
+    "nombre": "Turko's peluqueria canina/ especializada en perro de agua español",
+    "tipo": "tienda",
+    "direccion": "Pl. Toñi Sánchez, N°2, Loc 1",
+    "lat": 37.89016,
+    "lng": -4.793544499999999
+  },
+  {
+    "nombre": "Petit Boutique",
+    "tipo": "tienda",
+    "direccion": "C. Periodista José Luis de Córdoba, 10",
+    "lat": 37.876583,
+    "lng": -4.763584799999999
+  },
+  {
+    "nombre": "Hocicos -Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. del Alcalde Velasco Navarro, 3",
+    "lat": 37.8810353,
+    "lng": -4.7882744
+  },
+  {
+    "nombre": "Peluquería Canina Peludos Córdoba",
+    "tipo": "tienda",
+    "direccion": "Av. Granada, 5",
+    "lat": 37.869369999999996,
+    "lng": -4.777295
+  },
+  {
+    "nombre": "Lanudogs",
+    "tipo": "tienda",
+    "direccion": "Av. de Jesús Rescatado, 21",
+    "lat": 37.890726199999996,
+    "lng": -4.760478
+  },
+  {
+    "nombre": "Almudena Blancart Estilista Canina",
+    "tipo": "tienda",
+    "direccion": "C. Platero Sánchez de la Cruz, 9",
+    "lat": 37.889699199999995,
+    "lng": -4.7632049
+  },
+  {
+    "nombre": "La Trastienda animal",
+    "tipo": "tienda",
+    "direccion": "Pl. de San Pedro, 17",
+    "lat": 37.882311,
+    "lng": -4.771616
+  },
+  {
+    "nombre": "Mascota Trassierra. Peluquería canina, piensos y complementos",
+    "tipo": "tienda",
+    "direccion": "Carret. de Trassierra, 41",
+    "lat": 37.8942944,
+    "lng": -4.8038270999999995
+  },
+  {
+    "nombre": "Enredadog Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. Comandante Velázquez, 6",
+    "lat": 37.8974573,
+    "lng": -4.779616
+  },
+  {
+    "nombre": "Amascotados Quemadas",
+    "tipo": "tienda",
+    "direccion": "Polígono Industrial Las Quemadas",
+    "lat": 37.905589,
+    "lng": -4.7197866
+  },
+  {
+    "nombre": "Nutrimascota | Peluquería Canina Y Tienda De Mascotas Cordoba",
+    "tipo": "tienda",
+    "direccion": "C. López Amo, 10",
+    "lat": 37.8994885,
+    "lng": -4.7784653
+  },
+  {
+    "nombre": "The Barber Dog",
+    "tipo": "tienda",
+    "direccion": "C. los Chopos, 11",
+    "lat": 37.8979152,
+    "lng": -4.7818885
+  },
+  {
+    "nombre": "Peluqueria canina Animalook",
+    "tipo": "tienda",
+    "direccion": "Av. Lagartijo, 2",
+    "lat": 37.880967399999996,
+    "lng": -4.796646
+  },
+  {
+    "nombre": "Peluquería de Mascotas Camelia",
+    "tipo": "tienda",
+    "direccion": "C. Guaraní, local 2",
+    "lat": 37.898658399999995,
+    "lng": -4.7627517
+  },
+  {
+    "nombre": "Agroalimentacion El Capi",
+    "tipo": "tienda",
+    "direccion": "C. del Periodista Pedro Alvarez",
+    "lat": 37.894320199999996,
+    "lng": -4.7508447
+  },
+  {
+    "nombre": "Pajareria Sur",
+    "tipo": "tienda",
+    "direccion": "Pl. de Andalucía, 6",
+    "lat": 37.869408299999996,
+    "lng": -4.7785291
+  },
+  {
+    "nombre": "Pajareria 'El Cardelino'",
+    "tipo": "tienda",
+    "direccion": "C",
+    "lat": 37.878676999999996,
+    "lng": -4.764179899999999
+  },
+  {
+    "nombre": "ShaNatur",
+    "tipo": "tienda",
+    "direccion": "C. Veneros de Bejarano, 10P",
+    "lat": 37.926089999999995,
+    "lng": -4.89783
+  },
+  {
+    "nombre": "Mascotas La Viñuela",
+    "tipo": "tienda",
+    "direccion": "Av. de la Viñuela, 24, bajo",
+    "lat": 37.8881784,
+    "lng": -4.7627114
+  },
+  {
+    "nombre": "Pajarería Mayte",
+    "tipo": "tienda",
+    "direccion": "Cam. de los Sastres, 16",
+    "lat": 37.8814694,
+    "lng": -4.7891265
+  },
+  {
+    "nombre": "peluqueria canina",
+    "tipo": "tienda",
+    "direccion": "C. Joaquín Sama Naharro, 24",
+    "lat": 37.894639399999996,
+    "lng": -4.785864999999999
+  },
+  {
+    "nombre": "Bullart Kennel's",
+    "tipo": "tienda",
+    "direccion": "Av. del Gran Capitán, 33",
+    "lat": 37.8897513,
+    "lng": -4.7830628
+  },
+  {
+    "nombre": "Tienda de animales",
+    "tipo": "tienda",
+    "direccion": "C. Poeta Emilio Prados, s/n, local 13 - 14, Noroeste",
+    "lat": 37.897349399999996,
+    "lng": -4.790511599999999
+  },
+  {
+    "nombre": "Pekezoo",
+    "tipo": "tienda",
+    "direccion": "Av. Amargacena",
+    "lat": 37.8458282,
+    "lng": -4.7958323
+  },
+  {
+    "nombre": "PELUQUERIA CANINA ALICIA RUIZ (PELUDOG)",
+    "tipo": "tienda",
+    "direccion": "C. Veredon de los Frailes, 254",
+    "lat": 37.840179899999995,
+    "lng": -4.9343699999999995
+  },
+  {
+    "nombre": "My Family Pets. Peluquería canina. Tienda alimentación mascotas",
+    "tipo": "tienda",
+    "direccion": "C. Escritor Conde de Zamora, 10, Loc 8",
+    "lat": 37.876297699999995,
+    "lng": -4.8004888
+  },
+  {
+    "nombre": "Residencia Canina Olea Bull's",
+    "tipo": "tienda",
+    "direccion": "14320 Cerro Muriano",
+    "lat": 37.9945479,
+    "lng": -4.7694458
+  },
+  {
+    "nombre": "Amakat cat hotel",
+    "tipo": "tienda",
+    "direccion": "C. Prof. Juan Carandell y Pericay, 15",
+    "lat": 37.9186206,
+    "lng": -4.8013194
+  },
+  {
+    "nombre": "Residencia Felina",
+    "tipo": "tienda",
+    "direccion": "Urbanizacion la Barquera, 194",
+    "lat": 37.8467702,
+    "lng": -4.885267
+  },
+  {
+    "nombre": "Mowgli",
+    "tipo": "tienda",
+    "direccion": "C. el Almendro, 3",
+    "lat": 37.8960947,
+    "lng": -4.783827
+  },
+  {
+    "nombre": "Pajareria la Fuensanta",
+    "tipo": "tienda",
+    "direccion": "Pl. Rubén Darío, 0",
+    "lat": 37.8844833,
+    "lng": -4.7597926
+  },
+  {
+    "nombre": "Aqua Flor Aquarium",
+    "tipo": "tienda",
+    "direccion": "C. Esmeralda, 15, Bajo",
+    "lat": 37.891027199999996,
+    "lng": -4.748037
+  }
+]

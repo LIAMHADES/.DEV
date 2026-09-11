@@ -1,0 +1,506 @@
+[
+  {
+    "nombre": "Lovedog Barber",
+    "tipo": "tienda",
+    "direccion": "Blas de Otero Kalea, 2A",
+    "lat": 43.2702229,
+    "lng": -2.9425000999999997
+  },
+  {
+    "nombre": "Mimos groom",
+    "tipo": "tienda",
+    "direccion": "Julio Lazúrtegui Plaza, 6",
+    "lat": 43.271723099999996,
+    "lng": -2.9511252
+  },
+  {
+    "nombre": "LAGUN ONAK pastelería y repostería natural para mascotas",
+    "tipo": "tienda",
+    "direccion": "Goienkale, 6",
+    "lat": 43.2560236,
+    "lng": -2.922949
+  },
+  {
+    "nombre": "Mimopets Bilbao Peluquería Canina y Spa (Ozonoterapia)",
+    "tipo": "tienda",
+    "direccion": "Etxetxua Plaza, 9",
+    "lat": 43.257384599999995,
+    "lng": -2.9433862
+  },
+  {
+    "nombre": "baiu - Sastrería canina",
+    "tipo": "tienda",
+    "direccion": "Fernández del Campo K., 13",
+    "lat": 43.2583956,
+    "lng": -2.9339652
+  },
+  {
+    "nombre": "Guaw Zubiarte",
+    "tipo": "tienda",
+    "direccion": "C.C. Zubiarte",
+    "lat": 43.2677359,
+    "lng": -2.9404816
+  },
+  {
+    "nombre": "DOGGUAO",
+    "tipo": "tienda",
+    "direccion": "San Adrian Etorb., 48003",
+    "lat": 43.2468807,
+    "lng": -2.9325213999999997
+  },
+  {
+    "nombre": "Mas Q Hocicos",
+    "tipo": "tienda",
+    "direccion": "Iturribide Kalea, 84, Online",
+    "lat": 43.255755199999996,
+    "lng": -2.9149107
+  },
+  {
+    "nombre": "Maskotak Pepito, SL",
+    "tipo": "tienda",
+    "direccion": "Iparraguirre Kalea, 50",
+    "lat": 43.259339999999995,
+    "lng": -2.9382178999999997
+  },
+  {
+    "nombre": "Indomable",
+    "tipo": "tienda",
+    "direccion": "Santiago Brouard Kalea, 5",
+    "lat": 43.2550592,
+    "lng": -2.9392258
+  },
+  {
+    "nombre": "EOS Estilista canina",
+    "tipo": "tienda",
+    "direccion": "C. Islas Canarias, 99",
+    "lat": 43.2824327,
+    "lng": -2.9656018
+  },
+  {
+    "nombre": "RANGEL'S - Peluquería Canina & Boutique",
+    "tipo": "tienda",
+    "direccion": "Diego Lopez Haroko Kale Nagusia, 69, Lonja 2D",
+    "lat": 43.264311899999996,
+    "lng": -2.9416398999999998
+  },
+  {
+    "nombre": "Txukunpet Peluqueria Canina",
+    "tipo": "tienda",
+    "direccion": "Kalea Manuel Allende, 15",
+    "lat": 43.259355,
+    "lng": -2.9419291
+  },
+  {
+    "nombre": "Peluqueria canina Reguau!pos",
+    "tipo": "tienda",
+    "direccion": "Santiago Brouard Kalea, 2",
+    "lat": 43.2551213,
+    "lng": -2.9395789999999997
+  },
+  {
+    "nombre": "MIMOTES Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "Av. del Ferrocarril, 1",
+    "lat": 43.259536999999995,
+    "lng": -2.9460419
+  },
+  {
+    "nombre": "By Mascota Bilbao - Tienda y Peluquería para Mascotas",
+    "tipo": "tienda",
+    "direccion": "Alameda de Recalde, 64",
+    "lat": 43.257901,
+    "lng": -2.9371728999999998
+  },
+  {
+    "nombre": "tris-tras",
+    "tipo": "tienda",
+    "direccion": "Ibaialde Kalea, 3",
+    "lat": 43.242235099999995,
+    "lng": -2.9245753999999997
+  },
+  {
+    "nombre": "Peluquería Burbuja Dog Deusto",
+    "tipo": "tienda",
+    "direccion": "Blas de Otero Kalea, 2 lonja, bajo 2 lonja",
+    "lat": 43.2702379,
+    "lng": -2.9424807
+  },
+  {
+    "nombre": "Txapoteando Felices Peluquería canina y felina",
+    "tipo": "tienda",
+    "direccion": "Pl. de Rekalde, 93",
+    "lat": 43.2508421,
+    "lng": -2.9464845
+  },
+  {
+    "nombre": "Paws Santutxu",
+    "tipo": "tienda",
+    "direccion": "Arteta Aurelio Pintor Kalea, 3",
+    "lat": 43.252917599999996,
+    "lng": -2.9129647999999997
+  },
+  {
+    "nombre": "GarbiTxakur Sarriko. Peluquería canina, felina y autolavado de mascotas",
+    "tipo": "tienda",
+    "direccion": "Agirre Lehendakariaren Etorb., 137",
+    "lat": 43.2761567,
+    "lng": -2.9603284999999997
+  },
+  {
+    "nombre": "TRUFAS NEGRAS - Centro de bienestar animal",
+    "tipo": "tienda",
+    "direccion": "Calle Juan Ajuriaguerra Kalea, 35",
+    "lat": 43.2664499,
+    "lng": -2.9370767
+  },
+  {
+    "nombre": "El Almacén Telepienso",
+    "tipo": "tienda",
+    "direccion": "Zumalacárregui Etorb., 93",
+    "lat": 43.2637962,
+    "lng": -2.9165635
+  },
+  {
+    "nombre": "Almike Grooming (Szenia)",
+    "tipo": "tienda",
+    "direccion": "Areiltza Doktorearen Zumarkalea, 47",
+    "lat": 43.259057899999995,
+    "lng": -2.943088
+  },
+  {
+    "nombre": "Peluquería Canina Zubizuri",
+    "tipo": "tienda",
+    "direccion": "Uriortu Kalea, 15",
+    "lat": 43.2676185,
+    "lng": -2.9272015
+  },
+  {
+    "nombre": "Peluquería Canina El Karmelo",
+    "tipo": "tienda",
+    "direccion": "Santa Clara Kalea, 1",
+    "lat": 43.2548398,
+    "lng": -2.9117294
+  },
+  {
+    "nombre": "DOGS and the CITY peluquería canina Bilbao",
+    "tipo": "tienda",
+    "direccion": "Iparraguirre Kalea, 28",
+    "lat": 43.2628884,
+    "lng": -2.9366969999999997
+  },
+  {
+    "nombre": "Petnature",
+    "tipo": "tienda",
+    "direccion": "C. María Díaz de Haro, Kalea 12",
+    "lat": 43.2634158,
+    "lng": -2.9437507999999997
+  },
+  {
+    "nombre": "Facedog",
+    "tipo": "tienda",
+    "direccion": "Antonio de Trueba Kalea, 5",
+    "lat": 43.252965599999996,
+    "lng": -2.9411931
+  },
+  {
+    "nombre": "Miscota",
+    "tipo": "tienda",
+    "direccion": "entrada",
+    "lat": 43.2539892,
+    "lng": -2.9113314
+  },
+  {
+    "nombre": "AQUAFAUNA",
+    "tipo": "tienda",
+    "direccion": "Dorre Kalea, 2",
+    "lat": 43.257552,
+    "lng": -2.9254371999999997
+  },
+  {
+    "nombre": "Konpa Mascotas (By Euskalmushing) Tienda Santutxu.",
+    "tipo": "tienda",
+    "direccion": "Gardeazabal Juan Kalea, 2",
+    "lat": 43.2514724,
+    "lng": -2.9152804
+  },
+  {
+    "nombre": "BizkaiTropik - Tienda de peces y acuarios",
+    "tipo": "tienda",
+    "direccion": "García Salazar Kalea, 6",
+    "lat": 43.2581439,
+    "lng": -2.9315130999999996
+  },
+  {
+    "nombre": "Mascot La Boutique",
+    "tipo": "tienda",
+    "direccion": "Estrauntza K., 3",
+    "lat": 43.2634638,
+    "lng": -2.9400036
+  },
+  {
+    "nombre": "Niko, peluquería de perros",
+    "tipo": "tienda",
+    "direccion": "Uribarri Kalea, 28",
+    "lat": 43.2675761,
+    "lng": -2.9217945
+  },
+  {
+    "nombre": "Centro Veterinario Mazarredo",
+    "tipo": "tienda",
+    "direccion": "Heros Kalea, 18, Local centro veterinario",
+    "lat": 43.2653275,
+    "lng": -2.9325633
+  },
+  {
+    "nombre": "Miscota",
+    "tipo": "tienda",
+    "direccion": "Iparraguirre Kalea, 50",
+    "lat": 43.259246999999995,
+    "lng": -2.9381749
+  },
+  {
+    "nombre": "Thelos",
+    "tipo": "tienda",
+    "direccion": "Gordóniz Kalea, 16",
+    "lat": 43.258990999999995,
+    "lng": -2.9400523
+  },
+  {
+    "nombre": "GarbiTxakur Santutxu. Peluquería canina, felina y autolavado de mascotas.",
+    "tipo": "tienda",
+    "direccion": "De la Cosa Juan Kalea, 1",
+    "lat": 43.2516801,
+    "lng": -2.9141678
+  },
+  {
+    "nombre": "Pajarería Villena",
+    "tipo": "tienda",
+    "direccion": "Sor Natividad Homedes Kalea, 2",
+    "lat": 43.3265362,
+    "lng": -3.0347022
+  },
+  {
+    "nombre": "CRFS de la Diputación de Bizkaia",
+    "tipo": "protectora",
+    "direccion": "Kukullu Bidea, 1D",
+    "lat": 43.4245953,
+    "lng": -2.9450434
+  },
+  {
+    "nombre": "Tropiacuarium Bilbao",
+    "tipo": "tienda",
+    "direccion": "Juan de Garay Kalea, 25",
+    "lat": 43.253782,
+    "lng": -2.933831
+  },
+  {
+    "nombre": "RASS MASCOTAS RASS MASCOTAS",
+    "tipo": "tienda",
+    "direccion": "Landaorlegi Kalea, s/n",
+    "lat": 43.2519545,
+    "lng": -2.9143513
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "C. la Ziurrena",
+    "lat": 43.301694999999995,
+    "lng": -3.0064321
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "Barrio Zabalandi, s/n",
+    "lat": 43.228867,
+    "lng": -2.875312
+  },
+  {
+    "nombre": "Garden Center Sopela🐕🪴",
+    "tipo": "tienda",
+    "direccion": "Gatzarriñe Kalea, 67, B",
+    "lat": 43.369616099999995,
+    "lng": -2.9604399
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Poza Lizentziatuaren Kalea, 57",
+    "lat": 43.2624006,
+    "lng": -2.9427228
+  },
+  {
+    "nombre": "Todo Piensos Asua",
+    "tipo": "tienda",
+    "direccion": "Bilbao-Plentzia Errepidea, 31",
+    "lat": 43.302271499999996,
+    "lng": -2.9478597
+  },
+  {
+    "nombre": "Lavandería y Lavado de Mascotas Autoservicio P. Zabalburu",
+    "tipo": "tienda",
+    "direccion": "Calle Ribera",
+    "lat": 43.2588735,
+    "lng": -2.9261108
+  },
+  {
+    "nombre": "Zintzo",
+    "tipo": "tienda",
+    "direccion": "Elcano K., 33",
+    "lat": 43.2585018,
+    "lng": -2.9323254999999997
+  },
+  {
+    "nombre": "Centro Fundación APASOS",
+    "tipo": "protectora",
+    "direccion": "Bo. La Sota",
+    "lat": 43.263701,
+    "lng": -3.14857
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Barrio Peruri, s/n",
+    "lat": 43.3422519,
+    "lng": -2.9924542
+  },
+  {
+    "nombre": "Decathlon Capitol (Bilbao)",
+    "tipo": "tienda",
+    "direccion": "Villarías Kalea, 10",
+    "lat": 43.262006,
+    "lng": -2.9254309999999997
+  },
+  {
+    "nombre": "Primark",
+    "tipo": "tienda",
+    "direccion": "Diego Lopez Haroko Kale Nagusia, 1",
+    "lat": 43.2613053,
+    "lng": -2.9282416
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "P.C. Megapark Barakaldo Ribera Etorbidea S/N parcela 4 A",
+    "lat": 43.292566799999996,
+    "lng": -3.0065089
+  },
+  {
+    "nombre": "Puppy Store",
+    "tipo": "tienda",
+    "direccion": "C. Bidebarrieta Kalea, 14",
+    "lat": 43.257853,
+    "lng": -2.9243292999999997
+  },
+  {
+    "nombre": "Konpa Mascotas (By Euskalmushing) Tienda Rekalde.",
+    "tipo": "tienda",
+    "direccion": "Biarritz Kalea, 1A",
+    "lat": 43.253450699999995,
+    "lng": -2.9459369
+  },
+  {
+    "nombre": "Servicio canino municipal",
+    "tipo": "protectora",
+    "direccion": "Saratxebidea Bidea, 15",
+    "lat": 43.2730976,
+    "lng": -2.9080426
+  },
+  {
+    "nombre": "EROSKI city",
+    "tipo": "tienda",
+    "direccion": "Alameda de Recalde, 55",
+    "lat": 43.258888999999996,
+    "lng": -2.936518
+  },
+  {
+    "nombre": "Pull&Bear",
+    "tipo": "tienda",
+    "direccion": "Diego Lopez Haroko Kale Nagusia, 17",
+    "lat": 43.261598,
+    "lng": -2.930666
+  },
+  {
+    "nombre": "BVS Vet Shop",
+    "tipo": "tienda",
+    "direccion": "Autonomia Kalea, 49",
+    "lat": 43.257494,
+    "lng": -2.9432334
+  },
+  {
+    "nombre": "BVS Vet Shop",
+    "tipo": "tienda",
+    "direccion": "bilbao",
+    "lat": 43.259567499999996,
+    "lng": -2.9340902
+  },
+  {
+    "nombre": "Sociedad Protectora de Animales Bizkaia",
+    "tipo": "tienda",
+    "direccion": "Luis Lopez Oses Kalea, 10",
+    "lat": 43.3303394,
+    "lng": -3.0071586
+  },
+  {
+    "nombre": "La Granja de Labayru",
+    "tipo": "tienda",
+    "direccion": "Labayru Kalea, 15 -17",
+    "lat": 43.2565317,
+    "lng": -2.938716
+  },
+  {
+    "nombre": "Bilbotxakur Erandio",
+    "tipo": "tienda",
+    "direccion": "2 Carrefour",
+    "lat": 43.301746699999995,
+    "lng": -2.9534024999999997
+  },
+  {
+    "nombre": "Tierhaus animal protector",
+    "tipo": "protectora",
+    "direccion": "Agirre Lehendakariaren Etorb.",
+    "lat": 43.284070299999996,
+    "lng": -2.9665375999999997
+  },
+  {
+    "nombre": "PETGARDEN INTEGRAL SERVICE S.L.",
+    "tipo": "tienda",
+    "direccion": "C. María Díaz de Haro, 12",
+    "lat": 43.2634101,
+    "lng": -2.9437360999999997
+  },
+  {
+    "nombre": "Refugio de Fauna Basondo Babeslekua",
+    "tipo": "protectora",
+    "direccion": "Basondo Auzoa, 6 BIS",
+    "lat": 43.344464099999996,
+    "lng": -2.6394061
+  },
+  {
+    "nombre": "LulaDog Peluquería y Spa Canino",
+    "tipo": "tienda",
+    "direccion": "Antonio Epalza",
+    "lat": 43.2473798,
+    "lng": -2.8930461
+  },
+  {
+    "nombre": "Bilbotxakur Basauri",
+    "tipo": "tienda",
+    "direccion": "Polígono Artunduaga",
+    "lat": 43.2292588,
+    "lng": -2.8792597
+  },
+  {
+    "nombre": "Slingdog",
+    "tipo": "tienda",
+    "direccion": "Leizaola Lehendakariaren Kalea, 15",
+    "lat": 43.2673536,
+    "lng": -2.9403619
+  },
+  {
+    "nombre": "Residencia Canina Jagon / Hotel canino",
+    "tipo": "tienda",
+    "direccion": "Barrio Libarona 21",
+    "lat": 43.3665419,
+    "lng": -2.8960239
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "nombre": "Gestión de Alojamientos en Pamplona",
+    "tipo": "otros",
+    "direccion": "Tr.ª Acella, 1",
+    "lat": 42.8064141,
+    "lng": -1.6628528999999999
+  },
+  {
+    "nombre": "Kidukan Educación canina Pamplona",
+    "tipo": "otros",
+    "direccion": "C. la Asunción",
+    "lat": 42.963009899999996,
+    "lng": -1.5156777
+  },
+  {
+    "nombre": "Kinder Pet Hotel",
+    "tipo": "otros",
+    "direccion": "Calle Sta. Lucia, s/n",
+    "lat": 42.8257446,
+    "lng": -1.6816497
+  },
+  {
+    "nombre": "Parque de La Vuelta del Castillo",
+    "tipo": "otros",
+    "direccion": "Av. del Ejército, 1",
+    "lat": 42.8123266,
+    "lng": -1.6531652
+  },
+  {
+    "nombre": "ENTRE COLADAS Y MASCOTAS",
+    "tipo": "otros",
+    "direccion": "Av. Anaitasuna, 25AP",
+    "lat": 42.794936199999995,
+    "lng": -1.6171525
+  },
+  {
+    "nombre": "Bar Pensión Obel",
+    "tipo": "otros",
+    "direccion": "C. las Eras, 5, Bajo",
+    "lat": 42.831655,
+    "lng": -1.6098495
+  },
+  {
+    "nombre": "Pensión Leyre",
+    "tipo": "otros",
+    "direccion": "C. de Francisco Bergamin Kalea, 5",
+    "lat": 42.8131036,
+    "lng": -1.6417632
+  },
+  {
+    "nombre": "Camping Ezcaba",
+    "tipo": "otros",
+    "direccion": "Carretera N-121A, Km 7 Carretera Pamplona",
+    "lat": 42.857197299999996,
+    "lng": -1.6237283
+  },
+  {
+    "nombre": "Casa Otano",
+    "tipo": "otros",
+    "direccion": "C. San Nicolás, 5, 2º",
+    "lat": 42.8165103,
+    "lng": -1.6440358
+  },
+  {
+    "nombre": "PetClin",
+    "tipo": "otros",
+    "direccion": "Pl. del Castillo, 2",
+    "lat": 42.816755799999996,
+    "lng": -1.6436262
+  },
+  {
+    "nombre": "Zona de esparcimiento canino",
+    "tipo": "otros",
+    "direccion": "Parque de las Pioneras",
+    "lat": 42.808348599999995,
+    "lng": -1.6320548
+  },
+  {
+    "nombre": "Aloha Hostel & Apartamentos",
+    "tipo": "otros",
+    "direccion": "C. de Sangüesa, 2",
+    "lat": 42.812282599999996,
+    "lng": -1.6425482999999999
+  }
+]

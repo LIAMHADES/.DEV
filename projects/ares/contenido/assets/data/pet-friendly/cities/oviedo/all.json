@@ -1,0 +1,1315 @@
+[
+  {
+    "nombre": "Peluquería Canina Dogs N' Roses",
+    "tipo": "tienda",
+    "direccion": "Junto a bar 'Me Aptc",
+    "lat": 43.3548433,
+    "lng": -5.8630718
+  },
+  {
+    "nombre": "La Patita Presumida",
+    "tipo": "tienda",
+    "direccion": "C. Augusto Junquera, 4",
+    "lat": 43.3704454,
+    "lng": -5.8533257
+  },
+  {
+    "nombre": "De Vil Salón Canino",
+    "tipo": "tienda",
+    "direccion": "C. Emilio Alarcos Llorach, 4, bajo",
+    "lat": 43.3669667,
+    "lng": -5.8423378999999995
+  },
+  {
+    "nombre": "Oviedoaqua",
+    "tipo": "tienda",
+    "direccion": "C. Joaquín Villa Cañal",
+    "lat": 43.355434699999996,
+    "lng": -5.861517
+  },
+  {
+    "nombre": "Petstyle House",
+    "tipo": "tienda",
+    "direccion": "Av. Padre Vinjoy, 6",
+    "lat": 43.356949199999995,
+    "lng": -5.8563627
+  },
+  {
+    "nombre": "Peluquería Canina Patitas",
+    "tipo": "peluqueria",
+    "direccion": "Calle Arzobispo Guisasola, 5",
+    "lat": 43.3549966,
+    "lng": -5.8434154
+  },
+  {
+    "nombre": "Fartucan",
+    "tipo": "tienda",
+    "direccion": "C. Torrecerredo, 27",
+    "lat": 43.370555499999995,
+    "lng": -5.8547962
+  },
+  {
+    "nombre": "Pet Shopping",
+    "tipo": "tienda",
+    "direccion": "C. González Besada, 47",
+    "lat": 43.3559408,
+    "lng": -5.8525703
+  },
+  {
+    "nombre": "Zampazampa",
+    "tipo": "tienda",
+    "direccion": "C. Foncalada, 19",
+    "lat": 43.3659745,
+    "lng": -5.8464865999999995
+  },
+  {
+    "nombre": "Pet´s Show peluquería canina",
+    "tipo": "tienda",
+    "direccion": "C. Joaquín Vaquero Palacios, 5",
+    "lat": 43.367684499999996,
+    "lng": -5.844326499999999
+  },
+  {
+    "nombre": "La Perruquería de Oviedo - Peluquería para perros",
+    "tipo": "tienda",
+    "direccion": "C. Virrey Abascal, 9",
+    "lat": 43.353594099999995,
+    "lng": -5.8452189
+  },
+  {
+    "nombre": "Mas Can Pumarin - Tienda y Peluqueria canina y felina",
+    "tipo": "tienda",
+    "direccion": "C. Tirso de Avilés, 5",
+    "lat": 43.3712455,
+    "lng": -5.8389871
+  },
+  {
+    "nombre": "Como El Perro Y El Gato Peluquería Canina Y Felina",
+    "tipo": "peluqueria",
+    "direccion": "Av. Valentín Masip, 30",
+    "lat": 43.3625368,
+    "lng": -5.8628145
+  },
+  {
+    "nombre": "Nani &Friends. Peluquería canina",
+    "tipo": "peluqueria",
+    "direccion": "Av. Buenavista, 12, bajo1",
+    "lat": 43.359384,
+    "lng": -5.86355
+  },
+  {
+    "nombre": "L'Arbazana",
+    "tipo": "tienda",
+    "direccion": "Calle Ciriaco Miguel Vigil, 10",
+    "lat": 43.359111999999996,
+    "lng": -5.8620325
+  },
+  {
+    "nombre": "OvieDog",
+    "tipo": "tienda",
+    "direccion": "P.º de la Florida, 5",
+    "lat": 43.3680571,
+    "lng": -5.8696632
+  },
+  {
+    "nombre": "GLAMDOG Salón canino",
+    "tipo": "tienda",
+    "direccion": "C. Marcelino Suárez, 18, 4 Bjo",
+    "lat": 43.3664341,
+    "lng": -5.8668531
+  },
+  {
+    "nombre": "Chokolino Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. Foncalada, 13",
+    "lat": 43.365511399999995,
+    "lng": -5.8463601999999995
+  },
+  {
+    "nombre": "Mr & Mrs Dog - Peluquería Canina y Alimentación Natural",
+    "tipo": "tienda",
+    "direccion": "C. San Pedro de Mestallón, 11",
+    "lat": 43.358840199999996,
+    "lng": -5.8408726
+  },
+  {
+    "nombre": "Ciudad Mascota",
+    "tipo": "tienda",
+    "direccion": "C. Ramiro I Rey, 17",
+    "lat": 43.3649428,
+    "lng": -5.8605882
+  },
+  {
+    "nombre": "Centro Veterinario Masip",
+    "tipo": "veterinario",
+    "direccion": "Calle Miguel Ángel Blanco, 28",
+    "lat": 43.3630169,
+    "lng": -5.8611448
+  },
+  {
+    "nombre": "Guaw Oviedo Los Prados",
+    "tipo": "tienda",
+    "direccion": "95C9+6M, C.C. Los Prados",
+    "lat": 43.3705625,
+    "lng": -5.8308124999999995
+  },
+  {
+    "nombre": "Limpiadog Buenavista. Peluquería canina, Autolavado y tienda.",
+    "tipo": "tienda",
+    "direccion": "C. Rafael Altamira, 4",
+    "lat": 43.3571968,
+    "lng": -5.8629166
+  },
+  {
+    "nombre": "Centro Oftalmológico Veterinario Vission",
+    "tipo": "veterinario",
+    "direccion": "Avenida el",
+    "lat": 43.3554757,
+    "lng": -5.8615316
+  },
+  {
+    "nombre": "Mas Can General Elorza - Tienda y Peluqueria canina y felina",
+    "tipo": "tienda",
+    "direccion": "C/ del Gral. Elorza, 89",
+    "lat": 43.3672987,
+    "lng": -5.8517765
+  },
+  {
+    "nombre": "Paraíso Peludo - Peluquería canina y Tienda de Alimentación Natural",
+    "tipo": "tienda",
+    "direccion": "C/ Darío de Regoyos, 21",
+    "lat": 43.362581299999995,
+    "lng": -5.8358436
+  },
+  {
+    "nombre": "Dogger Dog Designers S.L",
+    "tipo": "tienda",
+    "direccion": "C. Sta. Susana, 31",
+    "lat": 43.3601466,
+    "lng": -5.8514338
+  },
+  {
+    "nombre": "Parque de Invierno",
+    "tipo": "parque",
+    "direccion": "Senda Verde, s/n",
+    "lat": 43.351124,
+    "lng": -5.8499324
+  },
+  {
+    "nombre": "MascotAstur - Tienda Fisica y Online, Clinica Veterinaria Redivet - Oviedo",
+    "tipo": "tienda",
+    "direccion": "C. San Pedro de Mestallón, 12, Bajo",
+    "lat": 43.3578718,
+    "lng": -5.8404036
+  },
+  {
+    "nombre": "Campo de San Francisco",
+    "tipo": "parque",
+    "direccion": "El Palomar",
+    "lat": 43.3616162,
+    "lng": -5.8505537
+  },
+  {
+    "nombre": "El Gato Persa",
+    "tipo": "tienda",
+    "direccion": "C. Joaquín Blume, 1",
+    "lat": 43.3660663,
+    "lng": -5.8313805
+  },
+  {
+    "nombre": "Pululis tu tienda de animales en Oviedo",
+    "tipo": "tienda",
+    "direccion": "C. Suárez de la Riva, 1",
+    "lat": 43.360347999999995,
+    "lng": -5.847128
+  },
+  {
+    "nombre": "Parque canino El Cristo",
+    "tipo": "parque",
+    "direccion": "Av. Julián Clavería, 11",
+    "lat": 43.3552277,
+    "lng": -5.8685754
+  },
+  {
+    "nombre": "Perros Premium",
+    "tipo": "tienda",
+    "direccion": "Calle Celestino Álvarez, 5",
+    "lat": 43.354120699999996,
+    "lng": -5.8627693
+  },
+  {
+    "nombre": "Dogger MG, Dog Designers",
+    "tipo": "tienda",
+    "direccion": "C. Muñoz Degraín, 20",
+    "lat": 43.3554307,
+    "lng": -5.8492438
+  },
+  {
+    "nombre": "Ovi-can",
+    "tipo": "otros",
+    "direccion": "C/la carrera, 1-a",
+    "lat": 43.3503629,
+    "lng": -5.9097272
+  },
+  {
+    "nombre": "AniCura Buenavista Hospital Veterinario",
+    "tipo": "veterinario",
+    "direccion": "C. Rafael Altamira, 3, bajo",
+    "lat": 43.357352,
+    "lng": -5.8633169999999994
+  },
+  {
+    "nombre": "Nunchican",
+    "tipo": "tienda",
+    "direccion": "Calle Marqués de Pidal, 8",
+    "lat": 43.3634878,
+    "lng": -5.852322699999999
+  },
+  {
+    "nombre": "Hotel Carbayón",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Atenas, 1",
+    "lat": 43.372030599999995,
+    "lng": -5.831525399999999
+  },
+  {
+    "nombre": "Fundación Protectora de Animales del Principado de Asturias",
+    "tipo": "protectora",
+    "direccion": "C/ Folgueras 24B",
+    "lat": 43.3871195,
+    "lng": -5.796468399999999
+  },
+  {
+    "nombre": "Pajareria Granero",
+    "tipo": "otros",
+    "direccion": "C. de María Neira, 27",
+    "lat": 43.3624175,
+    "lng": -5.865050699999999
+  },
+  {
+    "nombre": "Pet Grooming & Shopping",
+    "tipo": "tienda",
+    "direccion": "C. González Besada, 47",
+    "lat": 43.3560474,
+    "lng": -5.8525105
+  },
+  {
+    "nombre": "Aparthotel Campus",
+    "tipo": "alojamiento",
+    "direccion": "C. de Fernando Vela, 13",
+    "lat": 43.366583899999995,
+    "lng": -5.8413593
+  },
+  {
+    "nombre": "Animalandia Tienda de Animales",
+    "tipo": "tienda",
+    "direccion": "C. Padre Suarez, 3",
+    "lat": 43.3602169,
+    "lng": -5.8424309
+  },
+  {
+    "nombre": "Estatua de Rufo, el perro de Oviedo",
+    "tipo": "otros",
+    "direccion": "C. Dr. Casal, 3",
+    "lat": 43.3641486,
+    "lng": -5.8512343
+  },
+  {
+    "nombre": "Pet Shower | Autolavado de mascotas | Lava tu mismo a tu perro",
+    "tipo": "tienda",
+    "direccion": "C. Pravia, 1, Bajo n 2",
+    "lat": 43.3666281,
+    "lng": -5.875537
+  },
+  {
+    "nombre": "Hotel Soho Boutique Oviedo",
+    "tipo": "alojamiento",
+    "direccion": "Calle Mendizábal, 1",
+    "lat": 43.3623499,
+    "lng": -5.8461454999999996
+  },
+  {
+    "nombre": "Hotel Rosal",
+    "tipo": "alojamiento",
+    "direccion": "C. Cabo Noval, 2",
+    "lat": 43.3597463,
+    "lng": -5.8477786
+  },
+  {
+    "nombre": "Pajarería Amazonas",
+    "tipo": "tienda",
+    "direccion": "Av. de Santander, 18",
+    "lat": 43.3677618,
+    "lng": -5.851589
+  },
+  {
+    "nombre": "Hotel Casa Camila",
+    "tipo": "alojamiento",
+    "direccion": "de Arriba, 29",
+    "lat": 43.3843057,
+    "lng": -5.8430846
+  },
+  {
+    "nombre": "B&B HOTEL Oviedo",
+    "tipo": "alojamiento",
+    "direccion": "AS-17, salida 24",
+    "lat": 43.406123099999995,
+    "lng": -5.7904534
+  },
+  {
+    "nombre": "IBERIK Santo Domingo Plaza Hotel",
+    "tipo": "alojamiento",
+    "direccion": "C. Rda. Sur, s/n",
+    "lat": 43.3587724,
+    "lng": -5.8384627
+  },
+  {
+    "nombre": "Hotel Campoamor",
+    "tipo": "alojamiento",
+    "direccion": "C. de Argüelles, 23",
+    "lat": 43.3627696,
+    "lng": -5.8470987
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "Kivet Salud Animal, Autovía A-66",
+    "lat": 43.3922624,
+    "lng": -5.7957291
+  },
+  {
+    "nombre": "Hotel Carreño",
+    "tipo": "alojamiento",
+    "direccion": "C. Monte Gamonal, 4",
+    "lat": 43.368172,
+    "lng": -5.8540345
+  },
+  {
+    "nombre": "Albergue de Animales de Oviedo",
+    "tipo": "protectora",
+    "direccion": "Lugar Bolgachina, 0 S N",
+    "lat": 43.3431846,
+    "lng": -5.8522397
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "95QV+QXX",
+    "lat": 43.3894875,
+    "lng": -5.8050156
+  },
+  {
+    "nombre": "B48 Oviedo Ópera",
+    "tipo": "alojamiento",
+    "direccion": "C. Covadonga, 7",
+    "lat": 43.364039299999995,
+    "lng": -5.8481666
+  },
+  {
+    "nombre": "Estilo canino",
+    "tipo": "tienda",
+    "direccion": "Calle Reyes Católicos, 5",
+    "lat": 43.3729192,
+    "lng": -5.8349277
+  },
+  {
+    "nombre": "Parque canino Campu San Francisco",
+    "tipo": "parque",
+    "direccion": "33007 Oviedo",
+    "lat": 43.361683,
+    "lng": -5.8496846
+  },
+  {
+    "nombre": "Hotel Santa Cruz",
+    "tipo": "alojamiento",
+    "direccion": "Calle del",
+    "lat": 43.360352299999995,
+    "lng": -5.849344299999999
+  },
+  {
+    "nombre": "Hotel Santa Clara",
+    "tipo": "alojamiento",
+    "direccion": "C. Sta. Clara, 1",
+    "lat": 43.364194999999995,
+    "lng": -5.847218
+  },
+  {
+    "nombre": "H Viella Asturias",
+    "tipo": "otros",
+    "direccion": "Carretera Estación de Viella, 10",
+    "lat": 43.384845999999996,
+    "lng": -5.7838169
+  },
+  {
+    "nombre": "LimpiaDog",
+    "tipo": "tienda",
+    "direccion": "Av. Torrelavega, 54",
+    "lat": 43.3648471,
+    "lng": -5.8320525
+  },
+  {
+    "nombre": "Parque canino Enrique Quirós",
+    "tipo": "parque",
+    "direccion": "Lugar Matalablima",
+    "lat": 43.377071099999995,
+    "lng": -5.8161966
+  },
+  {
+    "nombre": "Hotel Longoria Plaza",
+    "tipo": "alojamiento",
+    "direccion": "C. Covadonga, 13",
+    "lat": 43.3642987,
+    "lng": -5.848904999999999
+  },
+  {
+    "nombre": "ibis Oviedo",
+    "tipo": "alojamiento",
+    "direccion": "C. Ernesto Winter Blanco, 6",
+    "lat": 43.373738599999996,
+    "lng": -5.8502616
+  },
+  {
+    "nombre": "ibis budget Oviedo",
+    "tipo": "alojamiento",
+    "direccion": "C. Ernesto Winter Blanco, 4",
+    "lat": 43.373692899999995,
+    "lng": -5.8499254999999994
+  },
+  {
+    "nombre": "Peluqueria Canina Alma Dog",
+    "tipo": "tienda",
+    "direccion": "C. Picasso, 2",
+    "lat": 43.3673846,
+    "lng": -5.8461199
+  },
+  {
+    "nombre": "Parque Canino La Corredoria",
+    "tipo": "parque",
+    "direccion": "C. Josefina Argüelles",
+    "lat": 43.3918882,
+    "lng": -5.8222986
+  },
+  {
+    "nombre": "Hotel-Restaurante Fuente La Plata",
+    "tipo": "alojamiento",
+    "direccion": "C. Favila, 9",
+    "lat": 43.365465,
+    "lng": -5.8699826
+  },
+  {
+    "nombre": "Alda Centro Oviedo",
+    "tipo": "alojamiento",
+    "direccion": "C. de Joaquina Bobela, 3",
+    "lat": 43.3682085,
+    "lng": -5.8449046
+  },
+  {
+    "nombre": "Parque canino Montecerrao",
+    "tipo": "parque",
+    "direccion": "C. San Martin del Rey Aurelio, 48",
+    "lat": 43.347616099999996,
+    "lng": -5.8634205999999995
+  },
+  {
+    "nombre": "Parque Canino Vallobín",
+    "tipo": "parque",
+    "direccion": "Plaza Ángel González",
+    "lat": 43.3656985,
+    "lng": -5.8650728
+  },
+  {
+    "nombre": "Hotel Palacio de Asturias",
+    "tipo": "alojamiento",
+    "direccion": "C/Los Arenales, 11",
+    "lat": 43.3507002,
+    "lng": -5.8334719
+  },
+  {
+    "nombre": "Hostal Goias",
+    "tipo": "alojamiento",
+    "direccion": "Calle Miguel Ángel Blanco, 2",
+    "lat": 43.3627697,
+    "lng": -5.859059299999999
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "C. Luis Braille",
+    "lat": 43.368657999999996,
+    "lng": -5.8420809
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "C. Joaquín Blume",
+    "lat": 43.366411,
+    "lng": -5.831106999999999
+  },
+  {
+    "nombre": "Mi Mascota",
+    "tipo": "tienda",
+    "direccion": "Calle Dr. Pedro Quirós",
+    "lat": 43.3777566,
+    "lng": -5.831679299999999
+  },
+  {
+    "nombre": "Residencia canina LosAmigos",
+    "tipo": "tienda",
+    "direccion": "Lugar Ayones",
+    "lat": 43.337480299999996,
+    "lng": -5.8912873
+  },
+  {
+    "nombre": "Xanamaná-Educación y Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "33199 Vallín Limanes",
+    "lat": 43.3695727,
+    "lng": -5.778351
+  },
+  {
+    "nombre": "Adiestrania",
+    "tipo": "adiestrador",
+    "direccion": "Ctra. Colloto-Viella",
+    "lat": 43.3846632,
+    "lng": -5.7860860999999995
+  },
+  {
+    "nombre": "Adiestradores caninos Raquel",
+    "tipo": "adiestrador",
+    "direccion": "C. Alonso de Proaza, 4",
+    "lat": 43.3641785,
+    "lng": -5.8335618
+  },
+  {
+    "nombre": "Urbandog entrenamiento perros",
+    "tipo": "adiestrador",
+    "direccion": "LL-2, Km 2, 5",
+    "lat": 43.4650665,
+    "lng": -5.8729702
+  },
+  {
+    "nombre": "Escuela De Adiestramiento Victor Cuesta",
+    "tipo": "adiestrador",
+    "direccion": "18",
+    "lat": 43.369462899999995,
+    "lng": -5.806239499999999
+  },
+  {
+    "nombre": "Clínica Equina Maeza",
+    "tipo": "veterinario",
+    "direccion": "Camín del Rebollal, 368",
+    "lat": 43.4074606,
+    "lng": -5.5254123
+  },
+  {
+    "nombre": "Oviedo Real Spa",
+    "tipo": "otros",
+    "direccion": "AS-375, 28",
+    "lat": 43.322331299999995,
+    "lng": -5.8232688999999995
+  },
+  {
+    "nombre": "Educación Canina Chao",
+    "tipo": "adiestrador",
+    "direccion": "C. Manuel de Falla, 16",
+    "lat": 43.370829799999996,
+    "lng": -5.8424515
+  },
+  {
+    "nombre": "Arbesú Educadores Caninos",
+    "tipo": "adiestrador",
+    "direccion": "Guardería canina 'La Madriguera de Lúa, Molina 7",
+    "lat": 43.3735019,
+    "lng": -5.9196212
+  },
+  {
+    "nombre": "El Clan del Lobo - Educación y Peluquería Canina",
+    "tipo": "adiestrador",
+    "direccion": "Aldea Pereda, 12",
+    "lat": 43.3191801,
+    "lng": -5.8547574
+  },
+  {
+    "nombre": "Hospital Veterinario Ivet",
+    "tipo": "veterinario",
+    "direccion": "C. de Palacio Valdés, 15, Bajo",
+    "lat": 43.4602845,
+    "lng": -5.0606295999999995
+  },
+  {
+    "nombre": "Clínica Veterinaria Vetusta",
+    "tipo": "veterinario",
+    "direccion": "Av. Torrelavega, 44",
+    "lat": 43.364339699999995,
+    "lng": -5.8339468
+  },
+  {
+    "nombre": "CENTRO CLÍNICO VETERINARIO ÁLVARO NAVA",
+    "tipo": "veterinario",
+    "direccion": "Av. Langreo, 6",
+    "lat": 43.3855,
+    "lng": -5.701728
+  },
+  {
+    "nombre": "El Mirador de Bendones",
+    "tipo": "alojamiento",
+    "direccion": "Bendones 13",
+    "lat": 43.3364306,
+    "lng": -5.806725699999999
+  },
+  {
+    "nombre": "Sagasta Rural Apartamentos Rurales",
+    "tipo": "alojamiento",
+    "direccion": "Aldea Roces, 89",
+    "lat": 43.3679079,
+    "lng": -5.7948138
+  },
+  {
+    "nombre": "Pradovet",
+    "tipo": "veterinario",
+    "direccion": "C. Talleres de Carros, 2",
+    "lat": 43.3803992,
+    "lng": -5.8228804
+  },
+  {
+    "nombre": "San Marcos Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Gran Vía de San Marcos, 61",
+    "lat": 42.6011357,
+    "lng": -5.580769399999999
+  },
+  {
+    "nombre": "NOBLE Y FIEL AMIGO",
+    "tipo": "adiestrador",
+    "direccion": "33960",
+    "lat": 43.353622099999995,
+    "lng": -5.8704871999999995
+  },
+  {
+    "nombre": "Guau Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "C. de Alejandro Casona, 43F",
+    "lat": 43.402646,
+    "lng": -5.8137967999999995
+  },
+  {
+    "nombre": "Clinica Veterinaria Kerry Blue",
+    "tipo": "veterinario",
+    "direccion": "C. Sta. Susana, 31",
+    "lat": 43.3601649,
+    "lng": -5.8513758
+  },
+  {
+    "nombre": "Clínica Veterinaria Animálitas",
+    "tipo": "veterinario",
+    "direccion": "Menéndez Pelayo, 10, BAJO",
+    "lat": 43.3715093,
+    "lng": -5.8537612
+  },
+  {
+    "nombre": "ExótiCare- Veterinarios de Animales Exóticos",
+    "tipo": "veterinario",
+    "direccion": "P.º de la Florida, 38",
+    "lat": 43.3682211,
+    "lng": -5.873647999999999
+  },
+  {
+    "nombre": "Clínica Veterinaria Les Campes",
+    "tipo": "veterinario",
+    "direccion": "Pl. Carlos de Quirós Rodríguez, Nº2, Bajo",
+    "lat": 43.3921188,
+    "lng": -5.652260399999999
+  },
+  {
+    "nombre": "Centro Veterinario Posada de Llanera",
+    "tipo": "veterinario",
+    "direccion": "Av. Prudencio González, 35",
+    "lat": 43.4409127,
+    "lng": -5.8528687
+  },
+  {
+    "nombre": "Clínica Veterinaria Cervantes | MiVet",
+    "tipo": "veterinario",
+    "direccion": "C. Cervantes, 16, B",
+    "lat": 43.363444,
+    "lng": -5.856161
+  },
+  {
+    "nombre": "Clínica Veterinaria Agumar",
+    "tipo": "veterinario",
+    "direccion": "C. Tenderina Baja, 218",
+    "lat": 43.368301599999995,
+    "lng": -5.8223046
+  },
+  {
+    "nombre": "Clínica Veterinaria Ronda Sur",
+    "tipo": "veterinario",
+    "direccion": "C. Rda. Sur, 1",
+    "lat": 43.362975999999996,
+    "lng": -5.8384266
+  },
+  {
+    "nombre": "CLÍNICA VETERINARIA EL PARQUE - SOFÍA PIZARRO",
+    "tipo": "veterinario",
+    "direccion": "Av. de Torcuato Fernández Miranda, 16",
+    "lat": 43.53682,
+    "lng": -5.6447018
+  },
+  {
+    "nombre": "Clinica veterinaria La Morgal",
+    "tipo": "veterinario",
+    "direccion": "C. la Asunción, 25",
+    "lat": 43.4402852,
+    "lng": -5.8170877
+  },
+  {
+    "nombre": "Centro Veterinario I+VET",
+    "tipo": "veterinario",
+    "direccion": "C. de Fernando Vela, 9",
+    "lat": 43.366751099999995,
+    "lng": -5.8422838
+  },
+  {
+    "nombre": "Clínica Veterinaria San Francisco",
+    "tipo": "veterinario",
+    "direccion": "C. José Maldonado, 6",
+    "lat": 43.36249,
+    "lng": -5.867369999999999
+  },
+  {
+    "nombre": "Centro Clínico Veterinario Dr. Armando Solís",
+    "tipo": "veterinario",
+    "direccion": "C. Naranjo de Bulnes, 14",
+    "lat": 43.3679959,
+    "lng": -5.8568904999999996
+  },
+  {
+    "nombre": "El Carbayón, Residencia Canina",
+    "tipo": "otros",
+    "direccion": "Aldea Pedruño, S/N",
+    "lat": 43.355211999999995,
+    "lng": -5.9059621
+  },
+  {
+    "nombre": "Residencia Canina La Belga",
+    "tipo": "otros",
+    "direccion": "33429 La Belga",
+    "lat": 43.4069815,
+    "lng": -5.7707429
+  },
+  {
+    "nombre": "Amican Asturias Escuela y Hotel Canino",
+    "tipo": "otros",
+    "direccion": "Aramil",
+    "lat": 43.3804397,
+    "lng": -5.618689799999999
+  },
+  {
+    "nombre": "Hospital Veterinaria El Berrón",
+    "tipo": "veterinario",
+    "direccion": "Av. de Oviedo, 48",
+    "lat": 43.384988299999996,
+    "lng": -5.704098699999999
+  },
+  {
+    "nombre": "Clínica Veterinaria Asturcón",
+    "tipo": "veterinario",
+    "direccion": "Plaza Cdad. de la Habana, 4, bajo",
+    "lat": 43.537128599999996,
+    "lng": -5.6828479
+  },
+  {
+    "nombre": "Clínica Veterinaria Grado",
+    "tipo": "veterinario",
+    "direccion": "Pl. Longoria, 6",
+    "lat": 43.387786,
+    "lng": -6.069852
+  },
+  {
+    "nombre": "Centro Veterinario Tineo",
+    "tipo": "veterinario",
+    "direccion": "Carr. de San Roque, 5",
+    "lat": 43.3354627,
+    "lng": -6.4134826
+  },
+  {
+    "nombre": "Centro Veterinario La Villa",
+    "tipo": "veterinario",
+    "direccion": "C. Gutiérrez Herrero, 1, Bajo",
+    "lat": 43.5513726,
+    "lng": -5.918874499999999
+  },
+  {
+    "nombre": "Clínica Veterinaria Ramos",
+    "tipo": "veterinario",
+    "direccion": "Av. De Pedro Masaveu, 7",
+    "lat": 43.3552523,
+    "lng": -5.8546363
+  },
+  {
+    "nombre": "Clínica Veterinaria Mundo Vivo",
+    "tipo": "veterinario",
+    "direccion": "C. Fray Ceferino, 47A",
+    "lat": 43.3685432,
+    "lng": -5.8492796
+  },
+  {
+    "nombre": "Centro Veterinario Selcán",
+    "tipo": "veterinario",
+    "direccion": "C. Monte Llosorio, 4",
+    "lat": 43.2486813,
+    "lng": -5.7755168
+  },
+  {
+    "nombre": "Centro Veterinario Bulnes",
+    "tipo": "veterinario",
+    "direccion": "Calle Argüelles, 20, BAJO",
+    "lat": 43.387929299999996,
+    "lng": -5.1879783999999995
+  },
+  {
+    "nombre": "Clínica Veterinaria Ícaro",
+    "tipo": "veterinario",
+    "direccion": "C. de Eduardo de Fraga Torrejón, 2",
+    "lat": 43.3840766,
+    "lng": -5.821940499999999
+  },
+  {
+    "nombre": "Clínica Veterinaria Pontón",
+    "tipo": "veterinario",
+    "direccion": "Calle la Estrecha, 9",
+    "lat": 43.378974199999995,
+    "lng": -5.8318186
+  },
+  {
+    "nombre": "Eurostars Hotel de La Reconquista",
+    "tipo": "alojamiento",
+    "direccion": "C. Gil de Jaz, 16",
+    "lat": 43.3630929,
+    "lng": -5.8538786
+  },
+  {
+    "nombre": "Clínica Veterinaria Pumarín",
+    "tipo": "veterinario",
+    "direccion": "C. Albéniz, 12",
+    "lat": 43.369895,
+    "lng": -5.8398102
+  },
+  {
+    "nombre": "Hospital Veterinario Menes",
+    "tipo": "veterinario",
+    "direccion": "C. Daniel Palacio Fernández, 15",
+    "lat": 43.526503,
+    "lng": -5.6492819999999995
+  },
+  {
+    "nombre": "Hospital Veterinario Asturias",
+    "tipo": "veterinario",
+    "direccion": "Av. Pablo Iglesias, 73",
+    "lat": 43.535559299999996,
+    "lng": -5.651436899999999
+  },
+  {
+    "nombre": "AniCura Terán Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Carr. d' Avilés, n° 2775",
+    "lat": 43.418037999999996,
+    "lng": -5.822366
+  },
+  {
+    "nombre": "Barceló Oviedo Cervantes",
+    "tipo": "alojamiento",
+    "direccion": "C. Cervantes, 13",
+    "lat": 43.3624875,
+    "lng": -5.8559402
+  },
+  {
+    "nombre": "Clínica Veterinaria Montealto",
+    "tipo": "veterinario",
+    "direccion": "C. Gozón, 25, BAJO",
+    "lat": 43.366887899999995,
+    "lng": -5.8738437
+  },
+  {
+    "nombre": "Centro Veterinario Alto Nalon El Entrego",
+    "tipo": "veterinario",
+    "direccion": "Av. Leopoldo Alas Clarín, n.1",
+    "lat": 43.2875156,
+    "lng": -5.6378032
+  },
+  {
+    "nombre": "Triscan adiestramiento",
+    "tipo": "adiestrador",
+    "direccion": "San Roque, 6",
+    "lat": 43.359678599999995,
+    "lng": -5.9184529999999995
+  },
+  {
+    "nombre": "Centro Veterinario Selcán Oviedo",
+    "tipo": "veterinario",
+    "direccion": "P.º de la Florida, 5",
+    "lat": 43.3680571,
+    "lng": -5.8696632
+  },
+  {
+    "nombre": "Hospital Veterinario Universidad de León",
+    "tipo": "veterinario",
+    "direccion": "C. Pedro Cármenes, s/n",
+    "lat": 42.612255399999995,
+    "lng": -5.557067399999999
+  },
+  {
+    "nombre": "Pensión Romero",
+    "tipo": "otros",
+    "direccion": "C. Uría, 36-38, Planta 2",
+    "lat": 43.3639223,
+    "lng": -5.8509033
+  },
+  {
+    "nombre": "Hotel & Spa Princesa Munia",
+    "tipo": "alojamiento",
+    "direccion": "C. Fruela, 6",
+    "lat": 43.3611517,
+    "lng": -5.8466865
+  },
+  {
+    "nombre": "La Avellanera",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Campoamor, 28",
+    "telefono": "+34 624 26 31 52",
+    "valoracion": 4.5,
+    "resenas": 228,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3661909,
+    "lng": -5.8532935,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=La%20Avellanera&query_place_id=ChIJay8iY_iNNg0RlfXLkBBCbq4",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Coffee Stories",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. del Águila, 1",
+    "telefono": "",
+    "valoracion": 4.4,
+    "resenas": 500,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3627589,
+    "lng": -5.8440721,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Coffee%20Stories&query_place_id=ChIJB0bqVwCNNg0Rx2ml6EqK1Ok",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Café Restaurante Que Idea",
+    "tipo": "cafeteria_bar",
+    "direccion": "Calle del, C. Catedratico Jose Serrano, 6",
+    "telefono": "+34 625 62 90 41",
+    "valoracion": 4.6,
+    "resenas": 158,
+    "horario": "",
+    "estado": "",
+    "lat": 43.357196,
+    "lng": -5.8714208,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9%20Restaurante%20Que%20Idea&query_place_id=ChIJvS9bqRaNNg0R2-BYer1lhYI",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Pionero Coffee Roasters",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Marqués de Pidal, 21",
+    "telefono": "+34 656 59 97 86",
+    "valoracion": 4.6,
+    "resenas": 584,
+    "horario": "",
+    "estado": "",
+    "lat": 43.364738,
+    "lng": -5.8539258,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pionero%20Coffee%20Roasters&query_place_id=ChIJawiSFNeNNg0RTNAbBiLInb4",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Radical - Café de Especialidad & Té Matcha",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Fray Ceferino, 5",
+    "telefono": "",
+    "valoracion": 4.9,
+    "resenas": 215,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3654999,
+    "lng": -5.8527344,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Radical%20-%20Caf%C3%A9%20de%20Especialidad%20%26%20T%C3%A9%20Matcha&query_place_id=ChIJcxR_6uyNNg0RCvzPIm_O8oI",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "El Manglar",
+    "tipo": "restaurante",
+    "direccion": "C. Martínez Vigil, 14",
+    "telefono": "+34 984 06 26 99",
+    "valoracion": 4.5,
+    "resenas": 2364,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3642843,
+    "lng": -5.8415233,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=El%20Manglar&query_place_id=ChIJTVR97_GMNg0RXEOquGzcndI",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "La Gente Café",
+    "tipo": "restaurante",
+    "direccion": "C. Martínez Vigil, 6",
+    "telefono": "+34 643 82 34 57",
+    "valoracion": 4.8,
+    "resenas": 772,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3639986,
+    "lng": -5.8419372,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=La%20Gente%20Caf%C3%A9&query_place_id=ChIJQcDf3bWNNg0R4mJEjwKQcGo",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Green Republic",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Melquiades Cabal, S/N",
+    "telefono": "+34 636 99 33 75",
+    "valoracion": 4.6,
+    "resenas": 324,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3682458,
+    "lng": -5.8429225,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Green%20Republic&query_place_id=ChIJSe18-pCNNg0RO509OSlrNVg",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "La Cantina de Gascona",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Manuel García Conde, 13",
+    "telefono": "",
+    "valoracion": 4.3,
+    "resenas": 791,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3645854,
+    "lng": -5.845165,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=La%20Cantina%20de%20Gascona&query_place_id=ChIJo49lmV6NNg0RkLRDfeuXY44",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Prida",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Fierro, 25",
+    "telefono": "+34 984 06 26 12",
+    "valoracion": 4.3,
+    "resenas": 709,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3596005,
+    "lng": -5.8453197,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Prida&query_place_id=ChIJRcC6XO-MNg0R6TPVbbOHlmE",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "La Belmontina",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. San Vicente, 20",
+    "telefono": "+34 639 82 19 13",
+    "valoracion": 4.3,
+    "resenas": 1069,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3635289,
+    "lng": -5.8423446,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=La%20Belmontina&query_place_id=ChIJa1JExe-MNg0Rd28-yVY3KnI",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Per Se Café",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Canóniga, 18",
+    "telefono": "+34 626 69 95 55",
+    "valoracion": 4.5,
+    "resenas": 3583,
+    "horario": "",
+    "estado": "",
+    "lat": 43.361817,
+    "lng": -5.84222,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Per%20Se%20Caf%C3%A9&query_place_id=ChIJQQAAcPCMNg0RQiCvYWFaQfU",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Cervecería Pub Mare Nostrum",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Pérez de la Sala, 25",
+    "telefono": "+34 985 25 05 99",
+    "valoracion": 4.8,
+    "resenas": 490,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3576636,
+    "lng": -5.8504769,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cervecer%C3%ADa%20Pub%20Mare%20Nostrum&query_place_id=ChIJJeFouuaMNg0RR_oX_64rbsY",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Duffin Dagels",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Campoamor, 5",
+    "telefono": "+34 984 08 38 75",
+    "valoracion": 4.5,
+    "resenas": 1464,
+    "horario": "",
+    "estado": "",
+    "lat": 43.365398,
+    "lng": -5.851378,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Duffin%20Dagels&query_place_id=ChIJhe8HgfyMNg0RhEtoIHEtY4s",
+    "fuenteConsulta": "heladeria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Diego Verdú Monerris - Heladería y Turronería",
+    "tipo": "heladeria_pasteleria",
+    "direccion": "C. Cimadevilla, 7",
+    "telefono": "+34 985 21 28 55",
+    "valoracion": 4.5,
+    "resenas": 720,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3608852,
+    "lng": -5.8446599,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Diego%20Verd%C3%BA%20Monerris%20-%20Helader%C3%ADa%20y%20Turroner%C3%ADa&query_place_id=ChIJbzq4dO-MNg0RQMA_FypZ6jU",
+    "fuenteConsulta": "heladeria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Restaurante Sidrería El Ferroviario",
+    "tipo": "restaurante",
+    "direccion": "C. Gascona, 5",
+    "telefono": "+34 985 22 52 15",
+    "valoracion": 4.3,
+    "resenas": 4027,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3641462,
+    "lng": -5.844352,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Restaurante%20Sidrer%C3%ADa%20El%20Ferroviario&query_place_id=ChIJl0Q_I_CMNg0RD2ngeBtpF7A",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Cafetería El Cuartin",
+    "tipo": "cafeteria_bar",
+    "direccion": "Av. Valentín Masip, 28",
+    "telefono": "",
+    "valoracion": 4.4,
+    "resenas": 317,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3624499,
+    "lng": -5.8625755,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cafeter%C3%ADa%20El%20Cuartin&query_place_id=ChIJqV2qTRuNNg0Rm3MfhExyYoI",
+    "fuenteConsulta": "pasteleria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

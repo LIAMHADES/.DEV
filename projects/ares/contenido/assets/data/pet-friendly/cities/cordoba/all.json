@@ -1,0 +1,1894 @@
+[
+  {
+    "nombre": "MasKoteando",
+    "tipo": "tienda",
+    "direccion": "Paseo de la Victoria, kiosco",
+    "lat": 37.884958999999995,
+    "lng": -4.78546
+  },
+  {
+    "nombre": "XXIX dog club",
+    "tipo": "adiestrador",
+    "direccion": "Av. las Quemadas",
+    "lat": 37.8849535,
+    "lng": -4.7120852
+  },
+  {
+    "nombre": "SCOOBYSFARMA",
+    "tipo": "tienda",
+    "direccion": "C. José Tejero 'El Guarda'', nº 1",
+    "lat": 37.8302882,
+    "lng": -4.9280034
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "14711 Córdoba",
+    "lat": 37.835808199999995,
+    "lng": -4.9263047
+  },
+  {
+    "nombre": "TIERRAS DE FURIA",
+    "tipo": "adiestrador",
+    "direccion": "V58W+Q5",
+    "lat": 37.8669375,
+    "lng": -4.804562499999999
+  },
+  {
+    "nombre": "Hammam Dog's",
+    "tipo": "otros",
+    "direccion": "C. Valdés Leal, 2",
+    "lat": 37.8834581,
+    "lng": -4.781769499999999
+  },
+  {
+    "nombre": "Alliumsoma",
+    "tipo": "adiestrador",
+    "direccion": "C. Imprenta de la Alborada, 1",
+    "lat": 37.903827,
+    "lng": -4.707554099999999
+  },
+  {
+    "nombre": "Centro Canino y de Adiestramiento Adicapal",
+    "tipo": "otros",
+    "direccion": "C. Martinez Ruker",
+    "lat": 37.868186099999996,
+    "lng": -4.8722712
+  },
+  {
+    "nombre": "Adecan Córdoba centro canino",
+    "tipo": "adiestrador",
+    "direccion": "Alcaide Parcelas 14005",
+    "lat": 37.8592447,
+    "lng": -4.813693799999999
+  },
+  {
+    "nombre": "Adiestramiento Córdoba",
+    "tipo": "adiestrador",
+    "direccion": "Ctra. Palma del Río, km 9, 5",
+    "lat": 37.857233199999996,
+    "lng": -4.8902035
+  },
+  {
+    "nombre": "Yucacán. Guardería canina",
+    "tipo": "otros",
+    "direccion": "Finca Yucacán",
+    "lat": 37.8981946,
+    "lng": -4.8519350999999995
+  },
+  {
+    "nombre": "Residencia canina Séneca",
+    "tipo": "otros",
+    "direccion": "Carretera Quemadillas, Km 399, Km 399",
+    "lat": 37.893572,
+    "lng": -4.7433599
+  },
+  {
+    "nombre": "Adiestramiento Adiestracor",
+    "tipo": "adiestrador",
+    "direccion": "C. Isla Formentera, S/N",
+    "lat": 37.8893212,
+    "lng": -4.7995190999999995
+  },
+  {
+    "nombre": "Guardería - Residencia Canina Córdoba RASTAdog Centro de Bienestar Animal - Ludoteca Canina",
+    "tipo": "adiestrador",
+    "direccion": "DE BIENESTAR ANIMAL RASTAdog",
+    "lat": 37.8914209,
+    "lng": -4.787374799999999
+  },
+  {
+    "nombre": "Hotel Cetina Casa de Aguilar, Córdoba",
+    "tipo": "alojamiento",
+    "direccion": "C. Barroso, 4",
+    "lat": 37.8820987,
+    "lng": -4.7801162
+  },
+  {
+    "nombre": "Kompy mascotas",
+    "tipo": "otros",
+    "direccion": "Avenida Fuente de la salud, 25",
+    "lat": 37.9014393,
+    "lng": -4.7730383
+  },
+  {
+    "nombre": "HUESITOS, Centro Canino de Estética",
+    "tipo": "otros",
+    "direccion": "C. Ángela Romero de Torres, 5",
+    "lat": 37.8911047,
+    "lng": -4.7630017
+  },
+  {
+    "nombre": "Naturaleza, la tienda de tus animales",
+    "tipo": "tienda",
+    "direccion": "Isla Gomera, 3",
+    "lat": 37.8896249,
+    "lng": -4.7988007999999995
+  },
+  {
+    "nombre": "Suites La Posada de Pilar",
+    "tipo": "alojamiento",
+    "direccion": "C. Moriscos, 3",
+    "lat": 37.8903046,
+    "lng": -4.7747307
+  },
+  {
+    "nombre": "Líbere Córdoba Tendillas",
+    "tipo": "alojamiento",
+    "direccion": "C. Málaga, 2",
+    "lat": 37.884293299999996,
+    "lng": -4.7801124999999995
+  },
+  {
+    "nombre": "Hotel Boutique La Llave de la Judería",
+    "tipo": "alojamiento",
+    "direccion": "C. Romero, 38",
+    "lat": 37.8803737,
+    "lng": -4.7823423
+  },
+  {
+    "nombre": "Maskotas Hotel Canino",
+    "tipo": "tienda",
+    "direccion": "Av. las Quemadas",
+    "lat": 37.8853985,
+    "lng": -4.713345599999999
+  },
+  {
+    "nombre": "Residencia Canina Cordoba Cansport",
+    "tipo": "otros",
+    "direccion": "Carretera del aeropuerto km 5,400 (a partir del cruce del aeropuerto).&nbsp Pasando fosas sépticas JAIME, el camino a la derecha que hace esquina con comercial los Velez., Para tu GPS:Latitud 37 ° 51'02' Norte - Longitud 4 °54'08' Oeste",
+    "lat": 37.8509773,
+    "lng": -4.902208
+  },
+  {
+    "nombre": "NaturZoo |1| 🐶 ||💈Peluquería Canina || Tienda mascotas y Alimentación Natural-Barf||🛍🥩",
+    "tipo": "tienda",
+    "direccion": "Avenida Cañito Bazán, N2 Bis",
+    "lat": 37.8946945,
+    "lng": -4.799122
+  },
+  {
+    "nombre": "Surveco Veterinarios",
+    "tipo": "veterinario",
+    "direccion": "C. Manuel Fuentes 'Bocanegra', 13",
+    "lat": 37.879215099999996,
+    "lng": -4.7966454999999995
+  },
+  {
+    "nombre": "Amascotados Trassierra",
+    "tipo": "tienda",
+    "direccion": "Carret. de Trassierra, 58",
+    "lat": 37.8932161,
+    "lng": -4.7970298
+  },
+  {
+    "nombre": "Calleja de la Pimentera",
+    "tipo": "alojamiento",
+    "direccion": "C. Don Rufino Blanco y Sánchez, 8, Centro",
+    "lat": 37.880268799999996,
+    "lng": -4.7759803
+  },
+  {
+    "nombre": "CADE Córdoba",
+    "tipo": "otros",
+    "direccion": "Av. Tenor Pedro Lavirgen, s/n",
+    "lat": 37.8954514,
+    "lng": -4.7880908
+  },
+  {
+    "nombre": "Hotel Hospes Palacio del Bailío",
+    "tipo": "alojamiento",
+    "direccion": "C. de Ramírez de las Casas Deza, 10, 12",
+    "lat": 37.887409,
+    "lng": -4.777305999999999
+  },
+  {
+    "nombre": "APARTAMENTOS PINTOR LOSADA",
+    "tipo": "otros",
+    "direccion": "C. Pintor Losada, 2",
+    "lat": 37.8714485,
+    "lng": -4.7921619
+  },
+  {
+    "nombre": "Hotel boutique Las Casas de la Judería Córdoba",
+    "tipo": "alojamiento",
+    "direccion": "C. Tomás Conde, 10, Centro",
+    "lat": 37.8784304,
+    "lng": -4.7820845
+  },
+  {
+    "nombre": "Grupo de protección animal de Rute 'GPAR'",
+    "tipo": "protectora",
+    "direccion": "14960 Rute",
+    "lat": 37.3271071,
+    "lng": -4.3784526999999995
+  },
+  {
+    "nombre": "Hotel NH Collection Palacio de Córdoba",
+    "tipo": "alojamiento",
+    "direccion": "Pl. Maimónides, 3",
+    "lat": 37.8794,
+    "lng": -4.78261
+  },
+  {
+    "nombre": "Parque de la Asomadilla",
+    "tipo": "parque",
+    "direccion": "Escultor Pablo Gargallo, s/n",
+    "lat": 37.905274299999995,
+    "lng": -4.7787627
+  },
+  {
+    "nombre": "Córdoba Carpe Diem",
+    "tipo": "alojamiento",
+    "direccion": "C. Barroso, 4",
+    "lat": 37.8821215,
+    "lng": -4.7802498
+  },
+  {
+    "nombre": "Ornicor S.L.",
+    "tipo": "tienda",
+    "direccion": "Ctra.del aeropuerto N-437 km 4,5",
+    "lat": 37.8573744,
+    "lng": -4.8290415
+  },
+  {
+    "nombre": "Kiwoko Animal World",
+    "tipo": "tienda",
+    "direccion": "C. del Compositor Mozart",
+    "lat": 37.878062899999996,
+    "lng": -4.8362267999999995
+  },
+  {
+    "nombre": "Sercotel Córdoba Delicias",
+    "tipo": "alojamiento",
+    "direccion": "C. Islas Chafarinas, 1",
+    "lat": 37.8843178,
+    "lng": -4.8048515
+  },
+  {
+    "nombre": "Parque canino Fidiana",
+    "tipo": "parque",
+    "direccion": "Av. de Libia, 27",
+    "lat": 37.8922011,
+    "lng": -4.7542778
+  },
+  {
+    "nombre": "Hostal El Brillante Alojamientos El Duque",
+    "tipo": "alojamiento",
+    "direccion": "C. Catedrático Esquivel, 1",
+    "lat": 37.9150762,
+    "lng": -4.7992992999999995
+  },
+  {
+    "nombre": "VIDA MASCOTA",
+    "tipo": "tienda",
+    "direccion": "Av. Gran Vía Parque, 25",
+    "lat": 37.8818474,
+    "lng": -4.7935643
+  },
+  {
+    "nombre": "Trabajo Con Perros Adiestramiento",
+    "tipo": "adiestrador",
+    "direccion": "C. los Guindos, s/n",
+    "lat": 37.923673799999996,
+    "lng": -4.759799
+  },
+  {
+    "nombre": "Piensos El Granadal",
+    "tipo": "otros",
+    "direccion": "Av. del Zafiro, 8",
+    "lat": 37.887649499999995,
+    "lng": -4.7517271
+  },
+  {
+    "nombre": "La Casa de los Bigotes",
+    "tipo": "tienda",
+    "direccion": "Av. Ronda de los Tejares, 19, Loc 4",
+    "lat": 37.887153399999995,
+    "lng": -4.7819278
+  },
+  {
+    "nombre": "Los Patios de la Juderia",
+    "tipo": "otros",
+    "direccion": "C. Martínez Rucker, 12",
+    "lat": 37.8795512,
+    "lng": -4.7781348999999995
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Av. del Arcángel, s/n",
+    "lat": 37.8786759,
+    "lng": -4.7663668999999995
+  },
+  {
+    "nombre": "La Casa de la Costurera",
+    "tipo": "otros",
+    "direccion": "C. San Basilio, 40",
+    "lat": 37.875534099999996,
+    "lng": -4.7848799
+  },
+  {
+    "nombre": "Hotel Casa de los Naranjos",
+    "tipo": "alojamiento",
+    "direccion": "C. Isabel Losa, 8",
+    "lat": 37.8888016,
+    "lng": -4.7758297999999995
+  },
+  {
+    "nombre": "Soho Boutique Córdoba",
+    "tipo": "alojamiento",
+    "direccion": "Av. de América, 19",
+    "lat": 37.8897936,
+    "lng": -4.784516099999999
+  },
+  {
+    "nombre": "Hesperia Córdoba",
+    "tipo": "alojamiento",
+    "direccion": "Av. Fray Albino, 1",
+    "lat": 37.8738045,
+    "lng": -4.7779153
+  },
+  {
+    "nombre": "Hostal Alcázar",
+    "tipo": "alojamiento",
+    "direccion": "C. San Basilio, 2",
+    "lat": 37.8773956,
+    "lng": -4.7827616
+  },
+  {
+    "nombre": "Sercotel Córdoba Medina Azahara",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Medina Azahara, 7",
+    "lat": 37.8848991,
+    "lng": -4.787342799999999
+  },
+  {
+    "nombre": "Mascotas y Campo",
+    "tipo": "tienda",
+    "direccion": "Av. de Medina Azahara, 18",
+    "lat": 37.8854587,
+    "lng": -4.792119
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "Sur",
+    "lat": 37.860018,
+    "lng": -4.78428
+  },
+  {
+    "nombre": "ACCSUR",
+    "tipo": "adiestrador",
+    "direccion": "14011 Trassierra",
+    "lat": 37.8964128,
+    "lng": -4.8123787
+  },
+  {
+    "nombre": "Hotel Soho Boutique Capuchinos & Spa",
+    "tipo": "alojamiento",
+    "direccion": "C. Conde de Torres Cabrera, 32",
+    "lat": 37.8881574,
+    "lng": -4.778147
+  },
+  {
+    "nombre": "Parque canino Cruz Conde (Zona de Expansión Canina, ZEC)",
+    "tipo": "parque",
+    "direccion": "14004 Córdoba",
+    "lat": 37.8739382,
+    "lng": -4.7905926
+  },
+  {
+    "nombre": "Hotel Maestre",
+    "tipo": "alojamiento",
+    "direccion": "Posada del Potro",
+    "lat": 37.8809624,
+    "lng": -4.7757331
+  },
+  {
+    "nombre": "Parque canino Fray Albino",
+    "tipo": "parque",
+    "direccion": "Avda. del Corregiddor DC, 14009",
+    "lat": 37.8712649,
+    "lng": -4.7805618
+  },
+  {
+    "nombre": "Hostal La Fuente",
+    "tipo": "alojamiento",
+    "direccion": "C. de San Fernando, 51",
+    "lat": 37.8818893,
+    "lng": -4.776167399999999
+  },
+  {
+    "nombre": "ZEC (Zona de Expansión Canina)",
+    "tipo": "parque",
+    "direccion": "C. Isla Madeira, 7",
+    "lat": 37.8878345,
+    "lng": -4.8003528
+  },
+  {
+    "nombre": "Hotel Oasis Córdoba",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Cádiz, 78",
+    "lat": 37.8646771,
+    "lng": -4.7831465
+  },
+  {
+    "nombre": "Hotel Boutique Puerta del Rincón",
+    "tipo": "alojamiento",
+    "direccion": "C. Isabel Losa, 8",
+    "lat": 37.8887806,
+    "lng": -4.7758326
+  },
+  {
+    "nombre": "Hotel Soho Boutique Hospedería del Atalia",
+    "tipo": "alojamiento",
+    "direccion": "C. Buen Pastor, 19",
+    "lat": 37.880452,
+    "lng": -4.781104
+  },
+  {
+    "nombre": "Fundación Intered",
+    "tipo": "otros",
+    "direccion": "Pl. de la Concha, 1",
+    "lat": 37.879821899999996,
+    "lng": -4.7784420999999995
+  },
+  {
+    "nombre": "Apartamentos La Castilleja ® · Web Oficial",
+    "tipo": "alojamiento",
+    "direccion": "C. Huerta de Hierro, 22",
+    "lat": 37.921712899999996,
+    "lng": -4.7967264
+  },
+  {
+    "nombre": "Apartamentos Turísticos Duque de Hornachuelos",
+    "tipo": "alojamiento",
+    "direccion": "Cjón. de Hornachuelos, 8",
+    "lat": 37.8840091,
+    "lng": -4.7781652999999995
+  },
+  {
+    "nombre": "Hacienda El Brillante",
+    "tipo": "alojamiento",
+    "direccion": "C. Poeta Alonso de Bonilla, s/n",
+    "lat": 37.915742099999996,
+    "lng": -4.8028311
+  },
+  {
+    "nombre": "Sadeco Sanidad y Bienestar Animal",
+    "tipo": "otros",
+    "direccion": "Crta.Casilla s/n",
+    "lat": 37.8491521,
+    "lng": -4.8069882999999995
+  },
+  {
+    "nombre": "La Quinta Hacienda - Apartamentos Turístico.s",
+    "tipo": "alojamiento",
+    "direccion": "Av. del Brillante, 18",
+    "lat": 37.8969117,
+    "lng": -4.7849163
+  },
+  {
+    "nombre": "TOC TOC DOG",
+    "tipo": "tienda",
+    "direccion": "Centro",
+    "lat": 37.888221,
+    "lng": -4.781959
+  },
+  {
+    "nombre": "HobbyZoo",
+    "tipo": "tienda",
+    "direccion": "C. Poeta Emilio Prados, s/n, local 13 - 14",
+    "lat": 37.8958936,
+    "lng": -4.7911912999999995
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "C. Cantábrico",
+    "lat": 37.8878755,
+    "lng": -4.8003548
+  },
+  {
+    "nombre": "Hotel ITC Colón by Soho Boutique",
+    "tipo": "alojamiento",
+    "direccion": "C. de Alhaken II, 4",
+    "lat": 37.8896747,
+    "lng": -4.7836098
+  },
+  {
+    "nombre": "Apap la Guarida",
+    "tipo": "otros",
+    "direccion": "C. Montemayor, 8",
+    "lat": 37.3943747,
+    "lng": -4.7661025
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "otros",
+    "direccion": "V6GH+XG",
+    "lat": 37.8774284,
+    "lng": -4.7711922
+  },
+  {
+    "nombre": "Residencia Canina Las Cabrerizas del Sur",
+    "tipo": "otros",
+    "direccion": "Bda. de Majaneque",
+    "lat": 37.8373813,
+    "lng": -4.8823815
+  },
+  {
+    "nombre": "La Guarida Protectora",
+    "tipo": "protectora",
+    "direccion": "C. Montemayor, 8",
+    "lat": 37.3943614,
+    "lng": -4.7661144
+  },
+  {
+    "nombre": "El Flamenco Dog Park",
+    "tipo": "parque",
+    "direccion": "V5WW+WM",
+    "lat": 37.8972882,
+    "lng": -4.8033733
+  },
+  {
+    "nombre": "Perrera Municipal De Lucena",
+    "tipo": "protectora",
+    "direccion": "14900 Lucena",
+    "lat": 37.3617322,
+    "lng": -4.4586143
+  },
+  {
+    "nombre": "SADECO Saneamientos de Córdoba S.A. Empresa Municipal",
+    "tipo": "otros",
+    "direccion": "Av. de Medina Azahara, 4",
+    "lat": 37.8859236,
+    "lng": -4.7883935
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "Ronda Ramon y Cajal, 3D",
+    "lat": 37.674956,
+    "lng": -4.9352233
+  },
+  {
+    "nombre": "Pienso y Mascotas",
+    "tipo": "tienda",
+    "direccion": "C. Astrónomo Azarquiel, 31",
+    "lat": 37.9116183,
+    "lng": -4.7222773
+  },
+  {
+    "nombre": "Protectora de animales galgos del sur",
+    "tipo": "alojamiento",
+    "direccion": "14420 Villafranca de Córdoba",
+    "lat": 37.9617054,
+    "lng": -4.5450368
+  },
+  {
+    "nombre": "Parque canino Paraíso Arenal",
+    "tipo": "parque",
+    "direccion": "14014 Córdoba",
+    "lat": 37.9303762,
+    "lng": -4.7567508
+  },
+  {
+    "nombre": "Finca Buen Aqua",
+    "tipo": "protectora",
+    "direccion": "Unnamed Road, 14299",
+    "lat": 38.1505647,
+    "lng": -5.2964407
+  },
+  {
+    "nombre": "Sit adiestramiento canino Córdoba",
+    "tipo": "adiestrador",
+    "direccion": "C. Cruz Conde",
+    "lat": 37.8866805,
+    "lng": -4.7804737
+  },
+  {
+    "nombre": "Protectora de animales Acógenos",
+    "tipo": "otros",
+    "direccion": "FG8G+5W",
+    "lat": 37.465427999999996,
+    "lng": -4.4727502999999995
+  },
+  {
+    "nombre": "PELUQUERÍA CANINA MK GROOMERS",
+    "tipo": "tienda",
+    "direccion": "Fernando Amor y Mayor, 1",
+    "lat": 37.8878858,
+    "lng": -4.796073799999999
+  },
+  {
+    "nombre": "Macarena Montero | Estilismo Canino y academia de peluquería canina.",
+    "tipo": "tienda",
+    "direccion": "Centro de Peluquería y Estética Canina Macarena Montero",
+    "lat": 37.880153,
+    "lng": -4.7987747999999995
+  },
+  {
+    "nombre": "Elite Animal by alybell",
+    "tipo": "tienda",
+    "direccion": "Av. de Carlos III, 28",
+    "lat": 37.8963752,
+    "lng": -4.7590902
+  },
+  {
+    "nombre": "Peluquería Canina Mis Consentidos",
+    "tipo": "tienda",
+    "direccion": "frente farmacia",
+    "lat": 37.884752399999996,
+    "lng": -4.8146015
+  },
+  {
+    "nombre": "Peluquería canina y spa Pluto",
+    "tipo": "tienda",
+    "direccion": "C. Virgen de la Salud, 1",
+    "lat": 37.877972299999996,
+    "lng": -4.7893381
+  },
+  {
+    "nombre": "Peluquería Canina Renovecan",
+    "tipo": "tienda",
+    "direccion": "C. Álvaro Paulo, 13, Loc 3",
+    "lat": 37.8907514,
+    "lng": -4.7643327
+  },
+  {
+    "nombre": "NaturZoo |2| 🐶 ||💈Peluquería Canina || Tienda mascotas y Alimentación Natural-Barf||🛍🥩",
+    "tipo": "tienda",
+    "direccion": "Calle Huerta de Sta. Isabel, 4",
+    "lat": 37.891063599999995,
+    "lng": -4.8130333
+  },
+  {
+    "nombre": "Pizca y Trufa. Bienestar animal",
+    "tipo": "tienda",
+    "direccion": "Av. de Manolete, 15",
+    "lat": 37.879761699999996,
+    "lng": -4.796039899999999
+  },
+  {
+    "nombre": "Peluquería Canina Es Uno +",
+    "tipo": "tienda",
+    "direccion": "C. Escañuela, s/n",
+    "lat": 37.8866861,
+    "lng": -4.7679225999999995
+  },
+  {
+    "nombre": "Peluquería Canina Kingo",
+    "tipo": "tienda",
+    "direccion": "C. Infanta Doña María, 68",
+    "lat": 37.8798396,
+    "lng": -4.7914173
+  },
+  {
+    "nombre": "New Happy Dog",
+    "tipo": "tienda",
+    "direccion": "C. Prof. Tierno Galván, 6",
+    "lat": 37.900953799999996,
+    "lng": -4.7582553999999995
+  },
+  {
+    "nombre": "Tu Kasa K9",
+    "tipo": "tienda",
+    "direccion": "Av. Amargacena, parcela 19, modulo 2A",
+    "lat": 37.846495,
+    "lng": -4.7952072999999995
+  },
+  {
+    "nombre": "A2",
+    "tipo": "tienda",
+    "direccion": "dozi",
+    "lat": 37.850668999999996,
+    "lng": -4.793819
+  },
+  {
+    "nombre": "Clínica Veterinaria María Auxiliadora",
+    "tipo": "veterinario",
+    "direccion": "C. Santo Domingo Savio, 3",
+    "lat": 37.888163999999996,
+    "lng": -4.7665193
+  },
+  {
+    "nombre": "JUSTGOLDEN",
+    "tipo": "adiestrador",
+    "direccion": "Urbanizacion la Barquera, 105",
+    "lat": 37.852214499999995,
+    "lng": -4.8825329
+  },
+  {
+    "nombre": "Adiestramiento canino Tomecon",
+    "tipo": "adiestrador",
+    "direccion": "C. el Ciego, 32",
+    "lat": 37.6763677,
+    "lng": -4.8887433
+  },
+  {
+    "nombre": "Educación Canina ¿Aprendemos Juntos? Olga Camargo",
+    "tipo": "adiestrador",
+    "direccion": "14900 Lucena",
+    "lat": 37.408797299999996,
+    "lng": -4.4850429
+  },
+  {
+    "nombre": "REPIKI Adiestramiento canino",
+    "tipo": "adiestrador",
+    "direccion": "C. Cabrillana, 32",
+    "lat": 37.4105759,
+    "lng": -4.4884151
+  },
+  {
+    "nombre": "📚✂️🐩 Academia NaturZoo|| Escuela de Peluquería Canina",
+    "tipo": "adiestrador",
+    "direccion": "Av. Cañito Bazán, 2",
+    "lat": 37.8945848,
+    "lng": -4.7991351
+  },
+  {
+    "nombre": "Vetaformacion - Curso Presencial de Auxiliar Veterinaria",
+    "tipo": "otros",
+    "direccion": "C. Hermano Juan Fernández, s/n",
+    "lat": 37.894166899999995,
+    "lng": -4.7546612
+  },
+  {
+    "nombre": "Peluquería canina la tribu",
+    "tipo": "peluqueria",
+    "direccion": "C. Pintor Matisse, 6",
+    "lat": 37.8924962,
+    "lng": -4.7569137
+  },
+  {
+    "nombre": "💈🐶 Unai Guijo Groomer || Peluquería Canina en Córdoba",
+    "tipo": "tienda",
+    "direccion": "Calle Dr. Gregorio Marañón, 3",
+    "lat": 37.8777423,
+    "lng": -4.7840409
+  },
+  {
+    "nombre": "Perruquería Cuatro Patas",
+    "tipo": "tienda",
+    "direccion": "Pje. Poeta Baena Yuste, 3, Local",
+    "lat": 37.8991566,
+    "lng": -4.755080899999999
+  },
+  {
+    "nombre": "Centro Veterinario Mi Vet Maritina",
+    "tipo": "veterinario",
+    "direccion": "C. el Nogal, 11",
+    "lat": 37.8973383,
+    "lng": -4.7845273
+  },
+  {
+    "nombre": "Peluquería Canina RASTAdog Córdoba. Especializada en Perro de Agua Español. Estética canina. (Cita Previa)",
+    "tipo": "tienda",
+    "direccion": "Pje. San Sebastián, 2, Loc RASTAdog",
+    "lat": 37.8914085,
+    "lng": -4.7874397
+  },
+  {
+    "nombre": "Dogavari peluquería canina",
+    "tipo": "tienda",
+    "direccion": "Calle Dr. José Altolaguirre, N1, LOCALES 5-7",
+    "lat": 37.8720432,
+    "lng": -4.7930401
+  },
+  {
+    "nombre": "Turko's peluqueria canina/ especializada en perro de agua español",
+    "tipo": "tienda",
+    "direccion": "Pl. Toñi Sánchez, N°2, Loc 1",
+    "lat": 37.89016,
+    "lng": -4.793544499999999
+  },
+  {
+    "nombre": "Petit Boutique",
+    "tipo": "tienda",
+    "direccion": "C. Periodista José Luis de Córdoba, 10",
+    "lat": 37.876583,
+    "lng": -4.763584799999999
+  },
+  {
+    "nombre": "Canitas Veterinaria Córdoba - CC Arcangel",
+    "tipo": "veterinario",
+    "direccion": "Av. del Arcángel",
+    "lat": 37.8789824,
+    "lng": -4.766251899999999
+  },
+  {
+    "nombre": "Clínica Veterinaria THOR",
+    "tipo": "veterinario",
+    "direccion": "Av. del Aeropuerto",
+    "lat": 37.879100699999995,
+    "lng": -4.788762999999999
+  },
+  {
+    "nombre": "K9 Working System",
+    "tipo": "adiestrador",
+    "direccion": "Almendros pendol, 3",
+    "lat": 37.941227399999995,
+    "lng": -4.6740067
+  },
+  {
+    "nombre": "Asevet",
+    "tipo": "veterinario",
+    "direccion": "C. Dolores Ibárruri, 23",
+    "lat": 37.895426,
+    "lng": -4.797283999999999
+  },
+  {
+    "nombre": "Veterinarios el Higueron",
+    "tipo": "veterinario",
+    "direccion": "C. la Magnolia, 30",
+    "lat": 37.8600113,
+    "lng": -4.8632196
+  },
+  {
+    "nombre": "Clínica Veterinaria Alfaros",
+    "tipo": "veterinario",
+    "direccion": "Prta del Rincón, 5",
+    "lat": 37.8883333,
+    "lng": -4.7763889
+  },
+  {
+    "nombre": "Centro Veterinario d'Qi - Rehabilitación veterinaria en Córdoba",
+    "tipo": "veterinario",
+    "direccion": "Av. Arroyo del Moro, 2, local4",
+    "lat": 37.8868564,
+    "lng": -4.795791299999999
+  },
+  {
+    "nombre": "Hocicos -Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. del Alcalde Velasco Navarro, 3",
+    "lat": 37.8810353,
+    "lng": -4.7882744
+  },
+  {
+    "nombre": "Peluquería Canina Peludos Córdoba",
+    "tipo": "tienda",
+    "direccion": "Av. Granada, 5",
+    "lat": 37.869369999999996,
+    "lng": -4.777295
+  },
+  {
+    "nombre": "Lanudogs",
+    "tipo": "tienda",
+    "direccion": "Av. de Jesús Rescatado, 21",
+    "lat": 37.890726199999996,
+    "lng": -4.760478
+  },
+  {
+    "nombre": "Almudena Blancart Estilista Canina",
+    "tipo": "tienda",
+    "direccion": "C. Platero Sánchez de la Cruz, 9",
+    "lat": 37.889699199999995,
+    "lng": -4.7632049
+  },
+  {
+    "nombre": "La Trastienda animal",
+    "tipo": "tienda",
+    "direccion": "Pl. de San Pedro, 17",
+    "lat": 37.882311,
+    "lng": -4.771616
+  },
+  {
+    "nombre": "Mascota Trassierra. Peluquería canina, piensos y complementos",
+    "tipo": "tienda",
+    "direccion": "Carret. de Trassierra, 41",
+    "lat": 37.8942944,
+    "lng": -4.8038270999999995
+  },
+  {
+    "nombre": "Urgencias Veterinarias Córdoba Figueroa",
+    "tipo": "veterinario",
+    "direccion": "Pje. Marino Oquendo, 12",
+    "lat": 37.890052,
+    "lng": -4.8022409999999995
+  },
+  {
+    "nombre": "Centro Veterinario Córdoba",
+    "tipo": "veterinario",
+    "direccion": "nº2 Duplicado",
+    "lat": 36.6913348,
+    "lng": -6.127137299999999
+  },
+  {
+    "nombre": "Enredadog Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. Comandante Velázquez, 6",
+    "lat": 37.8974573,
+    "lng": -4.779616
+  },
+  {
+    "nombre": "Clínica Veterinaria Gran Capitán",
+    "tipo": "veterinario",
+    "direccion": "C. del Doce de Octubre, 19",
+    "lat": 37.890240299999995,
+    "lng": -4.7821672
+  },
+  {
+    "nombre": "Amascotados Quemadas",
+    "tipo": "tienda",
+    "direccion": "Polígono Industrial Las Quemadas",
+    "lat": 37.905589,
+    "lng": -4.7197866
+  },
+  {
+    "nombre": "Clínica Veterinaria Aeropuerto - Córdoba",
+    "tipo": "veterinario",
+    "direccion": "Urb. Parque de las Avenidas, 2, Loc 2-3",
+    "lat": 37.8748419,
+    "lng": -4.7979388
+  },
+  {
+    "nombre": "Nutrimascota | Peluquería Canina Y Tienda De Mascotas Cordoba",
+    "tipo": "tienda",
+    "direccion": "C. López Amo, 10",
+    "lat": 37.8994885,
+    "lng": -4.7784653
+  },
+  {
+    "nombre": "Animal24 Clínica veterinaria Córdoba - Urgencias 24h - Domicilios -Vacunas",
+    "tipo": "veterinario",
+    "direccion": "frente al 27",
+    "lat": 37.894158999999995,
+    "lng": -4.754689
+  },
+  {
+    "nombre": "The Barber Dog",
+    "tipo": "tienda",
+    "direccion": "C. los Chopos, 11",
+    "lat": 37.8979152,
+    "lng": -4.7818885
+  },
+  {
+    "nombre": "Peluqueria canina Animalook",
+    "tipo": "tienda",
+    "direccion": "Av. Lagartijo, 2",
+    "lat": 37.880967399999996,
+    "lng": -4.796646
+  },
+  {
+    "nombre": "Peluquería de Mascotas Camelia",
+    "tipo": "tienda",
+    "direccion": "C. Guaraní, local 2",
+    "lat": 37.898658399999995,
+    "lng": -4.7627517
+  },
+  {
+    "nombre": "Rizos de Orive",
+    "tipo": "peluqueria",
+    "direccion": "C. Escritora Carmen de Burgos, 7",
+    "lat": 37.872989499999996,
+    "lng": -4.8002851
+  },
+  {
+    "nombre": "Veterinario Gregorio Ruano // Clinica Falabella",
+    "tipo": "veterinario",
+    "direccion": "C. Proyecto Hombre, 2",
+    "lat": 37.8497841,
+    "lng": -4.875424
+  },
+  {
+    "nombre": "Peluquería canina Dog Limpio",
+    "tipo": "peluqueria",
+    "direccion": "Calle Dr. Gómez Aguado, 6",
+    "lat": 37.8934533,
+    "lng": -4.7546333
+  },
+  {
+    "nombre": "Kivet Salud Animal",
+    "tipo": "veterinario",
+    "direccion": "P.C. Connecta Córdoba",
+    "lat": 37.8580039,
+    "lng": -4.7866658
+  },
+  {
+    "nombre": "Agroalimentacion El Capi",
+    "tipo": "tienda",
+    "direccion": "C. del Periodista Pedro Alvarez",
+    "lat": 37.894320199999996,
+    "lng": -4.7508447
+  },
+  {
+    "nombre": "Clínica Veterinaria Viana | MiVet",
+    "tipo": "veterinario",
+    "direccion": "Calle Ing. Ruiz de Azúa, s/n",
+    "lat": 37.9012933,
+    "lng": -4.7781775
+  },
+  {
+    "nombre": "Pajareria Sur",
+    "tipo": "tienda",
+    "direccion": "Pl. de Andalucía, 6",
+    "lat": 37.869408299999996,
+    "lng": -4.7785291
+  },
+  {
+    "nombre": "Pajareria 'El Cardelino'",
+    "tipo": "tienda",
+    "direccion": "C",
+    "lat": 37.878676999999996,
+    "lng": -4.764179899999999
+  },
+  {
+    "nombre": "ShaNatur",
+    "tipo": "tienda",
+    "direccion": "C. Veneros de Bejarano, 10P",
+    "lat": 37.926089999999995,
+    "lng": -4.89783
+  },
+  {
+    "nombre": "Hospital Clínico Veterinario Universidad de Córdoba",
+    "tipo": "veterinario",
+    "direccion": "Campus Universitario de Rabanales. Ctra. Nacional IV-A, Km 396",
+    "lat": 37.916281,
+    "lng": -4.7207218
+  },
+  {
+    "nombre": "PELUQUERÍA CANINA",
+    "tipo": "otros",
+    "direccion": "C. Arcos de la Frontera",
+    "lat": 37.896501799999996,
+    "lng": -4.7534629
+  },
+  {
+    "nombre": "Pajarería Huerta De La Reina",
+    "tipo": "otros",
+    "direccion": "C. Goya, 37",
+    "lat": 37.892892499999995,
+    "lng": -4.7878947
+  },
+  {
+    "nombre": "Mascotas La Viñuela",
+    "tipo": "tienda",
+    "direccion": "Av. de la Viñuela, 24, bajo",
+    "lat": 37.8881784,
+    "lng": -4.7627114
+  },
+  {
+    "nombre": "Hospital Veterinario Puente Genil",
+    "tipo": "veterinario",
+    "direccion": "Polígono Comercial El Silo, 1",
+    "lat": 37.3963543,
+    "lng": -4.7669084
+  },
+  {
+    "nombre": "Hospital Veterinario Victoria",
+    "tipo": "veterinario",
+    "direccion": "Av. de la República Argentina, 32",
+    "lat": 37.8833548,
+    "lng": -4.786577299999999
+  },
+  {
+    "nombre": "Clínica Veterinaria Santa Rosa",
+    "tipo": "veterinario",
+    "direccion": "Av. Cruz de Juárez, 16",
+    "lat": 37.897325099999996,
+    "lng": -4.7803875
+  },
+  {
+    "nombre": "Pajarería Mayte",
+    "tipo": "tienda",
+    "direccion": "Cam. de los Sastres, 16",
+    "lat": 37.8814694,
+    "lng": -4.7891265
+  },
+  {
+    "nombre": "Herzog Can",
+    "tipo": "adiestrador",
+    "direccion": "Ctra",
+    "lat": 37.7113833,
+    "lng": -5.0017977
+  },
+  {
+    "nombre": "Hospital Veterinario Vetsicor | MiVet",
+    "tipo": "veterinario",
+    "direccion": "C. María de Molina",
+    "lat": 37.8935928,
+    "lng": -4.7972633
+  },
+  {
+    "nombre": "peluqueria canina",
+    "tipo": "tienda",
+    "direccion": "C. Joaquín Sama Naharro, 24",
+    "lat": 37.894639399999996,
+    "lng": -4.785864999999999
+  },
+  {
+    "nombre": "Bullart Kennel's",
+    "tipo": "tienda",
+    "direccion": "Av. del Gran Capitán, 33",
+    "lat": 37.8897513,
+    "lng": -4.7830628
+  },
+  {
+    "nombre": "Tienda de animales",
+    "tipo": "tienda",
+    "direccion": "C. Poeta Emilio Prados, s/n, local 13 - 14, Noroeste",
+    "lat": 37.897349399999996,
+    "lng": -4.790511599999999
+  },
+  {
+    "nombre": "Pekezoo",
+    "tipo": "tienda",
+    "direccion": "Av. Amargacena",
+    "lat": 37.8458282,
+    "lng": -4.7958323
+  },
+  {
+    "nombre": "PELUQUERIA CANINA ALICIA RUIZ (PELUDOG)",
+    "tipo": "tienda",
+    "direccion": "C. Veredon de los Frailes, 254",
+    "lat": 37.840179899999995,
+    "lng": -4.9343699999999995
+  },
+  {
+    "nombre": "My Family Pets. Peluquería canina. Tienda alimentación mascotas",
+    "tipo": "tienda",
+    "direccion": "C. Escritor Conde de Zamora, 10, Loc 8",
+    "lat": 37.876297699999995,
+    "lng": -4.8004888
+  },
+  {
+    "nombre": "Residencia Canina Olea Bull's",
+    "tipo": "tienda",
+    "direccion": "14320 Cerro Muriano",
+    "lat": 37.9945479,
+    "lng": -4.7694458
+  },
+  {
+    "nombre": "Residencia Criadero Chenil el Togo",
+    "tipo": "otros",
+    "direccion": "Carretera del Aeropuerto km 5,4",
+    "lat": 37.847968,
+    "lng": -4.912821
+  },
+  {
+    "nombre": "Paseador de Perros en Cordoba",
+    "tipo": "otros",
+    "direccion": "Av. Ronda de los Tejares, 32",
+    "lat": 37.887388099999995,
+    "lng": -4.7831245
+  },
+  {
+    "nombre": "Amakat cat hotel",
+    "tipo": "tienda",
+    "direccion": "C. Prof. Juan Carandell y Pericay, 15",
+    "lat": 37.9186206,
+    "lng": -4.8013194
+  },
+  {
+    "nombre": "CENTRO VETERINARIO 4 PATAS C.B",
+    "tipo": "veterinario",
+    "direccion": "Av. de las Ollerías, 47",
+    "lat": 37.8928283,
+    "lng": -4.7715231
+  },
+  {
+    "nombre": "Residencia Felina",
+    "tipo": "tienda",
+    "direccion": "Urbanizacion la Barquera, 194",
+    "lat": 37.8467702,
+    "lng": -4.885267
+  },
+  {
+    "nombre": "Mowgli",
+    "tipo": "tienda",
+    "direccion": "C. el Almendro, 3",
+    "lat": 37.8960947,
+    "lng": -4.783827
+  },
+  {
+    "nombre": "Residencia canina La Murilla",
+    "tipo": "otros",
+    "direccion": "Ctra. Córdoba Alcolea km, 433",
+    "lat": 38.0759432,
+    "lng": -4.928622
+  },
+  {
+    "nombre": "Pajareria la Fuensanta",
+    "tipo": "tienda",
+    "direccion": "Pl. Rubén Darío, 0",
+    "lat": 37.8844833,
+    "lng": -4.7597926
+  },
+  {
+    "nombre": "Residencia Canina 'El Labrador'",
+    "tipo": "otros",
+    "direccion": "CO-8211",
+    "lat": 37.468824,
+    "lng": -4.2352303
+  },
+  {
+    "nombre": "Aqua Flor Aquarium",
+    "tipo": "tienda",
+    "direccion": "C. Esmeralda, 15, Bajo",
+    "lat": 37.891027199999996,
+    "lng": -4.748037
+  },
+  {
+    "nombre": "Cafetería LLENKA",
+    "tipo": "cafeteria_bar",
+    "direccion": "C/ de Tenerife, 1",
+    "telefono": "+34 957 20 30 74",
+    "valoracion": 4.6,
+    "resenas": 582,
+    "horario": "",
+    "estado": "",
+    "lat": 37.8743158,
+    "lng": -4.7753276,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cafeter%C3%ADa%20LLENKA&query_place_id=ChIJO5opNIQgbQ0RUID7OSUXvCk",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "PICK&GO!",
+    "tipo": "cafeteria_bar",
+    "direccion": "Av. de la Arruzafilla, 8, Loc",
+    "telefono": "+34 649 31 05 38",
+    "valoracion": 4.8,
+    "resenas": 96,
+    "horario": "",
+    "estado": "",
+    "lat": 37.8978886,
+    "lng": -4.7880915,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=PICK%26GO!&query_place_id=ChIJ2QUHmrbfbA0R8oK1k5dKUCs",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Cafeteando",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Joaquín Sama Naharro, 1",
+    "telefono": "",
+    "valoracion": 4.6,
+    "resenas": 26,
+    "horario": "",
+    "estado": "",
+    "lat": 37.8927559,
+    "lng": -4.7846636,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cafeteando&query_place_id=ChIJa2dFGRTfbA0RI2qr9TdT0As",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Atipiko Restaurante",
+    "tipo": "restaurante",
+    "direccion": "Av. del Aeropuerto, 4",
+    "telefono": "+34 722 14 90 34",
+    "valoracion": 4.5,
+    "resenas": 481,
+    "horario": "",
+    "estado": "",
+    "lat": 37.879424,
+    "lng": -4.788098,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Atipiko%20Restaurante&query_place_id=ChIJR7G_YsohbQ0R9xE216Rn4aE",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Bar Galápagos",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Escritor Torquemada, 9",
+    "telefono": "+34 615 36 15 08",
+    "valoracion": 4.8,
+    "resenas": 151,
+    "horario": "",
+    "estado": "",
+    "lat": 37.8909448,
+    "lng": -4.7913906,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar%20Gal%C3%A1pagos&query_place_id=ChIJG7a9Nw3fbA0R6kBVdC6ltRg",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Bar \"El Barón\"",
+    "tipo": "cafeteria_bar",
+    "direccion": "Pl. de Abades, 4",
+    "telefono": "+34 957 48 72 56",
+    "valoracion": 4.5,
+    "resenas": 1787,
+    "horario": "",
+    "estado": "",
+    "lat": 37.8795276,
+    "lng": -4.7774502,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar%20%22El%20Bar%C3%B3n%22&query_place_id=ChIJ9zdx-4IgbQ0RE7UEEkx0RNA",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Bar Los Cuatro Gatos",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Sánchez Peña, 18",
+    "telefono": "",
+    "valoracion": 4.4,
+    "resenas": 491,
+    "horario": "",
+    "estado": "",
+    "lat": 37.8827722,
+    "lng": -4.7747727,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar%20Los%20Cuatro%20Gatos&query_place_id=ChIJBWVq5H3fbA0RRdWwrvVlD0c",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Restaurante La Furgo | Cocina Fusión y Tradicional",
+    "tipo": "restaurante",
+    "direccion": "Rda. de Isasa, 7",
+    "telefono": "+34 605 08 27 43",
+    "valoracion": 4.7,
+    "resenas": 1880,
+    "horario": "",
+    "estado": "",
+    "lat": 37.8790466,
+    "lng": -4.776677,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Restaurante%20La%20Furgo%20%7C%20Cocina%20Fusi%C3%B3n%20y%20Tradicional&query_place_id=ChIJw0Vtq4MgbQ0R_fda1_vvqM0",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria THOR",
+    "tipo": "veterinario",
+    "direccion": "Calle Huerta de Sta. Isabel, 10-12",
+    "telefono": "682 41 55 48",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "10:00–14:00",
+    "estado": "Abierto · Cierre: 21:00",
+    "lat": 37.891048,
+    "lng": -4.813155,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJQdmmsY7ZbA0RZEvjMPUO5lk",
+    "fuenteConsulta": "veterinario mascotas en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Hammam Dog's",
+    "tipo": "guarderia_canina",
+    "direccion": "C. Valdés Leal, 2",
+    "telefono": "614 27 34 27",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "10:00–14:00",
+    "estado": "Abierto · Cierre: 20:30",
+    "lat": 37.8834581,
+    "lng": -4.781769499999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ7Q4j_pLfbA0RxE64yc7tN4c",
+    "fuenteConsulta": "guarderia canina en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria VETA",
+    "tipo": "veterinario",
+    "direccion": "Calle Dr. José Altolaguirre, 7",
+    "telefono": "957 29 53 42",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "10:00–13:30",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 37.8725089,
+    "lng": -4.7937451,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJuakubaMgbQ0RQ1-zuZAebhs",
+    "fuenteConsulta": "veterinario mascotas en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria THOR",
+    "tipo": "veterinario",
+    "direccion": "Av. del Aeropuerto",
+    "telefono": "690 32 52 02",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "9:30–21:00",
+    "estado": "Abierto · Cierre: 21:00",
+    "lat": 37.879100699999995,
+    "lng": -4.788762999999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJmVwim58gbQ0RvArxmKrWQRM",
+    "fuenteConsulta": "veterinario mascotas en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "La Botica de Pippa",
+    "tipo": "farmacia_veterinaria",
+    "direccion": "C. Blvr. Hernán Ruiz, 1",
+    "telefono": "957 03 52 77",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.8854598,
+    "lng": -4.790055199999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ-8sxgC3fbA0R2vGjIi1RCxE",
+    "fuenteConsulta": "farmacia veterinaria en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Guardería - Residencia Canina Córdoba RASTAdog Centro de Bienestar Animal - Ludoteca Canina",
+    "tipo": "guarderia_canina",
+    "direccion": "DE BIENESTAR ANIMAL RASTAdog",
+    "telefono": "687 01 29 49",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 37.8914209,
+    "lng": -4.787374799999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJoSkAiQPfbA0Rwu-oEVFuypA",
+    "fuenteConsulta": "guarderia canina en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Yucacán. Guardería canina",
+    "tipo": "guarderia_canina",
+    "direccion": "Finca Yucacán",
+    "telefono": "605 31 53 11",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.8981946,
+    "lng": -4.8519350999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJCQGBclfZbA0RatkHHmnBa0k",
+    "fuenteConsulta": "guarderia canina en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia canina Séneca",
+    "tipo": "guarderia_canina",
+    "direccion": "Carretera Quemadillas, Km 399, Km 399",
+    "telefono": "649 09 05 76",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "0:00–13:00",
+    "estado": "Abierto · Cierre: 13:00 (vie)",
+    "lat": 37.893572,
+    "lng": -4.7433599,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJi3RrUrLfbA0Rd7WXtForivI",
+    "fuenteConsulta": "guarderia canina en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Centro Veterinario Doctor Animal",
+    "tipo": "veterinario",
+    "direccion": "Calle Dr. Antonio Manzanares, s/n",
+    "telefono": "957 94 16 99",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "10:00–13:30",
+    "estado": "Abierto · Cierre: 20:30",
+    "lat": 37.8983057,
+    "lng": -4.7643391,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJcW6HAZzfbA0RCI09x_-zXMw",
+    "fuenteConsulta": "veterinario mascotas en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia Canina Cordoba Cansport",
+    "tipo": "guarderia_canina",
+    "direccion": "Carretera del aeropuerto km 5,400 (a partir del cruce del aeropuerto).&nbsp Pasando fosas sépticas JAIME, el camino a la derecha que hace esquina con comercial los Velez., Para tu GPS:Latitud 37 ° 51'02\" Norte - Longitud 4 °54'08\" Oeste",
+    "telefono": "670 84 35 51",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "9:00–13:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 37.8509773,
+    "lng": -4.902208,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJTXzLD3EobQ0RkKrCdMwBllo",
+    "fuenteConsulta": "guarderia canina en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Gran Capitán",
+    "tipo": "veterinario",
+    "direccion": "C. del Doce de Octubre, 19",
+    "telefono": "957 47 38 69",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "9:00–18:00",
+    "estado": "Cierra pronto · 18:00 · Apertura: 9:00 (vie)",
+    "lat": 37.890240299999995,
+    "lng": -4.7821672,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJnxN7CGXfbA0RVkdOZvmP3Zc",
+    "fuenteConsulta": "veterinario mascotas en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Surveco Veterinarios",
+    "tipo": "veterinario",
+    "direccion": "C. Manuel Fuentes \"Bocanegra\", 13",
+    "telefono": "957 45 38 41",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "9:00–24:00",
+    "estado": "Abierto · Cierre: 0:00",
+    "lat": 37.879215099999996,
+    "lng": -4.7966454999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJWe76DWMnbQ0REEg2kdkBAxY",
+    "fuenteConsulta": "veterinario mascotas en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Animal24 Clínica veterinaria Córdoba - Urgencias 24h - Domicilios -Vacunas",
+    "tipo": "veterinario",
+    "direccion": "frente al 27",
+    "telefono": "957 43 46 51",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 37.894158999999995,
+    "lng": -4.754689,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJN-Y66JHfbA0RRtsQsbHu-DU",
+    "fuenteConsulta": "veterinario mascotas en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Viana | MiVet",
+    "tipo": "veterinario",
+    "direccion": "Calle Ing. Ruiz de Azúa, s/n",
+    "telefono": "957 76 73 34",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "10:00–20:30",
+    "estado": "Abierto · Cierre: 20:30",
+    "lat": 37.9012933,
+    "lng": -4.7781775,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ92aM53LfbA0Ra-j1oUVbUd4",
+    "fuenteConsulta": "farmacia veterinaria en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Daproga",
+    "tipo": "farmacia_veterinaria",
+    "direccion": "Av. Guerrita, 27",
+    "telefono": "957 23 85 05",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "9:00–15:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 37.876522,
+    "lng": -4.7986818,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJg-76bKYgbQ0RVwTIwhiLVck",
+    "fuenteConsulta": "farmacia veterinaria en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "RAFAEL DEL CAMPO",
+    "tipo": "farmacia_veterinaria",
+    "direccion": "C. Gema, 4",
+    "telefono": "957 76 40 13",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "8:30–14:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 37.8895115,
+    "lng": -4.7496107,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJyS3B6ozfbA0RbVztUnAoZGc",
+    "fuenteConsulta": "farmacia veterinaria en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Hospital Veterinario Victoria",
+    "tipo": "veterinario",
+    "direccion": "Av. de la República Argentina, 32",
+    "telefono": "957 45 62 44",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 37.8833548,
+    "lng": -4.786577299999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ3UqSp2HfbA0R7doZJlDhiaQ",
+    "fuenteConsulta": "veterinario mascotas en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Andaluza de Suministros Ganaderos, S.L.",
+    "tipo": "farmacia_veterinaria",
+    "direccion": "C. Platino, 13",
+    "telefono": "957 41 37 34",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "9:00–14:00",
+    "estado": "Abierto · Cierre: 19:30",
+    "lat": 37.8892135,
+    "lng": -4.7479968999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJj2VluozfbA0R9jSDbzZ01QA",
+    "fuenteConsulta": "farmacia veterinaria en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia Canina Las Cabrerizas del Sur",
+    "tipo": "guarderia_canina",
+    "direccion": "Bda. de Majaneque",
+    "telefono": "603 60 11 81",
+    "valoracion": 3.6,
+    "resenas": null,
+    "horario": "9:00–20:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 37.8373813,
+    "lng": -4.8823815,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJR7hPt9gnbQ0Rc-N4k8_u4qQ",
+    "fuenteConsulta": "guarderia canina en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque_canino",
+    "direccion": "14711 Córdoba",
+    "telefono": "",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.835808199999995,
+    "lng": -4.9263047,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJMeHnN_kpbQ0RcXsE5EY0_w8",
+    "fuenteConsulta": "parque para perros en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Cruz Conde (Zona de Expansión Canina, ZEC)",
+    "tipo": "parque_canino",
+    "direccion": "14004 Córdoba",
+    "telefono": "957 76 20 00",
+    "valoracion": 4.3,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 37.8739382,
+    "lng": -4.7905926,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ47NdZaIgbQ0RSbEIIHOfdKQ",
+    "fuenteConsulta": "parque para perros en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Fray Albino",
+    "tipo": "parque_canino",
+    "direccion": "Avda. del Corregiddor DC, 14009",
+    "telefono": "",
+    "valoracion": 4.2,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 37.8712649,
+    "lng": -4.7805618,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ5eJyCWQhbQ0Rk4wMsMnyimY",
+    "fuenteConsulta": "parque para perros en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Paraíso Arenal",
+    "tipo": "parque_canino",
+    "direccion": "14014 Córdoba",
+    "telefono": "",
+    "valoracion": null,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.9303762,
+    "lng": -4.7567508,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJKWpGQADfbA0RyUhRhNTaMd8",
+    "fuenteConsulta": "parque para perros en Córdoba, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "HUESITOS, Centro Canino de Estética",
+    "tipo": "guarderia_canina",
+    "direccion": "C. Ángela Romero de Torres, 5",
+    "telefono": "696 71 10 90",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "10:00–14:00",
+    "estado": "Abierto · Cierra a las 20:00",
+    "lat": 37.8911047,
+    "lng": -4.7630017,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJUUpKpZDfbA0RDH-5fS5hd2M",
+    "fuenteConsulta": "guarderia canina Cordoba",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "El Flamenco Dog Park",
+    "tipo": "parque_canino",
+    "direccion": "V5WW+WM",
+    "telefono": "",
+    "valoracion": 2.9,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto las 24 horas",
+    "lat": 37.8972882,
+    "lng": -4.8033733,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ6w-621zfbA0RIVDdmR_cVQI",
+    "fuenteConsulta": "parque para perros Cordoba",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

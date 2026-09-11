@@ -1,0 +1,324 @@
+[
+  {
+    "nombre": "Lindogs & Cats",
+    "tipo": "tienda",
+    "direccion": "C. Elche, 1",
+    "lat": 41.645359899999995,
+    "lng": -0.86174
+  },
+  {
+    "nombre": "DiaCan",
+    "tipo": "tienda",
+    "direccion": "C. Honorio García Condoy, 7",
+    "lat": 41.6312861,
+    "lng": -0.8823799999999999
+  },
+  {
+    "nombre": "Actividades Caninas YouCan",
+    "tipo": "tienda",
+    "direccion": "C. la Lista de Schindler, 39, Loc 3",
+    "lat": 41.6224602,
+    "lng": -0.9335595999999999
+  },
+  {
+    "nombre": "Milacky | Peluquería canina en Zaragoza",
+    "tipo": "tienda",
+    "direccion": "C. de Vicente Berdusán, Bloque A-1, Local",
+    "lat": 41.6532292,
+    "lng": -0.8973373
+  },
+  {
+    "nombre": "Oh my Dog! Zaragoza",
+    "tipo": "tienda",
+    "direccion": "C. de la Reina Felicia, 7",
+    "lat": 41.6600882,
+    "lng": -0.8988330999999999
+  },
+  {
+    "nombre": "Peluquería Canina Can de Chira",
+    "tipo": "tienda",
+    "direccion": "C. del Valle de Broto, 4",
+    "lat": 41.6667674,
+    "lng": -0.8734888
+  },
+  {
+    "nombre": "Layka",
+    "tipo": "tienda",
+    "direccion": "C. del Porvenir, 17, Loc",
+    "lat": 41.63887,
+    "lng": -0.8888499999999999
+  },
+  {
+    "nombre": "Boston Peluquería Canina Zaragoza",
+    "tipo": "tienda",
+    "direccion": "C. de Pablo Iglesias, 31",
+    "lat": 41.677561499999996,
+    "lng": -0.8851199999999999
+  },
+  {
+    "nombre": "Tú compi de vida Escoscao",
+    "tipo": "tienda",
+    "direccion": "Av. de Pablo Gargallo, 98",
+    "lat": 41.66104,
+    "lng": -0.9001699999999999
+  },
+  {
+    "nombre": "Blanqui Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. del Dr. Alcay, 11",
+    "lat": 41.637703099999996,
+    "lng": -0.8884723999999999
+  },
+  {
+    "nombre": "Peluquería canina Canituning",
+    "tipo": "tienda",
+    "direccion": "local",
+    "lat": 41.6262079,
+    "lng": -0.9107519
+  },
+  {
+    "nombre": "La Boutique de Tu Mascota",
+    "tipo": "tienda",
+    "direccion": "Av. de Salvador Allende, 36",
+    "lat": 41.6709746,
+    "lng": -0.8767408999999999
+  },
+  {
+    "nombre": "Peluqueria canina Zaragoza | Huella |",
+    "tipo": "tienda",
+    "direccion": "Rda. del Ibón de Plan, 68, Loc 1",
+    "lat": 41.6598489,
+    "lng": -0.9377344999999999
+  },
+  {
+    "nombre": "Peluquería Canina OCYCO",
+    "tipo": "tienda",
+    "direccion": "C/ de José Martínez Ruiz Azorín, 3, 5-7",
+    "lat": 41.6506349,
+    "lng": -0.8617783999999999
+  },
+  {
+    "nombre": "Styl Dog",
+    "tipo": "tienda",
+    "direccion": "Av. de Pablo Gargallo, 17",
+    "lat": 41.659537799999995,
+    "lng": -0.8951066
+  },
+  {
+    "nombre": "Peluquería Canina Los Amigos de Dexter",
+    "tipo": "tienda",
+    "direccion": "C. de Alberto Duce, 14, Loc 1",
+    "lat": 41.672039399999996,
+    "lng": -0.8867105999999999
+  },
+  {
+    "nombre": "Peluquería Canina Movican",
+    "tipo": "tienda",
+    "direccion": "Calle de Concepción Saiz de Otero",
+    "lat": 41.6690609,
+    "lng": -0.8938708
+  },
+  {
+    "nombre": "Hocicos | Peluquería canina en Zaragoza",
+    "tipo": "tienda",
+    "direccion": "C. Belle Epoque, 17",
+    "lat": 41.6239008,
+    "lng": -0.9193505999999999
+  },
+  {
+    "nombre": "VillaCan Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. de Alberto Duce, 2",
+    "lat": 41.671943399999996,
+    "lng": -0.8882728999999999
+  },
+  {
+    "nombre": "Bubbledog barbería canina",
+    "tipo": "tienda",
+    "direccion": "C. de Miguel Labordeta, local 3",
+    "lat": 41.651101,
+    "lng": -0.916449
+  },
+  {
+    "nombre": "Peluquería Canina La Mansión de Leo",
+    "tipo": "tienda",
+    "direccion": "Av. Fco. de Goya, 15",
+    "lat": 41.642705,
+    "lng": -0.8880918999999999
+  },
+  {
+    "nombre": "I Love Dog Wash | Zaragoza - Autolavado de mascotas",
+    "tipo": "tienda",
+    "direccion": "C. de Manuel Lasala, 32",
+    "lat": 41.6379549,
+    "lng": -0.8945381
+  },
+  {
+    "nombre": "CARICIAS CANINAS",
+    "tipo": "tienda",
+    "direccion": "C. de Leopoldo Romeo, 13",
+    "lat": 41.6467014,
+    "lng": -0.8637644999999999
+  },
+  {
+    "nombre": "Peluquería Canina Alma, Zaragoza",
+    "tipo": "tienda",
+    "direccion": "P.º de Cuéllar, 1",
+    "lat": 41.638716699999996,
+    "lng": -0.8851148999999999
+  },
+  {
+    "nombre": "Marta Ruiz Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. de Miguel Servet, 105",
+    "lat": 41.6405183,
+    "lng": -0.8666324
+  },
+  {
+    "nombre": "ADPCA",
+    "tipo": "protectora",
+    "direccion": "Camino del Llano, 6",
+    "lat": 41.7745509,
+    "lng": -0.7771245999999999
+  },
+  {
+    "nombre": "Mis Colegas",
+    "tipo": "tienda",
+    "direccion": "La",
+    "lat": 41.6201876,
+    "lng": -0.9185992
+  },
+  {
+    "nombre": "Cocker",
+    "tipo": "tienda",
+    "direccion": "C. de José Oto, 55",
+    "lat": 41.6608847,
+    "lng": -0.8655312
+  },
+  {
+    "nombre": "Global Can | Centro Veterinario en Zaragoza",
+    "tipo": "tienda",
+    "direccion": "C. de Matilde Sangüesa Castañosa, 17",
+    "lat": 41.6602441,
+    "lng": -0.8726775
+  },
+  {
+    "nombre": "Peluquería canina Bud's Bath-Zaragoza",
+    "tipo": "tienda",
+    "direccion": "C. de Jaime Balmes, 12",
+    "lat": 41.648854799999995,
+    "lng": -0.8773063999999999
+  },
+  {
+    "nombre": "El Baño de Lucky Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "Av. del Tenor Fleta, 53, Loc",
+    "lat": 41.6394792,
+    "lng": -0.8802753999999999
+  },
+  {
+    "nombre": "My Perruquería",
+    "tipo": "tienda",
+    "direccion": "Vía Univérsitas, 64",
+    "lat": 41.6512676,
+    "lng": -0.9097822999999999
+  },
+  {
+    "nombre": "Peluquería Canina Racadacan",
+    "tipo": "tienda",
+    "direccion": "Av. de Sta. Isabel, 27",
+    "lat": 41.6689571,
+    "lng": -0.8376709999999999
+  },
+  {
+    "nombre": "Amor Perruno",
+    "tipo": "tienda",
+    "direccion": "C. Teresa de Calcuta",
+    "lat": 41.644264,
+    "lng": -0.9110294999999999
+  },
+  {
+    "nombre": "Pelitos Peluqueria Canina",
+    "tipo": "tienda",
+    "direccion": "C. de la Corona de Aragón, 41",
+    "lat": 41.6443095,
+    "lng": -0.8987029999999999
+  },
+  {
+    "nombre": "Universo Canino",
+    "tipo": "tienda",
+    "direccion": "C. de Uncastillo, 4",
+    "lat": 41.6422391,
+    "lng": -0.8789437999999999
+  },
+  {
+    "nombre": "Okapi Tienda De Mascotas",
+    "tipo": "tienda",
+    "direccion": "C. de José María Lacarra de Miguel, 47",
+    "lat": 41.6437978,
+    "lng": -0.8808475
+  },
+  {
+    "nombre": "Peluquería Canina CAN CAN",
+    "tipo": "tienda",
+    "direccion": "C. de Bernardo Fita, 8",
+    "lat": 41.6466376,
+    "lng": -0.8904687
+  },
+  {
+    "nombre": "Zarpa Protección Animal",
+    "tipo": "protectora",
+    "direccion": "C. de Cristóbal Colón, 6, 8",
+    "lat": 41.640946299999996,
+    "lng": -0.8852121
+  },
+  {
+    "nombre": "Peluquería Canina, Guau Qué Pelos!",
+    "tipo": "tienda",
+    "direccion": "C. de Joaquín Sanz Gadea, 3",
+    "lat": 41.6466534,
+    "lng": -0.8712557
+  },
+  {
+    "nombre": "Centro Municipal de Protección Animal - Ayuntamiento de Zaragoza",
+    "tipo": "protectora",
+    "direccion": "Polígono Empresarium",
+    "lat": 41.5760803,
+    "lng": -0.8342362999999999
+  },
+  {
+    "nombre": "Splash! Autolavado mascotas",
+    "tipo": "tienda",
+    "direccion": "C. del Dr. Julián Sanz Ibáñez, 14",
+    "lat": 41.6525444,
+    "lng": -0.9122357
+  },
+  {
+    "nombre": "Guaupetones",
+    "tipo": "tienda",
+    "direccion": "C. de Ramón y Cajal, 32",
+    "lat": 41.5917092,
+    "lng": -0.9292288999999999
+  },
+  {
+    "nombre": "Peluquería canina Melenudos",
+    "tipo": "tienda",
+    "direccion": "C. de la Juventud, 46",
+    "lat": 41.670158099999995,
+    "lng": -0.8323307
+  },
+  {
+    "nombre": "KUARTE KAN",
+    "tipo": "tienda",
+    "direccion": "50410 Cuarte de Huerva",
+    "lat": 41.584781899999996,
+    "lng": -0.921165
+  },
+  {
+    "nombre": "Residencia Canina La Guarida de tu Mascota",
+    "tipo": "tienda",
+    "direccion": "Calle monasterio de Veruela, S/N",
+    "lat": 41.824904,
+    "lng": -1.7185382999999999
+  }
+]

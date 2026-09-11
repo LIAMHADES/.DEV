@@ -1,0 +1,233 @@
+[
+  {
+    "nombre": "Parque Canino el Refugio",
+    "tipo": "parque",
+    "direccion": "Avenida Julio Jaurena, 6",
+    "lat": 43.458213099999995,
+    "lng": -3.8585594999999997
+  },
+  {
+    "nombre": "Playa Liencres",
+    "tipo": "playa_perros",
+    "direccion": "39120",
+    "lat": 43.449609699999996,
+    "lng": -3.9663283
+  },
+  {
+    "nombre": "Segunda Playa",
+    "tipo": "playa_perros",
+    "direccion": "Santander",
+    "lat": 43.478608,
+    "lng": -3.7876444
+  },
+  {
+    "nombre": "Playa de Valdearenas",
+    "tipo": "playa_perros",
+    "direccion": "39120",
+    "lat": 43.4477652,
+    "lng": -3.9722412
+  },
+  {
+    "nombre": "Playa de Los Molinucos",
+    "tipo": "playa_perros",
+    "direccion": "39012 Santander",
+    "lat": 43.4838982,
+    "lng": -3.7848001
+  },
+  {
+    "nombre": "Playa de San Juan de la Canal",
+    "tipo": "playa_perros",
+    "direccion": "Av San Juan de la Canal, 85",
+    "lat": 43.4738159,
+    "lng": -3.8936268999999997
+  },
+  {
+    "nombre": "Playa de los Peligros",
+    "tipo": "playa_perros",
+    "direccion": "Santander",
+    "lat": 43.4650365,
+    "lng": -3.7800211999999997
+  },
+  {
+    "nombre": "Playa de la Magdalena",
+    "tipo": "playa_perros",
+    "direccion": "Santander",
+    "lat": 43.4661565,
+    "lng": -3.7779567999999997
+  },
+  {
+    "nombre": "Playa De Somo",
+    "tipo": "playa_perros",
+    "direccion": "Cantabria",
+    "lat": 43.4587412,
+    "lng": -3.7336711
+  },
+  {
+    "nombre": "Parque Canino Público de Ciriego",
+    "tipo": "parque",
+    "direccion": "C. San Román Rostrío, 52",
+    "lat": 43.4752708,
+    "lng": -3.8672484
+  },
+  {
+    "nombre": "Parque Canino Público de Cros",
+    "tipo": "parque",
+    "direccion": "C. Gutiérrez Solana, 39",
+    "lat": 43.426188499999995,
+    "lng": -3.8451128999999997
+  },
+  {
+    "nombre": "Parque de Mataleñas",
+    "tipo": "parque",
+    "direccion": "Av. del Faro, 12",
+    "lat": 43.4833204,
+    "lng": -3.7863369999999996
+  },
+  {
+    "nombre": "Parque La Maruca",
+    "tipo": "parque",
+    "direccion": "Bo. Monte-Corbanera, 106",
+    "lat": 43.478262099999995,
+    "lng": -3.8375472999999998
+  },
+  {
+    "nombre": "Playa del Camello",
+    "tipo": "playa_perros",
+    "direccion": "Santander",
+    "lat": 43.4694795,
+    "lng": -3.7757883999999997
+  },
+  {
+    "nombre": "Parque de Las Llamas",
+    "tipo": "parque",
+    "direccion": "Av. de la Constitución, 52A",
+    "lat": 43.4738152,
+    "lng": -3.8020457
+  },
+  {
+    "nombre": "Muelle de Somo",
+    "tipo": "parque",
+    "direccion": "C. Peñas Blancas, 19A",
+    "lat": 43.451800299999995,
+    "lng": -3.7467156999999998
+  },
+  {
+    "nombre": "Parque Canino de la Vaca",
+    "tipo": "parque",
+    "direccion": "Barrio Campogiro, 4",
+    "lat": 43.4553204,
+    "lng": -3.8410254
+  },
+  {
+    "nombre": "Parque del Doctor Morales",
+    "tipo": "parque",
+    "direccion": "C. Cajo, 27",
+    "lat": 43.455620599999996,
+    "lng": -3.8386817
+  },
+  {
+    "nombre": "Parque Canino de Torrelavega",
+    "tipo": "parque",
+    "direccion": "39300 Campuzano",
+    "lat": 43.3372812,
+    "lng": -4.0535263
+  },
+  {
+    "nombre": "Playa Rosamunda",
+    "tipo": "playa_perros",
+    "direccion": "39012 Santander",
+    "lat": 43.483882099999995,
+    "lng": -3.8324346
+  },
+  {
+    "nombre": "Parque para perros antigua estación N.Montaña",
+    "tipo": "parque",
+    "direccion": "39011 Santander",
+    "lat": 43.4413492,
+    "lng": -3.8384312
+  },
+  {
+    "nombre": "Parque Las Carolinas",
+    "tipo": "parque",
+    "direccion": "C. San Juan Bautista de la Salle, 10",
+    "lat": 43.462764,
+    "lng": -3.8214731
+  },
+  {
+    "nombre": "Parque Marino de la Magdalena",
+    "tipo": "parque",
+    "direccion": "39005 Santander",
+    "lat": 43.4704852,
+    "lng": -3.7717612
+  },
+  {
+    "nombre": "Zona De Recreo Para Perros",
+    "tipo": "parque",
+    "direccion": "Av. de Severiano Ballesteros, 11",
+    "lat": 43.4637636,
+    "lng": -3.7846952999999997
+  },
+  {
+    "nombre": "Playa de la Maza (admite perros)",
+    "tipo": "parque",
+    "direccion": "Av. Francisco Giner de los Ríos, 1001",
+    "lat": 43.3829707,
+    "lng": -4.3897039
+  },
+  {
+    "nombre": "Zona de recreo para perros",
+    "tipo": "parque",
+    "direccion": "39008 Santander",
+    "lat": 43.4597043,
+    "lng": -3.8128511
+  },
+  {
+    "nombre": "Parque Canino Público de Peñacastillo",
+    "tipo": "parque",
+    "direccion": "Calle Voluntariado",
+    "lat": 43.4447504,
+    "lng": -3.8646236
+  },
+  {
+    "nombre": "Zona de recreo para perros",
+    "tipo": "parque",
+    "direccion": "39008 Santander",
+    "lat": 43.4558189,
+    "lng": -3.8228807
+  },
+  {
+    "nombre": "La Riberuca",
+    "tipo": "playa_perros",
+    "direccion": "playa la riberuca",
+    "lat": 43.4287831,
+    "lng": -4.0346943
+  },
+  {
+    "nombre": "Playa Canina",
+    "tipo": "parque",
+    "direccion": "Calle Comillas, 15B",
+    "lat": 43.4247637,
+    "lng": -4.0328069
+  },
+  {
+    "nombre": "Playa canina de Trengandín",
+    "tipo": "parque",
+    "direccion": "39180 Noja",
+    "lat": 43.4693058,
+    "lng": -3.4808458
+  },
+  {
+    "nombre": "Pipican (parque para perros)",
+    "tipo": "parque",
+    "direccion": "Lugar Campus Universitario, 54",
+    "lat": 43.470655099999995,
+    "lng": -3.8009597
+  },
+  {
+    "nombre": "Parque canino San Martín del Pino",
+    "tipo": "parque",
+    "direccion": "Bo. San Martín del Pino, 23, bajo 0",
+    "lat": 43.447114,
+    "lng": -3.8475598
+  }
+]

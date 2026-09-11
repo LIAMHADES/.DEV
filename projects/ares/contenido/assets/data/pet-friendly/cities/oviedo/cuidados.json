@@ -1,0 +1,268 @@
+[
+  {
+    "nombre": "Peluquería Canina Patitas",
+    "tipo": "peluqueria",
+    "direccion": "Calle Arzobispo Guisasola, 5",
+    "lat": 43.3549966,
+    "lng": -5.8434154
+  },
+  {
+    "nombre": "Como El Perro Y El Gato Peluquería Canina Y Felina",
+    "tipo": "peluqueria",
+    "direccion": "Av. Valentín Masip, 30",
+    "lat": 43.3625368,
+    "lng": -5.8628145
+  },
+  {
+    "nombre": "Nani &Friends. Peluquería canina",
+    "tipo": "peluqueria",
+    "direccion": "Av. Buenavista, 12, bajo1",
+    "lat": 43.359384,
+    "lng": -5.86355
+  },
+  {
+    "nombre": "Hotel Carbayón",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Atenas, 1",
+    "lat": 43.372030599999995,
+    "lng": -5.831525399999999
+  },
+  {
+    "nombre": "Aparthotel Campus",
+    "tipo": "alojamiento",
+    "direccion": "C. de Fernando Vela, 13",
+    "lat": 43.366583899999995,
+    "lng": -5.8413593
+  },
+  {
+    "nombre": "Hotel Soho Boutique Oviedo",
+    "tipo": "alojamiento",
+    "direccion": "Calle Mendizábal, 1",
+    "lat": 43.3623499,
+    "lng": -5.8461454999999996
+  },
+  {
+    "nombre": "Hotel Rosal",
+    "tipo": "alojamiento",
+    "direccion": "C. Cabo Noval, 2",
+    "lat": 43.3597463,
+    "lng": -5.8477786
+  },
+  {
+    "nombre": "Hotel Casa Camila",
+    "tipo": "alojamiento",
+    "direccion": "de Arriba, 29",
+    "lat": 43.3843057,
+    "lng": -5.8430846
+  },
+  {
+    "nombre": "B&B HOTEL Oviedo",
+    "tipo": "alojamiento",
+    "direccion": "AS-17, salida 24",
+    "lat": 43.406123099999995,
+    "lng": -5.7904534
+  },
+  {
+    "nombre": "IBERIK Santo Domingo Plaza Hotel",
+    "tipo": "alojamiento",
+    "direccion": "C. Rda. Sur, s/n",
+    "lat": 43.3587724,
+    "lng": -5.8384627
+  },
+  {
+    "nombre": "Hotel Campoamor",
+    "tipo": "alojamiento",
+    "direccion": "C. de Argüelles, 23",
+    "lat": 43.3627696,
+    "lng": -5.8470987
+  },
+  {
+    "nombre": "Hotel Carreño",
+    "tipo": "alojamiento",
+    "direccion": "C. Monte Gamonal, 4",
+    "lat": 43.368172,
+    "lng": -5.8540345
+  },
+  {
+    "nombre": "B48 Oviedo Ópera",
+    "tipo": "alojamiento",
+    "direccion": "C. Covadonga, 7",
+    "lat": 43.364039299999995,
+    "lng": -5.8481666
+  },
+  {
+    "nombre": "Hotel Santa Cruz",
+    "tipo": "alojamiento",
+    "direccion": "Calle del",
+    "lat": 43.360352299999995,
+    "lng": -5.849344299999999
+  },
+  {
+    "nombre": "Hotel Santa Clara",
+    "tipo": "alojamiento",
+    "direccion": "C. Sta. Clara, 1",
+    "lat": 43.364194999999995,
+    "lng": -5.847218
+  },
+  {
+    "nombre": "Hotel Longoria Plaza",
+    "tipo": "alojamiento",
+    "direccion": "C. Covadonga, 13",
+    "lat": 43.3642987,
+    "lng": -5.848904999999999
+  },
+  {
+    "nombre": "ibis Oviedo",
+    "tipo": "alojamiento",
+    "direccion": "C. Ernesto Winter Blanco, 6",
+    "lat": 43.373738599999996,
+    "lng": -5.8502616
+  },
+  {
+    "nombre": "ibis budget Oviedo",
+    "tipo": "alojamiento",
+    "direccion": "C. Ernesto Winter Blanco, 4",
+    "lat": 43.373692899999995,
+    "lng": -5.8499254999999994
+  },
+  {
+    "nombre": "Hotel-Restaurante Fuente La Plata",
+    "tipo": "alojamiento",
+    "direccion": "C. Favila, 9",
+    "lat": 43.365465,
+    "lng": -5.8699826
+  },
+  {
+    "nombre": "Alda Centro Oviedo",
+    "tipo": "alojamiento",
+    "direccion": "C. de Joaquina Bobela, 3",
+    "lat": 43.3682085,
+    "lng": -5.8449046
+  },
+  {
+    "nombre": "Hotel Palacio de Asturias",
+    "tipo": "alojamiento",
+    "direccion": "C/Los Arenales, 11",
+    "lat": 43.3507002,
+    "lng": -5.8334719
+  },
+  {
+    "nombre": "Hostal Goias",
+    "tipo": "alojamiento",
+    "direccion": "Calle Miguel Ángel Blanco, 2",
+    "lat": 43.3627697,
+    "lng": -5.859059299999999
+  },
+  {
+    "nombre": "Xanamaná-Educación y Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "33199 Vallín Limanes",
+    "lat": 43.3695727,
+    "lng": -5.778351
+  },
+  {
+    "nombre": "Adiestrania",
+    "tipo": "adiestrador",
+    "direccion": "Ctra. Colloto-Viella",
+    "lat": 43.3846632,
+    "lng": -5.7860860999999995
+  },
+  {
+    "nombre": "Adiestradores caninos Raquel",
+    "tipo": "adiestrador",
+    "direccion": "C. Alonso de Proaza, 4",
+    "lat": 43.3641785,
+    "lng": -5.8335618
+  },
+  {
+    "nombre": "Urbandog entrenamiento perros",
+    "tipo": "adiestrador",
+    "direccion": "LL-2, Km 2, 5",
+    "lat": 43.4650665,
+    "lng": -5.8729702
+  },
+  {
+    "nombre": "Escuela De Adiestramiento Victor Cuesta",
+    "tipo": "adiestrador",
+    "direccion": "18",
+    "lat": 43.369462899999995,
+    "lng": -5.806239499999999
+  },
+  {
+    "nombre": "Educación Canina Chao",
+    "tipo": "adiestrador",
+    "direccion": "C. Manuel de Falla, 16",
+    "lat": 43.370829799999996,
+    "lng": -5.8424515
+  },
+  {
+    "nombre": "Arbesú Educadores Caninos",
+    "tipo": "adiestrador",
+    "direccion": "Guardería canina 'La Madriguera de Lúa, Molina 7",
+    "lat": 43.3735019,
+    "lng": -5.9196212
+  },
+  {
+    "nombre": "El Clan del Lobo - Educación y Peluquería Canina",
+    "tipo": "adiestrador",
+    "direccion": "Aldea Pereda, 12",
+    "lat": 43.3191801,
+    "lng": -5.8547574
+  },
+  {
+    "nombre": "El Mirador de Bendones",
+    "tipo": "alojamiento",
+    "direccion": "Bendones 13",
+    "lat": 43.3364306,
+    "lng": -5.806725699999999
+  },
+  {
+    "nombre": "Sagasta Rural Apartamentos Rurales",
+    "tipo": "alojamiento",
+    "direccion": "Aldea Roces, 89",
+    "lat": 43.3679079,
+    "lng": -5.7948138
+  },
+  {
+    "nombre": "NOBLE Y FIEL AMIGO",
+    "tipo": "adiestrador",
+    "direccion": "33960",
+    "lat": 43.353622099999995,
+    "lng": -5.8704871999999995
+  },
+  {
+    "nombre": "Guau Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "C. de Alejandro Casona, 43F",
+    "lat": 43.402646,
+    "lng": -5.8137967999999995
+  },
+  {
+    "nombre": "Eurostars Hotel de La Reconquista",
+    "tipo": "alojamiento",
+    "direccion": "C. Gil de Jaz, 16",
+    "lat": 43.3630929,
+    "lng": -5.8538786
+  },
+  {
+    "nombre": "Barceló Oviedo Cervantes",
+    "tipo": "alojamiento",
+    "direccion": "C. Cervantes, 13",
+    "lat": 43.3624875,
+    "lng": -5.8559402
+  },
+  {
+    "nombre": "Triscan adiestramiento",
+    "tipo": "adiestrador",
+    "direccion": "San Roque, 6",
+    "lat": 43.359678599999995,
+    "lng": -5.9184529999999995
+  },
+  {
+    "nombre": "Hotel & Spa Princesa Munia",
+    "tipo": "alojamiento",
+    "direccion": "C. Fruela, 6",
+    "lat": 43.3611517,
+    "lng": -5.8466865
+  }
+]

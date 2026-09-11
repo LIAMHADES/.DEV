@@ -1,0 +1,450 @@
+[
+  {
+    "nombre": "Game for Dogs",
+    "tipo": "otros",
+    "direccion": "C. de San Restituto, 19",
+    "lat": 40.4643369,
+    "lng": -3.7100495999999996
+  },
+  {
+    "nombre": "COVIS Guardería y Peluquería Canina",
+    "tipo": "otros",
+    "direccion": "C. de Hernani, 54",
+    "lat": 40.447873699999995,
+    "lng": -3.6980972999999997
+  },
+  {
+    "nombre": "X",
+    "tipo": "otros",
+    "direccion": "C. de Blasco de Garay, 75",
+    "lat": 40.4393759,
+    "lng": -3.7111506999999997
+  },
+  {
+    "nombre": "Citydog Somontes",
+    "tipo": "otros",
+    "direccion": "Carr Madrid-El Pardo, Km. 3",
+    "lat": 40.4889546,
+    "lng": -3.7556328
+  },
+  {
+    "nombre": "Can's Chill Out",
+    "tipo": "otros",
+    "direccion": "C. de Zurita, 21",
+    "lat": 40.4096622,
+    "lng": -3.6986786
+  },
+  {
+    "nombre": "ANIMEL",
+    "tipo": "otros",
+    "direccion": "C. Fortuna, 12",
+    "lat": 40.408420799999995,
+    "lng": -3.7341096
+  },
+  {
+    "nombre": "Hotel-Guardería Canina Ladridos de Lujo",
+    "tipo": "otros",
+    "direccion": "C. de Flandes, 36F",
+    "lat": 40.40904,
+    "lng": -3.6293417
+  },
+  {
+    "nombre": "Peluquería Canina Salón Tafurth",
+    "tipo": "otros",
+    "direccion": "C. San Delfín, 4",
+    "lat": 40.3951638,
+    "lng": -3.7078512999999997
+  },
+  {
+    "nombre": "Zona Canem",
+    "tipo": "otros",
+    "direccion": "C. del Gorrión, 61",
+    "lat": 40.396378299999995,
+    "lng": -3.7319780999999996
+  },
+  {
+    "nombre": "Don Guau - Hotel y guardería canina",
+    "tipo": "otros",
+    "direccion": "Calle Corregidor Rodrigo Rodríguez, 17",
+    "lat": 40.408417,
+    "lng": -3.6587549999999998
+  },
+  {
+    "nombre": "Dogtopia",
+    "tipo": "otros",
+    "direccion": "C. de Uruguay, 10",
+    "lat": 40.454971,
+    "lng": -3.673526
+  },
+  {
+    "nombre": "Wag & Roll",
+    "tipo": "otros",
+    "direccion": "C. de Toledo, 166",
+    "lat": 40.402988799999996,
+    "lng": -3.7137246999999998
+  },
+  {
+    "nombre": "Lily's Pets Guardería Canina",
+    "tipo": "otros",
+    "direccion": "C. de Embajadores, 124",
+    "lat": 40.3994031,
+    "lng": -3.6985669999999997
+  },
+  {
+    "nombre": "Guarderia ciudadano canino",
+    "tipo": "otros",
+    "direccion": "Calle Apodaca n⁰11",
+    "lat": 40.427423399999995,
+    "lng": -3.6997866
+  },
+  {
+    "nombre": "Doggyperretes",
+    "tipo": "otros",
+    "direccion": "C. de Virgen de Nuria, 5, Loc 3 Esquina",
+    "lat": 40.4359523,
+    "lng": -3.6533781
+  },
+  {
+    "nombre": "Can's College - Guardería Canina",
+    "tipo": "otros",
+    "direccion": "Av. de Alberto Alcocer, 45",
+    "lat": 40.4588434,
+    "lng": -3.679381
+  },
+  {
+    "nombre": "Pet Shop Boys Cuidado y Bienestar de Mascotas - El Club",
+    "tipo": "otros",
+    "direccion": "Calle de San Pol de Mar, 9",
+    "lat": 40.4234961,
+    "lng": -3.7273175999999997
+  },
+  {
+    "nombre": "TRUFA & CO - Luxury Dog Resort & Spa - HOTEL 24hrs, GUARDERÍA, PELUQUERÍA CANINA",
+    "tipo": "otros",
+    "direccion": "C. de Ibiza, 3",
+    "lat": 40.4187997,
+    "lng": -3.678289
+  },
+  {
+    "nombre": "Mila Jaus",
+    "tipo": "otros",
+    "direccion": "C. de Barbieri, 2",
+    "lat": 40.4205091,
+    "lng": -3.6982551
+  },
+  {
+    "nombre": "Hotel-Guarderia Canina GuarDog",
+    "tipo": "otros",
+    "direccion": "Calle de la Virgen de Aránzazu, 1",
+    "lat": 40.4851062,
+    "lng": -3.6898586
+  },
+  {
+    "nombre": "UpDog Hotel y Guardería Canina",
+    "tipo": "otros",
+    "direccion": "Av. de Brasil, 14",
+    "lat": 40.4553647,
+    "lng": -3.6932289999999997
+  },
+  {
+    "nombre": "CUIDO TU MASCOTA MADRID VALLECAS",
+    "tipo": "otros",
+    "direccion": "C. Carlos Aurioles, 21, B",
+    "lat": 40.3825709,
+    "lng": -3.6664356999999996
+  },
+  {
+    "nombre": "Ikican: guardería canina en Madrid (Las Rosas)",
+    "tipo": "otros",
+    "direccion": "C. San Petersburgo, 1",
+    "lat": 40.4280878,
+    "lng": -3.6009571
+  },
+  {
+    "nombre": "COVIS Guardería y Peluquería Canina",
+    "tipo": "otros",
+    "direccion": "C. de Marcenado, 33, Loc Izquierdo",
+    "lat": 40.4479794,
+    "lng": -3.6737056
+  },
+  {
+    "nombre": "Dogs In Town Madrid",
+    "tipo": "otros",
+    "direccion": "P.º de La Habana, 87",
+    "lat": 40.4573804,
+    "lng": -3.6815358
+  },
+  {
+    "nombre": "Residencia Canina Sierracan",
+    "tipo": "otros",
+    "direccion": "M-104, PK 12, 100",
+    "lat": 40.667064499999995,
+    "lng": -3.7279031999999996
+  },
+  {
+    "nombre": "Huellas Amigas",
+    "tipo": "otros",
+    "direccion": "C. de Serrano Anguita, 10, Loc",
+    "lat": 40.427451399999995,
+    "lng": -3.6980576
+  },
+  {
+    "nombre": "Curso Educador y Terapeuta Canino UCM",
+    "tipo": "otros",
+    "direccion": "Edificio de Zootecnia. Universidad Complutense Ciudad Universitaria Facultad de Veterinaria Universidad Complutense",
+    "lat": 40.450246,
+    "lng": -3.7398221
+  },
+  {
+    "nombre": "Días Perros",
+    "tipo": "otros",
+    "direccion": "C. de la Isla de Oza, 59",
+    "lat": 40.4640625,
+    "lng": -3.7217567
+  },
+  {
+    "nombre": "PetCenterLeal",
+    "tipo": "otros",
+    "direccion": "C. de Lérida, 84",
+    "lat": 40.4582568,
+    "lng": -3.6990711
+  },
+  {
+    "nombre": "Guacanda",
+    "tipo": "otros",
+    "direccion": "C. del Puerto de Maspalomas, 12",
+    "lat": 40.4783532,
+    "lng": -3.7136658999999996
+  },
+  {
+    "nombre": "The Place Hotel Canino Guardería Canina",
+    "tipo": "otros",
+    "direccion": "C. de Ríos Rosas, 34",
+    "lat": 40.441642,
+    "lng": -3.6984043
+  },
+  {
+    "nombre": "Dogterra",
+    "tipo": "otros",
+    "direccion": "Calle de Martínez Izquierdo, 14",
+    "lat": 40.4330563,
+    "lng": -3.6701745999999997
+  },
+  {
+    "nombre": "Patitas Educadas | Guardería Canina | Madrid",
+    "tipo": "otros",
+    "direccion": "C. Lanuza, 16",
+    "lat": 40.4247234,
+    "lng": -3.665457
+  },
+  {
+    "nombre": "Animal Solución Guardería Canina perros gatos conejos",
+    "tipo": "otros",
+    "direccion": "C. de Virgen de Lluc, 16",
+    "lat": 40.4344788,
+    "lng": -3.6541758
+  },
+  {
+    "nombre": "The Dogg Hotel & Spa",
+    "tipo": "otros",
+    "direccion": "Calle de O'Donnell, 7",
+    "lat": 40.421746399999996,
+    "lng": -3.6806683999999996
+  },
+  {
+    "nombre": "La Perroteka",
+    "tipo": "otros",
+    "direccion": "C. del Cardenal Cisneros, 14",
+    "lat": 40.430518299999996,
+    "lng": -3.7016514999999997
+  },
+  {
+    "nombre": "Centro Canino Vallecan",
+    "tipo": "otros",
+    "direccion": "Carr. de El Pardo a Fuencarral, Km. 2, 200",
+    "lat": 40.506641599999995,
+    "lng": -3.7202778999999997
+  },
+  {
+    "nombre": "Guardería canina en Madrid | Mami Dogguies 🐾",
+    "tipo": "otros",
+    "direccion": "C. de Navarrete, 9",
+    "lat": 40.4997174,
+    "lng": -3.6726522999999998
+  },
+  {
+    "nombre": "Pet Sitter Madrid",
+    "tipo": "otros",
+    "direccion": "Av. de Pablo Iglesias, 20",
+    "lat": 40.4457349,
+    "lng": -3.7068822999999997
+  },
+  {
+    "nombre": "La Petucasa Guardería Canina",
+    "tipo": "otros",
+    "direccion": "C. Quintanapalla, 5",
+    "lat": 40.499553999999996,
+    "lng": -3.6674488999999997
+  },
+  {
+    "nombre": "Vive Pets (Bº Chamberí) Hotel 24h, guardería y peluquería canina",
+    "tipo": "otros",
+    "direccion": "C/ de Donoso Cortés, 58",
+    "lat": 40.4364517,
+    "lng": -3.7121942
+  },
+  {
+    "nombre": "CUIDO TU MASCOTA",
+    "tipo": "otros",
+    "direccion": "Av. del Cerro Milano, 537",
+    "lat": 40.3603826,
+    "lng": -3.5844131999999997
+  },
+  {
+    "nombre": "WagWag",
+    "tipo": "otros",
+    "direccion": "Calle del Dr. Marco Corera",
+    "lat": 40.450541699999995,
+    "lng": -3.6769551999999996
+  },
+  {
+    "nombre": "WagWag Retiro",
+    "tipo": "otros",
+    "direccion": "Av. de Menéndez Pelayo, 9",
+    "lat": 40.4214258,
+    "lng": -3.6796609
+  },
+  {
+    "nombre": "Guardería Canina Madrid Centro",
+    "tipo": "otros",
+    "direccion": "C. de la Palma, 15, CENTRO",
+    "lat": 40.42615,
+    "lng": -3.7027799999999997
+  },
+  {
+    "nombre": "Centro Canino Gufy - Residencia Canina",
+    "tipo": "otros",
+    "direccion": "Carretera Fuencarral-El Pardo, Km. 3,5",
+    "lat": 40.504270999999996,
+    "lng": -3.73106
+  },
+  {
+    "nombre": "Residencia Canina Malilupus",
+    "tipo": "otros",
+    "direccion": "Km 10,700 A-5 dirección",
+    "lat": 40.3740806,
+    "lng": -3.8200509
+  },
+  {
+    "nombre": "Playa de Madrid Río",
+    "tipo": "otros",
+    "direccion": "Av del Manzanares, 140",
+    "lat": 40.3972714,
+    "lng": -3.7101954999999998
+  },
+  {
+    "nombre": "CRAS Madrid",
+    "tipo": "otros",
+    "direccion": "Carr. de Soto de Viñuelas, s/n",
+    "lat": 40.5962677,
+    "lng": -3.6923944
+  },
+  {
+    "nombre": "Granja la Luna residencia canina gatos en Madrid (Oficina)",
+    "tipo": "otros",
+    "direccion": "C. Lituania, 4",
+    "lat": 40.4095247,
+    "lng": -3.6622812999999996
+  },
+  {
+    "nombre": "Fuente bajo los tres arcos",
+    "tipo": "otros",
+    "direccion": "P.º de la Dirección, 313",
+    "lat": 40.4705344,
+    "lng": -3.7029783
+  },
+  {
+    "nombre": "Centro de Protección Animal de Madrid Salud",
+    "tipo": "otros",
+    "direccion": "Ctra. Barrio de la Fortuna, 33",
+    "lat": 40.3636115,
+    "lng": -3.7776473
+  },
+  {
+    "nombre": "Guardería - Residencia Canina Madrid RASTAdog Barajas de Bienestar Animal - Hotel Boutique Canino",
+    "tipo": "otros",
+    "direccion": "C. Trespaderne, 7",
+    "lat": 40.4515488,
+    "lng": -3.5813175999999998
+  },
+  {
+    "nombre": "Playa del Alberche",
+    "tipo": "otros",
+    "direccion": "M-510",
+    "lat": 40.3137434,
+    "lng": -4.2082733
+  },
+  {
+    "nombre": "Centro de Protección y Adopción de Animales. Perrera Municipal.",
+    "tipo": "otros",
+    "direccion": "C. de Chile, 1",
+    "lat": 40.341833,
+    "lng": -3.7639351999999997
+  },
+  {
+    "nombre": "La Perroteca - Guardería Canina - Residencia de Perros Felices",
+    "tipo": "otros",
+    "direccion": "Av. de Menéndez Pelayo, 22",
+    "lat": 40.406723,
+    "lng": -3.679607
+  },
+  {
+    "nombre": "Fundación Acuai",
+    "tipo": "otros",
+    "direccion": "Calle de Castelló, 24, Escalera 1- 5º, 3",
+    "lat": 40.4244133,
+    "lng": -3.6811616999999996
+  },
+  {
+    "nombre": "Peluquería canina",
+    "tipo": "otros",
+    "direccion": "C. de Aguilón, 7",
+    "lat": 40.3973643,
+    "lng": -3.7014823
+  },
+  {
+    "nombre": "VivePets (San Sebastián de los Reyes) Hotel 24h, guardería y peluquería canina",
+    "tipo": "otros",
+    "direccion": "Av. del Camino de lo Cortao, 37, nave 15",
+    "lat": 40.5552321,
+    "lng": -3.610864
+  },
+  {
+    "nombre": "Residencia Canina Solycan",
+    "tipo": "otros",
+    "direccion": "Salida 20 A-1, Km 22.300",
+    "lat": 40.5739003,
+    "lng": -3.5885476
+  },
+  {
+    "nombre": "PaseoTuPerroMadrid",
+    "tipo": "otros",
+    "direccion": "C. de Ruiz Perelló, 8",
+    "lat": 40.4298151,
+    "lng": -3.6668792
+  },
+  {
+    "nombre": "Happycan",
+    "tipo": "otros",
+    "direccion": "Vereda Romeral, 0 S N",
+    "lat": 40.7009815,
+    "lng": -3.5981718999999996
+  },
+  {
+    "nombre": "Vive Pets (Bº Salamanca) Hotel 24h, guardería y peluquería canina",
+    "tipo": "otros",
+    "direccion": "Calle de Castelló, 45",
+    "lat": 40.426885299999995,
+    "lng": -3.6815119
+  }
+]

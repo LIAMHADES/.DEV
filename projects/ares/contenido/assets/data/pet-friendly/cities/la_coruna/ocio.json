@@ -1,0 +1,424 @@
+[
+  {
+    "nombre": "Canil",
+    "tipo": "parque",
+    "direccion": "C. Amapolas, 1516",
+    "lat": 43.3449295,
+    "lng": -8.4015493
+  },
+  {
+    "nombre": "Playa canina del Arenal",
+    "tipo": "parque",
+    "direccion": "15940 A Pobra do Caramiñal",
+    "lat": 42.5973228,
+    "lng": -8.9322423
+  },
+  {
+    "nombre": "Parque para perros de Bens",
+    "tipo": "parque",
+    "direccion": "DP-3003",
+    "lat": 43.364695499999996,
+    "lng": -8.440553
+  },
+  {
+    "nombre": "Parque de Bens",
+    "tipo": "parque",
+    "direccion": "Parroquia de Visma. Lugar: Bens",
+    "lat": 43.3644226,
+    "lng": -8.4373946
+  },
+  {
+    "nombre": "Monte de San Pedro",
+    "tipo": "parque",
+    "direccion": "Estrada Os Fortes, 7",
+    "lat": 43.3774825,
+    "lng": -8.4380656
+  },
+  {
+    "nombre": "Área Recreativa de Gabenlle",
+    "tipo": "parque",
+    "direccion": "Río Anllóns",
+    "lat": 43.2387176,
+    "lng": -8.5700168
+  },
+  {
+    "nombre": "Cascada del Parque de Bens",
+    "tipo": "parque",
+    "direccion": "15010 A Coruña",
+    "lat": 43.3642865,
+    "lng": -8.4415116
+  },
+  {
+    "nombre": "Parque de Santa Margarita (La Coruña)",
+    "tipo": "parque",
+    "direccion": "Parque de Santa Margarita, S/N",
+    "lat": 43.3616284,
+    "lng": -8.412469999999999
+  },
+  {
+    "nombre": "Parque de Eirís",
+    "tipo": "parque",
+    "direccion": "Av. de Lamadosa, 3",
+    "lat": 43.3455454,
+    "lng": -8.3938214
+  },
+  {
+    "nombre": "Playa Canina de Cabanas",
+    "tipo": "parque",
+    "direccion": "Playa Madalena",
+    "lat": 43.413420699999996,
+    "lng": -8.173608999999999
+  },
+  {
+    "nombre": "Parque de Oza",
+    "tipo": "parque",
+    "direccion": "Cam. Corgo, 2T",
+    "lat": 43.350558899999996,
+    "lng": -8.4016667
+  },
+  {
+    "nombre": "Parque de Vioño",
+    "tipo": "parque",
+    "direccion": "Rúa Revolución Francesa, s/n",
+    "lat": 43.3550203,
+    "lng": -8.4164125
+  },
+  {
+    "nombre": "Parque canino Laracha",
+    "tipo": "parque",
+    "direccion": "Lugar",
+    "lat": 43.2454215,
+    "lng": -8.589209799999999
+  },
+  {
+    "nombre": "Parque de San Diego",
+    "tipo": "parque",
+    "direccion": "Av. Ejército, 17",
+    "lat": 43.3545264,
+    "lng": -8.3914676
+  },
+  {
+    "nombre": "Playa de San Amaro",
+    "tipo": "playa_perros",
+    "direccion": "C. Matadero, 47",
+    "lat": 43.3819105,
+    "lng": -8.3970174
+  },
+  {
+    "nombre": "Bosque dos Veciños",
+    "tipo": "parque",
+    "direccion": "Rúa Casares Quiroga, 14B",
+    "lat": 43.334916,
+    "lng": -8.352617799999999
+  },
+  {
+    "nombre": "Praia de Piñeirón",
+    "tipo": "playa_perros",
+    "direccion": "15939 Boiro",
+    "lat": 42.613295,
+    "lng": -8.879005
+  },
+  {
+    "nombre": "Playa Canide",
+    "tipo": "playa_perros",
+    "direccion": "15177 Oleiros",
+    "lat": 43.3687639,
+    "lng": -8.338705299999999
+  },
+  {
+    "nombre": "Parque Adolfo Suárez",
+    "tipo": "parque",
+    "direccion": "Rúa San Pedro de Visma",
+    "lat": 43.370257699999996,
+    "lng": -8.429858399999999
+  },
+  {
+    "nombre": "Parque de Marte",
+    "tipo": "parque",
+    "direccion": "Parque Marte, 9",
+    "lat": 43.3758913,
+    "lng": -8.399434099999999
+  },
+  {
+    "nombre": "Área Canina ~ Parque de Eirís",
+    "tipo": "parque",
+    "direccion": "15009 A Coruña",
+    "lat": 43.347283,
+    "lng": -8.394336599999999
+  },
+  {
+    "nombre": "Parque Ponte da Pedra",
+    "tipo": "parque",
+    "direccion": "Unnamed Road, 15008",
+    "lat": 43.3435864,
+    "lng": -8.4100735
+  },
+  {
+    "nombre": "Parque para cans",
+    "tipo": "parque",
+    "direccion": "Lugar Barcala Temple, 8B",
+    "lat": 43.3113294,
+    "lng": -8.356902
+  },
+  {
+    "nombre": "Luis Pérez Taboada",
+    "tipo": "parque",
+    "direccion": "Rúa Illa de Sálvora",
+    "lat": 43.3257435,
+    "lng": -8.4371303
+  },
+  {
+    "nombre": "Área Canina",
+    "tipo": "parque",
+    "direccion": "Parque de Santa Margarita",
+    "lat": 43.3606158,
+    "lng": -8.413224699999999
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "15578 Narón",
+    "lat": 43.5047984,
+    "lng": -8.1828276
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "Lugar Bouzas, 2",
+    "lat": 43.3698376,
+    "lng": -8.425329099999999
+  },
+  {
+    "nombre": "Zona de Entrenamiento Canino - Parque de Oza",
+    "tipo": "parque",
+    "direccion": "Rda. de Outeiro",
+    "lat": 43.351314099999996,
+    "lng": -8.4018682
+  },
+  {
+    "nombre": "Praia de cans",
+    "tipo": "parque",
+    "direccion": "Rúa Coronel José Gabeiras, 9",
+    "lat": 43.422851,
+    "lng": -8.2446857
+  },
+  {
+    "nombre": "Playa de Oleiros",
+    "tipo": "playa_perros",
+    "direccion": "Cudillero",
+    "lat": 43.572241,
+    "lng": -6.2006041
+  },
+  {
+    "nombre": "Parque de Ibarrola",
+    "tipo": "parque",
+    "direccion": "Pl. Constitución, 2",
+    "lat": 43.329468999999996,
+    "lng": -8.3556443
+  },
+  {
+    "nombre": "Parque Carlos Casares",
+    "tipo": "parque",
+    "direccion": "P.º Marítimo Alcalde Francisco Vázquez",
+    "lat": 43.382096399999995,
+    "lng": -8.4025274
+  },
+  {
+    "nombre": "Parque José Martí",
+    "tipo": "parque",
+    "direccion": "Av. Santa Cristina, s/n",
+    "lat": 43.336856399999995,
+    "lng": -8.378601399999999
+  },
+  {
+    "nombre": "Parque Marineros 2010",
+    "tipo": "parque",
+    "direccion": "Travesía a Pedreira Ríos, 203",
+    "lat": 43.3651528,
+    "lng": -8.424761499999999
+  },
+  {
+    "nombre": "Parque del Monticaño",
+    "tipo": "parque",
+    "direccion": "15142 Arteixo",
+    "lat": 43.344387399999995,
+    "lng": -8.4699869
+  },
+  {
+    "nombre": "Rosaleda",
+    "tipo": "parque",
+    "direccion": "R. Sánchez Bregua, 2",
+    "lat": 43.3655346,
+    "lng": -8.4043639
+  },
+  {
+    "nombre": "Paseo de los Puentes",
+    "tipo": "parque",
+    "direccion": "P.º de los Puentes, 1",
+    "lat": 43.3636364,
+    "lng": -8.4162777
+  },
+  {
+    "nombre": "Área recreativa O Seixedo",
+    "tipo": "parque",
+    "direccion": "Rúa de Laxobre, 59",
+    "lat": 43.3150329,
+    "lng": -8.4891738
+  },
+  {
+    "nombre": "Parque Europa",
+    "tipo": "parque",
+    "direccion": "Rúa Río de Monelos, s/n",
+    "lat": 43.355422,
+    "lng": -8.3981537
+  },
+  {
+    "nombre": "Parque para cans de Xubia",
+    "tipo": "parque",
+    "direccion": "Unnamed Road",
+    "lat": 43.512502399999995,
+    "lng": -8.1610548
+  },
+  {
+    "nombre": "Jardin Puga y Parga",
+    "tipo": "parque",
+    "direccion": "Rúa Alcalde Puga y Parga, 3",
+    "lat": 43.3567834,
+    "lng": -8.4054532
+  },
+  {
+    "nombre": "Parque Canino José Tojeiro",
+    "tipo": "parque",
+    "direccion": "15403 Ferrol",
+    "lat": 43.4923187,
+    "lng": -8.2233789
+  },
+  {
+    "nombre": "Área canina Ría del Burgo",
+    "tipo": "parque",
+    "direccion": "Avenida Acea da Ma, 28",
+    "lat": 43.321063599999995,
+    "lng": -8.3757321
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "15404 Ferrol",
+    "lat": 43.4868028,
+    "lng": -8.2175343
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "Rúa Sartaña, 109",
+    "lat": 43.4878205,
+    "lng": -8.211822999999999
+  },
+  {
+    "nombre": "Pipican",
+    "tipo": "parque",
+    "direccion": "Camiño Martinete, 13F",
+    "lat": 43.343435299999996,
+    "lng": -8.4281475
+  },
+  {
+    "nombre": "Playa Canina de Cabanas",
+    "tipo": "parque_canino",
+    "direccion": "Playa Madalena",
+    "telefono": "981 43 45 66",
+    "valoracion": 4.5,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 43.413420699999996,
+    "lng": -8.173608999999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJhYNJ0EZzLg0Rwk9hitiv-0A",
+    "fuenteConsulta": "playa para perros en Ourense, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque para cans",
+    "tipo": "parque_canino",
+    "direccion": "Lugar Barcala Temple, 8B",
+    "telefono": "",
+    "valoracion": 4,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 43.3113294,
+    "lng": -8.356902,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJhRTMieRlLg0RxvsaCWzhXxg",
+    "fuenteConsulta": "area canina en A Coruña, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Área Canina ~ Parque de Eirís",
+    "tipo": "area_canina",
+    "direccion": "15009 A Coruña",
+    "telefono": "",
+    "valoracion": 4,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 43.347283,
+    "lng": -8.394336599999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJARi8t197Lg0RYPKvLH6hTlg",
+    "fuenteConsulta": "parque para perros en A Coruña, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Área Canina Ulises",
+    "tipo": "area_canina",
+    "direccion": "Parque de Santa Margarita",
+    "telefono": "",
+    "valoracion": 3.7,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 43.3606158,
+    "lng": -8.413224699999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJdby7Hox8Lg0R1y_vrcY7NCI",
+    "fuenteConsulta": "parque para perros en A Coruña, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Canil",
+    "tipo": "parque_canino",
+    "direccion": "C. Amapolas, 1516",
+    "telefono": "",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 43.3449295,
+    "lng": -8.4015493,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJT5smfQB9Lg0RZCKTNaGnXog",
+    "fuenteConsulta": "parque perros La Coruna",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

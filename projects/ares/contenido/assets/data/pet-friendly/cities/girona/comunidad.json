@@ -1,0 +1,520 @@
+[
+  {
+    "nombre": "Mocca Project",
+    "tipo": "tienda",
+    "direccion": "Carrer del Riu Güell, 25",
+    "lat": 41.9834063,
+    "lng": 2.8157174
+  },
+  {
+    "nombre": "Adopta",
+    "tipo": "tienda",
+    "direccion": "Avinguda Ridaura, 100",
+    "lat": 41.812491699999995,
+    "lng": 2.9953491
+  },
+  {
+    "nombre": "Refugi d'animals del Pla de l'Estany",
+    "tipo": "protectora",
+    "direccion": "Carrer de Puigpalter",
+    "lat": 42.1166704,
+    "lng": 2.7898739
+  },
+  {
+    "nombre": "Animalons Montjuic",
+    "tipo": "tienda",
+    "direccion": "Ronda del Fort Roig, 21A",
+    "lat": 41.9947186,
+    "lng": 2.8337059
+  },
+  {
+    "nombre": "GUAU I MAS",
+    "tipo": "tienda",
+    "direccion": "Carrer de Santa Eugènia, 36",
+    "lat": 41.9817524,
+    "lng": 2.8171220999999997
+  },
+  {
+    "nombre": "La Gosseta Presumida",
+    "tipo": "tienda",
+    "direccion": "Carrer Josep Fàbrega i Pou, 7-9",
+    "lat": 41.8488325,
+    "lng": 3.1300282
+  },
+  {
+    "nombre": "Ohana Pets",
+    "tipo": "tienda",
+    "direccion": "Carrer de Montbò, 2",
+    "lat": 41.9920313,
+    "lng": 2.8064586
+  },
+  {
+    "nombre": "Exclusivas V.A.Z",
+    "tipo": "tienda",
+    "direccion": "Rambla de Xavier Cugat, 15",
+    "lat": 41.9920575,
+    "lng": 2.816175
+  },
+  {
+    "nombre": "Linda Diaz Peluqueria/Estetica canina y felina",
+    "tipo": "tienda",
+    "direccion": "Passeig Capellades, 12, Loc",
+    "lat": 42.009602,
+    "lng": 2.8141504
+  },
+  {
+    "nombre": "Mircat Plaça del Lleó",
+    "tipo": "tienda",
+    "direccion": "Plaça Calvet i Rubalcaba, 8",
+    "lat": 41.9795087,
+    "lng": 2.8220989
+  },
+  {
+    "nombre": "Luxopet Girona",
+    "tipo": "tienda",
+    "direccion": "Plaça de Miquel de Palol, 1",
+    "lat": 41.981877999999995,
+    "lng": 2.8153647
+  },
+  {
+    "nombre": "Ananda Bio - Dietètica Girona",
+    "tipo": "tienda",
+    "direccion": "Carrer Ultònia, 15",
+    "lat": 41.978659,
+    "lng": 2.822365
+  },
+  {
+    "nombre": "EL RACÓ DELS PELUTS",
+    "tipo": "tienda",
+    "direccion": "Carrer del Perelló, 69",
+    "lat": 41.954236699999996,
+    "lng": 2.7955839
+  },
+  {
+    "nombre": "Animalitos",
+    "tipo": "tienda",
+    "direccion": "Carrer de la Rutlla, 35",
+    "lat": 41.9771582,
+    "lng": 2.8230823
+  },
+  {
+    "nombre": "Instint Girona",
+    "tipo": "tienda",
+    "direccion": "Carrer de Pau Casals, 6",
+    "lat": 41.984175799999996,
+    "lng": 2.8156101
+  },
+  {
+    "nombre": "Protectora Animalista Meraki",
+    "tipo": "protectora",
+    "direccion": "Carrer Sant Benet de Palerm",
+    "lat": 41.974291699999995,
+    "lng": 2.6182033
+  },
+  {
+    "nombre": "Fundación Santuario Gaia",
+    "tipo": "protectora",
+    "direccion": "La Cabanya del Molladar s/n",
+    "lat": 42.3036198,
+    "lng": 2.4451975999999997
+  },
+  {
+    "nombre": "KMAKUS",
+    "tipo": "protectora",
+    "direccion": "Avinguda Catalunya, 66",
+    "lat": 41.8485583,
+    "lng": 3.105899
+  },
+  {
+    "nombre": "El Món del Gos - Girona",
+    "tipo": "tienda",
+    "direccion": "Avinguda de Lluís Pericot, 72",
+    "lat": 41.9671333,
+    "lng": 2.8226820999999997
+  },
+  {
+    "nombre": "Animales Brunyola",
+    "tipo": "tienda",
+    "direccion": "Carrer del Ter, 4",
+    "lat": 41.968516,
+    "lng": 2.625931
+  },
+  {
+    "nombre": "RESIDENCIA CANINA CANINIWEN",
+    "tipo": "tienda",
+    "direccion": "17469 Fortià",
+    "lat": 42.2330493,
+    "lng": 3.0210634
+  },
+  {
+    "nombre": "Gosbi Animal Instinct",
+    "tipo": "tienda",
+    "direccion": "Carrer Lingen",
+    "lat": 41.9675243,
+    "lng": 2.7797261
+  },
+  {
+    "nombre": "Zeppelin un món de jocs",
+    "tipo": "tienda",
+    "direccion": "Carrer de la Premsa, 2, BAIXOS",
+    "lat": 41.9840824,
+    "lng": 2.8218604
+  },
+  {
+    "nombre": "Mimosos Perruquería Canina, Natural Greatness, Natura Diet, Tramp",
+    "tipo": "tienda",
+    "direccion": "Carrer Pare Coll, 4 Bis",
+    "lat": 41.9774096,
+    "lng": 2.8130082
+  },
+  {
+    "nombre": "CAP I CUA GIRONA",
+    "tipo": "tienda",
+    "direccion": "Rambla de Xavier Cugat, 29",
+    "lat": 41.9921259,
+    "lng": 2.8143333
+  },
+  {
+    "nombre": "Empordà Caní",
+    "tipo": "tienda",
+    "direccion": "Plaça Lledoner, 6",
+    "lat": 42.0424231,
+    "lng": 3.1275847999999997
+  },
+  {
+    "nombre": "Mircat i Perruqueria Santa Eugènia",
+    "tipo": "tienda",
+    "direccion": "Carrer de Santa Eugènia, 5",
+    "lat": 41.9819854,
+    "lng": 2.8183103
+  },
+  {
+    "nombre": "Bú Bup Parc",
+    "tipo": "protectora",
+    "direccion": "17115 La Bisbal d'Empordà",
+    "lat": 41.985912299999995,
+    "lng": 3.0505373
+  },
+  {
+    "nombre": "GRANJA ARMENGOL",
+    "tipo": "tienda",
+    "direccion": "Carrer Juli Garreta, 8",
+    "lat": 41.9795723,
+    "lng": 2.8193998
+  },
+  {
+    "nombre": "Horse World",
+    "tipo": "tienda",
+    "direccion": "Carrer de Francesc Eiximenis, núm. 10",
+    "lat": 41.9842127,
+    "lng": 2.8216837999999997
+  },
+  {
+    "nombre": "CAAS Tossa de Mar",
+    "tipo": "protectora",
+    "direccion": "Ctra. Llagostera, Km 1",
+    "lat": 41.7324272,
+    "lng": 2.9211812
+  },
+  {
+    "nombre": "Apa Rodamón",
+    "tipo": "protectora",
+    "direccion": "Carrer Morena, s/n",
+    "lat": 41.921384599999996,
+    "lng": 3.1454534
+  },
+  {
+    "nombre": "Mircat La Creu",
+    "tipo": "tienda",
+    "direccion": "Carrer de la Creu, 20",
+    "lat": 41.975742499999996,
+    "lng": 2.8219784999999997
+  },
+  {
+    "nombre": "Els Reis de la Casa",
+    "tipo": "tienda",
+    "direccion": "Carrer Gironella, 9",
+    "lat": 41.9748588,
+    "lng": 2.8144774
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Camí dels Carlins, S/N",
+    "lat": 41.966318699999995,
+    "lng": 2.7844908
+  },
+  {
+    "nombre": "Animal Sapiens Girona",
+    "tipo": "tienda",
+    "direccion": "Carrer del Pla de Salt, 12",
+    "lat": 41.967546299999995,
+    "lng": 2.780855
+  },
+  {
+    "nombre": "Estilismo canino Rentigos By Anna Paradeda",
+    "tipo": "tienda",
+    "direccion": "Carrer Migdia, 90, 92",
+    "lat": 41.9692122,
+    "lng": 2.8183759999999998
+  },
+  {
+    "nombre": "Mircat Salt",
+    "tipo": "tienda",
+    "direccion": "Carrer del Pla de Salt, 20",
+    "lat": 41.9673728,
+    "lng": 2.7799792
+  },
+  {
+    "nombre": "Animalots Pet Center SL - Girona",
+    "tipo": "tienda",
+    "direccion": "Carrer Juli Garreta, 4",
+    "lat": 41.9798477,
+    "lng": 2.8193669
+  },
+  {
+    "nombre": "Casa Cacao | Botiga de Xocolata",
+    "tipo": "tienda",
+    "direccion": "Plaça de Catalunya, 23",
+    "lat": 41.9817664,
+    "lng": 2.8228378
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "Carrer de Santa Coloma, 50",
+    "lat": 41.9648082,
+    "lng": 2.806615
+  },
+  {
+    "nombre": "Protectora d'animals del Pla de l'Estany",
+    "tipo": "protectora",
+    "direccion": "Carrer de Puigpalter, s/n",
+    "lat": 42.1161719,
+    "lng": 2.790013
+  },
+  {
+    "nombre": "fundacio chari cruz",
+    "tipo": "protectora",
+    "direccion": "apt. correus, 367",
+    "lat": 41.7319374,
+    "lng": 2.9211063
+  },
+  {
+    "nombre": "José Trull Gamundí",
+    "tipo": "tienda",
+    "direccion": "Carrer del Carme, 63",
+    "lat": 41.978551599999996,
+    "lng": 2.8245248999999997
+  },
+  {
+    "nombre": "Pit Roig",
+    "tipo": "tienda",
+    "direccion": "Carrer del Carme, 63",
+    "lat": 41.978508399999996,
+    "lng": 2.8245115
+  },
+  {
+    "nombre": "Alcampo",
+    "tipo": "tienda",
+    "direccion": "Camí dels Carlins, 10",
+    "lat": 41.965997,
+    "lng": 2.7833866
+  },
+  {
+    "nombre": "Peluts Girona",
+    "tipo": "tienda",
+    "direccion": "Plaça del Marquès de Camps, 6",
+    "lat": 41.9824687,
+    "lng": 2.8189368
+  },
+  {
+    "nombre": "Casita de los gatos",
+    "tipo": "protectora",
+    "direccion": "Carrer del Rec Arnau, 12",
+    "lat": 42.2706071,
+    "lng": 2.9625445
+  },
+  {
+    "nombre": "IamDjango",
+    "tipo": "tienda",
+    "direccion": "Carrer Figuerola",
+    "lat": 41.9853166,
+    "lng": 2.8197617999999998
+  },
+  {
+    "nombre": "amvitalGirona Comidanimal",
+    "tipo": "tienda",
+    "direccion": "Carrer d’Oriol Martorell i Codina",
+    "lat": 41.9746648,
+    "lng": 2.8183078999999998
+  },
+  {
+    "nombre": "ConfiAnimal | Todo para tu mascota",
+    "tipo": "tienda",
+    "direccion": "Carrer Anselm Clavé, 48",
+    "lat": 41.862741,
+    "lng": 2.6643893999999997
+  },
+  {
+    "nombre": "Fundació MONA (Visitas solo con reserva previa)",
+    "tipo": "protectora",
+    "direccion": "Carretera C-25, s/n",
+    "lat": 41.9016324,
+    "lng": 2.8172026999999997
+  },
+  {
+    "nombre": "El somni del gos",
+    "tipo": "tienda",
+    "direccion": "Ctra. de Palamós, 104, BAJO",
+    "lat": 41.7840074,
+    "lng": 3.0374537
+  },
+  {
+    "nombre": "Sun botiga",
+    "tipo": "tienda",
+    "direccion": "Carrer dels Mercaders, 26Acc",
+    "lat": 41.9843404,
+    "lng": 2.8249717
+  },
+  {
+    "nombre": "Un Munt de Petjades (Associació d'Animals)",
+    "tipo": "protectora",
+    "direccion": "Prol. De la Gala, 22bis",
+    "lat": 42.220061,
+    "lng": 2.1667478
+  },
+  {
+    "nombre": "Refugi d’Animals del Ripollès",
+    "tipo": "tienda",
+    "direccion": "Camí de Casadesús, finca de Baups",
+    "lat": 42.2222335,
+    "lng": 2.1904410999999997
+  },
+  {
+    "nombre": "Decathlon Girona",
+    "tipo": "tienda",
+    "direccion": "Rotonda Mas Gri, s/n",
+    "lat": 41.959816,
+    "lng": 2.811251
+  },
+  {
+    "nombre": "BAUHAUS Girona",
+    "tipo": "tienda",
+    "direccion": "Plot C Parc Comercial Mas Gri",
+    "lat": 41.9590196,
+    "lng": 2.8114700999999997
+  },
+  {
+    "nombre": "CLAREL",
+    "tipo": "tienda",
+    "direccion": "Carrer de la Creu, 39",
+    "lat": 41.9758634,
+    "lng": 2.8195546
+  },
+  {
+    "nombre": "Action Girona",
+    "tipo": "tienda",
+    "direccion": "Avinguda de França, s/n",
+    "lat": 41.9921339,
+    "lng": 2.8192439
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "C-31, 72",
+    "lat": 41.9244336,
+    "lng": 3.1504668
+  },
+  {
+    "nombre": "Leroy Merlin Girona",
+    "tipo": "tienda",
+    "direccion": "Carrer Astúries, 66",
+    "lat": 41.9545288,
+    "lng": 2.8096189
+  },
+  {
+    "nombre": "Botiga Oficial Girona FC",
+    "tipo": "tienda",
+    "direccion": "Avinguda de Montilivi, 141",
+    "lat": 41.9613687,
+    "lng": 2.8272615
+  },
+  {
+    "nombre": "Lavakan Salt | Spa per mascotes",
+    "tipo": "tienda",
+    "direccion": "Carrer del Pla de Salt, 20",
+    "lat": 41.9673727,
+    "lng": 2.7799793
+  },
+  {
+    "nombre": "Scooby Protectora de Animales",
+    "tipo": "protectora",
+    "direccion": "Cam. del Zarzoso",
+    "lat": 41.3132933,
+    "lng": -4.888440699999999
+  },
+  {
+    "nombre": "J F Distribucions Veterinaries",
+    "tipo": "tienda",
+    "direccion": "Travesía Girona, 0 S N",
+    "lat": 41.9646897,
+    "lng": 2.8306413999999998
+  },
+  {
+    "nombre": "CLAREL",
+    "tipo": "tienda",
+    "direccion": "Carrer de Sant Sebastià, 40",
+    "lat": 41.9738748,
+    "lng": 2.8065018
+  },
+  {
+    "nombre": "Can joan núcleo zoologic",
+    "tipo": "protectora",
+    "direccion": "9WFV+CP",
+    "lat": 42.3743379,
+    "lng": 2.9441477
+  },
+  {
+    "nombre": "MIMATS PERRUQUERIA CANINA I FELINA, CURSOS INICIACIÓ PERRUQUERIA, ALIMENTACIÓ I ACCESSORIS",
+    "tipo": "tienda",
+    "direccion": "Carrer del Sauc, Local 1",
+    "lat": 41.952424699999995,
+    "lng": 2.8423148
+  },
+  {
+    "nombre": "Natsbi",
+    "tipo": "tienda",
+    "direccion": "Carrer Corral Roig",
+    "lat": 42.2334935,
+    "lng": 2.9596861
+  },
+  {
+    "nombre": "Mircat Banyoles",
+    "tipo": "tienda",
+    "direccion": "Avinguda Països Catalans, 23",
+    "lat": 42.1173526,
+    "lng": 2.7645383999999997
+  },
+  {
+    "nombre": "ARP NUTRISOME",
+    "tipo": "tienda",
+    "direccion": "Carrer del Camí de Fornells, 12",
+    "lat": 41.9000042,
+    "lng": 2.8239217
+  },
+  {
+    "nombre": "Agrobotiga Bitxos L' Escala",
+    "tipo": "tienda",
+    "direccion": "Carrer Closa d'en Llop, 83",
+    "lat": 42.1193321,
+    "lng": 3.1267270999999996
+  },
+  {
+    "nombre": "Gosbi",
+    "tipo": "tienda",
+    "direccion": "N-IIa, Km 1, 5",
+    "lat": 42.2322674,
+    "lng": 2.9602648
+  }
+]

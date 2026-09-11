@@ -1,0 +1,247 @@
+[
+  {
+    "nombre": "Centro Veterinario Sanivet Urdax",
+    "tipo": "veterinario",
+    "direccion": "C. del Monasterio de Urdax, 43",
+    "lat": 42.816252999999996,
+    "lng": -1.6582189999999999
+  },
+  {
+    "nombre": "Arrosadia Clínica Veterinaria - Veterinario en Pamplona",
+    "tipo": "veterinario",
+    "direccion": "C. Manuel de Falla, 31, bajo",
+    "lat": 42.804663,
+    "lng": -1.6401339
+  },
+  {
+    "nombre": "Clínica Veterinaria Zalavet | Pamplona",
+    "tipo": "veterinario",
+    "direccion": "Pl. San Juan de la Cadena, 2",
+    "lat": 42.8115321,
+    "lng": -1.6577069999999998
+  },
+  {
+    "nombre": "Centro Veterinario 7 de Julio",
+    "tipo": "veterinario",
+    "direccion": "C. del Concejo de Olaz",
+    "lat": 42.8091127,
+    "lng": -1.6119717999999998
+  },
+  {
+    "nombre": "Aoiz clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "C. Aoiz, 18",
+    "lat": 42.808780299999995,
+    "lng": -1.6362790999999999
+  },
+  {
+    "nombre": "El Arca",
+    "tipo": "veterinario",
+    "direccion": "C. Río Ega, 25",
+    "lat": 42.8029704,
+    "lng": -1.6473213999999998
+  },
+  {
+    "nombre": "Veterinario en Pamplona | Clínica Veterinaria Nuevo Ártica",
+    "tipo": "veterinario",
+    "direccion": "Calle María Dominguez, 26, Bajo",
+    "lat": 42.8327052,
+    "lng": -1.6620470999999999
+  },
+  {
+    "nombre": "Centro Veterinario Ezkaba",
+    "tipo": "veterinario",
+    "direccion": "C. Tiburcio de Redín, 11",
+    "lat": 42.8308045,
+    "lng": -1.6519629999999998
+  },
+  {
+    "nombre": "Clínica Veterinaria Labrit",
+    "tipo": "veterinario",
+    "direccion": "C. de Juan de Labrit, 31",
+    "lat": 42.8170843,
+    "lng": -1.6395844
+  },
+  {
+    "nombre": "Clinica Veterinaria Mendillorri",
+    "tipo": "veterinario",
+    "direccion": "C. del Señorío de Egulbati, bajo 6",
+    "lat": 42.8110619,
+    "lng": -1.6108417
+  },
+  {
+    "nombre": "Clínica veterinaria BetterVet Soto de Lezkairu",
+    "tipo": "veterinario",
+    "direccion": "C. de Isabel Garbayo Ayala, 9 entre Dra. Ariz",
+    "lat": 42.806510599999996,
+    "lng": -1.6258224
+  },
+  {
+    "nombre": "Clínica veterinaria BetterVet del Sadar",
+    "tipo": "veterinario",
+    "direccion": "Calle Sadar, 16 Esq",
+    "lat": 42.797576899999996,
+    "lng": -1.6379663
+  },
+  {
+    "nombre": "Centro Clínico Veterinario Ansoáin",
+    "tipo": "veterinario",
+    "direccion": "C. Padre Adoáin, 223, BAJO",
+    "lat": 42.830755499999995,
+    "lng": -1.6385954999999999
+  },
+  {
+    "nombre": "Clínica Veterinaria Animalia Ezkaba",
+    "tipo": "veterinario",
+    "direccion": "P.º Donantes de Sangre, 4",
+    "lat": 42.834634,
+    "lng": -1.6338412
+  },
+  {
+    "nombre": "Clínica Veterinaria La Rocha",
+    "tipo": "veterinario",
+    "direccion": "C. Raimundo Lanas",
+    "lat": 42.8266649,
+    "lng": -1.6502187
+  },
+  {
+    "nombre": "Clínica Veterinaria Iturvet",
+    "tipo": "veterinario",
+    "direccion": "C. de Iturrama, 28, bajo",
+    "lat": 42.8062721,
+    "lng": -1.6556214
+  },
+  {
+    "nombre": "Clinica Veterinaria Bosco",
+    "tipo": "veterinario",
+    "direccion": "C. San Juan Bosco, 7, BAJO(TRASERA",
+    "lat": 42.8056106,
+    "lng": -1.6478161
+  },
+  {
+    "nombre": "Clínica Veterinaria Buztintxuri",
+    "tipo": "veterinario",
+    "direccion": "C. Santos A. Ochandátegui, 10",
+    "lat": 42.830402799999995,
+    "lng": -1.6624275
+  },
+  {
+    "nombre": "Clinica Veterinaria Moret",
+    "tipo": "veterinario",
+    "direccion": "C. Padre Moret, 5",
+    "lat": 42.814797999999996,
+    "lng": -1.649869
+  },
+  {
+    "nombre": "OFTAnimalia",
+    "tipo": "veterinario",
+    "direccion": "C. Nueva, 27",
+    "lat": 42.796526899999996,
+    "lng": -1.6193886
+  },
+  {
+    "nombre": "BetterCat",
+    "tipo": "veterinario",
+    "direccion": "C. del Sadar, 16, Bajo 2",
+    "lat": 42.797731899999995,
+    "lng": -1.6381196
+  },
+  {
+    "nombre": "Clínica Veterinaria Calahorra",
+    "tipo": "veterinario",
+    "direccion": "C. Velázquez, 2",
+    "lat": 42.3065654,
+    "lng": -1.9663841999999998
+  },
+  {
+    "nombre": "Clinica Veterinaria Villava SL",
+    "tipo": "veterinario",
+    "direccion": "C. Fermín Tirapu, 22",
+    "lat": 42.831359,
+    "lng": -1.611564
+  },
+  {
+    "nombre": "Centro Veterinario Abodi",
+    "tipo": "veterinario",
+    "direccion": "C. Pueblo Viejo, 10",
+    "lat": 42.806457099999996,
+    "lng": -1.6794197
+  },
+  {
+    "nombre": "HOSPITAL VETERINARIO DONOSTIA",
+    "tipo": "veterinario",
+    "direccion": "Gracia Olazabal Kalea, 4, bajo",
+    "lat": 43.3047727,
+    "lng": -1.9740562
+  },
+  {
+    "nombre": "Clínica Veterinaria Ibaia",
+    "tipo": "veterinario",
+    "direccion": "Parque de los Enamorados, 14",
+    "lat": 42.8254017,
+    "lng": -1.6537559
+  },
+  {
+    "nombre": "Hospital Veterinario Pamplona",
+    "tipo": "veterinario",
+    "direccion": "Pol. Ind. Mutilva Baja",
+    "lat": 42.784718,
+    "lng": -1.6232229999999999
+  },
+  {
+    "nombre": "AniCura San Fermín Hospital Veterinario",
+    "tipo": "veterinario",
+    "direccion": "C. Nueva, 27",
+    "lat": 42.796714,
+    "lng": -1.619317
+  },
+  {
+    "nombre": "Mendebaldea Dogos",
+    "tipo": "veterinario",
+    "direccion": "C. de Irunlarrea, 17",
+    "lat": 42.808240399999995,
+    "lng": -1.6724322999999999
+  },
+  {
+    "nombre": "Kivet Clínicas Veterinarias",
+    "tipo": "veterinario",
+    "direccion": "C. Soto Aizoáin, 1-601",
+    "lat": 42.834398,
+    "lng": -1.6775814
+  },
+  {
+    "nombre": "AniCura Albeitar Hospital Veterinario | Urgencias 24h",
+    "tipo": "veterinario",
+    "direccion": "Polígono Industrial Cantabria",
+    "lat": 42.4742411,
+    "lng": -2.4039146
+  },
+  {
+    "nombre": "clínica dogos ansoain",
+    "tipo": "veterinario",
+    "direccion": "C. Padre Adoáin",
+    "lat": 42.828170199999995,
+    "lng": -1.6369299
+  },
+  {
+    "nombre": "Consults Veterineria",
+    "tipo": "veterinario",
+    "direccion": "C. Raimundo Lanas, 6",
+    "lat": 42.8262491,
+    "lng": -1.6512288
+  },
+  {
+    "nombre": "Clínica Veterinaria Valle de Egues",
+    "tipo": "veterinario",
+    "direccion": "C. del Concejo de Olaz, 2",
+    "lat": 42.8089069,
+    "lng": -1.6120432
+  },
+  {
+    "nombre": "AniCura La Corraliza Hospital Veterinario",
+    "tipo": "veterinario",
+    "direccion": "Carretera Tudela - Cabanillas KM. 1,9 - PARC. 566",
+    "lat": 42.063551,
+    "lng": -1.5774709999999998
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "O Moucho",
+    "tipo": "restaurante",
+    "direccion": "Rúa Santo Domingo, 3",
+    "telefono": "+34 988 23 93 60",
+    "valoracion": 4.7,
+    "resenas": 676,
+    "horario": "",
+    "estado": "",
+    "lat": 42.337786,
+    "lng": -7.8633394,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=O%20Moucho&query_place_id=ChIJDXM8Veb-Lw0ROeNaCtKbmqs",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

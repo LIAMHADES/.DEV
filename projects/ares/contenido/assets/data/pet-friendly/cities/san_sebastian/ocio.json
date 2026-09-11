@@ -1,0 +1,44 @@
+[
+  {
+    "nombre": "Parque Guau",
+    "tipo": "parque",
+    "direccion": "Gregorio Ordoñez Kalea",
+    "lat": 43.3066806,
+    "lng": -1.9725534999999998
+  },
+  {
+    "nombre": "Playa De Sakoneta",
+    "tipo": "playa_perros",
+    "direccion": "Itsaspe Auz., 20",
+    "lat": 43.2974195,
+    "lng": -2.3116833
+  },
+  {
+    "nombre": "Playa de la concha",
+    "tipo": "playa_perros",
+    "direccion": "Kontxa Pasealekua, 18",
+    "lat": 43.315021699999996,
+    "lng": -1.9923629999999999
+  },
+  {
+    "nombre": "Playa de la Concha",
+    "tipo": "playa_perros",
+    "direccion": "20007",
+    "lat": 43.318618799999996,
+    "lng": -1.9860118
+  },
+  {
+    "nombre": "Playa de Ondarreta",
+    "tipo": "playa_perros",
+    "direccion": "Guipúzcoa",
+    "lat": 43.3163945,
+    "lng": -2.0011533
+  },
+  {
+    "nombre": "Playa de Zurriola",
+    "tipo": "playa_perros",
+    "direccion": "Guipúzcoa",
+    "lat": 43.325997199999996,
+    "lng": -1.9780608
+  }
+]

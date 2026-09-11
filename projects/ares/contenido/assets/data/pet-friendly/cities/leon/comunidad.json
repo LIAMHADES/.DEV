@@ -1,0 +1,121 @@
+[
+  {
+    "nombre": "EL PERRETE MOLON",
+    "tipo": "tienda",
+    "direccion": "C. Moisés de León, 30, Loc 4",
+    "lat": 42.590862699999995,
+    "lng": -5.5590854
+  },
+  {
+    "nombre": "Preppy Dog",
+    "tipo": "tienda",
+    "direccion": "Av. de los Reyes Leoneses, 8",
+    "lat": 42.60364,
+    "lng": -5.5794084
+  },
+  {
+    "nombre": "MASCOTAS SPA",
+    "tipo": "tienda",
+    "direccion": "C. las Fuentes, 10",
+    "lat": 42.5924945,
+    "lng": -5.568988699999999
+  },
+  {
+    "nombre": "CANNES Peluquería canina",
+    "tipo": "tienda",
+    "direccion": "Av. de Roma, 1",
+    "lat": 42.5988149,
+    "lng": -5.5761693999999995
+  },
+  {
+    "nombre": "Pompitas Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "Av. de José Aguado, 24",
+    "lat": 42.590115499999996,
+    "lng": -5.565614999999999
+  },
+  {
+    "nombre": "LA COLLERA",
+    "tipo": "tienda",
+    "direccion": "Av. de Asturias, 36",
+    "lat": 42.2902657,
+    "lng": -5.519917599999999
+  },
+  {
+    "nombre": "Centro Canino Birutxines by Álvaro García Groomer",
+    "tipo": "tienda",
+    "direccion": "Camino de bellonzina, s/n",
+    "lat": 42.5819954,
+    "lng": -5.6091126
+  },
+  {
+    "nombre": "Bruma Pet",
+    "tipo": "tienda",
+    "direccion": "Av. de la Libertad, 94",
+    "lat": 42.627163599999996,
+    "lng": -5.5624047
+  },
+  {
+    "nombre": "La Tía Sara Boutique & Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "Calle Rollo de Sta. Ana, 1",
+    "lat": 42.5918461,
+    "lng": -5.5647784
+  },
+  {
+    "nombre": "Quara's Huellitas",
+    "tipo": "tienda",
+    "direccion": "Av. Fernández Ladreda, 39",
+    "lat": 42.5867316,
+    "lng": -5.5664628
+  },
+  {
+    "nombre": "desenreDog",
+    "tipo": "tienda",
+    "direccion": "Av. de los Reyes Leoneses, 50",
+    "lat": 42.613388,
+    "lng": -5.5885713
+  },
+  {
+    "nombre": "CaniChic Grooming Salon",
+    "tipo": "tienda",
+    "direccion": "Av. del Párroco Pablo Díez, 252, Loc Izquierda",
+    "lat": 42.5963863,
+    "lng": -5.6071632
+  },
+  {
+    "nombre": "Coquettos Peluquería Canina y Tienda De Mascotas",
+    "tipo": "tienda",
+    "direccion": "C. Andrés de Paz, 12, bajo comercial",
+    "lat": 42.353956,
+    "lng": -5.748182
+  },
+  {
+    "nombre": "Más Que Pelos",
+    "tipo": "tienda",
+    "direccion": "Gta. Carlos Pinilla, 2 PB",
+    "lat": 42.602268599999995,
+    "lng": -5.5889371
+  },
+  {
+    "nombre": "Peluquería canina LavaCanLeón",
+    "tipo": "tienda",
+    "direccion": "Av. País Leonés, 6",
+    "lat": 42.6112931,
+    "lng": -5.5936916
+  },
+  {
+    "nombre": "Asociacion Protectora de Animales y Plantas de León",
+    "tipo": "protectora",
+    "direccion": "Carr. Vilecha-Tr, s/n",
+    "lat": 42.5616531,
+    "lng": -5.5676651
+  },
+  {
+    "nombre": "Lavakan León | Spa para mascotas",
+    "tipo": "tienda",
+    "direccion": "Av. del Alcalde Miguel Castaño, 95",
+    "lat": 42.5863789,
+    "lng": -5.5571492
+  }
+]

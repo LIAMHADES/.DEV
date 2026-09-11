@@ -147,7 +147,7 @@ section:first-of-type{clip-path:none}
 #cta-final{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
 @media(max-width:768px){.vid-band{margin-top:-40px}}
 </style>
-<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/analytics.js" defer></script>
 </head>
 <body>
 
@@ -276,17 +276,17 @@ section:first-of-type{clip-path:none}
     <h2 class="st" style="text-align:center;font-size:clamp(1.4rem,3vw,2rem)">DÓNDE MÁS SE NOTA</h2>
 
     <div class="casos-grid">
-      <div class="caso-card">
+      <div class="caso-card angle-border">
         <div class="caso-icon">En pareja</div>
         <h4>Compartir al perro con tu pareja</h4>
         <p>Los dos veis lo mismo: dónde está, si ya ha paseado hoy, si le toca comer. Nadie tiene que preguntarle al otro "¿lo has sacado ya?".</p>
       </div>
-      <div class="caso-card">
+      <div class="caso-card angle-border">
         <div class="caso-icon">El vecino</div>
         <h4>Cuando el vecino se queda con él</h4>
         <p>Le das acceso de invitado por el fin de semana. Ve la ubicación en vivo, sin poder tocar nada más. Cuando vuelves, le quitas el acceso y listo.</p>
       </div>
-      <div class="caso-card">
+      <div class="caso-card angle-border">
         <div class="caso-icon">Reto del parque</div>
         <h4>El reto semanal con los del parque</h4>
         <p>Un grupo de dueños que se ven cada tarde deciden apuntarse al mismo desafío. No hay premio, hay la excusa perfecta para sacarlo un rato más los días de pereza.</p>
@@ -328,7 +328,7 @@ section:first-of-type{clip-path:none}
     </div>
 
     <div class="pn-cta">
-      <a href="pricing.html">Ver todos los planes y precios &rarr;</a>
+      <a class="angle-border" href="pricing.html">Ver todos los planes y precios &rarr;</a>
     </div>
   </div>
 </section>
@@ -545,6 +545,6 @@ function buildPrism(id){
     window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
   })();
 </script>
-<script src="../assets/js/footer-common.js"></script>
+<script src="../assets/js/footer-common.js" defer></script>
 </body>
 </html>

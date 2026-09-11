@@ -1,0 +1,42 @@
+[
+  {
+    "nombre": "Dog Village",
+    "tipo": "guarderia_canina",
+    "direccion": "Pol. Ind. Garysol",
+    "telefono": "622 75 05 89",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "10:00–13:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 39.1000856,
+    "lng": -1.98451,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJjyiSctRaZg0RJ5ksJHiKyZM",
+    "fuenteConsulta": "guarderia canina en Albacete, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Bubacan",
+    "tipo": "guarderia_canina",
+    "direccion": "de km 1, Carr. de Valencia, 2",
+    "telefono": "+34 638 27 62 99",
+    "valoracion": 4.6,
+    "resenas": 73,
+    "horario": "",
+    "estado": "",
+    "lat": 38.9787788,
+    "lng": -1.8341281,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bubacan&query_place_id=ChIJ41a31utfZg0RGtAJxbpDxRg",
+    "fuenteConsulta": "guarderia canina",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

@@ -1,0 +1,483 @@
+[
+  {
+    "nombre": "Reanimalia. Rehabilitación, Ortopedia & Nutrición Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "C. Malta",
+    "lat": 36.5023803,
+    "lng": -6.2665133
+  },
+  {
+    "nombre": "Centro Veterinaria Nueva Tavira",
+    "tipo": "veterinario",
+    "direccion": "C. José de Dios",
+    "lat": 36.5315158,
+    "lng": -6.298355399999999
+  },
+  {
+    "nombre": "Rollon + Rodriguez Veterinarios",
+    "tipo": "veterinario",
+    "direccion": "C. del Róbalo, 24",
+    "lat": 36.472244499999995,
+    "lng": -6.1718532
+  },
+  {
+    "nombre": "Clínica Veterinaria Ávila Cádiz Avenida",
+    "tipo": "veterinario",
+    "direccion": "Av. Cayetano del Toro, 17",
+    "lat": 36.5066488,
+    "lng": -6.2769905
+  },
+  {
+    "nombre": "Clínica Veterinaría Campos Eliseos",
+    "tipo": "veterinario",
+    "direccion": "C. Parlamento, 9, DUP",
+    "lat": 36.5157415,
+    "lng": -6.2812753
+  },
+  {
+    "nombre": "CLÍNICA VETERINARIA PUERTO",
+    "tipo": "veterinario",
+    "direccion": "C. de la Seguidilla, s/n",
+    "lat": 36.6107539,
+    "lng": -6.2186916
+  },
+  {
+    "nombre": "Centro Veterinario 'Plaza de España'",
+    "tipo": "veterinario",
+    "direccion": "C. República el Salvador, 4",
+    "lat": 36.5361572,
+    "lng": -6.2928834
+  },
+  {
+    "nombre": "Helios Centro veterinario y Estética",
+    "tipo": "veterinario",
+    "direccion": "Gta. Helios, 4",
+    "lat": 36.501256999999995,
+    "lng": -6.2744193
+  },
+  {
+    "nombre": "Clínica Veterinaria Ávila Cádiz",
+    "tipo": "veterinario",
+    "direccion": "Plaza Asdrúbal, 4, Loc A",
+    "lat": 36.517123399999996,
+    "lng": -6.2837556
+  },
+  {
+    "nombre": "Clínica Veterinaria El Valle Encantado",
+    "tipo": "veterinario",
+    "direccion": "Av. Guadalquivir, 6",
+    "lat": 36.513901499999996,
+    "lng": -6.2730559999999995
+  },
+  {
+    "nombre": "Clínica Veterinaria Canymar",
+    "tipo": "veterinario",
+    "direccion": "C. Granja San Ildefonso, 5",
+    "lat": 36.521864199999996,
+    "lng": -6.2844399
+  },
+  {
+    "nombre": "Clínica Veterinaria Veterinarios Azules",
+    "tipo": "veterinario",
+    "direccion": "Paseo Luis Arenal Plat",
+    "lat": 36.5226608,
+    "lng": -6.2776217999999995
+  },
+  {
+    "nombre": "Colegio Oficial De Veterinarios",
+    "tipo": "veterinario",
+    "direccion": "Av. Ana de Viya, 5",
+    "lat": 36.512253199999996,
+    "lng": -6.2801598
+  },
+  {
+    "nombre": "Clinica Veterinaria Africa",
+    "tipo": "veterinario",
+    "direccion": "C. Alcalá de Guadaíra",
+    "lat": 36.513208399999996,
+    "lng": -6.275917
+  },
+  {
+    "nombre": "Clínica Veterinaria Varela",
+    "tipo": "veterinario",
+    "direccion": "C. Francisco García de Sola, 12",
+    "lat": 36.5188092,
+    "lng": -6.2814242
+  },
+  {
+    "nombre": "La Clínica del Estadio - Centro Veterinario",
+    "tipo": "veterinario",
+    "direccion": "Pl. de Madrid, 4",
+    "lat": 36.5023406,
+    "lng": -6.2743489
+  },
+  {
+    "nombre": "Hospital Veterinario Ávila El Puerto - Urgencias presenciales 24h",
+    "tipo": "veterinario",
+    "direccion": "Parque Comercial Bahía Mar Local Clínica Avila",
+    "lat": 36.5925991,
+    "lng": -6.2221996
+  },
+  {
+    "nombre": "Clínica Veterinaria Falla",
+    "tipo": "veterinario",
+    "direccion": "C. Torre, 50, BAJO",
+    "lat": 36.531509,
+    "lng": -6.3019773
+  },
+  {
+    "nombre": "Clínica Veterinaria ZARPAS",
+    "tipo": "veterinario",
+    "direccion": "C. Antonio Accame, S/N",
+    "lat": 36.510504399999995,
+    "lng": -6.2803838999999995
+  },
+  {
+    "nombre": "Francisco Javier Gracia Pavón",
+    "tipo": "veterinario",
+    "direccion": "Calle Nueva, 13",
+    "lat": 36.5304863,
+    "lng": -6.2924336
+  },
+  {
+    "nombre": "La Lola",
+    "tipo": "veterinario",
+    "direccion": "Av. San Severiano",
+    "lat": 36.5191695,
+    "lng": -6.2780086
+  },
+  {
+    "nombre": "Centro Veterinario Ornitorrinco",
+    "tipo": "veterinario",
+    "direccion": "Ctra. de Sanlucar, 10, local 10A",
+    "lat": 36.6045999,
+    "lng": -6.2333187
+  },
+  {
+    "nombre": "Atlántico Centro Veterinario",
+    "tipo": "veterinario",
+    "direccion": "Av. de la Música, 15",
+    "lat": 36.284321999999996,
+    "lng": -6.085872999999999
+  },
+  {
+    "nombre": "CLÍNICA VETERINARIA LAGUNA DEL MORAL",
+    "tipo": "veterinario",
+    "direccion": "Av. de los Morancos de Triana, 2",
+    "lat": 36.6342494,
+    "lng": -6.3806316999999995
+  },
+  {
+    "nombre": "Clinica Veterinaria Levante",
+    "tipo": "veterinario",
+    "direccion": "C. San Sebastián, 20",
+    "lat": 36.0151834,
+    "lng": -5.606574999999999
+  },
+  {
+    "nombre": "Centro Veterinario Animalia",
+    "tipo": "veterinario",
+    "direccion": "Ctra. de la Barrosa, 118, Loc 4 y 5",
+    "lat": 36.3955377,
+    "lng": -6.1739416
+  },
+  {
+    "nombre": "Clínica Veterinaria 'Entre Mascotas' Chipiona",
+    "tipo": "veterinario",
+    "direccion": "Av. de Rota, 146",
+    "lat": 36.7293053,
+    "lng": -6.4272135
+  },
+  {
+    "nombre": "Clínica Veterinaria Puerta Del Sur",
+    "tipo": "veterinario",
+    "direccion": "C. Miguel Hue",
+    "lat": 36.675253999999995,
+    "lng": -6.144902399999999
+  },
+  {
+    "nombre": "Clinica Veterinaria Huellas",
+    "tipo": "veterinario",
+    "direccion": "C/Miguel Hernandez",
+    "lat": 36.595084799999995,
+    "lng": -6.2410054
+  },
+  {
+    "nombre": "Centro Veterinario V Centenario",
+    "tipo": "veterinario",
+    "direccion": "Av. Quinto Centenario, 165",
+    "lat": 36.7798124,
+    "lng": -6.3608535999999996
+  },
+  {
+    "nombre": "Clínica Veterinaria Fábula",
+    "tipo": "veterinario",
+    "direccion": "C. Manuel Gavilán Oncala, 20",
+    "lat": 36.293861299999996,
+    "lng": -5.3002934999999995
+  },
+  {
+    "nombre": "Centro Veterinario Vetercosta",
+    "tipo": "veterinario",
+    "direccion": "Ctra. Pinar de los Franceses, 6",
+    "lat": 36.4407047,
+    "lng": -6.1426449
+  },
+  {
+    "nombre": "Clínica Veterinaria Asis - San Fernando",
+    "tipo": "veterinario",
+    "direccion": "C. José López Rodríguez, 11, BAJO(PUB",
+    "lat": 36.4655196,
+    "lng": -6.199789
+  },
+  {
+    "nombre": "Clínica Veterinaria Ávila",
+    "tipo": "veterinario",
+    "direccion": "Av. Almirante León Herrero, 5",
+    "lat": 36.462431699999996,
+    "lng": -6.2047529
+  },
+  {
+    "nombre": "clinica veterinaria cannis24",
+    "tipo": "veterinario",
+    "direccion": "Edificio Granada II",
+    "lat": 36.6921289,
+    "lng": -6.1285652
+  },
+  {
+    "nombre": "Clínica Veterinaria Tarifa Europa",
+    "tipo": "veterinario",
+    "direccion": "C. Castellar de la Frontera, 221",
+    "lat": 36.0259755,
+    "lng": -5.6109542
+  },
+  {
+    "nombre": "Clínica Veterinaria Valdelagrana Integrativa",
+    "tipo": "veterinario",
+    "direccion": "Urbanización Valdemar 4",
+    "lat": 36.5788955,
+    "lng": -6.2239859
+  },
+  {
+    "nombre": "Clínica Veterinaria La Granja",
+    "tipo": "veterinario",
+    "direccion": "Av. Sanlúcar, 2, BAJO",
+    "lat": 36.607343799999995,
+    "lng": -6.2184721
+  },
+  {
+    "nombre": "Hospital NA Veterinarios",
+    "tipo": "veterinario",
+    "direccion": "C. Medina Azahara, 1 dd",
+    "lat": 36.676891999999995,
+    "lng": -6.111489
+  },
+  {
+    "nombre": "Clínica Veterinaria Ávila Puerto Real",
+    "tipo": "veterinario",
+    "direccion": "Ctra Medina km 1,5",
+    "lat": 36.5397472,
+    "lng": -6.173716
+  },
+  {
+    "nombre": "Centro Veterinario La Soledad - Urgencias",
+    "tipo": "veterinario",
+    "direccion": "Calle Dr. Pedro Velez, Compejo",
+    "lat": 36.4200303,
+    "lng": -6.1565343
+  },
+  {
+    "nombre": "Hospital Veterinario Costa de la Luz",
+    "tipo": "veterinario",
+    "direccion": "Av. de los Artesanos, 70-72",
+    "lat": 36.2883184,
+    "lng": -6.0683356
+  },
+  {
+    "nombre": "Evidensia La Arboleda Hospital Veterinario",
+    "tipo": "veterinario",
+    "direccion": "Ctra. de Fuentebravía, 32",
+    "lat": 36.6132348,
+    "lng": -6.284253
+  },
+  {
+    "nombre": "Reanimalia. Rehabilitación, Ortopedia & Nutrición Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "C. Malta",
+    "telefono": "699 85 29 77",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "9:00–20:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 36.5023803,
+    "lng": -6.2665133,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ4zh8WsXTDQ0RLSjvH7Gq9Wo",
+    "fuenteConsulta": "veterinario mascotas en Cádiz, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Ávila Cádiz Avenida",
+    "tipo": "veterinario",
+    "direccion": "Av. Cayetano del Toro, 17",
+    "telefono": "687 13 67 85",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "9:00–20:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 36.5066488,
+    "lng": -6.2769905,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJtUVcznrTDQ0Rd95mXOfMB8U",
+    "fuenteConsulta": "veterinario mascotas en Cádiz, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaría Campos Eliseos",
+    "tipo": "veterinario",
+    "direccion": "C. Parlamento, 9, DUP",
+    "telefono": "956 25 90 22",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "9:00–19:30",
+    "estado": "Abierto · Cierre: 19:30",
+    "lat": 36.5157415,
+    "lng": -6.2812753,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJY2QaXDPSDQ0R5HuaKYe6biU",
+    "fuenteConsulta": "veterinario mascotas en Cádiz, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Ávila Cádiz",
+    "tipo": "veterinario",
+    "direccion": "Plaza Asdrúbal, 4, Loc A",
+    "telefono": "956 06 06 02",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "9:00–20:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 36.517123399999996,
+    "lng": -6.2837556,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ__-vtM3TDQ0R1Q5GFZayU8M",
+    "fuenteConsulta": "veterinario mascotas en Cádiz, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Canymar",
+    "tipo": "veterinario",
+    "direccion": "C. Granja San Ildefonso, 5",
+    "telefono": "956 25 31 64",
+    "valoracion": 4.5,
+    "resenas": null,
+    "horario": "9:30–13:30",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 36.521864199999996,
+    "lng": -6.2844399,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJFU0nNtLTDQ0RZ5sTSN6q5sA",
+    "fuenteConsulta": "veterinario mascotas en Cádiz, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "La Clínica del Estadio - Centro Veterinario",
+    "tipo": "veterinario",
+    "direccion": "Pl. de Madrid, 4",
+    "telefono": "956 27 41 41",
+    "valoracion": 4.3,
+    "resenas": null,
+    "horario": "10:00–18:00",
+    "estado": "Cierra pronto · 18:00 · Apertura: 10:00 (vie)",
+    "lat": 36.502358099999995,
+    "lng": -6.2743749,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJnZRs9U7SDQ0RUPdlliltRc4",
+    "fuenteConsulta": "veterinario mascotas en Cádiz, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Varela",
+    "tipo": "veterinario",
+    "direccion": "C. Francisco García de Sola, 12",
+    "telefono": "856 17 14 17",
+    "valoracion": 4.3,
+    "resenas": null,
+    "horario": "10:00–18:00",
+    "estado": "Cierra pronto · 18:00 · Apertura: 10:00 (vie)",
+    "lat": 36.5188092,
+    "lng": -6.2814242,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJOeigns3TDQ0RY3pFoSSaHIU",
+    "fuenteConsulta": "veterinario mascotas en Cádiz, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "CLÍNICA VETERINARIA PUERTO",
+    "tipo": "veterinario",
+    "direccion": "C. de la Seguidilla, s/n",
+    "telefono": "956 05 68 68",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "10:30–13:00",
+    "estado": "Cierra pronto · 13:00 · Abre a las 9:30 del lun",
+    "lat": 36.6107539,
+    "lng": -6.2186916,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJZ0fZkvLPDQ0RoAGQKKs8u3s",
+    "fuenteConsulta": "clinica veterinaria Cadiz",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria El Valle Encantado",
+    "tipo": "veterinario",
+    "direccion": "Av. Guadalquivir, 6",
+    "telefono": "856 07 71 49",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 36.513901499999996,
+    "lng": -6.2730559999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJn7gWxDbSDQ0Rz5cgyLY7-Wk",
+    "fuenteConsulta": "veterinario Cadiz",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

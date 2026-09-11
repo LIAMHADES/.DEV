@@ -1,0 +1,2163 @@
+[
+  {
+    "nombre": "Con Pelos y a lo Loco",
+    "tipo": "tienda",
+    "direccion": "C. del Conde de Ribadeo, 7",
+    "lat": 41.6558662,
+    "lng": -4.7258947
+  },
+  {
+    "nombre": "Caprichos caninos",
+    "tipo": "tienda",
+    "direccion": "C. Nueva, 7",
+    "lat": 41.5406148,
+    "lng": -4.700058299999999
+  },
+  {
+    "nombre": "CHOCO CBD",
+    "tipo": "otros",
+    "direccion": "C. Dársena, 13",
+    "lat": 41.6633727,
+    "lng": -4.7354736
+  },
+  {
+    "nombre": "LUXURY CAN",
+    "tipo": "tienda",
+    "direccion": "C. de José Garrote Tebar, 6",
+    "lat": 41.6339378,
+    "lng": -4.7569959
+  },
+  {
+    "nombre": "Sit & Plas",
+    "tipo": "tienda",
+    "direccion": "C. San Lázaro, 17, Loc 1",
+    "lat": 41.662496399999995,
+    "lng": -4.7355763
+  },
+  {
+    "nombre": "ARVIA mascotas y peluquería",
+    "tipo": "tienda",
+    "direccion": "C. de la Transición, 1",
+    "lat": 41.6316602,
+    "lng": -4.7258531
+  },
+  {
+    "nombre": "La Bañera Mágica (Autolavado de Mascotas)",
+    "tipo": "tienda",
+    "direccion": "Calle Padre Manjón, 20",
+    "lat": 41.640654,
+    "lng": -4.7184297
+  },
+  {
+    "nombre": "Peluquería canina móvil entre huellas",
+    "tipo": "tienda",
+    "direccion": "C. Carrión, 12",
+    "lat": 41.5286914,
+    "lng": -4.6281877
+  },
+  {
+    "nombre": "Peluquería Canina Xiros",
+    "tipo": "tienda",
+    "direccion": "Cam. Viejo de Simancas, 12",
+    "lat": 41.6271011,
+    "lng": -4.7464097999999995
+  },
+  {
+    "nombre": "Centro Canino ValdeVid",
+    "tipo": "otros",
+    "direccion": "Senda Bergante, s/n",
+    "lat": 41.7275385,
+    "lng": -4.7095556
+  },
+  {
+    "nombre": "DOGGY peluquería canina",
+    "tipo": "peluqueria",
+    "direccion": "C. Marte, 1",
+    "lat": 41.6633129,
+    "lng": -4.733512999999999
+  },
+  {
+    "nombre": "Ponte Guau by Noe",
+    "tipo": "tienda",
+    "direccion": "Av. Valladolid, 2",
+    "lat": 41.7566124,
+    "lng": -4.6972961
+  },
+  {
+    "nombre": "Patitas",
+    "tipo": "tienda",
+    "direccion": "Av. de José Luis Lasa, 65",
+    "lat": 41.612823999999996,
+    "lng": -4.786517
+  },
+  {
+    "nombre": "PETLUCHINES",
+    "tipo": "tienda",
+    "direccion": "C. Conde de Benavente, 4",
+    "lat": 41.6582036,
+    "lng": -4.7306416
+  },
+  {
+    "nombre": "Yoda Mascotas",
+    "tipo": "tienda",
+    "direccion": "C. Castillejo, 2",
+    "lat": 41.610546199999995,
+    "lng": -4.6843807
+  },
+  {
+    "nombre": "Rasca y Brinca | Tienda de alimentación y accesorios para Perros y Gatos",
+    "tipo": "tienda",
+    "direccion": "Av de Gijón, 76",
+    "lat": 41.6610559,
+    "lng": -4.7512878999999995
+  },
+  {
+    "nombre": "CANUBER EDUCACIÓN CANINA Y GUARDERÍA",
+    "tipo": "adiestrador",
+    "direccion": "C. Eras, s/n",
+    "lat": 41.6035331,
+    "lng": -4.4306958
+  },
+  {
+    "nombre": "Hakuna matata",
+    "tipo": "veterinario",
+    "direccion": "C. del Amor de Dios, 3",
+    "lat": 41.6600517,
+    "lng": -4.714684
+  },
+  {
+    "nombre": "Libercan",
+    "tipo": "otros",
+    "direccion": "Av. Pernalta, s/n",
+    "lat": 41.700714999999995,
+    "lng": -4.727733
+  },
+  {
+    "nombre": "Peluquería Canina Canis Minor",
+    "tipo": "tienda",
+    "direccion": "C. Vicente Aleixandre, 54",
+    "lat": 41.610634499999996,
+    "lng": -4.7569208
+  },
+  {
+    "nombre": "Peluditos peluquería canina.",
+    "tipo": "tienda",
+    "direccion": "Ctra. Vieja de Santander, 18",
+    "lat": 41.6877192,
+    "lng": -4.682790799999999
+  },
+  {
+    "nombre": "Doggyland",
+    "tipo": "otros",
+    "direccion": "Extrarradio Diseminados, 104",
+    "lat": 41.807331,
+    "lng": -4.5859755
+  },
+  {
+    "nombre": "Ringo & Otto",
+    "tipo": "tienda",
+    "direccion": "C. Platería, 8",
+    "lat": 41.65314,
+    "lng": -4.7267455
+  },
+  {
+    "nombre": "Kandovet",
+    "tipo": "tienda",
+    "direccion": "C. Gallo, 18",
+    "lat": 41.6468513,
+    "lng": -4.7080717
+  },
+  {
+    "nombre": "Pompon estilismo canino",
+    "tipo": "tienda",
+    "direccion": "C. Nueva, 7, Pta 10",
+    "lat": 41.660259499999995,
+    "lng": -4.782754199999999
+  },
+  {
+    "nombre": "Psycocan",
+    "tipo": "adiestrador",
+    "direccion": "Av. Madrid, 9",
+    "lat": 41.5850392,
+    "lng": -4.7187398
+  },
+  {
+    "nombre": "Peludos Coquetos",
+    "tipo": "tienda",
+    "direccion": "Pl. Ribera de Castilla, 9",
+    "lat": 41.6646426,
+    "lng": -4.7186428
+  },
+  {
+    "nombre": "Rivera Animales y Plantas",
+    "tipo": "tienda",
+    "direccion": "C. Silio, 4",
+    "lat": 41.6499922,
+    "lng": -4.7139146
+  },
+  {
+    "nombre": "GUAUpetes! peluquería canina",
+    "tipo": "tienda",
+    "direccion": "C. Morales, 6",
+    "lat": 41.6250849,
+    "lng": -4.7781233
+  },
+  {
+    "nombre": "Le Chanvrier Français",
+    "tipo": "tienda",
+    "direccion": "C. Platería, 21",
+    "lat": 41.6535017,
+    "lng": -4.7266457
+  },
+  {
+    "nombre": "La Perruquería",
+    "tipo": "tienda",
+    "direccion": "C. de José Garrote Tebar, 6",
+    "lat": 41.633947299999996,
+    "lng": -4.7569101
+  },
+  {
+    "nombre": "Tienda Anima-les",
+    "tipo": "tienda",
+    "direccion": "Pl. Gutiérrez Semprún, 5",
+    "lat": 41.6415442,
+    "lng": -4.7165713
+  },
+  {
+    "nombre": "DogVall",
+    "tipo": "adiestrador",
+    "direccion": "Sector 14 el Bosque",
+    "lat": 41.5626482,
+    "lng": -4.7268658
+  },
+  {
+    "nombre": "Criadero Labrador Retiever - Lomo Ancho",
+    "tipo": "otros",
+    "direccion": "Carretera Medina de Rio Seco - Toro, Km 10",
+    "lat": 41.8192199,
+    "lng": -5.122778299999999
+  },
+  {
+    "nombre": "Superpet - Tienda de productos para mascotas y peluquería canina",
+    "tipo": "tienda",
+    "direccion": "Carr. de Rueda, 2",
+    "lat": 41.6295564,
+    "lng": -4.7415579999999995
+  },
+  {
+    "nombre": "Peluqueria canina UPPI",
+    "tipo": "tienda",
+    "direccion": "C. Prof. Adolfo Miaja de la Muela, 13",
+    "lat": 41.6355529,
+    "lng": -4.7540726
+  },
+  {
+    "nombre": "Vidacan",
+    "tipo": "tienda",
+    "direccion": "C. del Tamarisco, 23, Nave 35",
+    "lat": 41.647619899999995,
+    "lng": -4.6904249
+  },
+  {
+    "nombre": "Noemas",
+    "tipo": "tienda",
+    "direccion": "C. Neptuno, 12",
+    "lat": 41.6620068,
+    "lng": -4.7356545
+  },
+  {
+    "nombre": "Villacarsan",
+    "tipo": "otros",
+    "direccion": "Pl. Caño, 6",
+    "lat": 41.8213339,
+    "lng": -5.1139604
+  },
+  {
+    "nombre": "Guapos & pelujos",
+    "tipo": "tienda",
+    "direccion": "C. Maldonado, 8",
+    "lat": 41.6503993,
+    "lng": -4.7185272
+  },
+  {
+    "nombre": "CENTRO DE BIENESTAR ANIMAL ~ HUELLITAS FELICES",
+    "tipo": "adiestrador",
+    "direccion": "47320 Tudela de Duero",
+    "lat": 41.5805037,
+    "lng": -4.5787238
+  },
+  {
+    "nombre": "HOTEL CANINO SULU. (Peluquería Canina)",
+    "tipo": "otros",
+    "direccion": "Carretera Mudarra, 13",
+    "lat": 41.772831599999996,
+    "lng": -5.0373697
+  },
+  {
+    "nombre": "Costa Del Labrador de Bould",
+    "tipo": "otros",
+    "direccion": "Sector 9 la Estación, 26",
+    "lat": 41.5787994,
+    "lng": -4.710793
+  },
+  {
+    "nombre": "Pet shop Zapp (peluquería canina)",
+    "tipo": "tienda",
+    "direccion": "C. de los Vinos de la Ribera del Duero, 10",
+    "lat": 41.6189913,
+    "lng": -4.7496516
+  },
+  {
+    "nombre": "LAZYCAT",
+    "tipo": "tienda",
+    "direccion": "C. Alonso Pesquera, 1",
+    "lat": 41.6506921,
+    "lng": -4.7206503
+  },
+  {
+    "nombre": "Residencia de mascotas Momo",
+    "tipo": "otros",
+    "direccion": "Camino de la Barranca, S/N",
+    "lat": 41.811108399999995,
+    "lng": -4.7086361
+  },
+  {
+    "nombre": "Peluquería Canina MásQMascotas",
+    "tipo": "tienda",
+    "direccion": "C. San Luis, 9",
+    "lat": 41.6466129,
+    "lng": -4.7197078
+  },
+  {
+    "nombre": "Lord Can Zaratán ( Peluquería y Autolavado Canino )",
+    "tipo": "tienda",
+    "direccion": "Calle Iglesia, 13",
+    "lat": 41.661583,
+    "lng": -4.7835015
+  },
+  {
+    "nombre": "Piensos Júcar",
+    "tipo": "otros",
+    "direccion": "C. del Oro, 2",
+    "lat": 41.6206174,
+    "lng": -4.696068299999999
+  },
+  {
+    "nombre": "Guau Salón Canino",
+    "tipo": "tienda",
+    "direccion": "Calle de Sta Lucía, 58",
+    "lat": 41.6510986,
+    "lng": -4.7145812
+  },
+  {
+    "nombre": "Mundozoo",
+    "tipo": "tienda",
+    "direccion": "Av. de Segovia, 99",
+    "lat": 41.6393791,
+    "lng": -4.7208993
+  },
+  {
+    "nombre": "MAYUKA EDUCACIÓN CANINA - VALLADOLID",
+    "tipo": "adiestrador",
+    "direccion": "47170 Renedo de Esgueva",
+    "lat": 41.6583611,
+    "lng": -4.629435
+  },
+  {
+    "nombre": "Centro Veterinario Animalia",
+    "tipo": "veterinario",
+    "direccion": "C. Morena, 1",
+    "lat": 41.6566453,
+    "lng": -4.7426581
+  },
+  {
+    "nombre": "El Rincón de Marepopito",
+    "tipo": "tienda",
+    "direccion": "C. Cromo, 4",
+    "lat": 41.6279986,
+    "lng": -4.703223299999999
+  },
+  {
+    "nombre": "Aquarium Discus",
+    "tipo": "tienda",
+    "direccion": "C. de la Merced, 6",
+    "lat": 41.650135,
+    "lng": -4.719887
+  },
+  {
+    "nombre": "Mundo Huella (Cristina Gutiérrez Peñuela, NIF: 71.103.843 X )",
+    "tipo": "veterinario",
+    "direccion": "Calle de Mateo Seoane Sobral, 6",
+    "lat": 41.6373205,
+    "lng": -4.7553709
+  },
+  {
+    "nombre": "Bichos",
+    "tipo": "tienda",
+    "direccion": "C. Real de Burgos, 9",
+    "lat": 41.6583281,
+    "lng": -4.7190262
+  },
+  {
+    "nombre": "MÁS QUE BURBUJAS (AUTOLAVADO DE MASCOTAS)",
+    "tipo": "tienda",
+    "direccion": "C. Alberto Fernández, 6",
+    "lat": 41.6634926,
+    "lng": -4.7248845
+  },
+  {
+    "nombre": "Hotel Canino y Felino Vetoven | Residencia para perros y gatos",
+    "tipo": "otros",
+    "direccion": "Camino la Estación, 89",
+    "lat": 41.9285894,
+    "lng": -5.1391987
+  },
+  {
+    "nombre": "Apartahotel Comforsuite",
+    "tipo": "alojamiento",
+    "direccion": "P.º de la Zarcilla, 6",
+    "lat": 41.5403016,
+    "lng": -4.7023207
+  },
+  {
+    "nombre": "Residencia Canina CísterCan | Adiestramiento canino",
+    "tipo": "otros",
+    "direccion": "Cam. de Herrera, S/N",
+    "lat": 41.601965899999996,
+    "lng": -4.6840866
+  },
+  {
+    "nombre": "CANUBER",
+    "tipo": "tienda",
+    "direccion": "C. Catalina Adulce, 8, Loc 2",
+    "lat": 41.6399346,
+    "lng": -4.7366098999999995
+  },
+  {
+    "nombre": "Agrizoo Cardens & Animals",
+    "tipo": "tienda",
+    "direccion": "Cam. del Cementerio, 8",
+    "lat": 41.663152499999995,
+    "lng": -4.7083506999999996
+  },
+  {
+    "nombre": "Pelucan",
+    "tipo": "tienda",
+    "direccion": "C. del Soto, 4",
+    "lat": 41.6614029,
+    "lng": -4.7174388
+  },
+  {
+    "nombre": "Escuela Canina Valladolid",
+    "tipo": "adiestrador",
+    "direccion": "C. de Manuel Azaña, 21",
+    "lat": 41.6363554,
+    "lng": -4.764498
+  },
+  {
+    "nombre": "Parque de las Moreras",
+    "tipo": "parque",
+    "direccion": "P.º de Marcelino Martín ''El Catarro'', 18",
+    "lat": 41.6568816,
+    "lng": -4.7323369
+  },
+  {
+    "nombre": "Clínica Veterinaria Los Galgos",
+    "tipo": "veterinario",
+    "direccion": "C. José Zorrilla, 1",
+    "lat": 41.3083601,
+    "lng": -4.9191801
+  },
+  {
+    "nombre": "Residencia Canina Los Valles | Adiestramiento Canino",
+    "tipo": "otros",
+    "direccion": "Senda de Taragudo",
+    "lat": 41.5826388,
+    "lng": -4.6836208
+  },
+  {
+    "nombre": "Mix Mascotas",
+    "tipo": "tienda",
+    "direccion": "P.º de Juan Carlos I, 19",
+    "lat": 41.638489899999996,
+    "lng": -4.7171913
+  },
+  {
+    "nombre": "Centro canino La Malena",
+    "tipo": "tienda",
+    "direccion": "VA-505, 10",
+    "lat": 41.8191139,
+    "lng": -5.1225458999999995
+  },
+  {
+    "nombre": "Playa de las Moreras",
+    "tipo": "parque",
+    "direccion": "47003 Valladolid",
+    "lat": 41.6572792,
+    "lng": -4.7335306
+  },
+  {
+    "nombre": "Tema",
+    "tipo": "tienda",
+    "direccion": "C. Manantial, 1",
+    "lat": 41.663253,
+    "lng": -4.731134099999999
+  },
+  {
+    "nombre": "Avícola Ferma (Álvaro Martínez Bermejo)",
+    "tipo": "tienda",
+    "direccion": "C. de Labradores, 7",
+    "lat": 41.647770099999995,
+    "lng": -4.7204552
+  },
+  {
+    "nombre": "BIRDDOM",
+    "tipo": "tienda",
+    "direccion": "C. Imperial, N°4",
+    "lat": 41.657919,
+    "lng": -4.7279154
+  },
+  {
+    "nombre": "Centro Canino Lunava",
+    "tipo": "otros",
+    "direccion": "Carretera LEON(DESVIO VILLALBA), 212",
+    "lat": 41.780556,
+    "lng": -4.883056
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "Cam. Viejo de Simancas, s/n",
+    "lat": 41.6236015,
+    "lng": -4.7511678
+  },
+  {
+    "nombre": "Centro Comercial RÍO Shopping",
+    "tipo": "otros",
+    "direccion": "C. Me Falta un Tornillo, 3",
+    "lat": 41.6280639,
+    "lng": -4.7865538999999995
+  },
+  {
+    "nombre": "Pajarera del Campo Grande",
+    "tipo": "otros",
+    "direccion": "47007 Valladolid",
+    "lat": 41.6461427,
+    "lng": -4.7295915
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "C. Me Falta un Tornillo, 3",
+    "lat": 41.630421,
+    "lng": -4.784625999999999
+  },
+  {
+    "nombre": "Hotel Puerta del Arco",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Valladolid, 2",
+    "lat": 41.5870986,
+    "lng": -4.5816381999999996
+  },
+  {
+    "nombre": "Sercotel Valladolid",
+    "tipo": "alojamiento",
+    "direccion": "C. de Puerto Rico, s/n",
+    "lat": 41.635746999999995,
+    "lng": -4.7473173
+  },
+  {
+    "nombre": "Parque canino Las Norias",
+    "tipo": "parque",
+    "direccion": "C. de la Azucarera, 8",
+    "lat": 41.633002,
+    "lng": -4.7345331999999996
+  },
+  {
+    "nombre": "Hotel Imperial",
+    "tipo": "alojamiento",
+    "direccion": "C. Peso, 4",
+    "lat": 41.652569299999996,
+    "lng": -4.7296357
+  },
+  {
+    "nombre": "Hostal París",
+    "tipo": "alojamiento",
+    "direccion": "C. Especería, 2",
+    "lat": 41.6525848,
+    "lng": -4.7275531
+  },
+  {
+    "nombre": "Playa de Encinas de Esgueva",
+    "tipo": "otros",
+    "direccion": "47186 Encinas de Esgueva",
+    "lat": 41.7448079,
+    "lng": -4.0798153
+  },
+  {
+    "nombre": "Hotel Lasa Sport",
+    "tipo": "alojamiento",
+    "direccion": "Carr. de Rueda, 187",
+    "lat": 41.602855399999996,
+    "lng": -4.7542985
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Av. del Real Valladolid, 5",
+    "lat": 41.6420672,
+    "lng": -4.761069
+  },
+  {
+    "nombre": "Hostal NANA B&B",
+    "tipo": "alojamiento",
+    "direccion": "C. Purificación Bezos, 21 bis",
+    "lat": 41.6249077,
+    "lng": -4.7691238
+  },
+  {
+    "nombre": "Hotel Ciudad de Valladolid",
+    "tipo": "alojamiento",
+    "direccion": "Av. Ramón Pradera, 10-12",
+    "lat": 41.6568486,
+    "lng": -4.7367187
+  },
+  {
+    "nombre": "Motel La Siesta",
+    "tipo": "alojamiento",
+    "direccion": "VA-VP-5804 A-62 Burgos-PORTUGAL KM142 Velliza-Villamarciel",
+    "lat": 41.5425068,
+    "lng": -4.8965882
+  },
+  {
+    "nombre": "Huellas de viaje",
+    "tipo": "otros",
+    "direccion": "con",
+    "lat": 41.5906483,
+    "lng": -4.6919116
+  },
+  {
+    "nombre": "Evidensia Valladolid Hospital Veterinario",
+    "tipo": "veterinario",
+    "direccion": "C. Sta. Fe, 7",
+    "lat": 41.638611499999996,
+    "lng": -4.7295427
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "C. Valle de Arán, 11",
+    "lat": 41.668870399999996,
+    "lng": -4.7168003
+  },
+  {
+    "nombre": "MAISON CONDE DE LA CEBADA",
+    "tipo": "alojamiento",
+    "direccion": "Plaza Don Francisco Martin Gromaz, 12",
+    "lat": 41.913723999999995,
+    "lng": -4.780074
+  },
+  {
+    "nombre": "Carrefour",
+    "tipo": "otros",
+    "direccion": "Av. del Real Valladolid, 5, C.C",
+    "lat": 41.6419265,
+    "lng": -4.761262299999999
+  },
+  {
+    "nombre": "Hotel Escuela San Cristóbal Valladolid",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Soria, 30",
+    "lat": 41.614367699999995,
+    "lng": -4.6897307999999995
+  },
+  {
+    "nombre": "Hostal Restaurante María Victoria",
+    "tipo": "alojamiento",
+    "direccion": "Carretera N-601 Km. 216",
+    "lat": 41.785722199999995,
+    "lng": -4.9423959
+  },
+  {
+    "nombre": "Ibis Valladolid",
+    "tipo": "alojamiento",
+    "direccion": "Av. del Euro, 7",
+    "lat": 41.674316999999995,
+    "lng": -4.719378
+  },
+  {
+    "nombre": "Hotel en Tordesillas Real de Castilla",
+    "tipo": "alojamiento",
+    "direccion": "C. Vista Alegre, 2",
+    "lat": 41.503140099999996,
+    "lng": -5.0045964
+  },
+  {
+    "nombre": "Hostal café Restaurante Vista Alegre",
+    "tipo": "otros",
+    "direccion": "Autovía de Castilla, Km 140",
+    "lat": 41.559310499999995,
+    "lng": -4.870968899999999
+  },
+  {
+    "nombre": "Playa Del Rio Duero",
+    "tipo": "playa_perros",
+    "direccion": "47151 Boecillo",
+    "lat": 41.557884699999995,
+    "lng": -4.7233312
+  },
+  {
+    "nombre": "Villa Augusta Spa & Garden by Punta 25 Hotels",
+    "tipo": "alojamiento",
+    "direccion": "C. Orellana",
+    "lat": 41.617228999999995,
+    "lng": -4.785112499999999
+  },
+  {
+    "nombre": "Playa del Perulejo, Playa Canina",
+    "tipo": "parque",
+    "direccion": "04638 Mojácar",
+    "lat": 37.075277899999996,
+    "lng": -1.8500393
+  },
+  {
+    "nombre": "Centro Canino la Yosa",
+    "tipo": "otros",
+    "direccion": "Carretera de Geria, km, 1",
+    "lat": 41.589732,
+    "lng": -4.84352
+  },
+  {
+    "nombre": "Parque canino Parquesol Alto",
+    "tipo": "parque",
+    "direccion": "C. Juan García Hortelano, 16",
+    "lat": 41.6378086,
+    "lng": -4.7664232
+  },
+  {
+    "nombre": "Hotel Restaurante El Montico",
+    "tipo": "alojamiento",
+    "direccion": "Urb. el Montico, 148",
+    "lat": 41.516595599999995,
+    "lng": -4.9410742999999995
+  },
+  {
+    "nombre": "Hostal de la Torre",
+    "tipo": "alojamiento",
+    "direccion": "C. Alcalleres, 1",
+    "lat": 41.649790599999996,
+    "lng": -4.7280105
+  },
+  {
+    "nombre": "Aquarium Valladolid",
+    "tipo": "tienda",
+    "direccion": "C. de la Costa Brava, 2",
+    "lat": 41.6700958,
+    "lng": -4.7094067
+  },
+  {
+    "nombre": "Hostal Duque de Osuna",
+    "tipo": "otros",
+    "direccion": "C. Castilviejo, 16",
+    "lat": 41.8819224,
+    "lng": -5.0466584999999995
+  },
+  {
+    "nombre": "Hostal del Val",
+    "tipo": "alojamiento",
+    "direccion": "Pl. Val, 6",
+    "lat": 41.65314,
+    "lng": -4.727437999999999
+  },
+  {
+    "nombre": "Warnet Pet Supplies & Accessories Store",
+    "tipo": "tienda",
+    "direccion": "C. Paulina Harriet, 7",
+    "lat": 41.6473149,
+    "lng": -4.7320772
+  },
+  {
+    "nombre": "Playa de Puente Duero",
+    "tipo": "playa_perros",
+    "direccion": "47152",
+    "lat": 41.5526513,
+    "lng": -4.7763592
+  },
+  {
+    "nombre": "Clínica Veterinaria Burgos La Huerta",
+    "tipo": "veterinario",
+    "direccion": "C. de Portugal, 91",
+    "lat": 41.641650899999995,
+    "lng": -4.7353816
+  },
+  {
+    "nombre": "Escuela de Peluquería Canina Mónica Gómez – Valladolid",
+    "tipo": "otros",
+    "direccion": "C. Fragua, 12",
+    "lat": 41.6115266,
+    "lng": -4.6848038
+  },
+  {
+    "nombre": "MerkaPets",
+    "tipo": "tienda",
+    "direccion": "C. de Portillo de Balboa",
+    "lat": 41.6617107,
+    "lng": -4.719698999999999
+  },
+  {
+    "nombre": "Víctor García Arenales",
+    "tipo": "tienda",
+    "direccion": "C. Sta. Rita, 8",
+    "lat": 41.642951599999996,
+    "lng": -4.7193729
+  },
+  {
+    "nombre": "Mi Mascota de Paseo",
+    "tipo": "otros",
+    "direccion": "C. de la Penitencia, 4",
+    "lat": 41.6604477,
+    "lng": -4.7165215
+  },
+  {
+    "nombre": "Mascotas Urbanas Tienda online",
+    "tipo": "tienda",
+    "direccion": "Carr. de Rueda, 2",
+    "lat": 41.6295426,
+    "lng": -4.7414847
+  },
+  {
+    "nombre": "Cuatro Huellas",
+    "tipo": "tienda",
+    "direccion": "C. Miguel Delibes, 19",
+    "lat": 41.6108682,
+    "lng": -4.753188199999999
+  },
+  {
+    "nombre": "Scooby Residencia Valladolid",
+    "tipo": "otros",
+    "direccion": "C. Panera, 2",
+    "lat": 41.673938,
+    "lng": -4.7304857
+  },
+  {
+    "nombre": "Tostada Peluqueria Canina",
+    "tipo": "otros",
+    "direccion": "C. Joaquín Rodrigo, 34",
+    "lat": 41.7347026,
+    "lng": -4.6489234999999995
+  },
+  {
+    "nombre": "Club Canino Baucan Valladolid",
+    "tipo": "adiestrador",
+    "direccion": "C. de Daniel del Olmo González, 2",
+    "lat": 41.6280085,
+    "lng": -4.7356121
+  },
+  {
+    "nombre": "Dos adiestramiento Valladolid",
+    "tipo": "adiestrador",
+    "direccion": "C. Ignacio Serrano",
+    "lat": 41.6100577,
+    "lng": -4.7555076
+  },
+  {
+    "nombre": "Casa Rural San Blas",
+    "tipo": "otros",
+    "direccion": "C. Real de Torre, 14",
+    "lat": 41.5577636,
+    "lng": -5.0043842
+  },
+  {
+    "nombre": "auto lavado de mascotas Copi",
+    "tipo": "tienda",
+    "direccion": "C. San Cristóbal, 9",
+    "lat": 41.6122562,
+    "lng": -4.687215999999999
+  },
+  {
+    "nombre": "Parque Campo Grande",
+    "tipo": "parque",
+    "direccion": "P.º de Zorrilla, s/n",
+    "lat": 41.645809899999996,
+    "lng": -4.7300406
+  },
+  {
+    "nombre": "Casa Rural El Arcón",
+    "tipo": "alojamiento",
+    "direccion": "C. Barrera, 3",
+    "lat": 41.590156799999995,
+    "lng": -4.828091199999999
+  },
+  {
+    "nombre": "Piensos, Plantas y Semillas",
+    "tipo": "tienda",
+    "direccion": "C. del Tamarisco, 23, Nave 35",
+    "lat": 41.647619,
+    "lng": -4.6903198999999995
+  },
+  {
+    "nombre": "Adiestramiento World Can Valladolid",
+    "tipo": "adiestrador",
+    "direccion": "Calle Rda., Nº6",
+    "lat": 41.4111863,
+    "lng": -4.902172
+  },
+  {
+    "nombre": "Peluquería Canina Va de Pelos",
+    "tipo": "tienda",
+    "direccion": "C. Caballeros, 38 BIS",
+    "lat": 41.5834219,
+    "lng": -4.720934199999999
+  },
+  {
+    "nombre": "Centro Veterinario Neptuno",
+    "tipo": "veterinario",
+    "direccion": "C. Neptuno, 5, LOC",
+    "lat": 41.661829,
+    "lng": -4.73545
+  },
+  {
+    "nombre": "Parque Canino La Vega",
+    "tipo": "parque",
+    "direccion": "C. la Santamaría, 1",
+    "lat": 41.614933699999995,
+    "lng": -4.7772898999999995
+  },
+  {
+    "nombre": "Camping El Astral",
+    "tipo": "otros",
+    "direccion": "Camino Pollos, 8",
+    "lat": 41.495706,
+    "lng": -5.005084999999999
+  },
+  {
+    "nombre": "Hostal La Morada",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Los Álamos, s/n",
+    "lat": 41.5999033,
+    "lng": -4.673435
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "C. Emilio Alarcos",
+    "lat": 41.6146883,
+    "lng": -4.803195
+  },
+  {
+    "nombre": "Hostal Campestre",
+    "tipo": "otros",
+    "direccion": "Rda. del Sauce, 26, 5A. Nave 10",
+    "lat": 41.5961111,
+    "lng": -4.6674999999999995
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "otros",
+    "direccion": "Cam. de la Balsa, 1",
+    "lat": 41.6610556,
+    "lng": -4.7769683
+  },
+  {
+    "nombre": "Parque canino Los Santos - Pilarica",
+    "tipo": "parque",
+    "direccion": "C. del Astrofísico Carlos Sánchez Magro",
+    "lat": 41.6518395,
+    "lng": -4.6992775
+  },
+  {
+    "nombre": "Playa de Rábano 'Los Rápidos'",
+    "tipo": "parque",
+    "direccion": "Área Recreativa las Heras",
+    "lat": 41.5317023,
+    "lng": -4.065739
+  },
+  {
+    "nombre": "Hotel El Pozo de la",
+    "tipo": "alojamiento",
+    "direccion": "C. Vista Alegre, 1",
+    "lat": 41.5034274,
+    "lng": -5.005228499999999
+  },
+  {
+    "nombre": "Parque canino Parquesol",
+    "tipo": "parque",
+    "direccion": "C. Miralparque, 20",
+    "lat": 41.634465299999995,
+    "lng": -4.7527279
+  },
+  {
+    "nombre": "Arenal del Jortín",
+    "tipo": "parque",
+    "direccion": "Av. Playa San Juan de la Canal, 18E",
+    "lat": 43.4727349,
+    "lng": -3.8921987999999996
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "C. de las Eras",
+    "lat": 41.6599673,
+    "lng": -4.7367653999999995
+  },
+  {
+    "nombre": "Hotel Rural San Pelayo (Nueva gestión 15 Junio 2022)",
+    "tipo": "alojamiento",
+    "direccion": "Real, 6",
+    "lat": 41.679703499999995,
+    "lng": -5.0340313
+  },
+  {
+    "nombre": "Hotel Roma",
+    "tipo": "alojamiento",
+    "direccion": "C. de los Heroes de Alcantara, 8",
+    "lat": 41.650833299999995,
+    "lng": -4.7294444
+  },
+  {
+    "nombre": "Parque canino Canterac",
+    "tipo": "parque",
+    "direccion": "C. Canterac, 28B",
+    "lat": 41.6378972,
+    "lng": -4.7141
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "P.º Isabel la Catolica",
+    "lat": 41.650636999999996,
+    "lng": -4.7330944
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "C. de los Vinos de la Ribera del Duero, 1B",
+    "lat": 41.6195648,
+    "lng": -4.7496722
+  },
+  {
+    "nombre": "Camping Cubillas",
+    "tipo": "otros",
+    "direccion": "Autovía de Castilla, 102",
+    "lat": 41.804972,
+    "lng": -4.587886
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "C. Sta. María de la Cabeza, 2B",
+    "lat": 41.6451573,
+    "lng": -4.7012744
+  },
+  {
+    "nombre": "Canectados - Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "C. del Arzobispo José Delicado, 3, 10° B",
+    "lat": 41.6516325,
+    "lng": -4.7349485
+  },
+  {
+    "nombre": "Parque Canino Puente Jardín",
+    "tipo": "parque",
+    "direccion": "P.º Jardín Botánico",
+    "lat": 41.6688815,
+    "lng": -4.7338301
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "47195 Arroyo de la Encomienda",
+    "lat": 41.6085371,
+    "lng": -4.7988149
+  },
+  {
+    "nombre": "Parque canino Pinar de Jalón",
+    "tipo": "parque",
+    "direccion": "C. Kilimanjaro, 1",
+    "lat": 41.6179487,
+    "lng": -4.7195808
+  },
+  {
+    "nombre": "Stylo Montelae peluquería canina",
+    "tipo": "tienda",
+    "direccion": "Av. Reverendo José Montero, 16",
+    "lat": 41.472862299999996,
+    "lng": -4.5903949
+  },
+  {
+    "nombre": "Naturecan",
+    "tipo": "adiestrador",
+    "direccion": "Cam. Simancas",
+    "lat": 41.628441699999996,
+    "lng": -4.8490731
+  },
+  {
+    "nombre": "Centro canino Los Almendros",
+    "tipo": "adiestrador",
+    "direccion": "Carretera de Tordesillas, km 7",
+    "lat": 41.4706214,
+    "lng": -4.9262296
+  },
+  {
+    "nombre": "Tanatorio de Mascotas | San Antón",
+    "tipo": "tienda",
+    "direccion": "Cam. de Herrera, S/N",
+    "lat": 41.6023668,
+    "lng": -4.6841371
+  },
+  {
+    "nombre": "Lobocan Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "Polígono, 7, parcela 51",
+    "lat": 41.856633099999996,
+    "lng": -4.5030043
+  },
+  {
+    "nombre": "Centro Canino Lobocan",
+    "tipo": "adiestrador",
+    "direccion": "Carretera Local P-120, s/n",
+    "lat": 41.858702699999995,
+    "lng": -4.5047008
+  },
+  {
+    "nombre": "Residencia de mayores y Apartamentos Amavir El Encinar del Rey",
+    "tipo": "otros",
+    "direccion": "Calle Barcelona, 8",
+    "lat": 41.620646,
+    "lng": -4.76329
+  },
+  {
+    "nombre": "Verónica Rico",
+    "tipo": "peluqueria",
+    "direccion": "P.º de Zorrilla, 94",
+    "lat": 41.639837199999995,
+    "lng": -4.738772099999999
+  },
+  {
+    "nombre": "Spa Perros",
+    "tipo": "tienda",
+    "direccion": "C. Carnicerías, 13",
+    "lat": 41.2891526,
+    "lng": -4.6857042
+  },
+  {
+    "nombre": "las 5 Bes Vivienda uso turístico",
+    "tipo": "alojamiento",
+    "direccion": "C. San Ignacio, 5",
+    "lat": 41.6553535,
+    "lng": -4.729164
+  },
+  {
+    "nombre": "Aquaterra",
+    "tipo": "tienda",
+    "direccion": "Av. de Asturias, 8",
+    "lat": 42.017267499999996,
+    "lng": -4.5400237
+  },
+  {
+    "nombre": "LA NIÑA DE LOS PEINES(Raquel Pérez),antes Fandango",
+    "tipo": "peluqueria",
+    "direccion": "C. Torres Quevedo, 5",
+    "lat": 41.6169545,
+    "lng": -4.7987036
+  },
+  {
+    "nombre": "Puppy Park",
+    "tipo": "otros",
+    "direccion": "Av. Madrid, 22",
+    "lat": 41.620050299999996,
+    "lng": -4.7265920999999995
+  },
+  {
+    "nombre": "Criadero Delazurriaga",
+    "tipo": "otros",
+    "direccion": "Calle Perez de Pablo, 8",
+    "lat": 41.4305324,
+    "lng": -4.6672180999999995
+  },
+  {
+    "nombre": "The Book Factory Hostel by gaiarooms",
+    "tipo": "alojamiento",
+    "direccion": "C. Paraíso, 8",
+    "lat": 41.654312399999995,
+    "lng": -4.7210003
+  },
+  {
+    "nombre": "Doggylandia",
+    "tipo": "tienda",
+    "direccion": "C. Fragua, 12",
+    "lat": 41.6115266,
+    "lng": -4.6848038
+  },
+  {
+    "nombre": "Clínica Veterinaria El Arca de Noé",
+    "tipo": "adiestrador",
+    "direccion": "Pl. Colegio de Sta. Cruz, 1",
+    "lat": 41.65106,
+    "lng": -4.7208407
+  },
+  {
+    "nombre": "Hotel Vincci Frontaura Valladolid",
+    "tipo": "alojamiento",
+    "direccion": "P.º de Zorrilla, 332",
+    "lat": 41.6215401,
+    "lng": -4.7482991
+  },
+  {
+    "nombre": "Dorma El Coloquio",
+    "tipo": "alojamiento",
+    "direccion": "Pl. de la Univ., 11",
+    "lat": 41.6524997,
+    "lng": -4.7227058
+  },
+  {
+    "nombre": "Centro Comercial Vallsur",
+    "tipo": "otros",
+    "direccion": "P.º de Zorrilla, 328",
+    "lat": 41.623294,
+    "lng": -4.750089399999999
+  },
+  {
+    "nombre": "La Rosaleda Francisco Sabadell",
+    "tipo": "parque",
+    "direccion": "P.º Isabel la Catolica, 8",
+    "lat": 41.6529576,
+    "lng": -4.7328337
+  },
+  {
+    "nombre": "Dorma Juan de Austria",
+    "tipo": "alojamiento",
+    "direccion": "P.º de Zorrilla, 108",
+    "lat": 41.6386746,
+    "lng": -4.7391799
+  },
+  {
+    "nombre": "Hotel NH Valladolid Bálago",
+    "tipo": "alojamiento",
+    "direccion": "C. de las Mieses, 28",
+    "lat": 41.657441999999996,
+    "lng": -4.740815
+  },
+  {
+    "nombre": "Hotel Zentral Parque Valladolid",
+    "tipo": "alojamiento",
+    "direccion": "P.º del Hospital Militar",
+    "lat": 41.642436,
+    "lng": -4.7322351
+  },
+  {
+    "nombre": "Alda Valladolid Sur",
+    "tipo": "alojamiento",
+    "direccion": "C. del Oro, 32 A, Blq 3",
+    "lat": 41.6171478,
+    "lng": -4.7041509999999995
+  },
+  {
+    "nombre": "Sanitos",
+    "tipo": "tienda",
+    "direccion": "P.C.Rio Shopping",
+    "lat": 41.6303337,
+    "lng": -4.7846405
+  },
+  {
+    "nombre": "Criadores.-Teckels de 'EL SAUZAL'",
+    "tipo": "otros",
+    "direccion": "C. Joaquín Rodrigo, 1",
+    "lat": 41.596712499999995,
+    "lng": -4.8049140999999995
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "Av. de Las Salinas, 8",
+    "lat": 41.587242599999996,
+    "lng": -4.7248949
+  },
+  {
+    "nombre": "CRIADERO DE CACHORROS",
+    "tipo": "otros",
+    "direccion": "C. Pérez Galdós",
+    "lat": 41.649172199999995,
+    "lng": -4.7162874
+  },
+  {
+    "nombre": "Eh Voilà! Crêpstaurante Casual",
+    "tipo": "restaurante",
+    "direccion": "C. Marqués del Duero, 7",
+    "telefono": "+34 983 25 93 69",
+    "valoracion": 4.5,
+    "resenas": 4173,
+    "horario": "",
+    "estado": "",
+    "lat": 41.655042,
+    "lng": -4.7215116,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Eh%20Voil%C3%A0!%20Cr%C3%AApstaurante%20Casual&query_place_id=ChIJnQKuBq4SRw0RbinZ9oqv74w",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "TIERRA 𝐁𝐚𝐭𝐢𝐝𝐨𝐬 𝟏𝟎𝟎% 𝐧𝐚𝐭𝐮𝐫𝐚𝐥𝐞𝐬, 𝐛𝐨𝐰𝐥𝐬 𝐲 𝐚ç𝐚í",
+    "tipo": "cafeteria_bar",
+    "direccion": "ARZOBISPO GANDASEGUI 5, C. de la Antigua, 2, LOCAL 15",
+    "telefono": "+34 651 95 99 14",
+    "valoracion": 4.8,
+    "resenas": 191,
+    "horario": "",
+    "estado": "",
+    "lat": 41.65369,
+    "lng": -4.7223499,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=TIERRA%20%F0%9D%90%81%F0%9D%90%9A%F0%9D%90%AD%F0%9D%90%A2%F0%9D%90%9D%F0%9D%90%A8%F0%9D%90%AC%20%F0%9D%9F%8F%F0%9D%9F%8E%F0%9D%9F%8E%25%20%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AD%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%9A%F0%9D%90%A5%F0%9D%90%9E%F0%9D%90%AC%2C%20%F0%9D%90%9B%F0%9D%90%A8%F0%9D%90%B0%F0%9D%90%A5%F0%9D%90%AC%20%F0%9D%90%B2%20%F0%9D%90%9A%C3%A7%F0%9D%90%9A%C3%AD&query_place_id=ChIJA20U_kATRw0RpL-0q9xqtIk",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Café & Copas Murmullo",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Núñez de Arce, 38",
+    "telefono": "+34 641 45 10 91",
+    "valoracion": 4.4,
+    "resenas": 1034,
+    "horario": "",
+    "estado": "",
+    "lat": 41.650668,
+    "lng": -4.7208995,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9%20%26%20Copas%20Murmullo&query_place_id=ChIJ4eaGEbESRw0R2Jqr7jl3RfA",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "ASTORGA Pan & Café",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Ferrocarril, 1",
+    "telefono": "+34 636 74 84 69",
+    "valoracion": 4.1,
+    "resenas": 469,
+    "horario": "",
+    "estado": "",
+    "lat": 41.6457772,
+    "lng": -4.7229197,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ASTORGA%20Pan%20%26%20Caf%C3%A9&query_place_id=ChIJz7Vsyh8TRw0Rzv1ioBqvHI0",
+    "fuenteConsulta": "pasteleria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "La Flor de la Canela",
+    "tipo": "cafeteria_bar",
+    "direccion": "P.º Arco de Ladrillo, 18",
+    "telefono": "+34 651 58 43 04",
+    "valoracion": 4.3,
+    "resenas": 960,
+    "horario": "",
+    "estado": "",
+    "lat": 41.6408651,
+    "lng": -4.7313336,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=La%20Flor%20de%20la%20Canela&query_place_id=ChIJPy95SzRtRw0RjvGJWePkFZ0",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Faroles Rock",
+    "tipo": "restaurante",
+    "direccion": "C. Alonso Berruguete, 4",
+    "telefono": "+34 983 64 08 58",
+    "valoracion": 4.7,
+    "resenas": 1212,
+    "horario": "",
+    "estado": "",
+    "lat": 41.6542815,
+    "lng": -4.7245378,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faroles%20Rock&query_place_id=ChIJ6acG48sSRw0RxI80P4ZAXPQ",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Mini Circular",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Padre Claret, 16-18",
+    "telefono": "+34 651 90 74 78",
+    "valoracion": 4.5,
+    "resenas": 151,
+    "horario": "",
+    "estado": "",
+    "lat": 41.645485,
+    "lng": -4.717352,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mini%20Circular&query_place_id=ChIJ80f_vpITRw0RzsrxXkqfZPw",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "MORGAN",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Solanilla, 7",
+    "telefono": "+34 983 14 08 02",
+    "valoracion": 4.5,
+    "resenas": 700,
+    "horario": "",
+    "estado": "",
+    "lat": 41.6543609,
+    "lng": -4.7230539,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MORGAN&query_place_id=ChIJzR9Y-q0SRw0RNZzcvhyNODQ",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Les Paul",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Empecinado, 5",
+    "telefono": "",
+    "valoracion": 4.6,
+    "resenas": 602,
+    "horario": "",
+    "estado": "",
+    "lat": 41.6565401,
+    "lng": -4.7220538,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Les%20Paul&query_place_id=ChIJAQCwh64SRw0Rd3XpxOR4i-Q",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Oso food",
+    "tipo": "restaurante",
+    "direccion": "Calle de Nicasio Perez, 7",
+    "telefono": "+34 624 36 79 42",
+    "valoracion": 4.7,
+    "resenas": 41,
+    "horario": "",
+    "estado": "",
+    "lat": 41.6511269,
+    "lng": -4.7165578,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Oso%20food&query_place_id=ChIJxWXe4aITRw0R9Wz05BIqjC8",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Libercan",
+    "tipo": "guarderia_canina",
+    "direccion": "Av. Pernalta, s/n",
+    "telefono": "699 43 10 42",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "8:00–20:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 41.700714999999995,
+    "lng": -4.727733,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJN9ej0CoNRw0RNlQRD0nDIEI",
+    "fuenteConsulta": "guarderia canina en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Arcovet Productos Veterinarios, S.L.",
+    "tipo": "farmacia_veterinaria",
+    "direccion": "C. Jorge Guillén, 4",
+    "telefono": "983 04 96 79",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "9:00–13:45",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 41.654022999999995,
+    "lng": -4.7307985,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJkwuSelJtRw0Ry09LpWc3W0c",
+    "fuenteConsulta": "farmacia veterinaria en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Centro Veterinario Castilla",
+    "tipo": "veterinario",
+    "direccion": "Av. Ramón Pradera, 16",
+    "telefono": "983 34 65 93",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "10:15–14:00",
+    "estado": "Abierto · Cierre: 20:30",
+    "lat": 41.658153299999995,
+    "lng": -4.7365629,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJq9mty1BtRw0RMXfdPrIyq-Y",
+    "fuenteConsulta": "veterinario mascotas en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Centro Clínico Veterinario San Ignacio",
+    "tipo": "veterinario",
+    "direccion": "C. San Ignacio, 2",
+    "telefono": "983 35 15 79",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "9:30–20:30",
+    "estado": "Abierto · Cierre: 20:30",
+    "lat": 41.6551677,
+    "lng": -4.728968399999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJJUcI6lJtRw0ReEmcsIZtzSs",
+    "fuenteConsulta": "veterinario mascotas en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "HOTEL CANINO SULU. (Peluquería Canina)",
+    "tipo": "peluqueria_canina",
+    "direccion": "Carretera Mudarra, 13",
+    "telefono": "619 80 79 26",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "10:00–14:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 41.772831599999996,
+    "lng": -5.0373697,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJO_Fw2Cp_Rw0R4tPtcGVkujg",
+    "fuenteConsulta": "guarderia canina en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia de mascotas Momo",
+    "tipo": "guarderia_canina",
+    "direccion": "Camino de la Barranca, S/N",
+    "telefono": "644 36 68 66",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 41.811108399999995,
+    "lng": -4.7086361,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJh-9Grq8LRw0RORZ2Z_v--rI",
+    "fuenteConsulta": "guarderia canina en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Centro Veterinario Animalia",
+    "tipo": "veterinario",
+    "direccion": "C. Morena, 1",
+    "telefono": "983 63 04 02",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "",
+    "estado": "Abierto ahora",
+    "lat": 41.6566453,
+    "lng": -4.7426581,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJYzaM0VttRw0Ruve6kMjCmLQ",
+    "fuenteConsulta": "veterinario mascotas en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Centro Veterinario Zorrilla",
+    "tipo": "veterinario",
+    "direccion": "C. Tres Amigos, 4, BAJO",
+    "telefono": "983 22 70 78",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "9:00–20:30",
+    "estado": "Abierto · Cierre: 20:30",
+    "lat": 41.6424478,
+    "lng": -4.7378675999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJSwE58zdtRw0RXZljzrtshlo",
+    "fuenteConsulta": "veterinario mascotas en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Centro Veterinario Neptuno",
+    "tipo": "veterinario",
+    "direccion": "C. Neptuno, 5, LOC",
+    "telefono": "983 34 17 67",
+    "valoracion": 4.5,
+    "resenas": null,
+    "horario": "9:30–20:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 41.661829,
+    "lng": -4.73545,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJvZLXt1dtRw0RiTESChuUvmc",
+    "fuenteConsulta": "veterinario mascotas en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Zoomedic | Productos Zoosanitarios y Salud Animal",
+    "tipo": "veterinario",
+    "direccion": "C. Acero, 12",
+    "telefono": "983 23 52 01",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "8:00–18:00",
+    "estado": "Cierra pronto · 18:00 · Apertura: 8:00 (vie)",
+    "lat": 41.6118611,
+    "lng": -4.7059406,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJt_o4RxYTRw0R1KvqOmnLs4A",
+    "fuenteConsulta": "farmacia veterinaria en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria El Arca de Noé",
+    "tipo": "veterinario",
+    "direccion": "Pl. Colegio de Sta. Cruz, 1",
+    "telefono": "983 30 69 62",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "10:00–14:30",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 41.65106,
+    "lng": -4.7208407,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJe6r6DrESRw0Rk5hIgD5aO_g",
+    "fuenteConsulta": "veterinario mascotas en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Hípica 29",
+    "tipo": "veterinario",
+    "direccion": "C. de la Hipica, 29",
+    "telefono": "983 22 29 47",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "10:00–13:30",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 41.6370152,
+    "lng": -4.735706599999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJhU7L5jBtRw0RhdQrhrCAf1A",
+    "fuenteConsulta": "farmacia veterinaria en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clinicanimal",
+    "tipo": "veterinario",
+    "direccion": "Av. del Real Valladolid, 5",
+    "telefono": "983 18 01 82",
+    "valoracion": 4.3,
+    "resenas": null,
+    "horario": "10:00–21:00",
+    "estado": "Abierto · Cierre: 21:00",
+    "lat": 41.6422761,
+    "lng": -4.7607605,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJYUIhnb9tRw0R4V44bjSU6G8",
+    "fuenteConsulta": "veterinario mascotas en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Evidensia Valladolid Hospital Veterinario",
+    "tipo": "veterinario",
+    "direccion": "C. Sta. Fe, 7",
+    "telefono": "983 27 42 20",
+    "valoracion": 4,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 41.638611499999996,
+    "lng": -4.7295427,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJgSKlsc0SRw0RPGGpVMrI2gk",
+    "fuenteConsulta": "veterinario mascotas en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Centro Canino la Yosa",
+    "tipo": "guarderia_canina",
+    "direccion": "Carretera de Geria, km, 1",
+    "telefono": "659 68 15 84",
+    "valoracion": 3.7,
+    "resenas": null,
+    "horario": "9:00–14:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 41.589732,
+    "lng": -4.84352,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJQxjQVcVuRw0RFkLGXA_nQE8",
+    "fuenteConsulta": "guarderia canina en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Farmacia Labradores 49 (Ldo. Emilio Rodríguez Álvarez)",
+    "tipo": "farmacia_veterinaria",
+    "direccion": "C. de Labradores, 49",
+    "telefono": "983 29 32 86",
+    "valoracion": 3.2,
+    "resenas": null,
+    "horario": "9:30–22:00",
+    "estado": "Abierto · Cierre: 22:00",
+    "lat": 41.64503,
+    "lng": -4.72079,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJvXK3ObYSRw0RFgOPkKrOpKk",
+    "fuenteConsulta": "farmacia veterinaria en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque Canino La Vega",
+    "tipo": "parque_canino",
+    "direccion": "C. la Santamaría, 1",
+    "telefono": "",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "9:00–23:00",
+    "estado": "Abierto · Cierre: 23:00",
+    "lat": 41.614933699999995,
+    "lng": -4.7772898999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJrQBar1FsRw0RhBapxxdUx3E",
+    "fuenteConsulta": "parque para perros en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque_canino",
+    "direccion": "C. Emilio Alarcos",
+    "telefono": "",
+    "valoracion": 4.2,
+    "resenas": null,
+    "horario": "9:00–23:00",
+    "estado": "Abierto · Cierre: 23:00",
+    "lat": 41.6146883,
+    "lng": -4.803195,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ9ZjW1rZtRw0RinlGa_vbEJM",
+    "fuenteConsulta": "parque para perros en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Las Norias",
+    "tipo": "parque_canino",
+    "direccion": "C. de la Azucarera, 8",
+    "telefono": "",
+    "valoracion": 4.1,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 41.633002,
+    "lng": -4.7345331999999996,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJydipYW5tRw0RGZNEK1cTn58",
+    "fuenteConsulta": "parque para perros en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Los Santos - Pilarica",
+    "tipo": "parque_canino",
+    "direccion": "C. del Astrofísico Carlos Sánchez Magro",
+    "telefono": "",
+    "valoracion": 4.1,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 41.6518395,
+    "lng": -4.6992775,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJTVatXFETRw0R9U62QNHGF90",
+    "fuenteConsulta": "parque para perros en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque lapeira",
+    "tipo": "parque_canino",
+    "direccion": "C. Valle de Arán, 11",
+    "telefono": "",
+    "valoracion": 4,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 41.668870399999996,
+    "lng": -4.7168003,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJR6uV9VkNRw0RM9_gfslclUU",
+    "fuenteConsulta": "area canina en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque_canino",
+    "direccion": "C. de las Eras",
+    "telefono": "",
+    "valoracion": 3.8,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 41.6599673,
+    "lng": -4.7367653999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJM7q93DRtRw0R3776jqY4rEE",
+    "fuenteConsulta": "parque para perros en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Canterac",
+    "tipo": "parque_canino",
+    "direccion": "C. Canterac, 28B",
+    "telefono": "",
+    "valoracion": 3.7,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 41.6378972,
+    "lng": -4.7141,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJgXaHaa8TRw0RAITs81UnzCE",
+    "fuenteConsulta": "parque para perros en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Parquesol",
+    "tipo": "parque_canino",
+    "direccion": "C. Miralparque, 20",
+    "telefono": "",
+    "valoracion": 3.7,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 41.634465299999995,
+    "lng": -4.7527279,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJUd-eOxdtRw0R2KCUX4O9VDU",
+    "fuenteConsulta": "parque para perros en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Parquesol Alto",
+    "tipo": "parque_canino",
+    "direccion": "C. Juan García Hortelano, 16",
+    "telefono": "",
+    "valoracion": 3.6,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 41.6378086,
+    "lng": -4.7664232,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJH3diLRVtRw0Rguj4ajZfOfc",
+    "fuenteConsulta": "parque para perros en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque_canino",
+    "direccion": "P.º Isabel la Catolica",
+    "telefono": "",
+    "valoracion": 3.6,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 41.650636999999996,
+    "lng": -4.7330944,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJvQb7EFJtRw0RK3PMt-0KddE",
+    "fuenteConsulta": "parque para perros en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque_canino",
+    "direccion": "C. de los Vinos de la Ribera del Duero, 1B",
+    "telefono": "",
+    "valoracion": 3.5,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 41.6195648,
+    "lng": -4.7496722,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJQe9Ck-BsRw0RtnyK3Qh3f0k",
+    "fuenteConsulta": "parque para perros en Valladolid, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Centro Canino ValdeVid",
+    "tipo": "guarderia_canina",
+    "direccion": "Senda Bergante, s/n",
+    "telefono": "605 89 21 06",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "17:00–19:00",
+    "estado": "Abierto · Cierra a las 19:00",
+    "lat": 41.7275385,
+    "lng": -4.7095556,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ71km1gcLRw0R7qg9uv7GGWo",
+    "fuenteConsulta": "guarderia canina Valladolid",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Hakuna matata",
+    "tipo": "veterinario",
+    "direccion": "C. del Amor de Dios, 3",
+    "telefono": "657 93 56 60",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "10:30–13:30",
+    "estado": "Abierto · Cierra a las 20:00",
+    "lat": 41.6600517,
+    "lng": -4.714684,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJLRJ_mQMTRw0RyEaA659jqXg",
+    "fuenteConsulta": "peluqueria canina Valladolid",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Criadero Labrador Retiever - Lomo Ancho",
+    "tipo": "guarderia_canina",
+    "direccion": "Carretera Medina de Rio Seco - Toro, Km 10",
+    "telefono": "625 79 37 53",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "10:00–14:00",
+    "estado": "Abierto · Cierra a las 19:00",
+    "lat": 41.8192199,
+    "lng": -5.122778299999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJRax-GDZ-OA0R2LbbVB3fd4o",
+    "fuenteConsulta": "guarderia canina Valladolid",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Hotel Canino y Felino Vetoven | Residencia para perros y gatos",
+    "tipo": "guarderia_canina",
+    "direccion": "Camino la Estación, 89",
+    "telefono": "637 55 75 77",
+    "valoracion": 4.5,
+    "resenas": null,
+    "horario": "10:00–20:00",
+    "estado": "Abierto · Cierra a las 20:00",
+    "lat": 41.9285894,
+    "lng": -5.1391987,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ_ZNqlld5OA0Rl4U_4W5EUsg",
+    "fuenteConsulta": "guarderia canina Valladolid",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Los Galgos",
+    "tipo": "veterinario",
+    "direccion": "C. José Zorrilla, 1",
+    "telefono": "983 80 34 91",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 41.3083601,
+    "lng": -4.9191801,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ38XteUZQRw0RLvPG6KwtGyg",
+    "fuenteConsulta": "clinica veterinaria 24h Valladolid",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Huellas de viaje",
+    "tipo": "guarderia_canina",
+    "direccion": "con",
+    "telefono": "691 80 10 48",
+    "valoracion": 4,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 41.5906483,
+    "lng": -4.6919116,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ7UKnNsoTRw0RXadPku9zEo4",
+    "fuenteConsulta": "guarderia canina Valladolid",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Burgos La Huerta",
+    "tipo": "veterinario",
+    "direccion": "C. de Portugal, 91",
+    "telefono": "607 39 83 00",
+    "valoracion": 1,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 41.641650899999995,
+    "lng": -4.7353816,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ8zQ5TTZtRw0RcYbNE-ABCJQ",
+    "fuenteConsulta": "clinica veterinaria 24h Valladolid",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

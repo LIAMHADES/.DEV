@@ -1,0 +1,42 @@
+[
+  {
+    "nombre": "Airavella Aldea canina",
+    "tipo": "guarderia_canina",
+    "direccion": "A Portela da Airavella",
+    "telefono": "671 70 11 09",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "9:30–14:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 42.1884252,
+    "lng": -7.774090999999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJycC7nXetOg0RGS924JnZN3c",
+    "fuenteConsulta": "guarderia canina en Ourense, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia Canina Do Castelo",
+    "tipo": "guarderia_canina",
+    "direccion": "Estrada Vilar - O Pinto, 25",
+    "telefono": "622 04 99 86",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "9:00–12:30",
+    "estado": "Abierto · Cierre: 20:30",
+    "lat": 42.329860599999996,
+    "lng": -7.723948399999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ-z6I0z8BMA0RPIyK-Fcc_7s",
+    "fuenteConsulta": "guarderia canina en Ourense, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

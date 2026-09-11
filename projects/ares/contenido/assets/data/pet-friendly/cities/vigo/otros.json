@@ -1,0 +1,72 @@
+[
+  {
+    "nombre": "APARTAMENTOS TURÍSTICOS SAMILCOSTA",
+    "tipo": "otros",
+    "direccion": "Av. Samil, 57",
+    "lat": 42.2071805,
+    "lng": -8.7753325
+  },
+  {
+    "nombre": "Playa La Cunchiña",
+    "tipo": "otros",
+    "direccion": "Cangas",
+    "lat": 42.2528059,
+    "lng": -8.788231699999999
+  },
+  {
+    "nombre": "Playa da Calzoa",
+    "tipo": "otros",
+    "direccion": "36331 Vigo",
+    "lat": 42.201915899999996,
+    "lng": -8.7823647
+  },
+  {
+    "nombre": "Punto recogida centro canino o meu can",
+    "tipo": "otros",
+    "direccion": "Rúa do Areal",
+    "lat": 42.240361199999995,
+    "lng": -8.7241909
+  },
+  {
+    "nombre": "Vithas RED Análisis Clínicos",
+    "tipo": "otros",
+    "direccion": "Rúa Lepanto, 5",
+    "lat": 42.23486,
+    "lng": -8.716254
+  },
+  {
+    "nombre": "Praia da Cunchiña",
+    "tipo": "otros",
+    "direccion": "Cangas",
+    "lat": 42.2528059,
+    "lng": -8.788231699999999
+  },
+  {
+    "nombre": "Farmacia Balaidos 24h",
+    "tipo": "otros",
+    "direccion": "Rúa Manuel de Castro, 21",
+    "lat": 42.213031699999995,
+    "lng": -8.7401275
+  },
+  {
+    "nombre": "Centro municipal de proteción animal A Madroa",
+    "tipo": "otros",
+    "direccion": "Subida á Madroa, 69, 71",
+    "lat": 42.2504151,
+    "lng": -8.6679973
+  },
+  {
+    "nombre": "AguaPet Lavamascotas",
+    "tipo": "otros",
+    "direccion": "Av. de Emilio Martínez Garrido, 108",
+    "lat": 42.225124,
+    "lng": -8.706307599999999
+  },
+  {
+    "nombre": "Moov Dog",
+    "tipo": "otros",
+    "direccion": "Rúa Travesía de Vigo, 96",
+    "lat": 42.2366951,
+    "lng": -8.703273
+  }
+]

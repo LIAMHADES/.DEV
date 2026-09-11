@@ -1,0 +1,2740 @@
+[
+  {
+    "nombre": "Dogcheca adiestrador canino",
+    "tipo": "adiestrador",
+    "direccion": "41927 Mairena del Aljarafe",
+    "lat": 37.3432482,
+    "lng": -6.0424821
+  },
+  {
+    "nombre": "La Huella de Mico",
+    "tipo": "adiestrador",
+    "direccion": "Av. Sevilla",
+    "lat": 37.3807976,
+    "lng": -6.1211864
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "C. Chiclana, 10",
+    "lat": 37.3558685,
+    "lng": -6.0324127999999995
+  },
+  {
+    "nombre": "Athoscan educación canina",
+    "tipo": "adiestrador",
+    "direccion": "C. Navas de Tolosa, s/n",
+    "lat": 37.3510902,
+    "lng": -6.025967
+  },
+  {
+    "nombre": "Papà Perruno",
+    "tipo": "adiestrador",
+    "direccion": "C. Arroyo, 111",
+    "lat": 37.3987081,
+    "lng": -5.9740499
+  },
+  {
+    "nombre": "Parroquianos Barbería",
+    "tipo": "otros",
+    "direccion": "C. Florencio Quintero, 26 E",
+    "lat": 37.402841599999995,
+    "lng": -5.9844460999999995
+  },
+  {
+    "nombre": "By Mascota San Roque - Tienda Mascotas & Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. Recaredo, 8",
+    "lat": 37.3903679,
+    "lng": -5.9839227
+  },
+  {
+    "nombre": "Bark Studio - Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. Olivares, 5, Loc 4",
+    "lat": 37.3813017,
+    "lng": -6.007535
+  },
+  {
+    "nombre": "Caliani K9 - Educación Canina",
+    "tipo": "adiestrador",
+    "direccion": "Calle Fernández de Ribera 7 (En CIAC",
+    "lat": 37.377691299999995,
+    "lng": -5.972396799999999
+  },
+  {
+    "nombre": "Guaw Sevilla Higueron",
+    "tipo": "tienda",
+    "direccion": "C. Caronte",
+    "lat": 37.4320952,
+    "lng": -5.968890099999999
+  },
+  {
+    "nombre": "Educandog Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "C. Huerto Esquivel",
+    "lat": 37.3761505,
+    "lng": -6.3297874
+  },
+  {
+    "nombre": "Lavamascotas Capuchinos",
+    "tipo": "tienda",
+    "direccion": "Gasolinera REPSOL",
+    "lat": 37.4004437,
+    "lng": -5.9845361
+  },
+  {
+    "nombre": "Ohana, productos para mascotas-Semilleria.",
+    "tipo": "tienda",
+    "direccion": "C. Parque de Grazalema, 5",
+    "lat": 37.416806699999995,
+    "lng": -5.9708627
+  },
+  {
+    "nombre": "Residencia Canina",
+    "tipo": "tienda",
+    "direccion": "C. Sta. Lucía, 68",
+    "lat": 37.464826699999996,
+    "lng": -5.6459719
+  },
+  {
+    "nombre": "Surcan Adiestramiento Canino en Sevilla | Conducta y Educación",
+    "tipo": "adiestrador",
+    "direccion": "41620 Marchena",
+    "lat": 37.330747099999996,
+    "lng": -5.4256513
+  },
+  {
+    "nombre": "Criadero de Mascotas Kosai",
+    "tipo": "otros",
+    "direccion": "CA-31, 28",
+    "lat": 36.866310399999996,
+    "lng": -6.0301836
+  },
+  {
+    "nombre": "Criador y Adiestrador canino Entreboxer",
+    "tipo": "adiestrador",
+    "direccion": "C. Trascorrales, 11",
+    "lat": 37.3455461,
+    "lng": -6.0653177
+  },
+  {
+    "nombre": "TRAVIESOS Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. Traviesa, 27, Loc 20",
+    "lat": 37.4215879,
+    "lng": -5.9857347
+  },
+  {
+    "nombre": "BroCan Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "C. Cam. del Agua, 741",
+    "lat": 37.3902269,
+    "lng": -6.0464744999999995
+  },
+  {
+    "nombre": "Caring Dog Luis montoto",
+    "tipo": "tienda",
+    "direccion": "C. José María Moreno Galván, 2",
+    "lat": 37.38792,
+    "lng": -5.983169999999999
+  },
+  {
+    "nombre": "Interzoo Sevilla",
+    "tipo": "tienda",
+    "direccion": "C. París, (localA",
+    "lat": 37.3456652,
+    "lng": -5.9814096
+  },
+  {
+    "nombre": "Canidos Training",
+    "tipo": "adiestrador",
+    "direccion": "C. Cueva del Gato, 8, Blq 2, 4 c",
+    "lat": 37.4004731,
+    "lng": -5.9421525
+  },
+  {
+    "nombre": "Urban Doggy Peluquería y Estética Canina",
+    "tipo": "tienda",
+    "direccion": "Norte",
+    "lat": 37.4033819,
+    "lng": -5.9678248
+  },
+  {
+    "nombre": "Junglanimal",
+    "tipo": "tienda",
+    "direccion": "Residencial Parqueflores Fase 2",
+    "lat": 37.414834899999995,
+    "lng": -5.9650951
+  },
+  {
+    "nombre": "Armonía Canina",
+    "tipo": "otros",
+    "direccion": "Callejon de La Dehesa, 385",
+    "lat": 37.2701821,
+    "lng": -6.3045339
+  },
+  {
+    "nombre": "Educación canina en grupo",
+    "tipo": "adiestrador",
+    "direccion": "María Ortiz",
+    "lat": 37.382151,
+    "lng": -6.0149973
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "41950 Castilleja de la Cuesta",
+    "lat": 37.3891839,
+    "lng": -6.0454061
+  },
+  {
+    "nombre": "MamiDog",
+    "tipo": "otros",
+    "direccion": "Urb. Los Naranjos, 95B",
+    "lat": 37.415253,
+    "lng": -5.815961799999999
+  },
+  {
+    "nombre": "Michis & Guaguas",
+    "tipo": "otros",
+    "direccion": "urbanización los tréboles",
+    "lat": 37.2732609,
+    "lng": -5.8985692
+  },
+  {
+    "nombre": "Vinculados Educación Canina",
+    "tipo": "adiestrador",
+    "direccion": "Av. la Aeronáutica, 2",
+    "lat": 37.3874561,
+    "lng": -5.9195974
+  },
+  {
+    "nombre": "ADIESTRAMIENTO CANINO - CLUB CAN LOS PALACIOS",
+    "tipo": "adiestrador",
+    "direccion": "SE-9020",
+    "lat": 37.1740546,
+    "lng": -5.8908949
+  },
+  {
+    "nombre": "Pomestyle",
+    "tipo": "otros",
+    "direccion": "Ctra. Tocina",
+    "lat": 37.4453801,
+    "lng": -5.7186486
+  },
+  {
+    "nombre": "SantosBichos Triana | Tienda de mascotas",
+    "tipo": "tienda",
+    "direccion": "C. Trabajo, 37",
+    "lat": 37.3785672,
+    "lng": -6.0054877
+  },
+  {
+    "nombre": "Kanaky Terraria",
+    "tipo": "tienda",
+    "direccion": "C. Herramientas, 43",
+    "lat": 37.3660417,
+    "lng": -5.9600632
+  },
+  {
+    "nombre": "Danacan Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "Residencial Parqueflores fase, 2",
+    "lat": 37.414819,
+    "lng": -5.9650896
+  },
+  {
+    "nombre": "CIAC",
+    "tipo": "tienda",
+    "direccion": "Calle Fernández de Ribera, 7",
+    "lat": 37.377691299999995,
+    "lng": -5.972396799999999
+  },
+  {
+    "nombre": "Seciliatus Mascotas",
+    "tipo": "tienda",
+    "direccion": "C. Virgen de Aguas Santas, 8",
+    "lat": 37.374522899999995,
+    "lng": -6.0035288
+  },
+  {
+    "nombre": "Peluquería Canina Pasión Peluda",
+    "tipo": "tienda",
+    "direccion": "C. Juan Sebastián Elcano, 11, Bajo 2",
+    "lat": 37.374417699999995,
+    "lng": -5.9960808
+  },
+  {
+    "nombre": "ESPÍRITU ANIMAL PELUQUERÍA CANINA",
+    "tipo": "tienda",
+    "direccion": "Rda. de Capuchinos, 10, esc 1 local 5",
+    "lat": 37.3990539,
+    "lng": -5.9828332
+  },
+  {
+    "nombre": "Centro Canino El Palmarillo",
+    "tipo": "adiestrador",
+    "direccion": "Camino",
+    "lat": 37.5521269,
+    "lng": -6.047214299999999
+  },
+  {
+    "nombre": "By Mascota Los Remedios - Tienda Mascotas & Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C/ Asunción, 70",
+    "lat": 37.3738622,
+    "lng": -5.9975922
+  },
+  {
+    "nombre": "ADIESTRA KANINO SEVILLA",
+    "tipo": "adiestrador",
+    "direccion": "Norte",
+    "lat": 37.4251527,
+    "lng": -5.9761811
+  },
+  {
+    "nombre": "Juan Galán Peluquero",
+    "tipo": "peluqueria",
+    "direccion": "Av. de El Greco, 7",
+    "lat": 37.3911091,
+    "lng": -5.9681174
+  },
+  {
+    "nombre": "Arcan | Adiestrador de Perros en Sevilla",
+    "tipo": "adiestrador",
+    "direccion": "Residencial Sirius",
+    "lat": 37.2827556,
+    "lng": -5.9430821
+  },
+  {
+    "nombre": "Criadero Pets de Cardecan",
+    "tipo": "otros",
+    "direccion": "C. Virgen de la Laguna, 4",
+    "lat": 36.8539276,
+    "lng": -6.041178599999999
+  },
+  {
+    "nombre": "LUNACAN (tienda de alimentación para mascotas y adiestrador canino profesional en San Jose de la Rinconada)",
+    "tipo": "adiestrador",
+    "direccion": "C. Miguel Servet, n°11, C",
+    "lat": 37.4897852,
+    "lng": -5.9323481
+  },
+  {
+    "nombre": "Aguilas5 SevillaSuites",
+    "tipo": "alojamiento",
+    "direccion": "C. Águilas, 5",
+    "lat": 37.389936999999996,
+    "lng": -5.989294999999999
+  },
+  {
+    "nombre": "Evolucan K9 Integral services sl",
+    "tipo": "adiestrador",
+    "direccion": "Av. la Prensa, 4",
+    "lat": 37.3898923,
+    "lng": -5.9574085
+  },
+  {
+    "nombre": "CANINO DIVINO",
+    "tipo": "tienda",
+    "direccion": "Calle Ben-Sahl de Sevilla",
+    "lat": 37.3939582,
+    "lng": -5.9790402
+  },
+  {
+    "nombre": "Don Perro Nervión",
+    "tipo": "tienda",
+    "direccion": "C. Palacio Valdés, 1",
+    "lat": 37.3822025,
+    "lng": -5.9721683
+  },
+  {
+    "nombre": "Peluqueria Del Valle",
+    "tipo": "peluqueria",
+    "direccion": "C/ Juan Rabadán, 18, C",
+    "lat": 37.3972408,
+    "lng": -5.9977164
+  },
+  {
+    "nombre": "Alejandra Jiménez Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "Av. de Emilio Lemos, 42",
+    "lat": 37.4057333,
+    "lng": -5.913030099999999
+  },
+  {
+    "nombre": "Parque De Perros",
+    "tipo": "otros",
+    "direccion": "Carretera Alcala Tr 1, 5, 41020",
+    "lat": 37.3943502,
+    "lng": -5.9311621
+  },
+  {
+    "nombre": "La Comuna Canina",
+    "tipo": "otros",
+    "direccion": "AAVV FAMILIAR",
+    "lat": 37.2151847,
+    "lng": -5.9692150999999996
+  },
+  {
+    "nombre": "Peluqueria canina Sevilla este",
+    "tipo": "tienda",
+    "direccion": "Calle Cueva del gato 6, local 17A",
+    "lat": 37.400152,
+    "lng": -5.940943
+  },
+  {
+    "nombre": "CARING DOG Nuevo Torneo",
+    "tipo": "tienda",
+    "direccion": "Polígono Industrial Nuevo Torneo Calle Astronomía Local N 16 Y 18",
+    "lat": 37.4270569,
+    "lng": -5.9762195
+  },
+  {
+    "nombre": "Alquimia peluquería canina sevilla",
+    "tipo": "tienda",
+    "direccion": "C. Chipre, 5, Loc 11",
+    "lat": 37.3439888,
+    "lng": -5.9817947
+  },
+  {
+    "nombre": "Owanda El Barrio de las Mascotas",
+    "tipo": "tienda",
+    "direccion": "Av. de Montes Sierra, 13",
+    "lat": 37.3922951,
+    "lng": -5.9556951
+  },
+  {
+    "nombre": "Ku4tro C Peluqueros",
+    "tipo": "peluqueria",
+    "direccion": "Ctra. de Carmona, 10",
+    "lat": 37.3982595,
+    "lng": -5.9799036999999995
+  },
+  {
+    "nombre": "La tienda del animal de compañía (José Chaparro S.L.)",
+    "tipo": "tienda",
+    "direccion": "C. Fray Isidoro de Sevilla, 26",
+    "lat": 37.403762799999996,
+    "lng": -5.9836965
+  },
+  {
+    "nombre": "Suites Machado",
+    "tipo": "otros",
+    "direccion": "C. Fabiola, 9",
+    "lat": 37.3870365,
+    "lng": -5.989031
+  },
+  {
+    "nombre": "Hotel Tayko Sevilla",
+    "tipo": "alojamiento",
+    "direccion": "Prta de Jerez, 3",
+    "lat": 37.382342,
+    "lng": -5.993942
+  },
+  {
+    "nombre": "Centro Canino Clan Ferona",
+    "tipo": "otros",
+    "direccion": "C. Guadaíra, 1",
+    "lat": 37.4605789,
+    "lng": -5.3419460999999995
+  },
+  {
+    "nombre": "Peluquero Pepe Sevilla",
+    "tipo": "peluqueria",
+    "direccion": "C. Poeta Manuel Benítez Carrasco, 32",
+    "lat": 37.3674919,
+    "lng": -5.971553699999999
+  },
+  {
+    "nombre": "Mascotas Ávila Sevilla Felipe II",
+    "tipo": "tienda",
+    "direccion": "C. Felipe II, 12",
+    "lat": 37.3717489,
+    "lng": -5.9830035
+  },
+  {
+    "nombre": "el Edén de Adán y eva",
+    "tipo": "otros",
+    "direccion": "blanca y gris",
+    "lat": 37.405769299999996,
+    "lng": -5.9829816
+  },
+  {
+    "nombre": "Semilleria la Salle",
+    "tipo": "tienda",
+    "direccion": "Av. San Juan de la Salle, 69",
+    "lat": 37.4079249,
+    "lng": -5.9715897
+  },
+  {
+    "nombre": "SCHOOL4DOGS",
+    "tipo": "otros",
+    "direccion": "9RVC+8G3",
+    "lat": 37.393322999999995,
+    "lng": -6.1785139
+  },
+  {
+    "nombre": "Olfacanes",
+    "tipo": "otros",
+    "direccion": "Cam. de Bollullos",
+    "lat": 37.3410142,
+    "lng": -6.0818712999999995
+  },
+  {
+    "nombre": "CLUB CAN - ADIESTRAMIENTO CANINO A DOMICILIO",
+    "tipo": "adiestrador",
+    "direccion": "C. del Aire, 2",
+    "lat": 37.3736105,
+    "lng": -6.0603706
+  },
+  {
+    "nombre": "Mascotas Vtm",
+    "tipo": "tienda",
+    "direccion": "C. Fray Tomás de Berlanga, 10",
+    "lat": 37.3837842,
+    "lng": -6.012774599999999
+  },
+  {
+    "nombre": "peluchos",
+    "tipo": "tienda",
+    "direccion": "Pl. el Gallo, 98",
+    "lat": 37.3974425,
+    "lng": -5.9578451999999995
+  },
+  {
+    "nombre": "ican adiestramiento canino",
+    "tipo": "adiestrador",
+    "direccion": "Av. Pablo Picasso, 5",
+    "lat": 37.3801401,
+    "lng": -6.0459574
+  },
+  {
+    "nombre": "PELUQUERÍA CANINA ESPÍRITU ANIMAL",
+    "tipo": "tienda",
+    "direccion": "92JM+V9P",
+    "lat": 37.3821875,
+    "lng": -5.966562499999999
+  },
+  {
+    "nombre": "Adiestracaninos.es | Rehabilitación, Educación y Adiestramiento Canino en Sevilla",
+    "tipo": "adiestrador",
+    "direccion": "Dr. Jesús Vida, 10, 2º",
+    "lat": 37.3929135,
+    "lng": -6.001869
+  },
+  {
+    "nombre": "CANIDOS",
+    "tipo": "tienda",
+    "direccion": "C. Coquina",
+    "lat": 37.4284831,
+    "lng": -5.9826342
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "41006 Sevilla",
+    "lat": 37.3811648,
+    "lng": -5.943418599999999
+  },
+  {
+    "nombre": "Residencia Canina Mascotas Nazarenas",
+    "tipo": "otros",
+    "direccion": "N-IV",
+    "lat": 37.2270727,
+    "lng": -5.9257484
+  },
+  {
+    "nombre": "Residencia Canina Huellas de Aldebarán",
+    "tipo": "otros",
+    "direccion": "El Saltillo",
+    "lat": 37.2248081,
+    "lng": -5.800736199999999
+  },
+  {
+    "nombre": "Pet Jilton Club",
+    "tipo": "otros",
+    "direccion": "Bormujos Km 7 Carretera",
+    "lat": 37.359995999999995,
+    "lng": -6.0956249
+  },
+  {
+    "nombre": "ANIMALADAS | Mascotas",
+    "tipo": "tienda",
+    "direccion": "C. Feria, 66",
+    "lat": 37.3982275,
+    "lng": -5.9915001
+  },
+  {
+    "nombre": "Fundación Benjamín Mehnert",
+    "tipo": "protectora",
+    "direccion": "Fundación Benjamín Mehnert Granja de la Concepción s/n",
+    "lat": 37.2714517,
+    "lng": -5.8665994
+  },
+  {
+    "nombre": "PETUSO , AMOR Y MASCOTAS",
+    "tipo": "tienda",
+    "direccion": "37°24'16. 5°57'45 Polígono Store calle gramil E2",
+    "lat": 37.404620699999995,
+    "lng": -5.9625556
+  },
+  {
+    "nombre": "Only YOU Hotel Sevilla",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Kansas City, 7",
+    "lat": 37.3894376,
+    "lng": -5.9746245
+  },
+  {
+    "nombre": "Peluquería Canina LOLA Avenida Pino Montano 29",
+    "tipo": "tienda",
+    "direccion": "Av. de Pino Montano, 29",
+    "lat": 37.410402999999995,
+    "lng": -5.9720641
+  },
+  {
+    "nombre": "Inmacan Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. Andrés Martínez León, 1",
+    "lat": 37.402805799999996,
+    "lng": -5.9188450999999995
+  },
+  {
+    "nombre": "Caring Dog Feria",
+    "tipo": "tienda",
+    "direccion": "C. Feria, 131",
+    "lat": 37.4011786,
+    "lng": -5.9918746
+  },
+  {
+    "nombre": "Centro DiveRTinA – Asociación DiveRTinA",
+    "tipo": "otros",
+    "direccion": "C. Luis Fuentes Bejarano, 50",
+    "lat": 37.406405,
+    "lng": -5.9456608
+  },
+  {
+    "nombre": "Acuario Mundo Mascotas Martínez",
+    "tipo": "tienda",
+    "direccion": "P.I. El Manchón",
+    "lat": 37.3755879,
+    "lng": -6.030018
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Av. de Andalucía",
+    "lat": 37.3878854,
+    "lng": -5.9605383
+  },
+  {
+    "nombre": "Cristine Bedfor Guest Houses Sevilla",
+    "tipo": "alojamiento",
+    "direccion": "C. Amor de Dios, 29",
+    "lat": 37.3951238,
+    "lng": -5.9946193999999995
+  },
+  {
+    "nombre": "Centro Canino De Villa Vereda",
+    "tipo": "otros",
+    "direccion": "Ctra. Bormujos a",
+    "lat": 37.359527899999996,
+    "lng": -6.094879499999999
+  },
+  {
+    "nombre": "Clínica Veterinaria Los Corrales",
+    "tipo": "veterinario",
+    "direccion": "C. Corral del Agua, 11",
+    "lat": 37.42049,
+    "lng": -5.97243
+  },
+  {
+    "nombre": "Urancán - Adiestramiento y Educación Canina en Sevilla",
+    "tipo": "adiestrador",
+    "direccion": "C. Juan Carvallo, 3",
+    "lat": 37.377240199999996,
+    "lng": -5.9536033999999995
+  },
+  {
+    "nombre": "Supermascota Tienda de productos para mascotas",
+    "tipo": "tienda",
+    "direccion": "C. Tipografía",
+    "lat": 37.3853915,
+    "lng": -5.9318719
+  },
+  {
+    "nombre": "Hotel Bécquer Sevilla",
+    "tipo": "alojamiento",
+    "direccion": "C. Reyes Católicos, 4",
+    "lat": 37.3890659,
+    "lng": -6.0000909
+  },
+  {
+    "nombre": "Alvaro adiestrador",
+    "tipo": "adiestrador",
+    "direccion": "C. Residencia H.H.Cruz Blanca, 34",
+    "lat": 37.3116893,
+    "lng": -5.9267302
+  },
+  {
+    "nombre": "Residencia canina los alcores",
+    "tipo": "otros",
+    "direccion": "Carretera SE-3201, km 5,400",
+    "lat": 37.429217,
+    "lng": -5.728905
+  },
+  {
+    "nombre": "Peluquería Canina Look Can",
+    "tipo": "tienda",
+    "direccion": "C. Castilla, 40, Loc",
+    "lat": 37.3873392,
+    "lng": -6.0055349
+  },
+  {
+    "nombre": "La Perripandi",
+    "tipo": "tienda",
+    "direccion": "Calle Manila, 2",
+    "lat": 37.403518999999996,
+    "lng": -5.9203570999999995
+  },
+  {
+    "nombre": "Hobby Macarena",
+    "tipo": "tienda",
+    "direccion": "Calle Parque de Doñana Norte",
+    "lat": 37.416995799999995,
+    "lng": -5.973645899999999
+  },
+  {
+    "nombre": "Hotel Ateneo Sevilla",
+    "tipo": "alojamiento",
+    "direccion": "Pl. Fdo. de Herrera, 6",
+    "lat": 37.394196,
+    "lng": -5.9937309999999995
+  },
+  {
+    "nombre": "Numa Seville Jondo",
+    "tipo": "alojamiento",
+    "direccion": "C. Guzmán el Bueno, 12",
+    "lat": 37.3870442,
+    "lng": -5.9901282
+  },
+  {
+    "nombre": "Alconhaire",
+    "tipo": "otros",
+    "direccion": "Urbanización Las Tinajas, 7",
+    "lat": 37.3237612,
+    "lng": -6.080434899999999
+  },
+  {
+    "nombre": "Barbería Erikson",
+    "tipo": "peluqueria",
+    "direccion": "C. Urquiza, 5",
+    "lat": 37.3947607,
+    "lng": -5.9799381
+  },
+  {
+    "nombre": "El Rey Moro Hotel Boutique",
+    "tipo": "alojamiento",
+    "direccion": "C. Reinoso, 8",
+    "lat": 37.3853177,
+    "lng": -5.9898143
+  },
+  {
+    "nombre": "Hotel Canino Carucan",
+    "tipo": "otros",
+    "direccion": "C. Residencia H.H.Cruz Blanca, 34",
+    "lat": 37.311721999999996,
+    "lng": -5.9266781
+  },
+  {
+    "nombre": "Alfacan",
+    "tipo": "adiestrador",
+    "direccion": "Av. Segunda",
+    "lat": 37.266963,
+    "lng": -5.9428719999999995
+  },
+  {
+    "nombre": "Peluquería canina OscarGroomer | Sevilla Centro",
+    "tipo": "tienda",
+    "direccion": "C. Francisco Carrión Mejías, 4F",
+    "lat": 37.3923603,
+    "lng": -5.9879986999999995
+  },
+  {
+    "nombre": "unperroeducado.es",
+    "tipo": "adiestrador",
+    "direccion": "C. Virgen de Escardiel",
+    "lat": 37.413739199999995,
+    "lng": -5.9789017
+  },
+  {
+    "nombre": "Peluqueria Ede",
+    "tipo": "peluqueria",
+    "direccion": "C. Hernando del Pulgar, 19",
+    "lat": 37.388844299999995,
+    "lng": -5.9707881
+  },
+  {
+    "nombre": "Mascotas Sevilla Torneo",
+    "tipo": "tienda",
+    "direccion": "C. Etología, 5",
+    "lat": 37.425501,
+    "lng": -5.9772039999999995
+  },
+  {
+    "nombre": "Martin Gallardo Estilismo",
+    "tipo": "peluqueria",
+    "direccion": "local 36, Residencial Oriente",
+    "lat": 37.3893686,
+    "lng": -5.9717142
+  },
+  {
+    "nombre": "DOGHIS TODOMASCOTAS",
+    "tipo": "tienda",
+    "direccion": "Av. Hacienda San Antonio, 16",
+    "lat": 37.383739299999995,
+    "lng": -5.9214614999999995
+  },
+  {
+    "nombre": "CASH ANIMALES ANTORCHA",
+    "tipo": "tienda",
+    "direccion": "C. Transporte, 2",
+    "lat": 37.3877544,
+    "lng": -5.9540219
+  },
+  {
+    "nombre": "Parque canino Alamillo (nuevo)",
+    "tipo": "parque",
+    "direccion": "C2C4+5J",
+    "lat": 37.4201511,
+    "lng": -5.9929837
+  },
+  {
+    "nombre": "Mascotalandia",
+    "tipo": "tienda",
+    "direccion": "Calle Almoraima, 68",
+    "lat": 37.377685,
+    "lng": -6.029732999999999
+  },
+  {
+    "nombre": "Animalex",
+    "tipo": "tienda",
+    "direccion": "C. Lisboa, 49",
+    "lat": 37.374024899999995,
+    "lng": -5.9594884
+  },
+  {
+    "nombre": "abba Sevilla hotel",
+    "tipo": "alojamiento",
+    "direccion": "Pl. de la Encarnación, 19",
+    "lat": 37.3921882,
+    "lng": -5.991690999999999
+  },
+  {
+    "nombre": "Residencia de Animales Oasis",
+    "tipo": "otros",
+    "direccion": "Carretera",
+    "lat": 37.437850999999995,
+    "lng": -5.804069999999999
+  },
+  {
+    "nombre": "Parque Perros Alamillo",
+    "tipo": "parque",
+    "direccion": "Zona Isla de la Cartuja, 22",
+    "lat": 37.417591099999996,
+    "lng": -5.9999772
+  },
+  {
+    "nombre": "Petit Palace Santa Cruz",
+    "tipo": "alojamiento",
+    "direccion": "C. Muñoz y Pabón, 18",
+    "lat": 37.388486,
+    "lng": -5.989542
+  },
+  {
+    "nombre": "HUNGRY PETS (antes: Agrizoo Sevilla)",
+    "tipo": "tienda",
+    "direccion": "Carretera Brenes, 25",
+    "lat": 37.4255381,
+    "lng": -5.9286581
+  },
+  {
+    "nombre": "Numa Seville Solea",
+    "tipo": "alojamiento",
+    "direccion": "C. Alfonso XII, 27",
+    "lat": 37.392919299999996,
+    "lng": -5.9986980999999995
+  },
+  {
+    "nombre": "Hotel NH Collection Sevilla",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Diego Martínez Barrio, 8",
+    "lat": 37.374932,
+    "lng": -5.976261999999999
+  },
+  {
+    "nombre": "Parque Olivar del Zaudín de Tomares",
+    "tipo": "parque",
+    "direccion": "41940",
+    "lat": 37.367259,
+    "lng": -6.0523377
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "CC LAGOH Av. Palmas Altas Local nº",
+    "lat": 37.3430749,
+    "lng": -5.9889094
+  },
+  {
+    "nombre": "Peluquería canina y felina Boutique y Belleza Canina",
+    "tipo": "tienda",
+    "direccion": "local boutique y belleza canina local boutique y belleza canina",
+    "lat": 37.4095517,
+    "lng": -5.9675894
+  },
+  {
+    "nombre": "Petit Palace Marqués Santa Ana",
+    "tipo": "alojamiento",
+    "direccion": "C. Jimios, 9, 11",
+    "lat": 37.3871462,
+    "lng": -5.9950966999999995
+  },
+  {
+    "nombre": "Hotel Amadeus",
+    "tipo": "alojamiento",
+    "direccion": "C. Farnesio, 6",
+    "lat": 37.3872366,
+    "lng": -5.988735999999999
+  },
+  {
+    "nombre": "Mascotas Ávila Sevilla",
+    "tipo": "tienda",
+    "direccion": "Av. de la República Argentina, 25",
+    "lat": 37.3778703,
+    "lng": -6.0016539
+  },
+  {
+    "nombre": "Le Petit",
+    "tipo": "otros",
+    "direccion": "Av. de El Greco, 14",
+    "lat": 37.3916702,
+    "lng": -5.9693714
+  },
+  {
+    "nombre": "La tienda de animales",
+    "tipo": "tienda",
+    "direccion": "Av. Santa Cecilia, 4",
+    "lat": 37.3818224,
+    "lng": -6.0087215
+  },
+  {
+    "nombre": "Soho Boutique Sevilla",
+    "tipo": "alojamiento",
+    "direccion": "C. Javier Lasso de la Vega, 6",
+    "lat": 37.3936669,
+    "lng": -5.99453
+  },
+  {
+    "nombre": "Parque de Miraflores",
+    "tipo": "parque",
+    "direccion": "Av. las Asociaciones de Vecinos, 21",
+    "lat": 37.4106321,
+    "lng": -5.963586299999999
+  },
+  {
+    "nombre": "Hotel Catalonia Santa Justa",
+    "tipo": "alojamiento",
+    "direccion": "Av. José Laguillo, 8",
+    "lat": 37.3936111,
+    "lng": -5.9827778
+  },
+  {
+    "nombre": "Petit Palace Canalejas",
+    "tipo": "alojamiento",
+    "direccion": "C. Canalejas, 2",
+    "lat": 37.391006,
+    "lng": -5.9991319999999995
+  },
+  {
+    "nombre": "Petit Palace Puerta de Triana",
+    "tipo": "alojamiento",
+    "direccion": "C. Reyes Católicos, 5",
+    "lat": 37.388828,
+    "lng": -5.9997538
+  },
+  {
+    "nombre": "Guardeperretes",
+    "tipo": "otros",
+    "direccion": "Av. de Andalucia",
+    "lat": 37.2815661,
+    "lng": -5.9256098
+  },
+  {
+    "nombre": "Centro Veterinario Sanican",
+    "tipo": "tienda",
+    "direccion": "C. San Juan de Ávila, 2",
+    "lat": 37.3944986,
+    "lng": -5.9972993
+  },
+  {
+    "nombre": "AZZ Sevilla Torre de la Plata Apartamentos",
+    "tipo": "alojamiento",
+    "direccion": "C. Santander, 15",
+    "lat": 37.383148899999995,
+    "lng": -5.9956628
+  },
+  {
+    "nombre": "Hotel Inglaterra",
+    "tipo": "alojamiento",
+    "direccion": "Pl. Nueva, 7",
+    "lat": 37.3883997,
+    "lng": -5.996353999999999
+  },
+  {
+    "nombre": "Residencia Canina y Felina Ruta de la Plata - Sevilla",
+    "tipo": "otros",
+    "direccion": "Autovía Ruta de la Plata, Sal. 798",
+    "lat": 37.5228484,
+    "lng": -6.0558276
+  },
+  {
+    "nombre": "Sociedad Protectora De Animales Y Plantas De Sevilla",
+    "tipo": "veterinario",
+    "direccion": "C. Hespérides, 8, LOCAL",
+    "lat": 37.4011192,
+    "lng": -5.9660272
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "Av. Ronda del Tamarguillo, 29",
+    "lat": 37.3699349,
+    "lng": -5.967257
+  },
+  {
+    "nombre": "Hotel Catalonia Giralda",
+    "tipo": "alojamiento",
+    "direccion": "Cjón. Sierra Nevada, 3",
+    "lat": 37.3901403,
+    "lng": -5.9848149
+  },
+  {
+    "nombre": "Los Seises Sevilla, a Tribute Portfolio Hotel",
+    "tipo": "alojamiento",
+    "direccion": "C. Segovias, 6",
+    "lat": 37.3873797,
+    "lng": -5.9916494
+  },
+  {
+    "nombre": "Novotel Sevilla",
+    "tipo": "alojamiento",
+    "direccion": "R.T.A. H/SE/00979",
+    "lat": 37.3829869,
+    "lng": -5.972195
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Av. de Coria, Km 2",
+    "lat": 37.353459099999995,
+    "lng": -6.0247943
+  },
+  {
+    "nombre": "Parque de los Descubrimientos",
+    "tipo": "parque",
+    "direccion": "C. Torneo, 17",
+    "lat": 37.398036399999995,
+    "lng": -6.001436
+  },
+  {
+    "nombre": "Parque de la Vega de Triana",
+    "tipo": "parque",
+    "direccion": "41010 Sevilla",
+    "lat": 37.3731246,
+    "lng": -6.0171966999999995
+  },
+  {
+    "nombre": "Ladran Gaucho",
+    "tipo": "tienda",
+    "direccion": "C. Virgen de la Cinta, 20, Loc A",
+    "lat": 37.372547499999996,
+    "lng": -5.997879999999999
+  },
+  {
+    "nombre": "Hotel Un Patio al Sur",
+    "tipo": "alojamiento",
+    "direccion": "C. Fernán Caballero, 7",
+    "lat": 37.391586,
+    "lng": -5.998175
+  },
+  {
+    "nombre": "Hotel Palacio Alcázar",
+    "tipo": "alojamiento",
+    "direccion": "Pl. de la Alianza, 11",
+    "lat": 37.385532399999995,
+    "lng": -5.9910502
+  },
+  {
+    "nombre": "Hobby Zoo",
+    "tipo": "tienda",
+    "direccion": "Ronda Norte, s/n C. C. Carrefour Macarena",
+    "lat": 37.4186336,
+    "lng": -5.9736521
+  },
+  {
+    "nombre": "Parque Amate",
+    "tipo": "parque",
+    "direccion": "Calle Amor, 4A",
+    "lat": 37.3804332,
+    "lng": -5.9519144
+  },
+  {
+    "nombre": "Pierre & Vacances Sevilla Apartamentos",
+    "tipo": "alojamiento",
+    "direccion": "C. Pagés del Corro, 102",
+    "lat": 37.3829,
+    "lng": -6.003699999999999
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "262_AVDA DE DINAMARCA",
+    "lat": 37.3475387,
+    "lng": -5.9858861999999995
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "Calle Periodista Antonio Garmendia",
+    "lat": 37.4080353,
+    "lng": -5.9107313999999995
+  },
+  {
+    "nombre": "Hotel ibis Sevilla",
+    "tipo": "alojamiento",
+    "direccion": "Hotel Ciudad 1*",
+    "lat": 37.4084169,
+    "lng": -5.950676199999999
+  },
+  {
+    "nombre": "Schoolcanin - Escuela y Residencia Canina",
+    "tipo": "otros",
+    "direccion": "Urb. La Torrecilla",
+    "lat": 37.4093447,
+    "lng": -5.8166231
+  },
+  {
+    "nombre": "Hotel Goya",
+    "tipo": "alojamiento",
+    "direccion": "C. Mateos Gago, 31",
+    "lat": 37.3867501,
+    "lng": -5.9898207
+  },
+  {
+    "nombre": "Sercotel Sevilla Guadalquivir Suites",
+    "tipo": "alojamiento",
+    "direccion": "C. Calatrava, 24",
+    "lat": 37.4020315,
+    "lng": -5.994307699999999
+  },
+  {
+    "nombre": "Playa Para Perros",
+    "tipo": "playa_perros",
+    "direccion": "Playa Para Perros",
+    "lat": 36.520314299999995,
+    "lng": -4.629378
+  },
+  {
+    "nombre": "Residencia para animales exóticos Sevilla",
+    "tipo": "tienda",
+    "direccion": "Av. del Aljarafe, 68, Loc 2",
+    "lat": 37.3747584,
+    "lng": -6.0687413999999995
+  },
+  {
+    "nombre": "Asociacion Andaluza para la Defensa de los Animales",
+    "tipo": "otros",
+    "direccion": "C. Gracia Fernández Palacios, 4",
+    "lat": 37.385920399999996,
+    "lng": -5.9975957
+  },
+  {
+    "nombre": "Parque canino Podenco Andaluz",
+    "tipo": "parque",
+    "direccion": "C. Arzobispo Carlos Amigo Vallejo, 15",
+    "lat": 37.377657,
+    "lng": -6.0794329
+  },
+  {
+    "nombre": "Jardines del Valle",
+    "tipo": "otros",
+    "direccion": "C. María Auxiliadora",
+    "lat": 37.3957204,
+    "lng": -5.9831598999999995
+  },
+  {
+    "nombre": "Hospital Veterinario La Salle 24h",
+    "tipo": "veterinario",
+    "direccion": "Av. San Juan de la Salle, 73",
+    "lat": 37.4081423,
+    "lng": -5.9713616
+  },
+  {
+    "nombre": "Parque del Agumore",
+    "tipo": "parque",
+    "direccion": "C/ San Juan Bosco, 61",
+    "lat": 37.3936893,
+    "lng": -5.9769497
+  },
+  {
+    "nombre": "Hotel San Pablo Sevilla",
+    "tipo": "alojamiento",
+    "direccion": "Av. de la Innovación, 10, 11",
+    "lat": 37.405367999999996,
+    "lng": -5.927562
+  },
+  {
+    "nombre": "Hotel Bellavista Sevilla",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Bellavista, 153",
+    "lat": 37.318767,
+    "lng": -5.968344
+  },
+  {
+    "nombre": "Jardín Americano",
+    "tipo": "parque",
+    "direccion": "41092 Sevilla",
+    "lat": 37.3979565,
+    "lng": -6.0049171
+  },
+  {
+    "nombre": "Incineradora Ruta de la Plata",
+    "tipo": "otros",
+    "direccion": "Autovía Ruta de la Plata, Sal. 798",
+    "lat": 37.522694099999995,
+    "lng": -6.055748299999999
+  },
+  {
+    "nombre": "ibis Budget Sevilla Aeropuerto",
+    "tipo": "alojamiento",
+    "direccion": "Pension Nºrta : H/Se/01250",
+    "lat": 37.4088669,
+    "lng": -5.9497143
+  },
+  {
+    "nombre": "ISA Sevilla Suites",
+    "tipo": "alojamiento",
+    "direccion": "C. Ángeles, 11",
+    "lat": 37.3862988,
+    "lng": -5.990531799999999
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "Grupo Parque Miraflores",
+    "lat": 37.4085307,
+    "lng": -5.9649027
+  },
+  {
+    "nombre": "Numa Seville Alegre",
+    "tipo": "alojamiento",
+    "direccion": "C. Álvarez Quintero, 31",
+    "lat": 37.3878118,
+    "lng": -5.9930848999999995
+  },
+  {
+    "nombre": "Parque de la Música. Perros",
+    "tipo": "parque",
+    "direccion": "C. Cristina Hoyos, 4",
+    "lat": 37.3696728,
+    "lng": -6.0504828
+  },
+  {
+    "nombre": "Hotel Reyes Católicos",
+    "tipo": "alojamiento",
+    "direccion": "C. Gravina, 57",
+    "lat": 37.3896454,
+    "lng": -5.9996975
+  },
+  {
+    "nombre": "Peluquería Canina y Felina Club Nacional del Podenco Andaluz",
+    "tipo": "tienda",
+    "direccion": "C. Amsterdam, 25-E",
+    "lat": 37.3498884,
+    "lng": -5.9856419
+  },
+  {
+    "nombre": "Centro Canino Sport-dog",
+    "tipo": "otros",
+    "direccion": "A-92, Salida 15",
+    "lat": 37.3319931,
+    "lng": -5.8034966
+  },
+  {
+    "nombre": "Apartamentos Puerta del Sur",
+    "tipo": "otros",
+    "direccion": "C. El Compás, s/n",
+    "lat": 37.3228705,
+    "lng": -5.9694204
+  },
+  {
+    "nombre": "Parque Perros Agility",
+    "tipo": "parque",
+    "direccion": "Av. de Jerez, 11",
+    "lat": 37.3530918,
+    "lng": -5.979921699999999
+  },
+  {
+    "nombre": "Peluquería Canina Riscart",
+    "tipo": "tienda",
+    "direccion": "C. Puerto de Somport, 4b",
+    "lat": 37.3755358,
+    "lng": -5.955311699999999
+  },
+  {
+    "nombre": "Guaumania",
+    "tipo": "tienda",
+    "direccion": "C. Puñonrostro, 2",
+    "lat": 37.3932017,
+    "lng": -5.984699699999999
+  },
+  {
+    "nombre": "Residencia canina y felina Kennel Sahara",
+    "tipo": "otros",
+    "direccion": "Ctra. Torreblanca",
+    "lat": 37.371726599999995,
+    "lng": -5.8249618
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "C. Hélice, 1",
+    "lat": 37.3903197,
+    "lng": -5.9166973
+  },
+  {
+    "nombre": "Parque Para Esparcimiento Perros",
+    "tipo": "parque",
+    "direccion": "Av. Antonio Mairena, 2B",
+    "lat": 37.388647,
+    "lng": -6.047886
+  },
+  {
+    "nombre": "Can Leones Dorado",
+    "tipo": "otros",
+    "direccion": "Calle Sta Elena, 19",
+    "lat": 37.5281029,
+    "lng": -5.2498846
+  },
+  {
+    "nombre": "Hostal Roma",
+    "tipo": "alojamiento",
+    "direccion": "C. Gravina, 34",
+    "lat": 37.3919139,
+    "lng": -6.0013347999999995
+  },
+  {
+    "nombre": "Hoteles del Sur",
+    "tipo": "alojamiento",
+    "direccion": "C. Lumbreras, 6",
+    "lat": 37.4006852,
+    "lng": -5.994543999999999
+  },
+  {
+    "nombre": "Pension vergara",
+    "tipo": "alojamiento",
+    "direccion": "C/ Ximénez de Enciso, 11",
+    "lat": 37.3860439,
+    "lng": -5.9894649
+  },
+  {
+    "nombre": "Playa canina de Camposoto",
+    "tipo": "parque",
+    "direccion": "11100 Camposoto",
+    "lat": 36.4078963,
+    "lng": -6.2203066
+  },
+  {
+    "nombre": "Parque Canino El Cigüeñuelo",
+    "tipo": "parque",
+    "direccion": "C. Acebuche",
+    "lat": 37.4030286,
+    "lng": -6.0415833
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "Calle Prof. Manuel Olivencia Ruiz, 9",
+    "lat": 37.401788499999995,
+    "lng": -5.915892599999999
+  },
+  {
+    "nombre": "Califato",
+    "tipo": "otros",
+    "direccion": "C. Libertad, 75",
+    "lat": 37.2882877,
+    "lng": -5.8696174
+  },
+  {
+    "nombre": "Centro Municipal Zoosanitario de Sevilla",
+    "tipo": "protectora",
+    "direccion": "Carretera Sevilla Málaga, Km 1, 5",
+    "lat": 37.3863226,
+    "lng": -5.9309828
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "Plaza Manuel Garrido, S/N",
+    "lat": 37.4052708,
+    "lng": -5.9812829
+  },
+  {
+    "nombre": "Pipican Barqueta",
+    "tipo": "parque",
+    "direccion": "P.º Rey Juan Carlos I",
+    "lat": 37.4055403,
+    "lng": -5.994928499999999
+  },
+  {
+    "nombre": "Alejandra peluquería canina",
+    "tipo": "tienda",
+    "direccion": "41010 Sevilla",
+    "lat": 37.380964399999996,
+    "lng": -6.0094715
+  },
+  {
+    "nombre": "Peludos sevilla",
+    "tipo": "tienda",
+    "direccion": "41940 Tomares",
+    "lat": 37.3685879,
+    "lng": -6.0554001
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "41980 La Algaba",
+    "lat": 37.4562314,
+    "lng": -6.0104884
+  },
+  {
+    "nombre": "Résidence CUIDIG",
+    "tipo": "otros",
+    "direccion": "41530 Morón de la Frontera",
+    "lat": 37.1300491,
+    "lng": -5.435853
+  },
+  {
+    "nombre": "La Comuna Canina",
+    "tipo": "otros",
+    "direccion": "Urbanización Los Cabreros, sector A",
+    "lat": 37.309982399999996,
+    "lng": -5.9299832
+  },
+  {
+    "nombre": "Pipican (Parque para perros)",
+    "tipo": "parque",
+    "direccion": "Avda. José Rodríguez de la Borbolla (edif. Abelia",
+    "lat": 37.3194543,
+    "lng": -5.927787899999999
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "C. Pruna",
+    "lat": 37.3696826,
+    "lng": -5.951633999999999
+  },
+  {
+    "nombre": "Parque Aeropuerto",
+    "tipo": "parque",
+    "direccion": "41020 Sevilla",
+    "lat": 37.3968197,
+    "lng": -5.9435287
+  },
+  {
+    "nombre": "Nueva Escocia Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "Lg",
+    "lat": 37.6629852,
+    "lng": -5.5287185
+  },
+  {
+    "nombre": "ASHIRUKO ADIESTRAMIENTO CANINO",
+    "tipo": "adiestrador",
+    "direccion": "C. Parque de Cazorla, 1",
+    "lat": 37.417116,
+    "lng": -5.971652
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "Parque canino",
+    "lat": 37.379002899999996,
+    "lng": -5.9211766
+  },
+  {
+    "nombre": "Ornigreen",
+    "tipo": "tienda",
+    "direccion": "C. Madre María Teresa, 77",
+    "lat": 37.3821677,
+    "lng": -5.9616994
+  },
+  {
+    "nombre": "Guarderia Canina Mica",
+    "tipo": "otros",
+    "direccion": "C. Pobladores, 10",
+    "lat": 37.3837264,
+    "lng": -6.0316047
+  },
+  {
+    "nombre": "Evocan",
+    "tipo": "otros",
+    "direccion": "C. Grabadores, 1",
+    "lat": 37.420632,
+    "lng": -5.9631957
+  },
+  {
+    "nombre": "Pan y Circo",
+    "tipo": "restaurante",
+    "direccion": "C. Rivero, 11",
+    "telefono": "+34 674 81 96 52",
+    "valoracion": 4.7,
+    "resenas": 4683,
+    "horario": "",
+    "estado": "",
+    "lat": 37.39138,
+    "lng": -5.99422,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pan%20y%20Circo&query_place_id=ChIJx41bH-RtEg0RY6-J0gd8ksE",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "LATE. Specialty Coffee & co working",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Amor de Dios, 36, Loc derecha",
+    "telefono": "+34 666 44 19 68",
+    "valoracion": 4.7,
+    "resenas": 892,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3961364,
+    "lng": -5.9941433,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=LATE.%20Specialty%20Coffee%20%26%20co%20working&query_place_id=ChIJM7YsquZtEg0RoEr9g59svFg",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "nebbi café y provisiones",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Antillano Campos, 5",
+    "telefono": "",
+    "valoracion": 4.8,
+    "resenas": 497,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3853067,
+    "lng": -6.0046518,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=nebbi%20caf%C3%A9%20y%20provisiones&query_place_id=ChIJX95l8xRtEg0R-V8dXsWqYDs",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Poderío Taberna Picaresca",
+    "tipo": "cafeteria_bar",
+    "direccion": "Av. de Alemania, 46",
+    "telefono": "+34 854 75 58 19",
+    "valoracion": 4.6,
+    "resenas": 301,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3455685,
+    "lng": -5.9821218,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Poder%C3%ADo%20Taberna%20Picaresca&query_place_id=ChIJ7RBnM71vEg0RC3G2SFbuS9s",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Purita - De vuelta al Origen. BRUNCH, BREAKFAST AND COFFEE",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Jerónimo Hernández, 14-16",
+    "telefono": "",
+    "valoracion": 4.6,
+    "resenas": 849,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3945008,
+    "lng": -5.9913559,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Purita%20-%20De%20vuelta%20al%20Origen.%20BRUNCH%2C%20BREAKFAST%20AND%20COFFEE&query_place_id=ChIJxUFRQkRtEg0Ri4TQ7en-VDg",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Mariquita Brunch",
+    "tipo": "restaurante",
+    "direccion": "C. Javier Lasso de la Vega, 3",
+    "telefono": "+34 633 81 89 11",
+    "valoracion": 4.8,
+    "resenas": 624,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3936115,
+    "lng": -5.9940635,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mariquita%20Brunch&query_place_id=ChIJO6dNfpRtEg0RQAgJR1uhyBM",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Hispalis Café",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Amor de Dios, 1",
+    "telefono": "+34 651 06 18 77",
+    "valoracion": 4.8,
+    "resenas": 1074,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3935815,
+    "lng": -5.9947764,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hispalis%20Caf%C3%A9&query_place_id=ChIJP20czzNtEg0RZZbZI7N_2I0",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "MALQUERER Restaurante",
+    "tipo": "restaurante",
+    "direccion": "C. Reinoso, 8",
+    "telefono": "+34 622 27 73 36",
+    "valoracion": 4.7,
+    "resenas": 2626,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3853823,
+    "lng": -5.9895419,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MALQUERER%20Restaurante&query_place_id=ChIJZb07LUZtEg0RhI_sbao8iGs",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "La Turruñuela Vinos y Tapas",
+    "tipo": "cafeteria_bar",
+    "direccion": "Rda. de Triana, 49",
+    "telefono": "+34 854 80 02 14",
+    "valoracion": 4.9,
+    "resenas": 241,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3816376,
+    "lng": -6.0094186,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=La%20Turru%C3%B1uela%20Vinos%20y%20Tapas&query_place_id=ChIJxWTs4YltEg0RafsIjS_Rtjo",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Bar Kiosko La Vespa",
+    "tipo": "cafeteria_bar",
+    "direccion": "Av Paseo de Europa, 1",
+    "telefono": "+34 661 90 79 81",
+    "valoracion": 3.9,
+    "resenas": 2069,
+    "horario": "",
+    "estado": "",
+    "lat": 37.345513,
+    "lng": -5.9793215,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar%20Kiosko%20La%20Vespa&query_place_id=ChIJFXaIwnZuEg0R5QDfr13LhgQ",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Lunula Coffee&Bakery | Brunch | Focacceria",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Bailén, 18",
+    "telefono": "+39 346 015 3816",
+    "valoracion": 4.7,
+    "resenas": 587,
+    "horario": "",
+    "estado": "",
+    "lat": 37.391084,
+    "lng": -5.998793,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lunula%20Coffee%26Bakery%20%7C%20Brunch%20%7C%20Focacceria&query_place_id=ChIJg4b8AQBtEg0RJAm_toB9dOA",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Patanchón Bar de Tapas",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Mateos Gago, 13",
+    "telefono": "+34 954 22 47 08",
+    "valoracion": 4.2,
+    "resenas": 2438,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3862434,
+    "lng": -5.9905653,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Patanch%C3%B3n%20Bar%20de%20Tapas&query_place_id=ChIJ6ywO1xtsEg0RIgSMrohxrM0",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Restaurante La Piemontesa | CC Lagoh Sevilla",
+    "tipo": "restaurante",
+    "direccion": "Av. de Palmas Altas, sn",
+    "telefono": "+34 954 95 17 60",
+    "valoracion": 4.4,
+    "resenas": 1141,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3413195,
+    "lng": -5.9870713,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Restaurante%20La%20Piemontesa%20%7C%20CC%20Lagoh%20Sevilla&query_place_id=ChIJa6R_3f9tEg0RJ6MHqYu62R4",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "OLMO HELADERIA ARTESANAL",
+    "tipo": "heladeria_pasteleria",
+    "direccion": "Cta. del Rosario, 1",
+    "telefono": "+34 954 22 74 11",
+    "valoracion": 4.8,
+    "resenas": 2498,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3898251,
+    "lng": -5.9922712,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=OLMO%20HELADERIA%20ARTESANAL&query_place_id=ChIJM0Jr6hpsEg0RE-7nNnMippA",
+    "fuenteConsulta": "heladeria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Gelateria MITO",
+    "tipo": "heladeria_pasteleria",
+    "direccion": "C. Almirantazgo, 8",
+    "telefono": "+34 682 29 86 69",
+    "valoracion": 4.8,
+    "resenas": 1743,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3853449,
+    "lng": -5.9947223,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gelateria%20MITO&query_place_id=ChIJ-2jZhjFtEg0RcXhp7uiQBtY",
+    "fuenteConsulta": "heladeria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Heladería La Fábrica",
+    "tipo": "heladeria_pasteleria",
+    "direccion": "Av Paseo de Europa, 25, Loc 3",
+    "telefono": "+34 614 11 64 19",
+    "valoracion": 4.7,
+    "resenas": 1284,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3452954,
+    "lng": -5.9788738,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Helader%C3%ADa%20La%20F%C3%A1brica&query_place_id=ChIJi2NMv3ZuEg0ROG9iWQryefI",
+    "fuenteConsulta": "heladeria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Gelateria MITO",
+    "tipo": "heladeria_pasteleria",
+    "direccion": "Pl. del Duque de la Victoria, 14",
+    "telefono": "+34 638 25 14 69",
+    "valoracion": 4.9,
+    "resenas": 256,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3929674,
+    "lng": -5.9955588,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gelateria%20MITO&query_place_id=ChIJcevSjuRtEg0RXez6pHFm38g",
+    "fuenteConsulta": "heladeria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Bar La Bicicleteria",
+    "tipo": "cafeteria_bar",
+    "direccion": "C/ 36, C. Feria",
+    "telefono": "",
+    "valoracion": 4.4,
+    "resenas": 651,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3973229,
+    "lng": -5.9911699,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar%20La%20Bicicleteria&query_place_id=ChIJCS3nQgZsEg0RxZZSYB5d_aE",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Bar Casa Carbón",
+    "tipo": "cafeteria_bar",
+    "direccion": "Av. de Andalucía, 54",
+    "telefono": "+34 955 22 41 52",
+    "valoracion": 4.6,
+    "resenas": 174,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3861577,
+    "lng": -5.9422151,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar%20Casa%20Carb%C3%B3n&query_place_id=ChIJ5ydlc99uEg0RRFze3rtLNdE",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Bar Manhattan Sevilla",
+    "tipo": "cafeteria_bar",
+    "direccion": "P.º de las Delicias, s/n",
+    "telefono": "+34 722 59 28 94",
+    "valoracion": 3.8,
+    "resenas": 1432,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3780452,
+    "lng": -5.9933895,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar%20Manhattan%20Sevilla&query_place_id=ChIJgan11iJsEg0R8GY9QLAJOu4",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parcería",
+    "tipo": "cafeteria_bar",
+    "direccion": "Pl. Calderón de la Barca, 9",
+    "telefono": "+34 662 34 87 92",
+    "valoracion": 4.7,
+    "resenas": 1168,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3997067,
+    "lng": -5.9911759,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Parcer%C3%ADa&query_place_id=ChIJ9RYQ9HNtEg0R3sRY3y8Ks_A",
+    "fuenteConsulta": "pasteleria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Farmacia Veterinaria Sevilla",
+    "tipo": "farmacia_veterinaria",
+    "direccion": "C. Antonio Cabral Bejarano, 65, BAJO",
+    "telefono": "609 22 12 64",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.41364,
+    "lng": -5.97218,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJqeGXwuNpEg0R5fOVJiWVIso",
+    "fuenteConsulta": "farmacia veterinaria en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "MamiDog",
+    "tipo": "guarderia_canina",
+    "direccion": "Urb. Los Naranjos, 95B",
+    "telefono": "630 95 74 45",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 37.415253,
+    "lng": -5.815961799999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ_-rbyphnEg0RbhdmQbaK_GE",
+    "fuenteConsulta": "guarderia canina en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Santa Justa",
+    "tipo": "veterinario",
+    "direccion": "Av. José Laguillo, 27",
+    "telefono": "954 42 46 28",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "9:30–20:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 37.3932705,
+    "lng": -5.9805106,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJbcoLYKhuEg0RESthuESicPM",
+    "fuenteConsulta": "veterinario mascotas en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Hospivet Sevilla",
+    "tipo": "veterinario",
+    "direccion": "C. San Alonso de Orozco, 7, Loc",
+    "telefono": "954 53 91 60",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "10:00–13:30",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 37.3896429,
+    "lng": -5.9830353999999994,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJqSa4haduEg0R9_OLlQnHzp0",
+    "fuenteConsulta": "veterinario mascotas en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Sevilla Este",
+    "tipo": "veterinario",
+    "direccion": "C. Cueva de Menga, 1, Portal 2",
+    "telefono": "954 52 57 06",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "10:00–19:00",
+    "estado": "Abierto · Cierre: 19:00",
+    "lat": 37.3985931,
+    "lng": -5.9432367,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJk2mSe9ZuEg0RkB63RylMVEM",
+    "fuenteConsulta": "veterinario mascotas en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "SUPERMASCOTA-MAUCAN Centro Veterinario Sevilla",
+    "tipo": "veterinario",
+    "direccion": "C. Litografía, 1",
+    "telefono": "658 38 81 73",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "9:00–19:00",
+    "estado": "Abierto · Cierre: 19:00",
+    "lat": 37.3819527,
+    "lng": -5.9335062999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJZfOb_f9vEg0RDb3v2SIblqY",
+    "fuenteConsulta": "veterinario mascotas en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Felina Sevilla.",
+    "tipo": "veterinario",
+    "direccion": "C. San Florencio, 6",
+    "telefono": "954 92 20 75",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "9:00–14:00",
+    "estado": "Abierto · Cierre: 19:00",
+    "lat": 37.387956599999995,
+    "lng": -5.9768941,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ29BDUJJuEg0RBksBZ25_3tY",
+    "fuenteConsulta": "veterinario mascotas en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Alconhaire",
+    "tipo": "guarderia_canina",
+    "direccion": "Urbanización Las Tinajas, 7",
+    "telefono": "955 60 91 70",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "9:30–13:30",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 37.3237612,
+    "lng": -6.080434899999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJSeCfIrsSEg0Rr3wHPKx_q68",
+    "fuenteConsulta": "guarderia canina en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia de Animales Oasis",
+    "tipo": "guarderia_canina",
+    "direccion": "Carretera",
+    "telefono": "667 70 88 55",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "9:00–13:00",
+    "estado": "Cierra pronto · 18:00 · Apertura: 9:00 (vie)",
+    "lat": 37.437850999999995,
+    "lng": -5.804069999999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJz-l2UzdhEg0RdOLJRTsh2WI",
+    "fuenteConsulta": "guarderia canina en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "PERRO BUENO Salud & Cuidado Animal. Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Av. de Kansas City, 96, Loc 3",
+    "telefono": "954 51 96 93",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "10:00–14:00",
+    "estado": "Abierto · Cierre: 19:00",
+    "lat": 37.4046356,
+    "lng": -5.955854599999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJm7pWWzNpEg0RHKZgjLBEM2w",
+    "fuenteConsulta": "veterinario mascotas en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria PICA",
+    "tipo": "veterinario",
+    "direccion": "C. Estrella Canopus, 23",
+    "telefono": "954 10 46 48",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "9:00–20:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 37.425903399999996,
+    "lng": -5.969505799999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJEXz6t2lpEg0RPLB5Mo10uvw",
+    "fuenteConsulta": "veterinario mascotas en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia Canina y Felina Ruta de la Plata - Sevilla",
+    "tipo": "guarderia_canina",
+    "direccion": "Autovía Ruta de la Plata, Sal. 798",
+    "telefono": "630 36 30 79",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "10:00–13:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 37.5228484,
+    "lng": -6.0558276,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJazVTOOEzEg0RM5RLbgJ9ZZI",
+    "fuenteConsulta": "guarderia canina en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Veterinaria Alameda Sevilla",
+    "tipo": "veterinario",
+    "direccion": "Alameda de Hércules, 41",
+    "telefono": "667 00 45 00",
+    "valoracion": 4.3,
+    "resenas": null,
+    "horario": "10:00–13:30",
+    "estado": "Abierto · Cierre: 19:30",
+    "lat": 37.3993756,
+    "lng": -5.9932346,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ0whO0gdsEg0Riv8y_V4MHiw",
+    "fuenteConsulta": "veterinario mascotas en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Vitalcan Centro Veterinario Sevilla",
+    "tipo": "veterinario",
+    "direccion": "C. Factores, 8, Loc 24",
+    "telefono": "954 02 92 00",
+    "valoracion": 4.3,
+    "resenas": null,
+    "horario": "9:00–20:30",
+    "estado": "Abierto · Cierre: 20:30",
+    "lat": 37.4195141,
+    "lng": -5.9858158999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJDR5mC-FrEg0R3746Q2WvKiA",
+    "fuenteConsulta": "veterinario mascotas en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Schoolcanin - Escuela y Residencia Canina",
+    "tipo": "guarderia_canina",
+    "direccion": "Urb. La Torrecilla",
+    "telefono": "955 18 00 48",
+    "valoracion": 4.2,
+    "resenas": null,
+    "horario": "9:00–13:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 37.4093447,
+    "lng": -5.8166231,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJaZ_udDpvEg0Rtw7QB2AQjok",
+    "fuenteConsulta": "guarderia canina en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque_canino",
+    "direccion": "41006 Sevilla",
+    "telefono": "",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "8:00–22:00",
+    "estado": "Abierto · Cierre: 22:00",
+    "lat": 37.3811648,
+    "lng": -5.943418599999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJCV6M8lRvEg0R-stwqES1TbA",
+    "fuenteConsulta": "parque para perros en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque Perros Alamillo",
+    "tipo": "parque_canino",
+    "direccion": "Zona Isla de la Cartuja, 22",
+    "telefono": "955 51 61 41",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "7:00–24:00",
+    "estado": "Abierto · Cierre: 0:00",
+    "lat": 37.417591099999996,
+    "lng": -5.9999772,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJryLkjetrEg0RZbc6Gr4VMkM",
+    "fuenteConsulta": "parque para perros en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Alamillo (nuevo)",
+    "tipo": "parque_canino",
+    "direccion": "C2C4+5J",
+    "telefono": "",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "8:00–22:00",
+    "estado": "Abierto · Cierre: 22:00",
+    "lat": 37.4201511,
+    "lng": -5.9929837,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJwQ7VZ-BrEg0RE-BOq6NWukg",
+    "fuenteConsulta": "parque para perros en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque_canino",
+    "direccion": "Dr. Miguel Ríos Sarmiento, 120",
+    "telefono": "",
+    "valoracion": 4.2,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.394489,
+    "lng": -5.9305885,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJiagZudxvEg0R37HjOEU7Pc0",
+    "fuenteConsulta": "parque para perros en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque_canino",
+    "direccion": "Grupo Parque Miraflores",
+    "telefono": "",
+    "valoracion": 4,
+    "resenas": null,
+    "horario": "7:00–23:00",
+    "estado": "Abierto · Cierre: 23:00",
+    "lat": 37.4085307,
+    "lng": -5.9649027,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ_UJ31UtpEg0RtN10d2I0L-A",
+    "fuenteConsulta": "parque para perros en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque_canino",
+    "direccion": "C. Flor de Retama, 4",
+    "telefono": "",
+    "valoracion": 1.8,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.3976476,
+    "lng": -5.9174847999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ4dZHJwBvEg0R0dbgUf6zUv0",
+    "fuenteConsulta": "parque para perros en Sevilla, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Armonía Canina",
+    "tipo": "guarderia_canina",
+    "direccion": "Callejon de La Dehesa, 385",
+    "telefono": "609 03 48 22",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "10:00–14:00",
+    "estado": "Abierto · Cierra a las 20:00",
+    "lat": 37.2701821,
+    "lng": -6.3045339,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJITmben0FEg0RQriCbXXzHRY",
+    "fuenteConsulta": "guarderia canina Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "La Comuna Canina",
+    "tipo": "guarderia_canina",
+    "direccion": "AAVV FAMILIAR",
+    "telefono": "644 57 46 62",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto las 24 horas",
+    "lat": 37.2151847,
+    "lng": -5.9692150999999996,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJfeg83sUXEg0RvF28OcdFiVk",
+    "fuenteConsulta": "guarderia canina Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "SCHOOL4DOGS",
+    "tipo": "guarderia_canina",
+    "direccion": "9RVC+8G3",
+    "telefono": "626 10 99 11",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "8:00–12:00",
+    "estado": "Abierto · Cierra a las 20:00",
+    "lat": 37.393322999999995,
+    "lng": -6.1785139,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ68ETmVIZEg0RBlLCcgij5ZY",
+    "fuenteConsulta": "guarderia canina Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Olfacanes",
+    "tipo": "guarderia_canina",
+    "direccion": "Cam. de Bollullos",
+    "telefono": "687 01 75 44",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "9:00–13:00",
+    "estado": "Abierto · Cierra a las 20:00",
+    "lat": 37.3410142,
+    "lng": -6.0818712999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ05lV92gTEg0RUMZ8xXcxoSc",
+    "fuenteConsulta": "guarderia canina Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Los Corrales",
+    "tipo": "veterinario",
+    "direccion": "C. Corral del Agua, 11",
+    "telefono": "954 95 41 44",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "10:30–13:30",
+    "estado": "Abierto · Cierra a las 20:00",
+    "lat": 37.42049,
+    "lng": -5.97243,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJp10oMENpEg0RT4ZWwFzM-hA",
+    "fuenteConsulta": "peluqueria canina Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Guardeperretes",
+    "tipo": "guarderia_canina",
+    "direccion": "Av. de Andalucia",
+    "telefono": "644 19 43 67",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto las 24 horas",
+    "lat": 37.2815661,
+    "lng": -5.9256098,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJPU6WnGRxEg0RhvIjiIo_WAI",
+    "fuenteConsulta": "guarderia canina Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino Podenco Andaluz",
+    "tipo": "parque_canino",
+    "direccion": "C. Arzobispo Carlos Amigo Vallejo, 15",
+    "telefono": "",
+    "valoracion": 4,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto las 24 horas",
+    "lat": 37.377657,
+    "lng": -6.0794329,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJnc87pT0TEg0RhnazVsB4iRc",
+    "fuenteConsulta": "parque para perros Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Hospital Veterinario La Salle 24h",
+    "tipo": "veterinario",
+    "direccion": "Av. San Juan de la Salle, 73",
+    "telefono": "954 31 13 11",
+    "valoracion": 4,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto las 24 horas",
+    "lat": 37.4081423,
+    "lng": -5.9713616,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJy7Fw4E1pEg0RUUmfSw8stOg",
+    "fuenteConsulta": "clinica veterinaria 24h Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque de la Música. Perros",
+    "tipo": "parque_canino",
+    "direccion": "C. Cristina Hoyos, 4",
+    "telefono": "",
+    "valoracion": 3.8,
+    "resenas": null,
+    "horario": "7:30–22:30",
+    "estado": "Abierto · Cierra a las 22:30",
+    "lat": 37.3696728,
+    "lng": -6.0504828,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJq5KZoMNsEg0RQKOZdf2ZjeQ",
+    "fuenteConsulta": "parque para perros Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Centro Canino Sport-dog",
+    "tipo": "guarderia_canina",
+    "direccion": "A-92, Salida 15",
+    "telefono": "955 99 00 56",
+    "valoracion": 3.8,
+    "resenas": null,
+    "horario": "9:30–13:30",
+    "estado": "Abierto · Cierra a las 19:00",
+    "lat": 37.3319931,
+    "lng": -5.8034966,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ-RiXKaiAEg0RIAv_hnkWzDM",
+    "fuenteConsulta": "guarderia canina Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque Perros Agility",
+    "tipo": "parque_canino",
+    "direccion": "Av. de Jerez, 11",
+    "telefono": "",
+    "valoracion": 3.7,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto las 24 horas",
+    "lat": 37.3530918,
+    "lng": -5.979921699999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJcViyanluEg0R6I8MdeWgBO0",
+    "fuenteConsulta": "parque para perros Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia canina y felina Kennel Sahara",
+    "tipo": "guarderia_canina",
+    "direccion": "Ctra. Torreblanca",
+    "telefono": "607 61 78 82",
+    "valoracion": 3.6,
+    "resenas": null,
+    "horario": "10:30–15:00",
+    "estado": "Abierto · Cierra a las 19:00",
+    "lat": 37.371726599999995,
+    "lng": -5.8249618,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ73X-nIxlEg0RclDSDXzjfac",
+    "fuenteConsulta": "guarderia canina Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque Canino El Cigüeñuelo",
+    "tipo": "parque_canino",
+    "direccion": "C. Acebuche",
+    "telefono": "",
+    "valoracion": 3.1,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto las 24 horas",
+    "lat": 37.4030286,
+    "lng": -6.0415833,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJiaaHYWFrEg0RL5zjmC-SLqk",
+    "fuenteConsulta": "parque para perros Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque_canino",
+    "direccion": "Calle Prof. Manuel Olivencia Ruiz, 9",
+    "telefono": "",
+    "valoracion": 2.9,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.401788499999995,
+    "lng": -5.915892599999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJwxtf_2NvEg0Rp2VsVzMy_6Q",
+    "fuenteConsulta": "parque para perros Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Califato",
+    "tipo": "guarderia_canina",
+    "direccion": "C. Libertad, 75",
+    "telefono": "649 68 18 25",
+    "valoracion": 2.8,
+    "resenas": null,
+    "horario": "9:00–20:00",
+    "estado": "Abierto · Cierra a las 20:00",
+    "lat": 37.2882877,
+    "lng": -5.8696174,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ92pUa8dkEg0R67NnUB4xix4",
+    "fuenteConsulta": "guarderia canina Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque_canino",
+    "direccion": "Plaza Manuel Garrido, S/N",
+    "telefono": "",
+    "valoracion": 2,
+    "resenas": null,
+    "horario": "8:00–22:00",
+    "estado": "Abierto · Cierra a las 22:00",
+    "lat": 37.4052708,
+    "lng": -5.9812829,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJSxFfZ1hpEg0R7FvxyIlT9kE",
+    "fuenteConsulta": "parque para perros Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque_canino",
+    "direccion": "41980 La Algaba",
+    "telefono": "",
+    "valoracion": null,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.4562314,
+    "lng": -6.0104884,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJhxFJRwBrEg0RQv7rwiyHZGQ",
+    "fuenteConsulta": "parque para perros Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Résidence CUIDIG",
+    "tipo": "guarderia_canina",
+    "direccion": "41530 Morón de la Frontera",
+    "telefono": "",
+    "valoracion": null,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.1300491,
+    "lng": -5.435853,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJTeggUQBhDQ0RmmzwPSdvjTQ",
+    "fuenteConsulta": "guarderia canina Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "La Comuna Canina",
+    "tipo": "guarderia_canina",
+    "direccion": "Urbanización Los Cabreros, sector A",
+    "telefono": "644 57 46 62",
+    "valoracion": null,
+    "resenas": null,
+    "horario": "10:00–20:00",
+    "estado": "Abierto · Cierra a las 20:00",
+    "lat": 37.309982399999996,
+    "lng": -5.9299832,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJd7BnB29xEg0RRoR4e3wj2jg",
+    "fuenteConsulta": "guarderia canina Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Evocan",
+    "tipo": "guarderia_canina",
+    "direccion": "C. Grabadores, 1",
+    "telefono": "",
+    "valoracion": null,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 37.420632,
+    "lng": -5.9631957,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJdQo-VwBpEg0RPzK35EhR8L8",
+    "fuenteConsulta": "guarderia canina Sevilla",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

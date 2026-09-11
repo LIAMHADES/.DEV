@@ -1,0 +1,4015 @@
+{
+  "version": 1,
+  "generatedFrom": "pet-friendly-catalog.js",
+  "dataRoot": "cities",
+  "typeLabels": {
+    "adiestrador": "Adiestrador canino",
+    "alojamiento": "Hotel o alojamiento",
+    "otros": "Otros",
+    "parque": "Parque para perros",
+    "peluqueria": "Peluqueria canina",
+    "playa_perros": "Playa para perros",
+    "protectora": "Protectora de animales",
+    "restaurante": "Restaurante",
+    "tienda": "Tienda de mascotas",
+    "veterinario": "Veterinario",
+    "cafeteria_bar": "Cafetería / bar",
+    "heladeria_pasteleria": "Heladería / pastelería",
+    "farmacia_veterinaria": "Farmacia veterinaria",
+    "tienda_mascotas": "Tienda de mascotas",
+    "peluqueria_canina": "Peluquería canina",
+    "guarderia_canina": "Guardería canina",
+    "residencia_canina": "Residencia canina",
+    "rural_camping": "Alojamiento rural o camping",
+    "parque_canino": "Parque para perros",
+    "area_canina": "Área canina vallada",
+    "ruta_sendero": "Ruta o sendero",
+    "centro_comercial": "Centro comercial o comercio dog-friendly"
+  },
+  "clusters": {
+    "comida": {
+      "label": "Comida",
+      "types": [
+        "restaurante",
+        "cafeteria_bar",
+        "heladeria_pasteleria"
+      ]
+    },
+    "salud": {
+      "label": "Salud",
+      "types": [
+        "veterinario",
+        "farmacia_veterinaria"
+      ]
+    },
+    "cuidados": {
+      "label": "Cuidados",
+      "types": [
+        "peluqueria",
+        "peluqueria_canina",
+        "adiestrador",
+        "guarderia_canina",
+        "alojamiento",
+        "residencia_canina"
+      ]
+    },
+    "ocio": {
+      "label": "Ocio y actividades",
+      "types": [
+        "parque",
+        "parque_canino",
+        "area_canina",
+        "playa_perros",
+        "ruta_sendero",
+        "rural_camping"
+      ]
+    },
+    "comunidad": {
+      "label": "Comunidad",
+      "types": [
+        "protectora",
+        "tienda",
+        "tienda_mascotas",
+        "centro_comercial"
+      ]
+    },
+    "otros": {
+      "label": "Otros lugares",
+      "types": [
+        "otros"
+      ]
+    }
+  },
+  "cityCatalog": [
+    {
+      "key": "alicante",
+      "name": "Alicante",
+      "region": "Comunidad Valenciana"
+    },
+    {
+      "key": "barcelona",
+      "name": "Barcelona",
+      "region": "Cataluña"
+    },
+    {
+      "key": "bilbao",
+      "name": "Bilbao",
+      "region": "País Vasco"
+    },
+    {
+      "key": "cadiz",
+      "name": "Cádiz",
+      "region": "Andalucía"
+    },
+    {
+      "key": "cordoba",
+      "name": "Córdoba",
+      "region": "Andalucía"
+    },
+    {
+      "key": "girona",
+      "name": "Girona",
+      "region": "Cataluña"
+    },
+    {
+      "key": "granada",
+      "name": "Granada",
+      "region": "Andalucía"
+    },
+    {
+      "key": "la_coruna",
+      "name": "A Coruña",
+      "region": "Galicia"
+    },
+    {
+      "key": "las_palmas",
+      "name": "Las Palmas",
+      "region": "Canarias"
+    },
+    {
+      "key": "leon",
+      "name": "León",
+      "region": "Castilla y León"
+    },
+    {
+      "key": "malaga",
+      "name": "Málaga",
+      "region": "Andalucía"
+    },
+    {
+      "key": "madrid",
+      "name": "Madrid",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "murcia",
+      "name": "Murcia",
+      "region": "Región de Murcia"
+    },
+    {
+      "key": "oviedo",
+      "name": "Oviedo",
+      "region": "Asturias"
+    },
+    {
+      "key": "palma_de_mallorca",
+      "name": "Palma de Mallorca",
+      "region": "Illes Balears"
+    },
+    {
+      "key": "pamplona",
+      "name": "Pamplona",
+      "region": "Navarra"
+    },
+    {
+      "key": "salamanca",
+      "name": "Salamanca",
+      "region": "Castilla y León"
+    },
+    {
+      "key": "san_sebastian",
+      "name": "San Sebastián",
+      "region": "País Vasco"
+    },
+    {
+      "key": "santiago_de_compostela",
+      "name": "Santiago de Compostela",
+      "region": "Galicia"
+    },
+    {
+      "key": "santander",
+      "name": "Santander",
+      "region": "Cantabria"
+    },
+    {
+      "key": "sevilla",
+      "name": "Sevilla",
+      "region": "Andalucía"
+    },
+    {
+      "key": "toledo",
+      "name": "Toledo",
+      "region": "Castilla-La Mancha"
+    },
+    {
+      "key": "valencia",
+      "name": "Valencia",
+      "region": "Comunidad Valenciana"
+    },
+    {
+      "key": "valladolid",
+      "name": "Valladolid",
+      "region": "Castilla y León"
+    },
+    {
+      "key": "vigo",
+      "name": "Vigo",
+      "region": "Galicia"
+    },
+    {
+      "key": "zaragoza",
+      "name": "Zaragoza",
+      "region": "Aragón"
+    },
+    {
+      "key": "albacete",
+      "name": "Albacete",
+      "region": "Castilla-La Mancha"
+    },
+    {
+      "key": "alcala_de_guadaira",
+      "name": "Alcala de Guadaira",
+      "region": "Andalucia"
+    },
+    {
+      "key": "alcala_de_henares",
+      "name": "Alcalá de Henares",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "alcobendas",
+      "name": "Alcobendas",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "alcorcon",
+      "name": "Alcorcon",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "algeciras",
+      "name": "Algeciras",
+      "region": "Andalucia"
+    },
+    {
+      "key": "almeria",
+      "name": "Almería",
+      "region": "Andalucía"
+    },
+    {
+      "key": "arona",
+      "name": "Arona",
+      "region": "Canarias"
+    },
+    {
+      "key": "badajoz",
+      "name": "Badajoz",
+      "region": "Extremadura"
+    },
+    {
+      "key": "barakaldo",
+      "name": "Barakaldo",
+      "region": "Pais Vasco"
+    },
+    {
+      "key": "benalmadena",
+      "name": "Benalmadena",
+      "region": "Andalucia"
+    },
+    {
+      "key": "benidorm",
+      "name": "Benidorm",
+      "region": "Comunidad Valenciana"
+    },
+    {
+      "key": "burgos",
+      "name": "Burgos",
+      "region": "Castilla y León"
+    },
+    {
+      "key": "castellon_de_la_plana",
+      "name": "Castellon de la Plana",
+      "region": "Comunidad Valenciana"
+    },
+    {
+      "key": "ceuta",
+      "name": "Ceuta",
+      "region": "Ciudad Autonoma de Ceuta"
+    },
+    {
+      "key": "chiclana_de_la_frontera",
+      "name": "Chiclana de la Frontera",
+      "region": "Andalucia"
+    },
+    {
+      "key": "ciudad_real",
+      "name": "Ciudad Real",
+      "region": "Castilla-La Mancha"
+    },
+    {
+      "key": "cornella_de_llobregat",
+      "name": "Cornella de Llobregat",
+      "region": "Cataluna"
+    },
+    {
+      "key": "coslada",
+      "name": "Coslada",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "caceres",
+      "name": "Cáceres",
+      "region": "Extremadura"
+    },
+    {
+      "key": "dos_hermanas",
+      "name": "Dos Hermanas",
+      "region": "Andalucia"
+    },
+    {
+      "key": "el_ejido",
+      "name": "El Ejido",
+      "region": "Andalucia"
+    },
+    {
+      "key": "el_puerto_de_santa_maria",
+      "name": "El Puerto de Santa Maria",
+      "region": "Andalucia"
+    },
+    {
+      "key": "estepona",
+      "name": "Estepona",
+      "region": "Andalucia"
+    },
+    {
+      "key": "fuengirola",
+      "name": "Fuengirola",
+      "region": "Andalucia"
+    },
+    {
+      "key": "fuenlabrada",
+      "name": "Fuenlabrada",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "gandia",
+      "name": "Gandia",
+      "region": "Comunidad Valenciana"
+    },
+    {
+      "key": "getafe",
+      "name": "Getafe",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "guadalajara",
+      "name": "Guadalajara",
+      "region": "Castilla-La Mancha"
+    },
+    {
+      "key": "huelva",
+      "name": "Huelva",
+      "region": "Andalucía"
+    },
+    {
+      "key": "jaen",
+      "name": "Jaén",
+      "region": "Andalucía"
+    },
+    {
+      "key": "las_rozas_de_madrid",
+      "name": "Las Rozas de Madrid",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "leganes",
+      "name": "Leganés",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "lleida",
+      "name": "Lleida",
+      "region": "Cataluña"
+    },
+    {
+      "key": "logrono",
+      "name": "Logroño",
+      "region": "La Rioja"
+    },
+    {
+      "key": "lorca",
+      "name": "Lorca",
+      "region": "Region de Murcia"
+    },
+    {
+      "key": "lugo",
+      "name": "Lugo",
+      "region": "Galicia"
+    },
+    {
+      "key": "manresa",
+      "name": "Manresa",
+      "region": "Cataluna"
+    },
+    {
+      "key": "marbella",
+      "name": "Marbella",
+      "region": "Andalucía"
+    },
+    {
+      "key": "mataro",
+      "name": "Mataro",
+      "region": "Cataluna"
+    },
+    {
+      "key": "melilla",
+      "name": "Melilla",
+      "region": "Ciudad Autonoma de Melilla"
+    },
+    {
+      "key": "mijas",
+      "name": "Mijas",
+      "region": "Andalucia"
+    },
+    {
+      "key": "molina_de_segura",
+      "name": "Molina de Segura",
+      "region": "Region de Murcia"
+    },
+    {
+      "key": "mostoles",
+      "name": "Móstoles",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "orihuela",
+      "name": "Orihuela",
+      "region": "Comunidad Valenciana"
+    },
+    {
+      "key": "ourense",
+      "name": "Ourense",
+      "region": "Galicia"
+    },
+    {
+      "key": "palencia",
+      "name": "Palencia",
+      "region": "Castilla y Leon"
+    },
+    {
+      "key": "parla",
+      "name": "Parla",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "paterna",
+      "name": "Paterna",
+      "region": "Comunidad Valenciana"
+    },
+    {
+      "key": "pontevedra",
+      "name": "Pontevedra",
+      "region": "Galicia"
+    },
+    {
+      "key": "pozuelo_de_alarcon",
+      "name": "Pozuelo de Alarcon",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "reus",
+      "name": "Reus",
+      "region": "Cataluña"
+    },
+    {
+      "key": "rivas_vaciamadrid",
+      "name": "Rivas-Vaciamadrid",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "roquetas_de_mar",
+      "name": "Roquetas de Mar",
+      "region": "Andalucia"
+    },
+    {
+      "key": "rubi",
+      "name": "Rubi",
+      "region": "Cataluna"
+    },
+    {
+      "key": "san_cristobal_de_la_laguna",
+      "name": "San Cristobal de La Laguna",
+      "region": "Canarias"
+    },
+    {
+      "key": "san_fernando",
+      "name": "San Fernando",
+      "region": "Andalucia"
+    },
+    {
+      "key": "san_sebastian_de_los_reyes",
+      "name": "San Sebastian de los Reyes",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "sant_boi_de_llobregat",
+      "name": "Sant Boi de Llobregat",
+      "region": "Cataluna"
+    },
+    {
+      "key": "sant_cugat_del_valles",
+      "name": "Sant Cugat del Valles",
+      "region": "Cataluna"
+    },
+    {
+      "key": "santa_coloma_de_gramanet",
+      "name": "Santa Coloma de Gramanet",
+      "region": "Cataluna"
+    },
+    {
+      "key": "santa_lucia_de_tirajana",
+      "name": "Santa Lucia de Tirajana",
+      "region": "Canarias"
+    },
+    {
+      "key": "talavera_de_la_reina",
+      "name": "Talavera de la Reina",
+      "region": "Castilla-La Mancha"
+    },
+    {
+      "key": "tarragona",
+      "name": "Tarragona",
+      "region": "Cataluña"
+    },
+    {
+      "key": "telde",
+      "name": "Telde",
+      "region": "Canarias"
+    },
+    {
+      "key": "torrejon_de_ardoz",
+      "name": "Torrejon de Ardoz",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "torrent",
+      "name": "Torrent",
+      "region": "Comunidad Valenciana"
+    },
+    {
+      "key": "torrevieja",
+      "name": "Torrevieja",
+      "region": "Comunidad Valenciana"
+    },
+    {
+      "key": "valdemoro",
+      "name": "Valdemoro",
+      "region": "Comunidad de Madrid"
+    },
+    {
+      "key": "velez_malaga",
+      "name": "Velez-Malaga",
+      "region": "Andalucia"
+    }
+  ],
+  "cityCenters": {
+    "madrid": {
+      "lat": 40.4168,
+      "lng": -3.7038,
+      "zoom": 12
+    },
+    "barcelona": {
+      "lat": 41.3874,
+      "lng": 2.1686,
+      "zoom": 12
+    },
+    "valencia": {
+      "lat": 39.4699,
+      "lng": -0.3763,
+      "zoom": 12
+    },
+    "sevilla": {
+      "lat": 37.3891,
+      "lng": -5.9845,
+      "zoom": 12
+    },
+    "zaragoza": {
+      "lat": 41.6488,
+      "lng": -0.8891,
+      "zoom": 12
+    },
+    "malaga": {
+      "lat": 36.7213,
+      "lng": -4.4214,
+      "zoom": 12
+    },
+    "murcia": {
+      "lat": 37.9922,
+      "lng": -1.1307,
+      "zoom": 12
+    },
+    "palma_de_mallorca": {
+      "lat": 39.5696,
+      "lng": 2.6502,
+      "zoom": 12
+    },
+    "bilbao": {
+      "lat": 43.263,
+      "lng": -2.935,
+      "zoom": 12
+    },
+    "alicante": {
+      "lat": 38.3452,
+      "lng": -0.481,
+      "zoom": 12
+    },
+    "cordoba": {
+      "lat": 37.8882,
+      "lng": -4.7794,
+      "zoom": 12
+    },
+    "valladolid": {
+      "lat": 41.6523,
+      "lng": -4.7245,
+      "zoom": 12
+    },
+    "vigo": {
+      "lat": 42.2328,
+      "lng": -8.7226,
+      "zoom": 12
+    },
+    "girona": {
+      "lat": 41.9794,
+      "lng": 2.8214,
+      "zoom": 12
+    },
+    "oviedo": {
+      "lat": 43.3619,
+      "lng": -5.8494,
+      "zoom": 12
+    },
+    "granada": {
+      "lat": 37.1773,
+      "lng": -3.5986,
+      "zoom": 12
+    },
+    "san_sebastian": {
+      "lat": 43.3183,
+      "lng": -1.9812,
+      "zoom": 12
+    },
+    "santander": {
+      "lat": 43.4623,
+      "lng": -3.81,
+      "zoom": 12
+    },
+    "pamplona": {
+      "lat": 42.8125,
+      "lng": -1.6458,
+      "zoom": 12
+    },
+    "salamanca": {
+      "lat": 40.9701,
+      "lng": -5.6635,
+      "zoom": 12
+    },
+    "la_coruna": {
+      "lat": 43.3623,
+      "lng": -8.4115,
+      "zoom": 12
+    },
+    "leon": {
+      "lat": 42.5987,
+      "lng": -5.5671,
+      "zoom": 12
+    },
+    "santiago_de_compostela": {
+      "lat": 42.8782,
+      "lng": -8.5448,
+      "zoom": 12
+    },
+    "cadiz": {
+      "lat": 36.527,
+      "lng": -6.2886,
+      "zoom": 12
+    },
+    "toledo": {
+      "lat": 39.8628,
+      "lng": -4.0273,
+      "zoom": 12
+    },
+    "las_palmas": {
+      "lat": 28.106808899999997,
+      "lng": -15.6149309,
+      "zoom": 12
+    },
+    "albacete": {
+      "lat": 39.0072133,
+      "lng": -1.8704996,
+      "zoom": 12
+    },
+    "alcala_de_guadaira": {
+      "lat": 37.3645913,
+      "lng": -5.87915,
+      "zoom": 12
+    },
+    "alcala_de_henares": {
+      "lat": 40.5112247,
+      "lng": -3.3607573,
+      "zoom": 12
+    },
+    "alcobendas": {
+      "lat": 40.5533844,
+      "lng": -3.6575782,
+      "zoom": 12
+    },
+    "alcorcon": {
+      "lat": 40.3492999,
+      "lng": -3.8277305,
+      "zoom": 12
+    },
+    "algeciras": {
+      "lat": 36.0991252,
+      "lng": -5.4432446,
+      "zoom": 12
+    },
+    "almeria": {
+      "lat": 36.8371327,
+      "lng": -2.449226,
+      "zoom": 12
+    },
+    "arona": {
+      "lat": 28.0113297,
+      "lng": -16.6451626,
+      "zoom": 12
+    },
+    "badajoz": {
+      "lat": 38.8801369,
+      "lng": -6.9728706,
+      "zoom": 12
+    },
+    "benalmadena": {
+      "lat": 36.5915279,
+      "lng": -4.5267172,
+      "zoom": 12
+    },
+    "benidorm": {
+      "lat": 38.5411632,
+      "lng": -0.1158669,
+      "zoom": 12
+    },
+    "burgos": {
+      "lat": 42.3458695,
+      "lng": -3.7005266,
+      "zoom": 12
+    },
+    "caceres": {
+      "lat": 39.4748659,
+      "lng": -6.372203,
+      "zoom": 12
+    },
+    "fuenlabrada": {
+      "lat": 40.2903127,
+      "lng": -3.7923384,
+      "zoom": 12
+    },
+    "getafe": {
+      "lat": 40.3058285,
+      "lng": -3.7316379,
+      "zoom": 12
+    },
+    "huelva": {
+      "lat": 37.2567477,
+      "lng": -6.9525077,
+      "zoom": 12
+    },
+    "leganes": {
+      "lat": 40.3382133,
+      "lng": -3.772974,
+      "zoom": 12
+    },
+    "lleida": {
+      "lat": 41.627336,
+      "lng": 0.638579,
+      "zoom": 12
+    },
+    "logrono": {
+      "lat": 42.4639461,
+      "lng": -2.4388985,
+      "zoom": 12
+    },
+    "lugo": {
+      "lat": 42.9607925,
+      "lng": -7.687759799999999,
+      "zoom": 12
+    },
+    "marbella": {
+      "lat": 36.5099858,
+      "lng": -4.8888513,
+      "zoom": 12
+    },
+    "mostoles": {
+      "lat": 40.31512,
+      "lng": -3.8551,
+      "zoom": 12
+    },
+    "ourense": {
+      "lat": 42.337786,
+      "lng": -7.8633394,
+      "zoom": 12
+    },
+    "pontevedra": {
+      "lat": 42.225468899999996,
+      "lng": -8.693644899999999,
+      "zoom": 12
+    },
+    "reus": {
+      "lat": 41.1522263,
+      "lng": 1.111717,
+      "zoom": 12
+    },
+    "tarragona": {
+      "lat": 41.1282595,
+      "lng": 1.3457051,
+      "zoom": 12
+    },
+    "torrevieja": {
+      "lat": 37.9817502,
+      "lng": -0.6625318,
+      "zoom": 12
+    }
+  },
+  "cities": {
+    "alicante": {
+      "key": "alicante",
+      "name": "Alicante",
+      "region": "Comunidad Valenciana",
+      "center": {
+        "lat": 38.3452,
+        "lng": -0.481,
+        "zoom": 12
+      },
+      "totalRecords": 672,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 672,
+          "path": "cities/alicante/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 19,
+          "types": [
+            "restaurante",
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/alicante/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 129,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/alicante/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 281,
+          "types": [
+            "adiestrador",
+            "alojamiento",
+            "guarderia_canina"
+          ],
+          "path": "cities/alicante/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 30,
+          "types": [
+            "playa_perros",
+            "parque",
+            "parque_canino",
+            "area_canina"
+          ],
+          "path": "cities/alicante/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 147,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/alicante/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 66,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/alicante/otros.json"
+        }
+      }
+    },
+    "barcelona": {
+      "key": "barcelona",
+      "name": "Barcelona",
+      "region": "Cataluña",
+      "center": {
+        "lat": 41.3874,
+        "lng": 2.1686,
+        "zoom": 12
+      },
+      "totalRecords": 414,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 414,
+          "path": "cities/barcelona/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 21,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/barcelona/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 35,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/barcelona/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 103,
+          "types": [
+            "adiestrador",
+            "alojamiento",
+            "guarderia_canina"
+          ],
+          "path": "cities/barcelona/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 136,
+          "types": [
+            "parque",
+            "playa_perros",
+            "parque_canino",
+            "area_canina"
+          ],
+          "path": "cities/barcelona/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 75,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/barcelona/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 44,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/barcelona/otros.json"
+        }
+      }
+    },
+    "bilbao": {
+      "key": "bilbao",
+      "name": "Bilbao",
+      "region": "País Vasco",
+      "center": {
+        "lat": 43.263,
+        "lng": -2.935,
+        "zoom": 12
+      },
+      "totalRecords": 244,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 244,
+          "path": "cities/bilbao/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 12,
+          "types": [
+            "restaurante",
+            "heladeria_pasteleria",
+            "cafeteria_bar"
+          ],
+          "path": "cities/bilbao/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 49,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/bilbao/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 59,
+          "types": [
+            "adiestrador",
+            "peluqueria",
+            "alojamiento"
+          ],
+          "path": "cities/bilbao/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 16,
+          "types": [
+            "playa_perros",
+            "parque"
+          ],
+          "path": "cities/bilbao/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 72,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/bilbao/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 36,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/bilbao/otros.json"
+        }
+      }
+    },
+    "cadiz": {
+      "key": "cadiz",
+      "name": "Cádiz",
+      "region": "Andalucía",
+      "center": {
+        "lat": 36.527,
+        "lng": -6.2886,
+        "zoom": 12
+      },
+      "totalRecords": 242,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 242,
+          "path": "cities/cadiz/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 13,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/cadiz/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 52,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/cadiz/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 49,
+          "types": [
+            "adiestrador",
+            "alojamiento",
+            "peluqueria",
+            "guarderia_canina"
+          ],
+          "path": "cities/cadiz/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 18,
+          "types": [
+            "playa_perros",
+            "parque",
+            "parque_canino"
+          ],
+          "path": "cities/cadiz/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 69,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/cadiz/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 41,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/cadiz/otros.json"
+        }
+      }
+    },
+    "cordoba": {
+      "key": "cordoba",
+      "name": "Córdoba",
+      "region": "Andalucía",
+      "center": {
+        "lat": 37.8882,
+        "lng": -4.7794,
+        "zoom": 12
+      },
+      "totalRecords": 209,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 209,
+          "path": "cities/cordoba/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 8,
+          "types": [
+            "cafeteria_bar",
+            "restaurante"
+          ],
+          "path": "cities/cordoba/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 36,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/cordoba/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 55,
+          "types": [
+            "adiestrador",
+            "alojamiento",
+            "peluqueria",
+            "guarderia_canina"
+          ],
+          "path": "cities/cordoba/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 15,
+          "types": [
+            "parque",
+            "parque_canino"
+          ],
+          "path": "cities/cordoba/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 69,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/cordoba/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 26,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/cordoba/otros.json"
+        }
+      }
+    },
+    "girona": {
+      "key": "girona",
+      "name": "Girona",
+      "region": "Cataluña",
+      "center": {
+        "lat": 41.9794,
+        "lng": 2.8214,
+        "zoom": 12
+      },
+      "totalRecords": 345,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 345,
+          "path": "cities/girona/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 11,
+          "types": [
+            "restaurante",
+            "heladeria_pasteleria",
+            "cafeteria_bar"
+          ],
+          "path": "cities/girona/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 53,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/girona/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 64,
+          "types": [
+            "peluqueria",
+            "adiestrador",
+            "alojamiento",
+            "guarderia_canina"
+          ],
+          "path": "cities/girona/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 74,
+          "types": [
+            "parque",
+            "playa_perros",
+            "parque_canino"
+          ],
+          "path": "cities/girona/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 74,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/girona/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 69,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/girona/otros.json"
+        }
+      }
+    },
+    "granada": {
+      "key": "granada",
+      "name": "Granada",
+      "region": "Andalucía",
+      "center": {
+        "lat": 37.1773,
+        "lng": -3.5986,
+        "zoom": 12
+      },
+      "totalRecords": 202,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 202,
+          "path": "cities/granada/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 22,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/granada/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 42,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/granada/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 57,
+          "types": [
+            "adiestrador",
+            "alojamiento",
+            "guarderia_canina"
+          ],
+          "path": "cities/granada/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 10,
+          "types": [
+            "parque",
+            "playa_perros",
+            "parque_canino"
+          ],
+          "path": "cities/granada/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 37,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/granada/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 34,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/granada/otros.json"
+        }
+      }
+    },
+    "la_coruna": {
+      "key": "la_coruna",
+      "name": "A Coruña",
+      "region": "Galicia",
+      "center": {
+        "lat": 43.3623,
+        "lng": -8.4115,
+        "zoom": 12
+      },
+      "totalRecords": 341,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 341,
+          "path": "cities/la_coruna/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 11,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/la_coruna/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 79,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/la_coruna/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 73,
+          "types": [
+            "adiestrador",
+            "alojamiento",
+            "peluqueria",
+            "guarderia_canina"
+          ],
+          "path": "cities/la_coruna/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 51,
+          "types": [
+            "parque",
+            "playa_perros",
+            "parque_canino",
+            "area_canina"
+          ],
+          "path": "cities/la_coruna/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 76,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/la_coruna/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 51,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/la_coruna/otros.json"
+        }
+      }
+    },
+    "las_palmas": {
+      "key": "las_palmas",
+      "name": "Las Palmas",
+      "region": "Canarias",
+      "center": {
+        "lat": 28.106808899999997,
+        "lng": -15.6149309,
+        "zoom": 12
+      },
+      "totalRecords": 35,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 35,
+          "path": "cities/las_palmas/all.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 15,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/las_palmas/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 9,
+          "types": [
+            "guarderia_canina",
+            "peluqueria_canina"
+          ],
+          "path": "cities/las_palmas/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 11,
+          "types": [
+            "parque_canino"
+          ],
+          "path": "cities/las_palmas/ocio.json"
+        }
+      }
+    },
+    "leon": {
+      "key": "leon",
+      "name": "León",
+      "region": "Castilla y León",
+      "center": {
+        "lat": 42.5987,
+        "lng": -5.5671,
+        "zoom": 12
+      },
+      "totalRecords": 49,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 49,
+          "path": "cities/leon/all.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 1,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/leon/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 19,
+          "types": [
+            "alojamiento",
+            "adiestrador"
+          ],
+          "path": "cities/leon/cuidados.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 17,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/leon/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 12,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/leon/otros.json"
+        }
+      }
+    },
+    "malaga": {
+      "key": "malaga",
+      "name": "Málaga",
+      "region": "Andalucía",
+      "center": {
+        "lat": 36.7213,
+        "lng": -4.4214,
+        "zoom": 12
+      },
+      "totalRecords": 374,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 374,
+          "path": "cities/malaga/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 23,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/malaga/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 95,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/malaga/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 100,
+          "types": [
+            "adiestrador",
+            "alojamiento",
+            "peluqueria",
+            "guarderia_canina"
+          ],
+          "path": "cities/malaga/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 54,
+          "types": [
+            "parque",
+            "parque_canino"
+          ],
+          "path": "cities/malaga/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 83,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/malaga/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 19,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/malaga/otros.json"
+        }
+      }
+    },
+    "madrid": {
+      "key": "madrid",
+      "name": "Madrid",
+      "region": "Comunidad de Madrid",
+      "center": {
+        "lat": 40.4168,
+        "lng": -3.7038,
+        "zoom": 12
+      },
+      "totalRecords": 596,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 596,
+          "path": "cities/madrid/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 21,
+          "types": [
+            "cafeteria_bar",
+            "heladeria_pasteleria",
+            "restaurante"
+          ],
+          "path": "cities/madrid/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 107,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/madrid/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 152,
+          "types": [
+            "adiestrador",
+            "peluqueria",
+            "alojamiento",
+            "guarderia_canina",
+            "peluqueria_canina"
+          ],
+          "path": "cities/madrid/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 137,
+          "types": [
+            "parque",
+            "parque_canino",
+            "area_canina"
+          ],
+          "path": "cities/madrid/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 115,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/madrid/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 64,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/madrid/otros.json"
+        }
+      }
+    },
+    "murcia": {
+      "key": "murcia",
+      "name": "Murcia",
+      "region": "Región de Murcia",
+      "center": {
+        "lat": 37.9922,
+        "lng": -1.1307,
+        "zoom": 12
+      },
+      "totalRecords": 313,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 313,
+          "path": "cities/murcia/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 9,
+          "types": [
+            "cafeteria_bar",
+            "heladeria_pasteleria",
+            "restaurante"
+          ],
+          "path": "cities/murcia/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 31,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/murcia/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 61,
+          "types": [
+            "adiestrador",
+            "alojamiento",
+            "guarderia_canina",
+            "peluqueria_canina"
+          ],
+          "path": "cities/murcia/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 69,
+          "types": [
+            "parque",
+            "playa_perros",
+            "area_canina",
+            "parque_canino"
+          ],
+          "path": "cities/murcia/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 93,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/murcia/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 50,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/murcia/otros.json"
+        }
+      }
+    },
+    "oviedo": {
+      "key": "oviedo",
+      "name": "Oviedo",
+      "region": "Asturias",
+      "center": {
+        "lat": 43.3619,
+        "lng": -5.8494,
+        "zoom": 12
+      },
+      "totalRecords": 156,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 156,
+          "path": "cities/oviedo/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 17,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/oviedo/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 41,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/oviedo/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 38,
+          "types": [
+            "peluqueria",
+            "alojamiento",
+            "adiestrador"
+          ],
+          "path": "cities/oviedo/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 10,
+          "types": [
+            "parque"
+          ],
+          "path": "cities/oviedo/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 41,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/oviedo/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 9,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/oviedo/otros.json"
+        }
+      }
+    },
+    "palma_de_mallorca": {
+      "key": "palma_de_mallorca",
+      "name": "Palma de Mallorca",
+      "region": "Illes Balears",
+      "center": {
+        "lat": 39.5696,
+        "lng": 2.6502,
+        "zoom": 12
+      },
+      "totalRecords": 221,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 221,
+          "path": "cities/palma_de_mallorca/all.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 58,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/palma_de_mallorca/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 37,
+          "types": [
+            "peluqueria",
+            "adiestrador",
+            "alojamiento"
+          ],
+          "path": "cities/palma_de_mallorca/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 21,
+          "types": [
+            "parque"
+          ],
+          "path": "cities/palma_de_mallorca/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 80,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/palma_de_mallorca/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 25,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/palma_de_mallorca/otros.json"
+        }
+      }
+    },
+    "pamplona": {
+      "key": "pamplona",
+      "name": "Pamplona",
+      "region": "Navarra",
+      "center": {
+        "lat": 42.8125,
+        "lng": -1.6458,
+        "zoom": 12
+      },
+      "totalRecords": 192,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 192,
+          "path": "cities/pamplona/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 7,
+          "types": [
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/pamplona/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 35,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/pamplona/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 58,
+          "types": [
+            "adiestrador",
+            "peluqueria",
+            "alojamiento"
+          ],
+          "path": "cities/pamplona/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 44,
+          "types": [
+            "parque"
+          ],
+          "path": "cities/pamplona/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 36,
+          "types": [
+            "tienda"
+          ],
+          "path": "cities/pamplona/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 12,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/pamplona/otros.json"
+        }
+      }
+    },
+    "salamanca": {
+      "key": "salamanca",
+      "name": "Salamanca",
+      "region": "Castilla y León",
+      "center": {
+        "lat": 40.9701,
+        "lng": -5.6635,
+        "zoom": 12
+      },
+      "totalRecords": 219,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 219,
+          "path": "cities/salamanca/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 13,
+          "types": [
+            "restaurante",
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/salamanca/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 45,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/salamanca/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 58,
+          "types": [
+            "peluqueria",
+            "alojamiento",
+            "adiestrador",
+            "guarderia_canina"
+          ],
+          "path": "cities/salamanca/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 36,
+          "types": [
+            "parque",
+            "playa_perros",
+            "parque_canino"
+          ],
+          "path": "cities/salamanca/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 35,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/salamanca/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 32,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/salamanca/otros.json"
+        }
+      }
+    },
+    "san_sebastian": {
+      "key": "san_sebastian",
+      "name": "San Sebastián",
+      "region": "País Vasco",
+      "center": {
+        "lat": 43.3183,
+        "lng": -1.9812,
+        "zoom": 12
+      },
+      "totalRecords": 110,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 110,
+          "path": "cities/san_sebastian/all.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 11,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/san_sebastian/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 51,
+          "types": [
+            "adiestrador",
+            "peluqueria",
+            "alojamiento"
+          ],
+          "path": "cities/san_sebastian/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 6,
+          "types": [
+            "parque",
+            "playa_perros"
+          ],
+          "path": "cities/san_sebastian/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 21,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/san_sebastian/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 21,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/san_sebastian/otros.json"
+        }
+      }
+    },
+    "santiago_de_compostela": {
+      "key": "santiago_de_compostela",
+      "name": "Santiago de Compostela",
+      "region": "Galicia",
+      "center": {
+        "lat": 42.8782,
+        "lng": -8.5448,
+        "zoom": 12
+      },
+      "totalRecords": 174,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 174,
+          "path": "cities/santiago_de_compostela/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 13,
+          "types": [
+            "restaurante",
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/santiago_de_compostela/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 48,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/santiago_de_compostela/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 49,
+          "types": [
+            "adiestrador",
+            "alojamiento"
+          ],
+          "path": "cities/santiago_de_compostela/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 19,
+          "types": [
+            "parque"
+          ],
+          "path": "cities/santiago_de_compostela/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 21,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/santiago_de_compostela/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 24,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/santiago_de_compostela/otros.json"
+        }
+      }
+    },
+    "santander": {
+      "key": "santander",
+      "name": "Santander",
+      "region": "Cantabria",
+      "center": {
+        "lat": 43.4623,
+        "lng": -3.81,
+        "zoom": 12
+      },
+      "totalRecords": 133,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 133,
+          "path": "cities/santander/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 16,
+          "types": [
+            "restaurante",
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/santander/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 1,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/santander/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 36,
+          "types": [
+            "adiestrador",
+            "alojamiento",
+            "peluqueria"
+          ],
+          "path": "cities/santander/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 33,
+          "types": [
+            "parque",
+            "playa_perros"
+          ],
+          "path": "cities/santander/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 24,
+          "types": [
+            "tienda"
+          ],
+          "path": "cities/santander/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 23,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/santander/otros.json"
+        }
+      }
+    },
+    "sevilla": {
+      "key": "sevilla",
+      "name": "Sevilla",
+      "region": "Andalucía",
+      "center": {
+        "lat": 37.3891,
+        "lng": -5.9845,
+        "zoom": 12
+      },
+      "totalRecords": 276,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 276,
+          "path": "cities/sevilla/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 21,
+          "types": [
+            "restaurante",
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/sevilla/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 15,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/sevilla/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 89,
+          "types": [
+            "adiestrador",
+            "peluqueria",
+            "alojamiento",
+            "guarderia_canina"
+          ],
+          "path": "cities/sevilla/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 43,
+          "types": [
+            "parque",
+            "playa_perros",
+            "parque_canino"
+          ],
+          "path": "cities/sevilla/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 69,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/sevilla/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 39,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/sevilla/otros.json"
+        }
+      }
+    },
+    "toledo": {
+      "key": "toledo",
+      "name": "Toledo",
+      "region": "Castilla-La Mancha",
+      "center": {
+        "lat": 39.8628,
+        "lng": -4.0273,
+        "zoom": 12
+      },
+      "totalRecords": 157,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 157,
+          "path": "cities/toledo/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 7,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/toledo/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 28,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/toledo/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 45,
+          "types": [
+            "adiestrador",
+            "alojamiento",
+            "guarderia_canina"
+          ],
+          "path": "cities/toledo/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 7,
+          "types": [
+            "parque",
+            "parque_canino"
+          ],
+          "path": "cities/toledo/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 23,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/toledo/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 47,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/toledo/otros.json"
+        }
+      }
+    },
+    "valencia": {
+      "key": "valencia",
+      "name": "Valencia",
+      "region": "Comunidad Valenciana",
+      "center": {
+        "lat": 39.4699,
+        "lng": -0.3763,
+        "zoom": 12
+      },
+      "totalRecords": 408,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 408,
+          "path": "cities/valencia/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 22,
+          "types": [
+            "restaurante",
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/valencia/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 37,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/valencia/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 113,
+          "types": [
+            "adiestrador",
+            "alojamiento",
+            "peluqueria",
+            "guarderia_canina"
+          ],
+          "path": "cities/valencia/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 74,
+          "types": [
+            "parque",
+            "playa_perros",
+            "parque_canino"
+          ],
+          "path": "cities/valencia/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 106,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/valencia/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 56,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/valencia/otros.json"
+        }
+      }
+    },
+    "valladolid": {
+      "key": "valladolid",
+      "name": "Valladolid",
+      "region": "Castilla y León",
+      "center": {
+        "lat": 41.6523,
+        "lng": -4.7245,
+        "zoom": 12
+      },
+      "totalRecords": 227,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 227,
+          "path": "cities/valladolid/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 10,
+          "types": [
+            "restaurante",
+            "cafeteria_bar"
+          ],
+          "path": "cities/valladolid/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 22,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/valladolid/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 57,
+          "types": [
+            "peluqueria",
+            "adiestrador",
+            "alojamiento",
+            "guarderia_canina",
+            "peluqueria_canina"
+          ],
+          "path": "cities/valladolid/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 36,
+          "types": [
+            "parque",
+            "playa_perros",
+            "parque_canino"
+          ],
+          "path": "cities/valladolid/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 65,
+          "types": [
+            "tienda"
+          ],
+          "path": "cities/valladolid/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 37,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/valladolid/otros.json"
+        }
+      }
+    },
+    "vigo": {
+      "key": "vigo",
+      "name": "Vigo",
+      "region": "Galicia",
+      "center": {
+        "lat": 42.2328,
+        "lng": -8.7226,
+        "zoom": 12
+      },
+      "totalRecords": 161,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 161,
+          "path": "cities/vigo/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 16,
+          "types": [
+            "restaurante",
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/vigo/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 43,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/vigo/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 36,
+          "types": [
+            "adiestrador",
+            "alojamiento",
+            "peluqueria"
+          ],
+          "path": "cities/vigo/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 18,
+          "types": [
+            "parque",
+            "playa_perros"
+          ],
+          "path": "cities/vigo/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 38,
+          "types": [
+            "tienda"
+          ],
+          "path": "cities/vigo/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 10,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/vigo/otros.json"
+        }
+      }
+    },
+    "zaragoza": {
+      "key": "zaragoza",
+      "name": "Zaragoza",
+      "region": "Aragón",
+      "center": {
+        "lat": 41.6488,
+        "lng": -0.8891,
+        "zoom": 12
+      },
+      "totalRecords": 145,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 145,
+          "path": "cities/zaragoza/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 15,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/zaragoza/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 14,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/zaragoza/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 53,
+          "types": [
+            "adiestrador",
+            "peluqueria",
+            "alojamiento",
+            "guarderia_canina"
+          ],
+          "path": "cities/zaragoza/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 6,
+          "types": [
+            "area_canina",
+            "parque_canino"
+          ],
+          "path": "cities/zaragoza/ocio.json"
+        },
+        "comunidad": {
+          "available": true,
+          "count": 46,
+          "types": [
+            "tienda",
+            "protectora"
+          ],
+          "path": "cities/zaragoza/comunidad.json"
+        },
+        "otros": {
+          "available": true,
+          "count": 11,
+          "types": [
+            "otros"
+          ],
+          "path": "cities/zaragoza/otros.json"
+        }
+      }
+    },
+    "albacete": {
+      "key": "albacete",
+      "name": "Albacete",
+      "region": "Castilla-La Mancha",
+      "center": {
+        "lat": 39.0072133,
+        "lng": -1.8704996,
+        "zoom": 12
+      },
+      "totalRecords": 41,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 41,
+          "path": "cities/albacete/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 8,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/albacete/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 23,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/albacete/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 2,
+          "types": [
+            "guarderia_canina"
+          ],
+          "path": "cities/albacete/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 8,
+          "types": [
+            "parque_canino"
+          ],
+          "path": "cities/albacete/ocio.json"
+        }
+      }
+    },
+    "alcala_de_guadaira": {
+      "key": "alcala_de_guadaira",
+      "name": "Alcala de Guadaira",
+      "region": "Andalucia",
+      "center": {
+        "lat": 37.3645913,
+        "lng": -5.87915,
+        "zoom": 12
+      },
+      "totalRecords": 11,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 11,
+          "path": "cities/alcala_de_guadaira/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 1,
+          "types": [
+            "cafeteria_bar"
+          ],
+          "path": "cities/alcala_de_guadaira/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 10,
+          "types": [
+            "farmacia_veterinaria",
+            "veterinario"
+          ],
+          "path": "cities/alcala_de_guadaira/salud.json"
+        }
+      }
+    },
+    "alcala_de_henares": {
+      "key": "alcala_de_henares",
+      "name": "Alcalá de Henares",
+      "region": "Comunidad de Madrid",
+      "center": {
+        "lat": 40.5112247,
+        "lng": -3.3607573,
+        "zoom": 12
+      },
+      "totalRecords": 16,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 16,
+          "path": "cities/alcala_de_henares/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 16,
+          "types": [
+            "cafeteria_bar",
+            "heladeria_pasteleria",
+            "restaurante"
+          ],
+          "path": "cities/alcala_de_henares/comida.json"
+        }
+      }
+    },
+    "alcobendas": {
+      "key": "alcobendas",
+      "name": "Alcobendas",
+      "region": "Comunidad de Madrid",
+      "center": {
+        "lat": 40.5533844,
+        "lng": -3.6575782,
+        "zoom": 12
+      },
+      "totalRecords": 9,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 9,
+          "path": "cities/alcobendas/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 9,
+          "types": [
+            "restaurante",
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/alcobendas/comida.json"
+        }
+      }
+    },
+    "alcorcon": {
+      "key": "alcorcon",
+      "name": "Alcorcon",
+      "region": "Comunidad de Madrid",
+      "center": {
+        "lat": 40.3492999,
+        "lng": -3.8277305,
+        "zoom": 12
+      },
+      "totalRecords": 8,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 8,
+          "path": "cities/alcorcon/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 8,
+          "types": [
+            "cafeteria_bar",
+            "heladeria_pasteleria",
+            "restaurante"
+          ],
+          "path": "cities/alcorcon/comida.json"
+        }
+      }
+    },
+    "algeciras": {
+      "key": "algeciras",
+      "name": "Algeciras",
+      "region": "Andalucia",
+      "center": {
+        "lat": 36.0991252,
+        "lng": -5.4432446,
+        "zoom": 12
+      },
+      "totalRecords": 5,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 5,
+          "path": "cities/algeciras/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 5,
+          "types": [
+            "heladeria_pasteleria",
+            "cafeteria_bar"
+          ],
+          "path": "cities/algeciras/comida.json"
+        }
+      }
+    },
+    "almeria": {
+      "key": "almeria",
+      "name": "Almería",
+      "region": "Andalucía",
+      "center": {
+        "lat": 36.8371327,
+        "lng": -2.449226,
+        "zoom": 12
+      },
+      "totalRecords": 29,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 29,
+          "path": "cities/almeria/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 8,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/almeria/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 11,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/almeria/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 3,
+          "types": [
+            "guarderia_canina"
+          ],
+          "path": "cities/almeria/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 7,
+          "types": [
+            "parque_canino"
+          ],
+          "path": "cities/almeria/ocio.json"
+        }
+      }
+    },
+    "arona": {
+      "key": "arona",
+      "name": "Arona",
+      "region": "Canarias",
+      "center": {
+        "lat": 28.0113297,
+        "lng": -16.6451626,
+        "zoom": 12
+      },
+      "totalRecords": 3,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 3,
+          "path": "cities/arona/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 3,
+          "types": [
+            "heladeria_pasteleria",
+            "cafeteria_bar"
+          ],
+          "path": "cities/arona/comida.json"
+        }
+      }
+    },
+    "badajoz": {
+      "key": "badajoz",
+      "name": "Badajoz",
+      "region": "Extremadura",
+      "center": {
+        "lat": 38.8801369,
+        "lng": -6.9728706,
+        "zoom": 12
+      },
+      "totalRecords": 19,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 19,
+          "path": "cities/badajoz/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 4,
+          "types": [
+            "restaurante",
+            "cafeteria_bar"
+          ],
+          "path": "cities/badajoz/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 10,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/badajoz/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 2,
+          "types": [
+            "guarderia_canina"
+          ],
+          "path": "cities/badajoz/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 3,
+          "types": [
+            "parque_canino"
+          ],
+          "path": "cities/badajoz/ocio.json"
+        }
+      }
+    },
+    "barakaldo": {
+      "key": "barakaldo",
+      "name": "Barakaldo",
+      "region": "Pais Vasco",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "benalmadena": {
+      "key": "benalmadena",
+      "name": "Benalmadena",
+      "region": "Andalucia",
+      "center": {
+        "lat": 36.5915279,
+        "lng": -4.5267172,
+        "zoom": 12
+      },
+      "totalRecords": 11,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 11,
+          "path": "cities/benalmadena/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 11,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/benalmadena/comida.json"
+        }
+      }
+    },
+    "benidorm": {
+      "key": "benidorm",
+      "name": "Benidorm",
+      "region": "Comunidad Valenciana",
+      "center": {
+        "lat": 38.5411632,
+        "lng": -0.1158669,
+        "zoom": 12
+      },
+      "totalRecords": 9,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 9,
+          "path": "cities/benidorm/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 9,
+          "types": [
+            "restaurante",
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/benidorm/comida.json"
+        }
+      }
+    },
+    "burgos": {
+      "key": "burgos",
+      "name": "Burgos",
+      "region": "Castilla y León",
+      "center": {
+        "lat": 42.3458695,
+        "lng": -3.7005266,
+        "zoom": 12
+      },
+      "totalRecords": 41,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 41,
+          "path": "cities/burgos/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 17,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/burgos/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 13,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/burgos/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 3,
+          "types": [
+            "guarderia_canina"
+          ],
+          "path": "cities/burgos/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 8,
+          "types": [
+            "parque_canino"
+          ],
+          "path": "cities/burgos/ocio.json"
+        }
+      }
+    },
+    "castellon_de_la_plana": {
+      "key": "castellon_de_la_plana",
+      "name": "Castellon de la Plana",
+      "region": "Comunidad Valenciana",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "ceuta": {
+      "key": "ceuta",
+      "name": "Ceuta",
+      "region": "Ciudad Autonoma de Ceuta",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "chiclana_de_la_frontera": {
+      "key": "chiclana_de_la_frontera",
+      "name": "Chiclana de la Frontera",
+      "region": "Andalucia",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "ciudad_real": {
+      "key": "ciudad_real",
+      "name": "Ciudad Real",
+      "region": "Castilla-La Mancha",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "cornella_de_llobregat": {
+      "key": "cornella_de_llobregat",
+      "name": "Cornella de Llobregat",
+      "region": "Cataluna",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "coslada": {
+      "key": "coslada",
+      "name": "Coslada",
+      "region": "Comunidad de Madrid",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "caceres": {
+      "key": "caceres",
+      "name": "Cáceres",
+      "region": "Extremadura",
+      "center": {
+        "lat": 39.4748659,
+        "lng": -6.372203,
+        "zoom": 12
+      },
+      "totalRecords": 28,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 28,
+          "path": "cities/caceres/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 4,
+          "types": [
+            "restaurante",
+            "heladeria_pasteleria",
+            "cafeteria_bar"
+          ],
+          "path": "cities/caceres/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 13,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/caceres/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 2,
+          "types": [
+            "guarderia_canina"
+          ],
+          "path": "cities/caceres/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 9,
+          "types": [
+            "parque_canino",
+            "area_canina"
+          ],
+          "path": "cities/caceres/ocio.json"
+        }
+      }
+    },
+    "dos_hermanas": {
+      "key": "dos_hermanas",
+      "name": "Dos Hermanas",
+      "region": "Andalucia",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "el_ejido": {
+      "key": "el_ejido",
+      "name": "El Ejido",
+      "region": "Andalucia",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "el_puerto_de_santa_maria": {
+      "key": "el_puerto_de_santa_maria",
+      "name": "El Puerto de Santa Maria",
+      "region": "Andalucia",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "estepona": {
+      "key": "estepona",
+      "name": "Estepona",
+      "region": "Andalucia",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "fuengirola": {
+      "key": "fuengirola",
+      "name": "Fuengirola",
+      "region": "Andalucia",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "fuenlabrada": {
+      "key": "fuenlabrada",
+      "name": "Fuenlabrada",
+      "region": "Comunidad de Madrid",
+      "center": {
+        "lat": 40.2903127,
+        "lng": -3.7923384,
+        "zoom": 12
+      },
+      "totalRecords": 6,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 6,
+          "path": "cities/fuenlabrada/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 6,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/fuenlabrada/comida.json"
+        }
+      }
+    },
+    "gandia": {
+      "key": "gandia",
+      "name": "Gandia",
+      "region": "Comunidad Valenciana",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "getafe": {
+      "key": "getafe",
+      "name": "Getafe",
+      "region": "Comunidad de Madrid",
+      "center": {
+        "lat": 40.3058285,
+        "lng": -3.7316379,
+        "zoom": 12
+      },
+      "totalRecords": 6,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 6,
+          "path": "cities/getafe/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 6,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/getafe/comida.json"
+        }
+      }
+    },
+    "guadalajara": {
+      "key": "guadalajara",
+      "name": "Guadalajara",
+      "region": "Castilla-La Mancha",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "huelva": {
+      "key": "huelva",
+      "name": "Huelva",
+      "region": "Andalucía",
+      "center": {
+        "lat": 37.2567477,
+        "lng": -6.9525077,
+        "zoom": 12
+      },
+      "totalRecords": 30,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 30,
+          "path": "cities/huelva/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 4,
+          "types": [
+            "restaurante",
+            "cafeteria_bar"
+          ],
+          "path": "cities/huelva/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 11,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/huelva/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 4,
+          "types": [
+            "guarderia_canina"
+          ],
+          "path": "cities/huelva/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 11,
+          "types": [
+            "parque_canino",
+            "area_canina"
+          ],
+          "path": "cities/huelva/ocio.json"
+        }
+      }
+    },
+    "jaen": {
+      "key": "jaen",
+      "name": "Jaén",
+      "region": "Andalucía",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "las_rozas_de_madrid": {
+      "key": "las_rozas_de_madrid",
+      "name": "Las Rozas de Madrid",
+      "region": "Comunidad de Madrid",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "leganes": {
+      "key": "leganes",
+      "name": "Leganés",
+      "region": "Comunidad de Madrid",
+      "center": {
+        "lat": 40.3382133,
+        "lng": -3.772974,
+        "zoom": 12
+      },
+      "totalRecords": 6,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 6,
+          "path": "cities/leganes/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 6,
+          "types": [
+            "cafeteria_bar",
+            "restaurante"
+          ],
+          "path": "cities/leganes/comida.json"
+        }
+      }
+    },
+    "lleida": {
+      "key": "lleida",
+      "name": "Lleida",
+      "region": "Cataluña",
+      "center": {
+        "lat": 41.627336,
+        "lng": 0.638579,
+        "zoom": 12
+      },
+      "totalRecords": 33,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 33,
+          "path": "cities/lleida/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 9,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/lleida/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 12,
+          "types": [
+            "farmacia_veterinaria",
+            "veterinario"
+          ],
+          "path": "cities/lleida/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 6,
+          "types": [
+            "guarderia_canina"
+          ],
+          "path": "cities/lleida/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 6,
+          "types": [
+            "parque_canino"
+          ],
+          "path": "cities/lleida/ocio.json"
+        }
+      }
+    },
+    "logrono": {
+      "key": "logrono",
+      "name": "Logroño",
+      "region": "La Rioja",
+      "center": {
+        "lat": 42.4639461,
+        "lng": -2.4388985,
+        "zoom": 12
+      },
+      "totalRecords": 9,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 9,
+          "path": "cities/logrono/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 9,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/logrono/comida.json"
+        }
+      }
+    },
+    "lorca": {
+      "key": "lorca",
+      "name": "Lorca",
+      "region": "Region de Murcia",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "lugo": {
+      "key": "lugo",
+      "name": "Lugo",
+      "region": "Galicia",
+      "center": {
+        "lat": 42.9607925,
+        "lng": -7.687759799999999,
+        "zoom": 12
+      },
+      "totalRecords": 3,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 3,
+          "path": "cities/lugo/all.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 1,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/lugo/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 2,
+          "types": [
+            "guarderia_canina"
+          ],
+          "path": "cities/lugo/cuidados.json"
+        }
+      }
+    },
+    "manresa": {
+      "key": "manresa",
+      "name": "Manresa",
+      "region": "Cataluna",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "marbella": {
+      "key": "marbella",
+      "name": "Marbella",
+      "region": "Andalucía",
+      "center": {
+        "lat": 36.5099858,
+        "lng": -4.8888513,
+        "zoom": 12
+      },
+      "totalRecords": 19,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 19,
+          "path": "cities/marbella/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 19,
+          "types": [
+            "restaurante",
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/marbella/comida.json"
+        }
+      }
+    },
+    "mataro": {
+      "key": "mataro",
+      "name": "Mataro",
+      "region": "Cataluna",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "melilla": {
+      "key": "melilla",
+      "name": "Melilla",
+      "region": "Ciudad Autonoma de Melilla",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "mijas": {
+      "key": "mijas",
+      "name": "Mijas",
+      "region": "Andalucia",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "molina_de_segura": {
+      "key": "molina_de_segura",
+      "name": "Molina de Segura",
+      "region": "Region de Murcia",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "mostoles": {
+      "key": "mostoles",
+      "name": "Móstoles",
+      "region": "Comunidad de Madrid",
+      "center": {
+        "lat": 40.31512,
+        "lng": -3.8551,
+        "zoom": 12
+      },
+      "totalRecords": 5,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 5,
+          "path": "cities/mostoles/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 5,
+          "types": [
+            "cafeteria_bar",
+            "restaurante",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/mostoles/comida.json"
+        }
+      }
+    },
+    "orihuela": {
+      "key": "orihuela",
+      "name": "Orihuela",
+      "region": "Comunidad Valenciana",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "ourense": {
+      "key": "ourense",
+      "name": "Ourense",
+      "region": "Galicia",
+      "center": {
+        "lat": 42.337786,
+        "lng": -7.8633394,
+        "zoom": 12
+      },
+      "totalRecords": 9,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 9,
+          "path": "cities/ourense/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 1,
+          "types": [
+            "restaurante"
+          ],
+          "path": "cities/ourense/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 5,
+          "types": [
+            "veterinario"
+          ],
+          "path": "cities/ourense/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 2,
+          "types": [
+            "guarderia_canina"
+          ],
+          "path": "cities/ourense/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 1,
+          "types": [
+            "parque_canino"
+          ],
+          "path": "cities/ourense/ocio.json"
+        }
+      }
+    },
+    "palencia": {
+      "key": "palencia",
+      "name": "Palencia",
+      "region": "Castilla y Leon",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "parla": {
+      "key": "parla",
+      "name": "Parla",
+      "region": "Comunidad de Madrid",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "paterna": {
+      "key": "paterna",
+      "name": "Paterna",
+      "region": "Comunidad Valenciana",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "pontevedra": {
+      "key": "pontevedra",
+      "name": "Pontevedra",
+      "region": "Galicia",
+      "center": {
+        "lat": 42.225468899999996,
+        "lng": -8.693644899999999,
+        "zoom": 12
+      },
+      "totalRecords": 22,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 22,
+          "path": "cities/pontevedra/all.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 17,
+          "types": [
+            "farmacia_veterinaria",
+            "veterinario"
+          ],
+          "path": "cities/pontevedra/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 3,
+          "types": [
+            "guarderia_canina"
+          ],
+          "path": "cities/pontevedra/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 2,
+          "types": [
+            "parque_canino",
+            "area_canina"
+          ],
+          "path": "cities/pontevedra/ocio.json"
+        }
+      }
+    },
+    "pozuelo_de_alarcon": {
+      "key": "pozuelo_de_alarcon",
+      "name": "Pozuelo de Alarcon",
+      "region": "Comunidad de Madrid",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "reus": {
+      "key": "reus",
+      "name": "Reus",
+      "region": "Cataluña",
+      "center": {
+        "lat": 41.1522263,
+        "lng": 1.111717,
+        "zoom": 12
+      },
+      "totalRecords": 10,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 10,
+          "path": "cities/reus/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 10,
+          "types": [
+            "cafeteria_bar",
+            "restaurante"
+          ],
+          "path": "cities/reus/comida.json"
+        }
+      }
+    },
+    "rivas_vaciamadrid": {
+      "key": "rivas_vaciamadrid",
+      "name": "Rivas-Vaciamadrid",
+      "region": "Comunidad de Madrid",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "roquetas_de_mar": {
+      "key": "roquetas_de_mar",
+      "name": "Roquetas de Mar",
+      "region": "Andalucia",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "rubi": {
+      "key": "rubi",
+      "name": "Rubi",
+      "region": "Cataluna",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "san_cristobal_de_la_laguna": {
+      "key": "san_cristobal_de_la_laguna",
+      "name": "San Cristobal de La Laguna",
+      "region": "Canarias",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "san_fernando": {
+      "key": "san_fernando",
+      "name": "San Fernando",
+      "region": "Andalucia",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "san_sebastian_de_los_reyes": {
+      "key": "san_sebastian_de_los_reyes",
+      "name": "San Sebastian de los Reyes",
+      "region": "Comunidad de Madrid",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "sant_boi_de_llobregat": {
+      "key": "sant_boi_de_llobregat",
+      "name": "Sant Boi de Llobregat",
+      "region": "Cataluna",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "sant_cugat_del_valles": {
+      "key": "sant_cugat_del_valles",
+      "name": "Sant Cugat del Valles",
+      "region": "Cataluna",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "santa_coloma_de_gramanet": {
+      "key": "santa_coloma_de_gramanet",
+      "name": "Santa Coloma de Gramanet",
+      "region": "Cataluna",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "santa_lucia_de_tirajana": {
+      "key": "santa_lucia_de_tirajana",
+      "name": "Santa Lucia de Tirajana",
+      "region": "Canarias",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "talavera_de_la_reina": {
+      "key": "talavera_de_la_reina",
+      "name": "Talavera de la Reina",
+      "region": "Castilla-La Mancha",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "tarragona": {
+      "key": "tarragona",
+      "name": "Tarragona",
+      "region": "Cataluña",
+      "center": {
+        "lat": 41.1282595,
+        "lng": 1.3457051,
+        "zoom": 12
+      },
+      "totalRecords": 61,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 61,
+          "path": "cities/tarragona/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 18,
+          "types": [
+            "restaurante",
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/tarragona/comida.json"
+        },
+        "salud": {
+          "available": true,
+          "count": 19,
+          "types": [
+            "veterinario",
+            "farmacia_veterinaria"
+          ],
+          "path": "cities/tarragona/salud.json"
+        },
+        "cuidados": {
+          "available": true,
+          "count": 11,
+          "types": [
+            "guarderia_canina"
+          ],
+          "path": "cities/tarragona/cuidados.json"
+        },
+        "ocio": {
+          "available": true,
+          "count": 13,
+          "types": [
+            "parque_canino"
+          ],
+          "path": "cities/tarragona/ocio.json"
+        }
+      }
+    },
+    "telde": {
+      "key": "telde",
+      "name": "Telde",
+      "region": "Canarias",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "torrejon_de_ardoz": {
+      "key": "torrejon_de_ardoz",
+      "name": "Torrejon de Ardoz",
+      "region": "Comunidad de Madrid",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "torrent": {
+      "key": "torrent",
+      "name": "Torrent",
+      "region": "Comunidad Valenciana",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "torrevieja": {
+      "key": "torrevieja",
+      "name": "Torrevieja",
+      "region": "Comunidad Valenciana",
+      "center": {
+        "lat": 37.9817502,
+        "lng": -0.6625318,
+        "zoom": 12
+      },
+      "totalRecords": 11,
+      "clusters": {
+        "all": {
+          "available": true,
+          "count": 11,
+          "path": "cities/torrevieja/all.json"
+        },
+        "comida": {
+          "available": true,
+          "count": 11,
+          "types": [
+            "restaurante",
+            "cafeteria_bar",
+            "heladeria_pasteleria"
+          ],
+          "path": "cities/torrevieja/comida.json"
+        }
+      }
+    },
+    "valdemoro": {
+      "key": "valdemoro",
+      "name": "Valdemoro",
+      "region": "Comunidad de Madrid",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    },
+    "velez_malaga": {
+      "key": "velez_malaga",
+      "name": "Velez-Malaga",
+      "region": "Andalucia",
+      "center": null,
+      "totalRecords": 0,
+      "clusters": {}
+    }
+  }
+}

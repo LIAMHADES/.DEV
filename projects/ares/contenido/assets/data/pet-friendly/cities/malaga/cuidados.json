@@ -1,0 +1,832 @@
+[
+  {
+    "nombre": "Silvita Guau Guau",
+    "tipo": "adiestrador",
+    "direccion": "C. Concepción, 132",
+    "lat": 36.713062,
+    "lng": -4.627174699999999
+  },
+  {
+    "nombre": "Residencia Canina Málaga Can Resort",
+    "tipo": "adiestrador",
+    "direccion": "Cam. Lo Cotta, 1",
+    "lat": 36.7499727,
+    "lng": -4.5807987
+  },
+  {
+    "nombre": "Educador Canino Salva Martín",
+    "tipo": "adiestrador",
+    "direccion": "C. Chinchilla, 13",
+    "lat": 36.7258157,
+    "lng": -4.4210972
+  },
+  {
+    "nombre": "DOGTM",
+    "tipo": "adiestrador",
+    "direccion": "Cortijo Campillo, Parcela 120 Polígono 14, Entrerrios",
+    "lat": 36.5535834,
+    "lng": -4.7016722
+  },
+  {
+    "nombre": "You-Can Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "C. las Flores, 10",
+    "lat": 36.6474452,
+    "lng": -4.6765937
+  },
+  {
+    "nombre": "Oh My Dog! Training - Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "Plaza Sta. Ángela de la Cruz",
+    "lat": 36.6712117,
+    "lng": -4.5077494
+  },
+  {
+    "nombre": "Gualia",
+    "tipo": "adiestrador",
+    "direccion": "Ctra. de Cártama, 44",
+    "lat": 36.6476396,
+    "lng": -4.6815161
+  },
+  {
+    "nombre": "ELEducación Canina- Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "Calle Coral",
+    "lat": 36.7380655,
+    "lng": -4.6076347
+  },
+  {
+    "nombre": "Akindi Málaga - Adiestramiento canino",
+    "tipo": "adiestrador",
+    "direccion": "29570 Vega Riaran",
+    "lat": 36.714601699999996,
+    "lng": -4.6559763
+  },
+  {
+    "nombre": "Dakan Educación Canina",
+    "tipo": "adiestrador",
+    "direccion": "C. Jalea, 5",
+    "lat": 36.611004699999995,
+    "lng": -4.5437482
+  },
+  {
+    "nombre": "Sunbeam Dog Training & Behaviour",
+    "tipo": "adiestrador",
+    "direccion": "Postal address: Camino de Magiaza Buzón 102",
+    "lat": 36.8948179,
+    "lng": -4.2859923
+  },
+  {
+    "nombre": "S.O.S. Educación Canina",
+    "tipo": "adiestrador",
+    "direccion": "Edificio Esmeralda",
+    "lat": 36.5059507,
+    "lng": -4.6711151
+  },
+  {
+    "nombre": "Binomio Dog training",
+    "tipo": "adiestrador",
+    "direccion": "A-355",
+    "lat": 36.66346,
+    "lng": -4.7356405
+  },
+  {
+    "nombre": "Canducadores",
+    "tipo": "adiestrador",
+    "direccion": "Las Casillas, 7",
+    "lat": 36.7255435,
+    "lng": -4.1655701999999994
+  },
+  {
+    "nombre": "DOC4DOGS",
+    "tipo": "adiestrador",
+    "direccion": "Puerto Gomez",
+    "lat": 36.6428298,
+    "lng": -4.6876707
+  },
+  {
+    "nombre": "Natural-Dogs Educación Natural Canina",
+    "tipo": "adiestrador",
+    "direccion": "Camino de Albolote, 10",
+    "lat": 36.851806599999996,
+    "lng": -4.1407489
+  },
+  {
+    "nombre": "Adiestramiento canino Sergio Teig",
+    "tipo": "adiestrador",
+    "direccion": "C. Blas de Lezo, 17",
+    "lat": 36.7286606,
+    "lng": -4.4348277
+  },
+  {
+    "nombre": "GoDog - Dog Training Málaga",
+    "tipo": "adiestrador",
+    "direccion": "C. Brisas de la Viña",
+    "lat": 36.7440268,
+    "lng": -4.1023881
+  },
+  {
+    "nombre": "VidaDeCan",
+    "tipo": "adiestrador",
+    "direccion": "Cam. la Perlilla, 5",
+    "lat": 36.75655,
+    "lng": -4.53281
+  },
+  {
+    "nombre": "ilea educación canina",
+    "tipo": "adiestrador",
+    "direccion": "Cortijo Ratón s/n",
+    "lat": 36.741343799999996,
+    "lng": -4.6433592
+  },
+  {
+    "nombre": "Sunny's Pawradise Retreat",
+    "tipo": "adiestrador",
+    "direccion": "Cam. los Llanos",
+    "lat": 36.7049096,
+    "lng": -4.8204310999999995
+  },
+  {
+    "nombre": "Casa Deniz",
+    "tipo": "alojamiento",
+    "direccion": "C. Caro Sánchez, No 5",
+    "lat": 36.7297316,
+    "lng": -4.3712751999999995
+  },
+  {
+    "nombre": "Adiestramiento Canino HOLISTICAN",
+    "tipo": "adiestrador",
+    "direccion": "29570 Cártama",
+    "lat": 36.721367,
+    "lng": -4.691087
+  },
+  {
+    "nombre": "Yeyecan",
+    "tipo": "adiestrador",
+    "direccion": "Bda. las Posturas, 10",
+    "lat": 36.724166,
+    "lng": -4.2739215
+  },
+  {
+    "nombre": "Residencia Canina y Adiestramiento Cruzcan",
+    "tipo": "adiestrador",
+    "direccion": "29570 Cártama",
+    "lat": 36.7159823,
+    "lng": -4.5932808
+  },
+  {
+    "nombre": "Adiestramiento Canino Reserva del Sur, Francisco Javier La Torre",
+    "tipo": "adiestrador",
+    "direccion": "C. Fedra",
+    "lat": 36.598197299999995,
+    "lng": -4.560722999999999
+  },
+  {
+    "nombre": "La Casa de la Abuela Rosy Malaga",
+    "tipo": "alojamiento",
+    "direccion": "C. Barcenillas, 8",
+    "lat": 36.7262798,
+    "lng": -4.4122962
+  },
+  {
+    "nombre": "Adiestramiento Easy dog Marbella",
+    "tipo": "adiestrador",
+    "direccion": "C. la Morera, 20",
+    "lat": 36.520067,
+    "lng": -4.8986544
+  },
+  {
+    "nombre": "Doggy Educador Canino",
+    "tipo": "adiestrador",
+    "direccion": "C. Escritora Carmen Conde",
+    "lat": 36.7237824,
+    "lng": -4.4721011
+  },
+  {
+    "nombre": "Koguau Educación Canina Consciente - Málaga",
+    "tipo": "adiestrador",
+    "direccion": "C. las Palomas",
+    "lat": 36.7682761,
+    "lng": -4.1017826
+  },
+  {
+    "nombre": "José Barranco Adiestrador y Residencia",
+    "tipo": "adiestrador",
+    "direccion": "Diseminado Poligono 27, 72",
+    "lat": 36.71557,
+    "lng": -4.65557
+  },
+  {
+    "nombre": "Líbere Málaga Plaza del Siglo",
+    "tipo": "alojamiento",
+    "direccion": "C. Correo Viejo, 13",
+    "lat": 36.7214404,
+    "lng": -4.4203017
+  },
+  {
+    "nombre": "Adiestramiento en EDUCAN Málaga",
+    "tipo": "adiestrador",
+    "direccion": "Diseminado POlígono 30",
+    "lat": 36.701746,
+    "lng": -4.6808954
+  },
+  {
+    "nombre": "La huella pura",
+    "tipo": "peluqueria",
+    "direccion": "C. la Defensa, 2, Loc 2a",
+    "lat": 36.7333593,
+    "lng": -4.436083099999999
+  },
+  {
+    "nombre": "Mumbie Bienestar y Educación Canina Amable",
+    "tipo": "adiestrador",
+    "direccion": "C. Arroyo Totalán",
+    "lat": 36.731828799999995,
+    "lng": -4.3189949
+  },
+  {
+    "nombre": "Escuela Canina de Adiestramiento K9 Málaga",
+    "tipo": "adiestrador",
+    "direccion": "Diseminado Poligono 27, 118",
+    "lat": 36.717185199999996,
+    "lng": -4.6540975
+  },
+  {
+    "nombre": "Adicania",
+    "tipo": "adiestrador",
+    "direccion": "Carretera Benagalbón-moclinejo km0.5",
+    "lat": 36.742763499999995,
+    "lng": -4.2473101
+  },
+  {
+    "nombre": "Cristine Bedfor Guest Houses Málaga",
+    "tipo": "alojamiento",
+    "direccion": "C/ Méndez Núñez, 1",
+    "lat": 36.7219755,
+    "lng": -4.4196156
+  },
+  {
+    "nombre": "Líbere Málaga Trinidad",
+    "tipo": "alojamiento",
+    "direccion": "C. Ventura Rodríguez, 41",
+    "lat": 36.725065199999996,
+    "lng": -4.4300336
+  },
+  {
+    "nombre": "Hotel Málaga Vibes",
+    "tipo": "alojamiento",
+    "direccion": "C. Gregorio Allegri, s/n",
+    "lat": 36.6898049,
+    "lng": -4.460793799999999
+  },
+  {
+    "nombre": "Friendly Educación Canina",
+    "tipo": "adiestrador",
+    "direccion": "Av. del Mediterráneo, 10",
+    "lat": 36.7160443,
+    "lng": -4.2908367
+  },
+  {
+    "nombre": "Adiestramientomalaga.com",
+    "tipo": "adiestrador",
+    "direccion": "Av. de los Manantiales",
+    "lat": 36.6332357,
+    "lng": -4.5092541
+  },
+  {
+    "nombre": "Hotel NH Málaga",
+    "tipo": "alojamiento",
+    "direccion": "C. San Jacinto, 2",
+    "lat": 36.718463,
+    "lng": -4.4263069999999995
+  },
+  {
+    "nombre": "ME Malaga by Melia",
+    "tipo": "alojamiento",
+    "direccion": "C. Victoria, 6",
+    "lat": 36.7230607,
+    "lng": -4.4166554
+  },
+  {
+    "nombre": "Wedog 🐶 Adiestrador Canino Málaga",
+    "tipo": "adiestrador",
+    "direccion": "Parque de",
+    "lat": 36.7060065,
+    "lng": -4.432572599999999
+  },
+  {
+    "nombre": "ICON Malabar",
+    "tipo": "alojamiento",
+    "direccion": "C. Tomás Heredia, 13",
+    "lat": 36.7160843,
+    "lng": -4.4229534
+  },
+  {
+    "nombre": "Hotel ILUNION Málaga",
+    "tipo": "alojamiento",
+    "direccion": "P.º Maritimo Antonio Machado, 10",
+    "lat": 36.7105769,
+    "lng": -4.4273599
+  },
+  {
+    "nombre": "B&B HOTEL Málaga Centro",
+    "tipo": "alojamiento",
+    "direccion": "Av. Fátima, 7, 8 y 9",
+    "lat": 36.723650299999996,
+    "lng": -4.4262619999999995
+  },
+  {
+    "nombre": "Soho Boutique Colón",
+    "tipo": "alojamiento",
+    "direccion": "Alameda de Colón, 5",
+    "lat": 36.716159,
+    "lng": -4.4248414
+  },
+  {
+    "nombre": "Gran Alameda Centro",
+    "tipo": "alojamiento",
+    "direccion": "Alameda Principal, 13",
+    "lat": 36.7174084,
+    "lng": -4.4220223999999995
+  },
+  {
+    "nombre": "El Mantenío",
+    "tipo": "alojamiento",
+    "direccion": "C. Álamos, 13",
+    "lat": 36.7240073,
+    "lng": -4.4197964
+  },
+  {
+    "nombre": "Hotel Villa Guadalupe",
+    "tipo": "alojamiento",
+    "direccion": "Urb. El Atabal",
+    "lat": 36.7362047,
+    "lng": -4.4748167
+  },
+  {
+    "nombre": "Staybridge Suites Málaga",
+    "tipo": "alojamiento",
+    "direccion": "P.º Martiricos, 36",
+    "lat": 36.730800699999996,
+    "lng": -4.4265444
+  },
+  {
+    "nombre": "Only YOU Hotel Málaga",
+    "tipo": "alojamiento",
+    "direccion": "Alameda Principal, 1",
+    "lat": 36.71772,
+    "lng": -4.4210658
+  },
+  {
+    "nombre": "The Urban Jungle Hostel",
+    "tipo": "alojamiento",
+    "direccion": "C. Niño de Guevara, 8",
+    "lat": 36.722468,
+    "lng": -4.419371
+  },
+  {
+    "nombre": "Hotel Catalonia Málaga",
+    "tipo": "alojamiento",
+    "direccion": "C/ Pacífico, 44",
+    "lat": 36.6921725,
+    "lng": -4.4419584
+  },
+  {
+    "nombre": "Novotel Suites Málaga Centro",
+    "tipo": "alojamiento",
+    "direccion": "C. San Jacinto, 7",
+    "lat": 36.7187787,
+    "lng": -4.4272918
+  },
+  {
+    "nombre": "Sercotel Rosaleda Málaga",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Luis Buñuel, 14",
+    "lat": 36.7339695,
+    "lng": -4.433145
+  },
+  {
+    "nombre": "Casual del Mar Málaga",
+    "tipo": "alojamiento",
+    "direccion": "Av. de la Aurora, 9",
+    "lat": 36.7155556,
+    "lng": -4.428333299999999
+  },
+  {
+    "nombre": "Petit Palace Plaza Málaga",
+    "tipo": "alojamiento",
+    "direccion": "C. Nicasio Calle, 3",
+    "lat": 36.7207558,
+    "lng": -4.4213615
+  },
+  {
+    "nombre": "Hotel Elcano",
+    "tipo": "alojamiento",
+    "direccion": "Av. Juan Sebastián Elcano, 103",
+    "lat": 36.722595999999996,
+    "lng": -4.37006
+  },
+  {
+    "nombre": "Hotel Soho Boutique Urban",
+    "tipo": "alojamiento",
+    "direccion": "C. Casas de Campos, 8",
+    "lat": 36.716355899999996,
+    "lng": -4.4225135
+  },
+  {
+    "nombre": "Hotel Casa Vazquez",
+    "tipo": "alojamiento",
+    "direccion": "Cam. del Colmenar, 82",
+    "lat": 36.7362442,
+    "lng": -4.4131064
+  },
+  {
+    "nombre": "Apartamentos Málaga Premium - San Telmo",
+    "tipo": "alojamiento",
+    "direccion": "C. San Telmo, 14",
+    "lat": 36.721871199999995,
+    "lng": -4.422429
+  },
+  {
+    "nombre": "Picnic Dreams Hostel",
+    "tipo": "alojamiento",
+    "direccion": "C. San Juan de Letrán, 9",
+    "lat": 36.723911699999995,
+    "lng": -4.4182001
+  },
+  {
+    "nombre": "Líbere Málaga Teatro Romano",
+    "tipo": "alojamiento",
+    "direccion": "Palacio del Marqués de la Sonora",
+    "lat": 36.7221148,
+    "lng": -4.4178168
+  },
+  {
+    "nombre": "Hotel Zenit Malaga",
+    "tipo": "alojamiento",
+    "direccion": "C. Cuba, 1, 3",
+    "lat": 36.7331581,
+    "lng": -4.4151449
+  },
+  {
+    "nombre": "Hostal Moscatel",
+    "tipo": "alojamiento",
+    "direccion": "C. Conde de las Navas, 9",
+    "lat": 36.7230583,
+    "lng": -4.366416699999999
+  },
+  {
+    "nombre": "El Nogal Home",
+    "tipo": "alojamiento",
+    "direccion": "Av. Juan Sebastián Elcano, 62",
+    "lat": 36.7222666,
+    "lng": -4.3758017
+  },
+  {
+    "nombre": "Hotel ibis Malaga Centro Ciudad",
+    "tipo": "alojamiento",
+    "direccion": "Hotel Ciudad 2*",
+    "lat": 36.720650899999995,
+    "lng": -4.425801
+  },
+  {
+    "nombre": "Hotel Monte Victoria - Mejor Precio Garantizado",
+    "tipo": "alojamiento",
+    "direccion": "C. Conde de Ureña, 58",
+    "lat": 36.728315699999996,
+    "lng": -4.4104038
+  },
+  {
+    "nombre": "Cafetería Dulces Dreams",
+    "tipo": "alojamiento",
+    "direccion": "Pl. de los Mártires Ciriaco y Paula, 6",
+    "lat": 36.722415999999996,
+    "lng": -4.4226719999999995
+  },
+  {
+    "nombre": "Hotel Castilla Guerrero",
+    "tipo": "alojamiento",
+    "direccion": "C. Córdoba, 7",
+    "lat": 36.7168656,
+    "lng": -4.422070199999999
+  },
+  {
+    "nombre": "Pensión Mástil 16. P2",
+    "tipo": "alojamiento",
+    "direccion": "C. Driza, 7",
+    "lat": 36.698535899999996,
+    "lng": -4.4753851
+  },
+  {
+    "nombre": "Soho Boutique Las Vegas",
+    "tipo": "alojamiento",
+    "direccion": "P.º de Sancha, 22",
+    "lat": 36.721216,
+    "lng": -4.4025786
+  },
+  {
+    "nombre": "Hostal Vidamia",
+    "tipo": "alojamiento",
+    "direccion": "C. Cisneros, 7",
+    "lat": 36.7207072,
+    "lng": -4.4240669
+  },
+  {
+    "nombre": "Málaga Nostrum",
+    "tipo": "alojamiento",
+    "direccion": "C. Herman Hesse, 17",
+    "lat": 36.6914254,
+    "lng": -4.4669149
+  },
+  {
+    "nombre": "Hotel Soho Boutique Málaga",
+    "tipo": "alojamiento",
+    "direccion": "C. Córdoba, 5",
+    "lat": 36.716992,
+    "lng": -4.4221146
+  },
+  {
+    "nombre": "Hotel ibis Budget",
+    "tipo": "alojamiento",
+    "direccion": "Star Hotel H Ma 01905",
+    "lat": 36.6908996,
+    "lng": -4.4606363
+  },
+  {
+    "nombre": "Hotel Soho Boutique Los Naranjos",
+    "tipo": "alojamiento",
+    "direccion": "P.º de Sancha, 35",
+    "lat": 36.7220784,
+    "lng": -4.4013984
+  },
+  {
+    "nombre": "Sercotel Tribuna Málaga",
+    "tipo": "alojamiento",
+    "direccion": "C. Carretería, 6, 10",
+    "lat": 36.7216452,
+    "lng": -4.4249068
+  },
+  {
+    "nombre": "ibis budget Málaga Centro",
+    "tipo": "alojamiento",
+    "direccion": "Hostal 1 - H/Ma/02083",
+    "lat": 36.718570799999995,
+    "lng": -4.4276607
+  },
+  {
+    "nombre": "Hotel Soho Boutique Bahía Málaga",
+    "tipo": "alojamiento",
+    "direccion": "C. Somera, 8",
+    "lat": 36.7155561,
+    "lng": -4.423596799999999
+  },
+  {
+    "nombre": "Líbere Málaga la Merced",
+    "tipo": "alojamiento",
+    "direccion": "C. Granada, 73",
+    "lat": 36.7226716,
+    "lng": -4.4176556
+  },
+  {
+    "nombre": "Hotel Travelodge Malaga Airport",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Velázquez, 212",
+    "lat": 36.682389,
+    "lng": -4.468831799999999
+  },
+  {
+    "nombre": "Hostal La Hispanidad",
+    "tipo": "alojamiento",
+    "direccion": "C. Explanada de la Estación, 0 S N",
+    "lat": 36.7125331,
+    "lng": -4.430723599999999
+  },
+  {
+    "nombre": "Adiestramiento canino Curro Castillo",
+    "tipo": "adiestrador",
+    "direccion": "Diseminado Cajiz Rural, 104",
+    "lat": 36.7424871,
+    "lng": -4.2036752
+  },
+  {
+    "nombre": "Casual Apartments Málaga",
+    "tipo": "alojamiento",
+    "direccion": "C. Conde Duque de Olivares, 6",
+    "lat": 36.7148597,
+    "lng": -4.4281593
+  },
+  {
+    "nombre": "Zona de entrenamiento canino",
+    "tipo": "adiestrador",
+    "direccion": "PC64+QF",
+    "lat": 36.7119875,
+    "lng": -4.5937848
+  },
+  {
+    "nombre": "Flydog",
+    "tipo": "adiestrador",
+    "direccion": "C. Jacob",
+    "lat": 36.7262967,
+    "lng": -4.5490488
+  },
+  {
+    "nombre": "Dog City - La ciudad soñada para tu perro",
+    "tipo": "guarderia_canina",
+    "direccion": "Av. del Pintor Joaquín Sorolla, 51",
+    "telefono": "+34 623 71 85 17",
+    "valoracion": 4.8,
+    "resenas": 127,
+    "horario": "",
+    "estado": "",
+    "lat": 36.7237101,
+    "lng": -4.3936946,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dog%20City%20-%20La%20ciudad%20so%C3%B1ada%20para%20tu%20perro&query_place_id=ChIJl9jwYMJZcg0R2mWnMnZZ5VE",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Hotel de Mascotas - La Casa Del Abuelo - Residencia Canina",
+    "tipo": "guarderia_canina",
+    "direccion": "Cortijo Raton, s/n",
+    "telefono": "641 82 66 54",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "10:00–13:00",
+    "estado": "Cierra pronto · 18:00 · Apertura: 10:00 (vie)",
+    "lat": 36.741317699999996,
+    "lng": -4.6432986,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJhzHyR9fvcg0RlGhGGjFSt8E",
+    "fuenteConsulta": "guarderia canina en Málaga, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia Canina Málaga Can Resort",
+    "tipo": "guarderia_canina",
+    "direccion": "Cam. Lo Cotta, 1",
+    "telefono": "664 49 01 68",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "9:00–14:00",
+    "estado": "Abierto · Cierre: 19:00",
+    "lat": 36.7499727,
+    "lng": -4.5807987,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJiYCvEuPvcg0RmcCiADNozFk",
+    "fuenteConsulta": "guarderia canina en Málaga, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia Canina y felina \"Mi casa\"",
+    "tipo": "guarderia_canina",
+    "direccion": "Cortijo los Toros",
+    "telefono": "676 44 07 39",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "9:00–13:30",
+    "estado": "Cierra pronto · 18:00 · Apertura: 9:00 (vie)",
+    "lat": 36.7378905,
+    "lng": -4.279228799999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJB9OY_1lacg0R62BahZ-PbtU",
+    "fuenteConsulta": "guarderia canina en Málaga, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia Canina Unican",
+    "tipo": "guarderia_canina",
+    "direccion": "Calle Joaquín Vargas",
+    "telefono": "623 92 53 03",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "9:00–13:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 36.6934818,
+    "lng": -4.4957312,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJF6EG3Qv6cg0RQkD6hICiBEs",
+    "fuenteConsulta": "guarderia canina en Málaga, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Hachiko Residencia Canina",
+    "tipo": "guarderia_canina",
+    "direccion": "Cam. Numero Uno",
+    "telefono": "722 37 67 87",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "9:00–13:00",
+    "estado": "Abierto · Cierre: 21:00",
+    "lat": 36.700488899999996,
+    "lng": -4.561636099999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ1_m1_oTxcg0RBcH6BdgUD_A",
+    "fuenteConsulta": "residencia canina en Málaga, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Finca Tranquila",
+    "tipo": "guarderia_canina",
+    "direccion": "29603 Marbella",
+    "telefono": "619 05 92 86",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "8:00–20:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 36.5353795,
+    "lng": -4.840061599999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJtQ-y1cjZcg0RthQKJb4iAqk",
+    "fuenteConsulta": "guarderia canina en Marbella, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia Canina Royfonte Marbella",
+    "tipo": "guarderia_canina",
+    "direccion": "España",
+    "telefono": "680 68 55 37",
+    "valoracion": 4.2,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 36.522325599999995,
+    "lng": -4.7657429,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJMR6TAIPfcg0RcRixzG6NXAg",
+    "fuenteConsulta": "guarderia canina en Marbella, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Encanto Cuidado Canino / Pet care",
+    "tipo": "guarderia_canina",
+    "direccion": "urb Lomas del Pozuelo",
+    "telefono": "",
+    "valoracion": null,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 36.518814899999995,
+    "lng": -4.8505974,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJL0r2m-DZcg0RUX83GjU7hBo",
+    "fuenteConsulta": "guarderia canina en Marbella, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Dog City - La ciudad soñada para tu perro",
+    "tipo": "guarderia_canina",
+    "direccion": "Av. del Pintor Joaquín Sorolla, 51",
+    "telefono": "623 71 85 17",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "8:00–20:00",
+    "estado": "Abierto · Cierra a las 20:00",
+    "lat": 36.7237101,
+    "lng": -4.3936946,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJl9jwYMJZcg0R2mWnMnZZ5VE",
+    "fuenteConsulta": "parque para perros Malaga",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

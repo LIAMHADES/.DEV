@@ -1,0 +1,2159 @@
+[
+  {
+    "nombre": "La petite hair boutique",
+    "tipo": "peluqueria",
+    "direccion": "C. de Van Dyck, 66",
+    "lat": 40.9735587,
+    "lng": -5.6624133
+  },
+  {
+    "nombre": "Marcos Cifuentes · Peluquería y Estilismo Canino",
+    "tipo": "tienda",
+    "direccion": "C. García de Quiñones",
+    "lat": 40.9713062,
+    "lng": -5.6615747999999995
+  },
+  {
+    "nombre": "Criadero canino ASIRLOS",
+    "tipo": "otros",
+    "direccion": "Parcela La Laguna, 74",
+    "lat": 40.7987687,
+    "lng": -5.7362041
+  },
+  {
+    "nombre": "Residencia Villacharra y Criadero canino",
+    "tipo": "otros",
+    "direccion": "37797 Castellanos de Villiquera",
+    "lat": 41.0538136,
+    "lng": -5.675434
+  },
+  {
+    "nombre": "GUAW",
+    "tipo": "tienda",
+    "direccion": "CC Carrefour",
+    "lat": 40.9799224,
+    "lng": -5.6647463
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "Calle Molino Contrafuerte, 2",
+    "lat": 40.956468,
+    "lng": -5.656805599999999
+  },
+  {
+    "nombre": "Cherokee",
+    "tipo": "peluqueria",
+    "direccion": "P.º del Rollo, 20",
+    "lat": 40.9653947,
+    "lng": -5.652611299999999
+  },
+  {
+    "nombre": "Peluquería canina Marian",
+    "tipo": "tienda",
+    "direccion": "Cam. de las Aguas, 71",
+    "lat": 40.9626168,
+    "lng": -5.6490795
+  },
+  {
+    "nombre": "RESIDENCIA CANINA Y FELINA FUNDACIÓN LUNA",
+    "tipo": "otros",
+    "direccion": "37789 Beleña",
+    "lat": 40.7497239,
+    "lng": -5.6274086
+  },
+  {
+    "nombre": "Animalikos",
+    "tipo": "tienda",
+    "direccion": "C. García de Quiñones, 13",
+    "lat": 40.971170799999996,
+    "lng": -5.6616946
+  },
+  {
+    "nombre": "Peluquería canina Carbajosa. Guau! Qué pelos",
+    "tipo": "tienda",
+    "direccion": "C. Rafael, 16",
+    "lat": 40.9352297,
+    "lng": -5.6480866999999995
+  },
+  {
+    "nombre": "Criadero Mascotas OPS",
+    "tipo": "otros",
+    "direccion": "Ctra. Medina",
+    "lat": 40.9035109,
+    "lng": -5.203748
+  },
+  {
+    "nombre": "Peludetes Salamanca 🐾",
+    "tipo": "otros",
+    "direccion": "C. Huertas",
+    "lat": 40.5918977,
+    "lng": -5.8049576
+  },
+  {
+    "nombre": "Ainhoa M&S, peluquería en Salamanca",
+    "tipo": "peluqueria",
+    "direccion": "Av. Campoamor",
+    "lat": 40.9651906,
+    "lng": -5.6549176
+  },
+  {
+    "nombre": "Peluquería Canina Jaime Rivera",
+    "tipo": "tienda",
+    "direccion": "Av. José García Santos, 6",
+    "lat": 41.0077669,
+    "lng": -5.648040099999999
+  },
+  {
+    "nombre": "Guau Guau Dog",
+    "tipo": "tienda",
+    "direccion": "Av. de los Comuneros, 54",
+    "lat": 40.968417099999996,
+    "lng": -5.6488610999999995
+  },
+  {
+    "nombre": "Alojamiento Letras del Tormes",
+    "tipo": "alojamiento",
+    "direccion": "C. Mozárbez, 2",
+    "lat": 40.9690961,
+    "lng": -5.6746569
+  },
+  {
+    "nombre": "Cuidador canino Jhana",
+    "tipo": "otros",
+    "direccion": "P.º de la Estación",
+    "lat": 40.9725837,
+    "lng": -5.6485099
+  },
+  {
+    "nombre": "Vetersalud",
+    "tipo": "veterinario",
+    "direccion": "P.º de la Estación, 73",
+    "lat": 40.9708785,
+    "lng": -5.6522995
+  },
+  {
+    "nombre": "Veterinario",
+    "tipo": "otros",
+    "direccion": "P.º de la Estación, 89",
+    "lat": 40.9715382,
+    "lng": -5.6510134
+  },
+  {
+    "nombre": "PERRETES",
+    "tipo": "tienda",
+    "direccion": "C. Mayor del Arrabal, 34",
+    "lat": 40.9541226,
+    "lng": -5.6703785
+  },
+  {
+    "nombre": "Animal Health",
+    "tipo": "veterinario",
+    "direccion": "C. Marcos Escribano, 3",
+    "lat": 40.9493805,
+    "lng": -5.6331177
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "Gta. Castilla y León, s/n",
+    "lat": 40.980317,
+    "lng": -5.6508062
+  },
+  {
+    "nombre": "Peluqueria Canina PT",
+    "tipo": "tienda",
+    "direccion": "C. Cruz, 26",
+    "lat": 41.0298948,
+    "lng": -5.6193007999999995
+  },
+  {
+    "nombre": "Labradores de Quercuscan",
+    "tipo": "otros",
+    "direccion": "C. la Iglesia, 1",
+    "lat": 40.7438131,
+    "lng": -6.0243956999999995
+  },
+  {
+    "nombre": "Linaje Pet Shop",
+    "tipo": "tienda",
+    "direccion": "C. Azafranal, 18",
+    "lat": 40.9670792,
+    "lng": -5.6609406
+  },
+  {
+    "nombre": "Norte Veterinarios",
+    "tipo": "veterinario",
+    "direccion": "C. Silvestre Sánchez Sierra, 2",
+    "lat": 40.9808409,
+    "lng": -5.6562103
+  },
+  {
+    "nombre": "Centro Veterinario Cave Canem",
+    "tipo": "veterinario",
+    "direccion": "Av. de Federico Anaya, 101",
+    "lat": 40.978063999999996,
+    "lng": -5.653563999999999
+  },
+  {
+    "nombre": "Huellas Veterinaria Salamanca",
+    "tipo": "veterinario",
+    "direccion": "C. Paraguay, 14",
+    "lat": 40.9654667,
+    "lng": -5.6565752
+  },
+  {
+    "nombre": "Conperros educación canina amable",
+    "tipo": "adiestrador",
+    "direccion": "C. de Churruca, 26",
+    "lat": 40.9509179,
+    "lng": -5.6666044
+  },
+  {
+    "nombre": "Pink Style Peluqueros",
+    "tipo": "peluqueria",
+    "direccion": "Cam. de las Aguas, 12",
+    "lat": 40.964232599999995,
+    "lng": -5.6530194
+  },
+  {
+    "nombre": "Estela Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "C. Sol, 24",
+    "lat": 40.9795204,
+    "lng": -5.6086811
+  },
+  {
+    "nombre": "Club Canino Baucan Salamanca",
+    "tipo": "adiestrador",
+    "direccion": "C. García de Quiñones, 13",
+    "lat": 40.971170799999996,
+    "lng": -5.6616946
+  },
+  {
+    "nombre": "Garraypatas Peluqueria Y Spa canino",
+    "tipo": "tienda",
+    "direccion": "C. Fernando de Rojas, 4",
+    "lat": 40.9722558,
+    "lng": -5.6611402
+  },
+  {
+    "nombre": "BeMoreDog",
+    "tipo": "adiestrador",
+    "direccion": "Parcela, 436, Polígono 506",
+    "lat": 40.950878599999996,
+    "lng": -5.5352814
+  },
+  {
+    "nombre": "VEGA PET SHOP",
+    "tipo": "veterinario",
+    "direccion": "C. Alfonso de Castro, 21",
+    "lat": 40.973388199999995,
+    "lng": -5.65987
+  },
+  {
+    "nombre": "Zona de paseo para perros",
+    "tipo": "parque",
+    "direccion": "Av. de San Agustín, 82E",
+    "lat": 40.9780478,
+    "lng": -5.6565347
+  },
+  {
+    "nombre": "Mascoteka. Residencia canina.",
+    "tipo": "tienda",
+    "direccion": "Parcela, 1, polígono 11",
+    "lat": 40.8956358,
+    "lng": -5.7850947
+  },
+  {
+    "nombre": "ArteVet Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Av. de las Artes, 91",
+    "lat": 40.9576099,
+    "lng": -5.6524936
+  },
+  {
+    "nombre": "🐕‍🦺 Entrepelos Peluquería Canina & Tienda · David Medina",
+    "tipo": "tienda",
+    "direccion": "Av. Alfonso IX de León, 122",
+    "lat": 40.975526099999996,
+    "lng": -5.6578392
+  },
+  {
+    "nombre": "Clínica veterinaria Wecan Salamanca",
+    "tipo": "veterinario",
+    "direccion": "P.º de la Estación, 71",
+    "lat": 40.970877,
+    "lng": -5.652273
+  },
+  {
+    "nombre": "Centro de Recuperación de Fauna Silvestre 'Las Dunas'",
+    "tipo": "otros",
+    "direccion": "Av. de la Aldehuela, s/n",
+    "lat": 40.9686374,
+    "lng": -5.625367499999999
+  },
+  {
+    "nombre": "Eunice Hotel Gastronómico",
+    "tipo": "alojamiento",
+    "direccion": "Pl. de Monterrey, 3",
+    "lat": 40.9652684,
+    "lng": -5.6665982
+  },
+  {
+    "nombre": "Charco de los Mozos",
+    "tipo": "parque",
+    "direccion": "37532 Monsagro",
+    "lat": 40.499188,
+    "lng": -6.275847199999999
+  },
+  {
+    "nombre": "Hotel Torre del Clavero",
+    "tipo": "alojamiento",
+    "direccion": "C. Consuelo, 21",
+    "lat": 40.9628824,
+    "lng": -5.6630581
+  },
+  {
+    "nombre": "Pelucan Salamanca",
+    "tipo": "tienda",
+    "direccion": "C. Pérez Oliva, 6",
+    "lat": 40.969791199999996,
+    "lng": -5.6606876
+  },
+  {
+    "nombre": "Peluquería canina Mar Francés",
+    "tipo": "tienda",
+    "direccion": "C. León Felipe, 5",
+    "lat": 40.9710371,
+    "lng": -5.667822699999999
+  },
+  {
+    "nombre": "Hotel Canino y Felino Kabluna",
+    "tipo": "otros",
+    "direccion": "Parque el Platío",
+    "lat": 41.3367994,
+    "lng": -5.7212219
+  },
+  {
+    "nombre": "Hotel de Diseño Resotel Salamanca",
+    "tipo": "alojamiento",
+    "direccion": "P.º Delicias, 27",
+    "lat": 41.004737399999996,
+    "lng": -5.6493815
+  },
+  {
+    "nombre": "CLÍNICA VETERINARIA CABRERIZOS",
+    "tipo": "veterinario",
+    "direccion": "Cam. de Salamanca, 21",
+    "lat": 40.97777,
+    "lng": -5.6115727
+  },
+  {
+    "nombre": "Clínica Veterinaria Salinero",
+    "tipo": "veterinario",
+    "direccion": "C. Riaño, 28",
+    "lat": 40.9801381,
+    "lng": -5.6679786
+  },
+  {
+    "nombre": "Clínica Hospital Veterinaria Sedano",
+    "tipo": "veterinario",
+    "direccion": "Pso. Los olivos, 32",
+    "lat": 40.978361899999996,
+    "lng": -5.6553976
+  },
+  {
+    "nombre": "Asociación Canina Albadekán",
+    "tipo": "adiestrador",
+    "direccion": "Carr. Salamanca-Vitigudino, km. 4,5",
+    "lat": 40.963447699999996,
+    "lng": -5.771045
+  },
+  {
+    "nombre": "Campamento Peludosos",
+    "tipo": "otros",
+    "direccion": "Calle Encinar de Abajo, s/n",
+    "lat": 40.7624637,
+    "lng": -5.5853022999999995
+  },
+  {
+    "nombre": "REC MASCOTAS (Formación)",
+    "tipo": "adiestrador",
+    "direccion": "41",
+    "lat": 41.1974695,
+    "lng": -5.6853168
+  },
+  {
+    "nombre": "Clínica Veterinaria Bichos",
+    "tipo": "veterinario",
+    "direccion": "C. Príncipe, 28",
+    "lat": 40.9734731,
+    "lng": -5.6694982
+  },
+  {
+    "nombre": "Parque Natural de Arribes del Duero",
+    "tipo": "parque",
+    "direccion": "Plaza Castillo, 58",
+    "lat": 41.1029491,
+    "lng": -6.7538769
+  },
+  {
+    "nombre": "Agromascotas",
+    "tipo": "tienda",
+    "direccion": "Ctra. Valladolid, 26",
+    "lat": 40.9887478,
+    "lng": -5.6450976
+  },
+  {
+    "nombre": "Peluquería canina Urban Dogs",
+    "tipo": "tienda",
+    "direccion": "Av. de Federico Anaya, 62",
+    "lat": 40.977939299999996,
+    "lng": -5.6529964
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Av. E. Leclerc, 3",
+    "lat": 40.946165,
+    "lng": -5.640948
+  },
+  {
+    "nombre": "Ohana animal salamanca",
+    "tipo": "tienda",
+    "direccion": "Av. de Federico Anaya, 55-65",
+    "lat": 40.9777463,
+    "lng": -5.6537368
+  },
+  {
+    "nombre": "Isla Mascota",
+    "tipo": "tienda",
+    "direccion": "C. Ayala, 3",
+    "lat": 40.9735393,
+    "lng": -5.656180399999999
+  },
+  {
+    "nombre": "Veterimóvil, Veterinario de Salamanca",
+    "tipo": "veterinario",
+    "direccion": "C. Saucelle, 7",
+    "lat": 40.969576599999996,
+    "lng": -5.6726053
+  },
+  {
+    "nombre": "BARBERÍA LA CHARRA",
+    "tipo": "peluqueria",
+    "direccion": "37007 Salamanca",
+    "lat": 40.9724888,
+    "lng": -5.671678399999999
+  },
+  {
+    "nombre": "Serengueti",
+    "tipo": "veterinario",
+    "direccion": "Pl. del Alto del Rollo, 4",
+    "lat": 40.9687853,
+    "lng": -5.6467846999999995
+  },
+  {
+    "nombre": "Agromascotas",
+    "tipo": "tienda",
+    "direccion": "Av. de los Padres Paúles, 31, Bajo",
+    "lat": 40.951954699999995,
+    "lng": -5.6494117
+  },
+  {
+    "nombre": "Nutricione (tienda) paseo del rollo",
+    "tipo": "tienda",
+    "direccion": "P.º del Rollo, 2 (Nutricione",
+    "lat": 40.9647955,
+    "lng": -5.6535386999999995
+  },
+  {
+    "nombre": "BeMoreDog",
+    "tipo": "adiestrador",
+    "direccion": "Urbanización San Roque, 1",
+    "lat": 40.950994,
+    "lng": -5.535340499999999
+  },
+  {
+    "nombre": "Hotel Hospes Palacio de San Esteban Salamanca",
+    "tipo": "alojamiento",
+    "direccion": "Arroyo de Santo Domingo, 3",
+    "lat": 40.9597389,
+    "lng": -5.6628715
+  },
+  {
+    "nombre": "Luna Gatuna",
+    "tipo": "protectora",
+    "direccion": "Av. de Salamanca, 50",
+    "lat": 40.9750936,
+    "lng": -5.668995799999999
+  },
+  {
+    "nombre": "Isla del Soto",
+    "tipo": "otros",
+    "direccion": "37900 Santa Marta de Tormes",
+    "lat": 40.952619399999996,
+    "lng": -5.6362662
+  },
+  {
+    "nombre": "Mundo Mascotas-Agrizoo Salamanca",
+    "tipo": "tienda",
+    "direccion": "Av. de Lasalle, 143-149, nave 1",
+    "lat": 40.9547287,
+    "lng": -5.6871551
+  },
+  {
+    "nombre": "EntreAmigos",
+    "tipo": "alojamiento",
+    "direccion": "37429 Arcediano",
+    "lat": 41.122993699999995,
+    "lng": -5.5527282
+  },
+  {
+    "nombre": "CLINICA VETERINARIA PICASSO",
+    "tipo": "veterinario",
+    "direccion": "Calle del Dr. Gómez Ulla, 55",
+    "lat": 40.9680931,
+    "lng": -5.651521499999999
+  },
+  {
+    "nombre": "Tecnibega S L",
+    "tipo": "veterinario",
+    "direccion": "Polígono Industrial Los Villares",
+    "lat": 40.9948073,
+    "lng": -5.6496637
+  },
+  {
+    "nombre": "Parque de Bomberos Villares de la Reina",
+    "tipo": "veterinario",
+    "direccion": "C. Cascajales, 12",
+    "lat": 40.9936813,
+    "lng": -5.6431968999999995
+  },
+  {
+    "nombre": "Cial. Veterinaria Vega",
+    "tipo": "veterinario",
+    "direccion": "C. de Van Dyck, 33",
+    "lat": 40.9733875,
+    "lng": -5.6598638999999995
+  },
+  {
+    "nombre": "Micán Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "C. Juan de Herrera, 22",
+    "lat": 40.9354394,
+    "lng": -5.6483811
+  },
+  {
+    "nombre": "Nutricione",
+    "tipo": "tienda",
+    "direccion": "Diseminado Ctra. Aldealengua, 32",
+    "lat": 40.9721751,
+    "lng": -5.6228606
+  },
+  {
+    "nombre": "Hotel Rector",
+    "tipo": "alojamiento",
+    "direccion": "P.º del Rector Esperabé, 10",
+    "lat": 40.9587517,
+    "lng": -5.6657209
+  },
+  {
+    "nombre": "Happy Doggy",
+    "tipo": "tienda",
+    "direccion": "Av. Universidad de Salamanca, 8, Loc 9",
+    "lat": 37.3710167,
+    "lng": -6.0845636
+  },
+  {
+    "nombre": "Luxor Torre Del Clavero Apartments",
+    "tipo": "alojamiento",
+    "direccion": "C. Consuelo, 15",
+    "lat": 40.9628242,
+    "lng": -5.6629711
+  },
+  {
+    "nombre": "Clínica Veterinaria Carbajosa",
+    "tipo": "veterinario",
+    "direccion": "C. Oeste, 37",
+    "lat": 40.934078,
+    "lng": -5.6518016
+  },
+  {
+    "nombre": "Castillo del Buen Amor",
+    "tipo": "alojamiento",
+    "direccion": "Finca Villanueva de Cañedo Ctra. N-630, Km.317,6",
+    "lat": 41.157122,
+    "lng": -5.67058
+  },
+  {
+    "nombre": "Veradog",
+    "tipo": "otros",
+    "direccion": "Plaza Mayor, s/n",
+    "lat": 40.0571426,
+    "lng": -5.7210437999999995
+  },
+  {
+    "nombre": "Ando Apartments Boutique",
+    "tipo": "alojamiento",
+    "direccion": "Pl. del Mercado, 14",
+    "lat": 40.964580399999996,
+    "lng": -5.6626774
+  },
+  {
+    "nombre": "Clínica Fice",
+    "tipo": "veterinario",
+    "direccion": "C. Santo Toribio, 15",
+    "lat": 41.0068701,
+    "lng": -6.4345702
+  },
+  {
+    "nombre": "Hotel NH Collection Salamanca Palacio de Castellanos",
+    "tipo": "alojamiento",
+    "direccion": "C. San Pablo, 58-64",
+    "lat": 40.961,
+    "lng": -5.66427
+  },
+  {
+    "nombre": "Clínica Veterinaria Gómez Ulla",
+    "tipo": "veterinario",
+    "direccion": "ENFRENTE DE BERRETES",
+    "lat": 40.967272,
+    "lng": -5.6530954
+  },
+  {
+    "nombre": "Casablanca Hotel Studios",
+    "tipo": "alojamiento",
+    "direccion": "Ctra. Madrid, 117",
+    "lat": 40.9502406,
+    "lng": -5.6199638
+  },
+  {
+    "nombre": "abba Fonseca Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Pl. de San Blas, 2",
+    "lat": 40.9647027,
+    "lng": -5.6700092
+  },
+  {
+    "nombre": "Federación de Asociaciones de Vecinos, Consumidores y Usuarios de Salamanca",
+    "tipo": "otros",
+    "direccion": "Plaza Maestro Luna, 11",
+    "lat": 40.9511447,
+    "lng": -5.664562699999999
+  },
+  {
+    "nombre": "Club Veterinario Salamanca",
+    "tipo": "veterinario",
+    "direccion": "C. de José de Lamano Beneite, 70",
+    "lat": 40.963214199999996,
+    "lng": -5.6858244
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque",
+    "direccion": "Av. de Salamanca, 124",
+    "lat": 40.9777182,
+    "lng": -5.6658645
+  },
+  {
+    "nombre": "Acuario AngelFish",
+    "tipo": "tienda",
+    "direccion": "C. Padilleros, nº19",
+    "lat": 40.9688401,
+    "lng": -5.6621013
+  },
+  {
+    "nombre": "Parque para perros de San Bernardo",
+    "tipo": "parque",
+    "direccion": "C. Nueva de San Bernardo, 27",
+    "lat": 40.968257799999996,
+    "lng": -5.6703981
+  },
+  {
+    "nombre": "Acuario y Peluquería Canina Arrecife",
+    "tipo": "tienda",
+    "direccion": "C. Pontevedra, 28",
+    "lat": 40.968335499999995,
+    "lng": -5.6507344999999995
+  },
+  {
+    "nombre": "Hotel Catalonia Plaza Mayor Salamanca",
+    "tipo": "alojamiento",
+    "direccion": "C. Espoz y Mina, 23, 25",
+    "lat": 40.965463299999996,
+    "lng": -5.665049499999999
+  },
+  {
+    "nombre": "Área Recreativa de Huerta",
+    "tipo": "parque",
+    "direccion": "Unnamed Road, 37336",
+    "lat": 40.9687519,
+    "lng": -5.470294
+  },
+  {
+    "nombre": "Clínica Veterinaria La Vega Veterinario 24 horas Salamanca",
+    "tipo": "veterinario",
+    "direccion": "C. del Barco, 22",
+    "lat": 40.950286999999996,
+    "lng": -5.6686404999999995
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "37005 Salamanca",
+    "lat": 40.9701039,
+    "lng": -5.663539699999999
+  },
+  {
+    "nombre": "Parque de los Jesuitas",
+    "tipo": "parque",
+    "direccion": "Av. de la Aldehuela",
+    "lat": 40.9606652,
+    "lng": -5.6558112
+  },
+  {
+    "nombre": "Residencia Salamanca",
+    "tipo": "otros",
+    "direccion": "Pl. Pte., 30",
+    "lat": 40.955383499999996,
+    "lng": -5.671250199999999
+  },
+  {
+    "nombre": "Área Recreativa de El Rocoso",
+    "tipo": "otros",
+    "direccion": "37250 Aldeadávila de la Ribera",
+    "lat": 41.198977,
+    "lng": -6.6268134
+  },
+  {
+    "nombre": "Clínica veterinaria en Salamanca - La Salle",
+    "tipo": "veterinario",
+    "direccion": "C. Sánchez Rojas, 4",
+    "lat": 40.955583399999995,
+    "lng": -5.6783529
+  },
+  {
+    "nombre": "LavaCan Salamanca",
+    "tipo": "tienda",
+    "direccion": "Av. de San Agustín, 2",
+    "lat": 40.975940699999995,
+    "lng": -5.6615299
+  },
+  {
+    "nombre": "Parque de Perros El Baldío",
+    "tipo": "parque",
+    "direccion": "37003 Salamanca",
+    "lat": 40.9670349,
+    "lng": -5.6296915
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "Jesuítas Park",
+    "lat": 40.96094,
+    "lng": -5.654919
+  },
+  {
+    "nombre": "Hostal Concejo",
+    "tipo": "alojamiento",
+    "direccion": "Pl. Libertad, 1",
+    "lat": 40.965811599999995,
+    "lng": -5.6646331
+  },
+  {
+    "nombre": "hostal granada",
+    "tipo": "alojamiento",
+    "direccion": "C. Fray Luis de Granada, Nº 12",
+    "lat": 40.9696038,
+    "lng": -5.6670652
+  },
+  {
+    "nombre": "Monumental Apartments Salamanca",
+    "tipo": "otros",
+    "direccion": "C. Traviesa, 8, 1ºC 2ºA,B,C",
+    "lat": 40.9619539,
+    "lng": -5.6673854
+  },
+  {
+    "nombre": "Agricentro Salamanca",
+    "tipo": "tienda",
+    "direccion": "Av. de Lasalle, 183",
+    "lat": 40.9546419,
+    "lng": -5.689769399999999
+  },
+  {
+    "nombre": "Playa de Cabrerizos",
+    "tipo": "otros",
+    "direccion": "37193 Cabrerizos",
+    "lat": 40.974019,
+    "lng": -5.6066462999999995
+  },
+  {
+    "nombre": "Playa del Rostro",
+    "tipo": "otros",
+    "direccion": "37251 Río Duero",
+    "lat": 41.2447395,
+    "lng": -6.596837
+  },
+  {
+    "nombre": "REC. Residencia, Educación canina, Crematorio de mascotas",
+    "tipo": "otros",
+    "direccion": "Cam. de Topas a Lagunas Rubias",
+    "lat": 41.19827,
+    "lng": -5.6862214
+  },
+  {
+    "nombre": "Clínica Veterinaria Peludos C B",
+    "tipo": "veterinario",
+    "direccion": "C. Blas de Otero, 2",
+    "lat": 40.974239499999996,
+    "lng": -5.648801499999999
+  },
+  {
+    "nombre": "Centro Veterinario Los Álamos Salamanca",
+    "tipo": "veterinario",
+    "direccion": "Urbanización Las bizarricas",
+    "lat": 40.993252999999996,
+    "lng": -5.657486
+  },
+  {
+    "nombre": "Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "C. Greco, 6",
+    "lat": 40.9720775,
+    "lng": -5.6533861
+  },
+  {
+    "nombre": "Ibis",
+    "tipo": "alojamiento",
+    "direccion": "Esquina De Otumba Y La Albuera",
+    "lat": 40.9641484,
+    "lng": -5.657449799999999
+  },
+  {
+    "nombre": "Playa de Huerta",
+    "tipo": "playa_perros",
+    "direccion": "Cam. Antiguo de la Acena, 10",
+    "lat": 40.965047299999995,
+    "lng": -5.4712947
+  },
+  {
+    "nombre": "Parque Picasso",
+    "tipo": "parque",
+    "direccion": "37003 Salamanca",
+    "lat": 40.9674106,
+    "lng": -5.6509532
+  },
+  {
+    "nombre": "Playa De Sotoserrano (Salamanca)",
+    "tipo": "playa_perros",
+    "direccion": "Calle Camping, 1",
+    "lat": 40.4299046,
+    "lng": -6.010075
+  },
+  {
+    "nombre": "Kiwoko. Mundo Animal",
+    "tipo": "tienda",
+    "direccion": "C. Capuchinos, s/n",
+    "lat": 40.9485406,
+    "lng": -5.6504688
+  },
+  {
+    "nombre": "Playa fluvial del Águeda",
+    "tipo": "otros",
+    "direccion": "37220 La Fregeneda",
+    "lat": 41.0236206,
+    "lng": -6.9287204
+  },
+  {
+    "nombre": "Hostería Casa Vallejo",
+    "tipo": "alojamiento",
+    "direccion": "C. San Juan de la Cruz, 3, 1º",
+    "lat": 40.964009999999995,
+    "lng": -5.663242899999999
+  },
+  {
+    "nombre": "JCH Congreso Apartamentos",
+    "tipo": "otros",
+    "direccion": "C. Tahonas Viejas, 4, 10",
+    "lat": 40.9640797,
+    "lng": -5.6678431
+  },
+  {
+    "nombre": "SALAMANCA FORUM – HOTEL DOÑA BRÍGIDA",
+    "tipo": "alojamiento",
+    "direccion": "Avda. del Tormes",
+    "lat": 40.9833316,
+    "lng": -5.7115842
+  },
+  {
+    "nombre": "Sercotel Las Torres Salamanca",
+    "tipo": "alojamiento",
+    "direccion": "C. Concejo, 4",
+    "lat": 40.9657018,
+    "lng": -5.664372999999999
+  },
+  {
+    "nombre": "Parque perros",
+    "tipo": "parque",
+    "direccion": "Pl. del Bo. Vidal, 5a",
+    "lat": 40.9734621,
+    "lng": -5.6671489
+  },
+  {
+    "nombre": "Acuario Amazonas",
+    "tipo": "tienda",
+    "direccion": "C. María Auxiliadora, 25",
+    "lat": 40.9701077,
+    "lng": -5.6590441
+  },
+  {
+    "nombre": "PAPUGAVET SLL",
+    "tipo": "tienda",
+    "direccion": "P.º de la Estación, 73, BJ",
+    "lat": 40.97097,
+    "lng": -5.65233
+  },
+  {
+    "nombre": "Hostal-Restaurante El Caserón",
+    "tipo": "alojamiento",
+    "direccion": "Calle del Doctor Torres Villarroel 2",
+    "lat": 40.9500466,
+    "lng": -5.6293058
+  },
+  {
+    "nombre": "Pensión Restaurante la Liebre",
+    "tipo": "otros",
+    "direccion": "C. Perdón, 3",
+    "lat": 40.955134799999996,
+    "lng": -5.6732045
+  },
+  {
+    "nombre": "parque canino",
+    "tipo": "parque",
+    "direccion": "Plaza de Julián Sánchez el Charro",
+    "lat": 40.9706738,
+    "lng": -5.660718
+  },
+  {
+    "nombre": "Hotel Silken Rona Dalba",
+    "tipo": "alojamiento",
+    "direccion": "Pl. San Juan Bautista, 12",
+    "lat": 40.9674172,
+    "lng": -5.6661017
+  },
+  {
+    "nombre": "Esperanza canina",
+    "tipo": "adiestrador",
+    "direccion": "C. Traviesa, 2",
+    "lat": 40.998767699999995,
+    "lng": -5.6950325
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "C. de la Radio",
+    "lat": 40.969263399999996,
+    "lng": -5.652135599999999
+  },
+  {
+    "nombre": "Hotel Emperatriz III",
+    "tipo": "alojamiento",
+    "direccion": "Av. de los Padres Paúles, 2",
+    "lat": 40.9515001,
+    "lng": -5.6539655
+  },
+  {
+    "nombre": "Hostal Hispánico 2",
+    "tipo": "alojamiento",
+    "direccion": "C. Colombia, 2",
+    "lat": 40.968546499999995,
+    "lng": -5.6467531
+  },
+  {
+    "nombre": "KILAMAS",
+    "tipo": "otros",
+    "direccion": "Cam. Carraverilla, 12",
+    "lat": 40.9142765,
+    "lng": -5.6541619999999995
+  },
+  {
+    "nombre": "Hotel Soho Boutique Salamanca",
+    "tipo": "alojamiento",
+    "direccion": "Pl. Ángel, 5",
+    "lat": 40.9640954,
+    "lng": -5.6631141
+  },
+  {
+    "nombre": "Pensión Salamanca",
+    "tipo": "otros",
+    "direccion": "C. Meléndez, 1, 2º",
+    "lat": 40.963908599999996,
+    "lng": -5.6652075
+  },
+  {
+    "nombre": "Hotel El Toboso",
+    "tipo": "alojamiento",
+    "direccion": "C. Clavel, 7",
+    "lat": 40.9652179,
+    "lng": -5.6623192
+  },
+  {
+    "nombre": "CEVESA. CENTRO VETERINARIO SALMANTINO",
+    "tipo": "veterinario",
+    "direccion": "C. Alfonso de Castro, 26, BAJO",
+    "lat": 40.973485499999995,
+    "lng": -5.6595965
+  },
+  {
+    "nombre": "Hostal Hispánico 1",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Italia, 21",
+    "lat": 40.9706232,
+    "lng": -5.6646678
+  },
+  {
+    "nombre": "Hostal Mindanao",
+    "tipo": "alojamiento",
+    "direccion": "P.º de San Vicente, 2",
+    "lat": 40.966832,
+    "lng": -5.669451
+  },
+  {
+    "nombre": "Hotel Nobis Salamanca",
+    "tipo": "alojamiento",
+    "direccion": "C. Teso de la Feria, 31",
+    "lat": 40.9521701,
+    "lng": -5.6728058
+  },
+  {
+    "nombre": "Hotel ITC Salamanca by Soho Boutique",
+    "tipo": "alojamiento",
+    "direccion": "C. Grillo, 18",
+    "lat": 40.963153,
+    "lng": -5.6594356999999995
+  },
+  {
+    "nombre": "Mascocamping Residencia Canina",
+    "tipo": "otros",
+    "direccion": "Calle Centerrubio, km. 3",
+    "lat": 40.971868199999996,
+    "lng": -5.5519357
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "C. Ramón y Cajal, 19",
+    "lat": 40.9659088,
+    "lng": -5.6683891
+  },
+  {
+    "nombre": "Hostería Santamaría",
+    "tipo": "alojamiento",
+    "direccion": "C. Pedro Cojos, 16",
+    "lat": 40.9625661,
+    "lng": -5.659998799999999
+  },
+  {
+    "nombre": "Asociación El Hocico",
+    "tipo": "otros",
+    "direccion": "C. Batalla del Salado, 6",
+    "lat": 40.9636012,
+    "lng": -5.650682
+  },
+  {
+    "nombre": "Hotel Emperatriz II",
+    "tipo": "alojamiento",
+    "direccion": "Rúa Mayor, 18",
+    "lat": 40.963432999999995,
+    "lng": -5.665102699999999
+  },
+  {
+    "nombre": "Hotel Mercado Salamanca by gaiarooms",
+    "tipo": "alojamiento",
+    "direccion": "C. San Juan de la Cruz, 7",
+    "lat": 40.9639423,
+    "lng": -5.6632752
+  },
+  {
+    "nombre": "El Caserón Río",
+    "tipo": "alojamiento",
+    "direccion": "P.º Bajada del Río, 26",
+    "lat": 40.9521176,
+    "lng": -5.6272977
+  },
+  {
+    "nombre": "Parque canino de Los Alcaldes",
+    "tipo": "parque",
+    "direccion": "23, Calle Sector 59B",
+    "lat": 40.952909999999996,
+    "lng": -5.692159999999999
+  },
+  {
+    "nombre": "Hotel Amefa Salamanca",
+    "tipo": "alojamiento",
+    "direccion": "C. Pozo Amarillo, 18",
+    "lat": 40.965632299999996,
+    "lng": -5.662132199999999
+  },
+  {
+    "nombre": "Zona perros",
+    "tipo": "parque",
+    "direccion": "C. Alfonso de Castro, 42",
+    "lat": 40.974700899999995,
+    "lng": -5.658761
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "para perros de San Bernardo Park",
+    "lat": 40.9681928,
+    "lng": -5.6705282
+  },
+  {
+    "nombre": "CURSOS REC MASCOTAS",
+    "tipo": "adiestrador",
+    "direccion": "poligono 5 parcela 17",
+    "lat": 41.1970612,
+    "lng": -5.6847033
+  },
+  {
+    "nombre": "Misgatos",
+    "tipo": "otros",
+    "direccion": "C. Castañar, 8",
+    "lat": 40.9757603,
+    "lng": -5.6764576
+  },
+  {
+    "nombre": "Hostal Uria",
+    "tipo": "alojamiento",
+    "direccion": "C. García Moreno, 1",
+    "lat": 40.971362899999995,
+    "lng": -5.6655793999999995
+  },
+  {
+    "nombre": "Zona perros",
+    "tipo": "parque",
+    "direccion": "P.º Enrique de Sena, 22",
+    "lat": 40.9637335,
+    "lng": -5.685421799999999
+  },
+  {
+    "nombre": "PeludetesCharros",
+    "tipo": "otros",
+    "direccion": "37766 Endrinal de la sierra",
+    "lat": 40.5911921,
+    "lng": -5.8044027
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque",
+    "direccion": "C. Salesas, 20",
+    "lat": 40.974726499999996,
+    "lng": -5.661480699999999
+  },
+  {
+    "nombre": "paat",
+    "tipo": "adiestrador",
+    "direccion": "C. Almansa, 9",
+    "lat": 40.9630272,
+    "lng": -5.6532851
+  },
+  {
+    "nombre": "Canallas k9",
+    "tipo": "adiestrador",
+    "direccion": "Pl. del Crucero",
+    "lat": 40.7171704,
+    "lng": -5.5786017999999995
+  },
+  {
+    "nombre": "Parque para perros",
+    "tipo": "parque",
+    "direccion": "C. Peña de Francia, 2",
+    "lat": 40.9726753,
+    "lng": -5.674194099999999
+  },
+  {
+    "nombre": "PELUQUERIA CANINA",
+    "tipo": "otros",
+    "direccion": "C. Valverdón, 10",
+    "lat": 40.9733667,
+    "lng": -5.6706749
+  },
+  {
+    "nombre": "Mascota Viajera",
+    "tipo": "otros",
+    "direccion": "C. Padre Ignacio Ellacuría, S/N, Entrada Pasaje",
+    "lat": 40.9506158,
+    "lng": -5.6281751
+  },
+  {
+    "nombre": "Residencia canina Tatín",
+    "tipo": "otros",
+    "direccion": "Parcela, 90, Poligono 507",
+    "lat": 40.9655583,
+    "lng": -5.927274
+  },
+  {
+    "nombre": "Brooklyn & Co brunch y café de especialidad",
+    "tipo": "restaurante",
+    "direccion": "C. Concejo, 1",
+    "telefono": "+34 923 04 47 88",
+    "valoracion": 4.3,
+    "resenas": 892,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9655915,
+    "lng": -5.6644745,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brooklyn%20%26%20Co%20brunch%20y%20caf%C3%A9%20de%20especialidad&query_place_id=ChIJ0yfj4gAnPw0RXpJ16-O9bIQ",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Restaurante Picosa",
+    "tipo": "restaurante",
+    "direccion": "Av. de Lasalle, 200D",
+    "telefono": "+34 923 19 04 45",
+    "valoracion": 3.7,
+    "resenas": 406,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9553002,
+    "lng": -5.6930458,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Restaurante%20Picosa&query_place_id=ChIJN1QOHbQnPw0RvHfGA3dJoZc",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Doze Restaurante & Premium Bar",
+    "tipo": "cafeteria_bar",
+    "direccion": "Plaza de la Isla de la Rúa, 3",
+    "telefono": "+34 923 88 88 12",
+    "valoracion": 4.5,
+    "resenas": 5203,
+    "horario": "",
+    "estado": "",
+    "lat": 40.963977,
+    "lng": -5.6644935,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Doze%20Restaurante%20%26%20Premium%20Bar&query_place_id=ChIJ-38BrxUmPw0R14F7TKiGOBI",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Restaurante La Salchichería",
+    "tipo": "restaurante",
+    "direccion": "Pl. del Oeste, 7",
+    "telefono": "+34 620 87 49 73",
+    "valoracion": 4,
+    "resenas": 1279,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9706223,
+    "lng": -5.6671083,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Restaurante%20La%20Salchicher%C3%ADa&query_place_id=ChIJdST-Uj0mPw0RY6DQm1It8s8",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "La Pachamama",
+    "tipo": "restaurante",
+    "direccion": "P.º del Progreso, 1",
+    "telefono": "+34 636 82 56 14",
+    "valoracion": 4.9,
+    "resenas": 466,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9554547,
+    "lng": -5.6687579,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=La%20Pachamama&query_place_id=ChIJQahwW-QnPw0RTf_cvrDz4CE",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Quilombo Café Salamanca Specialty Coffee",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. del Prior, 16, Loc bajo",
+    "telefono": "",
+    "valoracion": 4.9,
+    "resenas": 159,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9652337,
+    "lng": -5.6662616,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Quilombo%20Caf%C3%A9%20Salamanca%20Specialty%20Coffee&query_place_id=ChIJYeGT7OknPw0RlfjxUc-gZ3Y",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Cuatro Cuartos",
+    "tipo": "cafeteria_bar",
+    "direccion": "Rda. de Sancti-Spíritus, 20",
+    "telefono": "+34 694 20 14 52",
+    "valoracion": 4.9,
+    "resenas": 109,
+    "horario": "",
+    "estado": "",
+    "lat": 40.966032,
+    "lng": -5.658801,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cuatro%20Cuartos&query_place_id=ChIJ6__cJgAnPw0RLwwWHmwPikg",
+    "fuenteConsulta": "cafeteria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "PUBEER",
+    "tipo": "cafeteria_bar",
+    "direccion": "Pl. San Juan Bautista, 18",
+    "telefono": "",
+    "valoracion": 4.6,
+    "resenas": 447,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9678238,
+    "lng": -5.6665375,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=PUBEER&query_place_id=ChIJsywAJhYmPw0R3yXgDhMOZMs",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "PADDY’S PUB.",
+    "tipo": "restaurante",
+    "direccion": "Gran Vía, 66",
+    "telefono": "",
+    "valoracion": 4.8,
+    "resenas": 153,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9626958,
+    "lng": -5.6623562,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=PADDY%E2%80%99S%20PUB.&query_place_id=ChIJvRuiDJYnPw0Ro0_WtncMnp0",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "CAFETERÍA TRUJILLO, ECOTONO INTEGRACIÓN",
+    "tipo": "cafeteria_bar",
+    "direccion": "Pl. Trujillo",
+    "telefono": "+34 672 54 87 66",
+    "valoracion": 4.2,
+    "resenas": 66,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9652657,
+    "lng": -5.6506848,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=CAFETER%C3%8DA%20TRUJILLO%2C%20ECOTONO%20INTEGRACI%C3%93N&query_place_id=ChIJ34frWL4nPw0ReHQ2Bx-gHDs",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Heladería del Novelty",
+    "tipo": "heladeria_pasteleria",
+    "direccion": "Pl. Mayor, 3",
+    "telefono": "",
+    "valoracion": 4.6,
+    "resenas": 202,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9653259,
+    "lng": -5.6637489,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Helader%C3%ADa%20del%20Novelty&query_place_id=ChIJmSgIyEsnPw0R0bLCMpZhy58",
+    "fuenteConsulta": "heladeria pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "MANDALA RESTAURANTE Y CAFETERÍA",
+    "tipo": "cafeteria_bar",
+    "direccion": "C. Serranos, 9, 11",
+    "telefono": "+34 923 12 33 42",
+    "valoracion": 4.4,
+    "resenas": 2831,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9623797,
+    "lng": -5.6671181,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MANDALA%20RESTAURANTE%20Y%20CAFETER%C3%8DA&query_place_id=ChIJ4eDS3j8mPw0RFVP1E08ECGM",
+    "fuenteConsulta": "restaurante pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Bar Macondo",
+    "tipo": "cafeteria_bar",
+    "direccion": "Calle Dr. Jaime Vera, 2",
+    "telefono": "+34 923 61 28 33",
+    "valoracion": 4.6,
+    "resenas": 360,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9708184,
+    "lng": -5.6681867,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bar%20Macondo&query_place_id=ChIJ5U1lNT0mPw0RI2GG-5bnxA8",
+    "fuenteConsulta": "bar pet friendly",
+    "evidenciaNivel": "explicit",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Huellas Veterinaria Salamanca",
+    "tipo": "veterinario",
+    "direccion": "C. Paraguay, 14",
+    "telefono": "923 99 95 77",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "9:30–19:00",
+    "estado": "Abierto · Cierre: 19:00",
+    "lat": 40.9654667,
+    "lng": -5.6565752,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJq7hYCRImPw0R1Ia3h3ET2CU",
+    "fuenteConsulta": "veterinario mascotas en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Norte Veterinarios",
+    "tipo": "veterinario",
+    "direccion": "C. Silvestre Sánchez Sierra, 2",
+    "telefono": "923 38 62 99",
+    "valoracion": 4.9,
+    "resenas": null,
+    "horario": "10:00–13:30",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 40.9808409,
+    "lng": -5.6562103,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJKyyt04QnPw0R6_CNQszHOpo",
+    "fuenteConsulta": "veterinario mascotas en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Hospital Veterinaria Sedano",
+    "tipo": "veterinario",
+    "direccion": "Pso. Los olivos, 32",
+    "telefono": "923 70 69 58",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "9:30–20:30",
+    "estado": "Abierto · Cierre: 20:30",
+    "lat": 40.978361899999996,
+    "lng": -5.6553976,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJEwwxQlMnPw0REVMog6yA0jg",
+    "fuenteConsulta": "veterinario mascotas en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Mascoteka. Residencia canina.",
+    "tipo": "guarderia_canina",
+    "direccion": "Parcela, 1, polígono 11",
+    "telefono": "696 20 54 51",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "9:00–13:00",
+    "estado": "Abierto · Cierre: 19:00",
+    "lat": 40.8956358,
+    "lng": -5.7850947,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJKzW4pi7ZPg0RvBjb7TAu7wQ",
+    "fuenteConsulta": "guarderia canina en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Campamento Peludosos",
+    "tipo": "guarderia_canina",
+    "direccion": "Calle Encinar de Abajo, s/n",
+    "telefono": "622 36 06 81",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "10:00–18:00",
+    "estado": "Cierra pronto · 18:00 · Apertura: 10:00 (vie)",
+    "lat": 40.7624637,
+    "lng": -5.5853022999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJYaik3iMZPw0RKkQDDXLXZmk",
+    "fuenteConsulta": "guarderia canina en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica veterinaria Wecan Salamanca",
+    "tipo": "veterinario",
+    "direccion": "P.º de la Estación, 71",
+    "telefono": "923 13 44 85",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "10:00–14:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 40.970877,
+    "lng": -5.652273,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJOXrnRA8mPw0RCSYRRczfmdI",
+    "fuenteConsulta": "veterinario mascotas en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Bichos",
+    "tipo": "veterinario",
+    "direccion": "C. Príncipe, 28",
+    "telefono": "923 24 68 23",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "9:30–14:30",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 40.9734731,
+    "lng": -5.6694982,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJKeAtVSImPw0RHMkbv7ahg5Q",
+    "fuenteConsulta": "veterinario mascotas en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Salinero",
+    "tipo": "veterinario",
+    "direccion": "C. Riaño, 28",
+    "telefono": "634 96 53 53",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "9:00–21:00",
+    "estado": "Abierto · Cierre: 21:00",
+    "lat": 40.9801381,
+    "lng": -5.6679786,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJky6AFCAmPw0RZKkWfZ75Ej8",
+    "fuenteConsulta": "veterinario mascotas en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Veterimóvil, Veterinario de Salamanca",
+    "tipo": "veterinario",
+    "direccion": "C. Saucelle, 7",
+    "telefono": "658 89 20 16",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "9:30–19:00",
+    "estado": "Abierto · Cierre: 19:00",
+    "lat": 40.969576599999996,
+    "lng": -5.6726053,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJffz4XDsmPw0RBiuh_H7U1mA",
+    "fuenteConsulta": "veterinario mascotas en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "ArteVet Clínica Veterinaria",
+    "tipo": "veterinario",
+    "direccion": "Av. de las Artes, 91",
+    "telefono": "923 38 61 95",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "10:00–20:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 40.9576099,
+    "lng": -5.6524936,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ42smOvEnPw0RJWD1d9r1h9I",
+    "fuenteConsulta": "veterinario mascotas en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "AGASA",
+    "tipo": "farmacia_veterinaria",
+    "direccion": "Calle Dr. Ferrán, 114",
+    "telefono": "923 26 83 57",
+    "valoracion": 4.7,
+    "resenas": null,
+    "horario": "9:00–13:30",
+    "estado": "Abierto · Cierre: 19:30",
+    "lat": 40.943663099999995,
+    "lng": -5.6619287,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJcXKefGEmPw0RJmiglAPCoUg",
+    "fuenteConsulta": "farmacia veterinaria en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "BeMoreDog",
+    "tipo": "guarderia_canina",
+    "direccion": "Urbanización San Roque, 1",
+    "telefono": "633 76 22 70",
+    "valoracion": 4.6,
+    "resenas": null,
+    "horario": "10:00–14:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 40.950994,
+    "lng": -5.535340499999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ25po4OM6Pw0RujxvT1KQcgk",
+    "fuenteConsulta": "guarderia canina en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria La Vega Veterinario 24 horas Salamanca",
+    "tipo": "veterinario",
+    "direccion": "C. del Barco, 22",
+    "telefono": "923 21 84 42",
+    "valoracion": 4.5,
+    "resenas": null,
+    "horario": "9:30–14:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 40.950286999999996,
+    "lng": -5.6686404999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJR8zqMV0mPw0R3ky9hXLN7fY",
+    "fuenteConsulta": "veterinario mascotas en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Club Veterinario Salamanca",
+    "tipo": "veterinario",
+    "direccion": "C. de José de Lamano Beneite, 70",
+    "telefono": "923 20 76 73",
+    "valoracion": 4.5,
+    "resenas": null,
+    "horario": "10:00–14:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 40.963214199999996,
+    "lng": -5.6858244,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJD0FL7jQmPw0RKokk-VAv1Ck",
+    "fuenteConsulta": "veterinario mascotas en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica Veterinaria Gómez Ulla",
+    "tipo": "veterinario",
+    "direccion": "ENFRENTE DE BERRETES",
+    "telefono": "923 12 11 91",
+    "valoracion": 4.5,
+    "resenas": null,
+    "horario": "10:00–14:00",
+    "estado": "Abierto · Cierre: 20:30",
+    "lat": 40.967272,
+    "lng": -5.6530954,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ7Uirmg4mPw0Rev1sQPvozcE",
+    "fuenteConsulta": "veterinario mascotas en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Veternova SL",
+    "tipo": "farmacia_veterinaria",
+    "direccion": "C. Sánchez Ruano, 2",
+    "telefono": "923 12 07 89",
+    "valoracion": 4.5,
+    "resenas": null,
+    "horario": "8:00–14:00",
+    "estado": "Cierra pronto · 18:30 · Apertura: 8:00 (vie)",
+    "lat": 40.955766,
+    "lng": -5.688274,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJXXE6sbQnPw0RqqyrEfoxp9I",
+    "fuenteConsulta": "farmacia veterinaria en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Clínica veterinaria en Salamanca - La Salle",
+    "tipo": "veterinario",
+    "direccion": "C. Sánchez Rojas, 4",
+    "telefono": "685 41 74 02",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "9:00–19:00",
+    "estado": "Abierto · Cierre: 19:00",
+    "lat": 40.955583399999995,
+    "lng": -5.6783529,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJxwGktkgmPw0RvfXX_vg2biQ",
+    "fuenteConsulta": "veterinario mascotas en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "REC. Residencia, Educación canina, Crematorio de mascotas",
+    "tipo": "guarderia_canina",
+    "direccion": "Cam. de Topas a Lagunas Rubias",
+    "telefono": "615 29 58 82",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "10:00–14:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 41.19827,
+    "lng": -5.6862214,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJaZx5CkvUOA0RLvtSeYUmj2A",
+    "fuenteConsulta": "guarderia canina en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Mundo Animal",
+    "tipo": "veterinario",
+    "direccion": "C. Greco, 6",
+    "telefono": "923 25 72 72",
+    "valoracion": 4.3,
+    "resenas": null,
+    "horario": "16:00–22:00",
+    "estado": "Abierto · Cierre: 22:00",
+    "lat": 40.9720775,
+    "lng": -5.6533861,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJx-tSgwUmPw0Rx0CqnFeatDE",
+    "fuenteConsulta": "farmacia veterinaria en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "KILAMAS",
+    "tipo": "guarderia_canina",
+    "direccion": "Cam. Carraverilla, 12",
+    "telefono": "609 35 53 68",
+    "valoracion": 3.9,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9142765,
+    "lng": -5.6541619999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJV_x4-qQmPw0R5HxS-yeTFpk",
+    "fuenteConsulta": "guarderia canina en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Mascocamping Residencia Canina",
+    "tipo": "guarderia_canina",
+    "direccion": "Calle Centerrubio, km. 3",
+    "telefono": "627 13 17 77",
+    "valoracion": 3.8,
+    "resenas": null,
+    "horario": "9:30–13:30",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 40.971868199999996,
+    "lng": -5.5519357,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJI8vpsbA6Pw0RLWefl8q0mlg",
+    "fuenteConsulta": "guarderia canina en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia canina Tatín",
+    "tipo": "guarderia_canina",
+    "direccion": "Parcela, 90, Poligono 507",
+    "telefono": "644 78 46 37",
+    "valoracion": null,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9655583,
+    "lng": -5.927274,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJBZ4JSqXFPg0RDFu5wZs2wAs",
+    "fuenteConsulta": "residencia canina en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino",
+    "tipo": "parque_canino",
+    "direccion": "Gta. Castilla y León, s/n",
+    "telefono": "",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 40.980317,
+    "lng": -5.6508062,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJVWHTzwonPw0R4qC3KESjXcg",
+    "fuenteConsulta": "parque para perros en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque_canino",
+    "direccion": "Calle Molino Contrafuerte, 2",
+    "telefono": "",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 40.956468,
+    "lng": -5.656805599999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ_cwN0DcnPw0RgmJCmAPOJ-k",
+    "fuenteConsulta": "parque para perros en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque_canino",
+    "direccion": "C. Salesas, 20",
+    "telefono": "",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 40.974726499999996,
+    "lng": -5.661480699999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJh2AScKQnPw0RgVOjatSRa7w",
+    "fuenteConsulta": "parque para perros en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Zona de paseo para perros",
+    "tipo": "parque_canino",
+    "direccion": "Av. de San Agustín, 82E",
+    "telefono": "",
+    "valoracion": 4.8,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 40.9780478,
+    "lng": -5.6565347,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJTSn3uwInPw0Ru9EM3bgVejI",
+    "fuenteConsulta": "parque para perros en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque para perros de San Bernardo",
+    "tipo": "parque_canino",
+    "direccion": "C. Nueva de San Bernardo, 27",
+    "telefono": "",
+    "valoracion": 4.5,
+    "resenas": null,
+    "horario": "",
+    "estado": "Abierto ahora",
+    "lat": 40.968257799999996,
+    "lng": -5.6703981,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ801CF_0nPw0R8-RWxJCcA4g",
+    "fuenteConsulta": "parque para perros en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque_canino",
+    "direccion": "Jesuítas Park",
+    "telefono": "",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "8:00–22:00",
+    "estado": "Abierto · Cierre: 22:00",
+    "lat": 40.96094,
+    "lng": -5.654919,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJh4D4NSAnPw0RQR0t_cdHcBk",
+    "fuenteConsulta": "parque para perros en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque de Perros El Baldío",
+    "tipo": "parque_canino",
+    "direccion": "37003 Salamanca",
+    "telefono": "",
+    "valoracion": 4.4,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 40.9670349,
+    "lng": -5.6296915,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJU5qn5OslPw0RHoF9XAHqXmI",
+    "fuenteConsulta": "parque para perros en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque Canino",
+    "tipo": "parque_canino",
+    "direccion": "C. Ramón y Cajal, 19",
+    "telefono": "",
+    "valoracion": 3.6,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 40.9659088,
+    "lng": -5.6683891,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJHzbrjtQnPw0RNJ1x5MuGPho",
+    "fuenteConsulta": "parque para perros en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque canino de Los Alcaldes",
+    "tipo": "parque_canino",
+    "direccion": "23, Calle Sector 59B",
+    "telefono": "",
+    "valoracion": 3.3,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 40.952909999999996,
+    "lng": -5.692159999999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJm06wVVInPw0RCBCbE68H5oQ",
+    "fuenteConsulta": "parque para perros en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Parque perros",
+    "tipo": "parque_canino",
+    "direccion": "Pl. del Bo. Vidal, 5a",
+    "telefono": "",
+    "valoracion": 3.3,
+    "resenas": null,
+    "horario": "Abierto 24 horas",
+    "estado": "Abierto 24 horas",
+    "lat": 40.9734621,
+    "lng": -5.6671489,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJm0J4vsYnPw0RjcLcITSTk10",
+    "fuenteConsulta": "parque para perros en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Zona perros",
+    "tipo": "parque_canino",
+    "direccion": "C. Alfonso de Castro, 42",
+    "telefono": "",
+    "valoracion": 3,
+    "resenas": null,
+    "horario": "",
+    "estado": "Abierto ahora",
+    "lat": 40.974700899999995,
+    "lng": -5.658761,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJN2sPJGgnPw0RfNJltCrzq3A",
+    "fuenteConsulta": "area canina en Salamanca, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Vetersalud",
+    "tipo": "veterinario",
+    "direccion": "P.º de la Estación, 73",
+    "telefono": "",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9708785,
+    "lng": -5.6522995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJZTQ8Qw8mPw0RSMD8B-L27lc",
+    "fuenteConsulta": "veterinario Salamanca",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Animal Health",
+    "tipo": "veterinario",
+    "direccion": "C. Marcos Escribano, 3",
+    "telefono": "",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "",
+    "estado": "",
+    "lat": 40.9493805,
+    "lng": -5.6331177,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJg4qMUM4lPw0RvwjVl0axpnQ",
+    "fuenteConsulta": "veterinario Salamanca",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

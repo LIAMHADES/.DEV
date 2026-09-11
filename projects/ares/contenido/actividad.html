@@ -69,6 +69,7 @@
 .kw-field label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3)}
 .kw-field-val{font-family:'Bruno Ace SC',sans-serif;font-size:1.3rem;color:var(--hl);letter-spacing:0.02em}
 .kw-field-val .unit{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--t2);letter-spacing:0.05em;margin-left:0.25rem}
+.kw-weight-context{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.04em;color:var(--hl);margin-top:-0.8rem;margin-bottom:1rem;min-height:1.2em}
 
 /* Slider naranja custom, coherente con --cta */
 .kw-slider{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:0;background:rgba(240,242,245,0.12);outline:none;cursor:pointer}
@@ -294,7 +295,7 @@
  .act-faq-item[open] summary::after{transform:rotate(45deg);color:var(--cta)}
 .act-faq-item p{padding:0 1.3rem 1.1rem;margin:0;font-size:0.85rem;color:var(--t2);line-height:1.8}
 </style>
-<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/analytics.js" defer></script>
 </head>
 <body>
 
@@ -355,11 +356,12 @@
         <h3 class="kw-title">Ajusta los controles y mira el resultado moverse</h3>
 
         <div class="kw-field">
-          <div class="kw-field-top">
-            <label for="kw-weight">Peso de tu perro</label>
-            <div class="kw-field-val"><span id="kw-weight-val">20</span><span class="unit">kg</span></div>
-          </div>
-          <input type="range" id="kw-weight" class="kw-slider" min="1" max="80" step="0.5" value="20">
+           <div class="kw-field-top">
+             <label for="kw-weight">Peso de tu perro</label>
+             <div class="kw-field-val"><span id="kw-weight-val">20</span><span class="unit">kg</span></div>
+           </div>
+           <div id="kw-weight-context" class="kw-weight-context" aria-live="polite"></div>
+           <input type="range" id="kw-weight" class="kw-slider" min="1" max="80" step="0.5" value="20">
           <div class="kw-range-labels"><span>1 kg</span><span>80 kg</span></div>
         </div>
 
@@ -633,6 +635,7 @@
   const weightSlider = document.getElementById('kw-weight');
   const distanceSlider = document.getElementById('kw-distance');
   const weightVal = document.getElementById('kw-weight-val');
+  const weightContextEl = document.getElementById('kw-weight-context');
   const distanceVal = document.getElementById('kw-distance-val');
   const intensityBtns = [...document.querySelectorAll('#kw-intensity .kw-int-btn')];
   const kcalEl = document.getElementById('kw-kcal');
@@ -649,13 +652,20 @@
 
   let factor = 1.0;
 
+  const queryWeight = parseFloat(new URLSearchParams(window.location.search).get('weight'));
+  if(Number.isFinite(queryWeight)){
+    const importedWeight = Math.min(80, Math.max(1, queryWeight));
+    weightSlider.value = importedWeight;
+    if(weightContextEl) weightContextEl.textContent = 'Peso traído desde la calculadora de peso ideal.';
+  }
+
   // Equivalencias reales de comida/premios para que el numero se sienta tangible
   // (aprox: 1g de pienso seco estandar ~= 3.5-4 kcal; 1 galleta premio media ~=20-25 kcal)
   function equivalentText(kcal){
     if(kcal <= 0) return 'Añade distancia para ver el gasto estimado.';
     const grams = Math.round(kcal / 3.7);
     const treats = Math.max(1, Math.round(kcal / 22));
-    return `Equivale aprox. a <b>${grams} g</b> de su pienso habitual, o unos <b>${treats}</b> premio${treats===1?'':'s'} medianos.`;
+     return `Equivale aprox. a <b>${grams} g</b> de pienso seco, o unos <b>${treats}</b> premios medianos.`;
   }
 
   function render(){
@@ -906,6 +916,6 @@ buildPrism('prism-hero');
     window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
   })();
 </script>
-<script src="../assets/js/footer-common.js"></script>
+<script src="../assets/js/footer-common.js" defer></script>
 </body>
 </html>

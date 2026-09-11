@@ -248,7 +248,7 @@ section:first-of-type{clip-path:none}
 #cta-final{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
 #planes{scroll-margin-top:72px}
 </style>
-<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/analytics.js" defer></script>
 </head>
 <body>
 
@@ -834,6 +834,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
   })();
 </script>
-<script src="../assets/js/footer-common.js"></script>
+<script src="../assets/js/footer-common.js" defer></script>
 </body>
 </html>

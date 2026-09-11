@@ -1,0 +1,408 @@
+[
+  {
+    "nombre": "Neuro Educador Emocional Canino. Iñaki B.Z.",
+    "tipo": "adiestrador",
+    "direccion": "Calle Dublín, 58",
+    "lat": 42.8167653,
+    "lng": -1.6062991
+  },
+  {
+    "nombre": "Irulegui Centro Canino",
+    "tipo": "adiestrador",
+    "direccion": "Junto a jardinería Adaxka",
+    "lat": 42.784941499999995,
+    "lng": -1.6128791999999998
+  },
+  {
+    "nombre": "NaturCan – Paseos y Guardería Canina en Pamplona",
+    "tipo": "adiestrador",
+    "direccion": "C. Arrigorri, 27",
+    "lat": 42.8797608,
+    "lng": -1.5682254
+  },
+  {
+    "nombre": "Pelu2 - Peluquería Canina",
+    "tipo": "peluqueria",
+    "direccion": "Av. Pamplona, 23, bajo",
+    "lat": 42.8036779,
+    "lng": -1.6766385
+  },
+  {
+    "nombre": "ALFA DOG Educación canina Navarra",
+    "tipo": "adiestrador",
+    "direccion": "C. M, 1",
+    "lat": 42.829541299999995,
+    "lng": -1.6968789
+  },
+  {
+    "nombre": "Adiestramiento Aula K9 Arete Can, Educación Cursos Talleres Formación Especializada Canina",
+    "tipo": "adiestrador",
+    "direccion": "C. Sakanpea, 2",
+    "lat": 42.83247,
+    "lng": -1.64204
+  },
+  {
+    "nombre": "Kora Kiliki",
+    "tipo": "alojamiento",
+    "direccion": "C. Manuel López González, 8",
+    "lat": 42.8066356,
+    "lng": -1.629324
+  },
+  {
+    "nombre": "Líbere Pamplona Universidad",
+    "tipo": "alojamiento",
+    "direccion": "Av. Pamplona, 21",
+    "lat": 42.8038009,
+    "lng": -1.6764495
+  },
+  {
+    "nombre": "Hotel Alma Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "C. Beloso Bajo, 11",
+    "lat": 42.8197694,
+    "lng": -1.6238158
+  },
+  {
+    "nombre": "Hotel Iriguibel Arrosadía",
+    "tipo": "alojamiento",
+    "direccion": "Pl. de Xavier Mina, 6",
+    "lat": 42.802079299999995,
+    "lng": -1.6381884
+  },
+  {
+    "nombre": "Hotel Luze El Toro",
+    "tipo": "alojamiento",
+    "direccion": "Ctra. de Guipúzcoa, km. 5",
+    "lat": 42.8514328,
+    "lng": -1.6941591
+  },
+  {
+    "nombre": "Peluquria KIZKUR",
+    "tipo": "peluqueria",
+    "direccion": "Calle Valle de Aranguren, 7, bajo",
+    "lat": 42.7981106,
+    "lng": -1.6403208
+  },
+  {
+    "nombre": "Escuela Canina Navarra (Esccan)",
+    "tipo": "adiestrador",
+    "direccion": "Carr. a Unzué",
+    "lat": 42.6497155,
+    "lng": -1.6352702
+  },
+  {
+    "nombre": "EDUCADOR ADIESTRADOR CANINO PROFESIONAL ACREDITADO GOBIERNO FORAL FORMADOR FORMADORES www.aulak9.org",
+    "tipo": "adiestrador",
+    "direccion": "huertas",
+    "lat": 42.7813842,
+    "lng": -1.6321495
+  },
+  {
+    "nombre": "Peluqueria de Caballeros El Cubano",
+    "tipo": "peluqueria",
+    "direccion": "Calle Tajonar",
+    "lat": 42.804942499999996,
+    "lng": -1.6346892
+  },
+  {
+    "nombre": "Adiestrador Pamplona Maria",
+    "tipo": "adiestrador",
+    "direccion": "C. Concejo de Badostáin, numero 21",
+    "lat": 42.811238599999996,
+    "lng": -1.6149391
+  },
+  {
+    "nombre": "Hotel Casa Jacinto",
+    "tipo": "alojamiento",
+    "direccion": "Polígono Mugazuri, 11C",
+    "lat": 42.8306624,
+    "lng": -1.6213635
+  },
+  {
+    "nombre": "Hotel NH Pamplona Iruña Park",
+    "tipo": "alojamiento",
+    "direccion": "C. de Arcadio María Larraona, 1",
+    "lat": 42.811774,
+    "lng": -1.663592
+  },
+  {
+    "nombre": "Hotel Tres Reyes Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "C. Taconera, 1",
+    "lat": 42.8158132,
+    "lng": -1.6491451
+  },
+  {
+    "nombre": "Hotel Zenit Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "Parque Comercial Galaria",
+    "lat": 42.787238699999996,
+    "lng": -1.6320232
+  },
+  {
+    "nombre": "Líbere Pamplona Yamaguchi",
+    "tipo": "alojamiento",
+    "direccion": "Pl. Yamaguchi, 12",
+    "lat": 42.8101796,
+    "lng": -1.6626161
+  },
+  {
+    "nombre": "Hotel Yoldi Pamplona-Iruñea",
+    "tipo": "alojamiento",
+    "direccion": "Av. San Ignacio, 11",
+    "lat": 42.8136258,
+    "lng": -1.6428265
+  },
+  {
+    "nombre": "Maisonnave",
+    "tipo": "alojamiento",
+    "direccion": "C/ Nueva, 20",
+    "lat": 42.8173416,
+    "lng": -1.6450825
+  },
+  {
+    "nombre": "Hotel Villava Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "Av. Pamplona, 2",
+    "lat": 42.835042099999995,
+    "lng": -1.6106840999999998
+  },
+  {
+    "nombre": "Apartamentos Mendebaldea Suite Premium",
+    "tipo": "alojamiento",
+    "direccion": "C. de Irunlarrea, 6",
+    "lat": 42.807556,
+    "lng": -1.6696381999999999
+  },
+  {
+    "nombre": "BeloAran | Entrenamiento animal y Naturaleza",
+    "tipo": "adiestrador",
+    "direccion": "Mutilva baja poligono 2",
+    "lat": 42.792617899999996,
+    "lng": -1.6214406
+  },
+  {
+    "nombre": "Hotel junto a Pamplona Hotel Iriguibel",
+    "tipo": "alojamiento",
+    "direccion": "C. Intxaurdia, 4",
+    "lat": 42.8317209,
+    "lng": -1.5858831999999998
+  },
+  {
+    "nombre": "MET Pamplona Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Sancho el Fuerte, 28",
+    "lat": 42.8120433,
+    "lng": -1.6607615999999998
+  },
+  {
+    "nombre": "Hotel Pamplona Plaza",
+    "tipo": "alojamiento",
+    "direccion": "Av. de D. Marcelo Celayeta, 35",
+    "lat": 42.82607,
+    "lng": -1.6552825
+  },
+  {
+    "nombre": "Hotel Burlada",
+    "tipo": "alojamiento",
+    "direccion": "C. La Fuente Iturriko Kalea, 2",
+    "lat": 42.8256181,
+    "lng": -1.6171697999999999
+  },
+  {
+    "nombre": "Hotel Sancho Ramírez",
+    "tipo": "alojamiento",
+    "direccion": "C. Sancho Ramírez, 11, Bajo",
+    "lat": 42.8075504,
+    "lng": -1.6645138
+  },
+  {
+    "nombre": "Pensión Olga",
+    "tipo": "alojamiento",
+    "direccion": "Apartamentos Turisticos y Habitaciones",
+    "lat": 42.8063563,
+    "lng": -1.6619064
+  },
+  {
+    "nombre": "Hotel Castillo de Javier",
+    "tipo": "alojamiento",
+    "direccion": "C. San Nicolás, 50, 52",
+    "lat": 42.816205599999996,
+    "lng": -1.6449160999999999
+  },
+  {
+    "nombre": "Hostal Acella",
+    "tipo": "alojamiento",
+    "direccion": "Tr.ª Acella, 3, BAJO",
+    "lat": 42.806489899999995,
+    "lng": -1.6631498
+  },
+  {
+    "nombre": "Albergue de Pamplona - Iruñako Aterpea",
+    "tipo": "alojamiento",
+    "direccion": "C/ del Carmen, 18",
+    "lat": 42.8199184,
+    "lng": -1.6430531
+  },
+  {
+    "nombre": "Adiestrador canino Pamplona (con cita previa)",
+    "tipo": "adiestrador",
+    "direccion": "C. del Monasterio de Urdax, 17",
+    "lat": 42.8117382,
+    "lng": -1.6568273999999998
+  },
+  {
+    "nombre": "Gran Hotel La Perla",
+    "tipo": "alojamiento",
+    "direccion": "Pl. del Castillo, 1",
+    "lat": 42.8176949,
+    "lng": -1.6426078
+  },
+  {
+    "nombre": "Hotel A Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "C. Sancho Ramírez, 15",
+    "lat": 42.807277299999996,
+    "lng": -1.6649481
+  },
+  {
+    "nombre": "Eurostars Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "C. Beloso Bajo, 11",
+    "lat": 42.819601999999996,
+    "lng": -1.6236274
+  },
+  {
+    "nombre": "Hotel San Fermín Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Villava, 90",
+    "lat": 42.8307552,
+    "lng": -1.6195849
+  },
+  {
+    "nombre": "Hostal Arriazu - Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "C. Comedias, 14",
+    "lat": 42.8163203,
+    "lng": -1.6437566
+  },
+  {
+    "nombre": "Pamplona Catedral Hotel",
+    "tipo": "alojamiento",
+    "direccion": "C. Dos de Mayo, 4",
+    "lat": 42.820285999999996,
+    "lng": -1.6437290999999998
+  },
+  {
+    "nombre": "Hotel Europa Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "C. Espoz y Mina, 11",
+    "lat": 42.8162263,
+    "lng": -1.6418034
+  },
+  {
+    "nombre": "Hotel Leyre",
+    "tipo": "alojamiento",
+    "direccion": "C. de Leyre, 7",
+    "lat": 42.8140441,
+    "lng": -1.6391251
+  },
+  {
+    "nombre": "Hotel Pompaelo Urban Spa ****",
+    "tipo": "alojamiento",
+    "direccion": "Pl. Consistorial, 3",
+    "lat": 42.818002899999996,
+    "lng": -1.6439624
+  },
+  {
+    "nombre": "Hotel BED4U PAMPLONA - WEB OFICIAL",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Zaragoza, Km. 3",
+    "lat": 42.789995999999995,
+    "lng": -1.639921
+  },
+  {
+    "nombre": "Hotel Blanca de Navarra",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Pío XII, 43",
+    "lat": 42.806622499999996,
+    "lng": -1.6609171999999999
+  },
+  {
+    "nombre": "Hotel Andia Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "C. Ipertegui, 1",
+    "lat": 42.8219917,
+    "lng": -1.6943129
+  },
+  {
+    "nombre": "Abba Reino de Navarra Hotel",
+    "tipo": "alojamiento",
+    "direccion": "C. de Acella, 1",
+    "lat": 42.8084971,
+    "lng": -1.6606915
+  },
+  {
+    "nombre": "Pensión Pamplonabeds",
+    "tipo": "alojamiento",
+    "direccion": "por la Avenida De Navarra Seguidamente a la terraza del Restaurante 29 (EX Harmony",
+    "lat": 42.8062639,
+    "lng": -1.6626547999999999
+  },
+  {
+    "nombre": "Hotel Albret",
+    "tipo": "alojamiento",
+    "direccion": "C. de Ermitagaña, 3",
+    "lat": 42.809768399999996,
+    "lng": -1.6692386
+  },
+  {
+    "nombre": "Alda Centro Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "Pl. Virgen de la O, 7",
+    "lat": 42.818157,
+    "lng": -1.649857
+  },
+  {
+    "nombre": "AZZ Pamplona Norte Hotel",
+    "tipo": "alojamiento",
+    "direccion": "Pol. Agustinos",
+    "lat": 42.836741599999996,
+    "lng": -1.6858716999999999
+  },
+  {
+    "nombre": "ibis Styles Pamplona Noain",
+    "tipo": "alojamiento",
+    "direccion": "Calle Real Number",
+    "lat": 42.7645321,
+    "lng": -1.6337523999999999
+  },
+  {
+    "nombre": "Blu Hotel Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "Plaza Europa, 13",
+    "lat": 42.731503,
+    "lng": -1.6150780999999998
+  },
+  {
+    "nombre": "Iraipe Izaga Hostal",
+    "tipo": "alojamiento",
+    "direccion": "POLIGONO NOAIN ESKIROZ CALLE O 7",
+    "lat": 42.773643,
+    "lng": -1.6363908999999999
+  },
+  {
+    "nombre": "Hotel Avenida - Pamplona",
+    "tipo": "alojamiento",
+    "direccion": "Av. de Zaragoza, 5",
+    "lat": 42.812080099999996,
+    "lng": -1.6430166
+  },
+  {
+    "nombre": "Pensión La Espiga",
+    "tipo": "alojamiento",
+    "direccion": "31013 Pamplona",
+    "lat": 42.831435299999995,
+    "lng": -1.6862758
+  }
+]

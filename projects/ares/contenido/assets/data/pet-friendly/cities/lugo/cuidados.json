@@ -1,0 +1,42 @@
+[
+  {
+    "nombre": "Luscofusco Residencia Canina",
+    "tipo": "guarderia_canina",
+    "direccion": "Lugar da Fontenova, 13",
+    "telefono": "661 42 36 06",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "11:00–14:00",
+    "estado": "Abierto · Cierre: 20:00",
+    "lat": 42.9607925,
+    "lng": -7.687759799999999,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ1fAHevDTMQ0ROziR7G40TQQ",
+    "fuenteConsulta": "guarderia canina en Lugo, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  },
+  {
+    "nombre": "Residencia canina & Centro de cría \"CANS DO CASTRO\"",
+    "tipo": "guarderia_canina",
+    "direccion": "Carretera de Toldaos, Mañente",
+    "telefono": "664 71 98 11",
+    "valoracion": 5,
+    "resenas": null,
+    "horario": "9:00–23:00",
+    "estado": "Abierto · Cierre: 23:00",
+    "lat": 42.5018813,
+    "lng": -7.5783914999999995,
+    "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJg4JHrrMRMA0RDhSEPXIQYOI",
+    "fuenteConsulta": "guarderia canina en Lugo, España",
+    "evidenciaNivel": "category",
+    "evidenciaSuficiente": true,
+    "estadoFuente": "active",
+    "ubicacionNivel": "exact",
+    "estadoValidacion": "publishable",
+    "publicable": true
+  }
+]

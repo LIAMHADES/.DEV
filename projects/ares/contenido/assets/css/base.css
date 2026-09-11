@@ -33,7 +33,7 @@
   src: url("../fonts/material-symbols-outlined.woff2") format("woff2");
   font-weight: 100 700;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
 }
 .material-symbols-outlined {
   font-family: "Material Symbols Outlined";
@@ -529,7 +529,7 @@ select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: none;
-  background: rgba(21, 29, 37, 0.96);
+  background: #151d25;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   opacity: 0;
@@ -562,6 +562,13 @@ html.menu-open,
 body.menu-open {
   overflow: hidden;
   overscroll-behavior: none;
+}
+body.menu-open > :not(#navToggle):not(#navOverlay):not(#ovTicks) {
+  visibility: hidden;
+}
+body.menu-open > section,
+body.menu-open > footer {
+  display: none !important;
 }
 .nav-overlay .nav-logo-ov,
 .nav-overlay .ov-logo {
@@ -984,4 +991,297 @@ footer {
 
 @media (max-width: 400px) {
   #main-nav .nav-logo { height: 32px; }
+}
+
+/* Angular borders: clip-path removes the diagonal edge from a rectangular
+   border, so paint the border as an outer polygon and the fill as an inset
+   polygon instead. */
+.hf-diagram.angle-border,
+.hf-alert-badge,
+.imp-diagram,
+.kw-int-btn,
+#kw-disclaimer,
+#kw-ares-note,
+.mb-sync-btn,
+#mb-thermo-track,
+#mb-verdict,
+.nt-card,
+.nt-bridge,
+.pn-inline,
+.fn-plan,
+#casos .caso-card.angle-border,
+.pn-cta a.angle-border,
+.chip,
+.ro-pill,
+.zg-card,
+.btn-outline,
+.map-shell,
+.config-map,
+.control-btn,
+.guard-stage,
+.pf-card .pf-action,
+.pv-choice,
+.plan-badge-provisional,
+.cmp-card,
+.cmp-card-inherit,
+.num-wrap,
+#kcal-widget {
+  position: relative;
+  border: 0 !important;
+  background: var(--angle-border-color) !important;
+  isolation: isolate;
+}
+
+.hf-diagram.angle-border::before,
+.hf-alert-badge::before,
+.imp-diagram::before,
+.kw-int-btn::before,
+#kw-disclaimer::before,
+#kw-ares-note::before,
+.mb-sync-btn::before,
+#mb-thermo-track::before,
+#mb-verdict::before,
+.nt-card::before,
+.nt-bridge::before,
+.pn-inline::before,
+.fn-plan::before,
+#casos .caso-card.angle-border::before,
+.pn-cta a.angle-border::before,
+.chip::before,
+.ro-pill::before,
+.zg-card::before,
+.btn-outline::before,
+.map-shell::before,
+.config-map::before,
+.control-btn::before,
+.guard-stage::before,
+.pf-card .pf-action::before,
+.pv-choice::before,
+.plan-badge-provisional::before,
+.cmp-card::before,
+.cmp-card-inherit::before,
+.num-wrap::before,
+#kcal-widget::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: var(--angle-fill);
+  clip-path: polygon(
+    calc(var(--angle-cut) - 1px) 0,
+    100% 0,
+    100% calc(100% - var(--angle-cut) + 1px),
+    calc(100% - var(--angle-cut) + 1px) 100%,
+    0 100%,
+    0 calc(var(--angle-cut) - 1px)
+  );
+}
+
+.hf-diagram.angle-border { --angle-cut: 18px; --angle-border-color: rgba(134,187,216,0.15); --angle-fill: var(--bg2); }
+.hf-alert-badge { --angle-cut: 6px; --angle-border-color: rgba(246,174,45,0.3); --angle-fill: rgba(246,174,45,0.08); }
+.imp-diagram { --angle-cut: 18px; --angle-border-color: rgba(47,72,88,0.1); --angle-fill: #fff; }
+.kw-int-btn { --angle-cut: 10px; --angle-border-color: rgba(240,242,245,0.16); --angle-fill: rgba(240,242,245,0.04); }
+.kw-int-btn:hover { --angle-border-color: rgba(242,100,25,0.4); }
+.kw-int-btn.active { --angle-border-color: var(--cta); --angle-fill: var(--cta); }
+#kw-disclaimer { --angle-cut: 6px; --angle-border-color: rgba(240,242,245,0.06); --angle-fill: rgba(240,242,245,0.03); }
+#kw-ares-note { --angle-cut: 6px; --angle-border-color: rgba(246,174,45,0.2); --angle-fill: rgba(246,174,45,0.05); }
+.mb-sync-btn { --angle-cut: 6px; --angle-border-color: rgba(240,242,245,0.25); --angle-fill: transparent; }
+#mb-thermo-track { --angle-cut: 11px; --angle-border-color: rgba(240,242,245,0.15); --angle-fill: transparent; }
+#mb-verdict { --angle-cut: 16px; --angle-border-color: rgba(240,242,245,0.1); --angle-fill: transparent; }
+.nt-card { --angle-cut: 14px; --angle-border-color: rgba(47,72,88,0.12); --angle-fill: #fff; }
+.nt-bridge { --angle-cut: 12px; --angle-border-color: rgba(242,100,25,0.35); --angle-fill: rgba(246,174,45,0.08); }
+.pn-inline { --angle-cut: 20px; --angle-border-color: rgba(47,72,88,0.12); --angle-fill: transparent; }
+.fn-plan { --angle-cut: 5px; --angle-border-color: rgba(134,187,216,0.35); --angle-fill: transparent; }
+#casos .caso-card.angle-border { --angle-cut: 14px; --angle-border-color: rgba(47,72,88,0.1); --angle-fill: #fff; }
+.pn-cta a.angle-border { --angle-cut: 10px; --angle-border-color: rgba(134,187,216,0.4); --angle-fill: rgba(134,187,216,0.1); }
+.chip { --angle-cut: 8px; --angle-border-color: rgba(47,72,88,0.18); --angle-fill: #fff; }
+.ro-pill { --angle-cut: 6px; --angle-border-color: rgba(47,72,88,0.1); --angle-fill: #fff; }
+.zg-card { --angle-cut: 14px; --angle-border-color: rgba(47,72,88,0.08); --angle-fill: #fff; }
+.btn-outline { --angle-cut: 9px; --angle-border-color: rgba(240,242,245,0.32); --angle-fill: transparent; }
+.map-shell { --angle-cut: 24px; --angle-border-color: rgba(240,242,245,0.2); --angle-fill: #dce7ec; }
+.config-map { --angle-cut: 20px; --angle-border-color: var(--line); --angle-fill: #e4edf1; }
+.control-btn { --angle-cut: 7px; --angle-border-color: rgba(47,72,88,0.22); --angle-fill: #fff; }
+.guard-stage { --angle-cut: 25px; --angle-border-color: rgba(134,187,216,0.2); --angle-fill: radial-gradient(circle at 50% 50%,rgba(134,187,216,.08),transparent 57%),#172b39; }
+.pf-card .pf-action { --angle-cut: 6px; --angle-border-color: rgba(134,187,216,0.25); --angle-fill: transparent; }
+.pv-choice { --angle-cut: 8px; --angle-border-color: rgba(240,242,245,0.18); --angle-fill: #20303d; }
+.plan-badge-provisional { --angle-cut: 6px; --angle-border-color: rgba(242,100,25,0.4); --angle-fill: rgba(242,100,25,0.08); }
+.cmp-card { --angle-cut: 16px; --angle-border-color: rgba(134,187,216,0.15); --angle-fill: var(--bg2); }
+.cmp-card-inherit { --angle-cut: 6px; --angle-border-color: rgba(246,174,45,0.25); --angle-fill: rgba(246,174,45,0.08); }
+.num-wrap { --angle-cut: 8px; --angle-border-color: rgba(240,242,245,0.18); --angle-fill: #20303d; }
+#kcal-widget { --angle-cut: 28px; --angle-border-color: rgba(240,242,245,0.14); --angle-fill: #20303d; }
+@media (max-width: 900px) {
+  #kcal-widget { --angle-cut: 22px; }
+}
+
+/* Only these plan cards use a real border. Other pages reuse .pn-card for
+   borderless cards with their own inset decoration. */
+.pn-card.angle-border {
+  position: relative;
+  border: 0 !important;
+  background: rgba(240,242,245,0.08) !important;
+  isolation: isolate;
+  --angle-cut: 12px;
+  --angle-border-color: rgba(240,242,245,0.08);
+  --angle-fill: rgba(21,29,37,0.72);
+}
+.pn-card.angle-border::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: var(--angle-fill);
+  clip-path: polygon(
+    calc(var(--angle-cut) - 1px) 0,
+    100% 0,
+    100% calc(100% - var(--angle-cut) + 1px),
+    calc(100% - var(--angle-cut) + 1px) 100%,
+    0 100%,
+    0 calc(var(--angle-cut) - 1px)
+  );
+}
+.pn-card.angle-border.hl,
+.pn-card.angle-border.pn-highlight {
+  --angle-border-color: rgba(246,174,45,0.5);
+  --angle-fill: rgba(21,29,37,0.8);
+}
+
+/* This card has an asymmetric top-right cut, so it needs its own inset path. */
+.fn-card {
+  position: relative;
+  border: 0 !important;
+  background: rgba(47,72,88,0.1) !important;
+  isolation: isolate;
+}
+.fn-card::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: #fff;
+  clip-path: polygon(0 0,calc(100% - 99px) 0,100% 99px,100% 100%,0 100%);
+}
+
+/* Shared FAQ treatment: keep every content-page Q&A aligned with the home FAQ. */
+.idx-faq-list,
+.act-faq-list,
+.sleep-faq,
+.faq-list,
+.pf-faq-list,
+.faq {
+  max-width: 720px !important;
+  margin: 2rem auto 0 !important;
+}
+
+.sleep-faq,
+.faq-list,
+.pf-faq-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  border-top: 0 !important;
+}
+
+.idx-faq-item,
+.act-faq-item,
+.sleep-faq details,
+.faq-item,
+.pf-faq-item {
+  border: 1px solid rgba(240, 242, 245, 0.08) !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  text-align: left;
+}
+
+.idx-faq-item summary,
+.act-faq-item summary,
+.sleep-faq summary,
+.faq-item summary,
+.pf-faq-item summary,
+.faq-q {
+  list-style: none !important;
+  cursor: pointer;
+  padding: 1rem 1.3rem !important;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'Orbitron', sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+  text-align: left;
+  user-select: none;
+}
+
+.idx-faq-item summary::-webkit-details-marker,
+.act-faq-item summary::-webkit-details-marker,
+.sleep-faq summary::-webkit-details-marker,
+.faq-item summary::-webkit-details-marker,
+.pf-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.idx-faq-item summary::after,
+.act-faq-item summary::after,
+.sleep-faq summary::after,
+.faq-item summary::after,
+.pf-faq-item summary::after,
+.faq-q::after {
+  content: '+' !important;
+  position: static !important;
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 1.3rem !important;
+  line-height: 1 !important;
+  color: var(--hl) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s;
+}
+
+.idx-faq-item[open],
+.act-faq-item[open],
+.sleep-faq details[open],
+.faq-item[open],
+.pf-faq-item[open],
+.faq-item.open {
+  border-color: rgba(242, 100, 25, 0.58) !important;
+  box-shadow: 0 0 0 1px rgba(242, 100, 25, 0.12) !important;
+}
+
+.idx-faq-item[open] summary::after,
+.act-faq-item[open] summary::after,
+.sleep-faq details[open] summary::after,
+.faq-item[open] summary::after,
+.pf-faq-item[open] summary::after,
+.faq-item.open .faq-q::after {
+  transform: rotate(45deg);
+  color: var(--cta) !important;
+}
+
+.faq-q .material-symbols-outlined,
+.faq-item summary .faq-chevron {
+  display: none !important;
+}
+
+.idx-faq-item p,
+.act-faq-item p,
+.sleep-faq details p,
+.faq-body,
+.faq-a p,
+.pf-faq-item p {
+  max-width: none !important;
+  padding: 0 1.3rem 1.1rem !important;
+  margin: 0 !important;
+  font-size: 0.85rem !important;
+  line-height: 1.8 !important;
+}
+
+.idx-faq-item summary:focus-visible,
+.act-faq-item summary:focus-visible,
+.sleep-faq summary:focus-visible,
+.faq-item summary:focus-visible,
+.pf-faq-item summary:focus-visible,
+.faq-q:focus-visible {
+  outline: 2px solid var(--cta);
+  outline-offset: -2px;
+  border-radius: 4px;
 }

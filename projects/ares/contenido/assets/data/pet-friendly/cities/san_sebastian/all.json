@@ -1,0 +1,772 @@
+[
+  {
+    "nombre": "MPower Dogs",
+    "tipo": "adiestrador",
+    "direccion": "Txaparrene Pasealekua",
+    "lat": 43.3187047,
+    "lng": -1.9469570999999999
+  },
+  {
+    "nombre": "ACG Adiestramiento Canino",
+    "tipo": "adiestrador",
+    "direccion": "Barkaiztegi Bidea",
+    "lat": 43.2954061,
+    "lng": -1.9578583999999999
+  },
+  {
+    "nombre": "Dognostia",
+    "tipo": "adiestrador",
+    "direccion": "Madrid Etorb., 9",
+    "lat": 43.305157799999996,
+    "lng": -1.97668
+  },
+  {
+    "nombre": "Kabican/ Hotel y Guardería Canina",
+    "tipo": "otros",
+    "direccion": "Donostia Ibilbidea, 52",
+    "lat": 43.282625599999996,
+    "lng": -1.9502225
+  },
+  {
+    "nombre": "Hotel Canino PEEK | Guardería Residencia",
+    "tipo": "adiestrador",
+    "direccion": "Eustasio Amilibia Kalea, 4",
+    "lat": 43.3065402,
+    "lng": -1.9756162
+  },
+  {
+    "nombre": "Dognostia",
+    "tipo": "tienda",
+    "direccion": "Balleneros Kalea, 12, Entresuelo Izquierda",
+    "lat": 43.3046034,
+    "lng": -1.9747058
+  },
+  {
+    "nombre": "Educación Canina AKAN",
+    "tipo": "adiestrador",
+    "direccion": "Parque de San Marcos",
+    "lat": 43.3629758,
+    "lng": -1.7897349999999999
+  },
+  {
+    "nombre": "AnnaTor estética y peluquería canina",
+    "tipo": "tienda",
+    "direccion": "Del Sauce Pl., 5B",
+    "lat": 43.3086384,
+    "lng": -1.9805439999999999
+  },
+  {
+    "nombre": "Erika Galea Estilistas - Peluquería en Donostia",
+    "tipo": "peluqueria",
+    "direccion": "Askatasunaren Hiribidea, 45",
+    "lat": 43.318418,
+    "lng": -1.9847001
+  },
+  {
+    "nombre": "BIXARR MASKOTAK",
+    "tipo": "tienda",
+    "direccion": "C. Virgen del Carmen, 32",
+    "lat": 43.317642899999996,
+    "lng": -1.9690793999999998
+  },
+  {
+    "nombre": "dogetxea",
+    "tipo": "tienda",
+    "direccion": "Portuetxe K., 47, Loc 6",
+    "lat": 43.3011221,
+    "lng": -2.0159173999999997
+  },
+  {
+    "nombre": "Peluqueria Canina COQUETOS",
+    "tipo": "tienda",
+    "direccion": "Erregezaintza Kalea, 45",
+    "lat": 43.312148799999996,
+    "lng": -2.0001973
+  },
+  {
+    "nombre": "Hotel Luze Boutique San Sebastián",
+    "tipo": "alojamiento",
+    "direccion": "Gudamendi Bidea, 21",
+    "lat": 43.31165,
+    "lng": -2.0268943
+  },
+  {
+    "nombre": "Easo Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "Amara Kalea, 3",
+    "lat": 43.3137407,
+    "lng": -1.9828736
+  },
+  {
+    "nombre": "Peluquería Canina Lola & Pepa",
+    "tipo": "tienda",
+    "direccion": "Particular",
+    "lat": 43.3227292,
+    "lng": -1.9704084
+  },
+  {
+    "nombre": "Peluquería canina - GarbiTxakur Errenteria",
+    "tipo": "tienda",
+    "direccion": "Plaza Fernández de Landa",
+    "lat": 43.3137938,
+    "lng": -1.8992597999999998
+  },
+  {
+    "nombre": "SitCan Urdaneta Adiestramiento y Hotel Canino",
+    "tipo": "adiestrador",
+    "direccion": "Elkano Auzoa Barreiatua, 35Y",
+    "lat": 43.256042699999995,
+    "lng": -2.1853081999999997
+  },
+  {
+    "nombre": "EIBARCAN",
+    "tipo": "adiestrador",
+    "direccion": "Garibai Kalea",
+    "lat": 43.3196138,
+    "lng": -1.9827747
+  },
+  {
+    "nombre": "ABERE Clínica Veterinaria-Albaitaritza (Donostia-San Sebastián)",
+    "tipo": "veterinario",
+    "direccion": "Tolosa Hiribidea, 6",
+    "lat": 43.312291599999995,
+    "lng": -2.0079097
+  },
+  {
+    "nombre": "Hotel María Cristina",
+    "tipo": "alojamiento",
+    "direccion": "República Argentina K., 4",
+    "lat": 43.321807799999995,
+    "lng": -1.9801058999999999
+  },
+  {
+    "nombre": "Kireba",
+    "tipo": "adiestrador",
+    "direccion": "Iturrin Bailara, 3 bis",
+    "lat": 43.3249913,
+    "lng": -1.8725996999999999
+  },
+  {
+    "nombre": "GarbiTxakur Amara. Autolavado de mascotas y peluquería canina.",
+    "tipo": "tienda",
+    "direccion": "José María Salaberría Kalea, 45 trasera, local 8",
+    "lat": 43.3033759,
+    "lng": -1.9798733
+  },
+  {
+    "nombre": "Etolcanin",
+    "tipo": "adiestrador",
+    "direccion": "Sierra de Aloña Kalea, 7",
+    "lat": 43.309780599999996,
+    "lng": -1.9670093
+  },
+  {
+    "nombre": "ZOO-CAN",
+    "tipo": "tienda",
+    "direccion": "Bermingham Kalea, 12",
+    "lat": 43.3245206,
+    "lng": -1.9726302999999998
+  },
+  {
+    "nombre": "Apaputxos | Peluquería Canina",
+    "tipo": "tienda",
+    "direccion": "Aldamar Kalea, 22, bajo",
+    "lat": 43.3242054,
+    "lng": -1.9827346
+  },
+  {
+    "nombre": "Urgencias localizadas | Clínica veterinaria El Jardín Donostia",
+    "tipo": "veterinario",
+    "direccion": "Avenida de Ategorrieta, 47",
+    "lat": 43.3222591,
+    "lng": -1.9665678
+  },
+  {
+    "nombre": "Cucos peluquería canina",
+    "tipo": "tienda",
+    "direccion": "Santesteban Musikaria K., 5",
+    "lat": 43.305999199999995,
+    "lng": -1.9739543
+  },
+  {
+    "nombre": "Clínica Veterinaria LABRIT",
+    "tipo": "veterinario",
+    "direccion": "Kolon Pasealekua, 58",
+    "lat": 43.3257,
+    "lng": -1.97314
+  },
+  {
+    "nombre": "Legazpi Doce Rooms & Suites",
+    "tipo": "otros",
+    "direccion": "Legazpi K., 12",
+    "lat": 43.321788399999996,
+    "lng": -1.9822796999999999
+  },
+  {
+    "nombre": "Clínica Veterinaria San Sebastián",
+    "tipo": "veterinario",
+    "direccion": "Av. Federico Mayo, 1, planta baja",
+    "lat": 37.2591896,
+    "lng": -6.9459496
+  },
+  {
+    "nombre": "Room Mate Collection Gorka, San Sebastián",
+    "tipo": "alojamiento",
+    "direccion": "Gipuzkoa Plaza, 11",
+    "lat": 43.321237599999996,
+    "lng": -1.9815133999999999
+  },
+  {
+    "nombre": "Hotel Catalonia Donosti",
+    "tipo": "alojamiento",
+    "direccion": "San Bartolome Gaina K., 9",
+    "lat": 43.315376199999996,
+    "lng": -1.9834676
+  },
+  {
+    "nombre": "Clínica Veterinaria San Sebastián",
+    "tipo": "veterinario",
+    "direccion": "C. Pablo Ruiz Picasso, 7",
+    "lat": 36.842110999999996,
+    "lng": -2.4550942
+  },
+  {
+    "nombre": "kuka&grok",
+    "tipo": "tienda",
+    "direccion": "Zurriola Hiribidea, 26",
+    "lat": 43.3250313,
+    "lng": -1.9755692999999999
+  },
+  {
+    "nombre": "Bitxiland",
+    "tipo": "tienda",
+    "direccion": "Arriberri, 11",
+    "lat": 43.3173864,
+    "lng": -1.9282224
+  },
+  {
+    "nombre": "Domus Animalien Heziketa/Educación Animal",
+    "tipo": "adiestrador",
+    "direccion": "Ergobia Plazatxoa Plaza, 5",
+    "lat": 43.2769337,
+    "lng": -1.9545298
+  },
+  {
+    "nombre": "Agility gipuzkoa jauzikan",
+    "tipo": "adiestrador",
+    "direccion": "Osinaga Auzoa, 14",
+    "lat": 43.2565439,
+    "lng": -1.9616269
+  },
+  {
+    "nombre": "Casa Rural La Palmera-Landetxea",
+    "tipo": "alojamiento",
+    "direccion": "Hernani Bidea, 25",
+    "lat": 43.2739881,
+    "lng": -2.007619
+  },
+  {
+    "nombre": "Clínica Veterinaria Otxoki",
+    "tipo": "veterinario",
+    "direccion": "Calle de",
+    "lat": 43.3194417,
+    "lng": -1.9529980999999998
+  },
+  {
+    "nombre": "Sarriegi Pensión",
+    "tipo": "alojamiento",
+    "direccion": "Sarriegi Plaza, 1, 2º",
+    "lat": 43.3227755,
+    "lng": -1.983468
+  },
+  {
+    "nombre": "Villa Soro",
+    "tipo": "alojamiento",
+    "direccion": "Ategorrieta Hiribidea, 61",
+    "lat": 43.322384899999996,
+    "lng": -1.9634078
+  },
+  {
+    "nombre": "Pensión Bule",
+    "tipo": "otros",
+    "direccion": "Sarriegi Plaza, nº 1, Piso 2",
+    "lat": 43.322776,
+    "lng": -1.983468
+  },
+  {
+    "nombre": "Clínica Veterinaria Lardy",
+    "tipo": "veterinario",
+    "direccion": "Secundino Esnaola Kalea, 29",
+    "lat": 43.324021699999996,
+    "lng": -1.9728249
+  },
+  {
+    "nombre": "Clinica Veterinaria San Bernardo",
+    "tipo": "veterinario",
+    "direccion": "José María Salaberría Kalea, 3",
+    "lat": 43.3092408,
+    "lng": -1.9812607
+  },
+  {
+    "nombre": "Leorpe txakur-katu egoitza",
+    "tipo": "protectora",
+    "direccion": "De Errekalde Hiribidea, 54",
+    "lat": 43.2830959,
+    "lng": -2.019256
+  },
+  {
+    "nombre": "3Animal Clinica. Urgencias",
+    "tipo": "veterinario",
+    "direccion": "Karlos I.a Hiribidea, 19",
+    "lat": 43.302372999999996,
+    "lng": -1.9781419999999998
+  },
+  {
+    "nombre": "Enjoy Comfort",
+    "tipo": "alojamiento",
+    "direccion": "Kale Berria, 5",
+    "lat": 43.3225809,
+    "lng": -1.9762678999999999
+  },
+  {
+    "nombre": "THE PELOS",
+    "tipo": "tienda",
+    "direccion": "Xabier Lizardi K., 5, Loc 7",
+    "lat": 43.303621299999996,
+    "lng": -2.0060555
+  },
+  {
+    "nombre": "Casual de las Olas San Sebastián",
+    "tipo": "alojamiento",
+    "direccion": "Pio XII.aren Plaza, 2",
+    "lat": 43.3077636,
+    "lng": -1.980195
+  },
+  {
+    "nombre": "Central Roomss",
+    "tipo": "alojamiento",
+    "direccion": "Constitución Plaza, 6, Piso 1",
+    "lat": 43.3238129,
+    "lng": -1.9848142
+  },
+  {
+    "nombre": "Nobu Hotel San Sebastián",
+    "tipo": "alojamiento",
+    "direccion": "Mirakontxa Pasealekua, 32",
+    "lat": 43.314184,
+    "lng": -1.9937529999999999
+  },
+  {
+    "nombre": "Hotel Distrito Oeste",
+    "tipo": "alojamiento",
+    "direccion": "Zarautz Kalea, 82",
+    "lat": 43.3062006,
+    "lng": -2.0058762999999997
+  },
+  {
+    "nombre": "ANIMALIA Peluquería canina y productos para mascotas",
+    "tipo": "tienda",
+    "direccion": "Zarategi Pasealekua, 71",
+    "lat": 43.316269,
+    "lng": -1.9537196
+  },
+  {
+    "nombre": "Maskotxoko",
+    "tipo": "tienda",
+    "direccion": "San Martin Kalea, 43, Bajo",
+    "lat": 43.3160968,
+    "lng": -1.9853835999999998
+  },
+  {
+    "nombre": "Hotel Antik San Sebastián",
+    "tipo": "alojamiento",
+    "direccion": "Zarautz Kalea, 120",
+    "lat": 43.3028711,
+    "lng": -2.0038068
+  },
+  {
+    "nombre": "Hotel Avenida",
+    "tipo": "alojamiento",
+    "direccion": "Igeldo Pasealekua, 55",
+    "lat": 43.3128264,
+    "lng": -2.0109375
+  },
+  {
+    "nombre": "Hotel Arrizul Congress",
+    "tipo": "alojamiento",
+    "direccion": "Ronda Kalea, 3",
+    "lat": 43.3219066,
+    "lng": -1.9767474999999999
+  },
+  {
+    "nombre": "Hotel Palacio Atxega",
+    "tipo": "alojamiento",
+    "direccion": "Casa de Achega",
+    "lat": 43.2711168,
+    "lng": -2.054126
+  },
+  {
+    "nombre": "Pension Urkia",
+    "tipo": "otros",
+    "direccion": "Urbieta Kalea, 12",
+    "lat": 43.3178631,
+    "lng": -1.9836945
+  },
+  {
+    "nombre": "Hotel Tres Reyes San Sebastián",
+    "tipo": "alojamiento",
+    "direccion": "Dulce Maria Loynaz Kalea, 7",
+    "lat": 43.2897597,
+    "lng": -1.9739984
+  },
+  {
+    "nombre": "Pensión y Apartamentos Txingurri",
+    "tipo": "alojamiento",
+    "direccion": "Donostia Ibilbidea, 90",
+    "lat": 43.2801288,
+    "lng": -1.9514395
+  },
+  {
+    "nombre": "La Perla",
+    "tipo": "otros",
+    "direccion": "Loiola Kalea, 10",
+    "lat": 43.3177179,
+    "lng": -1.9824543
+  },
+  {
+    "nombre": "Zenit San Sebastián",
+    "tipo": "alojamiento",
+    "direccion": "Antonio Maria Labaien Kalea, 1",
+    "lat": 43.307523599999996,
+    "lng": -1.9832291999999998
+  },
+  {
+    "nombre": "HOTEL LA GALERÍA",
+    "tipo": "alojamiento",
+    "direccion": "Kristina Infantaren Kalea, 1",
+    "lat": 43.315717899999996,
+    "lng": -2.0034704999999997
+  },
+  {
+    "nombre": "MILIMARA Suites",
+    "tipo": "otros",
+    "direccion": "Illarra Bidea, 111",
+    "lat": 43.3022199,
+    "lng": -2.0200183
+  },
+  {
+    "nombre": "Pensión AlojaDonosti - Mejor Precio Garantizado",
+    "tipo": "otros",
+    "direccion": "C. de San Jerónimo, 17, 1º Izda",
+    "lat": 43.3231545,
+    "lng": -1.9854085
+  },
+  {
+    "nombre": "Sercotel Codina",
+    "tipo": "alojamiento",
+    "direccion": "De Zumalakarregi Hiribidea, 21",
+    "lat": 43.3134756,
+    "lng": -2.004428
+  },
+  {
+    "nombre": "Colectia Hotel Ondarreta",
+    "tipo": "alojamiento",
+    "direccion": "Heriz Pasealekua, 16",
+    "lat": 43.312836399999995,
+    "lng": -2.0022439
+  },
+  {
+    "nombre": "Pensión Gurtxu",
+    "tipo": "alojamiento",
+    "direccion": "San Juan Kalea, 11, 2 DCH",
+    "lat": 43.3238578,
+    "lng": -1.9834791999999999
+  },
+  {
+    "nombre": "Hotel Gudamendi",
+    "tipo": "alojamiento",
+    "direccion": "Gudamendi Bidea, 26",
+    "lat": 43.3134741,
+    "lng": -2.0231376
+  },
+  {
+    "nombre": "Hotel Palacio de Aiete",
+    "tipo": "alojamiento",
+    "direccion": "Goiko Galtzada Berria, 27",
+    "lat": 43.3055775,
+    "lng": -1.9941948999999999
+  },
+  {
+    "nombre": "Holiday Inn Express San Sebastian - Errenteria by IHG",
+    "tipo": "alojamiento",
+    "direccion": "C. Altzate, 15",
+    "lat": 43.3186348,
+    "lng": -1.9049113
+  },
+  {
+    "nombre": "Sercotel Europa San Sebastián",
+    "tipo": "alojamiento",
+    "direccion": "San Martin Kalea, 52",
+    "lat": 43.3164592,
+    "lng": -1.9852926999999998
+  },
+  {
+    "nombre": "Colectia Hotel Urumea",
+    "tipo": "alojamiento",
+    "direccion": "Urumea Pasealekua, 15",
+    "lat": 43.308676899999995,
+    "lng": -1.9763800999999999
+  },
+  {
+    "nombre": "Hotel ILUNION San Sebastián",
+    "tipo": "alojamiento",
+    "direccion": "De Zumalakarregi Hiribidea, 20",
+    "lat": 43.3141055,
+    "lng": -2.004313
+  },
+  {
+    "nombre": "abba Apartments Playa de Gros San Sebastián",
+    "tipo": "otros",
+    "direccion": "Ategorrietako Galtzada Zaharra, 35",
+    "lat": 43.324483,
+    "lng": -1.9677985
+  },
+  {
+    "nombre": "Aussie II",
+    "tipo": "otros",
+    "direccion": "Elgoibar Kalea, 10",
+    "lat": 43.2958235,
+    "lng": -1.9657703
+  },
+  {
+    "nombre": "Talo Urban Rooms",
+    "tipo": "alojamiento",
+    "direccion": "Antonio Maria Labaien Kalea, 14",
+    "lat": 43.3077361,
+    "lng": -1.9841107
+  },
+  {
+    "nombre": "Orekan Borda . Txakur Egoitza - Residencia Canina",
+    "tipo": "otros",
+    "direccion": "Goiburu Auzoa 4, B",
+    "lat": 43.2439099,
+    "lng": -1.9749763999999999
+  },
+  {
+    "nombre": "Casa Rural Arratzain - SIDRERIA-",
+    "tipo": "otros",
+    "direccion": "Diseminados Usurbil Barreiatua, 21",
+    "lat": 43.29092,
+    "lng": -2.0521149999999997
+  },
+  {
+    "nombre": "Parque Guau",
+    "tipo": "parque",
+    "direccion": "Gregorio Ordoñez Kalea",
+    "lat": 43.3066806,
+    "lng": -1.9725534999999998
+  },
+  {
+    "nombre": "Hotel Monte Ulía",
+    "tipo": "alojamiento",
+    "direccion": "Alcalde J. Elosegi Hiribidea, 21",
+    "lat": 43.3217943,
+    "lng": -1.9577272
+  },
+  {
+    "nombre": "Pensión Atxiki",
+    "tipo": "otros",
+    "direccion": "Zemoria Kalea, Kalea 13",
+    "lat": 43.3266407,
+    "lng": -1.9704001999999998
+  },
+  {
+    "nombre": "Educación Canina Donostia",
+    "tipo": "adiestrador",
+    "direccion": "Del del Caddie Plaza - Plaza Caddie Plaza, 5, 2° A",
+    "lat": 43.2736416,
+    "lng": -2.0184118
+  },
+  {
+    "nombre": "Tiendanimal",
+    "tipo": "tienda",
+    "direccion": "Garberako, 1",
+    "lat": 43.309659499999995,
+    "lng": -1.9431007999999999
+  },
+  {
+    "nombre": "Pensión Beizama",
+    "tipo": "otros",
+    "direccion": "Plaza de Ergobia, 12, 1°",
+    "lat": 43.2765371,
+    "lng": -1.9549398
+  },
+  {
+    "nombre": "Hostal Bahia",
+    "tipo": "otros",
+    "direccion": "San Martin Kalea, 54 bis",
+    "lat": 43.316200599999995,
+    "lng": -1.9856452999999998
+  },
+  {
+    "nombre": "wecamp San Sebastián",
+    "tipo": "otros",
+    "direccion": "Padre Orkolaga Ibilbidea, 69",
+    "lat": 43.304733899999995,
+    "lng": -2.0457953
+  },
+  {
+    "nombre": "Pensión Amara",
+    "tipo": "otros",
+    "direccion": "Isabel II.a Etorb., 2",
+    "lat": 43.3051576,
+    "lng": -1.9752808
+  },
+  {
+    "nombre": "HUELLAS Peluquería Canina y Felina",
+    "tipo": "tienda",
+    "direccion": "De Sagastieder Ibilbidea, 17, bajo",
+    "lat": 43.3120511,
+    "lng": -1.9572516999999998
+  },
+  {
+    "nombre": "HOTEL HERNANI TXINTXUA",
+    "tipo": "alojamiento",
+    "direccion": "Zikuñaga Bailara, 72",
+    "lat": 43.2597078,
+    "lng": -1.9663149
+  },
+  {
+    "nombre": "Somn Hip Suites",
+    "tipo": "alojamiento",
+    "direccion": "Heriz Pasealekua, 14",
+    "lat": 43.3129297,
+    "lng": -2.0022767999999997
+  },
+  {
+    "nombre": "Hostel UZTURRE",
+    "tipo": "otros",
+    "direccion": "Peña y Goñi Kalea, 13",
+    "lat": 43.323219699999996,
+    "lng": -1.9773668
+  },
+  {
+    "nombre": "ECAM ·· Adiestramiento de Perros en San Sebastian ··",
+    "tipo": "otros",
+    "direccion": "Jauregi Jeneralaren K., 11",
+    "lat": 43.324987899999996,
+    "lng": -1.9823856999999998
+  },
+  {
+    "nombre": "C.a paseadora y cuidadora de mascotas",
+    "tipo": "otros",
+    "direccion": "Eustasio Amilibia Kalea",
+    "lat": 43.3064785,
+    "lng": -1.9755657
+  },
+  {
+    "nombre": "Clínica perruna",
+    "tipo": "otros",
+    "direccion": "Juan de Olazabal Kalea",
+    "lat": 43.3136741,
+    "lng": -1.9035285
+  },
+  {
+    "nombre": "Hiotel Canino Y Felino Igueldo",
+    "tipo": "protectora",
+    "direccion": "Calle Amasorrain, 40 Barrio Kukuarrri",
+    "lat": 43.297331299999996,
+    "lng": -2.0126276
+  },
+  {
+    "nombre": "Centro Veterinario Astigarraga",
+    "tipo": "veterinario",
+    "direccion": "Nabarra Oñatz Kalea, 9",
+    "lat": 43.2811713,
+    "lng": -1.9501183
+  },
+  {
+    "nombre": "Clínica Veterinaria Atocha",
+    "tipo": "veterinario",
+    "direccion": "María Dolores Agirre Kalea, 20, Bajo",
+    "lat": 43.319583099999996,
+    "lng": -1.9756783999999998
+  },
+  {
+    "nombre": "Playa De Sakoneta",
+    "tipo": "playa_perros",
+    "direccion": "Itsaspe Auz., 20",
+    "lat": 43.2974195,
+    "lng": -2.3116833
+  },
+  {
+    "nombre": "Playa de la concha",
+    "tipo": "playa_perros",
+    "direccion": "Kontxa Pasealekua, 18",
+    "lat": 43.315021699999996,
+    "lng": -1.9923629999999999
+  },
+  {
+    "nombre": "Leonardo Boutique Hotel San Sebastián",
+    "tipo": "alojamiento",
+    "direccion": "Zabaleta Kalea, 5",
+    "lat": 43.3230509,
+    "lng": -1.9765494
+  },
+  {
+    "nombre": "Playa de la Concha",
+    "tipo": "playa_perros",
+    "direccion": "20007",
+    "lat": 43.318618799999996,
+    "lng": -1.9860118
+  },
+  {
+    "nombre": "Playa de Ondarreta",
+    "tipo": "playa_perros",
+    "direccion": "Guipúzcoa",
+    "lat": 43.3163945,
+    "lng": -2.0011533
+  },
+  {
+    "nombre": "Playa de Zurriola",
+    "tipo": "playa_perros",
+    "direccion": "Guipúzcoa",
+    "lat": 43.325997199999996,
+    "lng": -1.9780608
+  },
+  {
+    "nombre": "Pasaiako Marina",
+    "tipo": "otros",
+    "direccion": "Ricardo Arrillaga Kalea, 1",
+    "lat": 43.323637,
+    "lng": -1.9300153999999998
+  },
+  {
+    "nombre": "DogSecret",
+    "tipo": "adiestrador",
+    "direccion": "Pablo-Enea Kalea, 14",
+    "lat": 43.3254114,
+    "lng": -1.9303991999999999
+  },
+  {
+    "nombre": "INNSiDE by Meliá San Sebastián Orly",
+    "tipo": "alojamiento",
+    "direccion": "Zaragoza Plaza, 4",
+    "lat": 43.316624999999995,
+    "lng": -1.98575
+  },
+  {
+    "nombre": "Hotel Txartel",
+    "tipo": "alojamiento",
+    "direccion": "Zirkuito Ibilbidea, 1",
+    "lat": 43.2599509,
+    "lng": -2.0171861
+  },
+  {
+    "nombre": "Hotel Ibiltze Lasarte",
+    "tipo": "alojamiento",
+    "direccion": "Calle Antxota 3,",
+    "lat": 43.2727718,
+    "lng": -2.0171192
+  }
+]
