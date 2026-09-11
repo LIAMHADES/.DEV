@@ -8,8 +8,8 @@
 <title>ONIX — Recomienda y gana: sistema de referidos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="fonts/Bebas_Neue.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="fonts/Rajdhani_Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Bebas_Neue.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Rajdhani_Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
 <style>
@@ -246,7 +246,7 @@ footer a:hover{color:var(--copper-light)}
 @keyframes v-out{from{opacity:1;transform:scale(1);filter:blur(0)}to{opacity:0;transform:scale(1.04);filter:blur(6px)}}
 @keyframes v-in{from{opacity:0;transform:scale(.96);filter:blur(6px)}to{opacity:1;transform:scale(1);filter:blur(0)}}
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="vendor/gsap.min.js"></script>
 <link rel="stylesheet" href="onix-shared.css">
 <script src="onix-shared.js" defer></script>
 <script src="menu-lock.js?v=a12eaa0" defer></script>
@@ -254,13 +254,13 @@ footer a:hover{color:var(--copper-light)}
 <body>
 
 <div id="preloader">
-  <div class="pl-half top"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
-  <div class="pl-half bot"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+  <div class="pl-half top"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
+  <div class="pl-half bot"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
 </div>
 
 <nav>
   <a class="nav-logo" href="index.html">
-    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <img src="img/optimized/logotodo.webp" alt="ONIX" width="960" height="320" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
     <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
   </a>
   <div class="nav-links">
@@ -390,7 +390,7 @@ footer a:hover{color:var(--copper-light)}
 
 <footer>
   <div class="footer-logo">
-    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='inline'">
+    <img src="img/optimized/logotodo.webp" alt="ONIX" width="960" height="320" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
     <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
   </div>
   <span>© 2025 ONIX — Stands NFC para Negocios · Girona</span>

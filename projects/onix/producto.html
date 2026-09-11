@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="fonts/Bebas_Neue.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="fonts/Rajdhani_Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Bebas_Neue.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Rajdhani_Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 
@@ -538,6 +538,7 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
   box-shadow:0 2px 4px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.55),0 0 0 1px var(--border2)
 }
 .diff-img img{width:100%;display:block}
+.diff-img picture{display:block}
 
 /* ─── TABS — SECTORES ────────────────────────────────────────── */
 .tab-list{
@@ -1400,18 +1401,18 @@ strong.em,.em{
 @media(max-width:680px){.product-hero .hero-title{font-size:clamp(46px,11.8vw,78px) !important;max-width:calc(100vw - 32px);width:calc(100vw - 32px)}.product-hero .hero-sub,.product-hero .hero-actions{width:100%;max-width:100%;overflow-wrap:anywhere}}
 </style>
 <link rel="stylesheet" href="onix-shared.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="vendor/gsap.min.js" defer></script>
 <script src="onix-shared.js" defer></script>
 <script src="menu-lock.js?v=a12eaa0" defer></script>
 </head>
 <body>
 <div id="preloader">
-  <div class="pl-half top"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
-  <div class="pl-half bot"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+  <div class="pl-half top"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
+  <div class="pl-half bot"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
 </div>
 <nav aria-label="Navegación principal">
   <a class="nav-logo" href="index.html" aria-label="ONIX — Ir al inicio">
-    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <img src="img/optimized/logotodo.webp" alt="ONIX" width="960" height="320" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
     <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
   </a>
   <button class="nav-hamburger" id="menu-toggle" aria-label="Menú" aria-expanded="false">
@@ -1500,6 +1501,8 @@ strong.em,.em{
         <p>Al dar algo a cambio por completar la acción, el cliente comparte y recomienda tu negocio sin coste para ti. El stand se convierte en tu mejor vendedor.</p>
       </div>
     </div>
+  </div>
+</div>
 <!-- SECTORES -->
 <section id="sectores" class="section fi">
   <div class="section-tag">Por sector</div>
@@ -1532,10 +1535,10 @@ strong.em,.em{
         <li>Encuesta de satisfacción con un gesto</li>
         <li>Redes sociales para compartir la experiencia</li>
       </ul>
-      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+       <div class="tab-logo"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
     </div>
     <div class="tab-card">
-      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-h" src="img/hotelrural.png" alt="Stand NFC horizontal en recepción de hotel rural" loading="lazy"></div>
+       <div class="diff-img" style="margin-bottom:18px"><picture><source srcset="img/optimized/hotelrural.avif" type="image/avif"><source srcset="img/optimized/hotelrural.webp" type="image/webp"><img class="tab-img-h" src="img/hotelrural.png" alt="Stand NFC horizontal en recepción de hotel rural" width="1200" height="800" loading="lazy" decoding="async"></picture></div>
       <div class="badge">Horizontal recomendado</div>
       <h4>Stand Personalizado</h4>
       <div class="price">35€ <span>/ unidad</span></div>
@@ -1555,10 +1558,10 @@ strong.em,.em{
         <li>Reseña de Google — los clientes de mascotas son muy fieles</li>
         <li>WhatsApp para consultas y disponibilidad de productos</li>
       </ul>
-      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+       <div class="tab-logo"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
     </div>
     <div class="tab-card">
-      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-h" src="img/MASCOTAS.png" alt="Stand NFC horizontal en tienda de mascotas" loading="lazy"></div>
+       <div class="diff-img" style="margin-bottom:18px"><picture><source srcset="img/optimized/MASCOTAS.avif" type="image/avif"><source srcset="img/optimized/MASCOTAS.webp" type="image/webp"><img class="tab-img-h" src="img/MASCOTAS.png" alt="Stand NFC horizontal en tienda de mascotas" width="1200" height="799" loading="lazy" decoding="async"></picture></div>
       <div class="badge">Horizontal recomendado</div>
       <h4>Stand Personalizado</h4>
       <div class="price">35€ <span>/ unidad</span></div>
@@ -1578,10 +1581,10 @@ strong.em,.em{
         <li>Reservar un turno para encargos grandes</li>
         <li>Reseña de Google al recoger el trabajo</li>
       </ul>
-      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+       <div class="tab-logo"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
     </div>
     <div class="tab-card">
-      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-h" src="img/papeleria.png" alt="Stand NFC horizontal en papelería" loading="lazy"></div>
+       <div class="diff-img" style="margin-bottom:18px"><picture><source srcset="img/optimized/papeleria.avif" type="image/avif"><source srcset="img/optimized/papeleria.webp" type="image/webp"><img class="tab-img-h" src="img/papeleria.png" alt="Stand NFC horizontal en papelería" width="1200" height="799" loading="lazy" decoding="async"></picture></div>
       <div class="badge">Horizontal recomendado</div>
       <h4>Stand Personalizado</h4>
       <div class="price">35€ <span>/ unidad</span></div>
@@ -1601,10 +1604,10 @@ strong.em,.em{
         <li>Reseña de Google para atraer más clientes</li>
         <li>WhatsApp para consultas de diseños y presupuestos</li>
       </ul>
-      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+       <div class="tab-logo"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
     </div>
     <div class="tab-card">
-      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-v" src="img/redesTatoo.png" alt="Stand NFC Instagram en estudio de tatuajes" loading="lazy"></div>
+       <div class="diff-img" style="margin-bottom:18px"><picture><source srcset="img/optimized/redesTatoo.avif" type="image/avif"><source srcset="img/optimized/redesTatoo.webp" type="image/webp"><img class="tab-img-v" src="img/redesTatoo.png" alt="Stand NFC Instagram en estudio de tatuajes" width="1049" height="1573" loading="lazy" decoding="async"></picture></div>
       <div class="badge">Vertical recomendado</div>
       <h4>Stand Personalizado</h4>
       <div class="price">35€ <span>/ unidad</span></div>
@@ -1624,10 +1627,10 @@ strong.em,.em{
         <li>Reseña de Google al pagar — la propina emocional</li>
         <li>WhatsApp para menú del día o eventos</li>
       </ul>
-      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+       <div class="tab-logo"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
     </div>
     <div class="tab-card">
-      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-v" src="img/menudigital restaurante.png" alt="Menú digital NFC en mesa de restaurante" loading="lazy"></div>
+       <div class="diff-img" style="margin-bottom:18px"><picture><source srcset="img/optimized/menudigital-restaurante.avif" type="image/avif"><source srcset="img/optimized/menudigital-restaurante.webp" type="image/webp"><img class="tab-img-v" src="img/menudigital restaurante.png" alt="Menú digital NFC en mesa de restaurante" width="1200" height="1807" loading="lazy" decoding="async"></picture></div>
       <div class="badge">Ideal para hostelería</div>
       <h4>Stand Personalizado</h4>
       <div class="price">35€ <span>/ unidad</span></div>
@@ -1647,10 +1650,10 @@ strong.em,.em{
         <li>Instagram — ver resultados de otras clientas</li>
         <li>WhatsApp para promos y disponibilidad</li>
       </ul>
-      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+       <div class="tab-logo"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
     </div>
     <div class="tab-card">
-      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-v" src="img/estetica.png" alt="Stand NFC de fidelización en centro de estética" loading="lazy"></div>
+       <div class="diff-img" style="margin-bottom:18px"><picture><source srcset="img/optimized/estetica.avif" type="image/avif"><source srcset="img/optimized/estetica.webp" type="image/webp"><img class="tab-img-v" src="img/estetica.png" alt="Stand NFC de fidelización en centro de estética" width="1200" height="1941" loading="lazy" decoding="async"></picture></div>
       <div class="badge">Vertical recomendado</div>
       <h4>Stand Personalizado</h4>
       <div class="price">35€ <span>/ unidad</span></div>
@@ -1671,10 +1674,10 @@ strong.em,.em{
         <li>Enlace a tu WhatsApp de negocio para consultas</li>
       </ul>
       <p><strong class="em">Configuración recomendada para empezar:</strong> reseña de Google como acción principal y reserva de próxima cita como destino de apoyo.</p>
-      <div class="tab-logo"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+       <div class="tab-logo"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
     </div>
     <div class="tab-card">
-      <div class="diff-img" style="margin-bottom:18px"><img class="tab-img-v" src="img/BABERIRA.png" alt="Stand NFC en espejo de barbería" loading="lazy"></div>
+       <div class="diff-img" style="margin-bottom:18px"><picture><source srcset="img/optimized/BABERIRA.avif" type="image/avif"><source srcset="img/optimized/BABERIRA.webp" type="image/webp"><img class="tab-img-v" src="img/BABERIRA.png" alt="Stand NFC en espejo de barbería" width="1200" height="1568" loading="lazy" decoding="async"></picture></div>
       <div class="badge">Más pedido en barberías</div>
       <h4>Stand Personalizado</h4>
       <div class="price">35€ <span>/ unidad</span></div>
@@ -1741,7 +1744,7 @@ strong.em,.em{
 </main>
 <footer>
   <div class="footer-logo">
-    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='inline'">
+    <img src="img/optimized/logotodo.webp" alt="ONIX" width="960" height="320" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
     <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
   </div>
   <span>© 2025 ONIX — Stands NFC para Negocios · Girona</span>

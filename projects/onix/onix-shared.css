@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Bebas Neue';
-  src: url('fonts/Bebas_Neue.ttf') format('truetype');
+  src: url('fonts/Bebas_Neue.woff2') format('woff2'), url('fonts/Bebas_Neue.ttf') format('truetype');
   font-display: swap;
   font-weight: 400;
   font-style: normal;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'ONIX Nav';
-  src: url('fonts/Bebas_Neue.ttf') format('truetype');
+  src: url('fonts/Bebas_Neue.woff2') format('woff2'), url('fonts/Bebas_Neue.ttf') format('truetype');
   font-display: swap;
   font-weight: 400;
   font-style: normal;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: 'Rajdhani';
-  src: url('fonts/Rajdhani_Bold.ttf') format('truetype');
+  src: url('fonts/Rajdhani_Bold.woff2') format('woff2'), url('fonts/Rajdhani_Bold.ttf') format('truetype');
   font-display: swap;
   font-weight: 600 700;
   font-style: normal;
@@ -27,7 +27,7 @@ nav .nav-cta {
   font-family: 'ONIX Nav', var(--font-h1), sans-serif !important;
 }
 
-/* Never leave a page trapped behind the remote GSAP preloader. */
+/* Never leave a page trapped behind the GSAP preloader. */
 @keyframes onixPreloaderFailsafe {
   to { opacity: 0; visibility: hidden; pointer-events: none; }
 }

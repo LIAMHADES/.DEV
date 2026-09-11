@@ -23,14 +23,14 @@
 <script>(function(){try{if(sessionStorage.getItem('onix-nav-transition')==='1'){document.documentElement.classList.add('onix-nav-transition');sessionStorage.removeItem('onix-nav-transition')}}catch(e){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="fonts/Bebas_Neue.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="fonts/Rajdhani_Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Bebas_Neue.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Rajdhani_Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0ITw.woff2" as="font" type="font/woff2" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="manifest" href="manifest.json">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="vendor/gsap.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -550,6 +550,7 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
   box-shadow:0 2px 4px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.55),0 0 0 1px var(--border2)
 }
 .diff-img img{width:100%;display:block}
+.diff-img picture{display:block}
 
 /* ─── TABS — SECTORES ────────────────────────────────────────── */
 .tab-list{
@@ -1441,14 +1442,14 @@ strong.em,.em{
 <body>
 
 <div id="preloader">
-  <div class="pl-half top"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
-  <div class="pl-half bot"><img src="img/logos/onix negativo.png" alt="ONIX"></div>
+  <div class="pl-half top"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
+  <div class="pl-half bot"><img src="img/optimized/onix-negativo.webp" alt="ONIX" width="1200" height="388"></div>
 </div>
 
 <!-- NAV -->
 <nav aria-label="Navegación principal">
   <a class="nav-logo" href="#hero" aria-label="ONIX — Ir al inicio">
-    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <img src="img/optimized/logotodo.webp" alt="ONIX" width="960" height="320" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
     <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
   </a>
   <button class="nav-hamburger" id="menu-toggle" aria-label="Menú" aria-expanded="false">
@@ -1499,7 +1500,11 @@ strong.em,.em{
   <div class="fw-inner">
     <div class="diff-grid">
       <div class="diff-img">
-        <img src="img/Gemini_Generated_Image_515w2515w2515w25.png" alt="Stand ONIX personalizado en formato vertical y horizontal" loading="lazy">
+        <picture>
+          <source srcset="img/optimized/hero-stand.avif" type="image/avif">
+          <source srcset="img/optimized/hero-stand.webp" type="image/webp">
+          <img src="img/Gemini_Generated_Image_515w2515w2515w25.png" alt="Stand ONIX personalizado en formato vertical y horizontal" width="848" height="1112" loading="lazy" decoding="async">
+        </picture>
         <div style="display:flex;gap:24px;justify-content:center;margin-top:18px">
           <span style="font-family:var(--font-h1);font-size:20px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Horizontal</span>
           <span style="font-family:var(--font-h1);font-size:16px;font-weight:400;letter-spacing:.04em;color:var(--text);align-self:flex-end;padding-bottom:1px">15×10 cm</span>
@@ -1718,7 +1723,7 @@ strong.em,.em{
 
 <footer>
   <div class="footer-logo">
-    <img src="img/logos/logotodo.png" alt="ONIX" onerror="this.style.display='none';this.nextSibling.style.display='inline'">
+    <img src="img/optimized/logotodo.webp" alt="ONIX" width="960" height="320" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
     <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
   </div>
   <span>© 2025 ONIX — Stands NFC para Negocios · Girona</span>
@@ -1927,9 +1932,9 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     `Me interesa: *${producto}*.`,
     diseno ? `Quiero ver el diseño gratuito con mi logo.` : '',
     ciudad ? `Ciudad: ${ciudad}` : '',
-  ].filter(Boolean).join('%0A');
+  ].filter(Boolean).join('\n');
 
-  window.open(`https://wa.me/34631879550?text=${lines}`, '_blank');
+  window.open(`https://wa.me/34631879550?text=${encodeURIComponent(lines)}`, '_blank', 'noopener');
 });
 
 // ═══ PRELOADER + TYPEWRITER + STAGGER ═══
