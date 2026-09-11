@@ -144,7 +144,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* ─── BILLING TOGGLE ───────────────────────────────────────── */
 .billing-toggle{display:flex;gap:0;border:1px solid var(--border2);border-radius:var(--r-sm);overflow:hidden}
-.bt-btn{padding:10px 20px;border:none;background:transparent;color:var(--muted);font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;border-radius:0;transition:.25s var(--ease-std)}
+.bt-btn{min-height:56px;padding:14px 16px;border:none;background:transparent;color:var(--text);font-family:var(--font-h1);font-size:clamp(22px,2.2vw,30px);font-weight:400;line-height:1;letter-spacing:.04em;cursor:pointer;border-radius:0;transition:.25s var(--ease-std)}
 .bt-badge{display:inline-block;color:var(--copper-warm);font-size:10px;margin-left:4px;font-weight:700}
 .bt-btn.active{background:rgba(184,84,32,.15);color:var(--copper-warm)}
 .bt-btn.active .bt-badge{color:var(--copper-light)}
@@ -153,7 +153,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .plan-tabs-row{display:flex;align-items:center;gap:0;margin:36px 0 32px;flex-wrap:wrap;opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease-std),transform .55s var(--ease-std)}
 .fi.vis .plan-tabs-row{opacity:1;transform:translateY(0);transition-delay:.08s}
 .billing-toggle{margin-left:auto}
-.ptab{padding:12px 28px;border:none;background:transparent;color:var(--muted);font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;transition:.25s var(--ease-std);margin-right:4px}
+.ptab{min-height:56px;padding:14px 16px;border:none;background:transparent;color:var(--text);font-family:var(--font-h1);font-size:clamp(22px,2.2vw,30px);font-weight:400;line-height:1;letter-spacing:.04em;cursor:pointer;border-bottom:2px solid transparent;transition:.25s var(--ease-std);margin-right:4px}
 .ptab:hover{color:var(--text2)}
 .ptab.active{color:var(--copper-warm);border-bottom-color:var(--copper)}
 .plan-badge{display:inline-block;font-family:var(--font-body);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--copper-light);margin-bottom:8px}
@@ -195,12 +195,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* ─── TABLA COMPARATIVA ─────────────────────────────────── */
-.compare-wrap{overflow-x:auto;margin-top:48px;border-radius:var(--r);border:1px solid var(--border2)}
-table.compare{width:100%;border-collapse:collapse;min-width:640px;background:var(--surface)}
+.compare-wrap{overflow-x:visible;margin-top:48px;border-radius:var(--r);border:1px solid var(--border2)}
+table.compare{width:100%;border-collapse:collapse;min-width:0;background:var(--surface);table-layout:fixed}
 table.compare th,table.compare td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--border)}
 table.compare thead th{font-family:var(--font-h2);font-size:15px;font-weight:700;letter-spacing:.01em;background:var(--surface2);position:sticky;top:0}
 table.compare thead th:first-child{color:var(--muted);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-table.compare tbody th{font-family:var(--font-body);font-weight:400;font-size:13.5px;color:var(--text2);white-space:nowrap}
+table.compare tbody th{font-family:var(--font-body);font-weight:400;font-size:13.5px;color:var(--text2);white-space:normal;overflow-wrap:anywhere}
 table.compare td{font-family:var(--font-body);font-size:13px;color:var(--muted);text-align:center}
 table.compare td.yes{color:var(--copper-light);font-weight:700}
 table.compare td.val{text-align:left;color:var(--copper-warm);font-weight:600}
@@ -234,6 +234,7 @@ table.compare tbody tr:hover{background:rgba(184,84,32,.04)}
   .pd-journey{padding:24px}
   .pd-jstep{grid-template-columns:60px auto 1fr;gap:10px}
   .pd-jday{font-size:11px}
+  table.compare th,table.compare td{padding:13px 10px;font-size:12px}
 }
 @media(max-width:560px){
   #hero{padding:120px 5% 48px;min-height:30vh}
@@ -269,8 +270,9 @@ table.compare tbody tr:hover{background:rgba(184,84,32,.04)}
   .bt-btn{flex:1}
   .bt-badge{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:0}
   .pd-hero-block{gap:24px}
-  .pd-highlights{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .pd-highlights{display:flex;flex-direction:column;gap:10px}
   .pd-hl-item{padding:14px 10px}
+  .pd-jstep::after{display:none}
   .compare-wrap{display:none}
   .compare-mobile{display:grid;gap:12px;margin-top:32px}
 }

@@ -1492,7 +1492,7 @@ strong.em,.em{
   <div class="stat-item reveal-card"><div class="stat-num" data-count="35" data-suffix="€">35€</div><div class="stat-label">Stand personalizado</div></div>
   <div class="stat-item reveal-card"><div class="stat-num">10×15</div><div class="stat-label">Visible desde lejos</div></div>
   <div class="stat-item reveal-card"><div class="stat-num" data-count="12" data-suffix=" meses">12 meses</div><div class="stat-label">Garantía incluida</div></div>
-  <div class="stat-item reveal-card"><div class="stat-num" data-count="0" data-suffix="€">0€</div><div class="stat-label">Primer diseño — siempre gratis</div></div>
+  <div class="stat-item reveal-card"><div class="stat-num" data-count="0" data-start="20" data-suffix="€">20€</div><div class="stat-label">Primer diseño — siempre gratis</div></div>
 </div>
 
 <!-- EL PRODUCTO — CTA -->
@@ -1854,11 +1854,13 @@ document.querySelectorAll('.sb-old').forEach(el => sbOldObs.observe(el));
 function animateCount(el, target, suffix) {
   let startTs = null;
   const duration = 1200;
+  const parsedStart = parseInt(el.dataset.start, 10);
+  const start = Number.isNaN(parsedStart) ? 0 : parsedStart;
   function step(ts) {
     if (!startTs) startTs = ts;
     const progress = Math.min((ts - startTs) / duration, 1);
     const ease = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(ease * target) + suffix;
+    el.textContent = Math.round(start + (target - start) * ease) + suffix;
     if (progress < 1) requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
