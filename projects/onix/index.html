@@ -320,7 +320,6 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
 .hero-sub-secondary{
   font-size:14px;
   margin-top:0;
-  opacity:.85
 }
 #tw-line1, #tw-line2{
   display:inline-block;
@@ -1960,6 +1959,8 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 function revealHeroContent() {
   var hero = document.getElementById('hero');
   if (!hero) return;
+  if (hero.dataset.revealStarted === 'true') return;
+  hero.dataset.revealStarted = 'true';
 
   var tag = hero.querySelector('.hero-tag');
   var subs = hero.querySelectorAll('.hero-sub');
@@ -1968,18 +1969,40 @@ function revealHeroContent() {
     return !hero.contains(el);
   });
 
-  // Reset the home state after the shared failsafe has had a chance to run.
-  // This prevents delayed reveals from appearing while the typewriter is still active.
-  gsap.set(hero.querySelectorAll('.reveal-el'), {opacity: 0, y: 18});
-  gsap.set(document.querySelectorAll('.reveal-card'), {opacity: 0, y: 12});
+  var heroRevealTargets = Array.prototype.slice.call(hero.querySelectorAll('.reveal-el'));
+  var showImmediately = function(targets) {
+    targets.forEach(function(target) {
+      target.style.opacity = '1';
+      target.style.transform = 'none';
+    });
+  };
 
-  // The typewriter and the supporting content start together; the content
-  // enters half a second after the typewriter begins, not after it finishes.
-  if (tag) gsap.to(tag, {opacity: 1, y: 0, duration: 0.45, ease: 'power3.out', delay: 0.5});
-  if (subs[0]) gsap.to(subs[0], {opacity: 1, y: 0, duration: 0.55, ease: 'power3.out', delay: 0.5});
-  if (subs[1]) gsap.to(subs[1], {opacity: 1, y: 0, duration: 0.55, ease: 'power3.out', delay: 0.5});
-  if (actions) gsap.to(actions, {opacity: 1, y: 0, duration: 0.55, ease: 'power3.out', delay: 0.65});
-  if (outsideHero.length) gsap.to(outsideHero, {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05, delay: 0.5});
+  if (typeof gsap === 'undefined' || typeof gsap.timeline !== 'function') {
+    showImmediately(heroRevealTargets);
+    showImmediately(outsideHero);
+    showImmediately(Array.prototype.slice.call(document.querySelectorAll('.reveal-card')));
+    return;
+  }
+
+  gsap.killTweensOf(heroRevealTargets);
+
+  // Run one ordered reveal. The guard above prevents a second call from
+  // hiding an already visible paragraph while the hero is still animating.
+  var heroTl = gsap.timeline({defaults: {ease: 'power3.out'}});
+  var finishHeroReveal = function() {
+    if (hero.dataset.revealComplete === 'true') return;
+    hero.dataset.revealComplete = 'true';
+    showImmediately(heroRevealTargets);
+  };
+  if (tag) heroTl.to(tag, {opacity: 1, y: 0, duration: 0.45}, 0.5);
+  if (subs[0]) heroTl.to(subs[0], {opacity: 1, y: 0, duration: 0.55}, 0.62);
+  if (subs[1]) heroTl.to(subs[1], {opacity: 1, y: 0, duration: 0.55}, 0.82);
+  if (actions) heroTl.to(actions, {opacity: 1, y: 0, duration: 0.55}, 1.02);
+  heroTl.eventCallback('onComplete', finishHeroReveal);
+  window.setTimeout(finishHeroReveal, 1800);
+  if (outsideHero.length) {
+    gsap.to(outsideHero, {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05, delay: 0.5});
+  }
   gsap.to('.reveal-card', {opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05, delay: 0.5});
 }
 
