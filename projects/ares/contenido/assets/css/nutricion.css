@@ -1,0 +1,206 @@
+/* ARES GPS - Guía editorial de nutrición */
+:root{--nutri-ink:#2f4858;--nutri-muted:rgba(47,72,88,.68);--nutri-line:rgba(47,72,88,.16);--nutri-warm:#f6ae2d;--nutri-danger:#c84f32}
+.nutri-hero{background:var(--bg);padding:8rem 0 6rem;position:relative;overflow:hidden}
+.sec-prism{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:.72;-webkit-mask-image:radial-gradient(125% 120% at 50% 45%,#000 42%,transparent 100%);mask-image:radial-gradient(125% 120% at 50% 45%,#000 42%,transparent 100%)}
+.sec-prism .prism-grid{display:grid;position:absolute;left:50%;top:50%}
+.sec-prism .prism-cell{border-right:1px solid rgba(134,187,216,.18);border-bottom:1px solid rgba(134,187,216,.18);transition:background .15s ease-out}
+.sec-prism .prism-cell.lit{transition:background 0s}
+.nutri-intro>*:not(.sec-prism){position:relative;z-index:1}
+.nutri-hero .container{position:relative;z-index:1;min-width:0}
+.nutri-kicker{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--hl);margin-bottom:1rem}
+.nutri-hero h1{max-width:850px;width:100%;font-family:"Bruno Ace SC",sans-serif;font-size:clamp(2rem,5vw,4.4rem);line-height:1.08;letter-spacing:.02em;text-transform:uppercase;overflow-wrap:anywhere}
+.nutri-hero p{max-width:670px;width:100%;color:var(--t2);font-size:.95rem;line-height:1.9;margin-top:1.4rem;overflow-wrap:anywhere}
+.nutri-hero .nutri-hero-note{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.03em;color:var(--deco);margin-top:2rem;max-width:700px}
+.nutri-main{background:#f6f8fa;color:var(--nutri-ink);padding:5rem 0 7rem;clip-path:polygon(0 42px,100% 0,100% 100%,0 100%)}
+.nutri-main>.container{display:flex;flex-direction:column}
+.nutri-intro{order:1}
+#toxicos{order:2}
+#buenas-opciones{order:3}
+#planificador{order:4}
+#cantidades-seguras{order:5}
+#nutrientes-indispensables{order:6}
+#como-usarla{order:7}
+#preguntas-frecuentes{order:8}
+.nutri-intro{position:relative;width:100vw;max-width:none;margin:-5rem calc(50% - 50vw) 4rem;padding:7rem max(1.25rem,calc((100vw - 1080px) / 2)) 5rem;background:#20303d;color:var(--t);text-align:center;clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+.nutri-intro .sl{color:var(--hl)}
+.nutri-intro h2{max-width:960px;margin:.6rem auto 0;font-family:"Bruno Ace SC",sans-serif;font-size:clamp(1.65rem,3.8vw,2.85rem);line-height:1.18;text-transform:uppercase;color:var(--t)}
+.nutri-intro p{max-width:780px;margin:1.1rem auto 0;color:rgba(240,242,245,.74);font-size:.95rem;line-height:1.9}
+.nutri-planner{max-width:1080px;margin:0 auto 5rem;padding:2rem;background:#20303d;color:var(--t);clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);filter:drop-shadow(0 0 1.5px rgba(134,187,216,.24))}
+.nutri-planner.nt-bridge{--angle-cut:16px;--angle-border-color:rgba(134,187,216,.3);--angle-fill:#20303d;background:var(--angle-border-color)!important;border:0!important}
+.nutri-planner.nt-bridge::before{background:var(--angle-fill)!important}
+.nutri-planner-head{max-width:700px;margin:0 auto 2rem;text-align:center}
+.nutri-planner-head .sl{color:var(--hl)}
+.nutri-planner-head h2{font-family:"Bruno Ace SC",sans-serif;font-size:clamp(1.3rem,3vw,2rem);line-height:1.25;text-transform:uppercase;margin-top:.55rem}
+.nutri-planner-head p{color:rgba(240,242,245,.7);font-size:.84rem;line-height:1.8;margin-top:.8rem}
+.nutri-planner-head .planner-public-note{color:rgba(246,174,45,.82);font-family:"JetBrains Mono",monospace;font-size:9px;line-height:1.7;margin-top:1rem}
+.planner-launch{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.2rem 1.3rem;background:#151d25;border:1px solid rgba(240,242,245,.13)}
+.planner-launch strong{display:block;color:var(--t);font-size:.95rem;line-height:1.45}
+.planner-launch p{max-width:620px;color:rgba(240,242,245,.62);font-size:.78rem;line-height:1.7;margin-top:.35rem}
+.planner-panel{margin-top:1.25rem}
+.planner-panel.is-open{animation:plannerPanelIn 240ms ease-out both}
+.planner-panel-topline{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem;color:var(--t);font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase}
+.planner-close{border:0;background:transparent;color:rgba(240,242,245,.58);font:inherit;font-size:9px;letter-spacing:.04em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.planner-close:hover,.planner-close:focus-visible{color:var(--hl)}
+.planner-age-fields{display:grid;grid-template-columns:minmax(0,1fr) 110px;gap:.65rem}
+.planner-age-unit{margin-bottom:.85rem}
+.nutri-planner-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:1.25rem;align-items:stretch}
+.nutri-planner-form{padding:1.35rem;background:#151d25;border:1px solid rgba(240,242,245,.1)}
+.planner-profile-note{font-family:"JetBrains Mono",monospace;font-size:9px;line-height:1.7;letter-spacing:.03em;color:var(--hl);background:rgba(246,174,45,.06);border:1px solid rgba(246,174,45,.25);padding:.7rem .8rem;margin-bottom:1rem}
+.planner-fields{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.planner-field{display:flex;flex-direction:column;gap:.42rem;margin-bottom:.85rem;color:var(--t2);font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.05em;text-transform:uppercase}
+.planner-field input,.planner-field select{width:100%;min-height:42px;border:1px solid rgba(240,242,245,.17);border-radius:0;background:#20303d;color:var(--t);padding:.65rem .75rem;font:inherit;font-size:12px;letter-spacing:0;text-transform:none;outline:none}
+.planner-field input:focus,.planner-field select:focus{border-color:var(--hl);box-shadow:0 0 0 2px rgba(246,174,45,.14)}
+.planner-field select{appearance:auto}
+.planner-food-inputs{border-top:1px solid rgba(240,242,245,.1);padding-top:.9rem;margin-top:.15rem}
+.planner-food-inputs [data-food-density]{display:none}
+.planner-food-inputs [data-food-density].visible{display:flex}
+.planner-submit{width:100%;margin-top:.35rem}
+.planner-form-note{color:rgba(240,242,245,.46);font-family:"JetBrains Mono",monospace;font-size:8.5px;line-height:1.7;margin-top:.9rem}
+.nutri-planner-result{background:#f6f8fa;color:var(--nutri-ink);border:1px solid rgba(240,242,245,.1);padding:1.5rem;min-height:330px;display:flex;align-items:center}
+.planner-result-empty{text-align:center;width:100%;color:var(--nutri-muted)}
+.planner-result-empty .material-symbols-outlined{font-size:2.2rem;color:var(--nutri-warm);margin-bottom:.6rem}
+.planner-result-empty h3{font-family:"Bruno Ace SC",sans-serif;font-size:1rem;text-transform:uppercase;line-height:1.35}
+.planner-result-empty p{font-size:.8rem;line-height:1.7;margin-top:.55rem}
+.planner-result-content{width:100%}
+.planner-result-kicker{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--nutri-muted)}
+.planner-kcal{display:flex;align-items:baseline;gap:.45rem;margin-top:.25rem;color:var(--nutri-ink)}
+.planner-kcal strong{font-family:"Bruno Ace SC",sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--nutri-danger)}
+.planner-kcal span{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--nutri-muted)}
+.planner-food-result{margin-top:1.25rem;padding:1rem;background:#fff;border:1px solid var(--nutri-line);font-size:.85rem;line-height:1.75}
+.planner-food-result strong{font-family:"Orbitron",sans-serif;color:var(--nutri-ink)}
+.planner-food-result .food-help{font-size:.75rem;line-height:1.6;color:var(--nutri-muted);margin:.35rem 0 .55rem}
+.planner-food-result .food-line{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid rgba(47,72,88,.1);padding:.35rem 0}
+.planner-food-result .food-line:last-child{border-bottom:0}
+.planner-food-result .food-value{font-family:"Bruno Ace SC",sans-serif;color:var(--nutri-danger);white-space:nowrap}
+.planner-extra-result{margin-top:.8rem;padding:.85rem 1rem;background:rgba(246,174,45,.1);border-left:3px solid var(--nutri-warm);font-size:.8rem;line-height:1.7}
+.planner-extra-result strong{font-family:"Orbitron",sans-serif;color:var(--nutri-ink);font-size:.75rem}
+.planner-extra-result .extra-meta{margin-top:.3rem;color:var(--nutri-muted);font-size:.73rem}
+.planner-source{font-family:"JetBrains Mono",monospace;color:var(--nutri-muted);font-size:8.5px;line-height:1.7;margin-top:.8rem}
+.planner-warning{margin-top:.8rem;padding:.7rem .8rem;background:rgba(200,79,50,.08);border-left:3px solid var(--nutri-danger);color:#8d3b2c;font-size:.78rem;line-height:1.7}
+.planner-result-links{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
+.planner-result-links a{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.03em;color:var(--nutri-ink);text-decoration:none;border-bottom:1px solid rgba(47,72,88,.3);padding-bottom:2px}
+.planner-result-links a:hover{color:var(--nutri-danger);border-color:var(--nutri-danger)}
+.planner-account-cta{margin-top:1.35rem;padding-top:1rem;border-top:1px solid var(--nutri-line);font-size:.78rem;line-height:1.65}
+.planner-account-cta p{color:var(--nutri-muted);margin:0 0 .8rem}
+.planner-account-cta strong{color:var(--nutri-ink)}
+.planner-account-cta .btn{width:100%;font-size:10px}
+.planner-premium-link{display:block;margin-top:.8rem;font-family:"JetBrains Mono",monospace;font-size:9px;color:var(--nutri-ink);text-decoration:none;border-bottom:1px solid rgba(47,72,88,.3);width:max-content;max-width:100%;padding-bottom:2px}
+.planner-premium-link:hover{color:var(--nutri-danger);border-color:var(--nutri-danger)}
+.nutri-section{max-width:1080px;margin:0 auto 5rem}
+.nutri-section#buenas-opciones{width:100vw;max-width:none;margin:-40px calc(50% - 50vw) 5rem;padding:5.5rem max(1.25rem,calc((100vw - 1080px) / 2)) 5rem;background:#20303d;color:var(--t);clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+.nutri-section#buenas-opciones .nutri-section-head,.nutri-section#buenas-opciones .nutri-grid{max-width:1080px;margin-left:auto;margin-right:auto}
+.nutri-section#buenas-opciones .nutri-section-head{border-color:rgba(240,242,245,.18)}
+.nutri-section#buenas-opciones .nutri-section-head h2{color:var(--t)}
+.nutri-section#buenas-opciones .nutri-section-head p,.nutri-section#buenas-opciones .nutri-card p{color:rgba(240,242,245,.7)}
+.nutri-section:last-of-type{margin-bottom:3rem}
+.nutri-section-head{display:flex;align-items:end;justify-content:space-between;gap:1.5rem;border-bottom:1px solid var(--nutri-line);padding-bottom:1.2rem;margin-bottom:1.5rem}
+.nutri-section-head h2{font-family:"Bruno Ace SC",sans-serif;font-size:clamp(1.4rem,3.1vw,2.3rem);line-height:1.2;text-transform:uppercase}
+.nutri-section-head p{max-width:430px;color:var(--nutri-muted);font-size:.8rem;line-height:1.7;text-align:right}
+.nutri-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.nutri-card{background:transparent;border:0;border-top:1px solid var(--nutri-line);padding:1.25rem 0;display:grid;grid-template-columns:auto 1fr;gap:.8rem 1rem}
+.nutri-card-rank{font-family:"Bruno Ace SC",sans-serif;font-size:1.45rem;line-height:1;color:var(--deco);min-width:2.1rem}
+.nutri-card h3{font-family:"Orbitron",sans-serif;font-size:.9rem;line-height:1.35;color:var(--nutri-ink)}
+.nutri-card p{grid-column:2;color:var(--nutri-muted);font-size:.78rem;line-height:1.75}
+.nutri-card strong{color:var(--nutri-ink)}
+.nutri-card.danger{border-top-color:rgba(200,79,50,.34)}
+.nutri-card.danger .nutri-card-rank{color:var(--nutri-danger)}
+.nutri-card.danger h3{color:#9d3f2d}
+.nutri-card.danger{background:transparent}
+.nutri-card.good{background:transparent;border-top-color:rgba(240,242,245,.2)}
+.nutri-card.good .nutri-card-rank{color:var(--hl)}
+.nutri-section#buenas-opciones .nutri-card h3,.nutri-section#buenas-opciones .nutri-card strong{color:var(--t)}
+.nutri-callout{position:relative;margin:2rem auto 0;max-width:860px;color:var(--t);padding:1.45rem 1.6rem;--angle-cut:12px;--angle-fill:#20303d;border:0!important;background:rgba(246,174,45,.55)!important;isolation:isolate;clip-path:polygon(var(--angle-cut) 0,100% 0,100% calc(100% - var(--angle-cut)),calc(100% - var(--angle-cut)) 100%,0 100%,0 var(--angle-cut))}
+.nutri-callout::before{content:'';position:absolute;inset:1px;z-index:-1;background:var(--angle-fill);clip-path:polygon(calc(var(--angle-cut) - 1px) 0,100% 0,100% calc(100% - var(--angle-cut) + 1px),calc(100% - var(--angle-cut) + 1px) 100%,0 100%,0 calc(var(--angle-cut) - 1px))}
+.nutri-callout h3{font-family:"Bruno Ace SC",sans-serif;font-size:1rem;text-transform:uppercase;color:var(--hl);margin-bottom:.55rem}
+.nutri-callout p{font-size:.82rem;line-height:1.8;color:rgba(240,242,245,.76)}
+.nutri-callout strong{color:var(--t)}
+.nutri-supplement-note{margin-top:1rem;color:var(--nutri-ink);--angle-fill:#f6f8fa;background:rgba(47,72,88,.24)!important}
+.nutri-supplement-note h3{color:var(--nutri-ink)}
+.nutri-supplement-note p{color:var(--nutri-muted)}
+.nutri-supplement-note strong{color:var(--nutri-ink)}
+.nutri-inline-link{color:var(--cta);font-family:"JetBrains Mono",monospace;font-size:.75rem;text-underline-offset:3px}
+.nutri-inline-link:hover{color:var(--hl)}
+.nutri-quantity-guide{max-width:860px;margin:0 auto 4rem;border-top:1px solid var(--nutri-line);padding-top:2rem}
+.quantity-guide-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,.8fr);gap:1.5rem;align-items:start}
+.quantity-guide-grid h3{font-family:"Orbitron",sans-serif;font-size:.82rem;line-height:1.4;color:var(--nutri-ink)}
+.quantity-guide-grid p{margin-top:.55rem;color:var(--nutri-muted);font-size:.8rem;line-height:1.8}
+.quantity-guide-grid .nutri-inline-link{display:inline-block;margin-top:1rem}
+.quantity-guide-note{padding:1rem 1.1rem;background:rgba(246,174,45,.08);border-left:3px solid var(--nutri-warm)}
+.quantity-guide-note strong{font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--nutri-danger)}
+.nutri-method{max-width:860px;margin:0 auto;border-top:1px solid var(--nutri-line);padding-top:2rem}
+.nutri-method h2{font-family:"Bruno Ace SC",sans-serif;font-size:clamp(1.3rem,2.8vw,1.6rem);text-transform:uppercase;margin-bottom:1rem}
+.nutri-method p,.nutri-method li{font-size:.82rem;line-height:1.85;color:var(--nutri-muted)}
+.nutri-method ul{margin:1rem 0 0 1.2rem}
+.nutri-nutrients{width:100vw;max-width:none;margin:0 calc(50% - 50vw) 5rem;padding:3.4rem max(1.25rem,calc((100vw - 1080px) / 2)) 3rem;background:#20303d;color:var(--t);clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+.nutri-nutrients .nutri-section-head{border-color:rgba(240,242,245,.18);max-width:1080px;margin-inline:auto}
+.nutri-nutrients .nutri-section-head h2{color:var(--t)}
+.nutri-nutrients .nutri-section-head p{color:rgba(240,242,245,.7)}
+.nutri-nutrients .nutrient-grid{max-width:1080px;margin-inline:auto}
+.nutri-nutrients .nutrient-grid article{border-top-color:rgba(240,242,245,.16)}
+.nutri-nutrients .nutrient-grid h3{color:var(--t)}
+.nutri-nutrients .nutrient-grid p{color:rgba(240,242,245,.72)}
+.nutri-nutrients .nutri-nutrients-note{max-width:1080px;margin:1.5rem auto 0;background:rgba(246,174,45,.1);border-left-color:var(--hl);color:rgba(240,242,245,.82)}
+.nutri-nutrients .nutri-nutrients-note strong{color:var(--hl)}
+.nutrient-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.5rem}
+.nutrient-grid article{border-top:1px solid var(--nutri-line);padding-top:1rem}
+.nutrient-grid h3{font-family:"Orbitron",sans-serif;font-size:.82rem;line-height:1.4;color:var(--nutri-ink)}
+.nutrient-grid p{margin-top:.45rem;font-size:.78rem;line-height:1.8;color:var(--nutri-muted)}
+.nutri-nutrients-note{margin-top:1.5rem;padding:1rem 1.1rem;background:rgba(246,174,45,.08);border-left:3px solid var(--nutri-warm);font-size:.8rem;line-height:1.8;color:var(--nutri-ink)}
+.nutri-nutrients-note strong{color:var(--nutri-danger)}
+.nutri-source-note{margin-top:1rem;font-family:"JetBrains Mono",monospace;font-size:9px;color:var(--nutri-muted)}
+.nutri-source-note a{color:var(--nutri-ink);text-underline-offset:3px}
+.nutri-faq{max-width:860px;margin:3rem auto 0;border-top:1px solid var(--nutri-line);padding-top:2rem}
+.nutri-faq h2{font-family:"Bruno Ace SC",sans-serif;font-size:clamp(1.3rem,2.8vw,1.6rem);text-transform:uppercase;margin-bottom:1.2rem}
+.nutri-faq details{background:rgba(47,72,88,.04);border:1px solid rgba(47,72,88,.12);border-radius:6px;overflow:hidden;margin-bottom:.6rem;transition:border-color .25s,background .25s}
+.nutri-faq details[open]{border-color:var(--cta);background:rgba(47,72,88,.02)}
+.nutri-faq summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;cursor:pointer;padding:1rem 1.25rem;font-family:"Orbitron",sans-serif;font-size:.82rem;color:var(--nutri-ink);list-style:none;user-select:none}
+.nutri-faq summary::-webkit-details-marker{display:none}
+.nutri-faq summary::after{content:"+";color:var(--hl);font-size:1.15rem;line-height:1;flex:none;transition:transform .25s,color .25s}
+.nutri-faq details[open] summary::after{transform:rotate(45deg);color:var(--cta)}
+.nutri-faq details p{margin:0;padding:0 1.25rem 1.15rem;color:var(--nutri-muted);font-size:.8rem;line-height:1.8}
+.nutri-faq details[open] p{animation:nutriFaqIn .3s ease both}
+@keyframes nutriFaqIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+.nutri-cta{max-width:860px;margin:3rem auto 0;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;border-top:1px solid var(--nutri-line);padding-top:1.8rem}
+.nutri-cta p{font-size:.82rem;color:var(--nutri-muted);line-height:1.7}
+.nutri-cta .btn{flex:none}
+.nutri-disclaimer{font-family:"JetBrains Mono",monospace;font-size:9px!important;letter-spacing:.02em;color:rgba(47,72,88,.58)!important}
+.nutri-main + footer{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
+.pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:hidden;--footer-bg-stretch:0;--footer-svg-stretch:0;--footer-rise:0px;--footer-svg-base-scale:1;--footer-tile-height:calc(100% / var(--footer-svg-base-scale));--footer-scroll-extra:0px}
+.pf-footer-map{position:relative;width:100%;height:calc(280px * (1 + var(--footer-bg-stretch)));margin-top:calc(0px - var(--footer-rise));overflow:hidden;background:var(--bg)}
+.pf-footer-track{position:absolute;bottom:0;left:0;height:100%;display:flex;align-items:flex-end;width:max-content;gap:16px;overflow:visible;will-change:transform}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:var(--footer-tile-height,calc(100% / var(--footer-svg-base-scale)));object-fit:fill;opacity:.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
+.pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
+.pf-footer-wrap,.pf-footer-map{overflow:hidden!important;contain:paint!important}
+.pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,.7) 25%,rgba(21,29,37,.2) 55%,transparent 75%)}
+.pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:"Orbitron",sans-serif;font-size:.85rem;color:rgba(240,242,245,.85);letter-spacing:.03em;pointer-events:none}
+.pf-footer-sub{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.06em;color:rgba(240,242,245,.4);margin-top:.5rem;text-transform:uppercase}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px - var(--footer-scroll-extra,0px)))}}
+@keyframes plannerPanelIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
+@media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
+ @media(max-width:760px){.nutri-section-head{display:block}.nutri-section-head p{text-align:left;margin-top:.7rem}.nutri-grid{grid-template-columns:1fr}.nutri-main{padding-top:4rem}.nutri-planner{padding:1.15rem}.planner-launch{display:block}.planner-launch .btn{width:100%;margin-top:1rem}.nutri-planner-grid{grid-template-columns:1fr}.nutri-planner-result{min-height:260px}.planner-fields{grid-template-columns:1fr}.planner-age-fields{grid-template-columns:minmax(0,1fr) 100px}.nutri-card{grid-template-columns:auto 1fr;gap:.55rem .75rem;padding:1.1rem 0 1.2rem}.nutri-card>div:not(.nutri-card-rank){display:contents}.nutri-card .nutri-card-rank{grid-column:1;grid-row:1;min-width:auto;padding-top:.1rem}.nutri-card h3{grid-column:2;grid-row:1;align-self:center}.nutri-card p{grid-column:1 / -1;grid-row:auto;margin-top:0}.nutri-section#buenas-opciones{margin-top:-24px;padding-top:4.5rem;padding-bottom:3.5rem;clip-path:polygon(0 24px,100% 0,100% calc(100% - 24px),0 100%)}.nutri-main + footer{margin-top:-24px;clip-path:polygon(0 24px,100% 0,100% 100%,0 100%)}.pf-footer-wrap{padding-top:28px;--footer-svg-base-scale:1}.pf-footer-map{height:240px;--footer-scroll-extra:calc(var(--footer-svg-stretch) * 100vw)}.pf-footer-track{gap:calc(16px + var(--footer-scroll-extra))}.pf-footer-tile{transform:translate3d(0,10px,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)))}}
+   @media(max-width:760px){.quantity-guide-grid{grid-template-columns:1fr}}
+   @media(max-width:760px){.nutri-nutrients{padding:3rem 1.25rem 2.6rem;clip-path:polygon(0 24px,100% 0,100% calc(100% - 24px),0 100%)}}
+   @media(max-width:760px){.nutri-intro{margin-top:-4rem;padding:5.5rem 1.25rem 3.5rem;clip-path:polygon(0 0,100% 0,100% calc(100% - 24px),0 100%)}}
+   @media(min-width:1024px){#main-nav .inline-links{display:flex!important;gap:1.65rem}.nav-toggle{display:none!important}}
+  @media(min-width:1024px) and (max-width:1265px){#main-nav{padding-inline:1.25rem}#main-nav .inline-links{gap:1.15rem}#main-nav .inline-links a{font-size:9px}}
+  @media(max-width:760px){.nutrient-grid{grid-template-columns:1fr}}
+  @media(max-width:600px){.nutri-hero{padding:7rem 0 4.5rem}.nutri-hero .container{width:calc(100vw - 2.5rem);max-width:none;padding-inline:0}.nutri-kicker{max-width:300px;white-space:normal!important;overflow-wrap:anywhere;line-height:1.6}.nutri-hero h1{width:100%;max-width:min(100%,340px)!important;font-size:clamp(1.2rem,6.2vw,1.8rem);line-height:1.12;text-wrap:balance;white-space:normal!important;overflow-wrap:anywhere;word-break:normal}.nutri-hero p,.nutri-hero .nutri-hero-note{width:100%;max-width:min(100%,340px)!important;white-space:normal!important;overflow-wrap:anywhere;word-break:break-word}}
+
+/* ============================================================
+   #nutrientes-indispensables + #como-usarla = UN SOLO bloque azul.
+   El orden VISUAL lo fija el flex `order` de arriba: nutrientes (6)
+   va antes que como-usarla (7). Por eso el primero lleva el corte de
+   arriba y pierde el de abajo, y el segundo al contrario. El azul
+   empieza en los nutrientes y termina al final de "Como introducir
+   alimentos y complementos".
+   ============================================================ */
+.nutri-nutrients{margin-bottom:0;padding-bottom:1.6rem;clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
+.nutri-method{width:100vw;max-width:none;margin:0 calc(50% - 50vw) 2rem;padding:1.6rem max(1.25rem,calc((100vw - 1080px) / 2)) 6.5rem;background:#20303d;color:var(--t);border-top:0;clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
+.nutri-method h2{color:var(--t)}
+.nutri-method p,.nutri-method li{color:rgba(240,242,245,.74)}
+.nutri-method .nutri-disclaimer{color:rgba(240,242,245,.5);border-top-color:rgba(240,242,245,.14)}
+@media(max-width:760px){
+  .nutri-nutrients{padding-bottom:1.2rem;clip-path:polygon(0 24px,100% 0,100% 100%,0 100%)}
+  .nutri-method{padding:1.2rem 1.25rem 4.5rem;clip-path:polygon(0 0,100% 0,100% calc(100% - 24px),0 100%)}
+}
