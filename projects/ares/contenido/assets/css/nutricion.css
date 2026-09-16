@@ -211,3 +211,12 @@
   .nutri-nutrients{padding-bottom:1.2rem;clip-path:polygon(0 24px,100% 0,100% 100%,0 100%)}
   .nutri-method{padding:1.2rem 1.25rem 6rem;clip-path:polygon(0 0,100% 0,100% calc(100% - 24px),0 100%)}
 }
+
+@media(max-width:760px){
+  .nutri-section-head h2,
+  .nutri-intro h2,
+  .nutri-method h2,
+  .nutri-faq h2{font-size:clamp(1.65rem,7vw,2.25rem);line-height:1.15}
+  #toxicos{padding-top:0;padding-bottom:0;margin-bottom:1.5rem}
+  .nutri-section#buenas-opciones{margin-bottom:1.5rem}
+}
