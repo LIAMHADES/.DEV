@@ -91,7 +91,9 @@
 .planner-premium-link{display:block;margin-top:.8rem;font-family:"JetBrains Mono",monospace;font-size:9px;color:var(--nutri-ink);text-decoration:none;border-bottom:1px solid rgba(47,72,88,.3);width:max-content;max-width:100%;padding-bottom:2px}
 .planner-premium-link:hover{color:var(--nutri-danger);border-color:var(--nutri-danger)}
 .nutri-section{max-width:1080px;margin:0 auto 5rem}
+.nutri-section#toxicos{margin-bottom:1rem}
 .nutri-section#buenas-opciones{width:100vw;max-width:none;margin:calc(-1 * var(--section-cut,40px)) calc(50% - 50vw) 5rem;padding:5.5rem max(1.25rem,calc((100vw - 1080px) / 2)) 5rem;background:#20303d;color:var(--t);clip-path:polygon(0 var(--section-cut,40px),100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
+.nutri-section#buenas-opciones{margin-bottom:1rem}
 .nutri-section#buenas-opciones .nutri-section-head,.nutri-section#buenas-opciones .nutri-grid{max-width:1080px;margin-left:auto;margin-right:auto}
 .nutri-section#buenas-opciones .nutri-section-head{border-color:rgba(240,242,245,.18)}
 .nutri-section#buenas-opciones .nutri-section-head h2{color:var(--t)}
@@ -216,7 +218,7 @@
   .nutri-section-head h2,
   .nutri-intro h2,
   .nutri-method h2,
-  .nutri-faq h2{font-size:clamp(1.65rem,7vw,2.25rem);line-height:1.15}
-  #toxicos{padding-top:0;padding-bottom:0;margin-bottom:1.5rem}
-  .nutri-section#buenas-opciones{margin-bottom:1.5rem}
+  .nutri-faq h2{font-size:clamp(1.8rem,8vw,2.6rem);line-height:1.15}
+  #toxicos{padding-top:0;padding-bottom:0;margin-bottom:0}
+  .nutri-section#buenas-opciones{margin-top:-24px;margin-bottom:0}
 }
