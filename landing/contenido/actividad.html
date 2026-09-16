@@ -21,8 +21,9 @@
 <link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="../assets/css/footer-common.css">
+<link rel="stylesheet" href="assets/css/account.css">
 <style>
-:root{--t2:rgba(240,242,245,0.62);--t3:rgba(240,242,245,0.38)}
+:root{--t2:rgba(240,242,245,0.74);--t3:rgba(240,242,245,0.58)}
 /* ============================================
    LAYOUT PROPIO — no sigue hero→como-funciona→por-que→casos→planes.
    Aquí: hero corto → CALCULADORA protagonista (asimétrica, 2 columnas
@@ -47,6 +48,12 @@
 .calc-hero-head{max-width:900px;margin:0 auto;text-align:center}
 .calc-answer{max-width:700px;margin:0.8rem auto 0;font-family:'Orbitron',sans-serif;font-size:0.82rem;color:var(--t2);line-height:1.75}
 .kw-formula{font-family:'JetBrains Mono',monospace;font-size:clamp(0.72rem,1.6vw,0.95rem);letter-spacing:0.1em;color:var(--hl);margin-top:0.8rem}
+
+/* === CRUCE LIGERO HACIA LA CALCULADORA DE PESO (integrado en el widget) === */
+.kw-cross{margin-top:2rem;text-align:center;display:flex;flex-direction:column;gap:0.9rem;align-items:center}
+.kw-cross .btn{margin:0}
+.kw-cross-btn{font-size:0.72rem;padding:0.8rem 1.6rem}
+.kw-cross-note{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.04em;color:var(--t3);margin-top:0.7rem;line-height:1.6;max-width:420px;margin-left:auto;margin-right:auto}
 
 /* Panel principal de la calculadora — protagonista visual: fondo oscuro,
    borde sutil, chaflan 45deg, mas grande que cualquier otro bloque de la
@@ -113,8 +120,6 @@
 .kw-result-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--t3);margin-bottom:0.5rem}
 #kw-kcal{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2rem,4vw,2.6rem);color:var(--hl);line-height:1;letter-spacing:0.01em;transition:color 0.3s}
 #kw-kcal .kw-kcal-unit{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--t2);letter-spacing:0.04em;margin-left:0.4rem;vertical-align:middle}
-#kw-equiv{font-family:'Orbitron',sans-serif;font-size:0.78rem;color:var(--t2);margin-top:1rem;max-width:380px;margin-left:auto;margin-right:auto;line-height:1.6}
-#kw-equiv b{color:var(--hl)}
 .kw-divider{height:1px;background:rgba(240,242,245,0.1);margin:1.4rem 0}
 .kw-stackbar{display:flex;height:10px;width:100%;margin:0.9rem 0 1rem;border-radius:2px;overflow:hidden;background:rgba(240,242,245,0.06)}
 .kw-bar-seg{height:100%;transition:width 0.35s ease}
@@ -133,6 +138,9 @@
 #kw-total-daily{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2.6rem,5.5vw,4.2rem);color:var(--t);line-height:1;letter-spacing:0.01em;margin-top:0.6rem}
 #kw-total-daily .kw-kcal-unit{font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--t3);letter-spacing:0.04em;margin-left:0.3rem;vertical-align:middle}
 #kw-total-note{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.03em;color:var(--t3);margin-top:0.5rem}
+.kw-next-step{margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid rgba(240,242,245,0.12);text-align:center}
+.kw-next-step p{font-family:'Orbitron',sans-serif;font-size:0.82rem;color:var(--t);line-height:1.6;margin:0 0 0.85rem}
+.kw-next-step .btn{margin:0}
 #kw-food-dry,#kw-food-wet{font-family:'Bruno Ace SC',sans-serif;font-size:1.15rem;letter-spacing:0.02em}
 #kw-food-dry{color:var(--deco)}
 #kw-food-wet{color:var(--hl)}
@@ -216,12 +224,19 @@
 .nt-card:hover{transform:translateY(-4px);border-color:rgba(246,174,45,0.3)}
 .nt-card .material-symbols-outlined{font-size:2rem;color:var(--cta);margin-bottom:0.8rem}
 .nt-card h4{font-family:'Bruno Ace SC',sans-serif;font-size:0.95rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--wtext);margin-bottom:0.6rem}
-.nt-card p{font-family:'Orbitron',sans-serif;font-size:0.78rem;color:var(--wtext2);line-height:1.7}
-.nt-bridge{max-width:720px;margin:2.4rem auto 0;text-align:center;padding:1.5rem 1.8rem;background:rgba(246,174,45,0.08);border:1px solid rgba(242,100,25,0.35);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
-.nt-bridge p{font-family:'Orbitron',sans-serif;font-size:0.85rem;color:var(--wtext2);line-height:1.8}
-.nt-bridge p strong{color:var(--cta)}
-.nt-bridge .btn{margin-top:1rem}
+.nt-card p{font-family:'Orbitron',sans-serif;font-size:0.78rem;color:rgba(47,72,88,0.76);line-height:1.7}
+.nt-bridge{max-width:720px;margin:0.8rem auto 2.25rem;text-align:center;padding:1.5rem 1.8rem;background:rgba(242,100,25,0.55) !important;border:0 !important;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);position:relative;z-index:3;isolation:isolate;--angle-border-color:rgba(242,100,25,0.55);--angle-fill:#171d25}
+.nt-bridge::before{content:'';position:absolute;inset:1px;z-index:-1;background:#171d25 !important;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)}
+.nt-bridge-lead{font-family:'Bruno Ace SC',sans-serif;font-size:1rem;color:var(--t);line-height:1.45}
+.nt-bridge-lead strong{color:var(--cta)}
+.nt-bridge-copy{max-width:580px;margin:0.7rem auto 0;font-family:'Orbitron',sans-serif;font-size:0.8rem;color:rgba(240,242,245,0.78);line-height:1.75}
+.nt-bridge-link{display:inline-flex;align-items:center;gap:0.45rem;margin-top:1rem;padding-bottom:0.2rem;border-bottom:1px solid currentColor;color:var(--cta);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:color 0.25s,border-color 0.25s,transform 0.25s}
+.nt-bridge-link:hover{color:var(--hl);border-color:currentColor;transform:translateX(3px)}
 @media(max-width:768px){
+  #hero h1{width:100%;max-width:min(100%,340px);padding-inline:0.25rem;font-size:clamp(1.6rem,8vw,2.1rem)!important;letter-spacing:-0.01em;line-height:1.1;white-space:normal;overflow-wrap:normal;word-break:normal;text-wrap:balance}
+  #hero .hero-sub{width:100%;max-width:min(100%,300px);overflow-wrap:anywhere;white-space:normal}
+  .calc-hero-head h2{max-width:300px;margin-inline:auto;font-size:clamp(1rem,5vw,1.35rem)!important;overflow-wrap:anywhere;text-wrap:balance}
+  .calc-answer{max-width:300px;font-size:0.72rem;overflow-wrap:anywhere}
   .nt-grid{grid-template-columns:1fr}
 }
 
@@ -231,43 +246,47 @@
 .pn-col{flex:1;padding:1.8rem 1.7rem;text-align:left}
 .pn-col + .pn-col{border-left:1px solid rgba(47,72,88,0.12)}
 .pn-col.hl{background:rgba(246,174,45,0.1)}
-.pn-plan{font-family:'Bruno Ace SC',sans-serif;font-size:1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--wtext2);margin-bottom:0.6rem}
+.pn-plan{font-family:'Bruno Ace SC',sans-serif;font-size:1rem;letter-spacing:0.04em;text-transform:uppercase;color:rgba(47,72,88,0.78);margin-bottom:0.6rem}
 .pn-col.hl .pn-plan{color:var(--cta)}
-.pn-col p{font-size:0.85rem;color:var(--wtext2);line-height:1.8}
+.pn-col p{font-size:0.85rem;color:rgba(47,72,88,0.78);line-height:1.8}
 .pn-cta{text-align:center;margin-top:2rem}
-.pn-cta a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--wtext2);text-decoration:none;border-bottom:1px solid rgba(47,72,88,0.25);padding-bottom:2px;transition:color 0.3s,border-color 0.3s}
-.pn-cta a:hover{color:var(--cta);border-color:var(--cta)}
+.pn-cta a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--cta);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;transition:color 0.3s,border-color 0.3s}
+.pn-cta a:hover{color:var(--hl);border-color:currentColor}
 
 /* === CTA FINAL === */
 #cta-final{min-height:44vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:var(--bg);padding-bottom:1.5rem}
 
 /* === FOOTER MAP === */
  .pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:hidden;--footer-bg-stretch:0;--footer-svg-stretch:0;--footer-rise:0px;--footer-svg-base-scale:1;--footer-tile-height:calc(100% / var(--footer-svg-base-scale));--footer-scroll-extra:0px}
- .pf-footer-map{position:relative;width:100%;height:calc(280px * (1 + var(--footer-bg-stretch)));margin-top:calc(0px - var(--footer-rise));overflow:hidden;background:var(--bg)}
+ .pf-footer-map{position:relative;width:100%;height:calc(clamp(340px,25vw,440px) * (1 + var(--footer-bg-stretch)));margin-top:calc(0px - var(--footer-rise));overflow:hidden;background:var(--bg)}
 /* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
  .pf-footer-track{position:absolute;bottom:0;left:0;height:100%;display:flex;align-items:flex-end;width:max-content;gap:16px;overflow:visible;will-change:transform}
  .pf-footer-tile{flex-shrink:0;width:100vw;height:var(--footer-tile-height, calc(100% / var(--footer-svg-base-scale)));object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
 .pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
 .pf-footer-wrap,.pf-footer-map{overflow:hidden!important;contain:paint!important}
- @keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px - var(--footer-scroll-extra,0px)))}}
+ @keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-1 * var(--footer-tile-w,100vw) - 16px - var(--footer-scroll-extra,0px)))}}
 @media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
 @media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
 .pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
 .pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
 .pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
- @media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px;--footer-svg-base-scale:1}.pf-footer-map{height:240px;--footer-scroll-extra:calc(var(--footer-svg-stretch) * 100vw)}.pf-footer-track{gap:calc(16px + var(--footer-scroll-extra))}.pf-footer-tile{transform:translate3d(0,10px,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)))}#act-faq.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 24px),0 100%)}}
+ @media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px;--footer-svg-base-scale:1;--footer-tile-w:min(220vw,900px)}.pf-footer-map{height:min(calc(58vw + 135px),400px);--footer-tile-height:min(calc(58vw + 135px),400px);--footer-scroll-extra:calc(var(--footer-svg-stretch) * min(220vw,900px))}.pf-footer-track{gap:calc(16px + var(--footer-scroll-extra))}.pf-footer-tile{width:min(220vw,900px);transform:translate3d(0,-53px,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)))}#act-faq.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 24px),0 100%)}}
 
 /* TÉCNICA BORDE-SOMBRA — border invisible en esquinas 45° => drop-shadow */
 .nt-card,.nt-bridge,#kw-disclaimer,#kw-ares-note,#mb-verdict,.pn-inline{filter:drop-shadow(0 0 1.5px rgba(134,187,216,0.2))}
 
 /* === SECCIÓN SEPARADOR "ANILLO" (zigzag 40px, como index.html) === */
-.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
-.sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
+.sec-light{clip-path:polygon(0 var(--section-cut,40px),100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
 
 /* Encaje 45: cada seccion comparte la diagonal con la anterior. */
-#calc-hero,#move-bar-section,#cta-final{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
-#cta-final{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
-#nutricion-teaser,#planes-nota{margin-top:-40px}
+#calc-hero,#move-bar-section,#cta-final{margin-top:calc(-1 * var(--section-cut,40px));clip-path:polygon(0 var(--section-cut,40px),100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
+#cta-final{clip-path:polygon(0 var(--section-cut,40px),100% 0,100% 100%,0 100%)}
+#nutricion-teaser,#planes-nota{margin-top:calc(-1 * var(--section-cut,40px))}
+#planes-nota{margin-top:0}
+/* El bloque de preguntas va montado sobre #cta-final: necesita tambien el corte
+   SUPERIOR, si no su borde recto tapa la diagonal y la union queda plana. */
+#act-faq{margin-top:calc(-1 * var(--section-cut,40px));clip-path:polygon(0 var(--section-cut,40px),100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
 
 /* === PRISM (hover grid trail) === */
 .sec-prism{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
@@ -294,7 +313,7 @@
  .act-faq-item[open] summary::after{transform:rotate(45deg);color:var(--cta)}
 .act-faq-item p{padding:0 1.3rem 1.1rem;margin:0;font-size:0.85rem;color:var(--t2);line-height:1.8}
 </style>
-<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/analytics.js" defer></script>
 </head>
 <body>
 
@@ -304,26 +323,12 @@
 <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="navOverlay" aria-expanded="false">
   <span></span><span></span><span></span>
 </button>
-<nav id="main-nav">
-  <a href="../index.html" class="nl">ARES GPS</a>
-  <a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a>
-  <ul class="inline-links">
-    <li><a href="../index.html#como-funciona">Cómo funciona</a></li>
-    <li><a href="../index.html#extras">Extras</a></li>
-    <li><a href="../index.html#planes">Planes</a></li>
-    <li><a href="pricing.html">Precios</a></li>
-    <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
-      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
-    </li>
-  </ul>
-</nav>
+<nav id="main-nav"><a href="../index.html" class="nl">ARES GPS</a><a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a><ul class="inline-links"><li><a href="#calc-hero">Cuánto ejercicio</a></li><li><a href="#nutricion-teaser">Ejercicio y dieta</a></li><li><a href="#move-bar-section">Movimiento diario</a></li><li class="ndrop" id="navMore"><a class="ndrop-trigger" href="#">Más</a><div class="ndrop-menu"><a href="#planes-nota">Perfil real</a><a href="#act-faq">Preguntas frecuentes</a></div></li><li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
+         <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="nutricion.html">Alimentos tóxicos y dieta</a><a href="descanso.html">Sueño y descanso</a><a href="geocerca.html">Zonas seguras</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li></ul></nav>
 <div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Menú principal" tabindex="-1">
   <div class="nav-overlay-inner">
     <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
-    <ul class="nav-full-links">
-      <li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#calc-hero">Calcular actividad</a></li><li class="nl-item"><a href="#nutricion-teaser">Nutrición</a></li><li class="nl-item"><a href="#move-bar-section">Movimiento diario</a></li><li class="nl-item"><a href="#planes-nota">Planes</a></li><li class="nl-item"><a href="#cta-final">Saber más</a></li>
-       <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
-    </ul>
+    <ul class="nav-full-links"><li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#calc-hero">Cuánto ejercicio</a></li><li class="nl-item"><a href="#nutricion-teaser">Ejercicio y dieta</a></li><li class="nl-item"><a href="#move-bar-section">Movimiento diario</a></li><li class="nl-item"><a href="#planes-nota">Perfil real</a></li><li class="nl-item"><a href="#cta-final">Empezar</a></li><li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="nutricion.html">Alimentos tóxicos y dieta</a><a href="descanso.html">Sueño y descanso</a><a href="geocerca.html">Zonas seguras</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li><li class="nl-item"><button type="button" class="nav-account-btn" data-account-open>Iniciar sesión</button></li></ul>
   </div>
 </div>
 <div class="ov-ticks" id="ovTicks"></div>
@@ -355,11 +360,11 @@
         <h3 class="kw-title">Ajusta los controles y mira el resultado moverse</h3>
 
         <div class="kw-field">
-          <div class="kw-field-top">
-            <label for="kw-weight">Peso de tu perro</label>
-            <div class="kw-field-val"><span id="kw-weight-val">20</span><span class="unit">kg</span></div>
-          </div>
-          <input type="range" id="kw-weight" class="kw-slider" min="1" max="80" step="0.5" value="20">
+           <div class="kw-field-top">
+             <label for="kw-weight">Peso de tu perro</label>
+             <div class="kw-field-val"><span id="kw-weight-val">20</span><span class="unit">kg</span></div>
+           </div>
+            <input type="range" id="kw-weight" class="kw-slider" min="1" max="80" step="0.5" value="20">
           <div class="kw-range-labels"><span>1 kg</span><span>80 kg</span></div>
         </div>
 
@@ -386,14 +391,12 @@
         <div id="kw-result">
           <div class="kw-result-label">Gasto de este paseo</div>
            <div id="kw-kcal" aria-live="polite">60<span class="kw-kcal-unit">kcal</span></div>
-          <div id="kw-equiv"></div>
           <div class="kw-divider"></div>
 
           <div class="kw-result-label kw-day-label">Su día completo, repartido</div>
           <div class="kw-stackbar" id="kw-stackbar" aria-hidden="true">
             <div class="kw-bar-seg kw-bar-rer" id="kw-bar-rer"></div>
             <div class="kw-bar-seg kw-bar-mer" id="kw-bar-mer"></div>
-            <div class="kw-bar-seg kw-bar-walk" id="kw-bar-walk"></div>
           </div>
           <div class="kw-breakdown">
             <div class="kw-bd-row">
@@ -403,21 +406,20 @@
             </div>
             <div class="kw-bd-row">
               <span class="kw-bd-dot kw-bd-mer"></span>
-              <span class="kw-bd-name">Actividad normal — 2 salidas/día (MER ×1.8)</span>
-              <span class="kw-bd-val">+<b id="kw-mer-extra">530</b> kcal</span>
-            </div>
-            <div class="kw-bd-row">
-              <span class="kw-bd-dot kw-bd-walk"></span>
-              <span class="kw-bd-name">Este paseo (lo que ajustas arriba)</span>
-              <span class="kw-bd-val">+<b id="kw-walk-kcal">60</b> kcal</span>
+              <span class="kw-bd-name">2 salidas como este paseo</span>
+              <span class="kw-bd-val">+<b id="kw-mer-extra">120</b> kcal</span>
             </div>
           </div>
           <div class="kw-divider"></div>
 
-          <div class="kw-result-label kw-total-label">Total del día</div>
-          <div id="kw-total-daily">1252<span class="kw-kcal-unit">kcal/día</span></div>
-          <div id="kw-total-note">En reposo + su actividad normal + este paseo extra</div>
-        </div>
+          <div class="kw-result-label kw-total-label">Total estimado del día</div>
+           <div id="kw-total-daily">782<span class="kw-kcal-unit">kcal/día</span></div>
+           <div id="kw-total-note">Entre <b id="kw-total-min">722</b> y <b id="kw-total-max">782</b> kcal según cuántas salidas de este tamaño haga hoy (asumimos 2 como este paseo).</div>
+           <div class="kw-next-step">
+             <p>¿Quieres saber si tu perro está en su peso ideal?</p>
+             <button type="button" id="activity-next-cta" class="btn btn-cta"><span>Comprobar su peso ideal</span></button>
+           </div>
+         </div>
       </div>
 
       <div id="calc-context">
@@ -453,7 +455,7 @@
               <small>~370 kcal / 100 g</small>
             </div>
           </div>
-          <small class="kw-food-note">Prefiere húmeda: más hidratación y saciedad. Si mezclas, 100 g de húmeda ≈ 27 g de pienso. Reparte en 2 comidas.</small>
+          <small class="kw-food-note" id="kw-meal-context">Prefiere húmeda: más hidratación y saciedad. Si mezclas, 100 g de húmeda ≈ 27 g de pienso. Reparte en 2 comidas.</small>
         </div>
         <div class="cx-divider"></div>
         <div class="cx-point cx-breed-ref">
@@ -466,9 +468,10 @@
           </span></p>
         </div>
         <div class="cx-divider"></div>
-        <div id="kw-disclaimer">Cálculo orientativo a partir del peso, la distancia y la intensidad introducidos. No sustituye una valoración veterinaria y cada perro responde de forma distinta.</div>
+<div id="kw-disclaimer">Cálculo orientativo a partir del peso, la distancia y la intensidad introducidos. No sustituye una valoración veterinaria y cada perro responde de forma distinta.</div>
         <div id="kw-ares-note">ARES registra actividad, peso y raza automáticamente y calcula sus kcal reales cada día en la app — sin tablas ni cuentas manuales.</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -477,7 +480,7 @@
 <section id="nutricion-teaser" class="sec-light light">
   <div class="container">
     <div class="nt-head">
-      <div class="sl">Nutrición inteligente</div>
+       <div class="sl">Alimentación inteligente</div>
       <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">DEL EJERCICIO A LA DIETA REAL</h2>
       <div class="ss" style="text-transform:none;letter-spacing:0;max-width:640px;margin-top:0.5rem">ARES no solo cuenta calorías. Con Premium, convierte los datos de actividad de tu perro en un plan de alimentación real — automático, personalizado y seguro.</div>
     </div>
@@ -500,12 +503,8 @@
       </div>
     </div>
 
-    <div class="nt-bridge">
-      <p><strong>ARES Premium</strong> toma los datos reales del collar — cuánto se ha movido hoy, su peso, su raza, su edad — y los cruza con el análisis de macronutrientes de su comida. Así sabe exactamente qué necesita tu perro, no un perro genérico de su tamaño. <strong>Tú solo llenas el cuenco.</strong></p>
-      <a href="pricing.html#planes" class="btn btn-out" style="display:inline-block;margin-top:0.8rem"><span>Ver planes Premium →</span></a>
-    </div>
-  </div>
-</section>
+   </div>
+ </section>
 
 <!-- 3. BARRA "SE MUEVE LO SUFICIENTE" -->
 <section id="move-bar-section" class="sec-dark">
@@ -541,9 +540,19 @@
       </div>
     </div>
   </div>
-</section>
+ </section>
 
-<!-- 4. PLANES + CIERRE -->
+ <!-- Puente editorial: queda despues de la segunda pregunta y no compite con
+      el CTA final de planes. La guia de nutricion permanece como contenido. -->
+ <div class="container">
+   <div class="nt-bridge">
+     <p class="nt-bridge-lead"><strong>Ya sabes cuánto se mueve. Ahora descubre qué necesita en el cuenco.</strong></p>
+     <p class="nt-bridge-copy">La guía de alimentación de ARES te ayuda a interpretar su ración, reconocer alimentos que conviene evitar y poner su actividad diaria en contexto.</p>
+     <a href="nutricion.html" class="nt-bridge-link"><span>Ver la guía de alimentación</span><span aria-hidden="true">→</span></a>
+   </div>
+ </div>
+
+ <!-- 4. PLANES + CIERRE -->
 <section id="planes-nota" class="sec-light light">
   <div class="container" style="text-align:center">
     <div class="sl">Disponibilidad por plan</div>
@@ -621,13 +630,18 @@
   </div>
 </footer>
 
+<script src="assets/js/profile-bridge.js"></script>
+<script src="assets/js/account.js"></script>
 <script>
 /* ============================================
    CALCULADORA DE CALORIAS — vanilla JS, sin librerias externas.
    Formula (base_de_conocimiento_canina_mvp v0.1, bloque B.2 + A.1):
      kcal_ejercicio ~= 1.0 x peso_kg x distancia_km  (paseo/trote normal)
      intensidad alta: ~1.3-1.5x -> aqui: paseo x1.0 / trote x1.2 / carrera x1.4
-     RER = 70 x peso^0.75 (reposo) ; MER = RER x 1.8 (mantenimiento adulto activo, 2 salidas/dia)
+     RER = 70 x peso^0.75 (reposo)
+     Actividad del dia = 2 x este paseo (las dos salidas diarias son el paseo
+     calculado arriba, no un extra fijo). Total = RER + actividad. Se muestra
+     con margen (1 vs 2 salidas) porque depende de la edad y la condicion.
    ============================================ */
 (function(){
   const weightSlider = document.getElementById('kw-weight');
@@ -635,30 +649,44 @@
   const weightVal = document.getElementById('kw-weight-val');
   const distanceVal = document.getElementById('kw-distance-val');
   const intensityBtns = [...document.querySelectorAll('#kw-intensity .kw-int-btn')];
-  const kcalEl = document.getElementById('kw-kcal');
-  const equivEl = document.getElementById('kw-equiv');
+const kcalEl = document.getElementById('kw-kcal');
   const bmrEl = document.getElementById('kw-bmr');
   const merExtraEl = document.getElementById('kw-mer-extra');
-  const walkKcalEl = document.getElementById('kw-walk-kcal');
   const barRerEl = document.getElementById('kw-bar-rer');
   const barMerEl = document.getElementById('kw-bar-mer');
-  const barWalkEl = document.getElementById('kw-bar-walk');
   const totalEl = document.getElementById('kw-total-daily');
+  const totalMinEl = document.getElementById('kw-total-min');
+  const totalMaxEl = document.getElementById('kw-total-max');
   const foodDryEl = document.getElementById('kw-food-dry');
   const foodWetEl = document.getElementById('kw-food-wet');
+   const mealContextEl = document.getElementById('kw-meal-context');
+
+function readProfile(){
+    if(window.ARES_BRIDGE) return window.ARES_BRIDGE.read();
+    let stored = null;
+    try { stored = JSON.parse(sessionStorage.getItem('ares_dog_profile_v1') || 'null'); } catch(e) {}
+    const params = new URLSearchParams(window.location.search);
+    const profile = stored && typeof stored === 'object' ? {...stored} : {};
+    if(!Number.isFinite(parseFloat(profile.weightKg)) && Number.isFinite(parseFloat(params.get('weight')))) profile.weightKg = parseFloat(params.get('weight'));
+    if(!Number.isFinite(parseFloat(profile.heightCm)) && Number.isFinite(parseFloat(params.get('height')))) profile.heightCm = parseFloat(params.get('height'));
+    if(!Number.isFinite(parseFloat(profile.ageMonths)) && Number.isFinite(parseFloat(params.get('age')))) profile.ageMonths = parseFloat(params.get('age'));
+    if(!profile.breed && params.get('breed')) profile.breed = params.get('breed');
+    if(!profile.category && params.get('category')) profile.category = params.get('category');
+    if(!profile.sizeCategory && params.get('size')) profile.sizeCategory = params.get('size');
+    return Object.keys(profile).length ? profile : null;
+  }
+
+  const dogProfile = readProfile();
 
   let factor = 1.0;
 
-  // Equivalencias reales de comida/premios para que el numero se sienta tangible
-  // (aprox: 1g de pienso seco estandar ~= 3.5-4 kcal; 1 galleta premio media ~=20-25 kcal)
-  function equivalentText(kcal){
-    if(kcal <= 0) return 'Añade distancia para ver el gasto estimado.';
-    const grams = Math.round(kcal / 3.7);
-    const treats = Math.max(1, Math.round(kcal / 22));
-    return `Equivale aprox. a <b>${grams} g</b> de su pienso habitual, o unos <b>${treats}</b> premio${treats===1?'':'s'} medianos.`;
+  const queryWeight = parseFloat(new URLSearchParams(window.location.search).get('weight'));
+  if(Number.isFinite(queryWeight)){
+    const importedWeight = Math.min(80, Math.max(1, queryWeight));
+    weightSlider.value = importedWeight;
   }
 
-  function render(){
+function render(){
     const w = parseFloat(weightSlider.value);
     const d = parseFloat(distanceSlider.value);
     const kcal = Math.round(w * d * factor);
@@ -667,28 +695,47 @@
     distanceVal.textContent = d.toFixed(d % 1 === 0 ? 0 : 1);
 
     kcalEl.innerHTML = kcal + '<span class="kw-kcal-unit">kcal</span>';
-    equivEl.innerHTML = equivalentText(kcal);
 
+    // RER = reposo. Actividad del día = 2 salidas como este paseo: las dos
+    // salidas diarias SON lo que se calcula arriba (x2), no un "MER ×1.8"
+    // fijo que se sumara encima del paseo (evita el doble conteo).
     const bmr = Math.round(70 * Math.pow(w, 0.75));
     bmrEl.innerHTML = bmr;
 
-    const mer = Math.round(bmr * 1.8);   // adulto activo, 2 salidas/dia (Merck/AAHA factor 1.8)
-    const merExtra = mer - bmr;
-    merExtraEl.innerHTML = merExtra;
-    walkKcalEl.innerHTML = kcal;
+    const activityKcal = kcal * 2;
+    merExtraEl.innerHTML = activityKcal;
 
-    const totalDaily = mer + kcal;
+    const totalDaily = bmr + activityKcal;
+    const lowTotal = bmr + kcal;
+    const highTotal = totalDaily;
     totalEl.innerHTML = totalDaily + '<span class="kw-kcal-unit">kcal/día</span>';
+    if(totalMinEl) totalMinEl.textContent = lowTotal;
+    if(totalMaxEl) totalMaxEl.textContent = highTotal;
 
     barRerEl.style.width = (bmr / totalDaily * 100) + '%';
-    barMerEl.style.width = (merExtra / totalDaily * 100) + '%';
-    barWalkEl.style.width = (kcal / totalDaily * 100) + '%';
+    barMerEl.style.width = (activityKcal / totalDaily * 100) + '%';
 
     foodDryEl.innerHTML = Math.round(totalDaily / 3.7) + '<span class="kw-kcal-unit">g/día</span>';   // pienso ~370 kcal/100g
     foodWetEl.innerHTML = Math.round(totalDaily / 1.0) + '<span class="kw-kcal-unit">g/día</span>';   // humeda ~100 kcal/100g
 
     kcalEl.style.color = factor >= 1.4 ? 'var(--cta)' : (factor >= 1.2 ? 'var(--hl)' : 'var(--hl)');
 
+    // Persistir el contexto de actividad en el perfil compartido, para que
+    // la calculadora de peso pueda devolvérnoslo al cruzar de página. Y
+    // rellenar los campos ocultos del registro (lead de actividad).
+    if(window.ARES_BRIDGE){
+      window.ARES_BRIDGE.save({
+        source: 'actividad',
+        activity: {
+          weightKg: w,
+          distanceKm: d,
+          intensity: factor,
+          minutes: Number.isFinite(parseFloat(minutesInput && minutesInput.value)) ? parseFloat(minutesInput.value) : null,
+          kcal: kcal,
+          updatedAt: new Date().toISOString(),
+        }
+      });
+    }
     syncDistanceToMinutes(d);
   }
 
@@ -742,11 +789,28 @@
     marker.style.left = pct + '%';
 
     const level = levelFor(minutes);
+    let verdict = level.text;
+    const ageMonths = dogProfile ? parseFloat(dogProfile.ageMonths) : NaN;
+    if(Number.isFinite(ageMonths) && ageMonths < 12){
+      verdict = 'Es un cachorro: mejor varias sesiones cortas y juego tranquilo que perseguir un número alto de minutos. Ajusta la carga a su crecimiento y confirma la pauta con tu veterinario.';
+    } else if(Number.isFinite(ageMonths) && ageMonths >= 96){
+      verdict = 'Por su edad, prioriza paseos cómodos, olfateo y regularidad. Si notas dolor, fatiga o un cambio brusco, consulta con tu veterinario antes de aumentar la carga.';
+    } else if(dogProfile && (dogProfile.category === 'sobrepeso' || dogProfile.category === 'obesidad')){
+      verdict = level.text + ' Como el resultado de peso indica una desviación estimada, aumenta la actividad de forma gradual y consulta con tu veterinario; no intentes compensarlo con ejercicio intenso de golpe.';
+    }
     verdictTag.textContent = level.label.toUpperCase() + ' · ' + Math.round(minutes) + ' min';
     verdictTag.style.color = level.color;
-    verdictText.textContent = level.text;
+    verdictText.textContent = verdict;
     verdictBox.style.background = level.bg;
     verdictBox.style.borderColor = level.border;
+
+    if(mealContextEl){
+      if(minutes >= 120){
+        mealContextEl.textContent = 'Tras actividad intensa: deja que se calme y se hidrate antes de ofrecer una comida grande. El horario exacto depende de su salud, raza y alimento; confírmalo con tu veterinario.';
+      } else {
+        mealContextEl.textContent = 'Como punto de partida, mantén 2 tomas a horarios regulares y reparte la ración diaria. Ajusta la cantidad al alimento y a su condición; el horario exacto debe confirmarlo tu veterinario.';
+      }
+    }
   }
 
   minutesInput.addEventListener('input', renderMoveBar);
@@ -762,6 +826,39 @@
     const estMinutes = Math.round(km * 15);
     minutesInput.value = estMinutes;
     renderMoveBar();
+  });
+
+  /* ============================================
+     CTA HACIA LA CALCULADORA DE PESO
+     El beneficio es el mensaje visible. El registro solo aparece despues del
+     clic y la navegacion se reanuda automaticamente cuando termina el acceso.
+     ============================================ */
+  const nextCta = document.getElementById('activity-next-cta');
+  if(nextCta){
+    nextCta.addEventListener('click', function(){
+      const w = parseFloat(weightSlider.value);
+      const currentProfile = window.ARES_BRIDGE ? (window.ARES_BRIDGE.read() || {}) : (dogProfile || {});
+      const profile = Object.assign({}, currentProfile, {
+        weightKg: w,
+        source: 'actividad',
+        from: 'actividad',
+        activity: Object.assign({}, currentProfile.activity || {}, { weightKg: w }),
+      });
+      if(window.ARES_BRIDGE) window.ARES_BRIDGE.save(profile);
+      const q = window.ARES_BRIDGE
+        ? window.ARES_BRIDGE.query(profile, { source: 'actividad', from: 'actividad' })
+        : new URLSearchParams({ weight: w, source: 'actividad', from: 'actividad' });
+      const target = 'calculadora.html?' + q.toString();
+      if(window.ARES_ACCOUNT) window.ARES_ACCOUNT.requireAuth(()=> { window.location.href = target; });
+      else window.location.href = target;
+    });
+  }
+
+  document.addEventListener('ares:auth-success', function(){
+    if(window.ARES_BRIDGE && window.ARES_ACCOUNT){
+      const p = window.ARES_BRIDGE.read();
+      if(p) window.ARES_ACCOUNT.saveProfile(p);
+    }
   });
 
   render();
@@ -857,55 +954,7 @@ function buildPrism(id) {
 buildPrism('prism-hero');
 </script>
 <script src="assets/js/typewriter.js"></script>
-<script>
-  (() => {
-    const footerMap = document.querySelector('.pf-footer-map');
-    if (!footerMap) return;
-    let target = 0;
-    let current = 0;
-    let lastInput = 0;
-    let lastTouchY = null;
-    let frame = 0;
-    const maxStretch = window.innerWidth <= 768 ? 0.16 : 0.12;
-    const bgFactor = window.innerWidth <= 768 ? 0 : 0.65;
-    const svgFactor = window.innerWidth <= 768 ? 1 : 0.65;
-    const baseHeight = footerMap.offsetHeight;
-    const baseScale = parseFloat(getComputedStyle(footerMap).getPropertyValue('--footer-svg-base-scale')) || 1;
-    const atEnd = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-    const release = () => { target = 0; lastInput = 0; if (!frame) frame = requestAnimationFrame(tick); };
-    const push = (amount) => {
-      target = Math.min(maxStretch, target + Math.min(maxStretch, amount));
-      lastInput = performance.now();
-      if (!frame) frame = requestAnimationFrame(tick);
-    };
-    const tick = (now) => {
-      const elapsed = now - lastInput;
-      if (elapsed > 90) target = Math.max(0, target - 0.12 * Math.min(1, (elapsed - 90) / 140));
-      current += (target - current) * 0.22;
-      footerMap.style.setProperty('--footer-bg-stretch', (current * bgFactor).toFixed(4));
-      footerMap.style.setProperty('--footer-svg-stretch', (current * svgFactor).toFixed(4));
-      footerMap.style.setProperty('--footer-rise', (current * bgFactor * baseHeight).toFixed(2) + 'px');
-      if (window.innerWidth > 768) footerMap.style.setProperty('--footer-tile-height', (footerMap.offsetHeight / (baseScale + current * svgFactor)).toFixed(2) + 'px');
-      else footerMap.style.removeProperty('--footer-tile-height');
-      if (Math.abs(current - target) > 0.0005 || target > 0.0005) frame = requestAnimationFrame(tick);
-      else { current = 0; target = 0; footerMap.style.removeProperty('--footer-bg-stretch'); footerMap.style.removeProperty('--footer-svg-stretch'); footerMap.style.removeProperty('--footer-rise'); footerMap.style.removeProperty('--footer-tile-height'); frame = 0; }
-    };
-    window.addEventListener('wheel', (event) => {
-      if (event.deltaY > 0 && atEnd()) push(Math.abs(event.deltaY) * 0.0009);
-      else if (event.deltaY < 0) release();
-    }, {passive:true});
-    window.addEventListener('touchstart', (event) => { lastTouchY = event.touches[0]?.clientY ?? null; }, {passive:true});
-    window.addEventListener('touchmove', (event) => {
-      const y = event.touches[0]?.clientY ?? lastTouchY;
-      const delta = lastTouchY == null || y == null ? 0 : lastTouchY - y;
-      lastTouchY = y;
-      if (delta > 0 && atEnd()) push(delta * 0.002);
-      else if (delta < 0) release();
-    }, {passive:true});
-    window.addEventListener('touchend', () => { lastTouchY = null; release(); }, {passive:true});
-    window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
-  })();
-</script>
-<script src="../assets/js/footer-common.js"></script>
+<script src="assets/js/footer-map.js" defer></script>
+<script src="../assets/js/footer-common.js" defer></script>
 </body>
 </html>

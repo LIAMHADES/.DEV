@@ -9,28 +9,76 @@
 
 <link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
 <link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/account.css">
 <link rel="stylesheet" href="../assets/css/footer-common.css">
 <link rel="stylesheet" href="assets/css/lead-capture.css">
 <style>
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
-#hero-bg{position:absolute;inset:0;z-index:0}
-/* Fallback CSS animado si Vanta no carga (sin red / bloqueado) — tonos oscurecidos a peticion */
-#hero-bg.css-fallback{background:linear-gradient(-45deg,#0c1116,#10161c,#1c3a4d,#0c1116);background-size:400% 400%;animation:gradientMove 14s ease infinite}
-@keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-/* Velo oscuro extra sobre el canvas de Vanta para mantener el fondo mas oscuro sin perder el efecto de olas */
+#hero{width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+#hero-bg{position:absolute;inset:0;z-index:0;background:var(--bg)}
+/* Malla prismatica: mismo tratamiento que el hero de landing/index.html. */
+.sec-prism{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.sec-prism .prism-grid{display:grid;position:absolute;left:50%;top:50%}
+.sec-prism .prism-cell{border-right:1px solid rgba(134,187,216,0.08);border-bottom:1px solid rgba(134,187,216,0.08);transition:background 0.15s ease-out}
+.sec-prism .prism-cell.lit{transition:background 0s}
+/* Velo oscuro extra para mantener el contraste del texto. */
 #hero-veil{position:absolute;inset:0;z-index:1;background:rgba(10,14,18,0.45);pointer-events:none}
-#hero .container{position:relative;z-index:2}
-.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--hl);text-transform:uppercase;margin-bottom:1rem}
-#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(3.5rem,10vw,7rem);color:var(--t);letter-spacing:0.05em;line-height:1;text-transform:uppercase}
+#hero .container{position:relative;z-index:2;width:100%;max-width:1200px;margin-inline:auto;padding-inline:clamp(1rem,4vw,2rem)}
+/* La rejilla va por encima del velo (#hero-veil, z-index 1) para que no quede apagada. */
+#hero .sec-prism{z-index:1}
+#hero .hero-tag{display:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:var(--hl);text-transform:uppercase;margin-bottom:0.8rem}
+#hero h1{width:100%;margin-inline:auto;font-family:'Bruno Ace SC',sans-serif;font-size:clamp(3.5rem,10vw,7rem);color:var(--t);letter-spacing:0.05em;line-height:1;text-align:center;text-transform:uppercase;display:grid;place-items:center;justify-items:center;min-height:1.1em;perspective:700px;overflow:hidden}
+ #hero h1 .ares-tag{grid-area:1/1;display:block;max-width:100%;white-space:nowrap;justify-self:center;font-family:'Bruno Ace SC',sans-serif;color:var(--t);letter-spacing:0.05em;will-change:transform,opacity;text-shadow:0 0 0 rgba(246,174,45,0);transform-origin:center center}
+#hero:hover #hero-bg{filter:saturate(1.12) brightness(1.08)}
+ #hero:hover #hero h1 .ares-tag{text-shadow:0 0 28px rgba(246,174,45,.18)}
 .hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.85rem,1.6vw,1rem);color:var(--t2);letter-spacing:0.04em;margin-top:1rem;max-width:560px;margin-left:auto;margin-right:auto}
 .hero-scroll-hint{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--t3);margin-top:3rem}
 
 #expectativa{text-align:center}
+#expectativa .expectativa-intro{max-width:620px;margin:0.7rem auto 0;color:var(--wtext2);font-size:0.9rem;line-height:1.8}
 #expectativa .exp-lines{max-width:600px;margin:2rem auto 0;display:flex;flex-direction:column;gap:1.2rem}
 #expectativa .exp-line{font-family:'Orbitron',sans-serif;font-size:0.95rem;line-height:1.8;opacity:0}
 #expectativa .exp-line.show{opacity:1;transition:opacity 0.8s ease}
 #expectativa .exp-line strong{color:var(--hl);font-weight:500}
 .light #expectativa .exp-line{color:var(--wtext2)}
+#expectativa .expectativa-close{max-width:620px;margin:2rem auto 0;color:var(--wtext);font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:1.8;letter-spacing:0.02em}
+
+/* === QUE PODRAS HACER === */
+#como-funciona{background:rgba(21,29,37,0.96);text-align:center}
+.coming-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;max-width:980px;margin:2.5rem auto 0;text-align:left}
+.coming-card{position:relative;padding:1.8rem 1.5rem;background:rgba(134,187,216,0.08);clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}
+.coming-card::before{content:'';position:absolute;inset:1px;background:var(--bg);clip-path:polygon(13px 0,100% 0,100% calc(100% - 13px),calc(100% - 13px) 100%,0 100%,0 13px)}
+.coming-card>*{position:relative;z-index:1}
+.coming-index{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--hl);margin-bottom:1.4rem}
+.coming-card h3{font-family:'Bruno Ace SC',sans-serif;font-size:1rem;line-height:1.4;color:var(--t);margin-bottom:.7rem;text-transform:uppercase}
+.coming-card p{font-size:.86rem;line-height:1.8;color:var(--t2)}
+.coming-card strong{color:var(--t);font-weight:500}
+
+/* === LANZAMIENTO === */
+#lanzamiento{background:var(--white);color:var(--wtext);text-align:center}
+.launch-intro{max-width:620px;margin:.7rem auto 0;color:var(--wtext2);font-size:.9rem;line-height:1.8}
+.launch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:900px;margin:2.5rem auto 0;text-align:left}
+.launch-step{padding:1.4rem 1.25rem;border-top:2px solid rgba(47,72,88,.18);background:rgba(47,72,88,.04)}
+.launch-step.is-now{border-top-color:var(--cta);background:rgba(242,100,25,.06)}
+.launch-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--cta);text-transform:uppercase;margin-bottom:.8rem}
+.launch-step h3{font-family:'Bruno Ace SC',sans-serif;font-size:.95rem;line-height:1.4;color:var(--wtext);margin-bottom:.55rem;text-transform:uppercase}
+.launch-step p{font-size:.82rem;line-height:1.75;color:var(--wtext2)}
+.launch-note{max-width:640px;margin:1.8rem auto 0;font-family:'JetBrains Mono',monospace;font-size:9px;line-height:1.7;color:var(--wtext2)}
+
+/* === FAQ === */
+/* Va montada sobre #preventa: necesita tambien el corte superior, si no tapa
+   el corte de la anterior y la union queda recta. */
+#faq{background:rgba(21,29,37,.98);clip-path:polygon(0 var(--section-cut,40px),100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
+.coming-faq{max-width:720px;margin:2rem auto 0;display:flex;flex-direction:column;gap:.75rem}
+.coming-faq details{background:rgba(255,255,255,.03);border:1px solid rgba(240,242,245,.08);border-radius:6px;overflow:hidden;text-align:left;transition:border-color .25s,box-shadow .25s,background .25s}
+.coming-faq details[open]{border-color:rgba(242,100,25,.58);box-shadow:0 0 0 1px rgba(242,100,25,.12);background:rgba(255,255,255,.045)}
+.coming-faq summary{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.3rem;color:var(--t);font-family:'Orbitron',sans-serif;font-size:.88rem;font-weight:500;line-height:1.5;cursor:pointer;list-style:none;user-select:none}
+.coming-faq summary::-webkit-details-marker{display:none}
+.coming-faq summary::after{content:'+';color:var(--hl);font-family:'JetBrains Mono',monospace;font-size:1.3rem;line-height:1;flex-shrink:0;transition:transform .35s cubic-bezier(.16,1,.3,1),color .3s}
+.coming-faq details[open] summary::after{transform:rotate(45deg);color:var(--cta)}
+.coming-faq p{max-width:none;padding:0 1.3rem 1.1rem;color:var(--t2);font-size:.85rem;line-height:1.8}
+.coming-faq summary:focus-visible{outline:2px solid var(--cta);outline-offset:-2px;border-radius:4px}
+
+@media(max-width:768px){.coming-grid,.launch-grid{grid-template-columns:1fr;gap:1rem}.coming-card{padding:1.5rem 1.25rem}.launch-step{padding:1.25rem}.coming-faq summary{font-size:.8rem}.coming-faq p{font-size:.82rem}}
 
 /* === CUESTIONARIO DE PREVENTA === */
 #preventa{text-align:center}
@@ -72,36 +120,45 @@
 
 /* === FOOTER MAP === */
 .pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:hidden;--footer-bg-stretch:0;--footer-svg-stretch:0;--footer-rise:0px;--footer-svg-base-scale:1;--footer-tile-height:calc(100% / var(--footer-svg-base-scale));--footer-scroll-extra:0px}
-.pf-footer-map{position:relative;width:100%;height:calc(224px * (1 + var(--footer-bg-stretch)));margin-top:calc(0px - var(--footer-rise));overflow:hidden;background:var(--bg)}
+.pf-footer-map{position:relative;width:100%;height:calc(clamp(340px,25vw,440px) * (1 + var(--footer-bg-stretch)));margin-top:calc(0px - var(--footer-rise));overflow:hidden;background:#101820}
 /* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
 .pf-footer-track{position:absolute;bottom:0;left:0;height:100%;display:flex;align-items:flex-end;width:max-content;gap:16px;overflow:visible;will-change:transform}
 .pf-footer-tile{flex-shrink:0;width:100vw;height:var(--footer-tile-height, calc(100% / var(--footer-svg-base-scale)));object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
 .pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
+/* El footer es un bloque propio: tono un punto mas oscuro que la seccion de
+   arriba (#151d25) y corte de 45 grados, igual que en la home (index.html). */
+footer{position:relative;z-index:2;background:#101820;clip-path:polygon(0 var(--section-cut,40px),100% 0,100% 100%,0 100%)}
+@media(max-width:768px){footer{clip-path:polygon(0 24px,100% 0,100% 100%,0 100%)}}
 .pf-footer-wrap,.pf-footer-map{overflow:hidden!important;contain:paint!important}
-@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px - var(--footer-scroll-extra,0px)))}}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-1 * var(--footer-tile-w,100vw) - 16px - var(--footer-scroll-extra,0px)))}}
 @media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
 @media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
-.pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
+.pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,#101820 0%,rgba(16,24,32,0.7) 25%,rgba(16,24,32,0.2) 55%,transparent 75%)}
 .pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
 .pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
-@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px;--footer-svg-base-scale:1}.pf-footer-map{height:184px;--footer-scroll-extra:calc(var(--footer-svg-stretch) * 100vw)}.pf-footer-track{gap:calc(16px + var(--footer-scroll-extra))}.pf-footer-tile{transform:translate3d(0,10px,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)))}#preventa.sec-darker{clip-path:polygon(0 24px,100% 0,100% 100%,0 100%)}}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px;--footer-svg-base-scale:1;--footer-tile-w:min(220vw,900px)}.pf-footer-map{height:min(calc(58vw + 135px),400px);--footer-tile-height:min(calc(58vw + 135px),400px);--footer-scroll-extra:calc(var(--footer-svg-stretch) * min(220vw,900px))}.pf-footer-track{gap:calc(16px + var(--footer-scroll-extra))}.pf-footer-tile{width:min(220vw,900px);transform:translate3d(0,-53px,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)))}#preventa.sec-darker{clip-path:polygon(0 24px,100% 0,100% 100%,0 100%)}}
 
 @media(max-width:768px){
   #hero{min-height:clamp(520px,72svh,680px)}
   #hero-bg canvas{height:100%!important;min-height:0!important}
+  #hero .hero-tag{display:block}
+  #hero h1{width:100%;max-width:calc(100vw - 2rem);font-size:clamp(3.5rem,18vw,5rem)!important;letter-spacing:0.04em;line-height:1.05;justify-items:center;overflow-wrap:normal}
+  #hero h1 .ares-tag{white-space:nowrap;max-width:100%}
 }
 
-.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
-.sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
+.sec-light{clip-path:polygon(0 var(--section-cut,40px),100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
 section:first-of-type{clip-path:none}
 
 /* Encaje 45: la cadena usa una unica diagonal entre secciones. */
-#hero{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
-#expectativa,#preventa{margin-top:-40px}
-#preventa{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
-#preventa{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
+#hero{clip-path:polygon(0 0,100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
+#expectativa,#como-funciona,#lanzamiento,#faq,#preventa{margin-top:calc(-1 * var(--section-cut,40px))}
+#como-funciona{position:relative;clip-path:polygon(0 var(--section-cut,40px),100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
+#como-funciona::before{content:'';position:absolute;inset:0 0 auto;height:var(--section-cut,40px);background:rgba(21,29,37,0.96);clip-path:polygon(0 100%,100% 0,100% 100%);pointer-events:none;z-index:0}
+#como-funciona .container{position:relative;z-index:1}
+ #preventa{background:var(--bg);clip-path:polygon(0 var(--section-cut,40px),100% 0,100% 100%,0 100%)}
 </style>
-<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/analytics.js" defer></script>
 </head>
 <body>
 
@@ -111,37 +168,24 @@ section:first-of-type{clip-path:none}
 <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="navOverlay" aria-expanded="false">
   <span></span><span></span><span></span>
 </button>
-<nav id="main-nav">
-  <a href="../index.html" class="nl">ARES GPS</a>
-  <a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a>
-  <ul class="inline-links">
-    <li><a href="../index.html#como-funciona">Cómo funciona</a></li>
-    <li><a href="../index.html#extras">Extras</a></li>
-    <li><a href="../index.html#planes">Planes</a></li>
-    <li><a href="pricing.html">Precios</a></li>
-    <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
-      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
-    </li>
-  </ul>
-</nav>
+<nav id="main-nav"><a href="../index.html" class="nl">ARES GPS</a><a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a><ul class="inline-links"><li><a href="#como-funciona">Cómo funcionará</a></li><li><a href="#lanzamiento">Lanzamiento</a></li><li class="ndrop" id="navMore"><a class="ndrop-trigger" href="#">Más</a><div class="ndrop-menu"><a href="#faq">Preguntas frecuentes</a><a href="#preventa">Reservar mi ARES</a></div></li><li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
+      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Ejercicio y calorías</a><a href="nutricion.html">Alimentos tóxicos y dieta</a><a href="descanso.html">Sueño y descanso</a><a href="geocerca.html">Zonas seguras</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li></ul></nav>
 <div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Menú principal" tabindex="-1">
   <div class="nav-overlay-inner">
     <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
-    <ul class="nav-full-links">
-      <li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#expectativa">Qué viene</a></li><li class="nl-item"><a href="#preventa">Reservar mi ARES</a></li>
-       <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
-    </ul>
+    <ul class="nav-full-links"><li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#expectativa">Qué incluye</a></li><li class="nl-item"><a href="#como-funciona">Cómo funcionará</a></li><li class="nl-item"><a href="#lanzamiento">Lanzamiento</a></li><li class="nl-item"><a href="#faq">Preguntas frecuentes</a></li><li class="nl-item"><a href="#preventa">Reservar mi ARES</a></li><li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Ejercicio y calorías</a><a href="nutricion.html">Alimentos tóxicos y dieta</a><a href="descanso.html">Sueño y descanso</a><a href="geocerca.html">Zonas seguras</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li><li class="nl-item"><button type="button" class="nav-account-btn" data-account-open>Iniciar sesión</button></li></ul>
   </div>
 </div>
 <div class="ov-ticks" id="ovTicks"></div>
 
 <!-- HERO -->
 <section id="hero" class="sec-dark">
-  <div id="hero-bg" class="css-fallback"></div>
+  <div id="hero-bg"></div>
+  <div class="sec-prism" id="prism-hero" aria-hidden="true"></div>
   <div id="hero-veil"></div>
   <div class="container">
-    <div class="hero-tag">Próximamente</div>
-    <h1>ARES</h1>
+     <div class="hero-tag">Próximamente</div>
+     <h1 aria-label="ARES próximamente"><span class="ares-tag">ARES</span></h1>
     <div class="hero-sub">Porque los segundos que pasas sin saber dónde está tu perro no son segundos. Son horas.</div>
     <div class="hero-scroll-hint">Ayúdanos a construirlo &darr;</div>
   </div>
@@ -150,13 +194,69 @@ section:first-of-type{clip-path:none}
 <!-- BLOQUE DE EXPECTATIVA -->
 <section id="expectativa" class="sec-light light">
   <div class="container">
-    <div class="sl" style="text-align:center">Qué está por venir</div>
-    <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">LOCALIZACIÓN. SALUD. NUTRICIÓN.</h2>
+    <div class="sl" style="text-align:center">El día completo de tu perro</div>
+    <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">NO SOLO SABES DÓNDE ESTÁ. SABES CÓMO ESTÁ.</h2>
+    <p class="expectativa-intro">ARES reúne las señales importantes de su día para que puedas cuidarlo con más contexto y tomar mejores decisiones, sin depender de intuiciones aisladas.</p>
     <div class="exp-lines">
-      <p class="exp-line">Sabrás exactamente dónde está tu perro, <strong>con menos de un metro de error.</strong></p>
-      <p class="exp-line">Entenderás su actividad, su descanso y su condición física <strong>con datos reales, no suposiciones.</strong></p>
-      <p class="exp-line">Y sabrás si come lo que necesita para su tamaño y su edad — <strong>sin adivinar.</strong></p>
+      <p class="exp-line"><strong>SEGURIDAD.</strong> Localízalo, configura zonas seguras y recibe avisos cuando algo se salga de lo previsto.</p>
+      <p class="exp-line"><strong>RUTINA.</strong> Entiende cuánto se mueve, cuánto descansa y cómo cambia su actividad con el tiempo.</p>
+      <p class="exp-line"><strong>NUTRICIÓN.</strong> Descubre qué necesita según su tamaño, edad, actividad y condición, no según una recomendación genérica.</p>
+      <p class="exp-line"><strong>BIENESTAR.</strong> Detecta cambios en sus patrones antes de que se conviertan en una preocupación mayor.</p>
     </div>
+    <p class="expectativa-close">Un solo lugar para entender lo que pasa. Una forma más clara de cuidar cada día.</p>
+  </div>
+</section>
+
+<!-- QUE PODRAS HACER -->
+<section id="como-funciona" class="sec-darker">
+  <div class="container">
+    <div class="sl">La idea detrás de ARES</div>
+    <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">NO ES MIRAR DATOS. ES SABER QUÉ HACER.</h2>
+    <div class="ss" style="text-transform:none;letter-spacing:0;max-width:620px;margin:.6rem auto 0;color:var(--t2)">ARES convierte lo que pasa durante el día en decisiones sencillas para cuidar mejor a tu perro.</div>
+    <div class="coming-grid">
+      <article class="coming-card">
+        <div class="coming-index">01 / LOCALIZACIÓN</div>
+        <h3>Abres la app y dejas de imaginar</h3>
+        <p>Ves dónde está, revisas por dónde ha pasado y recibes un aviso si sale de una zona segura. <strong>Menos búsquedas a ciegas. Más capacidad de reaccionar.</strong></p>
+      </article>
+      <article class="coming-card">
+        <div class="coming-index">02 / BIENESTAR</div>
+        <h3>Entiendes su rutina real</h3>
+        <p>Actividad, paseo, juego y descanso en un mismo lugar. <strong>No para convertirlo en una competición, sino para detectar cuándo su día se sale de lo habitual.</strong></p>
+      </article>
+      <article class="coming-card">
+        <div class="coming-index">03 / TRANQUILIDAD</div>
+        <h3>Compartes la responsabilidad</h3>
+        <p>Puedes dar acceso a quien también lo cuida y consultar lo mismo que esa persona. <strong>Tu perro sigue acompañado aunque tú estés trabajando o lejos.</strong></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- LANZAMIENTO -->
+<section id="lanzamiento" class="sec-light light">
+  <div class="container">
+    <div class="sl">Dónde estamos</div>
+    <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">ARES SE CONSTRUYE CONTIGO</h2>
+    <p class="launch-intro">No queremos lanzar otro dispositivo y esperar que encaje en tu vida. Primero escuchamos qué necesitas; después probamos, corregimos y abrimos las primeras reservas.</p>
+    <div class="launch-grid">
+      <article class="launch-step is-now">
+        <div class="launch-label">Ahora / Validación</div>
+        <h3>Escuchamos a dueños reales</h3>
+        <p>Este cuestionario nos ayuda a priorizar lo que más importa: seguridad, alimentación, actividad, descanso y calidad de vida.</p>
+      </article>
+      <article class="launch-step">
+        <div class="launch-label">Después / Primeras pruebas</div>
+        <h3>Probamos con perros de verdad</h3>
+        <p>Comprobamos que la experiencia sea clara en casa, en el parque y durante los paseos antes de abrir el producto a todo el mundo.</p>
+      </article>
+      <article class="launch-step">
+        <div class="launch-label">Siguiente / Apertura</div>
+        <h3>Abrimos las primeras reservas</h3>
+        <p>Las personas apuntadas recibirán el aviso antes que nadie, con la información del lanzamiento y sin compromiso de compra.</p>
+      </article>
+    </div>
+    <p class="launch-note">Tu respuesta no te obliga a comprar nada. Solo nos ayuda a no construir a ciegas.</p>
   </div>
 </section>
 
@@ -208,9 +308,10 @@ section:first-of-type{clip-path:none}
           <div class="pv-field">
             <div class="pv-choices">
               <label class="pv-choice"><input type="checkbox" name="pv-preocupa" value="perderlo"><span>Perderlo — que se escape o se pierda</span></label>
-              <label class="pv-choice"><input type="checkbox" name="pv-preocupa" value="alimentacion"><span>Su alimentación — si come lo que necesita</span></label>
-              <label class="pv-choice"><input type="checkbox" name="pv-preocupa" value="actividad"><span>Su nivel de actividad o ejercicio</span></label>
-              <label class="pv-choice"><input type="checkbox" name="pv-preocupa" value="salud"><span>Su salud en general</span></label>
+               <label class="pv-choice"><input type="checkbox" name="pv-preocupa" value="alimentacion"><span>Su alimentación — si come lo que necesita</span></label>
+               <label class="pv-choice"><input type="checkbox" name="pv-preocupa" value="actividad"><span>Su nivel de actividad o ejercicio</span></label>
+               <label class="pv-choice"><input type="checkbox" name="pv-preocupa" value="descanso"><span>Su descanso — si duerme y recupera bien</span></label>
+               <label class="pv-choice"><input type="checkbox" name="pv-preocupa" value="calidad_vida"><span>Su calidad de vida y sus rutinas</span></label>
             </div>
           </div>
           <div class="pv-nav">
@@ -267,6 +368,40 @@ section:first-of-type{clip-path:none}
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq" class="sec-darker">
+  <div class="container">
+    <div class="sl">Antes de apuntarte</div>
+    <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">PREGUNTAS HONESTAS</h2>
+    <div class="coming-faq">
+      <details>
+        <summary>¿ARES ya está disponible?</summary>
+        <p>Todavía no. Estamos en fase de validación y preparación de las primeras pruebas. Puedes dejar tu email para recibir el aviso cuando abramos las reservas.</p>
+      </details>
+      <details>
+        <summary>¿Apuntarme significa que tengo que comprarlo?</summary>
+        <p>No. El cuestionario y el aviso de lanzamiento no te comprometen a comprar. Solo nos permiten entender si ARES resuelve una necesidad real.</p>
+      </details>
+      <details>
+        <summary>¿Qué recibiré si dejo mi email?</summary>
+        <p>El aviso cuando ARES esté listo para reservar y la información necesaria para decidir con calma. Podrás darte de baja cuando quieras.</p>
+      </details>
+      <details>
+        <summary>¿Qué quiere mejorar ARES en el día a día?</summary>
+        <p>ARES quiere reducir la incertidumbre sobre el bienestar de tu perro: ayudarte a saber dónde está, cómo se mueve, cómo descansa y qué hábitos pueden mejorar su calidad de vida. La aplicación orienta y reúne la información; no sustituye al veterinario.</p>
+      </details>
+      <details>
+        <summary>¿ARES también tendrá en cuenta la alimentación?</summary>
+        <p>Sí. La alimentación forma parte del enfoque de bienestar de ARES: podrás consultar pautas y señales útiles para cuidar mejor sus hábitos, siempre como orientación general y sin sustituir una recomendación veterinaria.</p>
+      </details>
+      <details>
+        <summary>¿Cómo puede ayudar ARES a mejorar su calidad de vida?</summary>
+        <p>Relacionando lo que ocurre durante el día: actividad, descanso, rutinas y contexto. El objetivo es que tengas una visión más clara para detectar cambios, mantener buenos hábitos y cuidar mejor de tu perro.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="pf-footer-wrap">
     <div class="pf-footer-map">
@@ -285,54 +420,9 @@ section:first-of-type{clip-path:none}
 </footer>
 
 <script src="../assets/js/gsap.min.js"></script>
+<script src="../assets/js/TextPlugin.min.js"></script>
+<script src="../assets/js/CustomEase.min.js"></script>
 <script>
-/* ============================================
-   FONDO ANIMADO — Vanta.js con fallback CSS
-   ============================================
-   Vanta.WAVES requiere three.js ya cargado en window.THREE antes de
-   ejecutarse. Cargamos ambos scripts en secuencia estricta:
-     1) three.js (CDN, igual que landing/index.html)
-     2) assets/vendor/vanta.waves.min.js (vendorizado, Pick4Design)
-   Si el paso 1 falla (sin red), nos quedamos con el gradiente CSS
-   ya aplicado por defecto en #hero-bg (.css-fallback) — no hay error visible.
-   ============================================ */
-(function(){
-  const bg = document.getElementById('hero-bg');
-
-  function loadScript(src){
-    return new Promise((resolve, reject)=>{
-      const s = document.createElement('script');
-      s.src = src; s.onload = resolve; s.onerror = reject;
-      document.head.appendChild(s);
-    });
-  }
-
-  loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
-    .then(()=> loadScript('assets/vendor/vanta.waves.min.js'))
-    .then(()=> {
-      if(window.VANTA && window.VANTA.WAVES){
-        bg.classList.remove('css-fallback');
-        // Fondo oscurecido a peticion: color de ola mas apagado + backgroundColor casi negro,
-        // en vez del velo semitransparente que ya cubre el canvas (#hero-veil) como refuerzo.
-        window.VANTA.WAVES({
-          el: '#hero-bg',
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          scale: 1,
-          color: 0x1c3a4d,
-          backgroundColor: 0x0a0e12,
-          shininess: 12,
-          waveHeight: 12,
-          waveSpeed: 0.7,
-          zoom: 0.9,
-        });
-      }
-      // si VANTA no expone WAVES por algun motivo, se queda el fallback CSS
-    })
-    .catch(()=>{ /* sin red: se queda el gradiente CSS fallback */ });
-})();
-
 /* ============================================
    REVEAL DEL BLOQUE DE EXPECTATIVA (fade-in simple)
    ============================================ */
@@ -513,29 +603,83 @@ section:first-of-type{clip-path:none}
 })();
 </script>
 <script src="assets/js/mobile-menu.js"></script>
+<script src="assets/js/account.js"></script>
 <script src="assets/js/scroll-indicator.js"></script>
-<script src="assets/js/typewriter.js"></script>
 <script>
+  /* MALLA PRISMATICA — misma malla interactiva que usa landing/index.html. */
+  function buildPrism(id){
+    const wrap=document.getElementById(id);if(!wrap)return;
+    const section=wrap.closest('section')||wrap.parentElement;
+    const size=40,cols=Math.ceil(section.offsetWidth/size)+4,rows=Math.ceil(section.offsetHeight/size)+4;
+    const grid=document.createElement('div');grid.className='prism-grid';
+    const gw=cols*size,gh=rows*size;
+    grid.style.cssText=`width:${gw}px;height:${gh}px;margin-left:${gw/-2}px;margin-top:${gh/-2}px;grid-template-columns:repeat(${cols},${size}px);grid-template-rows:repeat(${rows},${size}px)`;
+    const cells=[];
+    for(let i=0;i<rows*cols;i++){
+      const cell=document.createElement('div');
+      cell.className='prism-cell';
+      cell.style.cssText=`width:${size}px;height:${size}px`;
+      grid.appendChild(cell);cells.push(cell);
+    }
+    wrap.appendChild(grid);
+    const trail=[],max=18;let cc='134,187,216';
+    section.addEventListener('mousemove',event=>{
+      const rect=section.getBoundingClientRect();
+      const cx=section.offsetWidth/2,cy=section.offsetHeight/2,gl=cx-gw/2,gt=cy-gh/2;
+      const col=Math.floor((event.clientX-rect.left-gl)/size),row=Math.floor((event.clientY-rect.top-gt)/size);
+      if(col>=0&&col<cols&&row>=0&&row<rows)trail.push({col,row,life:1});
+      const hovered=document.querySelector(':hover');
+      cc=hovered&&(hovered.tagName==='A'||hovered.tagName==='BUTTON'||hovered.closest('.btn'))?'246,174,45':'134,187,216';
+    });
+    section.addEventListener('mouseleave',()=>{
+      trail.length=0;
+      cells.forEach(cell=>{cell.style.background='rgba(134,187,216,0)';cell.classList.remove('lit')});
+    });
+    function animate(){
+      for(let i=trail.length-1;i>=0;i--){trail[i].life-=0.04;if(trail[i].life<=0)trail.splice(i,1)}
+      while(trail.length>max)trail.shift();
+      const lightMap={};
+      trail.forEach(point=>{const key=point.row*cols+point.col;if(!lightMap[key]||lightMap[key]<point.life)lightMap[key]=point.life});
+      cells.forEach((cell,index)=>{
+        const life=lightMap[index]||0;
+        cell.style.background=life>0.01?`rgba(${cc},${life*0.3})`:'rgba(134,187,216,0)';
+        if(life>0.01)cell.classList.add('lit');else cell.classList.remove('lit');
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
+  buildPrism('prism-hero');
+
+  /* HERO — un solo nodo de texto, igual que la portada, para evitar solapamientos. */
   (() => {
-    const footerMap = document.querySelector('.pf-footer-map');
-    if (!footerMap) return;
-    let target = 0, current = 0, lastInput = 0, lastTouchY = null, frame = 0;
-    const maxStretch = window.innerWidth <= 768 ? 0.16 : 0.12;
-    const bgFactor = window.innerWidth <= 768 ? 0 : 0.65;
-    const svgFactor = window.innerWidth <= 768 ? 1 : 0.65;
-    const baseHeight = footerMap.offsetHeight;
-    const baseScale = parseFloat(getComputedStyle(footerMap).getPropertyValue('--footer-svg-base-scale')) || 1;
-    const atEnd = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-    const release = () => { target = 0; lastInput = 0; if (!frame) frame = requestAnimationFrame(tick); };
-    const push = (amount) => { target = Math.min(maxStretch, target + Math.min(maxStretch, amount)); lastInput = performance.now(); if (!frame) frame = requestAnimationFrame(tick); };
-    const tick = (now) => { const elapsed = now - lastInput; if (elapsed > 90) target = Math.max(0, target - 0.12 * Math.min(1, (elapsed - 90) / 140)); current += (target - current) * 0.22; footerMap.style.setProperty('--footer-bg-stretch', (current * bgFactor).toFixed(4)); footerMap.style.setProperty('--footer-svg-stretch', (current * svgFactor).toFixed(4)); footerMap.style.setProperty('--footer-rise', (current * bgFactor * baseHeight).toFixed(2) + 'px'); if (window.innerWidth > 768) footerMap.style.setProperty('--footer-tile-height', (footerMap.offsetHeight / (baseScale + current * svgFactor)).toFixed(2) + 'px'); else footerMap.style.removeProperty('--footer-tile-height'); if (Math.abs(current - target) > 0.0005 || target > 0.0005) frame = requestAnimationFrame(tick); else { current = 0; target = 0; footerMap.style.removeProperty('--footer-bg-stretch'); footerMap.style.removeProperty('--footer-svg-stretch'); footerMap.style.removeProperty('--footer-rise'); footerMap.style.removeProperty('--footer-tile-height'); frame = 0; } };
-    window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && atEnd()) push(Math.abs(event.deltaY) * 0.0009); else if (event.deltaY < 0) release(); }, {passive:true});
-    window.addEventListener('touchstart', (event) => { lastTouchY = event.touches[0]?.clientY ?? null; }, {passive:true});
-    window.addEventListener('touchmove', (event) => { const y = event.touches[0]?.clientY ?? lastTouchY; const delta = lastTouchY == null || y == null ? 0 : lastTouchY - y; lastTouchY = y; if (delta > 0 && atEnd()) push(delta * 0.002); else if (delta < 0) release(); }, {passive:true});
-    window.addEventListener('touchend', () => { lastTouchY = null; release(); }, {passive:true});
-    window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
-  })();
+    const aresEl = document.querySelector('#hero h1 .ares-tag');
+    if (!aresEl || !window.gsap || !window.TextPlugin) return;
+    gsap.registerPlugin(TextPlugin);
+    if (window.CustomEase) {
+      gsap.registerPlugin(CustomEase);
+      CustomEase.create('proximamenteOvershoot','M0,0 C0.3,1.3 0.6,0.85 1,1');
+    }
+    const mobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+    if (mobile) {
+      aresEl.textContent = 'ARES';
+      return;
+    }
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    let morphState = 0;
+    function morph() {
+      morphState = 1 - morphState;
+      gsap.timeline()
+        .to(aresEl, { rotateX:90, opacity:0, duration:0.2, ease:'power2.in' })
+        .set(aresEl, { text:{ value:morphState ? 'PRÓXIMAMENTE' : 'ARES' } })
+        .to(aresEl, { rotateX:0, opacity:1, duration:0.35, ease:window.CustomEase ? 'proximamenteOvershoot' : 'back.out(1.1)' });
+       window.setTimeout(morph, morphState ? 2000 : 1000);
+     }
+     window.setTimeout(morph, 1000);
+   })();
 </script>
-<script src="../assets/js/footer-common.js"></script>
+<script src="assets/js/footer-map.js" defer></script>
+<script src="../assets/js/footer-common.js" defer></script>
 </body>
 </html>

@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="../assets/css/footer-common.css">
 <link rel="stylesheet" href="assets/css/lead-capture.css">
+<link rel="stylesheet" href="assets/css/account.css">
 <link rel="stylesheet" href="assets/vendor/splitting.css">
 <style>
 /* === HERO CORTO ===
@@ -19,8 +20,9 @@
    de section{padding:5rem 0} de base.css, que sumaba aun mas aire por debajo
    del hero -- se reduce especificamente su padding-top mas abajo. */
 #hero{min-height:38vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:5.5rem}
+#hero .container{position:relative;z-index:1}
 .hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--hl);text-transform:uppercase;margin-bottom:1rem}
-#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);color:var(--t);letter-spacing:0.02em;line-height:1.2;text-transform:uppercase;max-width:780px}
+#hero h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);color:var(--t);letter-spacing:0.02em;line-height:1.2;text-transform:uppercase;max-width:780px;margin:0 auto}
 .hero-sub{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(0.85rem,1.6vw,1rem);color:var(--t2);margin-top:1rem}
 
 /* #form-section: quita el padding vertical generico de section (5rem) y usa uno
@@ -49,7 +51,19 @@
 .calc-field input,.calc-field select{width:100%;background:#20303d;border:1px solid rgba(240,242,245,0.18);color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;border-radius:4px;transition:border-color 0.3s,background 0.3s}
 .calc-field input:hover,.calc-field select:hover{border-color:rgba(240,242,245,0.35)}
 .calc-field input:focus,.calc-field select:focus{outline:none;border-color:var(--cta);background:#243547}
-.calc-field input:focus-visible,.calc-field select:focus-visible{outline:2px solid var(--hl);outline-offset:4px}
+ .calc-field input:focus-visible,.calc-field select:focus-visible{outline:2px solid var(--hl);outline-offset:4px}
+ .num-wrap.approx-hidden{display:none!important}
+  .height-guide{margin-top:.65rem;border:1px solid rgba(134,187,216,.18);background:rgba(240,242,245,.035)}
+  .height-guide summary{cursor:pointer;padding:.55rem .65rem;color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;list-style:none}
+  .height-guide summary::-webkit-details-marker{display:none}
+  .height-guide summary::before{content:'+';display:inline-block;width:1.2em;color:var(--hl);font-size:13px}
+  .height-guide[open] summary::before{content:'−'}
+   .height-measure-guide{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(140px,.75fr);gap:.7rem;align-items:center;margin:0;padding:.65rem;border-top:1px solid rgba(134,187,216,.12)}
+   .height-measure-guide img{width:100%;height:auto;min-height:260px;object-fit:contain;background:rgba(19,37,51,.72);border:1px solid rgba(240,242,245,.1);box-sizing:border-box}
+   .height-measure-guide figcaption{font-family:'JetBrains Mono',monospace;font-size:8.5px;line-height:1.65;letter-spacing:.03em;color:var(--t3)}
+   .height-measure-guide strong{display:block;color:var(--hl);font-weight:500;text-transform:uppercase;margin-bottom:.25rem}
+   @media(min-width:641px){.height-guide{width:calc(200% + 1rem);margin-top:2.65rem;margin-left:calc(-100% - 1rem)}.height-measure-guide{grid-template-columns:minmax(0,1.55fr) minmax(180px,.8fr)}}
+   @media(max-width:640px){.height-measure-guide{grid-template-columns:1fr}.height-measure-guide img{min-height:0}.height-measure-guide figcaption{font-size:9px}}
 .calc-field select{appearance:none;cursor:pointer;padding-right:3rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f0f2f5' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.2rem center}
 .calc-field select option{background:#20303d;color:var(--t)}
 .calc-field input::placeholder{color:var(--t3)}
@@ -146,20 +160,21 @@
 .scale-fill{position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--deco),var(--hl),var(--cta));width:0}
 .scale-marker{position:absolute;top:50%;width:3px;height:26px;background:var(--t);transform:translate(-50%,-50%);left:0}
 .scale-marker::after{content:'';position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:9px;height:9px;background:var(--t);border-radius:50%}
-.scale-labels{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.06em;color:var(--t3);text-transform:uppercase}
-.scale-value{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t2);margin-top:0.75rem}
+.scale-labels{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.06em;color:rgba(240,242,245,0.62);text-transform:uppercase}
+.scale-value{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(240,242,245,0.78);margin-top:0.75rem}
 
 /* === CAJA DE DATOS CLAVE (IMC + rango) — sin badges de fondo, carácter con borde + mono === */
-#data-card{max-width:640px;margin:0 auto 1.2rem;border-top:1px solid rgba(240,242,245,0.15);border-bottom:1px solid rgba(240,242,245,0.15);padding:1rem 0;display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem 1.5rem}
+#data-card{max-width:640px;margin:0 auto 1.2rem;border-top:1px solid rgba(240,242,245,0.15);border-bottom:1px solid rgba(240,242,245,0.15);padding:1rem 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.5rem 1.5rem}
 #data-card .dc-row{display:flex;flex-direction:column;gap:0.35rem;padding:0.3rem 0;text-align:center}
 #data-card .dc-row + .dc-row{border-top:none;border-left:1px solid rgba(240,242,245,0.06)}
-#data-card .dc-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3)}
+#data-card .dc-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(240,242,245,0.62)}
 #data-card .dc-value{font-family:'Bruno Ace SC',sans-serif;font-size:1.3rem;letter-spacing:0.02em;color:var(--t)}
 #data-card .dc-value.hl{color:var(--hl)}
 #data-card .dc-note{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.04em;color:var(--deco);text-align:center;margin-top:0.3rem;grid-column:1/-1}
 /* Nota de menor precision cuando el resultado se calculo con rango aproximado
    de peso/altura en vez de cifra exacta (ver approxInput en calculadora-engine.js) */
 #data-card .dc-note.approx{color:#ff8a65}
+@media(max-width:900px){#data-card{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){#data-card{grid-template-columns:1fr}#data-card .dc-row + .dc-row{border-left:none;border-top:1px solid rgba(240,242,245,0.06)}}
 
 #result-cta{opacity:0;margin-top:1.1rem}
@@ -168,18 +183,25 @@
 .result-cta-sub{font-family:'Orbitron',sans-serif;font-size:0.8rem;color:var(--t2);text-align:center;margin-bottom:1.5rem}
 /* CTA secundario de nutricion (punto 10): mismo look, acento en --deco para diferenciarlo del generico */
 .result-cta-heading.nutricion{color:var(--hl)}
+.result-cta-actions{display:flex;justify-content:center;gap:0.8rem;flex-wrap:wrap;margin-top:1.1rem}
+.result-cta-actions .btn{margin:0}
+.result-activity-link{font-size:10px!important;padding:0.8rem 1rem!important}
 
-/* Perfilado (pregunta opcional post-email) */
-#profiling{display:none;max-width:480px;margin:2rem auto 0;text-align:center}
-#profiling.visible{display:block}
-#profiling p{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;color:var(--t3);text-transform:uppercase;margin-bottom:1rem}
-#profiling select{width:100%;background:#20303d;border:1px solid rgba(240,242,245,0.18);color:var(--t);font-family:'Orbitron',sans-serif;font-size:0.85rem;padding:0.75rem 3rem 0.75rem 0.85rem;border-radius:4px;appearance:none;cursor:pointer;transition:border-color 0.3s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f0f2f5' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
-#profiling select:hover{border-color:rgba(240,242,245,0.35)}
-#profiling select:focus{outline:none;border-color:var(--cta)}
-#profiling select option{background:#20303d;color:var(--t)}
-
-.restart-link{display:block;text-align:center;margin-top:1.4rem;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--t3);text-decoration:none}
+.restart-link{display:block;text-align:center;margin-top:1.4rem;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--cta);text-decoration:none}
 .restart-link:hover{color:var(--cta)}
+.result-edit-link{border:0;background:none;cursor:pointer;width:100%;padding:0}
+
+/* Aviso de perfil importado desde la calculadora de actividad */
+#import-note{max-width:520px;margin:0 auto 1.2rem;padding:0.7rem 1rem;border:1px solid rgba(246,174,45,0.28);background:rgba(246,174,45,0.05);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.05em;color:var(--hl);line-height:1.6;text-align:center}
+
+/* Selector de edad: meses (primeros 24) o años */
+.age-input-row{display:flex;gap:0.75rem;align-items:stretch;flex-wrap:wrap}
+.age-input-row input[type=number]{flex:1 1 140px}
+.age-unit-toggle{display:inline-flex;border:1px solid rgba(240,242,245,0.18);clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);overflow:hidden}
+.age-unit-btn{background:rgba(240,242,245,0.04);border:none;color:var(--t2);font-family:'Orbitron',sans-serif;font-weight:500;font-size:0.72rem;letter-spacing:0.04em;text-transform:uppercase;padding:0.7rem 1.1rem;cursor:pointer;transition:background 0.25s,color 0.25s}
+.age-unit-btn:hover{color:var(--t)}
+.age-unit-btn.active{background:var(--cta);color:#fff}
+.age-help{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.03em;color:var(--t3);line-height:1.6;margin-top:0.6rem}
 
 /* === COPY DE APOYO === */
 #apoyo .cl{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
@@ -188,7 +210,10 @@
 #apoyo .cc p{font-size:0.85rem;color:var(--wtext2);line-height:1.8}
 
 @media(max-width:768px){
-  #hero h1{max-width:min(100%,780px)!important;font-size:clamp(2rem,5vw,3.6rem)!important;letter-spacing:0;line-height:1.12;overflow-wrap:normal!important;word-break:keep-all!important;text-wrap:balance}
+  #hero h1{width:100%;max-width:min(100%,340px)!important;padding-inline:0.25rem;font-size:clamp(1.8rem,9vw,2.4rem)!important;letter-spacing:-0.01em;line-height:1.1;overflow-wrap:normal!important;word-break:normal!important;text-wrap:balance}
+  #hero .hero-sub{width:100%;max-width:min(100%,300px);overflow-wrap:anywhere;white-space:normal}
+  .calc-intro h2{max-width:300px;margin-inline:auto;font-size:clamp(1.1rem,5.5vw,1.6rem);overflow-wrap:anywhere;text-wrap:balance}
+  .calc-intro p{max-width:300px;font-size:0.78rem;overflow-wrap:anywhere}
   .calc-step[data-step="1"] .calc-nav{justify-content:center}
   .calc-row{grid-template-columns:1fr}
   #apoyo .cl{grid-template-columns:1fr}
@@ -196,31 +221,33 @@
 
 /* === FOOTER MAP === */
 .pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:hidden;--footer-bg-stretch:0;--footer-svg-stretch:0;--footer-rise:0px;--footer-svg-base-scale:1;--footer-tile-height:calc(100% / var(--footer-svg-base-scale));--footer-scroll-extra:0px}
-.pf-footer-map{position:relative;width:100%;height:calc(280px * (1 + var(--footer-bg-stretch)));margin-top:calc(0px - var(--footer-rise));overflow:hidden;background:var(--bg)}
+.pf-footer-map{position:relative;width:100%;height:calc(clamp(340px,25vw,440px) * (1 + var(--footer-bg-stretch)));margin-top:calc(0px - var(--footer-rise));overflow:hidden;background:var(--bg)}
 /* Desktop: mapa quieto (la animacion horizontal solo se activa en tablet/movil) */
 .pf-footer-track{position:absolute;bottom:0;left:0;height:100%;display:flex;align-items:flex-end;width:max-content;gap:16px;overflow:visible;will-change:transform}
 .pf-footer-tile{flex-shrink:0;width:100vw;height:var(--footer-tile-height, calc(100% / var(--footer-svg-base-scale)));object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
 .pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
 .pf-footer-wrap,.pf-footer-map{overflow:hidden!important;contain:paint!important}
-@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100vw - 16px - var(--footer-scroll-extra,0px)))}}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-1 * var(--footer-tile-w,100vw) - 16px - var(--footer-scroll-extra,0px)))}}
 @media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
 @media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
 .pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
 .pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
 .pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
-@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px;--footer-svg-base-scale:1}.pf-footer-map{height:240px;--footer-scroll-extra:calc(var(--footer-svg-stretch) * 100vw)}.pf-footer-track{gap:calc(16px + var(--footer-scroll-extra))}.pf-footer-tile{transform:translate3d(0,10px,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)))}#apoyo.sec-light{clip-path:polygon(0 24px,100% 0,100% 100%,0 100%)}}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px;--footer-svg-base-scale:1;--footer-tile-w:min(220vw,900px)}.pf-footer-map{height:min(calc(58vw + 135px),400px);--footer-tile-height:min(calc(58vw + 135px),400px);--footer-scroll-extra:calc(var(--footer-svg-stretch) * min(220vw,900px))}.pf-footer-track{gap:calc(16px + var(--footer-scroll-extra))}.pf-footer-tile{width:min(220vw,900px);transform:translate3d(0,-53px,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)))}#apoyo.sec-light{clip-path:polygon(0 24px,100% 0,100% calc(100% - 24px),0 100%)}}
 
-.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
-.sec-light{clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
+.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
+.sec-light{clip-path:polygon(0 var(--section-cut,40px),100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
 section:first-of-type{clip-path:none}
 
 /* Encaje 45: form-section no tenia corte y rompia la continuidad. */
-#hero{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
-#form-section,#result-section{margin-top:-40px;clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%)}
-#apoyo{margin-top:-40px}
-#apoyo{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
+#hero{clip-path:polygon(0 0,100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
+#form-section,#result-section{margin-top:calc(-1 * var(--section-cut,40px));clip-path:polygon(0 var(--section-cut,40px),100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
+#apoyo{margin-top:calc(-1 * var(--section-cut,40px))}
+/* Antes solo cortaba arriba: el paso al footer (claro -> oscuro) quedaba recto.
+   Con el corte inferior el borde sigue la misma diagonal de 45 grados. */
+#apoyo{clip-path:polygon(0 var(--section-cut,40px),100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
 </style>
-<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/analytics.js" defer></script>
 </head>
 <body style="background:#151d25">
 
@@ -230,33 +257,20 @@ section:first-of-type{clip-path:none}
 <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="navOverlay" aria-expanded="false">
   <span></span><span></span><span></span>
 </button>
-<nav id="main-nav">
-  <a href="../index.html" class="nl">ARES GPS</a>
-  <a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a>
-  <ul class="inline-links">
-    <li><a href="../index.html#como-funciona">Cómo funciona</a></li>
-    <li><a href="../index.html#extras">Extras</a></li>
-    <li><a href="../index.html#planes">Planes</a></li>
-    <li><a href="pricing.html">Precios</a></li>
-    <li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
-      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div>
-    </li>
-  </ul>
-</nav>
+<nav id="main-nav"><a href="../index.html" class="nl">ARES GPS</a><a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a><ul class="inline-links"><li><a href="#form-section">Calculadora</a></li><li><a href="#result-section">Tu resultado</a></li><li><a href="#apoyo">Por qué importa</a></li><li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
+       <div class="ndrop-menu"><a href="actividad.html">Ejercicio y calorías</a><a href="nutricion.html">Alimentos tóxicos y dieta</a><a href="descanso.html">Sueño y descanso</a><a href="geocerca.html">Zonas seguras</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li></ul></nav>
 <div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Menú principal" tabindex="-1">
   <div class="nav-overlay-inner">
     <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
-    <ul class="nav-full-links">
-      <li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#form-section">Calculadora</a></li><li class="nl-item"><a href="#result-section">Tu resultado</a></li><li class="nl-item"><a href="#apoyo">Apoyo</a></li>
-       <li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li>
-    </ul>
+    <ul class="nav-full-links"><li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#form-section">Calculadora</a></li><li class="nl-item"><a href="#result-section">Tu resultado</a></li><li class="nl-item"><a href="#apoyo">Por qué importa</a></li><li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="actividad.html">Ejercicio y calorías</a><a href="nutricion.html">Alimentos tóxicos y dieta</a><a href="descanso.html">Sueño y descanso</a><a href="geocerca.html">Zonas seguras</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li><li class="nl-item"><button type="button" class="nav-account-btn" data-account-open>Iniciar sesión</button></li></ul>
   </div>
 </div>
 <div class="ov-ticks" id="ovTicks"></div>
 
 <!-- HERO -->
 <section id="hero" class="sec-dark">
-  <div class="container">
+<div class="sec-prism" id="prism-hero" aria-hidden="true"></div>
+<div class="container">
     <div class="hero-tag">Seguridad y bienestar para tu perro</div>
     <h1>¿CUÁL ES EL PESO IDEAL DE TU PERRO?</h1>
     <div class="hero-sub">Una primera orientación sobre el peso de tu perro, sin adivinar.</div>
@@ -267,11 +281,14 @@ section:first-of-type{clip-path:none}
 <section id="form-section">
   <div class="container">
     <div id="form-progress"><div class="fill" id="progress-fill"></div></div>
-    <div id="step-dots">
+<div id="step-dots">
       <span class="dot active" data-dot="1"></span>
       <span class="dot" data-dot="2"></span>
       <span class="dot" data-dot="3"></span>
     </div>
+
+    <!-- Aviso cuando el perfil llega desde la calculadora de actividad -->
+    <div id="import-note" class="import-note" hidden role="status">Datos traídos desde la calculadora de actividad. Confírmalos y, si puedes, ajusta el peso y las medidas exactas.</div>
 
     <div class="calc-intro">
       <h2 class="st" style="font-size:clamp(1.4rem,3vw,2rem)">CALCULADORA DE PESO IDEAL PARA PERROS</h2>
@@ -285,7 +302,7 @@ section:first-of-type{clip-path:none}
           <div class="calc-field">
             <label for="f-breed">Raza de tu perro</label>
             <div class="breed-combo" data-breed-combo>
-              <input type="text" id="f-breed" autocomplete="off" role="combobox" aria-autocomplete="list" aria-controls="f-breed-list" aria-expanded="false" placeholder="Busca una raza (opcional)">
+              <input type="text" id="f-breed" autocomplete="off" role="combobox" aria-autocomplete="list" aria-controls="f-breed-list" aria-expanded="false" placeholder="Busca tu raza, ej. Labrador…">
               <input type="hidden" id="f-breed-value">
               <div class="breed-combo-list" id="f-breed-list" role="listbox"></div>
             </div>
@@ -320,6 +337,7 @@ section:first-of-type{clip-path:none}
           <div class="calc-field">
             <label for="f-sex">Sexo</label>
             <select id="f-sex" required>
+              <option value="">Selecciona el sexo…</option>
               <option value="U">No sé / Prefiero no decir</option>
               <option value="F">Hembra</option>
               <option value="M">Macho</option>
@@ -343,7 +361,7 @@ section:first-of-type{clip-path:none}
           <div class="calc-row">
             <div class="calc-field">
               <label for="f-weight">Peso actual (kg)</label>
-              <input type="number" id="f-weight" min="0.5" max="120" step="0.1" required placeholder="ej. 24.5">
+              <input type="number" id="f-weight" min="0.5" max="120" step="0.5" required placeholder="ej. 24.5" inputmode="decimal">
               <select id="f-weight-range" class="calc-approx-select"></select>
               <button type="button" class="calc-approx-toggle" id="btn-toggle-weight-approx"><span class="material-symbols-outlined">help</span> ¿No lo sabes con exactitud? Usa un rango aproximado</button>
             </div>
@@ -351,6 +369,13 @@ section:first-of-type{clip-path:none}
               <label for="f-height">Altura a la cruz (cm)</label>
               <input type="number" id="f-height" min="10" max="110" step="0.5" required placeholder="ej. 55">
               <select id="f-height-range" class="calc-approx-select"></select>
+              <details class="height-guide">
+                <summary>¿No sabes dónde medir la cruz?</summary>
+                <figure class="height-measure-guide">
+                  <img src="assets/img/altura-cruz-perro.png" alt="Perro de perfil con una línea vertical desde la cruz hasta el suelo" loading="lazy" decoding="async">
+                  <figcaption><strong>Mide aquí</strong>Desde el suelo hasta el punto más alto del hombro. El perro debe estar de pie, sobre una superficie firme.</figcaption>
+                </figure>
+              </details>
               <button type="button" class="calc-approx-toggle" id="btn-toggle-height-approx"><span class="material-symbols-outlined">help</span> ¿No lo sabes con exactitud? Usa un rango aproximado</button>
             </div>
           </div>
@@ -364,8 +389,15 @@ section:first-of-type{clip-path:none}
         <!-- Paso 3: edad -->
         <div class="calc-step" data-step="3">
           <div class="calc-field">
-            <label for="f-age">Edad aproximada (meses)</label>
-            <input type="number" id="f-age" min="1" max="240" step="1" required placeholder="ej. 36 (3 años)">
+            <label for="f-age">Edad aproximada</label>
+            <div class="age-input-row">
+              <input type="number" id="f-age" min="1" max="240" step="1" required placeholder="ej. 12" inputmode="numeric">
+              <div class="age-unit-toggle" id="age-unit" role="group" aria-label="Unidad de edad">
+                <button type="button" class="age-unit-btn active" data-unit="months" aria-pressed="true">Meses</button>
+                <button type="button" class="age-unit-btn" data-unit="years" aria-pressed="false">Años</button>
+              </div>
+            </div>
+            <p class="age-help" id="age-help">Los primeros 24 meses (2 años) se cuentan en meses, porque el cuerpo cambia mucho; a partir de ahí, cuenta en años.</p>
           </div>
           <div class="calc-nav">
             <button type="button" class="btn-ghost" data-prev><span>&larr; Atrás</span></button>
@@ -402,8 +434,16 @@ section:first-of-type{clip-path:none}
           <span class="dc-value hl" id="dc-bmi">—</span>
         </div>
         <div class="dc-row">
-          <span class="dc-label">Rango ideal</span>
-          <span class="dc-value" id="dc-range">—</span>
+          <span class="dc-label">Peso ideal estimado</span>
+          <span class="dc-value" id="dc-weight-range">—</span>
+        </div>
+        <div class="dc-row">
+          <span class="dc-label">Peso introducido</span>
+          <span class="dc-value" id="dc-input-weight">—</span>
+        </div>
+        <div class="dc-row">
+          <span class="dc-label">Altura introducida</span>
+          <span class="dc-value" id="dc-input-height">—</span>
         </div>
         <div class="dc-row">
           <span class="dc-label">Raza de referencia</span>
@@ -414,38 +454,19 @@ section:first-of-type{clip-path:none}
 
       <p class="disclaimer">Esto es una estimación basada en datos de referencia por raza, no un diagnóstico médico. Ante cualquier duda sobre la salud de tu perro, consulta siempre con tu veterinario.</p>
 
-      <!-- CTA de captura — el copy (heading/sub/boton) se adapta segun la categoria
-           de resultado (punto 10): generico para bajo_peso/ideal, nutricion para
-           sobrepeso/obesidad. Mismo formulario/lead-capture.js, solo cambia el texto. -->
-      <div id="result-cta">
-        <div class="result-cta-heading" id="result-cta-heading">Recibe seguimiento de la condición de tu perro</div>
-        <div class="result-cta-sub" id="result-cta-sub">Entérate cuando ARES esté disponible.</div>
+       <!-- CTA de siguiente paso: el beneficio es visible; la cuenta solo aparece
+            como gate tecnico despues del clic para conservar el perfil. -->
+       <div id="result-cta">
+         <div class="result-cta-heading" id="result-cta-heading">¿Quieres saber cuánto ejercicio necesita tu perro?</div>
+         <div class="result-cta-sub" id="result-cta-sub">Lleva este resultado a la calculadora de actividad y ajusta el paseo a su peso real.</div>
 
-        <form data-lead-form data-lead-source="calculadora" class="lead-form">
-          <div class="lf-row">
-            <input type="email" placeholder="tu@email.com" data-lead="email" required>
-            <button type="submit" data-lead="submit" id="result-cta-submit">Quiero saber más</button>
+         <div class="result-cta-actions">
+            <a id="activity-link" class="btn btn-cta result-activity-link" href="actividad.html"><span>Comprobar su actividad</span></a>
           </div>
-          <div class="lf-gdpr">
-            <input type="checkbox" id="gdpr-calc" data-lead="gdpr" required>
-            <label for="gdpr-calc">Acepto recibir comunicaciones de ARES GPS sobre el lanzamiento del producto y el seguimiento de la condición de mi perro. Puedo darme de baja cuando quiera.</label>
-          </div>
-          <span class="lead-feedback" data-lead="feedback"></span>
-        </form>
+       </div>
 
-        <!-- Pregunta de perfilado opcional -->
-        <div id="profiling">
-          <p>Opcional — nos ayuda a entender mejor a los dueños de ARES</p>
-          <select id="profiling-select">
-            <option value="">¿Dónde suele pasear tu perro?</option>
-            <option value="ciudad_parque_vallado">Ciudad / parque vallado</option>
-            <option value="campo_sin_correa">Campo o monte sin correa</option>
-            <option value="finca_propia">Finca propia</option>
-          </select>
-        </div>
-      </div>
-
-      <a href="#form-section" class="restart-link" id="restart-link">Calcular de nuevo</a>
+       <button type="button" class="restart-link result-edit-link" id="edit-result-link">&larr; Editar mis datos</button>
+       <a href="#form-section" class="restart-link" id="restart-link">Calcular de nuevo</a>
     </div>
   </div>
 </section>
@@ -499,6 +520,8 @@ section:first-of-type{clip-path:none}
 <script src="assets/vendor/splitting.min.js"></script>
 <script src="../assets/js/gsap.min.js"></script>
 <script src="assets/js/lead-capture.js"></script>
+<script src="assets/js/profile-bridge.js"></script>
+<script src="assets/js/account.js"></script>
 <script>
 /* ============================================
    NAV DEL FORMULARIO MULTI-PASO
@@ -557,6 +580,17 @@ section:first-of-type{clip-path:none}
       list.innerHTML = '';
       activeIdx = -1;
 
+      // Opción fija "Mestizo / No sé" (raza mínima exigida): siempre visible,
+      // al principio de la lista, sea cual sea la búsqueda. Elegirla equivale
+      // a indicar "no conozco la raza / es mestizo" y cuenta como raza rellena.
+      const mix = document.createElement('div');
+      mix.className = 'breed-combo-opt';
+      mix.setAttribute('role','option');
+      mix.dataset.sentinel = '1';
+      mix.textContent = 'Mestizo / No sé';
+      mix.addEventListener('mousedown', (e)=>{ e.preventDefault(); select('Mestizo / No sé'); });
+      list.appendChild(mix);
+
       if(filtered.length === 0){
         const empty = document.createElement('div');
         empty.className = 'breed-combo-opt no-match';
@@ -597,13 +631,22 @@ section:first-of-type{clip-path:none}
     }
 
      input.addEventListener('focus', open);
-     input.addEventListener('blur', ()=>{ window.setTimeout(close, 0); });
+      input.addEventListener('blur', ()=>{
+        window.setTimeout(()=>{
+          const typed = input.value.trim();
+          const exact = names.find(n => n.toLowerCase() === typed.toLowerCase());
+          if(exact) select(exact);
+          else if(filtered.length === 1) select(filtered[0]);
+          else if(typed.toLowerCase() === 'mestizo / no sé') select('Mestizo / No sé');
+          close();
+        }, 0);
+      });
     input.addEventListener('input', ()=>{ hidden.value=''; open(); });
     input.addEventListener('keydown', (e)=>{
       const opts = [...list.querySelectorAll('.breed-combo-opt:not(.no-match)')];
       if(e.key === 'ArrowDown'){ e.preventDefault(); highlight(Math.min(activeIdx+1, opts.length-1)); }
       if(e.key === 'ArrowUp'){ e.preventDefault(); highlight(Math.max(activeIdx-1, 0)); }
-      if(e.key === 'Enter'){ e.preventDefault(); if(activeIdx>=0 && filtered[activeIdx]) select(filtered[activeIdx]); }
+      if(e.key === 'Enter'){ e.preventDefault(); const opt = opts[activeIdx]; if(opt) select(opt.textContent); }
       if(e.key === 'Escape'){ close(); }
     });
     document.addEventListener('click', (e)=>{
@@ -687,6 +730,8 @@ section:first-of-type{clip-path:none}
     function setMode(range){
       usingRange = range;
       const wrap = numberInput.closest('.num-wrap') || numberInput;
+      numberInput.dataset.approxMode = range ? 'range' : 'exact';
+      wrap.classList.toggle('approx-hidden', range);
       wrap.style.display = range ? 'none' : '';
       numberInput.required = !range;
       rangeSelect.classList.toggle('visible', range);
@@ -714,30 +759,187 @@ section:first-of-type{clip-path:none}
   const weightApprox = initApproxToggle('f-weight', 'f-weight-range', 'btn-toggle-weight-approx', RANGES.WEIGHT_RANGES || []);
   const heightApprox = initApproxToggle('f-height', 'f-height-range', 'btn-toggle-height-approx', RANGES.HEIGHT_RANGES || []);
 
+  /* ============================================
+     EDAD — meses durante el crecimiento (0-24), años después.
+     Internamente SIEMPRE se guarda en meses (ageMonths). El toggle solo
+     cambia la unidad que ve el usuario; a partir de 24 meses se pasa a años.
+     ============================================ */
+  const ageInput = document.getElementById('f-age');
+  const ageUnitBtns = [...document.querySelectorAll('#age-unit .age-unit-btn')];
+  const AGE_LIMITS = {
+    months: { min: 1, max: 240, step: 1, label: '1 y 240 meses' },
+    years: { min: 0.5, max: 20, step: 0.5, label: '0,5 y 20 años' },
+  };
+  let ageUnit = 'months';
+
+  function applyAgeLimits(){
+    const limits = AGE_LIMITS[ageUnit];
+    ageInput.min = limits.min;
+    ageInput.max = limits.max;
+    ageInput.step = limits.step;
+    ageInput.placeholder = ageUnit === 'years' ? 'ej. 3' : 'ej. 12';
+  }
+
+  function setAgeUnit(u){
+    if(!AGE_LIMITS[u]) return;
+    const previousUnit = ageUnit;
+    // Convierte el valor actual al cambiar de unidad: 24 meses -> 3 años, y
+    // 3 años -> 36 meses. Así nunca queda "24 años" al pulsar Años.
+    const v = parseFloat(ageInput.value);
+    let converted = null;
+    if(Number.isFinite(v) && v > 0){
+      if(u === 'years' && previousUnit === 'months') converted = Math.round((v / 12) * 2) / 2;
+      else if(u === 'months' && previousUnit === 'years') converted = Math.round(v * 12);
+    }
+    ageUnit = u;
+    ageUnitBtns.forEach(b=>{
+      const on = b.dataset.unit === u;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    applyAgeLimits();
+    if(converted != null) ageInput.value = converted;
+  }
+  ageUnitBtns.forEach(b=> b.addEventListener('click', ()=> setAgeUnit(b.dataset.unit)));
+
+  ageInput.addEventListener('input', ()=>{
+    const limits = AGE_LIMITS[ageUnit];
+    const v = parseFloat(ageInput.value);
+    // Evita que un valor imposible se quede en el campo al escribirlo, pero no
+    // fuerza el minimo mientras el usuario esta empezando a introducir la cifra.
+    if(Number.isFinite(v) && v > limits.max) ageInput.value = limits.max;
+  });
+  ageInput.addEventListener('change', ()=>{
+    const limits = AGE_LIMITS[ageUnit];
+    const v = parseFloat(ageInput.value);
+    if(!Number.isFinite(v)) return;
+    const bounded = Math.min(limits.max, Math.max(limits.min, v));
+    ageInput.value = ageUnit === 'years'
+      ? (Math.round(bounded * 2) / 2).toFixed(1).replace(/\.0$/, '')
+      : String(Math.round(bounded));
+  });
+
+  function readAgeMonths(){
+    const v = parseFloat(ageInput.value);
+    const limits = AGE_LIMITS[ageUnit];
+    if(!Number.isFinite(v) || v < limits.min || v > limits.max) return null;
+    return ageUnit === 'years' ? Math.round(v * 12) : Math.round(v);
+  }
+
+  function bridgeInputValue(rawValue, ranges){
+    if(typeof rawValue === 'number' && Number.isFinite(rawValue)) return rawValue;
+    if(rawValue && typeof rawValue === 'object' && rawValue.rangeId){
+      const range = ranges.find(r => r.id === rawValue.rangeId);
+      return range ? Math.round(((range.min + range.max) / 2) * 10) / 10 : null;
+    }
+    return null;
+  }
+
+  applyAgeLimits();
+
+  /* ============================================
+     IMPORTAR PERFIL DESDE LA CALCULADORA DE ACTIVIDAD
+     Cuando el usuario cruza de actividad.html con datos (source=actividad
+     via URL params / sessionStorage), se pre-rellenan peso, altura, edad y
+     sexo, y se salta al paso 2 para confirmarlos. El peso vuelve como el
+     valor usado en el cálculo de calorías; el aviso invita a afinarlo.
+     ============================================ */
+  (function prefillFromActivity(){
+    const bridge = window.ARES_BRIDGE;
+    if(!bridge) return;
+    // Solo actuamos cuando venimos de un cruce explícito desde la calculadora
+    // de actividad (?source=actividad). En recarga o entrada directa, el
+    // formulario empieza limpio en el paso 1: se borra el perfil de sesión que
+    // pudiera haber quedado de una visita anterior.
+    const urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.get('source') !== 'actividad'){
+      try { sessionStorage.removeItem(bridge.KEY); } catch(e){}
+      return;
+    }
+    const profile = bridge.read();
+    if(!profile) return;
+    const note = document.getElementById('import-note');
+    const w = parseFloat(profile.weightKg);
+    const h = parseFloat(profile.heightCm);
+    const a = parseFloat(profile.ageMonths);
+    if(!Number.isFinite(w) && !Number.isFinite(h) && !Number.isFinite(a)) return;
+    if(Number.isFinite(w)) document.getElementById('f-weight').value = w;
+    if(Number.isFinite(h)) document.getElementById('f-height').value = h;
+    if(Number.isFinite(a)){
+      if(a > 24){ setAgeUnit('years'); ageInput.value = Math.round((a / 12) * 2) / 2; }
+      else { setAgeUnit('months'); ageInput.value = Math.round(a); }
+    }
+    if(profile.sex && ['F','M','U'].indexOf(String(profile.sex)) !== -1){
+      document.getElementById('f-sex').value = String(profile.sex);
+    }
+    if(profile.breed && profile.breed !== 'Mestizo / No sé'){
+      const breedInput = document.getElementById('f-breed');
+      const breedHidden = document.getElementById('f-breed-value');
+      breedInput.value = String(profile.breed);
+      breedHidden.value = String(profile.breed);
+    }
+    if(note) note.hidden = false;
+    // Si ya trae peso y altura, salta al paso 2 para que confirme y avance
+    // rápido al resultado con los datos importados.
+    if(Number.isFinite(w) && Number.isFinite(h)) showStep(2, 'forward');
+  })();
+
+  function failStep(n, message, targetId){
+    const errEl = document.querySelector(`[data-error-for="${n}"]`);
+    errEl.textContent = message;
+    errEl.setAttribute('role', 'alert');
+    const target = targetId && document.getElementById(targetId);
+    if(target){
+      target.setAttribute('aria-invalid', 'true');
+      target.focus({ preventScroll: true });
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return false;
+  }
+
   function validateStep(n){
     const errEl = document.querySelector(`[data-error-for="${n}"]`);
     errEl.textContent = '';
+    errEl.removeAttribute('role');
+    document.querySelectorAll(`.calc-step[data-step="${n}"] [aria-invalid="true"]`).forEach(el => el.removeAttribute('aria-invalid'));
     if(n===1){
-      // La raza principal es opcional (equivalente a "Mestizo / No sé" del <select>
-      // original): si el usuario deja el campo vacio, se trata como mestizo sin raza
-      // conocida. Solo se valida que si escribio texto libre sin seleccionar de la
-      // lista, no se envie un valor no reconocido como si fuese una raza real.
-      const typed = document.getElementById('f-breed').value.trim();
+      // Raza obligatoria (mínimo 1): se rellena eligiendo una raza de la
+      // lista, la opción fija "Mestizo / No sé", o el texto libre de raza no
+      // listada. El sexo también debe elegirse de forma consciente.
+      const freeformActive = freeformField.classList.contains('visible');
+      const freeformVal = (freeformActive && document.getElementById('f-breed-freeform').value.trim()) || '';
       const value = breedCombo1.getValue();
-      if(typed && !value){ errEl.textContent='Selecciona una raza de la lista o deja el campo vacío.'; return false; }
+      if(!freeformVal && !value){
+        if(document.getElementById('f-breed').value.trim()){
+          return failStep(n, 'Selecciona una raza de la lista o "Mestizo / No sé".', 'f-breed');
+        }
+        return failStep(n, 'Elige una raza o "Mestizo / No sé" para continuar.', 'f-breed');
+      }
+      if(!document.getElementById('f-sex').value){
+        return failStep(n, 'Selecciona el sexo o "No sé / Prefiero no decir".', 'f-sex');
+      }
     }
     if(n===2){
       const w = weightApprox.getValue();
       const h = heightApprox.getValue();
-      if(w === null || (typeof w === 'number' && w<=0)){ errEl.textContent='Introduce un peso válido o elige un rango aproximado.'; return false; }
-      if(h === null || (typeof h === 'number' && h<=0)){ errEl.textContent='Introduce una altura válida o elige un rango aproximado.'; return false; }
+      if(w === null || (typeof w === 'number' && w<=0)) return failStep(n, 'Introduce un peso válido o elige un rango aproximado.', weightApprox.isApprox() ? 'f-weight-range' : 'f-weight');
+      if(h === null || (typeof h === 'number' && h<=0)) return failStep(n, 'Introduce una altura válida o elige un rango aproximado.', heightApprox.isApprox() ? 'f-height-range' : 'f-height');
     }
     if(n===3){
-      const a = parseFloat(document.getElementById('f-age').value);
-      if(!a || a<=0){ errEl.textContent='Introduce una edad aproximada.'; return false; }
+      const a = readAgeMonths();
+      if(!a || a<=0){
+        const limits = AGE_LIMITS[ageUnit];
+        return failStep(n, `La edad debe estar entre ${limits.label}.`, 'f-age');
+      }
     }
     return true;
   }
+
+  document.querySelectorAll('#calc-form input, #calc-form select').forEach(control => {
+    const clearInvalid = () => control.removeAttribute('aria-invalid');
+    control.addEventListener('input', clearInvalid);
+    control.addEventListener('change', clearInvalid);
+  });
 
   document.querySelectorAll('[data-next]').forEach(btn=>{
     btn.addEventListener('click', ()=>{
@@ -748,15 +950,30 @@ section:first-of-type{clip-path:none}
     btn.addEventListener('click', ()=> showStep(current-1, 'back'));
   });
 
-  document.getElementById('restart-link').addEventListener('click', function(e){
-    e.preventDefault();
+  function showFormAt(step){
     document.getElementById('result-section').classList.remove('visible');
     document.getElementById('form-section').style.display='';
-    steps.forEach(s => s.classList.remove('active'));
-    steps[0].classList.add('active');
-    current = 1;
-    progressFill.style.width = '33.33%';
-    dots.forEach(d=>{ d.classList.toggle('active', +d.dataset.dot===1); d.classList.remove('done'); });
+    if(window.gsap){
+      gsap.killTweensOf(steps);
+      gsap.set(steps, { clearProps:'opacity,transform' });
+    }
+    steps.forEach(s => s.classList.toggle('active', +s.dataset.step === step));
+    current = step;
+    progressFill.style.width = (step / 3 * 100) + '%';
+    dots.forEach(d=>{
+      const dotStep = +d.dataset.dot;
+      d.classList.toggle('active', dotStep === step);
+      d.classList.toggle('done', dotStep < step);
+    });
+    window.scrollTo({top: document.getElementById('form-section').offsetTop - 80, behavior:'smooth'});
+  }
+
+  document.getElementById('edit-result-link').addEventListener('click', ()=> showFormAt(3));
+
+  document.getElementById('restart-link').addEventListener('click', function(e){
+    e.preventDefault();
+    const form = document.getElementById('calc-form');
+    form.reset();
     breedCombo1.clear();
     breedCombo2.clear();
     breed2Field.classList.remove('visible');
@@ -767,7 +984,12 @@ section:first-of-type{clip-path:none}
     btnAddFreeform.style.display = '';
     weightApprox.reset();
     heightApprox.reset();
-    window.scrollTo({top: document.getElementById('form-section').offsetTop - 80, behavior:'smooth'});
+    document.querySelectorAll('.calc-error').forEach(el => { el.textContent=''; el.removeAttribute('role'); });
+    document.querySelectorAll('#calc-form [aria-invalid="true"]').forEach(el => el.removeAttribute('aria-invalid'));
+    ageInput.value = '';
+    setAgeUnit('months');
+    document.getElementById('import-note').hidden = true;
+    showFormAt(1);
   });
 
   /* ============================================
@@ -801,14 +1023,43 @@ section:first-of-type{clip-path:none}
       sex: document.getElementById('f-sex').value,
       weightKg: weightApprox.getValue(), // numero exacto o { rangeId } (rango aproximado)
       heightCm: heightApprox.getValue(),
-      ageMonths: parseFloat(document.getElementById('f-age').value),
+      ageMonths: readAgeMonths(),
     };
 
     const result = window.ARES_CALCULATOR.calculate(input);
     // Dato adicional guardado (no usado en el calculo numerico, solo referencia
     // / registro del lead): nombre de raza libre que el usuario escribio.
-    result.freeformBreedName = freeformBreedName;
-    renderResult(result);
+result.freeformBreedName = freeformBreedName;
+    const bridgeWeight = bridgeInputValue(input.weightKg, RANGES.WEIGHT_RANGES || []);
+    const bridgeHeight = bridgeInputValue(input.heightCm, RANGES.HEIGHT_RANGES || []);
+    const profilePatch = {
+      breed: result.freeformBreedName || result.breedUsed || 'Mestizo / No sé',
+      breeds,
+      sex: input.sex,
+      weightKg: bridgeWeight,
+      heightCm: bridgeHeight,
+      weightRangeId: input.weightKg && typeof input.weightKg === 'object' ? input.weightKg.rangeId : null,
+      heightRangeId: input.heightCm && typeof input.heightCm === 'object' ? input.heightCm.rangeId : null,
+      ageMonths: input.ageMonths,
+      category: result.category,
+      bmi: result.bmi,
+      normalMin: result.normalMin,
+      normalMax: result.normalMax,
+      sizeCategory: result.sizeCategory,
+      approxInput: !!result.approxInput,
+      source: 'calculadora',
+    };
+    if(window.ARES_BRIDGE){
+      window.ARES_BRIDGE.save(profilePatch);
+    } else {
+      // Fallback: la página vieja publicada sin profile-bridge.js
+      try {
+        sessionStorage.setItem('ares_dog_profile_v1', JSON.stringify(profilePatch));
+      } catch (e) {
+        // El resultado sigue funcionando aunque el navegador bloquee sessionStorage.
+      }
+    }
+     renderResult(result, input);
 
     // Punto 2 (cambio): la sugerencia de raza no listada se registra aparte,
     // en su propia key de localStorage (ares_breed_suggestions_v1), para que
@@ -827,53 +1078,65 @@ section:first-of-type{clip-path:none}
     window.scrollTo({top: document.getElementById('result-section').offsetTop - 60, behavior:'smooth'});
   });
 
-  /* CTA condicional segun categoria (punto 10): mismo formulario/lead-capture.js,
-     copy adaptado a nutricion cuando el resultado es sobrepeso/obesidad. */
-  const CTA_COPY = {
-    default: {
-      heading: 'Recibe seguimiento de la condición de tu perro',
-      sub: 'Entérate cuando ARES esté disponible.',
-      submit: 'Quiero saber más',
-    },
-    nutricion: {
-      heading: '¿Quieres una dieta ajustada a tu perro, no a una tabla genérica?',
-      sub: 'ARES Premium analiza los macros de su comida, los cruza con su actividad real (del collar), peso, raza y edad, y te recomienda exactamente qué y cuánto darle.',
-      submit: 'Quiero mi plan de nutrición',
-    },
-  };
+   /* CTA de siguiente paso: mientras nutricion no este definida, toda categoria
+      continua hacia la calculadora de actividad. */
+   const CTA_COPY = {
+     default: {
+        heading: '¿Quieres saber cuánto ejercicio necesita tu perro?',
+        sub: 'Lleva este resultado a la calculadora de actividad y ajusta el paseo a su peso real.',
+     },
+   };
 
-  function applyCtaCopy(category){
-    const heading = document.getElementById('result-cta-heading');
-    const sub = document.getElementById('result-cta-sub');
-    const submit = document.getElementById('result-cta-submit');
-    // Nutrición se muestra para todos los resultados — el copy se adapta solo
-    // si hay sobrepeso/obesidad para enfatizar el plan de adelgazamiento
-    const isNutricion = true; // siempre activo: todos los perros se benefician de saber qué comen
-    const copy = CTA_COPY.nutricion;
-    heading.textContent = copy.heading;
-    heading.classList.toggle('nutricion', isNutricion);
-    sub.textContent = copy.sub;
-    submit.textContent = copy.submit;
-  }
+   function applyCtaCopy(){
+     const heading = document.getElementById('result-cta-heading');
+     const sub = document.getElementById('result-cta-sub');
+     const copy = CTA_COPY.default;
+     heading.textContent = copy.heading;
+     heading.classList.remove('nutricion');
+     sub.textContent = copy.sub;
+   }
 
-  function renderResult(result){
+
+   function inputDisplayValue(value){
+     if(value && typeof value === 'object') return 'rango-' + (value.rangeId || 'aproximado');
+     return value == null ? '' : String(value);
+   }
+
+   function formatDisplayNumber(value){
+     return Number(value).toLocaleString('es-ES', { maximumFractionDigits: 1 });
+   }
+
+   function inputDisplayRange(min, max, unit){
+     if(!Number.isFinite(min) || !Number.isFinite(max)) return 'Sin datos';
+     const same = Math.abs(min - max) < 0.0001;
+     return same
+       ? `${formatDisplayNumber(min)} ${unit}`
+       : `${formatDisplayNumber(min)} - ${formatDisplayNumber(max)} ${unit} aprox.`;
+   }
+
+   function idealWeightDisplayRange(result){
+     if(!Number.isFinite(result.normalWeightMin) || !Number.isFinite(result.normalWeightMax)) return 'Sin datos';
+     return `${formatDisplayNumber(result.normalWeightMin)} - ${formatDisplayNumber(result.normalWeightMax)} kg`;
+   }
+
+   function renderResult(result, input){
     const labels = window.ARES_CALCULATOR.CATEGORY_LABELS;
     const messages = window.ARES_CALCULATOR.CATEGORY_MESSAGES;
     const catEl = document.getElementById('result-category');
     catEl.textContent = labels[result.category] || 'Ideal';
     document.getElementById('result-message').textContent = messages[result.category] || '';
-    applyCtaCopy(result.category);
+     applyCtaCopy();
 
     // Datos clave en la caja personalizada (sin badges, solo bordes + tipografia Bruno Ace SC)
     document.getElementById('dc-bmi').textContent = '—'; // se rellena con el contador animado de abajo
-    document.getElementById('dc-range').textContent = (result.normalMin && result.normalMax)
-      ? result.normalMin + ' – ' + result.normalMax
-      : 'Sin datos suficientes';
+     document.getElementById('dc-weight-range').textContent = idealWeightDisplayRange(result);
+     document.getElementById('dc-input-weight').textContent = inputDisplayRange(result.inputWeightMin, result.inputWeightMax, 'kg');
+     document.getElementById('dc-input-height').textContent = inputDisplayRange(result.inputHeightMin, result.inputHeightMax, 'cm');
     // Si el usuario escribio una raza libre no reconocida, se muestra ese
     // nombre tal cual (con nota de que el calculo fue por tamaño aproximado),
     // en vez del generico "Estimación por tamaño" -- referencia visible, sin
     // afectar al calculo numerico que ya cayo al fallback por tamaño.
-    document.getElementById('dc-breed').textContent = result.freeformBreedName || result.breedUsed || 'Estimación por tamaño';
+    document.getElementById('dc-breed').textContent = result.freeformBreedName || result.breedUsed || 'Mestizo / No sé';
     // Nota de precision (cambio): si el peso y/o la altura vinieron de un rango
     // aproximado en vez de una cifra exacta, se avisa de que el margen de
     // error es mayor -- se antepone a la nota de cachorro si ambas aplican.
@@ -881,9 +1144,49 @@ section:first-of-type{clip-path:none}
     const notes = [];
     if(result.approxInput) notes.push('Calculado con un rango aproximado de peso/altura — el margen de error es mayor. Para más precisión, pésalo y mídelo si puedes.');
     if(result.puppyAdjusted) notes.push('Ajustado por edad de cachorro');
-    noteEl.textContent = notes.join(' · ');
-    noteEl.classList.toggle('approx', !!result.approxInput);
+     noteEl.textContent = notes.join(' · ');
+     noteEl.classList.toggle('approx', !!result.approxInput);
 
+     const leadValues = {
+       weightKg: inputDisplayValue(input.weightKg),
+       heightCm: inputDisplayValue(input.heightCm),
+       ageMonths: inputDisplayValue(input.ageMonths),
+       breed: result.freeformBreedName || result.breedUsed || 'Estimacion por tamano',
+       category: result.category,
+       bmi: result.bmi,
+     };
+     Object.entries(leadValues).forEach(([key, value])=>{
+       const field = document.getElementById('lead-' + key.replace(/[A-Z]/g, m => '-' + m.toLowerCase()));
+       if(field) field.value = value;
+     });
+
+     const activityLink = document.getElementById('activity-link');
+      if(activityLink){
+        const activityTarget = () => {
+          const profile = window.ARES_BRIDGE ? (window.ARES_BRIDGE.read() || {}) : {
+            weightKg: bridgeWeight,
+            heightCm: bridgeHeight,
+            ageMonths: input.ageMonths,
+            breed: result.freeformBreedName || result.breedUsed,
+            category: result.category,
+            sizeCategory: result.sizeCategory,
+            source: 'calculadora',
+            from: 'calculadora',
+          };
+          if(window.ARES_BRIDGE) window.ARES_BRIDGE.save({ source:'calculadora', from:'calculadora' });
+          const params = window.ARES_BRIDGE
+            ? window.ARES_BRIDGE.query(profile, { source:'calculadora', from:'calculadora' })
+            : new URLSearchParams({ source:'calculadora', from:'calculadora', weight:bridgeWeight, height:bridgeHeight, age:input.ageMonths });
+          return 'actividad.html?' + params.toString();
+        };
+        const navigateToActivity = () => { window.location.href = activityTarget(); };
+        activityLink.href = activityTarget();
+        activityLink.onclick = function(event){
+          event.preventDefault();
+          if(window.ARES_ACCOUNT) window.ARES_ACCOUNT.requireAuth(navigateToActivity);
+          else navigateToActivity();
+        };
+      }
     // Posicion del marcador en la escala (0-100%) segun categoria
     const positions = { bajo_peso: 10, ideal: 40, sobrepeso: 70, obesidad: 92 };
     const targetLeft = positions[result.category];
@@ -947,20 +1250,12 @@ section:first-of-type{clip-path:none}
     }
   }
 
-  // Mostrar pregunta de perfilado tras enviar el email con exito
-  const leadForm = document.querySelector('[data-lead-form="calculadora"], form[data-lead-source="calculadora"]');
-  if(leadForm){
-    leadForm.addEventListener('submit', function(){
-      setTimeout(()=>{
-        if(leadForm.classList.contains('lead-form--sent') || true){
-          document.getElementById('profiling').classList.add('visible');
-        }
-      }, 300);
-    });
-  }
-  document.getElementById('profiling-select') && document.getElementById('profiling-select').addEventListener('change', function(){
-    console.log('[ARES perfilado] Dónde pasea el perro (placeholder, guardar junto al lead):', this.value);
-  });
+   document.addEventListener('ares:auth-success', function(){
+     if(window.ARES_BRIDGE && window.ARES_ACCOUNT){
+       const p = window.ARES_BRIDGE.read();
+       if(p) window.ARES_ACCOUNT.saveProfile(p);
+     }
+   });
 })();
 
 /* ============================================
@@ -1017,32 +1312,9 @@ section:first-of-type{clip-path:none}
 </script>
 <script src="assets/js/mobile-menu.js"></script>
 <script src="assets/js/scroll-indicator.js"></script>
+<script src="assets/js/hero-prism.js" defer></script>
 <script src="assets/js/typewriter.js"></script>
-<script>
-  (() => {
-    const footerMap = document.querySelector('.pf-footer-map');
-    if (!footerMap) return;
-    let target = 0;
-    let current = 0;
-    let lastInput = 0;
-    let lastTouchY = null;
-    let frame = 0;
-    const maxStretch = window.innerWidth <= 768 ? 0.16 : 0.12;
-    const bgFactor = window.innerWidth <= 768 ? 0 : 0.65;
-    const svgFactor = window.innerWidth <= 768 ? 1 : 0.65;
-    const baseHeight = footerMap.offsetHeight;
-    const baseScale = parseFloat(getComputedStyle(footerMap).getPropertyValue('--footer-svg-base-scale')) || 1;
-    const atEnd = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-    const release = () => { target = 0; lastInput = 0; if (!frame) frame = requestAnimationFrame(tick); };
-    const push = (amount) => { target = Math.min(maxStretch, target + Math.min(maxStretch, amount)); lastInput = performance.now(); if (!frame) frame = requestAnimationFrame(tick); };
-    const tick = (now) => { const elapsed = now - lastInput; if (elapsed > 90) target = Math.max(0, target - 0.12 * Math.min(1, (elapsed - 90) / 140)); current += (target - current) * 0.22; footerMap.style.setProperty('--footer-bg-stretch', (current * bgFactor).toFixed(4)); footerMap.style.setProperty('--footer-svg-stretch', (current * svgFactor).toFixed(4)); footerMap.style.setProperty('--footer-rise', (current * bgFactor * baseHeight).toFixed(2) + 'px'); if (window.innerWidth > 768) footerMap.style.setProperty('--footer-tile-height', (footerMap.offsetHeight / (baseScale + current * svgFactor)).toFixed(2) + 'px'); else footerMap.style.removeProperty('--footer-tile-height'); if (Math.abs(current - target) > 0.0005 || target > 0.0005) frame = requestAnimationFrame(tick); else { current = 0; target = 0; footerMap.style.removeProperty('--footer-bg-stretch'); footerMap.style.removeProperty('--footer-svg-stretch'); footerMap.style.removeProperty('--footer-rise'); footerMap.style.removeProperty('--footer-tile-height'); frame = 0; } };
-    window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && atEnd()) push(Math.abs(event.deltaY) * 0.0009); else if (event.deltaY < 0) release(); }, {passive:true});
-    window.addEventListener('touchstart', (event) => { lastTouchY = event.touches[0]?.clientY ?? null; }, {passive:true});
-    window.addEventListener('touchmove', (event) => { const y = event.touches[0]?.clientY ?? lastTouchY; const delta = lastTouchY == null || y == null ? 0 : lastTouchY - y; lastTouchY = y; if (delta > 0 && atEnd()) push(delta * 0.002); else if (delta < 0) release(); }, {passive:true});
-    window.addEventListener('touchend', () => { lastTouchY = null; release(); }, {passive:true});
-    window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
-  })();
-</script>
-<script src="../assets/js/footer-common.js"></script>
+<script src="assets/js/footer-map.js" defer></script>
+<script src="../assets/js/footer-common.js" defer></script>
 </body>
 </html>

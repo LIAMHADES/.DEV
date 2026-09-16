@@ -13,7 +13,8 @@
    const STORAGE_KEY = "ares_leads_v1";
    const QUALIFICATION_STORAGE_ID = "ares_pending_qualification_v1";
    // Set this on the published site once the central receiver is deployed.
-   const LEAD_ENDPOINT = window.ARES_LEAD_ENDPOINT || (location.protocol === "file:" ? "" : "/v1/leads");
+   const isGithubPages = /\.github\.io$/i.test(location.hostname);
+   const LEAD_ENDPOINT = window.ARES_LEAD_ENDPOINT || (location.protocol === "file:" || isGithubPages ? "" : "/v1/leads");
    const BREED_SUGGESTIONS_STORAGE_ID = "ares_breed_suggestions_v1";
 
   function readLeads() {
@@ -148,12 +149,15 @@
 
       if (submitBtn) submitBtn.disabled = true;
 
-      submitLead(lead)
-        .then(() => {
-          showFeedback("Listo. Te avisamos en cuanto ARES esté disponible.", false);
-          form.reset();
-          form.classList.add("lead-form--sent");
-        })
+       submitLead(lead)
+         .then((result) => {
+           showFeedback(result.local
+             ? "Guardado en este dispositivo. Ya puedes descargar tu mini informe."
+             : "Listo. Te avisamos en cuanto ARES esté disponible.", false);
+           form.reset();
+           form.classList.add("lead-form--sent");
+           form.dispatchEvent(new CustomEvent("ares:lead-sent", { bubbles: true, detail: result }));
+         })
         .catch(() => {
           showFeedback("Algo ha fallado. Intenta de nuevo en unos minutos.", true);
         })

@@ -33,7 +33,7 @@
   src: url("../fonts/material-symbols-outlined.woff2") format("woff2");
   font-weight: 100 700;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
 }
 .material-symbols-outlined {
   font-family: "Material Symbols Outlined";
@@ -237,7 +237,7 @@ img {
 }
 .st {
   font-family: "Bruno Ace SC", sans-serif;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.1rem, 4.2vw, 3.15rem);
   color: var(--t);
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -260,6 +260,7 @@ img {
 h3,
 h4 {
   font-family: "Bruno Ace SC", sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -300,6 +301,32 @@ section {
 }
 section[id] {
   scroll-margin-top: 72px;
+}
+
+/* Rejilla animada de fondo (malla). Basta con un
+   <div class="sec-prism" id="..."> dentro de una seccion posicionada; el
+   contenido de la seccion debe ir en un contenedor posicionado por encima
+   (z-index >= 1) para que las lineas no le pasen por encima. */
+.sec-prism {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.sec-prism .prism-grid {
+  display: grid;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.sec-prism .prism-cell {
+  border-right: 1px solid rgba(134, 187, 216, 0.12);
+  border-bottom: 1px solid rgba(134, 187, 216, 0.12);
+  transition: background 0.15s ease-out;
+}
+.sec-prism .prism-cell.lit {
+  transition: background 0s;
 }
 
 .btn {
@@ -423,6 +450,38 @@ section[id] {
   color: var(--t);
   text-decoration: none;
 }
+@media (min-width: 1024px) {
+  #main-nav .nl {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition: color 0.25s, transform 0.25s;
+  }
+  #main-nav .nl::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.35rem;
+    width: 100%;
+    height: 1px;
+    background: var(--cta);
+    opacity: 0.6;
+    transform: scaleX(0.16);
+    transform-origin: left center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  #main-nav .nl:hover,
+  #main-nav .nl:focus-visible {
+    color: var(--hl);
+    transform: translateX(2px);
+  }
+  #main-nav .nl:hover::before,
+  #main-nav .nl:focus-visible::before {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
 #main-nav .back-link {
   font-family: "JetBrains Mono", monospace;
   font-size: 10px;
@@ -437,14 +496,61 @@ section[id] {
   opacity: 1;
   color: var(--cta);
 }
-#main-nav .inline-links{display:flex;gap:1.5rem;list-style:none;margin-left:auto;margin-right:3rem}
+#main-nav .inline-links{display:flex;gap:1.25rem;list-style:none;margin-left:auto;margin-right:0}
 #main-nav .inline-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--t);opacity:0.65;transition:opacity 0.3s}
 #main-nav .inline-links a:hover{opacity:1;color:var(--cta)}
-#main-nav .ndrop{position:relative}
+/* Desplegables del nav ("Descubre" y el cluster de secciones). Van anclados a
+   su propio disparador: como "Descubre" es siempre el ultimo, el resultado es
+   el mismo en todas las paginas. */
+#main-nav .ndrop{position:relative;display:flex;align-items:center;align-self:stretch}
 #main-nav .ndrop-trigger{cursor:pointer}
-#main-nav .ndrop-menu{position:absolute;top:calc(100% + 0.4rem);right:0;min-width:230px;background:rgba(21,29,37,0.96);backdrop-filter:blur(12px);border:1px solid rgba(134,187,216,0.14);padding:0.4rem;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity 0.25s,visibility 0.25s,transform 0.25s}
-#main-nav .ndrop.open .ndrop-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+#main-nav .ndrop-trigger::after{content:'';display:inline-block;width:4px;height:4px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-1px);transition:transform 0.25s;margin-left:0.35rem}
+#main-nav .ndrop.open .ndrop-trigger::after{transform:rotate(225deg) translateY(1px)}
+/* Los desplegables nacen en el borde inferior del nav (no dentro), asi el menu
+   abierto nunca tapa los disparadores vecinos ("Mas" / "Descubre"). */
+#main-nav .inline-links{align-self:stretch;align-items:center}
+#main-nav .ndrop-menu{position:absolute;top:100%;right:1rem;margin-top:0.15rem;min-width:230px;background:rgba(21,29,37,0.96);backdrop-filter:blur(12px);border:1px solid rgba(134,187,216,0.14);padding:0.4rem;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity 0.25s,visibility 0.25s,transform 0.25s}
+/* Puente invisible sobre el hueco entre "Descubre" y el desplegable: al bajar
+   el cursor (en vertical o en diagonal) el hover no se corta y el menu sigue
+   abierto mientras estemos encima del disparador O del propio desplegable. */
+#main-nav .ndrop-menu::before{content:'';position:absolute;left:-1rem;right:-1rem;top:calc(-1 * clamp(1.1rem,2.4vw,3rem));height:clamp(1.1rem,2.4vw,3rem)}
+#main-nav .ndrop.open .ndrop-menu,
+#main-nav .ndrop:hover .ndrop-menu,
+#main-nav .ndrop:focus-within .ndrop-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
 #main-nav .ndrop-menu a{display:block;padding:0.65rem 0.85rem;white-space:nowrap}
+#main-nav .ndrop-menu a:hover,
+#main-nav .ndrop-menu a:focus-visible{background:rgba(134,187,216,0.08);color:var(--hl);outline:none}
+
+/* Todas las transiciones entre secciones usan el mismo corte: 40px de alto
+   en ambos lados. Esto evita que el after diagonal de un bloque quede
+   desfasado respecto al siguiente. */
+.sec-dark,.sec-darker,.sec-light{--section-cut:40px}
+.sec-dark,.sec-darker{clip-path:polygon(0 0,100% 0,100% calc(100% - var(--section-cut)),0 100%)}
+.sec-light{clip-path:polygon(0 var(--section-cut),100% 0,100% calc(100% - var(--section-cut)),0 100%)}
+
+/* Boton de sesion: a la izquierda, junto al wordmark. Al salir del grupo de
+   enlaces, ese grupo adelgaza y el logo centrado tiene sitio. */
+#main-nav .nav-account-desktop{border:0;background:none;cursor:pointer;padding:0;margin-left:1.1rem;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t);opacity:0.65;transition:opacity 0.3s,color 0.3s;white-space:nowrap}
+#main-nav .nav-account-desktop:hover,#main-nav .nav-account-desktop:focus-visible{opacity:1;color:var(--cta)}
+
+/* Logo responsive: antes era fijo a 58 px y no crecia con la pantalla. El nav
+   crece con el para que el logo nunca se salga de la banda oscura. */
+#main-nav{min-height:clamp(56px,4.6vw,116px);padding-block:0}
+#main-nav .nav-logo{height:clamp(52px,4.1vw,102px);width:auto;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.9;transition:opacity 0.3s}
+/* Indicador de scroll: pegado al borde inferior del nav, con la misma formula
+   de alto para que no se separe en ninguna pagina ni a ningun ancho. */
+#ticksWrapper{padding:clamp(56px,4.6vw,116px) 0 9px}
+
+/* Logo del overlay movil: tambien crece con la pantalla */
+.nav-overlay .ov-logo{height:clamp(78px,11vw,132px);width:auto}
+
+/* Si el logo centrado no cabe (los enlaces lo pisarian), pasa a ir al lado del
+   wordmark. Lo decide un script que mide el nav; aqui solo el estilo. */
+#main-nav.nav--logo-inline .nav-logo{position:static;transform:none;top:auto;left:auto}
+#main-nav.nav--logo-inline .nav-logo-link{display:block;line-height:0;margin-left:0.9rem}
+
+/* (el antiguo ocultado del logo por ancho ya no hace falta: ahora lo coloca
+   el script segun el sitio disponible) */
 
 /* === NUMBER INPUTS — botones +/- personalizados naranjas === */
 input[type=number]{-moz-appearance:textfield}
@@ -529,7 +635,7 @@ select:focus{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: none;
-  background: rgba(21, 29, 37, 0.96);
+  background: #151d25;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   opacity: 0;
@@ -562,6 +668,13 @@ html.menu-open,
 body.menu-open {
   overflow: hidden;
   overscroll-behavior: none;
+}
+body.menu-open > :not(#navToggle):not(#navOverlay):not(#ovTicks) {
+  visibility: hidden;
+}
+body.menu-open > section,
+body.menu-open > footer {
+  display: none !important;
 }
 .nav-overlay .nav-logo-ov,
 .nav-overlay .ov-logo {
@@ -606,7 +719,10 @@ body.menu-open {
   transform: scaleX(0);
   transform-origin: center;
 }
-.nav-full-links a {
+/* El boton de sesion comparte selector con los enlaces para que su tamano sea
+   siempre identico al del resto del menu, en todos los breakpoints. */
+.nav-full-links a,
+.nav-full-links .nav-account-btn {
   font-family: "Bruno Ace SC", sans-serif;
   font-size: clamp(1.6rem, 4.5vw, 2.6rem);
   color: var(--t);
@@ -705,6 +821,23 @@ body.menu-open {
 .nav-full-links a:hover {
   color: var(--hl);
 }
+.nav-full-links .nav-account-btn {
+  border:0;
+  background:none;
+  cursor:pointer;
+}
+.nav-full-links .nav-account-btn:hover { color:var(--hl); }
+.nav-overlay .nl-item .nav-account-btn { opacity:0; transform:translateY(-40px); }
+.nav-overlay.open .nl-item .nav-account-btn { animation:navStagger 0.5s 0.08s both; }
+.inline-links .nav-account-desktop {
+  border:0;
+  background:none;
+  color:inherit;
+  cursor:pointer;
+  font:inherit;
+  padding:0;
+}
+.inline-links .nav-account-desktop:hover { color:var(--hl); }
 .nav-full-links .ndrop-trigger {
   font-size: clamp(3.8rem, 8vw, 4.5rem);
   cursor: pointer;
@@ -800,9 +933,13 @@ footer {
   text-align: center;
 }
 
-@media (max-width: 1045px) {
-  #main-nav .inline-links{display:none}
-  .nav-toggle{display:flex}
+@media (max-width: 1023px) {
+  #main-nav .inline-links{display:none !important}
+  .nav-toggle{display:flex !important}
+  .nav-overlay .nav-logo-ov,
+  .nav-overlay .ov-logo {
+    height: 100px !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -818,7 +955,7 @@ footer {
   /* Overlay del menú: texto que quepa sin cortarse por los lados */
   .nav-overlay-inner{padding: max(5.5rem,calc(env(safe-area-inset-top) + 4rem)) 1.25rem max(4rem,env(safe-area-inset-bottom));min-height:100%}
   .nav-full-links{gap:0.2rem}
-  .nav-full-links a,.nav-full-links .ndrop-trigger{font-size:clamp(1.5rem,6vw,2.1rem);padding:0.45rem 0}
+   .nav-full-links a,.nav-full-links .nav-account-btn,.nav-full-links .ndrop-trigger{font-size:clamp(1.5rem,6vw,2.1rem);padding:0.45rem 0}
   .nav-overlay .nav-logo-ov{height:56px;margin-bottom:1rem}
   /* Indicador: misma lengüeta completa y diagonal que index.html */
    #ticksWrapper{padding:53.01px 0 7px}
@@ -837,11 +974,20 @@ footer {
 @media (max-width: 400px) {
   #main-nav .nl{font-size:0.95rem;letter-spacing:0.03em}
   #main-nav .nav-logo{height:32px}
-  .nav-full-links a,.nav-full-links .ndrop-trigger{font-size:clamp(1.25rem,6.5vw,1.7rem)}
+   .nav-full-links a,.nav-full-links .nav-account-btn,.nav-full-links .ndrop-trigger{font-size:clamp(1.25rem,6.5vw,1.7rem)}
   .nav-overlay-inner{padding:1.5rem 0.75rem 2.5rem}
 }
 
-@media (min-width: 1046px) {
+@media (min-width: 769px) and (max-width: 1023px) {
+  .nav-overlay .nav-logo-ov,
+  .nav-overlay .ov-logo {
+    height: 100px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  #main-nav .inline-links{display:flex !important}
   .nav-toggle{display:none !important}
 }
 
@@ -865,10 +1011,11 @@ footer {
   }
   .nav-overlay .nav-logo-ov,
   .nav-overlay .ov-logo {
-    height: 84px;
+    height: 100px;
     margin-bottom: 1rem;
   }
   .nav-full-links a,
+  .nav-full-links .nav-account-btn,
   .nav-full-links .ndrop-trigger,
   .nav-full-links .ndrop-trigger-static {
     font-size: clamp(1.5rem, 6vw, 2.4rem);
@@ -961,18 +1108,26 @@ footer {
   }
   .ares-consent-copy { max-width: none !important; }
   .ares-consent-actions {
-    display: flex !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
     gap: 0.5rem !important;
+    min-width: 0 !important;
+    flex-shrink: 1 !important;
+    overflow: hidden !important;
   }
   .ares-consent-actions button {
-    flex: 1 1 0;
+    flex: none;
+    width: 100%;
     min-width: 0;
+    max-width: 100%;
     padding: 0.65rem 0.45rem !important;
     font-size: 9px !important;
     white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -984,4 +1139,332 @@ footer {
 
 @media (max-width: 400px) {
   #main-nav .nav-logo { height: 32px; }
+}
+
+/* Angular borders: clip-path removes the diagonal edge from a rectangular
+   border, so paint the border as an outer polygon and the fill as an inset
+   polygon instead. */
+.hf-diagram.angle-border,
+.hf-alert-badge,
+.imp-diagram,
+.kw-int-btn,
+#kw-disclaimer,
+#kw-ares-note,
+.mb-sync-btn,
+#mb-thermo-track,
+#mb-verdict,
+.nt-card,
+.nt-bridge,
+.pn-inline,
+.fn-plan,
+#casos .caso-card.angle-border,
+.pn-cta a.angle-border,
+.chip,
+.ro-pill,
+.zg-card,
+.btn-outline,
+.map-shell,
+.config-map,
+.control-btn,
+.guard-stage,
+.pf-card .pf-action,
+.pv-choice,
+.plan-badge-provisional,
+.cmp-card,
+.cmp-card-inherit,
+.num-wrap,
+#kcal-widget {
+  position: relative;
+  border: 0 !important;
+  background: var(--angle-border-color) !important;
+  isolation: isolate;
+}
+
+.hf-diagram.angle-border::before,
+.hf-alert-badge::before,
+.imp-diagram::before,
+.kw-int-btn::before,
+#kw-disclaimer::before,
+#kw-ares-note::before,
+.mb-sync-btn::before,
+#mb-thermo-track::before,
+#mb-verdict::before,
+.nt-card::before,
+.nt-bridge::before,
+.pn-inline::before,
+.fn-plan::before,
+#casos .caso-card.angle-border::before,
+.pn-cta a.angle-border::before,
+.chip::before,
+.ro-pill::before,
+.zg-card::before,
+.btn-outline::before,
+.map-shell::before,
+.config-map::before,
+.control-btn::before,
+.guard-stage::before,
+.pf-card .pf-action::before,
+.pv-choice::before,
+.plan-badge-provisional::before,
+.cmp-card::before,
+.cmp-card-inherit::before,
+.num-wrap::before,
+#kcal-widget::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: var(--angle-fill);
+  clip-path: polygon(
+    calc(var(--angle-cut) - 1px) 0,
+    100% 0,
+    100% calc(100% - var(--angle-cut) + 1px),
+    calc(100% - var(--angle-cut) + 1px) 100%,
+    0 100%,
+    0 calc(var(--angle-cut) - 1px)
+  );
+}
+
+.hf-diagram.angle-border { --angle-cut: 18px; --angle-border-color: rgba(134,187,216,0.15); --angle-fill: var(--bg2); }
+.hf-alert-badge { --angle-cut: 6px; --angle-border-color: rgba(246,174,45,0.3); --angle-fill: rgba(246,174,45,0.08); }
+.imp-diagram { --angle-cut: 18px; --angle-border-color: rgba(47,72,88,0.1); --angle-fill: #fff; }
+.kw-int-btn { --angle-cut: 10px; --angle-border-color: rgba(240,242,245,0.16); --angle-fill: rgba(240,242,245,0.04); }
+.kw-int-btn:hover { --angle-border-color: rgba(242,100,25,0.4); }
+.kw-int-btn.active { --angle-border-color: var(--cta); --angle-fill: var(--cta); }
+#kw-disclaimer { --angle-cut: 6px; --angle-border-color: rgba(240,242,245,0.06); --angle-fill: rgba(240,242,245,0.03); }
+#kw-ares-note { --angle-cut: 6px; --angle-border-color: rgba(246,174,45,0.2); --angle-fill: rgba(246,174,45,0.05); }
+.mb-sync-btn { --angle-cut: 6px; --angle-border-color: rgba(240,242,245,0.25); --angle-fill: transparent; }
+#mb-thermo-track { --angle-cut: 11px; --angle-border-color: rgba(240,242,245,0.15); --angle-fill: transparent; }
+#mb-verdict { --angle-cut: 16px; --angle-border-color: rgba(240,242,245,0.1); --angle-fill: transparent; }
+.nt-card { --angle-cut: 14px; --angle-border-color: rgba(47,72,88,0.12); --angle-fill: #fff; }
+.nt-bridge { --angle-cut: 12px; --angle-border-color: rgba(242,100,25,0.35); --angle-fill: rgba(246,174,45,0.08); }
+.pn-inline { --angle-cut: 20px; --angle-border-color: rgba(47,72,88,0.12); --angle-fill: transparent; }
+.fn-plan { --angle-cut: 5px; --angle-border-color: rgba(134,187,216,0.35); --angle-fill: transparent; }
+#casos .caso-card.angle-border { --angle-cut: 14px; --angle-border-color: rgba(47,72,88,0.1); --angle-fill: #fff; }
+.pn-cta a.angle-border { --angle-cut: 10px; --angle-border-color: rgba(134,187,216,0.4); --angle-fill: rgba(134,187,216,0.1); }
+/* Hover: borde naranja con relleno OPACO. Si el relleno fuese translucido, el
+   naranja solido del borde se veria a traves y las letras naranjas quedarian
+   invisibles sobre un bloque naranja. */
+.pn-cta a.angle-border:hover,
+.pn-cta a.angle-border:focus-visible {
+  --angle-border-color: var(--cta);
+  --angle-fill: #151d25;
+  color: var(--cta);
+  outline: none;
+}
+.chip { --angle-cut: 8px; --angle-border-color: rgba(47,72,88,0.18); --angle-fill: #fff; }
+.ro-pill { --angle-cut: 6px; --angle-border-color: rgba(47,72,88,0.1); --angle-fill: #fff; }
+.zg-card { --angle-cut: 14px; --angle-border-color: rgba(47,72,88,0.08); --angle-fill: #fff; }
+.btn-outline { --angle-cut: 9px; --angle-border-color: rgba(240,242,245,0.32); --angle-fill: transparent; }
+.map-shell { --angle-cut: 24px; --angle-border-color: rgba(240,242,245,0.2); --angle-fill: #dce7ec; }
+.config-map { --angle-cut: 20px; --angle-border-color: var(--line); --angle-fill: #e4edf1; }
+.control-btn { --angle-cut: 7px; --angle-border-color: rgba(47,72,88,0.22); --angle-fill: #fff; }
+.guard-stage { --angle-cut: 25px; --angle-border-color: rgba(134,187,216,0.2); --angle-fill: radial-gradient(circle at 50% 50%,rgba(134,187,216,.08),transparent 57%),#172b39; }
+.pf-card .pf-action { --angle-cut: 6px; --angle-border-color: rgba(134,187,216,0.25); --angle-fill: transparent; }
+.pv-choice { --angle-cut: 8px; --angle-border-color: rgba(240,242,245,0.18); --angle-fill: #20303d; }
+.plan-badge-provisional { --angle-cut: 6px; --angle-border-color: rgba(242,100,25,0.4); --angle-fill: rgba(242,100,25,0.08); }
+.cmp-card { --angle-cut: 16px; --angle-border-color: rgba(134,187,216,0.15); --angle-fill: var(--bg2); }
+.cmp-card-inherit { --angle-cut: 6px; --angle-border-color: rgba(246,174,45,0.25); --angle-fill: rgba(246,174,45,0.08); }
+.num-wrap { --angle-cut: 8px; --angle-border-color: rgba(240,242,245,0.18); --angle-fill: #20303d; }
+#kcal-widget { --angle-cut: 28px; --angle-border-color: rgba(240,242,245,0.14); --angle-fill: #20303d; }
+@media (max-width: 900px) {
+  #kcal-widget { --angle-cut: 22px; }
+}
+
+/* Only these plan cards use a real border. Other pages reuse .pn-card for
+   borderless cards with their own inset decoration. */
+.pn-card.angle-border {
+  position: relative;
+  border: 0 !important;
+  background: rgba(240,242,245,0.08) !important;
+  isolation: isolate;
+  --angle-cut: 12px;
+  --angle-border-color: rgba(240,242,245,0.08);
+  --angle-fill: rgba(21,29,37,0.72);
+}
+.pn-card.angle-border::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: var(--angle-fill);
+  clip-path: polygon(
+    calc(var(--angle-cut) - 1px) 0,
+    100% 0,
+    100% calc(100% - var(--angle-cut) + 1px),
+    calc(100% - var(--angle-cut) + 1px) 100%,
+    0 100%,
+    0 calc(var(--angle-cut) - 1px)
+  );
+}
+.pn-card.angle-border.hl,
+.pn-card.angle-border.pn-highlight {
+  --angle-border-color: rgba(246,174,45,0.5);
+  --angle-fill: rgba(21,29,37,0.8);
+}
+
+/* This card has an asymmetric top-right cut, so it needs its own inset path. */
+.fn-card {
+  position: relative;
+  border: 0 !important;
+  background: rgba(47,72,88,0.1) !important;
+  isolation: isolate;
+}
+.fn-card::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: #fff;
+  clip-path: polygon(0 0,calc(100% - 99px) 0,100% 99px,100% 100%,0 100%);
+}
+
+/* Shared FAQ treatment: keep every content-page Q&A aligned with the home FAQ. */
+.idx-faq-list,
+.act-faq-list,
+.sleep-faq,
+.faq-list,
+.pf-faq-list,
+.faq {
+  max-width: 720px !important;
+  margin: 2rem auto 0 !important;
+}
+
+.sleep-faq,
+.faq-list,
+.pf-faq-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  border-top: 0 !important;
+}
+
+.idx-faq-item,
+.act-faq-item,
+.sleep-faq details,
+.faq-item,
+.pf-faq-item {
+  border: 1px solid rgba(240, 242, 245, 0.08) !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  text-align: left;
+}
+
+.idx-faq-item summary,
+.act-faq-item summary,
+.sleep-faq summary,
+.faq-item summary,
+.pf-faq-item summary,
+.faq-q {
+  list-style: none !important;
+  cursor: pointer;
+  padding: 1rem 1.3rem !important;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'Orbitron', sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+  text-align: left;
+  user-select: none;
+}
+
+.idx-faq-item summary::-webkit-details-marker,
+.act-faq-item summary::-webkit-details-marker,
+.sleep-faq summary::-webkit-details-marker,
+.faq-item summary::-webkit-details-marker,
+.pf-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.idx-faq-item summary::after,
+.act-faq-item summary::after,
+.sleep-faq summary::after,
+.faq-item summary::after,
+.pf-faq-item summary::after,
+.faq-q::after {
+  content: '+' !important;
+  position: static !important;
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 1.3rem !important;
+  line-height: 1 !important;
+  color: var(--hl) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s;
+}
+
+.idx-faq-item[open],
+.act-faq-item[open],
+.sleep-faq details[open],
+.faq-item[open],
+.pf-faq-item[open],
+.faq-item.open {
+  border-color: rgba(242, 100, 25, 0.58) !important;
+  box-shadow: 0 0 0 1px rgba(242, 100, 25, 0.12) !important;
+}
+
+.idx-faq-item[open] summary::after,
+.act-faq-item[open] summary::after,
+.sleep-faq details[open] summary::after,
+.faq-item[open] summary::after,
+.pf-faq-item[open] summary::after,
+.faq-item.open .faq-q::after {
+  transform: rotate(45deg);
+  color: var(--cta) !important;
+}
+
+.faq-q .material-symbols-outlined,
+.faq-item summary .faq-chevron {
+  display: none !important;
+}
+
+.idx-faq-item p,
+.act-faq-item p,
+.sleep-faq details p,
+.faq-body,
+.faq-a p,
+.pf-faq-item p {
+  max-width: none !important;
+  padding: 0 1.3rem 1.1rem !important;
+  margin: 0 !important;
+  font-size: 0.85rem !important;
+  line-height: 1.8 !important;
+}
+
+.idx-faq-item summary:focus-visible,
+.act-faq-item summary:focus-visible,
+.sleep-faq summary:focus-visible,
+.faq-item summary:focus-visible,
+.pf-faq-item summary:focus-visible,
+.faq-q:focus-visible {
+  outline: 2px solid var(--cta);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+/* Logo del overlay movil: crece con la pantalla (va al final para ganar a la regla anterior) */
+.nav-overlay .ov-logo{height:clamp(104px,14vw,132px)!important;width:auto}
+
+/* Ajuste final del nav: diez pixeles extra para separar el logo del indicador.
+   Estas reglas quedan al final porque hay overrides responsive historicos mas
+   arriba que, si ganan, vuelven a encoger el nav o desplazan el indicador. */
+#main-nav{min-height:clamp(66px,calc(4.6vw + 10px),126px);padding-block:0}
+#ticksWrapper{padding-top:clamp(66px,calc(4.6vw + 10px),126px)}
+
+@media (max-width:1023px){
+  #main-nav{min-height:62px;padding-block:.85rem}
+  #ticksWrapper{padding-top:62px}
+  #main-nav .nav-logo{height:clamp(48px,6.5vw,56px)}
+}
+
+@media (max-width:480px){
+  #main-nav{min-height:62px;padding-block:.8rem}
+  #ticksWrapper{padding-top:62px}
+  #main-nav .nav-logo{height:48px}
+}
+
+@media (max-width:400px){
+  #main-nav .nav-logo{height:44px}
 }
