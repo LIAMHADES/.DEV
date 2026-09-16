@@ -4,6 +4,8 @@
   var footer = document.querySelector("footer");
   var isContentPage = window.location.pathname.indexOf("/contenido/") !== -1;
   var base = isContentPage ? "../" : "";
+  /* La pagina legal vive en /contenido/, asi que su ruta depende de donde estemos. */
+  var legalBase = isContentPage ? "" : "contenido/";
 
   if (!footer) {
     footer = document.createElement("footer");
@@ -23,7 +25,7 @@
     '<a href="' + (isContentPage ? "pet-friendly.html" : "contenido/pet-friendly.html") + '">Sitios pet-friendly</a>' +
     '<a href="' + (isContentPage ? "proximamente.html" : "contenido/proximamente.html") + '">Reserva anticipada</a>' +
     '</nav>' +
-    '<div class="ares-footer-data">Cookies y datos: <a href="' + base + 'cookies.html">Política de cookies</a> · <a href="' + base + 'privacidad.html">Privacidad</a> · <button type="button" data-ares-cookie-preferences>Preferencias de cookies</button></div>';
+    '<div class="ares-footer-data">Legal y datos: <a href="' + legalBase + 'legal.html#aviso-legal">Aviso legal</a> · <a href="' + legalBase + 'legal.html#privacidad">Privacidad</a> · <a href="' + legalBase + 'legal.html#cookies">Cookies</a> · <button type="button" data-ares-cookie-preferences>Preferencias de cookies</button></div>';
 
   footer.appendChild(meta);
 
@@ -33,6 +35,6 @@
       window.aresAnalytics.manageConsent();
       return;
     }
-    window.location.href = base + "cookies.html";
+    window.location.href = legalBase + "legal.html#cookies";
   });
 })();

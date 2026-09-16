@@ -38,23 +38,83 @@
     }
   }
 
-  const drop = document.getElementById('navDrop');
-  const dropTrigger = drop && drop.querySelector('.ndrop-trigger');
-  if (drop && dropTrigger) {
-    const isTouch = window.matchMedia('(hover: none)').matches;
-    const closeDrop = () => drop.classList.remove('open');
-    dropTrigger.addEventListener('click', (e) => {
+  /* Desplegables del nav ("Descubre" y el cluster de secciones del resumen):
+     en escritorio basta con el hover y el clic no cierra lo que ya esta
+     abierto. El retardo evita que se cierre al cruzar el hueco hacia el menu. */
+     const isTouch = window.matchMedia('(hover: none)').matches;
+  document.querySelectorAll('#main-nav .ndrop').forEach(function(drop){
+    const trigger = drop.querySelector('.ndrop-trigger');
+    if (!trigger) return;
+    let closeTimer = null;
+    const openDrop = () => {
+      clearTimeout(closeTimer);
+      /* Solo un desplegable abierto a la vez: al pasar de "Descubre" a "Mas"
+         (o al reves) el anterior se cierra en el acto. */
+      document.querySelectorAll('#main-nav .ndrop.open').forEach(function(other){
+        if (other !== drop) other.classList.remove('open');
+      });
+      drop.classList.add('open');
+    };
+    const closeDrop = (delay) => {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(() => drop.classList.remove('open'), delay === undefined ? 170 : delay);
+    };
+    trigger.addEventListener('click', (e) => {
       e.preventDefault();
-      drop.classList.toggle('open');
+      if (isTouch) {
+        drop.classList.toggle('open');
+      } else {
+        /* El clic no debe dejar :focus-within bloqueando el hover al salir. */
+        trigger.blur();
+      }
     });
-    if (!isTouch) {
-      drop.addEventListener('mouseenter', () => drop.classList.add('open'));
-      drop.addEventListener('mouseleave', closeDrop);
-    }
+     if (!isTouch) {
+       drop.addEventListener('mouseenter', openDrop);
+       drop.addEventListener('mouseleave', () => closeDrop());
+       drop.addEventListener('focusin', openDrop);
+       drop.addEventListener('focusout', (e) => { if (!drop.contains(e.relatedTarget)) closeDrop(); });
+     }
     document.addEventListener('click', (e) => {
-      if (!drop.contains(e.target)) closeDrop();
+      if (!drop.contains(e.target)) closeDrop(0);
     });
-  }
+    drop.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { closeDrop(0); trigger.focus(); }
+    });
+  });
+
+  /* Logo del nav: centrado si cabe, y al lado del wordmark cuando los enlaces
+     lo pisarian. Se remide en cada resize, asi que no depende de anchos fijos. */
+  (function(){
+    const nav = document.getElementById('main-nav');
+    if (!nav) return;
+    const logo = nav.querySelector('.nav-logo');
+    const links = nav.querySelector('.inline-links');
+    if (!logo || !links) return;
+    const wordmark = nav.querySelector('.nl');
+    function place(){
+      nav.classList.remove('nav--logo-inline');
+      const linksStyle = getComputedStyle(links);
+      /* En movil/tablet con hamburguesa los enlaces estan ocultos: el logo
+         debe permanecer centrado y no entrar en el fallback lateral. */
+      if (linksStyle.display === 'none' || links.getBoundingClientRect().width === 0) return;
+      const lw = logo.getBoundingClientRect().width;
+      const half = window.innerWidth / 2;
+      const linksLeft = links.getBoundingClientRect().left;
+      const session = nav.querySelector('.nav-account-desktop');
+      const leftEdge = Math.max(
+        wordmark ? wordmark.getBoundingClientRect().right : 0,
+        session ? session.getBoundingClientRect().right : 0
+      );
+      const margin = 14;
+      if (linksLeft < half + lw / 2 + margin || leftEdge + margin > half - lw / 2) {
+        nav.classList.add('nav--logo-inline');
+      }
+    }
+    place();
+    window.addEventListener('resize', place, {passive:true});
+    window.addEventListener('load', place);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place).catch(function(){});
+  })();
 
   function setState(open){
     btn.classList.toggle('active', open);
@@ -141,7 +201,13 @@ document.querySelectorAll('input[type=number]').forEach(inp=>{
   const dec=document.createElement('button');dec.type='button';dec.className='num-btn num-dec';dec.textContent='−';
   const inc=document.createElement('button');inc.type='button';inc.className='num-btn num-inc';inc.textContent='+';
   wrap.appendChild(dec);wrap.appendChild(inc);
-  dec.addEventListener('click',()=>{const v=parseFloat(inp.value)||0;const s=parseFloat(inp.step)||1;const mn=inp.min!==''?parseFloat(inp.min):null;if(mn===null||v-s>=mn)inp.value=v-s});
-  inc.addEventListener('click',()=>{const v=parseFloat(inp.value)||0;const s=parseFloat(inp.step)||1;const mx=inp.max!==''?parseFloat(inp.max):null;if(mx===null||v+s<=mx)inp.value=v+s});
-  inp.addEventListener('change',()=>{let v=parseFloat(inp.value);if(isNaN(v))v='';const mn=inp.min!==''?parseFloat(inp.min):null,mx=inp.max!==''?parseFloat(inp.max):null;if(mn!==null&&v<mn)v=mn;if(mx!==null&&v>mx)v=mx;inp.value=v});
+  if(inp.dataset.approxMode === 'range') wrap.classList.add('approx-hidden');
+  const precision = () => {
+    const step = String(inp.step || '1');
+    return step.includes('.') ? step.split('.')[1].length : 0;
+  };
+  const clean = value => Number(value.toFixed(precision()));
+  dec.addEventListener('click',()=>{const v=parseFloat(inp.value)||0;const s=parseFloat(inp.step)||1;const mn=inp.min!==''?parseFloat(inp.min):null;const next=clean(v-s);if(mn===null||next>=mn)inp.value=next});
+  inc.addEventListener('click',()=>{const v=parseFloat(inp.value)||0;const s=parseFloat(inp.step)||1;const mx=inp.max!==''?parseFloat(inp.max):null;const next=clean(v+s);if(mx===null||next<=mx)inp.value=next});
+  inp.addEventListener('change',()=>{let v=parseFloat(inp.value);if(isNaN(v)){inp.value='';return}const mn=inp.min!==''?parseFloat(inp.min):null,mx=inp.max!==''?parseFloat(inp.max):null;if(mn!==null&&v<mn)v=mn;if(mx!==null&&v>mx)v=mx;inp.value=clean(v)});
 });

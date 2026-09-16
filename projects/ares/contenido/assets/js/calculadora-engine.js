@@ -109,7 +109,7 @@
         normalMax,
         overweightStart: normalMax,
         obesityStart,
-        breedUsed: bandRow.breed || "tu perro (por tamaño estimado)",
+        breedUsed: bandRow.breed || "Mestizo / No sé",
         sizeCategory: bandRow.category_simple,
         puppyAdjusted: puppy,
         source: "bmi_simple_bands",
@@ -156,7 +156,14 @@
   function resolveInputValue(rawValue, rangeList) {
     if (rawValue && typeof rawValue === "object" && rawValue.rangeId) {
       const range = rangeList.find((r) => r.id === rawValue.rangeId);
-      if (range) return { value: midpoint(range), isApprox: true };
+      if (range) {
+        return {
+          value: midpoint(range),
+          isApprox: true,
+          inputMin: range.min,
+          inputMax: range.max,
+        };
+      }
     }
     const num = typeof rawValue === "object" ? NaN : parseFloat(rawValue);
     return { value: num, isApprox: false };
@@ -201,7 +208,7 @@
       if (resolved.length === 1) {
         const r = resolved[0];
         const category = classify(bmi, r.normalMin, r.normalMax, r.overweightStart, r.obesityStart);
-        return {
+        return addDerivedRanges({
           bmi: round1(bmi),
           category,
           normalMin: round1(r.normalMin),
@@ -211,7 +218,7 @@
           sizeCategory: r.sizeCategory,
           puppyAdjusted: r.puppyAdjusted,
           approxInput,
-        };
+        }, heightResolved, weightResolved);
       }
 
       if (resolved.length === 2) {
@@ -224,7 +231,7 @@
         const overweightStart = avg("overweightStart");
         const obesityStart = avg("obesityStart");
         const category = classify(bmi, normalMin, normalMax, overweightStart, obesityStart);
-        return {
+        return addDerivedRanges({
           bmi: round1(bmi),
           category,
           normalMin: round1(normalMin),
@@ -234,7 +241,7 @@
           sizeCategory: resolved[0].sizeCategory,
           puppyAdjusted: resolved[0].puppyAdjusted || resolved[1].puppyAdjusted,
           approxInput,
-        };
+        }, heightResolved, weightResolved);
       }
       // Si ninguna de las razas indicadas se reconoce, cae al fallback por tamano de abajo.
     }
@@ -249,11 +256,11 @@
 
     if (matchingBands.length > 0) {
       const avgBand = averageBands(matchingBands);
-      return resultFromBand(bmi, avgBand, puppy, sizeCat, approxInput);
+      return addDerivedRanges(resultFromBand(bmi, avgBand, puppy, sizeCat, approxInput), heightResolved, weightResolved);
     }
 
     // Si ni siquiera hay banda generica (no deberia pasar), devolvemos solo el BMI
-    return {
+    return addDerivedRanges({
       bmi: round1(bmi),
       category: "ideal",
       normalMin: null,
@@ -263,7 +270,7 @@
       sizeCategory: sizeCat,
       puppyAdjusted: false,
       approxInput,
-    };
+    }, heightResolved, weightResolved);
   }
 
   /**
@@ -301,10 +308,27 @@
       normalMin: round1(normalMin),
       normalMax: round1(normalMax),
       source: "bmi_simple_bands",
-      breedUsed: bandRow.breed || "tu perro (por tamaño estimado)",
+      breedUsed: bandRow.breed || "Mestizo / No sé",
       sizeCategory: sizeCatOverride || bandRow.category_simple,
       puppyAdjusted: puppy,
       approxInput: !!approxInput,
+    };
+  }
+
+  function addDerivedRanges(result, resolvedHeight, resolvedWeight) {
+    if (result.normalMin == null || result.normalMax == null) return result;
+    const heightMin = resolvedHeight.inputMin ?? resolvedHeight.value;
+    const heightMax = resolvedHeight.inputMax ?? resolvedHeight.value;
+    const minHeightM = heightMin / 100;
+    const maxHeightM = heightMax / 100;
+    return {
+      ...result,
+      normalWeightMin: round1(result.normalMin * minHeightM * minHeightM),
+      normalWeightMax: round1(result.normalMax * maxHeightM * maxHeightM),
+      inputWeightMin: resolvedWeight.inputMin ?? resolvedWeight.value,
+      inputWeightMax: resolvedWeight.inputMax ?? resolvedWeight.value,
+      inputHeightMin: heightMin,
+      inputHeightMax: heightMax,
     };
   }
 

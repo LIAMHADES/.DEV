@@ -42,11 +42,11 @@
 <div id="progress-bar"></div>
 <div class="scroll-indicator-horizontal" id="ticksWrapper"></div>
 <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="navOverlay" aria-expanded="false"><span></span><span></span><span></span></button>
- <nav id="main-nav"><a href="../index.html" class="nl">ARES GPS</a><a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a><ul class="inline-links"><li><a href="#planificador">Planificador</a></li><li><a href="#toxicos">Prohibidos</a></li><li><a href="#buenas-opciones">Qué puedes sumar</a></li><li class="ndrop" id="navMore"><a class="ndrop-trigger" href="#">Más</a><div class="ndrop-menu"><a href="#cantidades-seguras">Cantidades seguras</a><a href="#preguntas-frecuentes">FAQ</a></div></li><li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a><div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li></ul></nav>
+ <nav id="main-nav"><a href="../index.html" class="nl">ARES GPS</a><a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a><ul class="inline-links"><li><a href="#planificador">Planificador</a></li><li><a href="#toxicos">Prohibidos</a></li><li><a href="#buenas-opciones">Qué puedes sumar</a></li><li class="ndrop" id="navMore"><a class="ndrop-trigger" href="#">Más</a><div class="ndrop-menu"><a href="#cantidades-seguras">Cantidades seguras</a><a href="#como-usarla">Cómo introducir alimentos</a><a href="#nutrientes-indispensables">Nutrientes indispensables</a><a href="#preguntas-frecuentes">Preguntas frecuentes</a></div></li><li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a><div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Ejercicio y calorías</a><a href="descanso.html">Sueño y descanso</a><a href="geocerca.html">Zonas seguras</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li></ul></nav>
 <div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Menú principal" tabindex="-1">
   <div class="nav-overlay-inner">
     <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
-    <ul class="nav-full-links"><li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#planificador">Planificador</a></li><li class="nl-item"><a href="#toxicos">Alimentos prohibidos</a></li><li class="nl-item"><a href="#buenas-opciones">Qué puedes sumar</a></li><li class="nl-item"><a href="#cantidades-seguras">Cantidades seguras</a></li><li class="nl-item"><a href="#nutrientes-indispensables">Nutrientes indispensables</a></li><li class="nl-item"><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li><li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Actividad y calorías</a><a href="descanso.html">Descanso</a><a href="geocerca.html">Geocerca</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li><li class="nl-item"><button type="button" class="nav-account-btn" data-account-open>Iniciar sesión</button></li></ul>
+    <ul class="nav-full-links"><li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#planificador">Planificador</a></li><li class="nl-item"><a href="#toxicos">Alimentos prohibidos</a></li><li class="nl-item"><a href="#buenas-opciones">Qué puedes sumar</a></li><li class="nl-item"><a href="#cantidades-seguras">Cantidades seguras</a></li><li class="nl-item"><a href="#como-usarla">Cómo introducir alimentos</a></li><li class="nl-item"><a href="#nutrientes-indispensables">Nutrientes indispensables</a></li><li class="nl-item"><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li><li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Ejercicio y calorías</a><a href="descanso.html">Sueño y descanso</a><a href="geocerca.html">Zonas seguras</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li><li class="nl-item"><button type="button" class="nav-account-btn" data-account-open>Iniciar sesión</button></li></ul>
   </div>
 </div>
 <div class="ov-ticks" id="ovTicks"></div>
@@ -331,43 +331,44 @@
   <script src="assets/js/account.js"></script>
  <script src="assets/js/mobile-menu.js"></script>
  <script src="assets/js/scroll-indicator.js"></script>
- <script>
-   (() => {
-     const footerMap = document.querySelector('.pf-footer-map');
-     if (!footerMap) return;
-     let target = 0, current = 0, lastInput = 0, lastTouchY = null, frame = 0;
-     const maxStretch = window.innerWidth <= 768 ? 0.16 : 0.12;
-     const bgFactor = window.innerWidth <= 768 ? 0 : 0.65;
-     const svgFactor = window.innerWidth <= 768 ? 1 : 0.65;
-     const baseHeight = footerMap.offsetHeight;
-     const baseScale = parseFloat(getComputedStyle(footerMap).getPropertyValue('--footer-svg-base-scale')) || 1;
-     const atEnd = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-     const release = () => { target = 0; lastInput = 0; if (!frame) frame = requestAnimationFrame(tick); };
-     const push = (amount) => { target = Math.min(maxStretch, target + Math.min(maxStretch, amount)); lastInput = performance.now(); if (!frame) frame = requestAnimationFrame(tick); };
-     const tick = (now) => { const elapsed = now - lastInput; if (elapsed > 90) target = Math.max(0, target - 0.12 * Math.min(1, (elapsed - 90) / 140)); current += (target - current) * 0.22; footerMap.style.setProperty('--footer-bg-stretch', (current * bgFactor).toFixed(4)); footerMap.style.setProperty('--footer-svg-stretch', (current * svgFactor).toFixed(4)); footerMap.style.setProperty('--footer-rise', (current * bgFactor * baseHeight).toFixed(2) + 'px'); if (window.innerWidth > 768) footerMap.style.setProperty('--footer-tile-height', (footerMap.offsetHeight / (baseScale + current * svgFactor)).toFixed(2) + 'px'); else footerMap.style.removeProperty('--footer-tile-height'); if (Math.abs(current - target) > 0.0005 || target > 0.0005) frame = requestAnimationFrame(tick); else { current = 0; target = 0; footerMap.style.removeProperty('--footer-bg-stretch'); footerMap.style.removeProperty('--footer-svg-stretch'); footerMap.style.removeProperty('--footer-rise'); footerMap.style.removeProperty('--footer-tile-height'); frame = 0; } };
-     window.addEventListener('wheel', (event) => { if (event.deltaY > 0 && atEnd()) push(Math.abs(event.deltaY) * 0.0009); else if (event.deltaY < 0) release(); }, {passive:true});
-     window.addEventListener('touchstart', (event) => { lastTouchY = event.touches[0]?.clientY ?? null; }, {passive:true});
-     window.addEventListener('touchmove', (event) => { const y = event.touches[0]?.clientY ?? lastTouchY; const delta = lastTouchY == null || y == null ? 0 : lastTouchY - y; lastTouchY = y; if (delta > 0 && atEnd()) push(delta * 0.002); else if (delta < 0) release(); }, {passive:true});
-     window.addEventListener('touchend', () => { lastTouchY = null; release(); }, {passive:true});
-     window.addEventListener('touchcancel', () => { lastTouchY = null; release(); }, {passive:true});
-   })();
-  </script>
+ <script src="assets/js/footer-map.js" defer></script>
   <script src="../assets/js/footer-common.js" defer></script>
   <script src="assets/js/nutrition-planner.js"></script>
  <script>
  (() => {
+   const SIZE = 40;
+   const MAX_TRAIL = 18;
+
+   /* Rejilla de cuadros animados. Se ancla al ritmo de 40px en coordenadas de
+      DOCUMENTO (no al centro de cada seccion) para que los cuadros sigan
+      alineados cuando dos secciones se tocan mediante un corte diagonal:
+      hero -> "La regla de ARES" y "La regla de ARES" -> seccion clara. */
    function buildPrism(id) {
      const wrap = document.getElementById(id);
-     if (!wrap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+     if (!wrap) return;
      const section = wrap.closest('section, header') || wrap.parentElement;
-     const size = 40;
+     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+     if (wrap._prism) {
+       const prev = wrap._prism;
+       cancelAnimationFrame(prev.frame);
+       prev.grid.remove();
+       wrap._prism = null;
+     }
+     if (reduced) return;
+
+     const size = SIZE;
      const cols = Math.ceil(section.offsetWidth / size) + 4;
      const rows = Math.ceil(section.offsetHeight / size) + 4;
      const grid = document.createElement('div');
      grid.className = 'prism-grid';
      const gridWidth = cols * size;
      const gridHeight = rows * size;
-     grid.style.cssText = `width:${gridWidth}px;height:${gridHeight}px;margin-left:${gridWidth / -2}px;margin-top:${gridHeight / -2}px;grid-template-columns:repeat(${cols},${size}px);grid-template-rows:repeat(${rows},${size}px)`;
+     const rect = section.getBoundingClientRect();
+     const phaseX = (((rect.left + window.scrollX) % size) + size) % size;
+     const phaseY = (((rect.top + window.scrollY) % size) + size) % size;
+     const offsetX = -phaseX - 2 * size;
+     const offsetY = -phaseY - 2 * size;
+     grid.style.cssText = `left:0;top:0;width:${gridWidth}px;height:${gridHeight}px;margin-left:${offsetX}px;margin-top:${offsetY}px;grid-template-columns:repeat(${cols},${size}px);grid-template-rows:repeat(${rows},${size}px)`;
      const cells = [];
      for (let index = 0; index < rows * cols; index += 1) {
        const cell = document.createElement('div');
@@ -377,31 +378,44 @@
        cells.push(cell);
      }
      wrap.appendChild(grid);
-     const trail = [];
-     const maxTrail = 18;
-     let color = '134,187,216';
-     section.addEventListener('mousemove', (event) => {
-       const rect = section.getBoundingClientRect();
-       const gridLeft = section.offsetWidth / 2 - gridWidth / 2;
-       const gridTop = section.offsetHeight / 2 - gridHeight / 2;
-       const col = Math.floor((event.clientX - rect.left - gridLeft) / size);
-       const row = Math.floor((event.clientY - rect.top - gridTop) / size);
-       if (col >= 0 && col < cols && row >= 0 && row < rows) trail.push({ col, row, life: 1 });
-       color = event.target.closest('a,button') ? '246,174,45' : '134,187,216';
-     });
-     section.addEventListener('mouseleave', () => {
-       trail.length = 0;
-       cells.forEach((cell) => {
-         cell.style.background = 'rgba(134,187,216,0)';
-         cell.classList.remove('lit');
+
+     const state = { grid, cells, frame: 0, trail: [], color: '134,187,216' };
+     const trail = state.trail;
+
+     if (!section._prismBound) {
+       section._prismBound = true;
+       section.addEventListener('mousemove', (event) => {
+         const current = wrap._prism;
+         if (!current) return;
+         const area = section.getBoundingClientRect();
+         const col = Math.floor((event.clientX - area.left - current.offsetX) / SIZE);
+         const row = Math.floor((event.clientY - area.top - current.offsetY) / SIZE);
+         if (col >= 0 && col < current.cols && row >= 0 && row < current.rows) current.trail.push({ col, row, life: 1 });
+         current.color = event.target.closest('a,button') ? '246,174,45' : '134,187,216';
        });
-     });
+       section.addEventListener('mouseleave', () => {
+         const current = wrap._prism;
+         if (!current) return;
+         current.trail.length = 0;
+         current.cells.forEach((cell) => {
+           cell.style.background = 'rgba(134,187,216,0)';
+           cell.classList.remove('lit');
+         });
+       });
+     }
+
+     state.offsetX = offsetX;
+     state.offsetY = offsetY;
+     state.cols = cols;
+     state.rows = rows;
+
      function animate() {
+       const color = state.color;
        for (let index = trail.length - 1; index >= 0; index -= 1) {
          trail[index].life -= 0.04;
          if (trail[index].life <= 0) trail.splice(index, 1);
        }
-       while (trail.length > maxTrail) trail.shift();
+       while (trail.length > MAX_TRAIL) trail.shift();
        const litMap = {};
        trail.forEach((point) => {
          const key = point.row * cols + point.col;
@@ -412,12 +426,25 @@
          cell.style.background = life > 0.01 ? `rgba(${color},${life * 0.3})` : 'rgba(134,187,216,0)';
          cell.classList.toggle('lit', life > 0.01);
        });
-       requestAnimationFrame(animate);
+       state.frame = requestAnimationFrame(animate);
      }
-     animate();
+     state.frame = requestAnimationFrame(animate);
+     wrap._prism = state;
    }
-  buildPrism('prism-nutrition');
- })();
+
+   function buildAll() {
+     buildPrism('prism-nutrition');
+   }
+
+   buildAll();
+   let resizeTimer = 0;
+   window.addEventListener('resize', () => {
+     clearTimeout(resizeTimer);
+     resizeTimer = setTimeout(buildAll, 200);
+   }, {passive:true});
+   window.addEventListener('load', buildAll);
+   if (document.fonts && document.fonts.ready) document.fonts.ready.then(buildAll).catch(() => {});
+  })();
  </script>
  <script>
 (() => {

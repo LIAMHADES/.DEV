@@ -84,6 +84,16 @@
   .pf-footer-wrap {
     --footer-svg-base-scale: 0.9 !important;
   }
+
+  /* En movil el wordmark quedaba pegado a la parte alta de la banda, con el
+     hueco de abajo sin usar. Se baja 20px (de -53px a -33px) para acercarlo al
+     texto del pie. No se baja mas porque en las fichas donde el subtexto ocupa
+     dos lineas el bloque de texto sube ~13px y el wordmark lo tocaria.
+     Lleva !important porque cada pagina trae su propia copia del footer en un
+     <style> que se aplica despues de este archivo. */
+  .pf-footer-tile {
+    transform: translate3d(0, -33px, 0) scale(calc(var(--footer-svg-base-scale, 0.9) + var(--footer-svg-stretch, 0))) !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

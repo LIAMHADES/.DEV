@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Información legal, privacidad y cookies — ARES GPS</title>
+<meta name="description" content="Aviso legal, condiciones de reserva, política de privacidad y política de cookies de ARES GPS, el localizador GPS para perros con seguimiento de bienestar.">
+
+<link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/account.css">
+<link rel="stylesheet" href="../assets/css/footer-common.css">
+<style>
+/* === DOCUMENTO LEGAL ===
+   Pagina de solo lectura, sin animaciones de seccion: prima la legibilidad.
+   Usa los tokens del sitio (base.css) para no parecer una pagina aparte. */
+main.legal{position:relative;z-index:1;max-width:940px;margin:0 auto;padding:calc(clamp(56px,4.6vw,116px) + 2.5rem) 1.25rem 4.5rem}
+.legal-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--deco);margin-bottom:.9rem}
+main.legal h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.25;color:var(--t);text-transform:uppercase;letter-spacing:.02em;margin-bottom:1rem;overflow-wrap:break-word}
+.legal-lead{font-family:'Orbitron',sans-serif;font-size:.92rem;line-height:1.7;color:rgba(240,242,245,.8);letter-spacing:.02em;max-width:64ch}
+
+/* Nota de transparencia sobre el estado del proyecto */
+.legal-note{margin-top:1.75rem;padding:1.15rem 1.3rem;background:rgba(246,174,45,.06);border:1px solid rgba(246,174,45,.32);clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);font-size:.86rem;line-height:1.75;color:rgba(240,242,245,.82)}
+.legal-note strong{color:var(--hl)}
+
+/* Indice de apartados */
+.legal-index{margin-top:2rem;padding:1.2rem 1.3rem;background:rgba(134,187,216,.04);border:1px solid var(--cb)}
+.legal-index p{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--deco);margin-bottom:.75rem}
+/* Especificidad extra para ganar a "main.legal ol{display:grid}", que anula column-count */
+main.legal .legal-index ol{margin:0;padding-left:1.15rem;display:block;column-count:2;column-gap:2rem}
+.legal-index li{margin-bottom:.45rem;break-inside:avoid}
+.legal-index a{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:rgba(240,242,245,.75);text-decoration:none;transition:color .2s}
+.legal-index a:hover,.legal-index a:focus-visible{color:var(--cta)}
+
+/* Apartados */
+main.legal section{margin-top:3.25rem;padding-top:2.25rem;border-top:1px solid var(--cb)}
+main.legal h2{font-family:'Orbitron',sans-serif;font-size:clamp(1rem,2vw,1.3rem);line-height:1.35;color:var(--t);letter-spacing:.03em;text-transform:uppercase;margin-bottom:1rem;scroll-margin-top:clamp(72px,6vw,132px)}
+main.legal h3{font-family:'Orbitron',sans-serif;font-size:.86rem;line-height:1.5;color:var(--deco);letter-spacing:.06em;text-transform:uppercase;margin:1.9rem 0 .6rem}
+main.legal p,main.legal li,main.legal dd{font-size:.94rem;line-height:1.8;color:rgba(240,242,245,.78)}
+main.legal p+p{margin-top:.9rem}
+main.legal ul,main.legal ol{margin:.65rem 0 0 1.15rem;display:grid;gap:.45rem}
+main.legal li::marker{color:var(--cta)}
+main.legal a{color:var(--deco);text-decoration:none;border-bottom:1px solid rgba(134,187,216,.3)}
+main.legal a:hover,main.legal a:focus-visible{color:var(--cta);border-bottom-color:rgba(242,100,25,.5)}
+main.legal code{font-family:'JetBrains Mono',monospace;font-size:.82em;color:var(--hl);background:rgba(134,187,216,.07);padding:.1em .35em;border-radius:3px}
+main.legal strong{color:var(--t);font-weight:600}
+
+/* Ficha de datos identificativos */
+.legal-dl{margin:.85rem 0 0;display:grid;gap:.6rem}
+.legal-dl>div{display:grid;grid-template-columns:minmax(140px,190px) 1fr;gap:.85rem;align-items:baseline}
+.legal-dl dt{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--t3)}
+.legal-dl dd{margin:0;overflow-wrap:anywhere}
+
+/* Tablas de cookies */
+.legal-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.legal-table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.82rem;min-width:520px}
+.legal-table th,.legal-table td{text-align:left;padding:.65rem .75rem;border-bottom:1px solid var(--cb);vertical-align:top;color:rgba(240,242,245,.76)}
+.legal-table th{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--deco);white-space:nowrap}
+.legal-table code{white-space:nowrap}
+
+.legal-updated{margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid var(--cb);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--t3)}
+
+@media(max-width:620px){
+  main.legal .legal-index ol{column-count:1}
+  .legal-dl>div{grid-template-columns:1fr;gap:.15rem}
+  main.legal section{margin-top:2.6rem;padding-top:1.8rem}
+}
+</style>
+</head>
+<body>
+<script src="../assets/js/analytics.js" defer></script>
+
+<button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="navOverlay" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<nav id="main-nav"><a href="../index.html" class="nl">ARES GPS</a><a href="../index.html" class="nav-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="nav-logo"></a><ul class="inline-links"><li><a href="#aviso-legal">Aviso legal</a></li><li><a href="#privacidad">Privacidad</a></li><li><a href="#cookies">Cookies</a></li><li><a href="#reserva">Reserva</a></li><li class="ndrop" id="navDrop"><a class="ndrop-trigger" href="#">Descubre</a>
+      <div class="ndrop-menu"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Ejercicio y calorías</a><a href="nutricion.html">Alimentos tóxicos y dieta</a><a href="descanso.html">Sueño y descanso</a><a href="geocerca.html">Zonas seguras</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li></ul></nav>
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Menú principal" tabindex="-1">
+  <div class="nav-overlay-inner">
+    <a href="../index.html" class="ov-logo-link" aria-label="Ir al inicio"><img src="../assets/img/logo-simple-blanco.svg" alt="ARES" class="ov-logo"></a>
+    <ul class="nav-full-links"><li class="nl-item"><a href="../index.html">Inicio</a></li><li class="nl-item"><a href="#aviso-legal">Aviso legal</a></li><li class="nl-item"><a href="#reserva">Reserva y venta</a></li><li class="nl-item"><a href="#privacidad">Privacidad</a></li><li class="nl-item"><a href="#cookies">Cookies</a></li><li class="nl-item"><a href="#contacto">Contacto</a></li><li class="nl-item"><a class="ndrop-trigger-static">Descubre</a><div class="ndrop-sub open"><a href="calculadora.html">Calculadora de peso ideal</a><a href="actividad.html">Ejercicio y calorías</a><a href="nutricion.html">Alimentos tóxicos y dieta</a><a href="descanso.html">Sueño y descanso</a><a href="geocerca.html">Zonas seguras</a><a href="comunidad.html">Comunidad</a><a href="pet-friendly.html">Sitios pet-friendly</a></div></li><li class="nl-item"><button type="button" class="nav-account-btn" data-account-open>Iniciar sesión</button></li></ul>
+  </div>
+</div>
+<div class="ov-ticks" id="ovTicks"></div>
+
+<!--
+  ============================================================================
+  PENDIENTE DE COMPLETAR ANTES DEL LANZAMIENTO (buscar "PENDIENTE" en el HTML)
+  ----------------------------------------------------------------------------
+  1. Titular: nombre o razon social definitiva.
+  2. NIF/CIF: se asigna al darse de alta (autonomo o sociedad).
+  3. Domicilio: direccion fiscal o de notificaciones.
+  4. Email: contacto@aresgps.es es PROVISIONAL (dominio sin confirmar).
+  5. Backend de la lista de interes: proveedor de alojamiento definitivo.
+  6. Empresa de email marketing: solo si algun dia se contrata (ahora no hay).
+  7. Fecha de "ultima actualizacion" en cada revision del texto.
+  Recomendacion: que lo revise un gestor o abogado antes de publicar.
+  ============================================================================
+-->
+
+<main class="legal">
+  <p class="legal-tag">Información legal</p>
+  <h1>Legal, privacidad y cookies</h1>
+  <p class="legal-lead">Todo lo que necesitas saber sobre quién está detrás de esta web, qué pasa con los datos que nos dejas y qué condiciones tendrá el producto. Escrito para que se entienda, no para esconder nada.</p>
+
+  <div class="legal-note">
+    <strong>Nota de transparencia:</strong> ARES GPS es hoy un proyecto en fase de validación y <strong>todavía no constituido legalmente</strong>. Por eso esta página no incluye todavía NIF ni domicilio fiscal: se completarán en cuanto el proyecto se dé de alta (como autónomo o sociedad) y, en todo caso, antes de que el producto esté a la venta. Mientras tanto, el contacto real y verificable es el email indicado más abajo.
+  </div>
+
+  <nav class="legal-index" aria-label="Apartados de esta página">
+    <p>Apartados</p>
+    <ol>
+      <li><a href="#aviso-legal">Aviso legal</a></li>
+      <li><a href="#reserva">Reserva y condiciones de venta</a></li>
+      <li><a href="#privacidad">Privacidad y datos</a></li>
+      <li><a href="#cookies">Cookies y almacenamiento</a></li>
+      <li><a href="#contacto">Contacto y derechos</a></li>
+    </ol>
+  </nav>
+
+  <section id="aviso-legal">
+    <h2>1. Aviso legal</h2>
+    <p>Esta web tiene finalidad informativa y de captación de interés en un producto que todavía no está a la venta. Al navegar por ella aceptas lo que se describe en esta página.</p>
+
+    <h3>Datos del titular</h3>
+    <dl class="legal-dl">
+      <div><dt>Titular</dt><dd>ARES GPS — proyecto en fase de constitución (titular pendiente de alta fiscal)</dd></div>
+      <div><dt>NIF / CIF</dt><dd>Pendiente de asignar. Se publicará antes del lanzamiento del producto</dd></div>
+      <div><dt>Domicilio</dt><dd>España (domicilio pendiente de fijar)</dd></div>
+      <div><dt>Contacto</dt><dd><a href="mailto:contacto@aresgps.es">contacto@aresgps.es</a></dd></div>
+      <div><dt>Actividad</dt><dd>Diseño, desarrollo y futura comercialización de un localizador GPS para perros, con servicio de suscripción</dd></div>
+    </dl>
+
+    <h3>Qué es y qué no es esta web</h3>
+    <ul>
+      <li>Es una web de información y pre-lanzamiento. <strong>El hardware no está a la venta y no se realiza ningún cobro</strong>.</li>
+      <li>Las herramientas de la web (calculadora de peso, estimaciones de ejercicio, nutrición, descanso y geocerca) son <strong>orientativas y educativas</strong>. No son un diagnóstico ni una prescripción veterinaria: ante cualquier duda sobre la salud de tu perro, consulta con un veterinario.</li>
+      <li>El acceso es gratuito, salvo el coste de tu conexión a internet.</li>
+    </ul>
+
+    <h3>Contenidos y propiedad intelectual</h3>
+    <p>Los textos, el diseño, el código, los gráficos y el nombre ARES son del titular o se utilizan con autorización. No se permite copiarlos, reproducirlos ni reutilizarlos con fines comerciales sin permiso previo por escrito.</p>
+    <p>Puedes compartir enlaces a esta web siempre que no se presenten como propios ni se altere su contenido.</p>
+
+    <h3>Responsabilidad</h3>
+    <p>Ponemos diligencia en que la información sea correcta y esté actualizada, pero no garantizamos la ausencia de errores ni la disponibilidad continua del sitio. No respondemos de los daños derivados de un uso indebido de la web ni del contenido de páginas de terceros a las que se enlace.</p>
+
+    <h3>Legislación aplicable</h3>
+    <p>Esta web se rige por la legislación española. Si eres consumidor, tienes derecho a acudir a los juzgados de tu domicilio.</p>
+  </section>
+
+  <section id="reserva">
+    <h2>2. Reserva y condiciones de venta (provisional)</h2>
+    <p>Este apartado deja planteado el marco de la compra. <strong>Se revisará y completará con las condiciones definitivas antes de que haya venta real.</strong></p>
+
+    <h3>Qué significa reservar hoy</h3>
+    <ul>
+      <li>Dejas tu email para que te avisemos del lanzamiento y de las novedades. Nada más.</li>
+      <li><strong>No es un contrato de compra</strong>: no hay pago, no adquieres ningún compromiso de compra y nosotros no adquirimos obligación de venderte.</li>
+      <li>Puedes pedir la baja de esa lista cuando quieras (ver <a href="#contacto">Contacto y derechos</a>).</li>
+    </ul>
+
+    <h3>Precios</h3>
+    <p>Los precios que aparecen en la web (por ejemplo, 120 € el dispositivo o 199 € el pack de dos, más una cuota mensual desde 6 €) son <strong>orientativos y provisionales</strong>. En la venta real se mostrará el <strong>precio final con impuestos incluidos y los gastos de envío desglosados</strong> antes de confirmar el pedido.</p>
+
+    <h3>Cuando haya venta: lo que aplicará</h3>
+    <ul>
+      <li><strong>Derecho de desistimiento</strong>: 14 días naturales desde la recepción para devolver el producto sin justificar el motivo, en los términos legales (con excepciones, por ejemplo en productos personalizados).</li>
+      <li><strong>Garantía legal</strong> de conformidad de 3 años desde la entrega, conforme a la normativa española de consumo.</li>
+      <li><strong>Envíos y devoluciones</strong>: plazos, transportistas y costes publicados antes de comprar.</li>
+      <li><strong>Reclamaciones</strong>: canales de atención y hojas de reclamaciones oficiales a disposición del consumidor.</li>
+      <li><strong>Suscripción</strong>: qué incluye la cuota, si hay permanencia y cómo se cancela. Se publicará antes del lanzamiento.</li>
+    </ul>
+    <p>La disponibilidad, los plazos de entrega y las especificaciones técnicas del producto pueden cambiar mientras el proyecto esté en desarrollo.</p>
+  </section>
+
+  <section id="privacidad">
+    <h2>3. Privacidad y datos</h2>
+    <p>Aquí se explica, sin rodeos, qué datos personales tratamos, para qué y cómo puedes controlarlos.</p>
+
+    <h3>Qué datos tratamos</h3>
+    <ul>
+      <li><strong>Formularios de la web</strong> (lista de interés, aviso de nuevas ciudades): tu <strong>email</strong> y las respuestas que decidas marcar (por ejemplo, ciudad o preferencias).</li>
+      <li><strong>Herramientas y cuenta local</strong>: la calculadora, el planificador y las cuentas funcionan <strong>en tu propio navegador</strong>. El perfil de tu perro y las credenciales que crees se guardan <strong>solo en tu dispositivo</strong> y no se envían a nuestros servidores.</li>
+      <li><strong>Analítica</strong>: solo si la aceptas, y de forma agregada (ver <a href="#cookies">Cookies y almacenamiento</a>).</li>
+      <li><strong>Datos técnicos mínimos</strong> (como la dirección IP) que necesita el proveedor de alojamiento para servir la web.</li>
+    </ul>
+
+    <h3>Para qué y con qué base legal</h3>
+    <ul>
+      <li>Gestionar tu interés en el producto y avisarte del lanzamiento o de novedades: <strong>consentimiento</strong> (art. 6.1.a del RGPD), que puedes retirar cuando quieras.</li>
+      <li>Medir de forma agregada qué contenidos interesan para mejorar la web: <strong>consentimiento</strong>, revocable desde las preferencias de cookies.</li>
+      <li>No hacemos perfilado ni tomamos decisiones automatizadas con tus datos.</li>
+    </ul>
+
+    <h3>Quién más interviene</h3>
+    <ul>
+      <li><strong>Alojamiento</strong>: GitHub Pages (GitHub, Inc.).</li>
+      <li><strong>Analítica</strong>: Google (Google Ireland Ltd. / Google LLC), solo si aceptas las cookies.</li>
+      <li><strong>Registro de la lista de interés</strong>: gestor pendiente de definir. Los datos se almacenan en una base de datos controlada por el titular y solo accede personal autorizado, incluida nuestra herramienta interna de automatización.</li>
+      <li><strong>No cedemos tus datos a terceros para sus propios fines ni los vendemos.</strong> Hoy no hay contratada ninguna plataforma de email marketing; si se contrata, se actualizará esta página antes de usarla.</li>
+    </ul>
+
+    <h3>Transferencias internacionales</h3>
+    <p>Los proveedores de alojamiento y analítica están en Estados Unidos. Se amparan en el marco de privacidad de datos UE-EE. UU. y/o en cláusulas contractuales tipo aprobadas por la Comisión Europea.</p>
+
+    <h3>Cuánto tiempo los guardamos</h3>
+    <p><strong>24 meses</strong> desde tu última interacción, o hasta que pidas la baja o la supresión. Después se eliminan.</p>
+
+    <h3>Menores y seguridad</h3>
+    <p>Los formularios están pensados para mayores de 14 años. Aplicamos medidas técnicas y organizativas razonables para proteger la información; al ser un proyecto en construcción, te pedimos que envíes únicamente los datos necesarios. <strong>No pedimos datos de salud de tu perro</strong> ni ningún dato sensible.</p>
+  </section>
+
+  <section id="cookies">
+    <h2>4. Cookies y almacenamiento local</h2>
+    <p>Esta web usa sobre todo <strong>almacenamiento local del navegador</strong>, que se queda en tu dispositivo. Solo hay cookies de terceros si aceptas la analítica.</p>
+
+    <h3>Necesarias (no requieren consentimiento)</h3>
+    <p>Son las que hacen que la web funcione y recuerdan tus decisiones. No se usan para rastrearte ni con fines publicitarios.</p>
+    <div class="legal-scroll">
+      <table class="legal-table">
+        <thead><tr><th>Tecnología</th><th>Nombre</th><th>Para qué</th><th>Duración</th></tr></thead>
+        <tbody>
+          <tr><td>Almacenamiento local</td><td><code>ares_analytics_consent_v1</code></td><td>Recordar si aceptaste o rechazaste la analítica</td><td>Hasta que borres los datos del navegador</td></tr>
+          <tr><td>Almacenamiento local</td><td><code>ares_accounts_v1</code><br><code>ares_session_v1</code><br><code>ares_saved_profiles_v1</code></td><td>Tu cuenta y los perfiles que guardas. Se quedan en tu navegador</td><td>Hasta que borres los datos del navegador</td></tr>
+          <tr><td>Almacenamiento de sesión</td><td><code>ares_dog_profile_v1</code><br><code>ares_pending_qualification_v1</code></td><td>Pasar los datos del perro entre la calculadora y la página de ejercicio sin volver a escribirlos</td><td>Hasta cerrar la pestaña</td></tr>
+          <tr><td>Almacenamiento local</td><td><code>ares_leads_v1</code><br><code>ares_breed_suggestions_v1</code></td><td>Guardar un formulario enviado cuando el servicio de registro no está disponible, y las sugerencias de raza que propones</td><td>Hasta que borres los datos del navegador</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Cuando envías un formulario, tu email y tus respuestas se envían a nuestro sistema para poder avisarte. Si en ese momento el servicio de registro no está activo, el formulario se guarda temporalmente en tu navegador y no sale de tu dispositivo.</p>
+
+    <h3>Opcionales (solo con tu consentimiento)</h3>
+    <div class="legal-scroll">
+      <table class="legal-table">
+        <thead><tr><th>Cookie</th><th>Origen</th><th>Para qué</th><th>Duración</th></tr></thead>
+        <tbody>
+          <tr><td><code>_ga</code></td><td>Google Analytics 4</td><td>Distinguir visitantes para medir el uso de forma agregada</td><td>2 años</td></tr>
+          <tr><td><code>_ga_X9NRPGKT75</code></td><td>Google Analytics 4</td><td>Mantener el estado de la sesión de medición</td><td>2 años</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Enviamos la señal <code>ad_storage: denied</code>, así que <strong>no se usan para publicidad ni para perfilarte</strong>. No enviamos a Analytics el contenido de los formularios.</p>
+
+    <h3>Cómo cambiar tu decisión</h3>
+    <ul>
+      <li>Botón <strong>«Preferencias de cookies»</strong> en el pie de cualquier página: abre el panel para aceptar o rechazar la analítica.</li>
+      <li>También puedes borrar las cookies y el almacenamiento local desde los ajustes de tu navegador (eso reinicia tu elección).</li>
+      <li>Si rechazas la analítica, no se carga ninguna cookie de medición.</li>
+    </ul>
+  </section>
+
+  <section id="contacto">
+    <h2>5. Contacto y derechos</h2>
+    <p>Un único canal para todo, para que no tengas que buscar:</p>
+    <dl class="legal-dl">
+      <div><dt>Contacto general</dt><dd><a href="mailto:contacto@aresgps.es">contacto@aresgps.es</a></dd></div>
+      <div><dt>Protección de datos</dt><dd><a href="mailto:contacto@aresgps.es?subject=Proteccion%20de%20datos">contacto@aresgps.es</a> — asunto «Protección de datos»</dd></div>
+    </dl>
+    <p>Puedes ejercer tus derechos de <strong>acceso, rectificación, supresión, oposición, limitación y portabilidad</strong>, así como retirar tu consentimiento en cualquier momento. Te responderemos en el plazo máximo de un mes.</p>
+    <p>Si crees que no hemos atendido bien tu solicitud, puedes reclamar ante la <strong>Agencia Española de Protección de Datos</strong> (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
+
+    <p class="legal-updated">Última actualización: 16 de septiembre de 2026</p>
+  </section>
+</main>
+
+<footer>
+  <div class="pf-footer-wrap">
+    <div class="pf-footer-map">
+      <div class="pf-footer-track" aria-hidden="true">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+        <img src="../assets/img/spain-footer.svg" class="pf-footer-tile" alt="" loading="lazy">
+      </div>
+      <div class="pf-footer-gradient"></div>
+      <div class="pf-footer-text">
+        <div>ARES GPS &copy; 2026 — Legal y privacidad</div>
+        <div class="pf-footer-sub">Aviso legal &middot; Reserva &middot; Privacidad &middot; Cookies</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/mobile-menu.js"></script>
+<script src="assets/js/account.js"></script>
+<script src="assets/js/footer-map.js" defer></script>
+<script src="../assets/js/footer-common.js" defer></script>
+</body>
+</html>
