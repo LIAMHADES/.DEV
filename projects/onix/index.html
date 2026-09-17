@@ -8,16 +8,16 @@
 <meta name="keywords" content="stand NFC, reseñas Google, metacrilato NFC, Girona, negocios locales">
 <meta name="author" content="ONIX">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://onixgirona.com/">
+<link rel="canonical" href="https://liamhades.github.io/.DEV/projects/onix/">
 <meta property="og:title" content="ONIX — Stands NFC para Negocios Locales">
 <meta property="og:description" content="Stands de metacrilato con NFC para reseñas, reservas y contacto. Diseño e instalación gratis.">
-<meta property="og:image" content="https://onixgirona.com/img/logos/onix%20negativo.png">
-<meta property="og:url" content="https://onixgirona.com/">
+<meta property="og:image" content="https://liamhades.github.io/.DEV/projects/onix/img/optimized/onix-negativo.webp">
+<meta property="og:url" content="https://liamhades.github.io/.DEV/projects/onix/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ONIX — Tu negocio, a un toque">
 <meta name="twitter:description" content="Stands NFC para reseñas, reservas y contacto directo. Diseño gratis.">
-<meta name="twitter:image" content="https://onixgirona.com/img/logos/onix%20negativo.png">
+<meta name="twitter:image" content="https://liamhades.github.io/.DEV/projects/onix/img/optimized/onix-negativo.webp">
 <meta name="theme-color" content="#080705">
 <meta name="view-transition" content="same-origin">
 <script>(function(){try{if(sessionStorage.getItem('onix-nav-transition')==='1'){document.documentElement.classList.add('onix-nav-transition');sessionStorage.removeItem('onix-nav-transition')}}catch(e){}})();</script>
@@ -1196,6 +1196,13 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
   position:absolute;top:0;left:0;right:0;height:2px;
   background:var(--g-copper-h)
 }
+.form-honeypot{
+  position:absolute!important;
+  width:1px!important;height:1px!important;
+  padding:0!important;margin:-1px!important;
+  overflow:hidden!important;clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;border:0!important
+}
 .form-row{
   display:grid;grid-template-columns:1fr 1fr;
   gap:20px;margin-bottom:20px
@@ -1237,6 +1244,15 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
   cursor:pointer
 }
 .radio-group input[type=radio]{accent-color:var(--copper);width:16px;height:16px}
+.consent-row{
+  display:flex!important;flex-direction:row!important;align-items:flex-start;
+  gap:10px;margin-top:20px;font-size:12px!important;
+  font-weight:300!important;letter-spacing:0!important;
+  text-transform:none!important;color:var(--muted)!important
+}
+.consent-row input{width:16px;height:16px;flex:0 0 auto;margin-top:2px;accent-color:var(--copper)}
+.consent-row a{color:var(--copper-warm);text-decoration:underline;text-underline-offset:3px}
+.form-status{min-height:20px;margin:12px 0 0;color:var(--copper-warm);font-size:12px;text-align:center}
 .btn-full{width:100%;justify-content:center;margin-top:8px;padding:16px;font-size:15px}
 .form-note{
   font-family:var(--font-body);
@@ -1473,8 +1489,8 @@ strong.em,.em{
     <div>
       <div class="hero-tag reveal-el">Stands NFC para negocios locales</div>
       <h1 class="hero-title">
-        <span id="tw-line1"></span><br>
-        <span id="tw-line2" class="hl"></span>
+         <span id="tw-line1">Convierte visitas en clientes —</span><br>
+         <span id="tw-line2" class="hl">sin apps, sin pedir, sin buscar</span>
       </h1>
       <div class="hero-anim-spacer" aria-hidden="true"></div>
        <p class="hero-sub reveal-el">Un stand con <strong class="em">tu diseño</strong>, tu logo y tus colores. El cliente <strong class="em">acerca el móvil</strong> y accede directo — a tu ficha de Google, tu reserva, tu Instagram. Sin apps, sin buscar, sin fricción.</p>
@@ -1707,10 +1723,21 @@ strong.em,.em{
         </div>
       </label>
     </div>
+    <div class="form-honeypot" aria-hidden="true">
+      <label>Website
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+      </label>
+    </div>
+    <input type="hidden" name="formStartedAt" id="form-started-at">
+    <label class="consent-row">
+      <input type="checkbox" name="gdprConsent" required>
+      <span>Acepto que ONIX use estos datos para responder a mi solicitud comercial. <a href="legal.html">Ver política de privacidad</a>.</span>
+    </label>
     <button type="submit" class="btn-primary btn-full">
       Enviar por WhatsApp →
     </button>
     <p class="form-note">Al enviar se abrirá WhatsApp con tus datos. Sin compromiso.</p>
+    <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
   </form>
 </section>
 
@@ -1907,8 +1934,16 @@ document.querySelectorAll('.stat-num[data-count]').forEach(el => statObs.observe
   }
 })();
 
-// ── FORMULARIO → WHATSAPP ────────────────────────────────────────────────────
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+// ── FORMULARIO → API ONIX + WHATSAPP ─────────────────────────────────────────
+(function() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  const startedAt = document.getElementById('form-started-at');
+  const status = document.getElementById('form-status');
+  if (startedAt) startedAt.value = new Date().toISOString();
+
+  form.addEventListener('submit', function(e) {
   e.preventDefault();
   const f = this;
   const negocio = f.negocio.value.trim();
@@ -1918,12 +1953,14 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   const productoImplicaStand = f.producto.options[f.producto.selectedIndex]?.dataset.stand === '1';
   const ciudad = f.ciudad.value.trim();
   const diseno = productoImplicaStand && f.diseno.value === 'si';
+  const gdprConsent = f.gdprConsent.checked;
 
-  if (!negocio || !nombre || !sector || !producto) {
+  if (!negocio || !nombre || !sector || !producto || !gdprConsent) {
     [f.negocio, f.nombre, f.sector, f.producto].forEach(el => {
       if (!el.value.trim()) el.style.borderColor = '#c0392b';
       else el.style.borderColor = '';
     });
+    if (!gdprConsent) status.textContent = 'Necesitamos tu consentimiento para guardar la solicitud.';
     return;
   }
 
@@ -1934,8 +1971,46 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     ciudad ? `Ciudad: ${ciudad}` : '',
   ].filter(Boolean).join('\n');
 
-  window.open(`https://wa.me/34631879550?text=${encodeURIComponent(lines)}`, '_blank', 'noopener');
-});
+  const endpoint = window.ONIX_LEAD_ENDPOINT || '';
+  const payload = {
+    businessName: negocio,
+    contactName: nombre,
+    sector,
+    product: producto,
+    city: ciudad,
+    designInterest: diseno,
+    gdprConsent,
+    source: 'onix-home',
+    website: f.website.value.trim(),
+    formStartedAt: f.formStartedAt.value || null,
+  };
+
+  if (endpoint) {
+    fetch(endpoint, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).then(response => {
+      if (!response.ok) throw new Error('lead submission failed');
+      status.textContent = 'Solicitud guardada. Ahora puedes continuar por WhatsApp.';
+    }).catch(() => {
+      status.textContent = 'WhatsApp se abrirá igualmente; la conexión con el registro no está disponible ahora.';
+    });
+  } else {
+    status.textContent = 'Solicitud preparada para WhatsApp. El registro automático se activará al publicar la API.';
+  }
+
+  const whatsappUrl = `https://wa.me/34631879550?text=${encodeURIComponent(lines)}`;
+  const whatsappWindow = window.open('', '_blank');
+  if (whatsappWindow) {
+    whatsappWindow.opener = null;
+    whatsappWindow.location.href = whatsappUrl;
+  } else {
+    status.textContent = 'No se pudo abrir WhatsApp automáticamente. Puedes contactar desde el pie de página.';
+  }
+  });
+})();
 
 // ═══ PRELOADER + TYPEWRITER + STAGGER ═══
 (function() {

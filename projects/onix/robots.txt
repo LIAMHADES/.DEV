@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /.DEV/projects/onix/
+Disallow: /.DEV/projects/onix/pruebas-animaciones.html
+Disallow: /.DEV/projects/onix/_clean_dup.py
+Disallow: /.DEV/projects/onix/red-onix.html
+
+Sitemap: https://liamhades.github.io/.DEV/projects/onix/sitemap.xml
