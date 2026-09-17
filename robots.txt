@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /.DEV/projects/ares/
+Disallow: /.DEV/projects/ares/_tests/
+Disallow: /.DEV/projects/ares/contenido/proximamente.html
+Disallow: /.DEV/projects/ares/cookies.html
+Disallow: /.DEV/projects/ares/privacidad.html
+
+Sitemap: https://liamhades.github.io/.DEV/projects/ares/sitemap.xml
