@@ -88,6 +88,23 @@ nav .nav-links {
   align-items: center;
 }
 
+/* Keep the full-width source logo contained inside the navigation. */
+nav .nav-logo {
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: 180px;
+}
+
+nav .nav-logo img {
+  display: block;
+  width: 180px !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 54px !important;
+  object-fit: contain;
+  object-position: left center;
+}
+
 nav .nav-links > a {
   font-size: 13px !important;
   font-weight: 400 !important;
@@ -414,6 +431,7 @@ footer a:hover {
     height: clamp(52px, 16vw, 72px) !important;
     min-height: 0 !important;
     max-width: 100% !important;
+    max-height: 72px !important;
   }
 
   /* The nav owns the open state so only its link list can scroll. */
