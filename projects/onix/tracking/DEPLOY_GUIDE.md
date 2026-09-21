@@ -25,6 +25,10 @@ backend y conserva la base SQLite del piloto.
    cd .DEV/projects/onix/tracking
    ```
 3. Verifica que existen `app.py`, `flask_app.py`, `requirements.txt` y `static/onix-round.png`.
+4. Instala la dependencia del backend:
+   ```bash
+   python3 -m pip install --user -r requirements.txt
+   ```
 
 ---
 
@@ -47,7 +51,7 @@ backend y conserva la base SQLite del piloto.
 2. Abre una consola **"Bash"**
 3. Ejecuta:
    ```bash
-   cd /home/TU_USUARIO/mysite
+    cd /home/TU_USUARIO/.DEV/projects/onix/tracking
    python3 -c "from app import init_db; init_db(); print('BD creada correctamente')"
    ```
 4. Deberías ver "BD creada correctamente"
