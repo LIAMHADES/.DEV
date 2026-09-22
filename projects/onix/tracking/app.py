@@ -9,7 +9,7 @@ Sistema de Tracking ONIX — Página puente NFC
 /admin     → Panel admin
 """
 
-from flask import Flask, request, redirect, render_template_string, jsonify, session
+from flask import Flask, request, redirect, render_template_string, jsonify, session, send_file
 import sqlite3, os, json, hashlib, re
 from datetime import datetime, timedelta
 from uuid import uuid4
@@ -18,6 +18,7 @@ from urllib.parse import urlparse
 
 app = Flask(__name__)
 DB = os.path.join(os.path.dirname(__file__), "tracking.db")
+MASTER_LOGO = os.path.join(os.path.dirname(__file__), "assets", "onix-logo.png")
 DEVICE_SALT_SECRET = os.environ.get("ONIX_DEVICE_SALT", "onix_dev_salt_2026_CAMBIAR_EN_PROD")
 app.secret_key = os.environ.get("ONIX_SECRET_KEY", "onix_dev_secret_CAMBIAR_EN_PROD")
 app.config.update(
@@ -34,7 +35,7 @@ ADMIN_PASSWORD_HASH = os.environ.get(
 )
 
 try:
-    SPLASH_SECONDS = max(1, min(5, int(os.environ.get("ONIX_SPLASH_SECONDS", "2"))))
+    SPLASH_SECONDS = max(1, min(5, int(os.environ.get("ONIX_SPLASH_SECONDS", "1"))))
 except ValueError:
     SPLASH_SECONDS = 2
 
@@ -161,29 +162,22 @@ SPLASH_HTML = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ONIX - Tu negocio, a un toque</title>
+<link rel="preconnect" href="https://www.google.com">
+<link rel="preconnect" href="https://search.google.com">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#080705;display:flex;align-items:center;justify-content:center;
-     height:100vh;overflow:hidden;font-family:'Segoe UI',system-ui,sans-serif}
-.pulse{display:flex;flex-direction:column;align-items:center;gap:24px;animation:fadeIn .6s ease}
-.logo{width:96px;height:96px;object-fit:contain;position:relative;filter:drop-shadow(0 0 18px #E8A04433)}
-.tagline{color:#F0EBE3;font-size:16px;letter-spacing:2px;opacity:.9}
-.msg{color:#9A8672;font-size:14px;margin-top:-12px;animation:fadeIn .8s ease .4s both}
-.sub{color:#6B5D4F;font-size:13px;animation:dots 1.4s infinite}
-@keyframes fadeIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
-@keyframes pulseRing{0%{transform:scale(.8);opacity:1}100%{transform:scale(1.8);opacity:0}}
-@keyframes dots{0%,20%{opacity:.3}50%{opacity:1}80%,100%{opacity:.3}}
+     height:100vh;overflow:hidden;font-family:system-ui}
+  .logo{width:min(58vw,280px);animation:arrive 1s cubic-bezier(.16,1,.3,1) both}
+ @keyframes arrive{0%{opacity:0;transform:scale(.6) rotate(-8deg)}55%{opacity:1;transform:scale(1.04) rotate(0)}100%{opacity:1;transform:scale(1)}}
+ @media(prefers-reduced-motion:reduce){.logo{animation:none}}
 </style>
 <script>
  setTimeout(function(){ window.location.href = {url_destino_json}; }, {splash_seconds}000);
 </script>
 </head>
 <body>
-<div class="pulse">
-    <img class="logo" src="/static/onix-round.png" alt="ONIX">
-    <div class="tagline">{visit_msg}</div>
-    <div class="sub">Accediendo . . .</div>
-</div>
+<img class="logo" src="/onix-logo.png" alt="ONIX">
 </body>
 </html>"""
 
@@ -216,16 +210,15 @@ def track_and_redirect(slug):
         c.commit()
 
     count = visitas_previas + 1
-    if count == 1:
-        visit_msg = "Bienvenido"
-    elif count % 5 == 0:
-        visit_msg = "Ya son " + str(count) + " visitas! Pregunta por tu recompensa"
-    else:
-        visit_msg = "Visita numero " + str(count)
+    print(
+        f"[ONIX NFC] {datetime.now().isoformat(timespec='seconds')} "
+        f"slug={slug} negocio={cliente[0]!r} toque={count} "
+        f"device={device_hash[:8]}",
+        flush=True,
+    )
 
     html = (SPLASH_HTML
             .replace("{url_destino_json}", safe_script_json(cliente[1]))
-            .replace("{visit_msg}", escape(visit_msg))
             .replace("{splash_seconds}", str(SPLASH_SECONDS)))
     return html
 
@@ -566,6 +559,12 @@ def pedir(slug):
             .replace("{{ nombre }}", escape(cl[0]))
             .replace("{capture_endpoint}", safe_script_json("/pedir/" + slug)))
     return html
+
+
+@app.route("/onix-logo.png")
+def onix_logo():
+    """Serve only the user-provided master logo; never a generated substitute."""
+    return send_file(MASTER_LOGO, mimetype="image/png", conditional=True)
 
 # ============================================================
 # MENÚ CONDICIONADO — email a cambio de contenido (Estrategia #5)

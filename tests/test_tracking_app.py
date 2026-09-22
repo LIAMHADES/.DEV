@@ -1,5 +1,7 @@
 import importlib
 import hashlib
+import json
+import re
 import sqlite3
 import sys
 import tempfile
@@ -53,7 +55,29 @@ class TrackingAppTests(unittest.TestCase):
             'window.location.href = "https://example.com/menu"',
             response.get_data(as_text=True),
         )
+        self.assertIn('/onix-logo.png', response.get_data(as_text=True))
+        logo_response = self.client.get('/onix-logo.png')
+        self.assertEqual(logo_response.status_code, 200)
+        self.assertEqual(logo_response.mimetype, "image/png")
+        logo_response.close()
         self.assertEqual(count_rows("toques"), 1)
+
+    def test_nfc_route_preserves_element_maps_destination(self):
+        destination = (
+            "https://www.google.com/maps/place/Element+Barberia/"
+            "@41.9771972,2.8185883,17z/data=!4m8!3m7!1s0x12bae76ed147b95b:"
+            "0xf797b79d03605091!8m2!3d41.9771972!4d2.8185883!9m1!1b1!16s%2F"
+            "g%2F11z5bqymc9?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        )
+        seed_client(url=destination, nombre="Element Barberia")
+
+        response = self.client.get("/t/demo")
+        match = re.search(
+            r"window\.location\.href = (.*?);", response.get_data(as_text=True)
+        )
+
+        self.assertIsNotNone(match)
+        self.assertEqual(json.loads(match.group(1)), destination)
 
     def test_inactive_client_does_not_track_or_redirect(self):
         seed_client(activo=0)
