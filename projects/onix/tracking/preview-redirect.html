@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ONIX</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 100%; min-height: 100%; margin: 0; }
+    body { display: grid; min-height: 100vh; place-items: center; overflow: hidden; background: #060705; }
+    .symbol { width: min(58vw, 280px); animation: arrive 1.6s cubic-bezier(.16, 1, .3, 1) both; }
+    @keyframes arrive { 0% { opacity: 0; transform: scale(.6) rotate(-8deg); } 55% { opacity: 1; transform: scale(1.04) rotate(0); } 100% { opacity: 1; transform: scale(1); } }
+    @media (prefers-reduced-motion: reduce) { .symbol { animation: none; } }
+  </style>
+</head>
+<body>
+   <img class="symbol" src="assets/onix-logo.svg" alt="ONIX">
+  <script>
+    window.setTimeout(() => {
+      window.location.replace("https://www.google.com/maps/place/Element+Barberia/@41.9771972,2.8185883,17z/data=!4m8!3m7!1s0x12bae76ed147b95b:0xf797b79d03605091!8m2!3d41.9771972!4d2.8185883!9m1!1b1!16s%2Fg%2F11z5bqymc9?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D");
+    }, 2000);
+  </script>
+</body>
+</html>
