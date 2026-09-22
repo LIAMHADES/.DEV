@@ -168,9 +168,7 @@ SPLASH_HTML = """<!DOCTYPE html>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#080705;display:flex;align-items:center;justify-content:center;
      height:100vh;overflow:hidden;font-family:system-ui}
-  .logo{width:min(58vw,280px);animation:arrive 1s cubic-bezier(.16,1,.3,1) both}
- @keyframes arrive{0%{opacity:0;transform:scale(.6) rotate(-8deg)}55%{opacity:1;transform:scale(1.04) rotate(0)}100%{opacity:1;transform:scale(1)}}
- @media(prefers-reduced-motion:reduce){.logo{animation:none}}
+  .logo{width:min(110vw,450px);display:block}
 </style>
 <script>
  setTimeout(function(){ window.location.href = {url_destino_json}; }, {splash_seconds}000);
