@@ -18,8 +18,7 @@ from urllib.parse import urlparse
 
 app = Flask(__name__)
 DB = os.path.join(os.path.dirname(__file__), "tracking.db")
-MASTER_LOGO = os.path.join(os.path.dirname(__file__), "assets", "onix-logo.webp")
-FALLBACK_LOGO = os.path.join(os.path.dirname(__file__), "assets", "onix-logo.png")
+MASTER_LOGO = os.path.join(os.path.dirname(__file__), "assets", "onix-logo.png")
 DEVICE_SALT_SECRET = os.environ.get("ONIX_DEVICE_SALT", "onix_dev_salt_2026_CAMBIAR_EN_PROD")
 app.secret_key = os.environ.get("ONIX_SECRET_KEY", "onix_dev_secret_CAMBIAR_EN_PROD")
 app.config.update(
@@ -169,14 +168,14 @@ SPLASH_HTML = """<!DOCTYPE html>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#080705;display:flex;align-items:center;justify-content:center;
      height:100vh;overflow:hidden;font-family:system-ui}
-  .logo{width:min(110vw,450px);display:block}
+  .logo{width:min(110vw,450px);height:auto;display:block}
 </style>
 <script>
  setTimeout(function(){ window.location.href = {url_destino_json}; }, {splash_seconds}000);
 </script>
 </head>
 <body>
-<img class="logo" src="/onix-logo.webp" alt="ONIX" width="3764" height="6688" loading="eager" decoding="sync" fetchpriority="high">
+<img class="logo" src="/onix-logo.png" alt="ONIX" loading="eager" decoding="sync" fetchpriority="high">
 </body>
 </html>"""
 
@@ -560,16 +559,10 @@ def pedir(slug):
     return html
 
 
-@app.route("/onix-logo.webp")
+@app.route("/onix-logo.png")
 def onix_logo():
     """Serve only the user-provided master logo; never a generated substitute."""
-    return send_file(MASTER_LOGO, mimetype="image/webp", conditional=True)
-
-
-@app.route("/onix-logo.png")
-def onix_logo_fallback():
-    """Serve the lossless PNG fallback for browsers without WebP support."""
-    return send_file(FALLBACK_LOGO, mimetype="image/png", conditional=True)
+    return send_file(MASTER_LOGO, mimetype="image/png", conditional=True)
 
 # ============================================================
 # MENÚ CONDICIONADO — email a cambio de contenido (Estrategia #5)

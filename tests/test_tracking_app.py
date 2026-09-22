@@ -55,15 +55,11 @@ class TrackingAppTests(unittest.TestCase):
             'window.location.href = "https://example.com/menu"',
             response.get_data(as_text=True),
         )
-        self.assertIn('/onix-logo.webp', response.get_data(as_text=True))
-        logo_response = self.client.get('/onix-logo.webp')
+        self.assertIn('/onix-logo.png', response.get_data(as_text=True))
+        logo_response = self.client.get('/onix-logo.png')
         self.assertEqual(logo_response.status_code, 200)
-        self.assertEqual(logo_response.mimetype, "image/webp")
+        self.assertEqual(logo_response.mimetype, "image/png")
         logo_response.close()
-        fallback_response = self.client.get('/onix-logo.png')
-        self.assertEqual(fallback_response.status_code, 200)
-        self.assertEqual(fallback_response.mimetype, "image/png")
-        fallback_response.close()
         self.assertEqual(count_rows("toques"), 1)
 
     def test_nfc_route_preserves_element_maps_destination(self):

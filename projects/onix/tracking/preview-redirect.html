@@ -6,19 +6,16 @@
   <title>ONIX</title>
   <link rel="preconnect" href="https://www.google.com">
   <link rel="preconnect" href="https://search.google.com">
-  <link rel="preload" as="image" href="assets/onix-logo.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/onix-logo.png" type="image/png" fetchpriority="high">
   <style>
     * { box-sizing: border-box; }
     html, body { width: 100%; min-height: 100%; margin: 0; }
     body { display: flex; min-height: 100vh; align-items: center; justify-content: center; overflow: hidden; background: #060705; }
-    .symbol { width: min(110vw, 450px); display: block; }
+    .symbol { width: min(110vw, 450px); height: auto; display: block; }
   </style>
 </head>
 <body>
-   <picture>
-     <source srcset="assets/onix-logo.webp" type="image/webp">
-     <img class="symbol" src="assets/onix-logo.png" alt="ONIX" width="3764" height="6688" loading="eager" decoding="sync" fetchpriority="high">
-   </picture>
+   <img class="symbol" src="assets/onix-logo.png" alt="ONIX" loading="eager" decoding="sync" fetchpriority="high">
   <script>
     window.setTimeout(() => {
       window.location.replace("https://search.google.com/local/writereview?placeid=ChIJW7lH0W7nuhIRkVBgA523l_c");

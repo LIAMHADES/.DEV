@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>ONIX - Preview</title>
-  <link rel="preload" as="image" href="assets/onix-logo.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/onix-logo.png" type="image/png" fetchpriority="high">
   <style>
     :root {
       color-scheme: dark;
@@ -37,6 +37,7 @@
 
     .logo {
       width: min(110vw, 450px);
+      height: auto;
       display: block;
     }
   </style>
@@ -44,10 +45,7 @@
 <body>
   <main>
     <section class="splash" aria-label="Animacion de entrada ONIX">
-      <picture>
-        <source srcset="assets/onix-logo.webp" type="image/webp">
-        <img class="logo" src="assets/onix-logo.png" alt="ONIX" width="3764" height="6688" loading="eager" decoding="sync" fetchpriority="high">
-      </picture>
+      <img class="logo" src="assets/onix-logo.png" alt="ONIX" loading="eager" decoding="sync" fetchpriority="high">
     </section>
   </main>
 </body>
