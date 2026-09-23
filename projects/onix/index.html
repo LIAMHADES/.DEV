@@ -1402,9 +1402,10 @@ strong.em,.em{
   .pack-grid{grid-template-columns:1fr}
 }
 @media(max-width:685px){
-  /* Mismo copy que desktop, con saltos controlados y altura reservada. */
-  .hero-title{font-size:clamp(42px,12vw,58px);height:3.85em;min-height:3.85em;line-height:.92}
-  #tw-line1, #tw-line2{display:block;width:100%;height:auto;min-height:.92em;max-height:1.84em;white-space:normal;overflow-wrap:normal;word-break:normal;overflow:hidden}
+  /* En móvil cada línea es un bloque; el <br> entre ambos sería un salto extra. */
+  .hero-title{font-size:clamp(42px,12vw,58px);height:auto;min-height:3.85em;line-height:.92;overflow:visible}
+  .hero-title > br{display:none}
+  #tw-line1, #tw-line2{display:block;width:100%;height:auto;min-height:.92em;max-height:none;white-space:normal;overflow-wrap:normal;word-break:normal;overflow:visible}
 }
 
 /* ─── PRODUCTO: HECHOS CLAVE ──────────────────────────────────── */
@@ -2017,23 +2018,10 @@ document.querySelectorAll('.stat-num[data-count]').forEach(el => statObs.observe
   var t = document.querySelector('#preloader .pl-half.top');
   var b = document.querySelector('#preloader .pl-half.bot');
   if (!t || !b) return;
-  if (!document.documentElement.classList.contains('onix-nav-transition')) {
-    document.getElementById('preloader').style.display = 'none';
-    document.documentElement.classList.add('onix-motion-ready');
+  window.onixHomeStart = function() {
     startTypewriter();
     revealHeroContent();
-    return;
-  }
-  var tl = gsap.timeline();
-  tl.fromTo(t, {x: -560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
-  tl.fromTo(b, {x: 560}, {x: 0, duration: 1.6, ease: 'power4.out'}, 0);
-  tl.to('#preloader', {opacity: 0, duration: 0.4, ease: 'power2.in'}, '-=0.2');
-  tl.set('#preloader', {display: 'none'});
-  tl.call(function() {
-    document.documentElement.classList.add('onix-motion-ready');
-    startTypewriter();
-    revealHeroContent();
-  });
+  };
 })();
 
 function revealHeroContent() {
@@ -2090,19 +2078,26 @@ function revealHeroContent() {
 function startTypewriter(onComplete) {
   var el1 = document.getElementById('tw-line1');
   var el2 = document.getElementById('tw-line2');
+  var title = document.querySelector('.hero-title');
   if (!el1 || !el2) {
     if (onComplete) onComplete();
     return;
   }
 
    var text1 = 'Convierte visitas en clientes —';
-   var text2 = 'sin apps, sin pedir, sin buscar';
+  var text2 = 'sin apps, sin pedir, sin buscar';
   var pool = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚÜÊÈËÀÂÄÇ1234567890€$%&@#+*~^<>/\\[]{}|_-¡¿!?';
 
-  el1.style.display = 'inline-block';
-  el2.style.display = 'inline-block';
+  // Render the final copy once while the preloader still covers the page.
+  // On narrow screens this reserves the real final height before random
+  // characters start changing, so the content below the H1 never jumps.
   el1.textContent = text1;
   el2.textContent = text2;
+  if (title && window.matchMedia('(max-width: 685px)').matches) {
+    var reservedHeight = Math.ceil(title.getBoundingClientRect().height);
+    title.style.height = reservedHeight + 'px';
+    title.style.minHeight = reservedHeight + 'px';
+  }
   el1.style.opacity = '1';
   el2.style.opacity = '1';
 

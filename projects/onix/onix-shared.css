@@ -64,6 +64,13 @@ html.onix-shared-motion:not(.onix-rest-ready) .fi.vis {
   transform: translateY(24px) !important;
 }
 
+/* During an internal navigation the new document stays completely hidden
+   until the split-logo preloader has finished. Direct page loads do not get
+   this class, so they keep their normal first-load behaviour. */
+html.onix-nav-transition:not(.onix-page-ready) body > *:not(#preloader) {
+  visibility: hidden !important;
+}
+
 .reveal-title {
   animation: onixRevealFailsafe .01s linear 3.2s forwards;
 }

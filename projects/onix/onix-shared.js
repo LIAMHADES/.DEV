@@ -206,20 +206,22 @@
       return;
     }
 
-    gsap.to(typewriterTitles, {
-      opacity: 1,
-      y: 0,
-      duration: 0.55,
-      ease: 'power3.out',
-    });
-
     if (!typewriterTitles.length) {
       revealRest();
       return;
     }
 
-    // Supporting content follows the start of the typewriter, not its end.
-    window.setTimeout(revealRest, 500);
+    gsap.to(typewriterTitles, {
+      opacity: 1,
+      y: 0,
+      duration: 0.55,
+      ease: 'power3.out'
+    });
+
+    // The H1's typewriter is independent from the opacity tween above. Wait
+    // for the actual text animation, not an arbitrary timeout, before showing
+    // the rest of the page.
+    whenHeadlinesReady(revealRest);
   }
 
   function revealInitialSections() {
@@ -284,12 +286,14 @@
     var top = document.querySelector('#preloader .pl-half.top');
     var bottom = document.querySelector('#preloader .pl-half.bot');
     if (!preloader || !top || !bottom) {
+      document.documentElement.classList.add('onix-page-ready');
       onReady();
       return;
     }
 
     var preloaderReady = false;
     var finished = false;
+    var pageStarted = false;
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (!document.documentElement.classList.contains('onix-nav-transition')) {
@@ -305,6 +309,9 @@
     preloader.style.visibility = 'visible';
 
     function beginPage() {
+      if (pageStarted) return;
+      pageStarted = true;
+      document.documentElement.classList.add('onix-page-ready');
       if (onReady) onReady();
     }
 
@@ -318,13 +325,16 @@
         return;
       }
 
+      // Start the page sequence while the preloader is still covering the
+      // viewport. This prevents the CSS failsafe from leaving the new page
+      // permanently hidden if GSAP's fade callback is interrupted.
+      beginPage();
       gsap.to(preloader, {
         opacity: 0,
         duration: 0.35,
         ease: 'power2.in',
         onComplete: function () {
           preloader.style.display = 'none';
-          beginPage();
         }
       });
     }
@@ -354,6 +364,13 @@
   }
 
   function startMotionSequence() {
+    if (document.documentElement.classList.contains('onix-home-custom') && typeof window.onixHomeStart === 'function') {
+      document.documentElement.classList.add('onix-shared-motion');
+      document.documentElement.classList.add('onix-motion-ready');
+      window.onixHomeStart();
+      return;
+    }
+
     document.documentElement.classList.add('onix-shared-motion');
     document.documentElement.classList.add('onix-motion-ready');
     animateHeadlines();
@@ -380,7 +397,6 @@
       // Keep boot resilient when storage is unavailable.
     }
     var headlines = document.querySelectorAll('.onix-typewriter-title');
-    if (!headlines.length) return;
 
     if (document.getElementById('calc-slider')) {
       document.documentElement.classList.add('onix-legacy-red');
