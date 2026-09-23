@@ -368,6 +368,12 @@
       document.documentElement.classList.add('onix-shared-motion');
       document.documentElement.classList.add('onix-motion-ready');
       window.onixHomeStart();
+      // The home page owns its hero reveal, but the shared section gate still
+      // needs to open or every .fi section remains invisible after the stats.
+      window.setTimeout(function () {
+        document.documentElement.classList.add('onix-rest-ready');
+        revealInitialSections();
+      }, 500);
       return;
     }
 

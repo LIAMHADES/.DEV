@@ -26,11 +26,12 @@
 <link rel="preload" href="fonts/Bebas_Neue.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Rajdhani_Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0ITw.woff2" as="font" type="font/woff2" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet"></noscript>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="manifest" href="manifest.json">
-<script src="vendor/gsap.min.js"></script>
+<script src="vendor/gsap.min.js" defer></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -155,7 +156,7 @@ body::after{
   content:'';
   position:fixed;inset:0;
   pointer-events:none;z-index:-1;
-  background-image:url("img/logos/logo negativo.png");
+   background-image:url("img/optimized/onix-negativo.webp");
   background-size:60%;
   background-position:center;
   background-repeat:no-repeat;
@@ -164,7 +165,8 @@ body::after{
   filter:blur(4px)
 }
 @media(max-width:900px){
-  body::after{background-size:cover;background-position:center;opacity:.15;filter:blur(6px)}
+  body{background-attachment:scroll}
+  body::after{background-size:cover;background-position:center;background-attachment:scroll;opacity:.15;filter:blur(6px)}
 }
 
 /* ─── NAV ────────────────────────────────────────────────────── */
@@ -296,7 +298,7 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
   font-size:clamp(48px,7.5vw,110px);
   line-height:.9;
   letter-spacing:.01em;
-  margin-bottom:12px;
+  margin-bottom:8px;
   text-transform:uppercase;
   text-wrap:balance;
   height:1.9em;
@@ -314,7 +316,8 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
   font-size:clamp(14px,1.2vw,17px);font-weight:300;
   color:var(--text2);
   line-height:1.75;
-  margin-bottom:34px;
+  margin-top:0;
+  margin-bottom:26px;
   max-width:700px
 }
 .hero-sub-secondary{
@@ -1392,7 +1395,8 @@ strong.em,.em{
   .upsell-card{grid-template-columns:1fr;display:grid}
   .upsell-right{height:auto;align-items:flex-start}
   /* El typewriter mantiene una caja estable para que la animación no desplace el contenido. */
-  .hero-title{font-size:clamp(34px,8.5vw,64px);padding-right:0;line-height:.95;height:1.9em;overflow:hidden;margin-bottom:10px}
+  .hero-title{font-size:clamp(34px,8.5vw,64px);padding-right:0;line-height:.95;height:1.9em;overflow:hidden;margin-bottom:4px}
+  .hero-sub{margin-bottom:18px}
   #tw-line1, #tw-line2{white-space:nowrap;height:.95em;overflow:hidden}
   /* Catálogo hero + packs responsive */
   .hero-body{flex-direction:column;gap:24px;padding:28px 24px;text-align:center}
@@ -1403,7 +1407,7 @@ strong.em,.em{
 }
 @media(max-width:685px){
   /* En móvil cada línea es un bloque; el <br> entre ambos sería un salto extra. */
-  .hero-title{font-size:clamp(42px,12vw,58px);height:auto;min-height:3.85em;line-height:.92;overflow:visible}
+  .hero-title{font-size:clamp(65px,17.4vw,101px) !important;height:auto;min-height:2em;line-height:.92;overflow:visible;margin-bottom:0}
   .hero-title > br{display:none}
   #tw-line1, #tw-line2{display:block;width:100%;height:auto;min-height:.92em;max-height:none;white-space:normal;overflow-wrap:normal;word-break:normal;overflow:visible}
 }
@@ -1509,7 +1513,7 @@ strong.em,.em{
   <div class="stat-item reveal-card"><div class="stat-num" data-count="35" data-suffix="€">35€</div><div class="stat-label">Stand personalizado</div></div>
   <div class="stat-item reveal-card"><div class="stat-num">10×15</div><div class="stat-label">Visible desde lejos</div></div>
   <div class="stat-item reveal-card"><div class="stat-num" data-count="12" data-suffix=" meses">12 meses</div><div class="stat-label">Garantía incluida</div></div>
-  <div class="stat-item reveal-card"><div class="stat-num" data-count="0" data-start="20" data-suffix="€">20€</div><div class="stat-label">Primer diseño — siempre gratis</div></div>
+  <div class="stat-item reveal-card"><div class="stat-num">GRATIS</div><div class="stat-label">Primer diseño</div></div>
 </div>
 
 <!-- EL PRODUCTO — CTA -->
@@ -2084,30 +2088,27 @@ function startTypewriter(onComplete) {
     return;
   }
 
-   var text1 = 'Convierte visitas en clientes —';
+  var text1 = 'Convierte visitas en clientes —';
   var text2 = 'sin apps, sin pedir, sin buscar';
   var pool = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚÜÊÈËÀÂÄÇ1234567890€$%&@#+*~^<>/\\[]{}|_-¡¿!?';
 
-  // Render the final copy once while the preloader still covers the page.
-  // On narrow screens this reserves the real final height before random
-  // characters start changing, so the content below the H1 never jumps.
-  el1.textContent = text1;
-  el2.textContent = text2;
-  if (title && window.matchMedia('(max-width: 685px)').matches) {
-    var reservedHeight = Math.ceil(title.getBoundingClientRect().height);
-    title.style.height = reservedHeight + 'px';
-    title.style.minHeight = reservedHeight + 'px';
-  }
-  el1.style.opacity = '1';
-  el2.style.opacity = '1';
-
   function getRand() { return pool[Math.floor(Math.random() * pool.length)]; }
-  function fillRand(len) { var s = ''; for (var i = 0; i < len; i++) s += getRand(); return s; }
+
+  function fillRand(len) {
+    var result = '';
+    for (var i = 0; i < len; i++) result += getRand();
+    return result;
+  }
 
   function animateLine(el, text, cb) {
-    var len = text.length, locked = 0;
+    var len = text.length;
+    var locked = 0;
     function tick() {
-      if (locked === len) { el.textContent = text; if (cb) cb(); return; }
+      if (locked === len) {
+        el.textContent = text;
+        if (cb) cb();
+        return;
+      }
       var display = '';
       for (var i = 0; i < len; i++) display += i < locked ? text[i] : getRand();
       el.textContent = display;
@@ -2117,19 +2118,38 @@ function startTypewriter(onComplete) {
     tick();
   }
 
-  el1.textContent = fillRand(text1.length);
-  el2.textContent = fillRand(text2.length);
+  function beginAnimation() {
+    if (title && window.matchMedia('(max-width: 685px)').matches) {
+      title.style.height = 'auto';
+      title.style.minHeight = '2em';
+      var reservedHeight = Math.ceil(title.getBoundingClientRect().height);
+      title.style.height = reservedHeight + 'px';
+      title.style.minHeight = reservedHeight + 'px';
+      title.style.overflow = 'hidden';
+    }
 
-  var line2Cycle = setInterval(function() { el2.textContent = fillRand(text2.length); }, 50);
+    el1.style.opacity = '1';
+    el2.style.opacity = '1';
 
-  animateLine(el1, text1, function() {
-    clearInterval(line2Cycle);
-    setTimeout(function() {
-      animateLine(el2, text2, function() {
-        if (onComplete) onComplete();
-      });
-    }, 150);
-  });
+    el1.textContent = fillRand(text1.length);
+    el2.textContent = fillRand(text2.length);
+    var line2Cycle = setInterval(function() { el2.textContent = fillRand(text2.length); }, 50);
+
+    animateLine(el1, text1, function() {
+      clearInterval(line2Cycle);
+      setTimeout(function() {
+        animateLine(el2, text2, function() {
+          if (onComplete) onComplete();
+        });
+      }, 150);
+    });
+  }
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(beginAnimation);
+  } else {
+    beginAnimation();
+  }
 }
 </script>
 
