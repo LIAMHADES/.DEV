@@ -1,5 +1,5 @@
-# WSGI entry point para PythonAnywhere
-# Sube este archivo junto con app.py a PythonAnywhere
+# WSGI entry point para Render/Gunicorn
+# Render ejecuta este módulo desde el directorio del backend.
 # La ruta será la ubicación real de este archivo dentro del checkout de Git.
 
 import sys, os
@@ -12,4 +12,4 @@ if project_home not in sys.path:
 # Importar la app Flask desde app.py
 from app import app as application
 
-# PythonAnywhere busca 'application' como nombre de la app WSGI
+# Gunicorn usa 'application' como objeto WSGI.

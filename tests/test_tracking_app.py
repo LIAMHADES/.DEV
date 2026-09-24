@@ -1,5 +1,4 @@
 import importlib
-import hashlib
 import json
 import re
 import sqlite3
@@ -7,6 +6,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from werkzeug.security import generate_password_hash
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1] / "projects" / "onix"
@@ -14,11 +14,11 @@ sys.path.insert(0, str(PROJECT_ROOT))
 tracking_app = importlib.import_module("tracking.app")
 
 
-def seed_client(url="https://example.com/menu", activo=1, nombre="Demo"):
+def seed_client(url="https://example.com/menu", activo=1, nombre="Demo", slug="demo"):
     with sqlite3.connect(tracking_app.DB) as connection:
         connection.execute(
             "INSERT INTO clientes (slug, nombre, sector, url_destino, activo) VALUES (?, ?, ?, ?, ?)",
-            ("demo", nombre, "cafeteria", url, activo),
+            (slug, nombre, "cafeteria", url, activo),
         )
         connection.commit()
 
@@ -34,7 +34,7 @@ class TrackingAppTests(unittest.TestCase):
         self.original_db = tracking_app.DB
         self.original_password_hash = tracking_app.ADMIN_PASSWORD_HASH
         tracking_app.DB = str(Path(self.temp_dir.name) / "tracking.db")
-        tracking_app.ADMIN_PASSWORD_HASH = hashlib.sha256(b"onix2026").hexdigest()
+        tracking_app.ADMIN_PASSWORD_HASH = generate_password_hash("onix2026")
         tracking_app.app.config.update(TESTING=True, SECRET_KEY="test-secret")
         tracking_app.init_db()
         self.client = tracking_app.app.test_client()
@@ -44,6 +44,13 @@ class TrackingAppTests(unittest.TestCase):
         tracking_app.DB = self.original_db
         tracking_app.ADMIN_PASSWORD_HASH = self.original_password_hash
         self.temp_dir.cleanup()
+
+    def csrf_token(self):
+        response = self.client.get("/admin")
+        self.assertEqual(response.status_code, 200)
+        match = re.search(r'name="csrf_token" value="([^"]+)"', response.get_data(as_text=True))
+        self.assertIsNotNone(match)
+        return match.group(1)
 
     def test_nfc_route_tracks_and_embeds_safe_destination(self):
         seed_client()
@@ -61,6 +68,37 @@ class TrackingAppTests(unittest.TestCase):
         self.assertEqual(logo_response.mimetype, "image/png")
         logo_response.close()
         self.assertEqual(count_rows("toques"), 1)
+
+    def test_nfc_route_sets_cookie_and_marks_returning_visitor(self):
+        seed_client()
+
+        first = self.client.get("/t/demo", headers={"User-Agent": "TestPhone"})
+        second = self.client.get("/t/demo", headers={"User-Agent": "TestPhone"})
+
+        self.assertEqual(first.status_code, 200)
+        self.assertIn("onix_vid_demo=", first.headers["Set-Cookie"])
+        self.assertEqual(second.status_code, 200)
+        self.assertEqual(count_rows("toques"), 2)
+        with sqlite3.connect(tracking_app.DB) as connection:
+            events = connection.execute(
+                "SELECT es_recurrente, visitante_hash FROM eventos ORDER BY id"
+            ).fetchall()
+        self.assertEqual([event[0] for event in events], [0, 1])
+        self.assertEqual(len({event[1] for event in events}), 1)
+
+    def test_visitor_cookie_isolated_per_business(self):
+        seed_client(slug="demo")
+        seed_client(slug="other", nombre="Other")
+
+        self.client.get("/t/demo")
+        self.client.get("/t/other")
+
+        with sqlite3.connect(tracking_app.DB) as connection:
+            hashes = connection.execute(
+                "SELECT slug, visitor_hash FROM toques ORDER BY slug"
+            ).fetchall()
+        self.assertEqual(len(hashes), 2)
+        self.assertNotEqual(hashes[0][1], hashes[1][1])
 
     def test_nfc_route_preserves_element_maps_destination(self):
         destination = (
@@ -135,6 +173,69 @@ class TrackingAppTests(unittest.TestCase):
         self.assertEqual(self.client.get("/pedir/demo").status_code, 404)
         self.assertEqual(self.client.get("/menu/demo").status_code, 404)
 
+    def test_dashboard_requires_admin_session(self):
+        seed_client()
+
+        unauthorized = self.client.get("/d/demo")
+        self.assertEqual(unauthorized.status_code, 302)
+        self.assertEqual(unauthorized.headers["Location"], "/admin")
+
+        self.client.post(
+            "/admin/login",
+            data={"password": "onix2026", "csrf_token": self.csrf_token()},
+        )
+        authorized = self.client.get("/d/demo")
+        self.assertEqual(authorized.status_code, 200)
+
+    def test_dashboard_counts_unique_new_and_returning_visitors(self):
+        seed_client()
+        self.client.get("/t/demo")
+        self.client.get("/t/demo")
+
+        self.client.post(
+            "/admin/login",
+            data={"password": "onix2026", "csrf_token": self.csrf_token()},
+        )
+        dashboard = self.client.get("/d/demo")
+        body = dashboard.get_data(as_text=True)
+
+        self.assertEqual(dashboard.status_code, 200)
+        self.assertIn("Visitantes estimados</span><span>1", body)
+        self.assertIn("Nuevos estimados</span><span>0", body)
+        self.assertIn("Recurrentes estimados</span><span>1", body)
+
+    def test_active_waitlist_page_sets_visitor_cookie(self):
+        seed_client()
+
+        response = self.client.get("/pedir/demo")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("onix_vid_demo=", response.headers["Set-Cookie"])
+
+    def test_security_headers_are_present(self):
+        response = self.client.get("/admin")
+
+        self.assertEqual(response.headers["X-Content-Type-Options"], "nosniff")
+        self.assertEqual(response.headers["X-Frame-Options"], "DENY")
+        self.assertIn("frame-ancestors 'none'", response.headers["Content-Security-Policy"])
+
+    def test_admin_mutations_require_csrf(self):
+        token = self.csrf_token()
+        login = self.client.post(
+            "/admin/login", data={"password": "onix2026", "csrf_token": token}
+        )
+        self.assertEqual(login.status_code, 302)
+
+        response = self.client.post(
+            "/admin/add",
+            data={
+                "slug": "missing-csrf",
+                "nombre": "Blocked",
+                "url_destino": "https://example.com",
+            },
+        )
+        self.assertEqual(response.status_code, 400)
+
     def test_menu_capture_validates_email_and_optional_phone(self):
         seed_client()
 
@@ -161,7 +262,10 @@ class TrackingAppTests(unittest.TestCase):
         )
         self.assertEqual(unauthorized.status_code, 403)
 
-        login = self.client.post("/admin/login", data={"password": "onix2026"})
+        login = self.client.post(
+            "/admin/login",
+            data={"password": "onix2026", "csrf_token": self.csrf_token()},
+        )
         self.assertEqual(login.status_code, 302)
 
         valid = self.client.post(
@@ -170,6 +274,7 @@ class TrackingAppTests(unittest.TestCase):
                 "slug": "demo",
                 "nombre": "Demo",
                 "url_destino": "https://example.com",
+                "csrf_token": self.csrf_token(),
             },
         )
         self.assertEqual(valid.status_code, 302)
@@ -181,6 +286,7 @@ class TrackingAppTests(unittest.TestCase):
                 "slug": "unsafe",
                 "nombre": "Unsafe",
                 "url_destino": "javascript:alert(1)",
+                "csrf_token": self.csrf_token(),
             },
         )
         self.assertEqual(invalid_url.status_code, 400)

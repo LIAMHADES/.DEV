@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: onix-tracking-staging
+    runtime: python
+    rootDir: projects/onix/tracking
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT flask_app:application
+    healthCheckPath: /admin
+    envVars:
+      - key: ONIX_ENV
+        value: staging
+      - key: ONIX_TRUST_PROXY
+        value: "1"
+      - key: ONIX_COOKIE_SECURE
+        value: "1"
+      - key: ONIX_SPLASH_SECONDS
+        value: "2"
+      - key: ONIX_VISITOR_COOKIE_DAYS
+        value: "30"
+      - key: ONIX_RATE_LIMIT_STORAGE_URI
+        value: memory://
+      - key: ONIX_DATABASE_URL
+        sync: false
+      - key: ONIX_DEVICE_SALT
+        sync: false
+      - key: ONIX_SECRET_KEY
+        sync: false
+      - key: ONIX_ADMIN_PASSWORD_HASH
+        sync: false

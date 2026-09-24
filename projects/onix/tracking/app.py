@@ -10,14 +10,20 @@ Sistema de Tracking ONIX — Página puente NFC
 """
 
 from flask import Flask, request, redirect, render_template_string, jsonify, session, send_file
-import sqlite3, os, json, hashlib, re
+import sqlite3, os, json, hashlib, hmac, re, secrets
 from datetime import datetime, timedelta
 from uuid import uuid4
 from html import escape
 from urllib.parse import urlparse
+from werkzeug.security import check_password_hash
+
+try:
+    from .db import open_connection
+except ImportError:
+    from db import open_connection
 
 app = Flask(__name__)
-DB = os.path.join(os.path.dirname(__file__), "tracking.db")
+DB = os.environ.get("ONIX_DATABASE_URL") or os.path.join(os.path.dirname(__file__), "tracking.db")
 MASTER_LOGO = os.path.join(os.path.dirname(__file__), "assets", "onix-logo.png")
 DEVICE_SALT_SECRET = os.environ.get("ONIX_DEVICE_SALT", "onix_dev_salt_2026_CAMBIAR_EN_PROD")
 app.secret_key = os.environ.get("ONIX_SECRET_KEY", "onix_dev_secret_CAMBIAR_EN_PROD")
@@ -27,21 +33,38 @@ app.config.update(
     SESSION_COOKIE_SECURE=os.environ.get("ONIX_COOKIE_SECURE", "0") == "1",
 )
 
-# Contraseña de /admin: se lee como HASH desde variable de entorno, nunca en texto plano.
-# Si falta la variable, el login queda bloqueado de forma segura.
-ADMIN_PASSWORD_HASH = os.environ.get(
-    "ONIX_ADMIN_PASSWORD_HASH",
-    ""
-)
+# Contraseña de /admin: se lee como HASH desde variable de entorno, nunca en texto plano
+# en el código. Fallback de desarrollo = hash de "onix2026" (cambiar en producción con
+# ONIX_ADMIN_PASSWORD_HASH=$(python3 -c "import hashlib;print(hashlib.sha256(b'nueva_pass').hexdigest())")
+ADMIN_PASSWORD_HASH = os.environ.get("ONIX_ADMIN_PASSWORD_HASH", "")
+ONIX_ENV = os.environ.get("ONIX_ENV", "development").lower()
+VISITOR_COOKIE_DAYS = max(1, int(os.environ.get("ONIX_VISITOR_COOKIE_DAYS", "30")))
+SPLASH_SECONDS = max(1, min(5, int(os.environ.get("ONIX_SPLASH_SECONDS", "1"))))
+if ONIX_ENV in {"staging", "production"}:
+    required_config = {
+        "ONIX_DATABASE_URL": os.environ.get("ONIX_DATABASE_URL"),
+        "ONIX_DEVICE_SALT": os.environ.get("ONIX_DEVICE_SALT"),
+        "ONIX_SECRET_KEY": os.environ.get("ONIX_SECRET_KEY"),
+        "ONIX_ADMIN_PASSWORD_HASH": ADMIN_PASSWORD_HASH,
+    }
+    missing_config = [name for name, value in required_config.items() if not value]
+    if missing_config:
+        raise RuntimeError("Missing required ONIX configuration: " + ", ".join(missing_config))
 
-try:
-    SPLASH_SECONDS = max(1, min(5, int(os.environ.get("ONIX_SPLASH_SECONDS", "1"))))
-except ValueError:
-    SPLASH_SECONDS = 2
+
+def db_connection():
+    return open_connection(DB)
 
 
 def check_admin_password(password: str) -> bool:
-    return hashlib.sha256((password or "").encode()).hexdigest() == ADMIN_PASSWORD_HASH
+    if not ADMIN_PASSWORD_HASH:
+        return False
+    try:
+        return check_password_hash(ADMIN_PASSWORD_HASH, password or "")
+    except (ValueError, TypeError):
+        # Backwards-compatible migration for the former development hash format.
+        digest = hashlib.sha256((password or "").encode()).hexdigest()
+        return hmac.compare_digest(digest, ADMIN_PASSWORD_HASH)
 
 
 def is_valid_destination(url: str) -> bool:
@@ -86,35 +109,107 @@ def compute_device_hash(ip: str, user_agent: str, slug: str) -> str:
 
 
 def get_client_ip() -> str:
-    fwd = request.headers.get("X-Forwarded-For", "")
+    fwd = request.headers.get("X-Forwarded-For", "") if os.environ.get("ONIX_TRUST_PROXY") == "1" else ""
     if fwd:
         return fwd.split(",")[0].strip()
     return request.remote_addr or "0.0.0.0"
 
 
+def visitor_cookie_name(slug: str) -> str:
+    return "onix_vid_" + slug
+
+
+def visitor_token(slug: str) -> tuple[str, bool]:
+    token = request.cookies.get(visitor_cookie_name(slug), "").strip()
+    if token and re.fullmatch(r"[a-f0-9]{32,128}", token):
+        return token, False
+    return secrets.token_hex(24), True
+
+
+def visitor_hash_for(slug: str, token: str) -> str:
+    raw = f"{slug}|{token}|{DEVICE_SALT_SECRET}".encode()
+    return hashlib.sha256(raw).hexdigest()[:32]
+
+
+def classify_device(user_agent: str) -> str:
+    agent = (user_agent or "").lower()
+    if "ipad" in agent or "tablet" in agent:
+        return "tablet"
+    if "mobile" in agent or "iphone" in agent or "android" in agent:
+        return "mobile"
+    return "desktop"
+
+
+def csrf_token() -> str:
+    token = session.get("csrf_token")
+    if not token:
+        token = secrets.token_urlsafe(32)
+        session["csrf_token"] = token
+    return token
+
+
+def validate_csrf(token: str | None) -> bool:
+    expected = session.get("csrf_token", "")
+    return bool(token and expected and hmac.compare_digest(token, expected))
+
+
+@app.context_processor
+def inject_security_helpers():
+    return {"csrf_token": csrf_token}
+
+
+@app.after_request
+def add_security_headers(response):
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    response.headers.setdefault("X-Frame-Options", "DENY")
+    response.headers.setdefault("Referrer-Policy", "no-referrer")
+    response.headers.setdefault(
+        "Content-Security-Policy",
+        "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; "
+        "script-src 'self' 'unsafe-inline'; frame-ancestors 'none'",
+    )
+    return response
+
+
+def attach_visitor_cookie(response, slug: str, token: str, is_new: bool):
+    if is_new:
+        response.set_cookie(
+            visitor_cookie_name(slug), token,
+            max_age=VISITOR_COOKIE_DAYS * 86400,
+            httponly=True,
+            secure=app.config.get("SESSION_COOKIE_SECURE", False),
+            samesite="Lax",
+        )
+    return response
+
+
 def init_db():
-    with sqlite3.connect(DB) as c:
+    with db_connection() as c:
+        postgres = getattr(c, "is_postgres", False)
+        serial = "BIGSERIAL" if postgres else "INTEGER"
+        text_now = "CURRENT_TIMESTAMP::text" if postgres else "(datetime('now','localtime'))"
         c.execute("""
             CREATE TABLE IF NOT EXISTS clientes (
                 slug TEXT PRIMARY KEY, nombre TEXT NOT NULL, sector TEXT,
                 url_destino TEXT NOT NULL, activo INTEGER DEFAULT 1,
-                creado TEXT DEFAULT (datetime('now','localtime')),
+                creado TEXT DEFAULT """ + text_now + """,
                 tipo_campana TEXT DEFAULT 'sorteo',
                 premio TEXT DEFAULT ''
             )""")
         c.execute("""
             CREATE TABLE IF NOT EXISTS toques (
-                id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT NOT NULL,
-                fecha TEXT DEFAULT (datetime('now','localtime')), dispositivo TEXT,
+                id """ + (serial + " PRIMARY KEY") + """, slug TEXT NOT NULL,
+                fecha TEXT DEFAULT """ + text_now + """, dispositivo TEXT,
                 device_id TEXT,
                 device_hash TEXT,
+                visitor_hash TEXT,
                 FOREIGN KEY (slug) REFERENCES clientes(slug)
             )""")
         c.execute("""
             CREATE TABLE IF NOT EXISTS leads_clientes (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                id """ + (serial + " PRIMARY KEY") + """,
                 negocio_slug TEXT NOT NULL, telefono TEXT, email TEXT,
-                nombre TEXT, fecha_captacion TEXT DEFAULT (datetime('now','localtime')),
+                nombre TEXT, fecha_captacion TEXT DEFAULT """ + text_now + """,
                 fuente TEXT, motivo TEXT,
                 acepta_campanas INTEGER DEFAULT 0,
                 texto_consentimiento TEXT,
@@ -123,17 +218,49 @@ def init_db():
                 device_hash TEXT,
                 FOREIGN KEY (negocio_slug) REFERENCES clientes(slug)
             )""")
+        c.execute("""
+            CREATE TABLE IF NOT EXISTS eventos (
+                id """ + (serial + " PRIMARY KEY") + """,
+                negocio_slug TEXT NOT NULL, tipo_evento TEXT NOT NULL,
+                ocurrido TEXT DEFAULT """ + text_now + """,
+                visitante_hash TEXT, es_recurrente INTEGER DEFAULT 0,
+                dispositivo_tipo TEXT, fuente TEXT, campana TEXT,
+                event_id TEXT, latencia_ms INTEGER DEFAULT 0,
+                respuesta_bytes INTEGER DEFAULT 0,
+                FOREIGN KEY (negocio_slug) REFERENCES clientes(slug)
+            )""")
+        c.execute("""
+            CREATE TABLE IF NOT EXISTS uso_diario (
+                negocio_slug TEXT NOT NULL, dia TEXT NOT NULL,
+                peticiones INTEGER DEFAULT 0, eventos INTEGER DEFAULT 0,
+                bytes_respuesta INTEGER DEFAULT 0, latencia_total_ms INTEGER DEFAULT 0,
+                actualizado TEXT DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (negocio_slug, dia)
+            )""")
+        c.execute("""
+            CREATE TABLE IF NOT EXISTS metricas_diarias (
+                negocio_slug TEXT NOT NULL, dia TEXT NOT NULL,
+                toques INTEGER DEFAULT 0, visitantes_unicos INTEGER DEFAULT 0,
+                visitantes_nuevos INTEGER DEFAULT 0, visitantes_recurrentes INTEGER DEFAULT 0,
+                leads INTEGER DEFAULT 0, latencia_media_ms REAL DEFAULT 0,
+                bytes_respuesta INTEGER DEFAULT 0, actualizado TEXT DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (negocio_slug, dia)
+            )""")
         c.execute("CREATE INDEX IF NOT EXISTS idx_toques_slug ON toques(slug)")
         c.execute("CREATE INDEX IF NOT EXISTS idx_leads_slug ON leads_clientes(negocio_slug)")
         c.execute("CREATE INDEX IF NOT EXISTS idx_toques_hash ON toques(device_hash)")
         c.commit()
 
         # Migración no destructiva para BDs ya existentes (columnas añadidas julio 2026)
-        cols_toques = {r[1] for r in c.execute("PRAGMA table_info(toques)")}
-        if "device_hash" not in cols_toques:
-            c.execute("ALTER TABLE toques ADD COLUMN device_hash TEXT")
+        if not postgres:
+            cols_toques = {r[1] for r in c.execute("PRAGMA table_info(toques)")}
+            if "device_hash" not in cols_toques:
+                c.execute("ALTER TABLE toques ADD COLUMN device_hash TEXT")
+            if "visitor_hash" not in cols_toques:
+                c.execute("ALTER TABLE toques ADD COLUMN visitor_hash TEXT")
 
-        cols_leads = {r[1] for r in c.execute("PRAGMA table_info(leads_clientes)")}
+        cols_leads = ({r[1] for r in c.execute("PRAGMA table_info(leads_clientes)")}
+                      if not postgres else set())
         for col, ddl in [
             ("acepta_campanas", "ALTER TABLE leads_clientes ADD COLUMN acepta_campanas INTEGER DEFAULT 0"),
             ("texto_consentimiento", "ALTER TABLE leads_clientes ADD COLUMN texto_consentimiento TEXT"),
@@ -144,7 +271,8 @@ def init_db():
             if col not in cols_leads:
                 c.execute(ddl)
 
-        cols_clientes = {r[1] for r in c.execute("PRAGMA table_info(clientes)")}
+        cols_clientes = ({r[1] for r in c.execute("PRAGMA table_info(clientes)")}
+                         if not postgres else set())
         for col, ddl in [
             ("tipo_campana", "ALTER TABLE clientes ADD COLUMN tipo_campana TEXT DEFAULT 'sorteo'"),
             ("premio", "ALTER TABLE clientes ADD COLUMN premio TEXT DEFAULT ''"),
@@ -162,30 +290,44 @@ SPLASH_HTML = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ONIX - Tu negocio, a un toque</title>
-<link rel="preconnect" href="https://www.google.com">
-<link rel="preconnect" href="https://search.google.com">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#080705;display:flex;align-items:center;justify-content:center;
-     height:100vh;overflow:hidden;font-family:system-ui}
-  .logo{width:min(110vw,450px);height:auto;display:block}
+     height:100vh;overflow:hidden;font-family:'Segoe UI',system-ui,sans-serif}
+.pulse{display:flex;flex-direction:column;align-items:center;gap:24px;animation:fadeIn .6s ease}
+.logo{width:min(110vw,450px);height:auto;display:block;position:relative}
+.logo::after{content:'';position:absolute;inset:-20px -40px;border:2px solid #E8A04433;
+             border-radius:50%;animation:pulseRing 1.2s ease-out}
+.tagline{color:#F0EBE3;font-size:16px;letter-spacing:2px;opacity:.9}
+.msg{color:#9A8672;font-size:14px;margin-top:-12px;animation:fadeIn .8s ease .4s both}
+.sub{color:#6B5D4F;font-size:13px;animation:dots 1.4s infinite}
+@keyframes fadeIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+@keyframes pulseRing{0%{transform:scale(.8);opacity:1}100%{transform:scale(1.8);opacity:0}}
+@keyframes dots{0%,20%{opacity:.3}50%{opacity:1}80%,100%{opacity:.3}}
 </style>
 <script>
  setTimeout(function(){ window.location.href = {url_destino_json}; }, {splash_seconds}000);
 </script>
 </head>
 <body>
-<img class="logo" src="/onix-logo.png" alt="ONIX" loading="eager" decoding="sync" fetchpriority="high">
+<div class="pulse">
+    <img class="logo" src="/onix-logo.png" alt="ONIX" loading="eager" decoding="sync">
+    <div class="tagline">{visit_msg}</div>
+    <div class="sub">Accediendo . . .</div>
+</div>
 </body>
 </html>"""
 
 @app.route("/t/<slug>")
 def track_and_redirect(slug):
-    dispositivo = request.headers.get("User-Agent", "desconocido")[:200]
+    user_agent = request.headers.get("User-Agent", "desconocido")[:200]
+    dispositivo = classify_device(user_agent)
     ip = get_client_ip()
     device_hash = compute_device_hash(ip, dispositivo, slug)
+    token, is_new_cookie = visitor_token(slug)
+    anonymous_hash = visitor_hash_for(slug, token)
 
-    with sqlite3.connect(DB) as c:
+    with db_connection() as c:
         cliente = c.execute(
             "SELECT nombre, url_destino, activo FROM clientes WHERE slug=?", (slug,)
         ).fetchone()
@@ -197,34 +339,46 @@ def track_and_redirect(slug):
         # Hash estable por dispositivo+negocio (sin ventana temporal): cuenta todo el
         # historico, permite distinguir clientes nuevos/regulares/ocasionales a largo plazo.
         visitas_previas = c.execute(
-            "SELECT COUNT(*) FROM toques WHERE slug=? AND device_hash=?",
-            (slug, device_hash)
+            "SELECT COUNT(*) FROM toques WHERE slug=? AND visitor_hash=?",
+            (slug, anonymous_hash)
         ).fetchone()[0]
 
         c.execute(
-            "INSERT INTO toques (slug, dispositivo, device_hash) VALUES (?,?,?)",
-            (slug, dispositivo, device_hash)
+            "INSERT INTO toques (slug, dispositivo, device_hash, visitor_hash) VALUES (?,?,?,?)",
+            (slug, dispositivo, device_hash, anonymous_hash)
+        )
+        c.execute(
+            "INSERT INTO eventos (negocio_slug, tipo_evento, visitante_hash, es_recurrente, dispositivo_tipo, fuente, event_id) VALUES (?,?,?,?,?,?,?)",
+            (slug, "toque", anonymous_hash, 1 if visitas_previas else 0,
+             dispositivo, "nfc", uuid4().hex),
         )
         c.commit()
 
     count = visitas_previas + 1
-    print(
-        f"[ONIX NFC] {datetime.now().isoformat(timespec='seconds')} "
-        f"slug={slug} negocio={cliente[0]!r} toque={count} "
-        f"device={device_hash[:8]}",
-        flush=True,
-    )
+    if count == 1:
+        visit_msg = "Bienvenido"
+    elif count % 5 == 0:
+        visit_msg = "Ya son " + str(count) + " visitas! Pregunta por tu recompensa"
+    else:
+        visit_msg = "Visita numero " + str(count)
 
     html = (SPLASH_HTML
             .replace("{url_destino_json}", safe_script_json(cliente[1]))
+            .replace("{visit_msg}", escape(visit_msg))
             .replace("{splash_seconds}", str(SPLASH_SECONDS)))
-    return html
+    response = app.make_response(html)
+    return attach_visitor_cookie(response, slug, token, is_new_cookie)
 
 @app.route("/t/<slug>/device", methods=["POST"])
 def track_device_deprecated(slug):
     """Ruta obsoleta: la huella de dispositivo ahora se calcula 100% server-side
     (sin localStorage) en /t/<slug>. Se mantiene solo para no romper clientes cacheados."""
     return jsonify({"ok": False, "deprecated": True}), 410
+
+
+@app.route("/onix-logo.png")
+def onix_logo():
+    return send_file(MASTER_LOGO, mimetype="image/png", conditional=True)
 
 # ============================================================
 # DASHBOARD DEL CLIENTE
@@ -255,7 +409,9 @@ h1{font-size:28px;margin-bottom:4px}
     <div class="row"><span>Este mes</span><span>{{ mes }}</span></div>
     <div class="row"><span>Último toque</span><span>{{ ultimo }}</span></div>
     <div class="row"><span>Leads captados</span><span>{{ leads }}</span></div>
-    <div class="row"><span>Recurrentes (estimado)</span><span>{{ recurrentes }}</span></div>
+    <div class="row"><span>Visitantes estimados</span><span>{{ visitantes }}</span></div>
+    <div class="row"><span>Nuevos estimados</span><span>{{ nuevos }}</span></div>
+    <div class="row"><span>Recurrentes estimados</span><span>{{ recurrentes }}</span></div>
     <div class="row"><span>Aceptan campañas</span><span>{{ acepta_camp }}</span></div>
     <div class="row"><span>Aceptan insights sector</span><span>{{ acepta_insights }}</span></div>
     <div class="footer">ONIX · Tu negocio, a un toque</div>
@@ -264,7 +420,9 @@ h1{font-size:28px;margin-bottom:4px}
 
 @app.route("/d/<slug>")
 def dashboard(slug):
-    with sqlite3.connect(DB) as c:
+    if not session.get("admin_authenticated"):
+        return redirect("/admin")
+    with db_connection() as c:
         cl = c.execute("SELECT nombre, sector FROM clientes WHERE slug=?", (slug,)).fetchone()
         if not cl: return "Dashboard no encontrado", 404
         nombre, sector = cl
@@ -283,12 +441,18 @@ def dashboard(slug):
         ultimo_str = ultimo[0][:16] if ultimo else "—"
         leads = c.execute("SELECT COUNT(*) FROM leads_clientes WHERE negocio_slug=?",
                           (slug,)).fetchone()[0]
+        visitantes = c.execute(
+            "SELECT COUNT(DISTINCT COALESCE(visitor_hash, device_hash)) FROM toques WHERE slug=?",
+            (slug,),
+        ).fetchone()[0]
         recurrentes = c.execute("""
-            SELECT COUNT(DISTINCT device_hash) FROM toques
-            WHERE slug=? AND device_hash IS NOT NULL
-            AND device_hash IN (
-                SELECT device_hash FROM toques WHERE slug=? GROUP BY device_hash HAVING COUNT(*) > 1
-            )""", (slug, slug)).fetchone()[0]
+            SELECT COUNT(*) FROM (
+                SELECT COALESCE(visitor_hash, device_hash) AS visitor
+                FROM toques WHERE slug=? AND COALESCE(visitor_hash, device_hash) IS NOT NULL
+                GROUP BY COALESCE(visitor_hash, device_hash) HAVING COUNT(*) > 1
+            )
+        """, (slug,)).fetchone()[0]
+        nuevos = max(0, visitantes - recurrentes)
         acepta_camp = c.execute(
             "SELECT COUNT(*) FROM leads_clientes WHERE negocio_slug=? AND acepta_campanas=1",
             (slug,)).fetchone()[0]
@@ -298,7 +462,8 @@ def dashboard(slug):
     return render_template_string(
         DASH_HTML, nombre=nombre, sector=sector, total=total,
         hoy=hoy_n, semana=semana_n, mes=mes_n, ultimo=ultimo_str, leads=leads,
-        recurrentes=recurrentes, acepta_camp=acepta_camp, acepta_insights=acepta_insights)
+        visitantes=visitantes, nuevos=nuevos, recurrentes=recurrentes,
+        acepta_camp=acepta_camp, acepta_insights=acepta_insights)
 
 # ============================================================
 # CAPTACION CON DOBLE CONSENTIMIENTO - /c/<slug> (ver doc 45)
@@ -397,7 +562,7 @@ function enviar(){
 
 @app.route("/c/<slug>", methods=["GET", "POST"])
 def captacion(slug):
-    with sqlite3.connect(DB) as c:
+    with db_connection() as c:
         cl = c.execute(
             "SELECT nombre, sector, tipo_campana, premio, activo FROM clientes WHERE slug=?", (slug,)
         ).fetchone()
@@ -540,7 +705,7 @@ document.getElementById('form').onsubmit = function(e){
 
 @app.route("/pedir/<slug>", methods=["GET", "POST"])
 def pedir(slug):
-    with sqlite3.connect(DB) as c:
+    with db_connection() as c:
         cl = c.execute("SELECT nombre, activo FROM clientes WHERE slug=?", (slug,)).fetchone()
         if not cl or not cl[1]: return "No encontrado", 404
         if request.method == "POST":
@@ -556,13 +721,8 @@ def pedir(slug):
     html = (PEDIR_HTML
             .replace("{{ nombre }}", escape(cl[0]))
             .replace("{capture_endpoint}", safe_script_json("/pedir/" + slug)))
-    return html
-
-
-@app.route("/onix-logo.png")
-def onix_logo():
-    """Serve only the user-provided master logo; never a generated substitute."""
-    return send_file(MASTER_LOGO, mimetype="image/png", conditional=True)
+    token, is_new_cookie = visitor_token(slug)
+    return attach_visitor_cookie(app.make_response(html), slug, token, is_new_cookie)
 
 # ============================================================
 # MENÚ CONDICIONADO — email a cambio de contenido (Estrategia #5)
@@ -613,7 +773,7 @@ function enviar(){
 
 @app.route("/menu/<slug>")
 def menu_condicionado(slug):
-    with sqlite3.connect(DB) as c:
+    with db_connection() as c:
         cl = c.execute("SELECT nombre, url_destino, activo FROM clientes WHERE slug=?", (slug,)).fetchone()
         if not cl or not cl[2] or not is_valid_destination(cl[1]): return "No encontrado", 404
     html = MENU_HTML.replace("{{ nombre }}", escape(cl[0]))
@@ -628,7 +788,7 @@ def menu_captura(slug):
     data = request.get_json(silent=True) or {}
     email = data.get("email", "").strip()
     telefono = data.get("telefono", "").strip()
-    with sqlite3.connect(DB) as c:
+    with db_connection() as c:
         cl = c.execute("SELECT activo FROM clientes WHERE slug=?", (slug,)).fetchone()
         if not cl or not cl[0]:
             return jsonify({"error": "cliente no encontrado"}), 404
@@ -658,6 +818,7 @@ button:hover{opacity:.9}
 </style></head><body>
 <h1>ONIX — Admin</h1>
 <form method="POST" action="/admin/add">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input name="slug" placeholder="slug" required>
     <input name="nombre" placeholder="Nombre negocio" required>
     <input name="sector" placeholder="Sector">
@@ -699,6 +860,7 @@ input,button{padding:12px 18px;border-radius:8px;border:1px solid #2a2520;backgr
 button{background:#E8A044;color:#080705;cursor:pointer;border:none}
 </style></head><body>
 <form method="POST" action="/admin/login">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input name="password" placeholder="Contraseña" type="password" autofocus>
     <button type="submit">Entrar</button>
 </form>
@@ -707,7 +869,7 @@ button{background:#E8A044;color:#080705;cursor:pointer;border:none}
 
 
 def render_admin():
-    with sqlite3.connect(DB) as c:
+    with db_connection() as c:
         clientes = c.execute("""
             SELECT cl.slug, cl.nombre,
                    (SELECT COUNT(*) FROM toques t WHERE t.slug=cl.slug) as toques,
@@ -721,6 +883,8 @@ def render_admin():
 
 @app.route("/admin/login", methods=["POST"])
 def admin_login():
+    if not validate_csrf(request.form.get("csrf_token")):
+        return "CSRF invalido", 400
     if check_admin_password(request.form.get("password")):
         session.clear()
         session["admin_authenticated"] = True
@@ -731,16 +895,22 @@ def admin_login():
 def admin_add():
     if not session.get("admin_authenticated"):
         return "No autorizado", 403
+    if not validate_csrf(request.form.get("csrf_token")):
+        return "CSRF invalido", 400
     slug = request.form.get("slug", "").strip()
     url_destino = request.form.get("url_destino", "").strip()
     if not valid_slug(slug):
         return "Slug invalido: usa letras minusculas, numeros y guiones", 400
     if not is_valid_destination(url_destino):
         return "URL destino invalida: usa http:// o https://", 400
-    with sqlite3.connect(DB) as c:
+    with db_connection() as c:
         c.execute("""
-            INSERT OR REPLACE INTO clientes (slug, nombre, sector, url_destino, tipo_campana, premio)
+            INSERT INTO clientes (slug, nombre, sector, url_destino, tipo_campana, premio)
             VALUES (?,?,?,?,?,?)
+            ON CONFLICT(slug) DO UPDATE SET
+                nombre=excluded.nombre, sector=excluded.sector,
+                url_destino=excluded.url_destino, tipo_campana=excluded.tipo_campana,
+                premio=excluded.premio, activo=1
         """, (
             slug, request.form["nombre"].strip(),
             request.form.get("sector", "").strip(), url_destino,

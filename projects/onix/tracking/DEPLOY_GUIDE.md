@@ -1,66 +1,71 @@
-# Guía de Despliegue — Tracking ONIX en PythonAnywhere (GRATIS)
+# Guía de Despliegue — Tracking ONIX en Render + Supabase (staging)
 
 El backend está versionado en `projects/onix/tracking` dentro de `LIAMHADES/.DEV`.
-La web pública de GitHub Pages sigue siendo estática; PythonAnywhere ejecuta este
-backend y conserva la base SQLite del piloto.
+La web pública de GitHub Pages sigue siendo estática; Render ejecuta este backend y
+Supabase conserva la base PostgreSQL del staging. No uses SQLite como persistencia de
+Render: su disco es efímero.
 
-## PASO 1 — Crear cuenta en PythonAnywhere (3 min)
+## PASO 1 — Crear los servicios gratuitos (5 min)
 
-1. Ve a https://www.pythonanywhere.com
-2. Click "Start running Python online" → "Create a Beginner account"
-3. Username: elige uno (ej: `onix-tracking`)
-4. Email: tu email
-5. **Confirmar email** (importante, sin confirmar no funciona)
+1. Crea un proyecto en https://supabase.com y copia su connection string de PostgreSQL.
+2. Crea un servicio Web en https://render.com conectado al repositorio.
+3. Configura `Root Directory` como `projects/onix/tracking`.
+4. Usa el `render.yaml` de la raíz del repositorio como configuración del Blueprint.
+5. Ejecuta `migrations/001_initial.sql` y después `migrations/002_scalable_analytics.sql`
+   en el SQL Editor de Supabase.
 
-**Coste: 0€. El plan Beginner es gratis sin caducidad.**
-
----
-
-## PASO 2 — Clonar el repositorio (5 min)
-
-1. En PythonAnywhere, abre una consola **Bash**.
-2. Ejecuta:
-   ```bash
-   git clone https://github.com/LIAMHADES/.DEV.git
-   cd .DEV/projects/onix/tracking
-   ```
-3. Verifica que existen `app.py`, `flask_app.py`, `requirements.txt` y `static/onix-round.png`.
-4. Instala la dependencia del backend:
-   ```bash
-   python3 -m pip install --user -r requirements.txt
-   ```
+**Render y Supabase tienen límites gratuitos.** Este despliegue es staging y no debe
+usarse todavía para datos reales de clientes sin revisar retención, privacidad y
+condiciones actuales de ambos servicios.
 
 ---
 
-## PASO 3 — Configurar la Web App (5 min)
+## PASO 2 — Configurar Render (5 min)
 
-1. Ve a la pestaña **"Web"**
-2. Click **"Add a new web app"**
-3. Click "Next" (deja domain por defecto: `TU_USUARIO.pythonanywhere.com`)
-4. Selecciona **"Flask"** y la última versión de Python (3.10 o superior)
-5. En "Path to Flask app", pon: `/home/TU_USUARIO/.DEV/projects/onix/tracking/flask_app.py`
-6. Click "Next" y luego "Next" para terminar
+1. Conecta el repositorio `LIAMHADES/.DEV` en Render.
+2. Selecciona `Web Service` y `Root Directory = projects/onix/tracking`.
+3. Build command: `pip install -r requirements.txt`.
+4. Start command: `gunicorn --bind 0.0.0.0:$PORT flask_app:application`.
+5. Health check: `/admin`.
 
-> Sustituye `TU_USUARIO` por el usuario real de PythonAnywhere en todos los pasos.
+---
+
+## PASO 3 — Configurar las variables (5 min)
+
+En Render configura estas variables, sin subirlas al repositorio:
+
+- `ONIX_ENV=staging`
+- `ONIX_DATABASE_URL`: connection string de Supabase.
+- `ONIX_ADMIN_PASSWORD_HASH`: hash Werkzeug generado con `generate_password_hash`.
+- `ONIX_DEVICE_SALT`: secreto aleatorio estable.
+- `ONIX_SECRET_KEY`: secreto aleatorio estable para la sesión.
+- `ONIX_TRUST_PROXY=1`
+- `ONIX_COOKIE_SECURE=1`
+- `ONIX_SPLASH_SECONDS=2`
+- `ONIX_RATE_LIMIT_STORAGE_URI=memory://`
+
+Para generar el hash sin guardar la contraseña en el repositorio:
+
+```bash
+python -c "import getpass; from werkzeug.security import generate_password_hash; print(generate_password_hash(getpass.getpass()))"
+```
 
 ---
 
 ## PASO 4 — Inicializar la base de datos (2 min)
 
-1. Ve a la pestaña **"Consoles"**
-2. Abre una consola **"Bash"**
-3. Ejecuta:
+1. En Supabase abre **SQL Editor**.
+2. Ejecuta el contenido de `migrations/001_initial.sql` y después `migrations/002_scalable_analytics.sql`.
+3. Para crear los dos negocios demo, ejecuta localmente con `ONIX_DATABASE_URL` apuntando a Supabase:
    ```bash
-    cd /home/TU_USUARIO/.DEV/projects/onix/tracking
-   python3 -c "from app import init_db; init_db(); print('BD creada correctamente')"
+   python seed_demo.py
    ```
-4. Deberías ver "BD creada correctamente"
 
 ## Secretos de producción
 
 Antes de abrir la web públicamente, configura estas variables en el entorno de la aplicación:
 
-- `ONIX_ADMIN_PASSWORD_HASH`: SHA-256 de una contraseña nueva; no uses `onix2026`.
+- `ONIX_ADMIN_PASSWORD_HASH`: hash Werkzeug de una contraseña nueva; no uses `onix2026`.
 - `ONIX_DEVICE_SALT`: valor aleatorio largo, privado y estable. Si cambia, las recurrencias históricas dejarán de coincidir.
 - `ONIX_SECRET_KEY`: valor aleatorio largo para firmar la sesión del panel admin.
 - `ONIX_COOKIE_SECURE=1`: activa cookies de sesión solo por HTTPS.
@@ -71,20 +76,14 @@ La plantilla `.env.example` contiene los nombres, pero los valores reales nunca 
 
 ## PASO 5 — Probar que funciona (5 min)
 
-1. Ve a la pestaña **"Web"**
-2. Click el botón grande verde **"Reload"**
-3. Abre en el navegador: `https://TU_USUARIO.pythonanywhere.com/admin`
-4. Verás la página de login. Usa la contraseña cuyo SHA-256 configuraste en `ONIX_ADMIN_PASSWORD_HASH`.
-5. Entra al admin y añade un cliente de prueba:
-   - slug: `test`
-   - nombre: `Test Negocio`
-   - sector: `test`
-   - url_destino: `https://onixgirona.com` (o cualquier URL `http://`/`https://` válida)
-6. Abre `https://TU_USUARIO.pythonanywhere.com/t/test`
-   - Verás el splash ONIX animado
-    - Después de 2s por defecto, redirigirá a la URL configurada
-7. Abre `https://TU_USUARIO.pythonanywhere.com/d/test`
-   - Verás el dashboard con 1 toque registrado
+1. Espera a que Render termine el deploy y copia `https://TU_SERVICIO.onrender.com`.
+2. Abre `https://TU_SERVICIO.onrender.com/admin`.
+3. Inicia sesión con la contraseña usada para generar el hash Werkzeug.
+4. Abre `https://TU_SERVICIO.onrender.com/t/test-element`.
+    - Verás el splash ONIX animado
+    - Después de 2s por defecto, redirigirá al destino de Element.
+5. Repite con `https://TU_SERVICIO.onrender.com/t/test-cafe`.
+6. Tras leer cada URL, abre `/d/test-element` y `/d/test-cafe` desde la sesión admin.
 
 ---
 
@@ -94,7 +93,7 @@ Usa la app **NFC Tools** (gratis en Android/iOS):
 
 1. Abre NFC Tools
 2. Ve a "Escribir" → "Añadir un registro" → "URL"
-3. Pega la URL estable: `https://TU_USUARIO.pythonanywhere.com/t/test`
+3. Pega la URL estable: `https://TU_SERVICIO.onrender.com/t/test-element`
 4. Acerca un chip NFC al móvil → "Escribir"
 5. Acerca el chip al móvil otra vez → deberías ver el splash ONIX
 
@@ -105,7 +104,7 @@ se actualiza `url_destino` desde el panel y no hace falta reprogramar el chip.
 
 1. El móvil lee el chip y abre `/t/<slug>`.
 2. ONIX verifica que el cliente existe, está activo y tiene un destino `http`/`https` válido.
-3. ONIX registra el toque en SQLite y calcula una huella server-side para estimar recurrencia sin cookies ni `localStorage`.
+3. ONIX registra el toque en Supabase/PostgreSQL y calcula una huella server-side para estimar recurrencia sin cookies ni `localStorage`.
 4. Se muestra el splash ONIX durante 2 segundos por defecto.
 5. El navegador redirige a `url_destino`, que puede cambiarse desde el panel admin.
 6. Las rutas `/c/<slug>`, `/pedir/<slug>` y `/menu/<slug>` son flujos opcionales de captación; validan el cliente y los datos antes de guardar un lead.
@@ -114,7 +113,7 @@ se actualiza `url_destino` desde el panel y no hace falta reprogramar el chip.
 
 - Las rutas principales y capturas tienen pruebas automatizadas en `tests/test_tracking_app.py`.
 - El panel admin usa sesión firmada; la contraseña no se reenvía en cada alta.
-- Sigue pendiente añadir protección CSRF y rate limiting al panel si se expone directamente a Internet.
+- El staging ya incluye CSRF, cabeceras de seguridad, HTTPS forzado, hash de contraseña y rate limiting.
 - La política de privacidad y la base legal del hash de dispositivo deben revisarse con asesoría legal antes de captar datos reales.
 
 ---
@@ -123,46 +122,42 @@ se actualiza `url_destino` desde el panel y no hace falta reprogramar el chip.
 
 | Ruta | Función |
 |---|---|
-| `https://TU_USUARIO.pythonanywhere.com/admin` | Panel de administración |
-| `https://TU_USUARIO.pythonanywhere.com/t/test` | NFC apunta aquí → splash → redirige |
-| `https://TU_USUARIO.pythonanywhere.com/d/test` | Dashboard del cliente |
-| `https://TU_USUARIO.pythonanywhere.com/pedir/test` | Lista de espera / pedir cita |
-| `https://TU_USUARIO.pythonanywhere.com/menu/test` | Menú condicionado (email a cambio de contenido) |
+| `https://TU_SERVICIO.onrender.com/admin` | Panel de administración |
+| `https://TU_SERVICIO.onrender.com/t/test-element` | NFC apunta aquí → splash → Google Maps |
+| `https://TU_SERVICIO.onrender.com/d/test-element` | Dashboard del cliente |
+| `https://TU_SERVICIO.onrender.com/pedir/test-element` | Lista de espera / pedir cita |
+| `https://TU_SERVICIO.onrender.com/menu/test-element` | Menú condicionado (email a cambio de contenido) |
 
 ---
 
 ## SOLUCIÓN DE PROBLEMAS
 
-### "Something went wrong" al recargar
-→ Ve a la pestaña "Web" → Scroll abajo → "Log files" → Mira el error log
-→ Lo más común: typo en el path del WSGI o Python path mal configurado
+### "Something went wrong" al desplegar
+→ Revisa los logs del servicio en Render.
+→ Lo más común: `Root Directory`, `Start Command` o variables de entorno incorrectas.
 
 ### "No module named flask"
-→ Abre una consola Bash y ejecuta:
+→ Comprueba que el build instaló `requirements.txt` completo:
 ```bash
-pip3 install --user flask
+pip install -r requirements.txt
 ```
-→ Luego vuelve a la pestaña "Web" y haz "Reload"
 
 ### Error 500 en /admin
-→ La BD no se inicializó. Ve a la consola Bash y ejecuta:
-```bash
-    cd /home/TU_USUARIO/.DEV/projects/onix/tracking
-python3 -c "from app import init_db; init_db()"
-```
+→ Comprueba que `ONIX_DATABASE_URL`, `ONIX_SECRET_KEY`, `ONIX_DEVICE_SALT` y
+`ONIX_ADMIN_PASSWORD_HASH` existen y que `001_initial.sql` se ejecutó en Supabase.
 
 ## Conexión con la URL del chip
 
 El chip no guarda la web final del negocio. Guarda una URL estable de ONIX:
 
 ```text
-https://TU_USUARIO.pythonanywhere.com/t/test
+https://TU_SERVICIO.onrender.com/t/test-element
 ```
 
-`test` es el `slug` del negocio en la tabla `clientes`. Cuando el móvil lee el chip:
+`test-element` es el `slug` de Element Barbería en la tabla `clientes`. Cuando el móvil lee el chip:
 
-1. El navegador entra en `/t/test`.
-2. Flask busca `clientes.slug = "test"`.
+1. El navegador entra en `/t/test-element`.
+2. Flask busca `clientes.slug = "test-element"`.
 3. Flask registra el toque en `toques`.
 4. Muestra el logo circular ONIX durante `ONIX_SPLASH_SECONDS` segundos.
 5. Redirige al valor actual de `url_destino`.
