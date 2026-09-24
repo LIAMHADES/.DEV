@@ -222,9 +222,10 @@ h1 .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill
 .calc-options{display:flex;flex-direction:column;gap:10px}
 .calc-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-sm);cursor:pointer;transition:.15s ease}
 .calc-item:hover{border-color:rgba(232,160,68,.3)}
-.calc-item.base{cursor:default}
-.calc-item.base:hover{border-color:var(--border)}
+.calc-item.base{cursor:pointer}
+.calc-item.base:hover{border-color:rgba(232,160,68,.3)}
 .calc-item.active{border-color:var(--copper-warm);background:rgba(232,160,68,.06)}
+.calc-item.is-disabled{opacity:.42;cursor:not-allowed;pointer-events:none}
 .calc-item-label{display:flex;align-items:center;gap:12px;font-size:14px}
 .calc-check{width:20px;height:20px;border-radius:5px;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s ease}
 .calc-item.active .calc-check{background:var(--copper-warm);border-color:var(--copper-warm)}
@@ -340,7 +341,7 @@ footer a:hover{color:var(--copper-light)}
   <section class="hero">
     <div class="eyebrow reveal-el">Presupuesto de página web</div>
     <h1 class="reveal-title onix-typewriter-title"><span class="onix-tw-line">Tu página web</span><br><span class="onix-tw-line hl">a tu medida</span></h1>
-    <p class="hero-sub reveal-el"><strong class="em">Ninguna web ONIX es una plantilla.</strong> Se cotiza según lo que necesites: <strong>desde 450€</strong> la entrada, y cada pieza que añadas suma un precio fijo y transparente — sin sorpresas. Aquí tienes 3 ejemplos reales según el tipo de negocio, y una calculadora para que veas tu presupuesto exacto en el momento.</p>
+    <p class="hero-sub reveal-el"><strong class="em">Ninguna web ONIX es una plantilla.</strong> Se cotiza según lo que necesites: <strong>desde 350€</strong> la entrada, y cada pieza que añadas suma un precio fijo y transparente — sin sorpresas. Aquí tienes 3 ejemplos reales según el tipo de negocio, y una calculadora para que veas tu presupuesto exacto en el momento.</p>
   </section>
 
   <section class="section fi" id="ejemplos">
@@ -361,10 +362,10 @@ footer a:hover{color:var(--copper-light)}
           <h4>Página simple — 1 sola página</h4>
           <p>El cliente toca el stand y ve la información actualizada al momento, <strong class="em">sin reimprimir nada</strong> cada vez que algo cambia. La misma base sirve para casos muy distintos según tu sector: la carta de un restaurante, el listado de servicios y precios de una barbería/estética, las promociones activas de una tienda, o un enlace directo para reservar la siguiente cita.</p>
           <ul class="example-pieces">
-            <li><span>Página de entrada</span><span class="amt">450€</span></li>
+            <li><span>Página de entrada</span><span class="amt">650€</span></li>
           </ul>
-          <div class="example-total"><span class="label">Desde</span><span class="price">450€</span></div>
-          <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20la%20web%20tipo%20%22P%C3%A1gina%20simple%22%20(1%20p%C3%A1gina%2C%20450%E2%82%AC).%20%C2%BFCu%C3%A1ndo%20podemos%20empezar%3F" class="example-cta">Pedir esta web →</a>
+          <div class="example-total"><span class="label">Desde</span><span class="price">650€</span></div>
+          <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20la%20web%20tipo%20%22P%C3%A1gina%20simple%22%20(1%20p%C3%A1gina%2C%20650%E2%82%AC).%20%C2%BFCu%C3%A1ndo%20podemos%20empezar%3F" class="example-cta">Pedir esta web →</a>
         </div>
       </div>
 
@@ -377,11 +378,11 @@ footer a:hover{color:var(--copper-light)}
           <h4>2-3 páginas — el caso más habitual</h4>
           <p><strong class="em">El caso más habitual</strong>: logo, servicios y un enlace directo a WhatsApp o reservas, con alguna página extra según lo que necesites. Ejemplos: una clínica con "Servicios" + "Sobre nosotros"; un gimnasio con "Horarios" + "Tarifas"; una tienda con "Catálogo" + "Contacto".</p>
           <ul class="example-pieces">
-            <li><span>Página de entrada</span><span class="amt">450€</span></li>
-            <li><span>1 página adicional (ej. "Sobre nosotros")</span><span class="amt">+100€</span></li>
+            <li><span>Página de entrada</span><span class="amt">650€</span></li>
+            <li><span>1 página adicional (ej. "Sobre nosotros")</span><span class="amt">+150€</span></li>
           </ul>
-          <div class="example-total"><span class="label">Total</span><span class="price">550€</span></div>
-          <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20la%20web%20tipo%20%22Web%20simple%20de%20negocio%22%20(2-3%20p%C3%A1ginas%2C%20550%E2%82%AC).%20%C2%BFCu%C3%A1ndo%20podemos%20empezar%3F" class="example-cta">Pedir esta web →</a>
+          <div class="example-total"><span class="label">Total</span><span class="price">800€</span></div>
+          <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20la%20web%20tipo%20%22Web%20simple%20de%20negocio%22%20(2-3%20p%C3%A1ginas%2C%20800%E2%82%AC).%20%C2%BFCu%C3%A1ndo%20podemos%20empezar%3F" class="example-cta">Pedir esta web →</a>
         </div>
       </div>
 
@@ -394,14 +395,14 @@ footer a:hover{color:var(--copper-light)}
           <h4>Showcase del alojamiento — proyecto grande</h4>
           <p>Galería de habitaciones y espacios, formulario de reserva directa (<strong class="em">te ahorra la comisión de Booking</strong> en cada reserva) y SEO para aparecer en búsquedas locales. Ejemplo: un hotel rural o casa rural que quiere mostrar el alojamiento entero y captar reservas propias.</p>
           <ul class="example-pieces">
-            <li><span>Página de entrada</span><span class="amt">450€</span></li>
-            <li><span>Galería de habitaciones/espacios</span><span class="amt">+100€</span></li>
-            <li><span>Formulario de reserva directa</span><span class="amt">+80€</span></li>
+            <li><span>Página de entrada</span><span class="amt">650€</span></li>
+            <li><span>Galería de habitaciones/espacios</span><span class="amt">+150€</span></li>
+            <li><span>Formulario de reserva directa</span><span class="amt">+100€</span></li>
             <li><span>SEO local básico</span><span class="amt">+100€</span></li>
             <li><span>Mantenimiento + hosting (mensual, aparte)</span><span class="amt">27€/mes</span></li>
           </ul>
-          <div class="example-total"><span class="label">Total entrada</span><span class="price">730€</span></div>
-          <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20la%20web%20tipo%20%22Web%20completa%20profesional%22%20(showcase%20alojamiento%2C%20730%E2%82%AC%20entrada%20%2B%2027%E2%82%AC%2Fmes%20mantenimiento).%20%C2%BFCu%C3%A1ndo%20podemos%20empezar%3F" class="example-cta">Pedir esta web →</a>
+          <div class="example-total"><span class="label">Total entrada</span><span class="price">1000€</span></div>
+          <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20la%20web%20tipo%20%22Web%20completa%20profesional%22%20(showcase%20alojamiento%2C%201000%E2%82%AC%20entrada%20%2B%2027%E2%82%AC%2Fmes%20mantenimiento).%20%C2%BFCu%C3%A1ndo%20podemos%20empezar%3F" class="example-cta">Pedir esta web →</a>
         </div>
       </div>
 
@@ -418,18 +419,29 @@ footer a:hover{color:var(--copper-light)}
     <div class="calc-box">
       <div class="calc-options">
 
-        <div class="calc-item base active">
+        <div class="calc-item base active" data-base="pagina" data-price="650" data-label="Página web a medida">
           <div class="calc-item-label">
             <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div>
-              <span class="calc-item-name">Página de entrada</span>
+               <span class="calc-item-name">Página web a medida</span>
               <span class="calc-item-desc">Copy y diseño a medida — logo, servicios, enlace a WhatsApp. Siempre incluida.</span>
             </div>
           </div>
-          <div class="calc-item-price">450€</div>
+           <div class="calc-item-price">650€</div>
         </div>
 
-        <div class="calc-item" data-key="secciones" data-price="100" data-qty="true">
+        <div class="calc-item base" data-base="landing" data-price="350" data-label="Landing page">
+          <div class="calc-item-label">
+            <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <span class="calc-item-name">Landing page</span>
+              <span class="calc-item-desc">Una página enfocada a presentar tu negocio y conseguir contactos.</span>
+            </div>
+          </div>
+          <div class="calc-item-price">350€</div>
+        </div>
+
+        <div class="calc-item" data-key="secciones" data-price="150" data-qty="true">
           <div class="calc-item-label">
             <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div>
@@ -442,17 +454,6 @@ footer a:hover{color:var(--copper-light)}
             <span data-qty-display>0</span>
             <button type="button" data-step="1">+</button>
           </div>
-        </div>
-
-        <div class="calc-item" data-key="blog" data-price="150">
-          <div class="calc-item-label">
-            <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <span class="calc-item-name">Blog</span>
-              <span class="calc-item-desc">Estructura + primeros 3 posts</span>
-            </div>
-          </div>
-          <div class="calc-item-price">+150€</div>
         </div>
 
         <div class="calc-item" data-key="seo" data-price="100">
@@ -481,7 +482,7 @@ footer a:hover{color:var(--copper-light)}
           </div>
         </div>
 
-        <div class="calc-item" data-key="formulario" data-price="80">
+        <div class="calc-item" data-key="formulario" data-price="100">
           <div class="calc-item-label">
             <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div>
@@ -489,7 +490,7 @@ footer a:hover{color:var(--copper-light)}
               <span class="calc-item-desc">Reserva directa, ideal para hoteles y clínicas</span>
             </div>
           </div>
-          <div class="calc-item-price">+80€</div>
+          <div class="calc-item-price">+100€</div>
         </div>
 
         <div class="calc-item" data-key="ecommerce" data-price="400">
@@ -522,7 +523,7 @@ footer a:hover{color:var(--copper-light)}
               <span class="calc-item-desc">ONIX lo compra y gestiona a tu nombre. Sin esto, tu web vive en un subdominio ONIX gratuito — <strong style="color:var(--text)">te beneficias del tráfico y posicionamiento</strong> que ONIX ya genera con el resto de negocios de la red, sin partir de cero en SEO.</span>
             </div>
           </div>
-          <div class="calc-item-price">15€/año</div>
+          <div class="calc-item-price">Desde 15€/año</div>
         </div>
 
       </div>
@@ -530,12 +531,12 @@ footer a:hover{color:var(--copper-light)}
       <div class="calc-summary">
         <h4>Tu presupuesto</h4>
         <div id="calc-lines">
-          <div class="calc-line"><span>Página de entrada</span><span class="n">450€</span></div>
+          <div class="calc-line"><span>Página web a medida</span><span class="n">650€</span></div>
           <div class="calc-line empty" id="calc-empty">Marca lo que necesites →</div>
         </div>
         <div class="calc-total-row">
           <span class="label">Pago único</span>
-          <span class="price" id="calc-total">450€</span>
+          <span class="price" id="calc-total">650€</span>
         </div>
         <div class="calc-recurring-row" id="calc-recurring-row" style="display:none">
           <span class="label">+ cuotas recurrentes</span>
@@ -575,8 +576,17 @@ footer a:hover{color:var(--copper-light)}
 
 <script>
 (function(){
-  var BASE = 450;
+  var base = { key: 'pagina', label: 'Página web a medida', price: 650 };
   var items = {};
+
+  document.querySelectorAll('.calc-item[data-base]').forEach(function(el){
+    el.addEventListener('click', function(){
+      base = { key: el.dataset.base, label: el.dataset.label, price: parseInt(el.dataset.price, 10) };
+      document.querySelectorAll('.calc-item[data-base]').forEach(function(option){ option.classList.toggle('active', option === el); });
+      setExtrasEnabled(base.key !== 'landing');
+      render();
+    });
+  });
 
   document.querySelectorAll('.calc-item[data-key]').forEach(function(el){
     var key = el.dataset.key;
@@ -608,14 +618,32 @@ footer a:hover{color:var(--copper-light)}
     }
   });
 
+  function setExtrasEnabled(enabled){
+    document.querySelectorAll('.calc-item[data-key]').forEach(function(el){
+      el.classList.toggle('is-disabled', !enabled);
+      el.setAttribute('aria-disabled', String(!enabled));
+      el.querySelectorAll('button').forEach(function(btn){ btn.disabled = !enabled; });
+
+      if (!enabled) {
+        var item = items[el.dataset.key];
+        if (!item) return;
+        item.active = false;
+        item.qty = item.hasQty ? 0 : 1;
+        el.classList.remove('active');
+        var qtyDisplay = el.querySelector('[data-qty-display]');
+        if (qtyDisplay) qtyDisplay.textContent = '0';
+      }
+    });
+  }
+
   function euro(n){ return n.toLocaleString('es-ES') + '€'; }
 
   function render(){
     var linesEl = document.getElementById('calc-lines');
-    var total = BASE;
+    var total = base.price;
     var monthlyTotal = 0;
     var yearlyTotal = 0;
-    var lines = ['<div class="calc-line"><span>Página de entrada</span><span class="n">' + euro(BASE) + '</span></div>'];
+    var lines = ['<div class="calc-line"><span>' + base.label + '</span><span class="n">' + euro(base.price) + '</span></div>'];
 
     Object.keys(items).forEach(function(key){
       var item = items[key];
@@ -656,7 +684,7 @@ footer a:hover{color:var(--copper-light)}
       recurringRow.style.display = 'none';
     }
 
-    var resumen = 'Página de entrada (' + euro(BASE) + ')';
+    var resumen = base.label + ' (' + euro(base.price) + ')';
     Object.keys(items).forEach(function(key){
       var item = items[key];
       if (!item.active) return;
