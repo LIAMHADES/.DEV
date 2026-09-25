@@ -38,7 +38,7 @@ html.scrolling{--thumb-bg:linear-gradient(180deg,var(--copper-deep),var(--copper
 ::-webkit-scrollbar-thumb{background:var(--thumb-bg);border-radius:100px;border:1px solid rgba(245,201,106,.06);transition:background .35s ease,border .35s ease}
 ::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--copper),var(--copper-warm),var(--copper));border-color:rgba(245,201,106,.15)}
 html{scrollbar-width:thin;scrollbar-color:rgba(184,84,32,.35) transparent}
-body{
+ body{
   background:var(--bg);color:var(--text);font-family:var(--font-body),sans-serif;
   font-size:16px;font-weight:300;line-height:1.7;padding:120px 5% 80px;max-width:820px;margin:0 auto;
   -webkit-font-smoothing:antialiased;
@@ -46,8 +46,11 @@ body{
     radial-gradient(ellipse 900px 600px at 15% -5%, rgba(184,84,32,.12), transparent 60%),
     radial-gradient(ellipse 700px 500px at 100% 30%, rgba(184,84,32,.07), transparent 55%),
     radial-gradient(ellipse 800px 500px at 0% 75%, rgba(184,84,32,.06), transparent 55%);
-  background-attachment:fixed
-}
+   background-attachment:fixed;width:100%;max-width:100%
+ }
+ body > h1,body > .aviso,body > h2,body > p,body > ul{width:min(820px,100%);margin-left:auto;margin-right:auto}
+ body > *:not(#preloader):not(nav){position:relative;z-index:1}
+ body .fi{opacity:1!important;transform:none!important}
 /* ═══ PRELOADER ═══ */
 #preloader{
   position:fixed;inset:0;z-index:999999;
@@ -72,14 +75,15 @@ body::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
 }
 /* Logo marca de agua fondo */
-body::after{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;
+ body::after{
+   content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;
   background-image:url("img/logos/logo%20negativo.png");
   background-size:60%;background-position:center;background-repeat:no-repeat;
   background-attachment:fixed;
-  opacity:.25;filter:blur(4px)
-}
-@media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:blur(6px)}}
+   opacity:.05;filter:blur(4px)
+ }
+@media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.06;filter:blur(6px)}}
+@media(max-width:900px){body > h1,body > .aviso,body > h2,body > p,body > ul{box-sizing:border-box;width:90vw;max-width:90vw;inline-size:90vw;max-inline-size:90vw;white-space:normal!important}body p,body li{overflow-wrap:anywhere;word-break:break-word}}
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 5%;
   background:rgba(8,7,5,.4);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);
@@ -87,7 +91,7 @@ nav{
 }
 html.scrolling nav{background:rgba(8,7,5,.75)}
 nav a{color:var(--copper-warm);text-decoration:none;font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:.04em}
-h1{font-family:var(--font-h1);font-weight:400;font-size:clamp(38px,6.4vw,80px);text-transform:uppercase;margin-bottom:28px;letter-spacing:.02em;line-height:.98;text-wrap:balance}
+ h1{font-family:var(--font-h1);font-weight:400;font-size:clamp(38px,5.2vw,68px);max-width:100%;text-transform:uppercase;margin-bottom:28px;letter-spacing:.02em;line-height:1;text-wrap:balance;overflow-wrap:normal;word-break:normal}.legal-title .onix-tw-line{display:block;white-space:normal!important;overflow-wrap:normal;word-break:normal}
 h2{font-family:var(--font-h2);font-size:22px;font-weight:700;color:var(--copper-warm);margin:40px 0 12px;letter-spacing:.01em}
 p{color:var(--text2);margin-bottom:14px}
 .aviso{
@@ -96,7 +100,7 @@ p{color:var(--text2);margin-bottom:14px}
 }
 .aviso strong{color:var(--copper-warm)}
 ul{margin:0 0 14px 20px;color:var(--text2)}
-a{color:var(--copper-warm)}
+a{color:var(--copper-warm);overflow-wrap:anywhere;word-break:break-word}
 footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border2);font-size:13px;color:var(--muted)}
 footer .footer-logo{display:flex;align-items:center;min-height:50px;height:clamp(50px,6vw,72px)}
 footer .footer-logo img{display:block;width:auto;height:100%!important;min-height:0;max-height:72px;max-width:100%;object-fit:contain}
@@ -185,33 +189,34 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
 @keyframes menuFade{from{opacity:0}to{opacity:1}}
 @keyframes slideUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
 @keyframes ctaFade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:560px){h1{font-size:clamp(32px,10vw,44px);line-height:.95}}
+@media(max-width:560px){h1{font-size:clamp(40px,11vw,58px);line-height:.96;letter-spacing:.01em}}
 </style>
 
-<h1 class="fi reveal-title onix-typewriter-title"><span class="onix-tw-line">Aviso Legal, Privacidad y Cookies</span></h1>
+<h1 class="fi reveal-title onix-typewriter-title legal-title"><span class="onix-tw-line">Aviso Legal, Privacidad y Cookies</span></h1>
 
 <div class="aviso fi reveal-el">
   <strong>Nota de transparencia:</strong> ONIX es actualmente un proyecto en fase de
   validación comercial, todavía en proceso de constitución legal (alta de autónomo
   o sociedad). Por eso esta página no incluye NIF ni domicilio fiscal — se
-  completarán en cuanto el negocio esté formalmente constituido. Mientras tanto,
-  el contacto de referencia real y verificable es el WhatsApp indicado abajo.
+   completarán en cuanto el negocio esté formalmente constituido. Mientras tanto,
+   puedes contactar con ONIX por WhatsApp o por correo electrónico.
 </div>
 
 <h2 class="fi reveal-el">Aviso Legal</h2>
 <p class="fi reveal-el"><strong>Titular del sitio web:</strong> ONIX — proyecto de stands NFC para negocios locales, en fase de constitución legal (pendiente de alta como autónomo o sociedad).</p>
-<p class="fi reveal-el"><strong>Contacto:</strong> <a href="https://wa.me/34631879550">WhatsApp +34 631 879 550</a></p>
+<p class="fi reveal-el"><strong>Contacto:</strong> <a href="https://wa.me/34631879550">WhatsApp +34 631 879 550</a> · <a href="mailto:nfconix@gmail.com">nfconix@gmail.com</a></p>
 <p class="fi reveal-el"><strong>Actividad:</strong> venta e instalación de expositores con tecnología NFC/QR para negocios locales (barberías, restaurantes, hoteles, tiendas, etc.), incluyendo diseño personalizado y servicios digitales adicionales (landing web, automatización de mensajería).</p>
 <p class="fi reveal-el">Esta web tiene finalidad meramente comercial e informativa. El uso del formulario de contacto implica la aceptación de las condiciones descritas en esta página.</p>
 
 <h2 class="fi reveal-el">Política de Privacidad</h2>
-<p class="fi reveal-el">Los datos que facilitas a través del formulario de contacto de esta web (nombre del negocio, tu nombre, sector, ciudad y preferencia de producto) se utilizan <strong>únicamente</strong> para gestionar tu solicitud comercial.</p>
+<p class="fi reveal-el">Los datos que facilitas a través del briefing de esta web (nombre del negocio, tu nombre, sector, ciudad, prioridades y datos de contacto) se utilizan <strong>únicamente</strong> para gestionar tu solicitud comercial.</p>
 <ul class="fi reveal-el">
-  <li>Al enviar el formulario, estos datos se trasladan directamente a una conversación de WhatsApp — <strong>no se almacenan en ningún servidor ni base de datos de esta web</strong>.</li>
-  <li>No se comparten con terceros ni se usan con fines distintos al contacto comercial solicitado.</li>
-  <li>Puedes solicitar en cualquier momento la eliminación de tu conversación de WhatsApp contactando directamente por ese mismo canal.</li>
+  <li>Al enviar el briefing, se prepara un correo dirigido a <a href="mailto:nfconix@gmail.com">nfconix@gmail.com</a> y, cuando se configure, se envía también al webhook HTTPS indicado en <code>onix-config.js</code>.</li>
+  <li>El navegador conserva temporalmente el avance en <code>sessionStorage</code> para poder recuperarlo si cierras o recargas la página. La página no mantiene una base de datos propia.</li>
+  <li>El proveedor del webhook podría tratar los datos para entregarlos a ONIX. No se usarán para fines distintos de la atención comercial solicitada.</li>
+  <li>Puedes solicitar en cualquier momento la eliminación de los datos escribiendo a <a href="mailto:nfconix@gmail.com">nfconix@gmail.com</a> o por WhatsApp.</li>
 </ul>
-<p class="fi reveal-el">En cumplimiento del Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), tienes derecho a acceder, rectificar, suprimir y oponerte al tratamiento de tus datos, ejercitable escribiendo al WhatsApp de contacto indicado en esta página.</p>
+<p class="fi reveal-el">En cumplimiento del Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), tienes derecho a acceder, rectificar, suprimir y oponerte al tratamiento de tus datos, ejercitable escribiendo a <a href="mailto:nfconix@gmail.com">nfconix@gmail.com</a> o al WhatsApp de contacto indicado en esta página.</p>
 
 <h2 class="fi reveal-el">Política de Cookies</h2>
 <p class="fi reveal-el">Esta web <strong>no utiliza cookies propias ni de terceros</strong> para analítica, publicidad o seguimiento (no se emplea Google Analytics, Meta Pixel ni herramientas similares).</p>
