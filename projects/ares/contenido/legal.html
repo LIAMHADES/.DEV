@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Información legal, privacidad y cookies — ARES GPS</title>
 <meta name="description" content="Aviso legal, condiciones de reserva, política de privacidad y política de cookies de ARES GPS, el localizador GPS para perros con seguimiento de bienestar.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com;">
+<link rel="canonical" href="https://liamhades.github.io/.DEV/projects/ares/contenido/legal.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ARES GPS">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Información legal, privacidad y cookies — ARES GPS">
+<meta property="og:description" content="Aviso legal, condiciones de reserva, política de privacidad y política de cookies de ARES GPS.">
+<meta property="og:url" content="https://liamhades.github.io/.DEV/projects/ares/contenido/legal.html">
+<meta property="og:image" content="https://liamhades.github.io/.DEV/projects/ares/assets/img/og/og-legal.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Información legal de ARES GPS">
+<meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
 <link rel="stylesheet" href="assets/css/base.css">
@@ -13,11 +29,11 @@
 <style>
 /* === DOCUMENTO LEGAL ===
    Pagina de solo lectura, sin animaciones de seccion: prima la legibilidad.
-   Usa los tokens del sitio (base.css) para no parecer una pagina aparte. */
+   Usa los estilos del sitio (base.css) para no parecer una pagina aparte. */
 main.legal{position:relative;z-index:1;max-width:940px;margin:0 auto;padding:calc(clamp(56px,4.6vw,116px) + 2.5rem) 1.25rem 4.5rem}
 .legal-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--deco);margin-bottom:.9rem}
 main.legal h1{font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.25;color:var(--t);text-transform:uppercase;letter-spacing:.02em;margin-bottom:1rem;overflow-wrap:break-word}
-.legal-lead{font-family:'Orbitron',sans-serif;font-size:.92rem;line-height:1.7;color:rgba(240,242,245,.8);letter-spacing:.02em;max-width:64ch}
+ .legal-lead{font-family:'Orbitron',sans-serif;font-size:.92rem;line-height:1.7;color:rgba(240,242,245,.8);letter-spacing:.02em;max-width:64ch;overflow-wrap:anywhere}
 
 /* Nota de transparencia sobre el estado del proyecto */
 .legal-note{margin-top:1.75rem;padding:1.15rem 1.3rem;background:rgba(246,174,45,.06);border:1px solid rgba(246,174,45,.32);clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);font-size:.86rem;line-height:1.75;color:rgba(240,242,245,.82)}
@@ -36,7 +52,7 @@ main.legal .legal-index ol{margin:0;padding-left:1.15rem;display:block;column-co
 main.legal section{margin-top:3.25rem;padding-top:2.25rem;border-top:1px solid var(--cb)}
 main.legal h2{font-family:'Orbitron',sans-serif;font-size:clamp(1rem,2vw,1.3rem);line-height:1.35;color:var(--t);letter-spacing:.03em;text-transform:uppercase;margin-bottom:1rem;scroll-margin-top:clamp(72px,6vw,132px)}
 main.legal h3{font-family:'Orbitron',sans-serif;font-size:.86rem;line-height:1.5;color:var(--deco);letter-spacing:.06em;text-transform:uppercase;margin:1.9rem 0 .6rem}
-main.legal p,main.legal li,main.legal dd{font-size:.94rem;line-height:1.8;color:rgba(240,242,245,.78)}
+ main.legal p,main.legal li,main.legal dd{font-size:.94rem;line-height:1.8;color:rgba(240,242,245,.78);overflow-wrap:anywhere}
 main.legal p+p{margin-top:.9rem}
 main.legal ul,main.legal ol{margin:.65rem 0 0 1.15rem;display:grid;gap:.45rem}
 main.legal li::marker{color:var(--cta)}
@@ -60,12 +76,47 @@ main.legal strong{color:var(--t);font-weight:600}
 
 .legal-updated{margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid var(--cb);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--t3)}
 
+/* === FOOTER MAP ===
+   Legal comparte el mismo footer visual que el resto de paginas de contenido. */
+.pf-footer-wrap{position:relative;margin-top:-40px;padding-top:72px;overflow:hidden;--footer-bg-stretch:0;--footer-svg-stretch:0;--footer-rise:0px;--footer-svg-base-scale:1;--footer-tile-height:calc(100% / var(--footer-svg-base-scale));--footer-scroll-extra:0px}
+.pf-footer-map{position:relative;width:100%;height:calc(clamp(340px,25vw,440px) * (1 + var(--footer-bg-stretch)));margin-top:calc(0px - var(--footer-rise));overflow:hidden;background:var(--bg)}
+.pf-footer-track{position:absolute;bottom:0;left:0;height:100%;display:flex;align-items:flex-end;width:max-content;gap:16px;overflow:visible;will-change:transform}
+.pf-footer-tile{flex-shrink:0;width:100vw;height:var(--footer-tile-height, calc(100% / var(--footer-svg-base-scale)));object-fit:fill;opacity:0.45;filter:none;image-rendering:auto;transform:translate3d(0,0,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)));backface-visibility:hidden;will-change:transform;transform-origin:center bottom}
+.pf-footer-wrap,.pf-footer-map,footer{overflow:visible}
+.pf-footer-wrap,.pf-footer-map{overflow:hidden!important;contain:paint!important}
+@keyframes footerScroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-1 * var(--footer-tile-w,100vw) - 16px - var(--footer-scroll-extra,0px)))} }
+@media(max-width:1024px){.pf-footer-track{animation:footerScroll 25s linear infinite}}
+@media(prefers-reduced-motion:reduce){.pf-footer-track{animation:none}}
+.pf-footer-gradient{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(21,29,37,0.7) 25%,rgba(21,29,37,0.2) 55%,transparent 75%)}
+.pf-footer-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;z-index:2;font-family:'Orbitron',sans-serif;font-size:0.85rem;color:rgba(240,242,245,0.85);letter-spacing:0.03em;pointer-events:none}
+.pf-footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;color:rgba(240,242,245,0.4);margin-top:0.5rem;text-transform:uppercase}
+@media(max-width:768px){.pf-footer-sub{margin-top:0.2rem}.pf-footer-wrap{padding-top:28px;--footer-svg-base-scale:1;--footer-tile-w:min(220vw,900px)}.pf-footer-map{height:min(calc(58vw + 135px),400px);--footer-tile-height:min(calc(58vw + 135px),400px);--footer-scroll-extra:calc(var(--footer-svg-stretch) * min(220vw,900px))}.pf-footer-track{gap:calc(16px + var(--footer-scroll-extra))}.pf-footer-tile{width:min(220vw,900px);transform:translate3d(0,-53px,0) scale(calc(var(--footer-svg-base-scale) + var(--footer-svg-stretch)))}}
+
 @media(max-width:620px){
+  html,body{width:100%;max-width:100%;}
+  main.legal{width:100%;max-width:100%;margin-inline:0;padding-inline:1.25rem;overflow:hidden}
+  main.legal p,main.legal li,main.legal dd{width:100%;max-width:100%;white-space:normal;overflow-wrap:anywhere;word-break:break-word}
   main.legal .legal-index ol{column-count:1}
   .legal-dl>div{grid-template-columns:1fr;gap:.15rem}
   main.legal section{margin-top:2.6rem;padding-top:1.8rem}
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebPage",
+      "name":"Información legal, privacidad y cookies de ARES GPS",
+      "url":"https://liamhades.github.io/.DEV/projects/ares/contenido/legal.html",
+      "description":"Aviso legal, condiciones de reserva, política de privacidad y política de cookies de ARES GPS.",
+      "inLanguage":"es",
+      "isPartOf":{"@type":"WebSite","name":"ARES GPS","url":"https://liamhades.github.io/.DEV/projects/ares/"},
+      "publisher":{"@type":"Organization","name":"ARES GPS"}
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <script src="../assets/js/analytics.js" defer></script>
@@ -85,16 +136,9 @@ main.legal strong{color:var(--t);font-weight:600}
 
 <!--
   ============================================================================
-  PENDIENTE DE COMPLETAR ANTES DEL LANZAMIENTO (buscar "PENDIENTE" en el HTML)
+  Información de titularidad pendiente de completar antes de la venta.
   ----------------------------------------------------------------------------
-  1. Titular: nombre o razon social definitiva.
-  2. NIF/CIF: se asigna al darse de alta (autonomo o sociedad).
-  3. Domicilio: direccion fiscal o de notificaciones.
-  4. Email: contacto@aresgps.es es PROVISIONAL (dominio sin confirmar).
-  5. Backend de la lista de interes: proveedor de alojamiento definitivo.
-  6. Empresa de email marketing: solo si algun dia se contrata (ahora no hay).
-  7. Fecha de "ultima actualizacion" en cada revision del texto.
-  Recomendacion: que lo revise un gestor o abogado antes de publicar.
+  Información legal provisional hasta el lanzamiento.
   ============================================================================
 -->
 
@@ -183,7 +227,7 @@ main.legal strong{color:var(--t);font-weight:600}
       <li><strong>Formularios de la web</strong> (lista de interés, aviso de nuevas ciudades): tu <strong>email</strong> y las respuestas que decidas marcar (por ejemplo, ciudad o preferencias).</li>
       <li><strong>Herramientas y cuenta local</strong>: la calculadora, el planificador y las cuentas funcionan <strong>en tu propio navegador</strong>. El perfil de tu perro y las credenciales que crees se guardan <strong>solo en tu dispositivo</strong> y no se envían a nuestros servidores.</li>
       <li><strong>Analítica</strong>: solo si la aceptas, y de forma agregada (ver <a href="#cookies">Cookies y almacenamiento</a>).</li>
-      <li><strong>Datos técnicos mínimos</strong> (como la dirección IP) que necesita el proveedor de alojamiento para servir la web.</li>
+       <li><strong>Datos técnicos mínimos</strong> que pueda tratar el proveedor de alojamiento para servir la web y mantener su seguridad, conforme a su configuración y registros técnicos.</li>
     </ul>
 
     <h3>Para qué y con qué base legal</h3>
@@ -195,17 +239,17 @@ main.legal strong{color:var(--t);font-weight:600}
 
     <h3>Quién más interviene</h3>
     <ul>
-      <li><strong>Alojamiento</strong>: GitHub Pages (GitHub, Inc.).</li>
-      <li><strong>Analítica</strong>: Google (Google Ireland Ltd. / Google LLC), solo si aceptas las cookies.</li>
-      <li><strong>Registro de la lista de interés</strong>: gestor pendiente de definir. Los datos se almacenan en una base de datos controlada por el titular y solo accede personal autorizado, incluida nuestra herramienta interna de automatización.</li>
-      <li><strong>No cedemos tus datos a terceros para sus propios fines ni los vendemos.</strong> Hoy no hay contratada ninguna plataforma de email marketing; si se contrata, se actualizará esta página antes de usarla.</li>
+       <li><strong>Alojamiento</strong>: el proveedor técnico que sirve esta web. Su identificación y las condiciones aplicables se concretarán y actualizarán antes del lanzamiento comercial.</li>
+       <li><strong>Analítica</strong>: Google (Google Ireland Ltd. / Google LLC), solo si aceptas las cookies.</li>
+       <li><strong>Registro de la lista de interés</strong>: el receptor técnico provisional que se configure para los formularios, si está activo. Los datos solo serán accesibles para las personas autorizadas por el titular.</li>
+       <li><strong>No cedemos tus datos a terceros para sus propios fines ni los vendemos.</strong> No se usará una plataforma de email marketing para estos datos sin identificarla y actualizar esta página antes de activarla.</li>
     </ul>
 
     <h3>Transferencias internacionales</h3>
-    <p>Los proveedores de alojamiento y analítica están en Estados Unidos. Se amparan en el marco de privacidad de datos UE-EE. UU. y/o en cláusulas contractuales tipo aprobadas por la Comisión Europea.</p>
+     <p>No se fija aquí una transferencia internacional concreta porque el proveedor técnico del formulario y su configuración definitiva todavía no están cerrados. Si algún tratamiento implica transferencias fuera del Espacio Económico Europeo, se informará del proveedor, la ubicación y la garantía jurídica aplicable antes de utilizarlo.</p>
 
     <h3>Cuánto tiempo los guardamos</h3>
-    <p><strong>24 meses</strong> desde tu última interacción, o hasta que pidas la baja o la supresión. Después se eliminan.</p>
+     <p>Conservaremos los datos solo durante el tiempo necesario para gestionar tu solicitud y mantener la lista de interés, o hasta que retires tu consentimiento o pidas su supresión. El plazo concreto y los criterios de borrado se fijarán antes del lanzamiento comercial y se publicarán aquí.</p>
 
     <h3>Menores y seguridad</h3>
     <p>Los formularios están pensados para mayores de 14 años. Aplicamos medidas técnicas y organizativas razonables para proteger la información; al ser un proyecto en construcción, te pedimos que envíes únicamente los datos necesarios. <strong>No pedimos datos de salud de tu perro</strong> ni ningún dato sensible.</p>
@@ -221,14 +265,14 @@ main.legal strong{color:var(--t);font-weight:600}
       <table class="legal-table">
         <thead><tr><th>Tecnología</th><th>Nombre</th><th>Para qué</th><th>Duración</th></tr></thead>
         <tbody>
-          <tr><td>Almacenamiento local</td><td><code>ares_analytics_consent_v1</code></td><td>Recordar si aceptaste o rechazaste la analítica</td><td>Hasta que borres los datos del navegador</td></tr>
-          <tr><td>Almacenamiento local</td><td><code>ares_accounts_v1</code><br><code>ares_session_v1</code><br><code>ares_saved_profiles_v1</code></td><td>Tu cuenta y los perfiles que guardas. Se quedan en tu navegador</td><td>Hasta que borres los datos del navegador</td></tr>
-          <tr><td>Almacenamiento de sesión</td><td><code>ares_dog_profile_v1</code><br><code>ares_pending_qualification_v1</code></td><td>Pasar los datos del perro entre la calculadora y la página de ejercicio sin volver a escribirlos</td><td>Hasta cerrar la pestaña</td></tr>
-          <tr><td>Almacenamiento local</td><td><code>ares_leads_v1</code><br><code>ares_breed_suggestions_v1</code></td><td>Guardar un formulario enviado cuando el servicio de registro no está disponible, y las sugerencias de raza que propones</td><td>Hasta que borres los datos del navegador</td></tr>
+           <tr><td>Almacenamiento local</td><td>Preferencia de analítica</td><td>Recordar si aceptaste o rechazaste la analítica</td><td>Hasta que borres los datos del navegador</td></tr>
+           <tr><td>Almacenamiento local</td><td>Cuenta y perfiles</td><td>Guardar tu cuenta y los perfiles que creas. Se quedan en tu navegador</td><td>Hasta que borres los datos del navegador</td></tr>
+           <tr><td>Almacenamiento de sesión</td><td>Perfil temporal</td><td>Pasar los datos del perro entre herramientas sin volver a escribirlos</td><td>Hasta cerrar la pestaña</td></tr>
+           <tr><td>Almacenamiento local</td><td>Formularios y preferencias</td><td>Guardar temporalmente un formulario si el servicio de registro no está disponible, y las sugerencias que propones</td><td>Hasta que borres los datos del navegador</td></tr>
         </tbody>
       </table>
     </div>
-    <p>Cuando envías un formulario, tu email y tus respuestas se envían a nuestro sistema para poder avisarte. Si en ese momento el servicio de registro no está activo, el formulario se guarda temporalmente en tu navegador y no sale de tu dispositivo.</p>
+     <p>Cuando envías un formulario, tu email y tus respuestas se envían al receptor técnico configurado para poder avisarte, si ese receptor está activo. Si no está disponible, la versión de pruebas puede guardar temporalmente el formulario en tu navegador; en ese caso los datos permanecen en tu dispositivo.</p>
 
     <h3>Opcionales (solo con tu consentimiento)</h3>
     <div class="legal-scroll">
@@ -236,7 +280,7 @@ main.legal strong{color:var(--t);font-weight:600}
         <thead><tr><th>Cookie</th><th>Origen</th><th>Para qué</th><th>Duración</th></tr></thead>
         <tbody>
           <tr><td><code>_ga</code></td><td>Google Analytics 4</td><td>Distinguir visitantes para medir el uso de forma agregada</td><td>2 años</td></tr>
-          <tr><td><code>_ga_X9NRPGKT75</code></td><td>Google Analytics 4</td><td>Mantener el estado de la sesión de medición</td><td>2 años</td></tr>
+           <tr><td>Cookies de medición</td><td>Google Analytics 4</td><td>Medir visitas y navegación de forma agregada</td><td>Según la cookie y la configuración de Google Analytics</td></tr>
         </tbody>
       </table>
     </div>
@@ -258,13 +302,13 @@ main.legal strong{color:var(--t);font-weight:600}
       <div><dt>Protección de datos</dt><dd><a href="mailto:contacto@aresgps.es?subject=Proteccion%20de%20datos">contacto@aresgps.es</a> — asunto «Protección de datos»</dd></div>
     </dl>
     <p>Puedes ejercer tus derechos de <strong>acceso, rectificación, supresión, oposición, limitación y portabilidad</strong>, así como retirar tu consentimiento en cualquier momento. Te responderemos en el plazo máximo de un mes.</p>
-    <p>Si crees que no hemos atendido bien tu solicitud, puedes reclamar ante la <strong>Agencia Española de Protección de Datos</strong> (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
+     <p>Si crees que no hemos atendido bien tu solicitud, puedes reclamar ante la <strong>Agencia Española de Protección de Datos</strong> (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a>).</p>
 
     <p class="legal-updated">Última actualización: 16 de septiembre de 2026</p>
   </section>
 </main>
 
-<footer>
+<footer aria-label="Pie de página">
   <div class="pf-footer-wrap">
     <div class="pf-footer-map">
       <div class="pf-footer-track" aria-hidden="true">
@@ -274,8 +318,8 @@ main.legal strong{color:var(--t);font-weight:600}
       </div>
       <div class="pf-footer-gradient"></div>
       <div class="pf-footer-text">
-        <div>ARES GPS &copy; 2026 — Legal y privacidad</div>
-        <div class="pf-footer-sub">Aviso legal &middot; Reserva &middot; Privacidad &middot; Cookies</div>
+        <div>ARES GPS &copy; 2026 — Información legal y privacidad</div>
+        <div class="pf-footer-sub">Transparencia &middot; Control de tus datos &middot; Sin publicidad personalizada</div>
       </div>
     </div>
   </div>
