@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>JobMatch — Liam Garcia</title>
+<meta name="description" content="Sistema propio de búsqueda de empleo: busca ofertas cada día, descarta las que no encajan o son trampa, evalúa las buenas y avisa por Telegram. Nada se envía sin aprobación."/>
+<link rel="icon" type="image/png" href="../../LOGONEGTIVO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;--ink:#e8e8e8;--muted:rgba(232,232,232,0.6);--faint:rgba(232,232,232,0.12);
+  --accent:#f2b84b;--ok:#7fd99a;--no:#ef6f5e;
+  --display:'Space Grotesk',system-ui,sans-serif;--body:'Inter',system-ui,sans-serif;
+  --gutter:max(20px,4vw);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+main{max-width:1200px;margin:0 auto;padding:0 var(--gutter)}
+.back{display:inline-block;margin:28px 0 0;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s}
+.back:hover,.back:focus-visible{color:var(--accent)}
+header{padding:10vh 0 8vh;border-bottom:1px solid var(--faint)}
+.tag{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(3.4rem,13vw,11rem);line-height:.85;letter-spacing:-.03em;margin:18px 0 28px}
+.lead{font-size:clamp(1.05rem,1.6vw,1.35rem);max-width:640px;color:var(--muted)}
+.lead strong{color:var(--ink);font-weight:500}
+section{padding:9vh 0;border-bottom:1px solid var(--faint)}
+.head{display:flex;gap:18px;align-items:baseline;margin-bottom:36px}
+.num{font-size:.7rem;letter-spacing:.25em;color:rgba(232,232,232,.25)}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(1.8rem,4vw,3.2rem);letter-spacing:-.02em;line-height:1}
+p{max-width:680px;color:var(--muted);margin-bottom:16px}
+p strong{color:var(--ink);font-weight:500}
+
+/* cifras */
+.stats{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1px;background:var(--faint);border:1px solid var(--faint)}
+.stat{background:var(--bg);padding:32px 26px}
+.stat b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,6vw,5.5rem);line-height:1;color:var(--ink)}
+.stat:first-child b{color:var(--accent);font-size:clamp(3.4rem,9vw,8rem)}
+.stat span{display:block;margin-top:10px;font-size:.85rem;color:var(--muted);max-width:260px}
+.src{margin-top:14px;font-size:.72rem;color:rgba(232,232,232,.35)}
+
+/* flujo */
+.flow{list-style:none;counter-reset:paso;display:grid;gap:0}
+.flow li{counter-increment:paso;display:grid;grid-template-columns:72px 1fr;gap:20px;padding:26px 0;border-top:1px solid var(--faint);transition:background .3s}
+.flow li:hover{background:rgba(242,184,75,.04)}
+.flow li::before{content:"0" counter(paso);font-family:var(--display);font-size:1.6rem;color:var(--accent);line-height:1.2}
+.flow h3{font-family:var(--display);font-weight:500;font-size:1.25rem;margin-bottom:6px}
+.flow p{margin:0;font-size:.95rem}
+.gate{border-left:2px solid var(--accent);padding-left:18px}
+
+/* filtro */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.box{border:1px solid var(--faint);padding:26px;border-radius:2px}
+.box h3{font-family:var(--display);font-weight:500;font-size:1.1rem;margin-bottom:14px}
+.box ul{list-style:none}
+.box li{padding:8px 0;border-top:1px solid var(--faint);font-size:.92rem;color:var(--muted)}
+.box.no h3{color:var(--no)}.box.ok h3{color:var(--ok)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chips span{font-size:.72rem;padding:4px 10px;border:1px solid var(--faint);border-radius:3px;color:var(--muted)}
+footer{padding:8vh 0 10vh;color:var(--muted);font-size:.85rem}
+footer a{color:var(--accent)}
+@media (max-width:760px){
+  .stats{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .flow li{grid-template-columns:48px 1fr;gap:12px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../../index.html#projects">← Volver al portfolio</a>
+
+<header>
+  <span class="tag">Automatización · IA aplicada</span>
+  <h1>JobMatch</h1>
+  <p class="lead">Mi propio sistema de búsqueda de empleo. Cada mañana <strong>busca ofertas, descarta las que no encajan o son trampa, evalúa a fondo las buenas y me avisa por Telegram</strong>. Nada se envía sin que yo lo apruebe.</p>
+</header>
+
+<section aria-labelledby="problema">
+  <div class="head"><span class="num">01</span><h2 id="problema">El problema</h2></div>
+  <p>Buscando trabajo en IA vi que la mayoría de ofertas "junior" no lo eran: pedían cinco años de experiencia, eran puestos de ventas disfrazados o directamente no pagaban.</p>
+  <p>Mi primer buscador puntuaba por palabras en común con mi CV. Resultado: <strong>el 80% de lo que traía (89 de 111 ofertas) era inalcanzable</strong>. Puntuar encaje no sirve si el sistema no sabe decir "esta no".</p>
+</section>
+
+<section aria-labelledby="cifras">
+  <div class="head"><span class="num">02</span><h2 id="cifras">En cifras</h2></div>
+  <div class="stats">
+    <div class="stat"><b>226</b><span>ofertas analizadas en una sola pasada, 118 descartadas con su motivo</span></div>
+    <div class="stat"><b>39</b><span>bolsas de empleo y portales que revisa cada día</span></div>
+    <div class="stat"><b>96</b><span>tests automáticos</span></div>
+  </div>
+  <p class="src">Medido en octubre de 2026 sobre búsquedas reales. De las 118 descartadas, 69 eran puestos sénior y 21 pedían 5 años o más.</p>
+</section>
+
+<section aria-labelledby="como">
+  <div class="head"><span class="num">03</span><h2 id="como">Cómo funciona</h2></div>
+  <ol class="flow">
+    <li><div><h3>Busca</h3><p>Lee portales de empresa y bolsas de empleo remotas y de España, solo en modo lectura. Filtra por título y ubicación antes de gastar nada.</p></div></li>
+    <li><div><h3>Criba gratis, en local</h3><p>Un modelo de IA que corre en mi propio ordenador descarta lo que no encaja: nivel, años pedidos, ventas, idioma, ubicación. Las dudosas pasan a un segundo modelo más grande.</p></div></li>
+    <li><div><h3>Evalúa a fondo</h3><p>Solo las que sobreviven pasan a una evaluación completa con Claude: encaje con mi perfil, carencias, legitimidad de la oferta y qué haría para destacar.</p></div></li>
+    <li><div><h3>Prepara</h3><p>Si una oferta supera el umbral, genera el CV adaptado y el borrador de la candidatura.</p></div></li>
+    <li class="gate"><div><h3>Yo decido</h3><p>Me llega un resumen diario por Telegram con botones. <strong>Ningún envío sale sin mi aprobación</strong>, y en los portales el botón final lo pulso yo.</p></div></li>
+  </ol>
+</section>
+
+<section aria-labelledby="filtro">
+  <div class="head"><span class="num">04</span><h2 id="filtro">Qué deja pasar y qué no</h2></div>
+  <div class="split">
+    <div class="box no"><h3>Descarta</h3><ul>
+      <li>Puestos sénior o de gestión, y los que piden 5 años o más</li>
+      <li>Ventas o atención al cliente disfrazadas de "IA"</li>
+      <li>Trabajo no remunerado, solo comisión o pagar tu formación</li>
+      <li>Sueldos por debajo de 1.000 € al mes</li>
+    </ul></div>
+    <div class="box ok"><h3>Busca</h3><ul>
+      <li>Automatización con IA, agentes e integraciones</li>
+      <li>Consultoría e implantación de IA</li>
+      <li>Asistentes conversacionales, formación y soporte técnico de IA</li>
+      <li>Remoto o híbrido en Barcelona y Girona</li>
+    </ul></div>
+  </div>
+</section>
+
+<section aria-labelledby="aprendido">
+  <div class="head"><span class="num">05</span><h2 id="aprendido">Lo que aprendí</h2></div>
+  <p><strong>Cada error se convierte en un test.</strong> Cuando el filtro clasificaba mal una oferta real, esa oferta pasaba a ser un caso de prueba. Así el sistema no repite fallos.</p>
+  <p><strong>Lo barato primero.</strong> El modelo local descarta la mayoría sin coste; la IA de pago solo ve las pocas que merecen la pena.</p>
+  <p><strong>Automatizar no es enviar sin mirar.</strong> El sistema hace el trabajo pesado, pero la decisión sigue siendo mía.</p>
+  <p>Lo construí con Python y asistentes de programación con IA, que dirijo y reviso.</p>
+  <div class="chips"><span>Python</span><span>Ollama (IA local)</span><span>Claude</span><span>Telegram</span><span>Node.js</span><span>Tareas programadas</span></div>
+</section>
+
+<footer>
+  <p>El código no es público: es una herramienta personal. Si quieres verlo funcionar, <a href="../../index.html#contact">escríbeme</a> y te lo enseño en directo.</p>
+</footer>
+</main>
+</body>
+</html>
