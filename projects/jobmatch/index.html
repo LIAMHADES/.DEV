@@ -4,7 +4,8 @@
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>JobMatch — Liam Garcia</title>
 <meta name="description" content="Sistema propio de búsqueda de empleo: busca ofertas cada día, descarta las que no encajan o son trampa, evalúa las buenas y avisa por Telegram. Nada se envía sin aprobación."/>
-<link rel="icon" type="image/png" href="../../LOGONEGTIVO.png">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../assets/favicon-48.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
@@ -57,6 +58,10 @@ p strong{color:var(--ink);font-weight:500}
 .box ul{list-style:none}
 .box li{padding:8px 0;border-top:1px solid var(--faint);font-size:.92rem;color:var(--muted)}
 .box.no h3{color:var(--no)}.box.ok h3{color:var(--ok)}
+.ver{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,56px);align-items:start}
+.ver img{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--faint)}
+.ver figcaption{margin-top:10px;font-size:.78rem;color:rgba(232,232,232,.45)}
+@media (max-width:760px){.ver{grid-template-columns:1fr}}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .chips span{font-size:.72rem;padding:4px 10px;border:1px solid var(--faint);border-radius:3px;color:var(--muted)}
 .siguiente{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding:9vh 0 6vh;text-decoration:none;border-bottom:1px solid var(--faint)}
@@ -76,7 +81,7 @@ footer a{color:var(--accent)}
 </head>
 <body>
 <main>
-<a class="back" href="../../index.html#stack">← Volver al portfolio</a>
+<a class="back" href="../../index.html#projects">← Volver al portfolio</a>
 
 <header>
   <span class="tag">Automatización · IA aplicada</span>
@@ -111,8 +116,21 @@ footer a{color:var(--accent)}
   </ol>
 </section>
 
+<section aria-labelledby="ver">
+  <div class="head"><span class="num">04</span><h2 id="ver">Así se ve</h2></div>
+  <div class="ver">
+    <figure><img src="img/resumen-telegram.webp" alt="Resumen diario de JobMatch en Telegram, con ofertas que se quedan cerca, posibles trampas y descartes por motivo" width="630" height="961" loading="lazy" decoding="async"><figcaption>El resumen del 18 de octubre de 2026, recreado a partir del mensaje real: los nombres de las empresas están ocultos y algunas líneas, acortadas.</figcaption></figure>
+    <div>
+      <p>Cada mañana me llega un único mensaje con todo lo de la ronda. Así no tengo que revisar portales: <strong>leo el resumen y decido</strong>.</p>
+      <p><strong>Las que se quedan cerca</strong> llegan con su nota, el motivo principal y un consejo concreto, por ejemplo qué confirmar con la empresa antes de aplicar.</p>
+      <p><strong>Las trampas</strong> (trabajo sin pagar, certificaciones de pago, intermediarios) se señalan aparte, y <strong>los descartes</strong> se agrupan por motivo para ver de un vistazo qué está pidiendo el mercado.</p>
+      <p>Cuando una oferta es realista y supera la nota mínima, el CV adaptado me llega por separado para revisarlo. Ese día ninguna llegó, y el sistema no fuerza ninguna.</p>
+    </div>
+  </div>
+</section>
+
 <section aria-labelledby="filtro">
-  <div class="head"><span class="num">04</span><h2 id="filtro">Qué deja pasar y qué no</h2></div>
+  <div class="head"><span class="num">05</span><h2 id="filtro">Qué deja pasar y qué no</h2></div>
   <div class="split">
     <div class="box no"><h3>Descarta</h3><ul>
       <li>Puestos sénior o de gestión, y los que piden 5 años o más</li>
@@ -130,7 +148,7 @@ footer a{color:var(--accent)}
 </section>
 
 <section aria-labelledby="aprendido">
-  <div class="head"><span class="num">05</span><h2 id="aprendido">Lo que aprendí</h2></div>
+  <div class="head"><span class="num">06</span><h2 id="aprendido">Lo que aprendí</h2></div>
   <p><strong>Cada error se convierte en un test.</strong> Cuando el filtro clasificaba mal una oferta real, esa oferta pasaba a ser un caso de prueba. Así el sistema no repite fallos.</p>
   <p><strong>Gratis y en local.</strong> Un modelo pequeño descarta la mayoría y uno más grande evalúa las que quedan, los dos en mi ordenador. La IA de pago queda solo como reserva manual.</p>
   <p><strong>Automatizar no es enviar sin mirar.</strong> El sistema hace el trabajo pesado, pero la decisión sigue siendo mía.</p>

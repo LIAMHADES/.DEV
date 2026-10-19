@@ -3,7 +3,7 @@
 /* Páginas de proyecto del portfolio. Cada página fija su color con --accent en <body style>. */
 :root{
   --bg:#0a0a0a;--ink:#e8e8e8;--muted:rgba(232,232,232,0.64);--faint:rgba(232,232,232,0.12);
-  --accent:#f2b84b;
+  --accent:#f2b84b;--accent2:var(--accent);--accent3:var(--accent2);--surface:var(--bg);--on-accent:#0a0a0a;
   --display:'Space Grotesk',system-ui,sans-serif;--body:'Inter',system-ui,sans-serif;
   --gutter:max(20px,4vw);
 }
@@ -18,22 +18,22 @@ main{max-width:1200px;margin:0 auto;padding:0 var(--gutter)}
 .back{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s}
 .back:hover,.back:focus-visible{color:var(--accent)}
 
-header{padding:10vh 0 8vh;border-bottom:1px solid var(--faint)}
+header{padding:10vh 0 8vh;border-bottom:1px solid var(--faint);position:relative}
 .tag{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
 h1{font-family:var(--display);font-weight:400;font-size:var(--h1,clamp(3rem,12vw,10rem));line-height:.95;letter-spacing:-.01em;margin:18px 0 28px;overflow-wrap:anywhere}
 .lead{font-size:clamp(1.05rem,1.6vw,1.35rem);max-width:660px;color:var(--muted)}
 .lead strong{color:var(--ink);font-weight:500}
 .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:99px;font-weight:500;font-size:.95rem;text-decoration:none;transition:transform .3s,background .3s,color .3s,border-color .3s}
-.btn.main{background:var(--accent);color:#0a0a0a}
+.btn.main{background:var(--accent);color:var(--on-accent)}
 .btn.main:hover,.btn.main:focus-visible{transform:translateY(-2px);filter:brightness(1.08)}
 .btn.ghost{border:1px solid var(--faint);color:var(--ink)}
 .btn.ghost:hover,.btn.ghost:focus-visible{border-color:var(--accent);color:var(--accent)}
-.nota{margin-top:14px;font-size:.8rem;color:rgba(232,232,232,.42);max-width:560px}
+.nota{margin-top:14px;font-size:.8rem;color:var(--muted);opacity:.75;max-width:560px}
 
 section{padding:9vh 0;border-bottom:1px solid var(--faint)}
 .head{display:flex;gap:18px;align-items:baseline;margin-bottom:36px}
-.num{font-size:.72rem;letter-spacing:.25em;color:rgba(232,232,232,.3)}
+.num{font-size:.72rem;letter-spacing:.25em;color:var(--accent2)}
 h2{font-family:var(--title,'Space Grotesk',system-ui,sans-serif);font-weight:500;font-size:clamp(1.8rem,4vw,3.2rem);letter-spacing:-.02em;line-height:1}
 p{max-width:680px;color:var(--muted);margin-bottom:16px}
 p strong{color:var(--ink);font-weight:500}
@@ -42,16 +42,17 @@ p strong{color:var(--ink);font-weight:500}
 .flow li{counter-increment:paso;display:grid;grid-template-columns:72px 1fr;gap:20px;padding:26px 0;border-top:1px solid var(--faint);transition:background .3s}
 .flow li:hover{background:color-mix(in srgb,var(--accent) 5%,transparent)}
 .flow li::before{content:"0" counter(paso);font-family:var(--display);font-size:1.6rem;color:var(--accent);line-height:1.2}
+.flow li:nth-child(even)::before{color:var(--accent2)}
 .flow h3{font-family:var(--display);font-weight:500;font-size:1.25rem;margin-bottom:6px}
 .flow p{margin:0;font-size:.97rem}
 
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--faint);border:1px solid var(--faint)}
-.cell{background:var(--bg);padding:28px 26px}
+.cell{background:var(--surface);padding:28px 26px}
 .cell h3{font-family:var(--display);font-weight:500;font-size:1.1rem;margin-bottom:8px;color:var(--ink)}
 .cell p{margin:0;font-size:.92rem}
 
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.chips span{font-size:.74rem;padding:4px 11px;border:1px solid var(--faint);border-radius:99px;color:var(--muted)}
+.chips span{font-size:.74rem;padding:4px 11px;border:1px solid color-mix(in srgb,var(--accent2) 35%,transparent);border-radius:99px;color:var(--muted)}
 
 .siguiente{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding:9vh 0 6vh;text-decoration:none;border-bottom:1px solid var(--faint)}
 .siguiente small{display:block;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
@@ -94,13 +95,20 @@ footer a{color:var(--accent)}
 .galeria figure.grande{grid-column:span 4}
 .galeria figure.movil{grid-column:span 2}
 .galeria figure.ancha{grid-column:span 6}
+.galeria video{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:6px;border:1px solid var(--faint);background:#111}
 .galeria img{width:100%;height:auto;border-radius:6px;border:1px solid var(--faint);background:#111}
+.ir-web{position:relative;display:block;border-radius:6px;overflow:hidden}
+.ir-web img{transition:transform .5s cubic-bezier(.22,1,.36,1),filter .4s}
+.ir-web-txt{position:absolute;right:14px;bottom:14px;display:inline-flex;gap:8px;align-items:center;padding:10px 16px;border-radius:99px;background:var(--accent);color:var(--on-accent);font-size:.85rem;font-weight:500;transition:transform .3s}
+.ir-web:hover img,.ir-web:focus-visible img{transform:scale(1.025);filter:brightness(1.06)}
+.ir-web:hover .ir-web-txt,.ir-web:focus-visible .ir-web-txt{transform:translateY(-2px)}
+.ir-web:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .galeria figcaption{margin-top:8px;font-size:.78rem;color:var(--muted)}
 .lista{list-style:none;margin:0}
 .lista li{position:relative;padding:8px 0 8px 18px;font-size:.92rem;color:var(--muted);border-top:1px solid var(--faint)}
 .lista li:first-child{border-top:0}
-.lista li::before{content:"";position:absolute;left:0;top:17px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.estado .cell small{display:block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.lista li::before{content:"";position:absolute;left:0;top:17px;width:6px;height:6px;border-radius:50%;background:var(--accent2)}
+.estado .cell small{display:block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent3);margin-bottom:8px}
 @media (max-width:760px){
   .galeria figure,.galeria figure.grande{grid-column:span 6}
   .galeria figure.movil{grid-column:span 3}

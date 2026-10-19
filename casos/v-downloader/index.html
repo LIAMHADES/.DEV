@@ -4,14 +4,15 @@
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>V_DOWNLOADER — Liam Garcia</title>
 <meta name="description" content="Descarga, transcribe y traduce vídeos con IA, con un editor de subtítulos con línea de tiempo."/>
-<link rel="icon" type="image/png" href="../../LOGONEGTIVO.png">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../assets/favicon-48.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../caso.css">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bruno+Ace+SC&display=swap" rel="stylesheet">
 <style>@font-face{font-family:'VDisplay';src:url('../../projects/V_DownLoadSUB/static/fonts/d9ba559e4ba4.woff2') format('woff2');font-display:swap}</style>
 </head>
-<body style="--accent:#e8323f;--bg:#12100e;--display:'VDisplay',serif;--h1:clamp(2.4rem,11vw,9rem)">
+<body style="--accent:#c8102e;--accent2:#5b8c3e;--accent3:#c8102e;--bg:#faf7f2;--surface:#ffffff;--ink:#1a1512;--muted:#6b6158;--faint:#e6dfd4;--on-accent:#fff;--display:'VDisplay',serif;--h1:clamp(2.4rem,11vw,9rem)">
 <main>
 <div class="top"><a class="back" href="../../index.html#projects">← Volver al portfolio</a></div>
 
@@ -47,18 +48,18 @@
 
 <section aria-labelledby="ver">
   <div class="head"><span class="num">04</span><h2 id="ver">Así se ve</h2></div>
-  <div class="galeria"><figure class="grande"><img src="img/vdl-app.webp" alt="Interfaz de V_DOWNLOADER" width="1200" height="750" loading="lazy" decoding="async"><figcaption>La interfaz: pegas un enlace o arrastras un archivo.</figcaption></figure><figure class="movil"><img src="img/vdl-movil.webp" alt="V_DOWNLOADER en el móvil" width="390" height="844" loading="lazy" decoding="async"><figcaption>La misma interfaz, adaptada al móvil.</figcaption></figure></div>
+  <div class="galeria"><figure class="ancha"><a class="ir-web" href="../../projects/V_DownLoadSUB/" target="_blank" rel="noopener" aria-label="La web de V_DOWNLOADER: abrir la web"><video data-src="img/vdl-inicio.mp4" poster="img/vdl-inicio-poster.webp" width="1280" height="800" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ir-web-txt">Abrir la web <b aria-hidden="true">↗</b></span></a><figcaption>Un recorrido por la página principal. Púlsalo para abrir la web.</figcaption></figure></div>
 </section>
 
 <section aria-labelledby="hecho">
   <div class="head"><span class="num">05</span><h2 id="hecho">Cómo está hecho</h2></div>
   <div class="grid2">
     <div class="cell"><h3>Editor</h3><p>Deshacer y rehacer, zoom en la línea de tiempo y vista previa del estilo.</p></div>
-    <div class="cell"><h3>Formatos</h3><p>Vídeo y audio en los formatos más habituales, y descarga de listas completas como colección.</p></div>
-    <div class="cell"><h3>Fuentes</h3><p>Enlaces de YouTube, Vimeo, Twitch y otras plataformas, en calidad de 360p a 1080p. Para vídeos que piden sesión, usa las cookies de tu navegador (Chrome, Firefox o Edge).</p></div>
+    <div class="cell"><h3>IA en tu equipo</h3><p>Whisper transcribe el audio y un modelo de IA local (Ollama) traduce los subtítulos a 16 idiomas. Nada se sube a ningún servicio.</p></div>
+    <div class="cell"><h3>Fuentes</h3><p>Enlaces de YouTube, Vimeo, Twitch y otras plataformas, desde 360p hasta 4K cuando la plataforma lo ofrece, y listas completas como colección. Para vídeos que piden sesión, usa las cookies de tu navegador.</p></div>
     <div class="cell"><h3>Estilos de subtítulo</h3><p>Cinco familias de letra, tamaño, color, negrita, cursiva, contorno, fondo con opacidad, posición, alineación y resaltado palabra a palabra.</p></div>
   </div>
-  <div class="chips" style="margin-top:28px"><span>Python</span><span>Flask</span><span>yt-dlp</span><span>FFmpeg</span><span>Whisper</span><span>JavaScript</span></div>
+  <div class="chips" style="margin-top:28px"><span>Python</span><span>Flask</span><span>yt-dlp</span><span>FFmpeg</span><span>Whisper</span><span>Ollama</span><span>JavaScript</span></div>
 </section>
 
 <section aria-labelledby="papel">
@@ -79,5 +80,6 @@
 </footer>
 </main>
 <script src="../../assets/scrollbar.js" defer></script>
+<script src="../videos.js" defer></script>
 </body>
 </html>

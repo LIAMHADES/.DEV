@@ -1013,8 +1013,8 @@ async function checkServer(){
     serverStatus.textContent = d.loaded ? '\u26a1 SERVIDOR: ' + d.model.toUpperCase() : '\u26a1 CARGANDO ' + d.model + '...';
     serverStatus.className = 'server-status' + (d.loaded ? ' ready' : '');
   }catch(e){
-    serverStatus.textContent = '\u26a0\uFE0F SIN SERVIDOR';
-    serverStatus.className = 'server-status error';
+    serverStatus.textContent = transcriptorWeb ? 'WHISPER EN TU NAVEGADOR' : 'MODO NAVEGADOR';
+    serverStatus.className = 'server-status' + (transcriptorWeb ? ' ready' : '');
   }
 }
 
@@ -1031,10 +1031,67 @@ async function transcribeOnServer(blob){
 }
 
 /* ===================== RECORDING ===================== */
+/* ===================== MODO NAVEGADOR =====================
+   Si la app de escritorio no está abierta, Whisper se descarga y corre en el
+   navegador del visitante (transformers.js). El audio nunca sale de su equipo. */
+const MODELO_WEB = 'Xenova/whisper-base';
+let usarServidor = false;
+let transcriptorWeb = null;
+let cargaWeb = null;
+
+async function hayServidor(){
+  try{ const r = await fetch(SERVER+'/api/health',{signal:AbortSignal.timeout(1500)}); return r.ok; }
+  catch(e){ return false; }
+}
+
+function cargarModeloWeb(){
+  if(transcriptorWeb) return Promise.resolve(transcriptorWeb);
+  if(cargaWeb) return cargaWeb;
+  setStatus('st-loading', 'Descargando el modelo (solo la primera vez)…');
+  progressBar.classList.add('active');
+  cargaWeb = import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2').then(({ pipeline, env }) => {
+    env.allowLocalModels = false;
+    return pipeline('automatic-speech-recognition', MODELO_WEB, {
+      progress_callback: (d) => {
+        if(d.status === 'progress' && d.total) setStatus('st-loading', 'Descargando el modelo… ' + Math.round(d.loaded / d.total * 100) + '%');
+      }
+    });
+  }).then((t) => {
+    transcriptorWeb = t;
+    serverStatus.textContent = 'WHISPER EN TU NAVEGADOR';
+    serverStatus.className = 'server-status ready';
+    return t;
+  }).finally(() => { cargaWeb = null; progressBar.classList.remove('active'); });
+  return cargaWeb;
+}
+
+async function a16k(buffer){
+  const rate = 16000;
+  if(buffer.sampleRate === rate) return buffer.getChannelData(0);
+  const ctx = new OfflineAudioContext(1, Math.ceil(buffer.duration * rate), rate);
+  const src = ctx.createBufferSource();
+  src.buffer = buffer; src.connect(ctx.destination); src.start();
+  return (await ctx.startRendering()).getChannelData(0);
+}
+
+async function transcribirEnNavegador(blob){
+  const t = await cargarModeloWeb();
+  const dec = new (window.AudioContext || window.webkitAudioContext)();
+  try{
+    const audio = await a16k(await dec.decodeAudioData(await blob.arrayBuffer()));
+    const lang = langSelect.value.trim();
+    // no_repeat_ngram_size evita que Whisper se quede repitiendo una palabra en audios largos
+    const opts = { task:'transcribe', chunk_length_s:30, stride_length_s:5, no_repeat_ngram_size:4 };
+    if(lang) opts.language = lang;
+    const res = await t(audio, opts);
+    return (res && res.text || '').trim();
+  } finally { dec.close(); }
+}
+
 async function startRecording(){
-  // Quick server ping
-  try{ await fetch(SERVER+'/api/health',{signal:AbortSignal.timeout(2000)}); }
-  catch(e){ throw new Error('Servidor no accesible — ejecuta "python server.py"'); }
+  usarServidor = await hayServidor();
+  // Sin app de escritorio, el modelo se prepara antes de grabar para no perder la frase
+  if(!usarServidor) await cargarModeloWeb();
 
   const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
   audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -1095,7 +1152,7 @@ function stopRecording(){
 async function transcribeRecording(){
   try{
     const blob = new Blob(audioChunks, { type:'audio/webm' });
-    const text = await transcribeOnServer(blob);
+    const text = usarServidor ? await transcribeOnServer(blob) : await transcribirEnNavegador(blob);
     if(!text) return;
 
     const existing = transcriptBox.value.trim();
@@ -1118,7 +1175,7 @@ orbBtn.addEventListener('click', async () => {
     try{ await startRecording(); }
     catch(err){
       console.error('[VtoTXforIA] Error:', err);
-      setStatus('st-ready', (err.message || 'Error') + ' — ¿server.py ejecutando?');
+      setStatus('st-ready', 'No se pudo empezar: ' + (err.message || 'error') + '. Revisa el permiso del micrófono.');
     }
   } else {
     stopRecording();

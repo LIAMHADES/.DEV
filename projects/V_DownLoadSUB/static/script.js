@@ -83,7 +83,34 @@ function initTabs() {
   });
 }
 
+// Modo demo: en la web publicada no hay servidor; el procesado funciona en local.
+var SIN_SERVIDOR = /github\.io$/.test(location.hostname);
+function avisoDemo(resaltar) {
+  var aviso = document.getElementById("avisoDemo");
+  if (!aviso) {
+    aviso = document.createElement("div");
+    aviso.id = "avisoDemo";
+    aviso.className = "aviso-demo";
+    aviso.setAttribute("role", "status");
+    aviso.innerHTML = "<strong>Esto es la interfaz.</strong> La descarga, la transcripción y la traducción se ejecutan en local, en mi ordenador, así que aquí no se procesa ningún vídeo. <a href=\"../../casos/v-downloader/\">Ver cómo funciona →</a>";
+    var wrap = document.getElementById("urlWrap");
+    if (wrap && wrap.parentNode) wrap.parentNode.insertBefore(aviso, wrap.nextSibling);
+  }
+  if (resaltar) { aviso.classList.remove("pulso"); void aviso.offsetWidth; aviso.classList.add("pulso"); }
+}
+function marcarSinServidor() {
+  SIN_SERVIDOR = true;
+  ["badge-ytdlp","badge-ffmpeg","badge-whisper"].forEach(function(id){
+    document.querySelectorAll("#" + id).forEach(function(el){
+      el.classList.add("local");
+      el.title = "Funciona en local, en mi ordenador";
+    });
+  });
+  avisoDemo(false);
+}
+
 async function checkStatus() {
+  if (SIN_SERVIDOR) { marcarSinServidor(); return; }
   try {
     var r = await fetch(API_URL + "/api/status", { signal: AbortSignal.timeout(5000) });
     var s = await r.json();
@@ -91,13 +118,7 @@ async function checkStatus() {
     setBadge("badge-ffmpeg", s.ffmpeg);
     setBadge("badge-whisper", s.whisper);
   } catch (e) {
-    ["badge-ytdlp","badge-ffmpeg","badge-whisper"].forEach(function(id){
-      var els = document.querySelectorAll("#" + id);
-      els.forEach(function(el){
-        el.classList.add("fail");
-        el.textContent = el.textContent.split(" ")[0] + " ?";
-      });
-    });
+    marcarSinServidor();
   }
 }
 
@@ -138,6 +159,7 @@ function getSelected(group) {
 async function fetchInfo() {
   var url = document.getElementById("urlInput").value.trim();
   if (!url) return;
+  if (SIN_SERVIDOR) { avisoDemo(true); return; }
   var btn = document.getElementById("fetchBtn");
   btn.textContent = "..."; btn.disabled = true;
   try {
@@ -369,6 +391,7 @@ function initDropUpload() {
 }
 
 function uploadFile(file) {
+  if (SIN_SERVIDOR) { avisoDemo(true); return; }
   var zone = document.getElementById("dropZone");
   var text = zone && zone.querySelector(".drop-text");
   var hint = zone && zone.querySelector(".drop-hint");

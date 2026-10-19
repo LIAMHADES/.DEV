@@ -493,3 +493,12 @@ html.dark .theme-knob::after { content:"I"; color:var(--terracotta); }
 
 /* ── Utilities ─────────────────────────────────────────────────────────── */
 .hidden { display:none !important; }
+
+/* Modo demo de la web publicada */
+.aviso-demo{max-width:640px;margin:14px auto 0;padding:14px 18px;border:1px solid rgba(200,16,46,.35);border-radius:12px;background:rgba(200,16,46,.06);font-size:.9rem;line-height:1.55;text-align:left}
+.aviso-demo strong{font-weight:600}
+.aviso-demo a{color:#c8102e;font-weight:600;text-decoration:none;white-space:nowrap}
+.aviso-demo a:hover{text-decoration:underline}
+.aviso-demo.pulso{animation:avisoPulso .6s ease}
+@keyframes avisoPulso{0%,100%{transform:none}30%{transform:translateX(-4px)}60%{transform:translateX(4px)}}
+@media (prefers-reduced-motion:reduce){.aviso-demo.pulso{animation:none}}

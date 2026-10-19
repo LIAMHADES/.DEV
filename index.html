@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Liam Garcia — AI & Automation Engineer</title>
-<link rel="icon" type="image/png" href="LOGOLIAM.png" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/png" href="LOGONEGTIVO.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bruno+Ace+SC&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,800;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="./assets/hero-silueta.webp" type="image/webp">
@@ -39,10 +39,11 @@ section{padding:0 max(20px,2.23vw);max-width:1600px;margin:0 auto;position:relat
 .cursor-inner{position:relative;display:flex;align-items:center;justify-content:center;width:120px;height:120px}
 .sparkle-shape{position:absolute;width:36px;height:36px;fill:#fff;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1),opacity 0.4s ease;transform:scale(1) rotate(0deg);opacity:1}
 .square-shape{position:absolute;width:90px;height:90px;border:1.5px solid #fff;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0) rotate(-45deg);transition:transform 0.6s cubic-bezier(0.16,1,0.3,1),opacity 0.4s ease}
-.square-shape span{color:#fff;font-size:min(2rem,5.5vw);font-weight:700;text-transform:uppercase;opacity:0;transition:opacity 0.3s ease 0.1s}
+.square-shape span{color:#fff;font-size:min(2rem,5.5vw);font-weight:700;text-transform:uppercase;white-space:nowrap;display:inline-flex;align-items:center;gap:0.22em;line-height:1;opacity:0;transition:opacity 0.3s ease 0.1s}
 .custom-cursor.is-hovering .sparkle-shape{transform:scale(0) rotate(90deg);opacity:0}
 .custom-cursor.is-hovering .square-shape{opacity:1;transform:scale(1) rotate(0deg)}
 .custom-cursor.is-hovering .square-shape span{opacity:1}
+.square-shape .flecha{font-style:normal;font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:1em;line-height:1}
 
 /* ═══ PAGE TRANSITION ═══ */
 .page-transition{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(0.76,0,0.24,1)}
@@ -59,14 +60,17 @@ header::before{content:'';position:absolute;inset:0;z-index:-1;background:rgba(1
 body.over-light header::before{background:rgba(245,245,245,0.62);border-bottom-color:rgba(0,0,0,0.08)}
 .top-blur{display:none;position:fixed;top:0;left:0;right:0;height:76px;z-index:99;pointer-events:none;transform:translateY(-100%);background:rgba(10,10,18,0.5);backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);border-bottom:1px solid rgba(255,255,255,0.06);opacity:0;transition:opacity 0.4s ease,background 0.4s ease}
 body.scrolled .top-blur{opacity:1;transform:none}
-.top-blur{transition:opacity 0.4s ease,background 0.4s ease,transform 0.55s cubic-bezier(0.22,1,0.36,1)}
-body.over-light .top-blur{background:rgba(245,245,245,0.62);border-bottom-color:rgba(0,0,0,0.08)}
-body.scrolled header{right:auto;left:50%;transform:translateX(-50%);padding:24px 76px;animation:menuBaja 0.55s cubic-bezier(0.22,1,0.36,1) both}
-@keyframes menuBaja{from{transform:translate(-50%,-115%);opacity:0}to{transform:translate(-50%,0);opacity:1}}
-body:not(.scrolled) header{animation:menuVuelve 0.4s ease both}
-@keyframes menuVuelve{from{opacity:0}to{opacity:1}}
+.top-blur{transition:none;border-bottom:0;background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+body.over-light .top-blur{background:rgba(245,245,245,0.68)}
+body.scrolled header{right:auto;left:50%;transform:translateX(-50%);padding:24px 76px;animation:menuBaja 0.55s cubic-bezier(0.22,1,0.36,1) backwards}
+@keyframes menuBaja{from{transform:translate(-50%,-115%)}to{transform:translate(-50%,0)}}
+body:not(.scrolled) header{animation:menuVuelve 0.4s ease backwards}
+@keyframes menuVuelve{from{transform:translateY(-110%)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){body.scrolled header,body:not(.scrolled) header{animation:none}}
-body.scrolled header::before{opacity:1}
+header::before,body.scrolled header::before{opacity:1;background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:0;transition:none}
+body.over-light header::before{background:rgba(245,245,245,0.68)}
+header nav a{mix-blend-mode:normal}
+.top-blur{opacity:1;transform:none}
 header nav{display:flex;gap:clamp(18px,2.2vw,34px);font-weight:500}
 header nav a{font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;padding-bottom:3px;position:relative;mix-blend-mode:difference;color:#fff;transition:color 0.3s}
 header nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease}
@@ -121,7 +125,7 @@ body.menu-open{overflow:hidden}
 .marquee-wrap.mid .marquee-track span{font-weight:300;font-size:clamp(1.4rem,4.5vw,3.6rem)}
 .marquee-wrap.bot .marquee-track span{font-weight:600;font-size:clamp(1.4rem,4.5vw,4rem);font-style:italic;font-family:'Playfair Display',serif}
 @media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
-@media (hover:none){.hero-photo.base img,.hero-photo.silhouette img{transition:filter 0.15s ease}}
+@media (hover:none){.hero-photo.base img,.hero-photo.silhouette img{transition:filter 0.22s ease-out}}
 .hero-name{position:relative;z-index:2;text-align:center;padding:clamp(18px,2.4vw,36px) max(20px,2.23vw);font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(2.6rem,10.5vw,10rem);line-height:0.95;letter-spacing:0.02em;color:#fff}
 
 /* ═══ SECTION HEADERS ═══ */
@@ -153,8 +157,11 @@ body.menu-open{overflow:hidden}
 .ed-body{display:flex;flex-direction:column;gap:clamp(28px,3vw,44px);min-width:0}
 .ed-lead{font-size:clamp(1.3rem,2.2vw,2rem);font-weight:600;line-height:1.25;letter-spacing:-0.02em;color:#111;max-width:30ch}
 .ed-text{font-size:clamp(0.98rem,1.2vw,1.12rem);font-weight:300;line-height:1.7;color:rgba(0,0,0,0.72);max-width:62ch}
+.ed-text strong{font-weight:600;color:#111}
 .ed-meta{font-family:'Space Grotesk',sans-serif;font-size:0.74rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.5)}
 .ed-datos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid rgba(0,0,0,0.12)}
+.ed-caja{border:1px solid rgba(0,0,0,0.1);border-radius:6px;background:rgba(255,255,255,0.55);padding:clamp(22px,2.6vw,38px);display:flex;flex-direction:column;gap:clamp(18px,2vw,26px)}
+.ed-caja .ed-text{margin:0}
 .ecosis{border:1px solid rgba(0,0,0,0.1);border-radius:6px;background:rgba(255,255,255,0.55);padding:clamp(20px,2.4vw,30px)}
 .ecosis-cab{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:18px}
 .ecosis-cab h3{font-family:'Space Grotesk',sans-serif;font-size:0.76rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#111}
@@ -167,7 +174,7 @@ body.menu-open{overflow:hidden}
 .ed-dato b{display:block;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(2.2rem,4vw,3.6rem);line-height:1;letter-spacing:-0.03em;color:#111;white-space:nowrap}
 .ed-dato span{display:block;margin-top:12px;font-size:0.86rem;line-height:1.5;color:rgba(0,0,0,0.62);max-width:26ch}
 .ed-fuente{display:block;margin-top:8px;font-size:0.74rem;color:rgba(0,0,0,0.45)}
-.ed-sub{font-family:'Space Grotesk',sans-serif;font-size:0.74rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#4a6530;margin-bottom:-14px}
+.ed-sub{font-family:'Space Grotesk',sans-serif;font-size:0.74rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#ea580c;margin-bottom:-14px}
 .timeline{list-style:none;border-top:1px solid rgba(0,0,0,0.12)}
 .timeline li{display:grid;grid-template-columns:minmax(120px,170px) minmax(0,1fr);gap:20px;padding:18px 0;border-bottom:1px solid rgba(0,0,0,0.08)}
 .timeline .fecha{font-family:'Space Grotesk',sans-serif;font-size:0.78rem;letter-spacing:0.06em;color:rgba(0,0,0,0.5);padding-top:3px}
@@ -179,14 +186,14 @@ body.menu-open{overflow:hidden}
 .area:hover{background:#fff}
 .area h3{font-size:clamp(1.15rem,1.6vw,1.45rem);font-weight:700;letter-spacing:-0.01em;line-height:1.15;color:#111}
 .area p{font-size:0.9rem;line-height:1.55;color:rgba(0,0,0,0.66)}
-.area .prueba{font-family:'Space Grotesk',sans-serif;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:#4a6530;margin-top:auto;padding-top:6px}
+.area .prueba{font-family:'Space Grotesk',sans-serif;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:#ea580c;margin-top:auto;padding-top:6px}
 .herr-cab{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:-14px}
 .herr-cab .ed-sub{margin:0}
 .leyenda{display:flex;gap:18px;flex-wrap:wrap;font-size:0.78rem;color:rgba(0,0,0,0.6)}
 .leyenda span{display:inline-flex;align-items:center;gap:7px}
 .herramientas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(0,0,0,0.1);border:1px solid rgba(0,0,0,0.1)}
 .cat-herr{background:#f5f5f5;padding:22px 22px 18px}
-.cat-herr h3{font-family:'Space Grotesk',sans-serif;font-size:0.76rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#4a6530;margin-bottom:12px}
+.cat-herr h3{font-family:'Space Grotesk',sans-serif;font-size:0.76rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#ea580c;margin-bottom:12px}
 .cat-herr ul{list-style:none}
 .cat-herr li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0;border-top:1px solid rgba(0,0,0,0.07);font-size:0.92rem;color:#111}
 .nv{display:inline-block;flex-shrink:0;width:10px;height:10px;border-radius:50%;border:1.5px solid #111}
@@ -195,7 +202,7 @@ body.menu-open{overflow:hidden}
 .edu-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .edu-card{border:1px solid rgba(0,0,0,0.1);border-radius:6px;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:10px;background:rgba(255,255,255,0.55);transition:border-color 0.3s,transform 0.3s}
 .edu-card:hover{border-color:rgba(0,0,0,0.28);transform:translateY(-3px)}
-.edu-card .edu-tag{font-family:'Space Grotesk',sans-serif;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#4a6530}
+.edu-card .edu-tag{font-family:'Space Grotesk',sans-serif;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#ea580c}
 .edu-card h3{font-size:clamp(1.3rem,1.9vw,1.7rem);font-weight:700;line-height:1.1;letter-spacing:-0.01em;color:#111}
 .edu-card .school{font-size:0.88rem;color:rgba(0,0,0,0.6)}
 .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
@@ -207,7 +214,7 @@ body.menu-open{overflow:hidden}
 .area .prueba a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .stack-list{list-style:none;border-top:1px solid rgba(0,0,0,0.12)}
 .stack-list li{display:grid;grid-template-columns:minmax(130px,190px) 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(0,0,0,0.08);align-items:baseline}
-.stack-list .cat{font-family:'Space Grotesk',sans-serif;font-size:0.76rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#4a6530}
+.stack-list .cat{font-family:'Space Grotesk',sans-serif;font-size:0.76rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#ea580c}
 .stack-list .items{font-size:clamp(1rem,1.5vw,1.3rem);line-height:1.5;color:#111}
 .stack-list .items i{font-style:normal;color:rgba(0,0,0,0.25);padding:0 2px}
 
@@ -243,11 +250,11 @@ body.menu-open{overflow:hidden}
 .pj-onix .project-visual-inner{background:linear-gradient(135deg,#8C3A0F,#B85420 55%,#F5C96A)}
 
 .pj-ares h2{font-family:'Bruno Ace SC',sans-serif;font-weight:400;letter-spacing:0.01em;font-size:clamp(2.2rem,8.5vw,8.6rem)!important}
-.pj-ares:hover h2,.pj-ares.is-hovered h2,.pj-ares:hover .tag,.pj-ares.is-hovered .tag,.pj-ares:hover .desc,.pj-ares.is-hovered .desc{color:#86BBD8}
-.pj-ares .project-visual-inner{background:linear-gradient(135deg,#151d25,#2F4858 50%,#86BBD8)}
+.pj-ares:hover h2,.pj-ares.is-hovered h2,.pj-ares:hover .tag,.pj-ares.is-hovered .tag,.pj-ares:hover .desc,.pj-ares.is-hovered .desc{color:#F26419}
+.pj-ares .project-visual-inner{background:linear-gradient(135deg,#151d25,#2F4858 45%,#F26419 80%,#F6AE2D)}
 
 .pj-vdownloader h2{font-family:'VDisplay','Playfair Display',serif;font-weight:400}
-.pj-vdownloader:hover h2,.pj-vdownloader.is-hovered h2,.pj-vdownloader:hover .tag,.pj-vdownloader.is-hovered .tag,.pj-vdownloader:hover .desc,.pj-vdownloader.is-hovered .desc{color:#e8323f}
+.pj-vdownloader:hover h2,.pj-vdownloader.is-hovered h2,.pj-vdownloader:hover .tag,.pj-vdownloader.is-hovered .tag,.pj-vdownloader:hover .desc,.pj-vdownloader.is-hovered .desc{color:#c8102e}
 .pj-vdownloader .project-visual-inner{background:linear-gradient(135deg,#5e0b15,#c8102e 60%,#f2c4c9)}
 
 /* ═══ CONTACT ═══ */
@@ -334,22 +341,22 @@ footer a{color:#111}
       <path d="M 50 0 C 50 35, 65 50, 100 50 C 65 50, 50 65, 50 100 C 50 65, 35 50, 0 50 C 35 50, 50 35, 50 0 Z" />
     </svg>
     <div class="square-shape">
-      <span>IR →</span>
+      <span>IR <i class="flecha">→</i></span>
     </div>
   </div>
 </div>
 
-<div class="page-transition" id="pageTrans"><div class="page-transition-logo"><img src="./assets/logo-neg.webp" alt="" width="240" height="240"></div></div>
+<div class="page-transition" id="pageTrans"><div class="page-transition-logo"><img src="./assets/logo-neg.svg" alt="" width="320" height="320"></div></div>
 
 <div id="contentWrapper" style="position:relative;z-index:2">
 
-<a href="#" class="header-logo" aria-label="Inicio"><img src="./assets/logo-neg.webp" alt="Liam Garcia" width="60" height="60"></a>
+<a href="#" class="header-logo" aria-label="Inicio"><img src="./assets/logo-neg.svg" alt="Liam Garcia" width="60" height="60"></a>
 <header id="header">
-  <nav aria-label="Principal"><a href="#about">Sobre mí</a><a href="#education">Formación</a><a href="#stack">Qué sé hacer</a><a href="#projects">Proyectos</a><a href="#soon">Próximamente</a><a href="https://www.linkedin.com/in/%C5%82iam-garcia-soldevila-815814239" target="_blank" rel="noopener">LinkedIn</a><a href="#contact">Contacto</a></nav>
+  <nav aria-label="Principal"><a href="#about">Sobre mí</a><a href="#education">Formación</a><a href="#stack">Qué sé hacer</a><a href="#projects">Proyectos</a><a href="#soon">Próximamente</a><a href="#contact">Contacto</a></nav>
 </header>
 <div class="top-blur" aria-hidden="true"></div>
 <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil"><a class="menu-logo" href="#" aria-label="Inicio"><img src="./assets/logo-neg.webp" alt="" width="48" height="48"></a><div class="menu-lista"><a href="#about"><small>01</small><span class="txt">Sobre mí</span></a><a href="#education"><small>02</small><span class="txt">Formación</span></a><a href="#stack"><small>03</small><span class="txt">Qué sé hacer</span></a><a href="#projects"><small>04</small><span class="txt">Proyectos</span></a><a href="#soon"><small>05</small><span class="txt">Próximamente</span></a><a href="https://www.linkedin.com/in/%C5%82iam-garcia-soldevila-815814239" target="_blank" rel="noopener"><small>06</small><span class="txt">LinkedIn</span></a><a href="#contact"><small>07</small><span class="txt">Contacto</span></a></div><p class="menu-pie"><a href="mailto:soldevilaliam@gmail.com">soldevilaliam@gmail.com</a><span>Girona, España</span></p></nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil"><a class="menu-logo" href="#" aria-label="Inicio"><img src="./assets/logo-neg.svg" alt="" width="48" height="48"></a><div class="menu-lista"><a href="#about"><small>01</small><span class="txt">Sobre mí</span></a><a href="#education"><small>02</small><span class="txt">Formación</span></a><a href="#stack"><small>03</small><span class="txt">Qué sé hacer</span></a><a href="#projects"><small>04</small><span class="txt">Proyectos</span></a><a href="#soon"><small>05</small><span class="txt">Próximamente</span></a><a href="#contact"><small>06</small><span class="txt">Contacto</span></a></div><p class="menu-pie"><a href="mailto:soldevilaliam@gmail.com">soldevilaliam@gmail.com</a><span>Girona, España</span></p></nav>
 
 
 <section class="hero" aria-label="Portada">
@@ -367,13 +374,16 @@ footer a{color:#111}
 <section id="about" class="ed" aria-labelledby="t-about">
   <div class="ed-side"><span class="section-num">01</span><h2 id="t-about">Sobre mí</h2></div>
   <div class="ed-body">
-    <p class="ed-lead">Dirijo agentes de IA para construir mis propias herramientas, y las uso cada día.</p>
-    <p class="ed-text">Escribo el código con asistentes de programación (Claude Code, OpenCode, Codex) y trabajo siempre igual: primero entiendo qué problema hay, a quién le afecta y cuánto cuesta hoy; lo divido en fases con un plan escrito; reparto cada tarea al agente especializado que toca; reviso y pruebo lo que proponen con datos reales, en móvil y en escritorio, y no doy nada por terminado hasta haberlo medido. Las decisiones, los errores y las lecciones se guardan en una memoria compartida, para que ningún agente repita un fallo.</p>
-    <p class="ed-text">Así he montado un cerebro de conocimiento con búsqueda semántica, una memoria compartida entre agentes y un buscador de empleo que trabaja solo cada mañana. Y con dos reglas que no me salto: nada se envía ni se publica sin mi aprobación, y las claves y los datos personales nunca van en el código.</p>
-    <p class="ed-text">Además tengo dos años en marketing y ventas: venta consultiva, captación y fidelización de clientes en Sanitas (Bupa); marketing directo en eventos y puntos de venta con BAT; y en Organic Group, campañas de email marketing, gestión de clientes con CRM, pedidos e inventario, y diseño de packaging y etiquetado de producto. Eso me da algo que muchos perfiles técnicos junior no tienen: entender el problema del negocio antes de automatizarlo.</p>
+    <div class="ed-caja">
+      <p class="ed-lead">Me adapto rápido al puesto, al equipo y al problema que toque resolver.</p>
+      <p class="ed-text">Empecé en ventas, y ahí descubrí que soy <strong>proactivo</strong> sin proponérmelo: buscar clientes a mano me comía el día, así que busqué herramientas para encontrar leads y automatizar el primer contacto. Nadie me lo pidió. Funcionó, y me enganché a la IA.</p>
+      <p class="ed-text">De vender seguros pasé a construir con IA, y casi nunca lo mismo: un localizador para perros, expositores NFC para negocios, un editor de subtítulos, un dictado por voz. Esa mezcla me ha hecho <strong>versátil</strong> y me obliga a <strong>aprender rápido</strong>, con buenos profesores, un máster en IA y muchas horas de práctica por mi cuenta. Por eso me <strong>adapto</strong> bien a puestos distintos: automatización, consultoría o desarrollo con IA.</p>
+      <p class="ed-text">Soy <strong>sociable</strong> y me gusta trabajar en equipo. El mostrador, los eventos y los clientes me enseñaron a explicar la tecnología sin jerga y a entender qué necesita alguien antes de construir nada. Y soy <strong>productivo</strong> de verdad: lo que construyo lo uso cada día, como el buscador que me trae ofertas de empleo cada mañana.</p>
+      <p class="ed-text">Fuera de la pantalla, <strong>los perros</strong>. Me encantan, tanto que uno de mis proyectos más grandes, ARES, nació para cuidarlos mejor. También me tira <strong>el deporte en la montaña</strong>, y sigo de cerca los mercados: <strong>invierto en índices y empresas</strong> y me gusta entender por qué suben o bajan.</p>
+    </div>
     <div class="ed-datos">
-      <div class="ed-dato"><b>+4.500 h</b><span>en 3 años trabajando con IA, desde 2023</span></div>
-      <div class="ed-dato"><b>2 años</b><span>en marketing y ventas<small class="ed-fuente">Venta consultiva · captación y fidelización · CRM (Zoho) · segmentación de clientes · marketing directo en eventos y punto de venta · análisis de feedback · email marketing (MailChimp) · comunicaciones comerciales · pedidos e inventario · packaging y etiquetado</small></span></div>
+      <div class="ed-dato"><b>+4.500 h</b><span>trabajando con IA cada día, desde 2023</span></div>
+      <div class="ed-dato"><b>2 años</b><span>de trato con clientes en marketing y ventas</span></div>
     </div>
     <div class="ecosis">
       <div class="ecosis-cab"><h3>Mi ecosistema de IA, en cifras</h3><small>Medido en octubre de 2026 · de uso interno, sin demo pública</small></div>
@@ -391,7 +401,7 @@ footer a{color:#111}
       <li><span class="fecha">Feb 2023 – Oct 2024</span><div><b>Promotor de marca · British American Tobacco</b><span>Marketing directo en eventos y puntos de venta, asesoramiento sobre productos nuevos, análisis del feedback de cliente en tiempo real y coordinación entre ubicaciones.</span></div></li>
       <li><span class="fecha">Nov 2021 – Jul 2022</span><div><b>Atención al cliente y comercial · Organic Group</b><span>Gestión y fidelización de clientes con Zoho CRM y Excel, campañas de email con MailChimp, comunicaciones comerciales, control de pedidos e inventario, y diseño de packaging y etiquetado de producto.</span></div></li>
     </ol>
-    <p class="ed-meta">Español · Catalán · Inglés — nativo &nbsp;·&nbsp; Girona, España · remoto o híbrido Barcelona/Girona</p>
+    <p class="ed-meta">Español · Catalán · Inglés — nativo &nbsp;·&nbsp; Girona / Barcelona</p>
   </div>
 </section>
 
@@ -439,7 +449,7 @@ footer a{color:#111}
     <a class="project-card pj-vtotx" href="./casos/vtotxforia/" data-pj="VtoTXforIA" data-font="PressStart" data-color="#4A90D9">
       <div class="project-info">
         <span class="num">01</span><span class="tag">Voice AI</span><h2>VtoTXforIA</h2>
-        <p class="desc">Dictado por voz que transcribe en tu propio equipo con Whisper. La versión web corre en el navegador con WebAssembly: tu voz nunca sale de tu ordenador.</p>
+        <p class="desc">Dictado por voz que transcribe en tu propio equipo con Whisper: tu voz nunca sale de tu ordenador. Con una tecla, el texto aparece donde estés escribiendo.</p>
         <div class="card-tags"><span>Whisper</span><span>WebAssembly</span><span>JavaScript</span><span>Python</span></div>
 
       </div>
@@ -454,7 +464,7 @@ footer a{color:#111}
       <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div></div>
     </a>
 
-  <a class="project-card pj-ares" href="./casos/ares/" data-pj="ARES GPS" data-font="Bruno Ace SC" data-color="#86BBD8">
+  <a class="project-card pj-ares" href="./casos/ares/" data-pj="ARES GPS" data-font="Bruno Ace SC" data-color="#F26419">
       <div class="project-info">
         <span class="num">03</span><span class="tag">IoT &amp; Hardware · En desarrollo</span><h2>ARES GPS</h2>
         <p class="desc">Localizador GPS para perros con conexión propia: te dice dónde está y cómo está cada día. Diseño el producto entero: dispositivo, aplicación y web.</p>
@@ -462,7 +472,7 @@ footer a{color:#111}
 
       </div>
       <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0d12" stroke-width="1"><path d="M4 20h16"/><path d="M6 16l6-12 6 12"/><path d="M8 12h8"/></svg></div></div>
-    </a><a class="project-card pj-vdownloader" href="./casos/v-downloader/" data-pj="V_DOWNLOADER" data-font="VDisplay" data-color="#e8323f">
+    </a><a class="project-card pj-vdownloader" href="./casos/v-downloader/" data-pj="V_DOWNLOADER" data-font="VDisplay" data-color="#c8102e">
       <div class="project-info">
         <span class="num">04</span><span class="tag">Vídeo + IA · En desarrollo</span><h2>V_DOWNLOADER</h2>
         <p class="desc">Descarga, transcribe y traduce vídeos a 16 idiomas con IA, y edita los subtítulos en una línea de tiempo con estilos y exportación.</p>
@@ -470,6 +480,14 @@ footer a{color:#111}
 
       </div>
       <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/></svg></div></div>
+    </a><a class="project-card pj-jobmatch" href="./projects/jobmatch/" data-pj="JobMatch" data-font="Space Grotesk" data-color="#f2b84b">
+      <div class="project-info">
+        <span class="num">05</span><span class="tag">Automatización · Uso interno</span><h2>JobMatch</h2>
+        <p class="desc">Mi propio buscador de empleo: cada mañana busca ofertas, descarta las que no encajan o son trampa, evalúa a fondo las buenas con IA local y me avisa por Telegram. Nada se envía sin mi aprobación.</p>
+        <div class="card-tags"><span>Python</span><span>Ollama</span><span>Telegram</span><span>Tareas programadas</span></div>
+
+      </div>
+      <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/></svg></div></div>
     </a>
   </div>
 </section>
@@ -477,7 +495,7 @@ footer a{color:#111}
 <section id="soon">
   <div class="section-head"><span class="section-num">05</span><h2>Próximamente</h2></div>
   <div class="soon-list">
-    <article class="soon-item"><span class="estado">En rediseño</span><h3>Pick4Design 2.0</h3><p>Explorador de diseño web que extrae colores, tipografías y espaciados de sitios reales. Rehaciendo la web y la extensión desde cero: diseño, funciones y experiencia de uso.</p></article>
+    <article class="soon-item"><span class="estado">En rediseño</span><h3>Pick4Design</h3><p>Explorador de diseño web que extrae colores, tipografías y espaciados de sitios reales. Rehaciendo la web y la extensión desde cero: diseño, funciones y experiencia de uso.</p></article>
     <article class="soon-item"><span class="estado">Puliendo</span><h3>Clonador de voz</h3><p>Síntesis de voz en español con F5-TTS y demo en Gradio. Mejorando la calidad y la naturalidad antes de enseñarlo.</p></article>
     <article class="soon-item"><span class="estado">En desarrollo</span><h3>HIVE-MIND</h3><p>Cerebro de conocimiento para mis agentes: extrae lo útil de vídeos y lo sirve con búsqueda semántica y grafo por MCP. De uso interno, sin demo pública.</p></article>
     <article class="soon-item"><span class="estado">En desarrollo</span><h3>MemoriCLLM</h3><p>Memoria compartida entre agentes de IA (Claude Code, OpenCode, Hermes): planes, decisiones y avisos entre ellos. De uso interno, sin demo pública.</p></article>
@@ -588,9 +606,9 @@ function checkProjectHover(){
   var el=document.elementFromPoint(mx,my);
   var card=el?el.closest('.project-card'):null;
   if(card===currentCard)return;
-  if(currentCard){currentCard.classList.remove('is-hovered');c.classList.remove('is-hovering');l.style.fontFamily='';var sq=c.querySelector('.square-shape');sq.style.borderColor='';l.style.color=''}
+  if(currentCard){currentCard.classList.remove('is-hovered');c.classList.remove('is-hovering');l.style.fontFamily='';l.style.fontSize='';var sq=c.querySelector('.square-shape');sq.style.borderColor='';l.style.color=''}
   currentCard=card;
-  if(card){card.classList.add('is-hovered');c.classList.add('is-hovering');l.textContent='IR \u2192';var f=card.getAttribute('data-font'),col=card.getAttribute('data-color');if(f)l.style.fontFamily=f;if(col){var sq=c.querySelector('.square-shape');sq.style.borderColor=col;l.style.color=col}}
+  if(card){card.classList.add('is-hovered');c.classList.add('is-hovering');l.innerHTML='IR <i class="flecha">\u2192</i>';var f=card.getAttribute('data-font'),col=card.getAttribute('data-color');if(f)l.style.fontFamily=f;if(col){var sq=c.querySelector('.square-shape');sq.style.borderColor=col;l.style.color=col}l.style.fontSize='';if(l.scrollWidth>74)l.style.fontSize=(parseFloat(getComputedStyle(l).fontSize)*74/l.scrollWidth)+'px'}
 }
 document.addEventListener('mouseleave',function(){c.style.opacity='0'});
 document.addEventListener('mouseenter',function(){if(init)c.style.opacity='1'});
@@ -601,24 +619,26 @@ var header=document.getElementById('header');
 function updateHeader(){
   var isScrolled=window.scrollY>40;
   document.body.classList.toggle('scrolled',isScrolled);
-  if(isScrolled){
-    var hb=header.offsetParent?header.getBoundingClientRect().bottom:76;
-    var overLight=false;
-    document.querySelectorAll('.wrap-light').forEach(function(s){
-      var r=s.getBoundingClientRect();
-      if(hb>r.top&&hb<r.bottom)overLight=true;
-    });
-    document.body.classList.toggle('over-light',overLight);
-  }
+  var y=(header.offsetParent?header.getBoundingClientRect().bottom:76)/2;
+  var overLight=false;
+  document.querySelectorAll('.wrap-light').forEach(function(s){
+    var r=s.getBoundingClientRect();
+    if(y>r.top&&y<r.bottom)overLight=true;
+  });
+  document.body.classList.toggle('over-light',overLight);
 }
-window.addEventListener('scroll',updateHeader);
+var headerPend=false;
+window.addEventListener('scroll',function(){if(!headerPend){headerPend=true;requestAnimationFrame(function(){headerPend=false;updateHeader()})}},{passive:true});
+updateHeader();
 
 // ═══ HERO PHOTO: hover en ordenador; en táctil, color mientras se hace scroll y gris al parar ═══
 (function(){
 var hp=document.getElementById('heroPhotos');
-if(matchMedia('(hover:none)').matches){var quieto;addEventListener('scroll',function(){hp.classList.add('active');clearTimeout(quieto);quieto=setTimeout(function(){hp.classList.remove('active')},180)},{passive:true});return}
-hp.addEventListener('mouseenter',function(){hp.classList.add('active')});
-hp.addEventListener('mouseleave',function(){hp.classList.remove('active')});
+if(matchMedia('(hover:none)').matches){var quieto;function mueve(){hp.classList.add('active');clearTimeout(quieto);quieto=setTimeout(function(){hp.classList.remove('active')},180)}['scroll','touchmove','wheel'].forEach(function(ev){addEventListener(ev,mueve,{passive:true})});return}
+var encima=false,quietoPc;
+hp.addEventListener('mouseenter',function(){encima=true;hp.classList.add('active')});
+hp.addEventListener('mouseleave',function(){encima=false;hp.classList.remove('active')});
+addEventListener('scroll',function(){hp.classList.add('active');clearTimeout(quietoPc);quietoPc=setTimeout(function(){if(!encima)hp.classList.remove('active')},180)},{passive:true});
 })();
 
 // ═══ MARQUEE (animación CSS; aquí solo la duración, para que la velocidad no dependa del ancho) ═══

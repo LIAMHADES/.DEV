@@ -4,14 +4,15 @@
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>ARES GPS — Liam Garcia</title>
 <meta name="description" content="Localizador GPS para perros con conexión propia: dónde está tu perro y cómo está cada día."/>
-<link rel="icon" type="image/png" href="../../LOGONEGTIVO.png">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../assets/favicon-48.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../caso.css">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bruno+Ace+SC&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
 </head>
-<body style="--accent:#86BBD8;--bg:#151d25;--display:'Bruno Ace SC',sans-serif;--h1:clamp(2.2rem,10vw,8.4rem)">
+<body style="--accent:#F26419;--accent2:#F6AE2D;--accent3:#F6AE2D;--bg:#151d25;--surface:#1c2732;--ink:#f0f2f5;--display:'Bruno Ace SC',sans-serif;--h1:clamp(2.2rem,10vw,8.4rem)">
 <main>
 <div class="top"><a class="back" href="../../index.html#projects">← Volver al portfolio</a></div>
 
@@ -48,28 +49,51 @@
 
 <section aria-labelledby="ver">
   <div class="head"><span class="num">04</span><h2 id="ver">Así se ve</h2></div>
-  <div class="galeria"><figure class="grande"><img src="img/ares-portada.webp" alt="Portada de la web de ARES GPS" width="1200" height="750" loading="lazy" decoding="async"><figcaption>La web pública de ARES.</figcaption></figure><figure class="movil"><img src="img/ares-movil.webp" alt="La web de ARES en el móvil" width="390" height="844" loading="lazy" decoding="async"><figcaption>Pensada primero para el móvil.</figcaption></figure><figure class=""><img src="img/ares-geocerca.webp" alt="Guía de geocerca para perros" width="1200" height="750" loading="lazy" decoding="async"><figcaption>Guías que explican cada función, como la zona segura.</figcaption></figure><figure class=""><img src="img/ares-mapa.webp" alt="Buscador de sitios pet friendly" width="1200" height="750" loading="lazy" decoding="async"><figcaption>Buscador de sitios pet friendly por ciudad, con mapa.</figcaption></figure></div>
+  <div class="galeria"><figure class="ancha"><a class="ir-web" href="../../projects/ares/" target="_blank" rel="noopener" aria-label="La web de ARES GPS: abrir la web"><video data-src="img/ares-inicio.mp4" poster="img/ares-inicio-poster.webp" width="1280" height="800" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ir-web-txt">Abrir la web <b aria-hidden="true">↗</b></span></a><figcaption>Un recorrido por la página principal. Púlsalo para abrir la web.</figcaption></figure></div>
+</section>
+
+<section aria-labelledby="comida">
+  <div class="head"><span class="num">05</span><h2 id="comida">Su alimentación</h2></div>
+  <p>Es la parte de la web en la que más he trabajado, y la que más crece cuando llegue el collar. La idea es sencilla: que el dueño <strong>no tenga que adivinar qué ni cuánto darle de comer</strong>.</p>
+  <ol class="flow">
+    <li><div><h3>Lo que nunca debe comer</h3><p>Los 10 alimentos más peligrosos (xilitol, uvas, chocolate, cebolla y ajo…): dónde se esconden, qué provocan, qué señales vigilar y qué hacer si ya se lo ha comido.</p></div></li>
+    <li><div><h3>Lo que sí puede sumar</h3><p>10 alimentos y complementos explicados por lo que aportan y por sus límites, con cantidades seguras y cómo introducirlos poco a poco.</p></div></li>
+    <li><div><h3>Cuánto le toca</h3><p>Un planificador que pide lo mínimo (peso, edad, objetivo, actividad y las kcal de la etiqueta del pienso) y devuelve una ración diaria orientativa. Reutiliza el perfil del perro para no preguntar dos veces.</p></div></li>
+    <li><div><h3>Con el collar, una dieta suya</h3><p>Con Premium, ARES cruza los macros de su comida con la actividad real que mide el collar y propone una dieta para ese perro concreto, que se ajusta si un día corre más o descansa peor.</p></div></li>
+    <li><div><h3>El veterinario, cerca</h3><p>Si algo no cuadra, el veterinario está a un mensaje, y recibe datos reales de actividad, descanso y comida en vez de recuerdos.</p></div></li>
+  </ol>
+  <p class="nota">La regla que lo guía todo: es una referencia, no una prescripción. Una dieta casera o BARF necesita a un profesional, y la web lo recuerda en cada cálculo.</p>
 </section>
 
 <section aria-labelledby="hecho">
-  <div class="head"><span class="num">05</span><h2 id="hecho">Cómo está hecho</h2></div>
+  <div class="head"><span class="num">06</span><h2 id="hecho">Cómo está hecho</h2></div>
   <div class="grid2">
-    <div class="cell"><h3>Dispositivo</h3><p>Basado en ESP32-S3, con GPS de varios sistemas de satélites, sellado IP68 e IK10 sin puertos, carga magnética y unos 64 g de peso.</p></div>
-    <div class="cell"><h3>Luces</h3><p>Doce luces de color visibles a más de 50 metros, con tres modos: paseo, búsqueda y aviso de estado.</p></div>
-    <div class="cell"><h3>Web pública</h3><p>Modelo 3D animado, guías de actividad, descanso, nutrición y alimentos tóxicos, calculadora de peso ideal y mapa de sitios pet friendly por ciudad.</p></div>
-    <div class="cell"><h3>Bienestar</h3><p>Actividad real, calorías y horas de descanso. Con Premium, cruza la comida con la actividad para proponer una dieta para ese perro.</p></div>
+    <div class="cell"><h3>El dispositivo</h3><p>Diseñado alrededor de un ESP32-S3: GPS de varios sistemas de satélites, sensor de movimiento, SIM 4G propia y Bluetooth de respaldo. Sellado IP68 e IK10 sin puertos, carga magnética, unos 64 g y hasta 20 días de batería según el uso.</p></div>
+    <div class="cell"><h3>Calculadora de peso ideal</h3><p>Con la raza (o la mezcla de dos), el sexo, la altura a la cruz, el peso y la edad, da su rango de peso ideal y si está en bajo peso, ideal, sobrepeso u obesidad. El resultado pasa solo a la calculadora de actividad.</p></div>
+    <div class="cell"><h3>Actividad y calorías</h3><p>Peso, distancia e intensidad dan lo que gasta cada paseo y el día entero, y lo traducen a gramos de comida. Con el collar, el dato sale del sensor y no cuenta los trayectos en coche.</p></div>
+    <div class="cell"><h3>Agente de nutrición</h3><p>La parte Premium, en diseño: cruza los macros de su comida con la actividad real del collar, le propone una dieta propia y la ajusta cada día.</p></div>
   </div>
   <div class="chips" style="margin-top:28px"><span>ESP32-S3</span><span>C/C++</span><span>FastAPI</span><span>React</span><span>PostgreSQL</span><span>Three.js</span><span>GSAP</span><span>Leaflet</span><span>SEO</span></div>
 </section>
 
 <section aria-labelledby="papel">
-  <div class="head"><span class="num">06</span><h2 id="papel">Mi papel</h2></div>
+  <div class="head"><span class="num">07</span><h2 id="papel">Mi papel</h2></div>
   <p>Diseño el producto entero:</p>
-  <ul class="lista papel"><li>Qué lleva el dispositivo y por qué: conexión propia, Bluetooth de respaldo, sensores, batería y sellado.</li><li>Cómo y cuándo avisa la aplicación: zona segura, calor, caídas y cambios en el descanso.</li><li>La marca, los textos y la web, construida dirigiendo asistentes de IA.</li><li>Las herramientas gratuitas para dueños: calculadora, guías y mapa de sitios pet friendly.</li></ul>
+  <ul class="lista papel"><li>Qué lleva el dispositivo y por qué: conexión propia, Bluetooth de respaldo, sensores, batería y sellado.</li><li>Cómo y cuándo avisa la aplicación: zona segura, calor, caídas y cambios en el descanso.</li><li>La marca, los textos y la web, construida dirigiendo asistentes de IA.</li><li>La parte de alimentación: qué alimentos son peligrosos, cuáles se pueden sumar y cómo calcular la ración de cada perro.</li><li>Las herramientas gratuitas para dueños: calculadora, guías y mapa de sitios pet friendly.</li></ul>
+</section>
+
+<section aria-labelledby="potencial">
+  <div class="head"><span class="num">08</span><h2 id="potencial">Hasta dónde puede llegar</h2></div>
+  <div class="grid2">
+    <div class="cell"><h3>Un historial que se escribe solo</h3><p>Actividad, descanso y comida, día a día. Con semanas de datos, un cambio de rutina avisa antes de que aparezca un síntoma.</p></div>
+    <div class="cell"><h3>Una dieta que se ajusta sola</h3><p>Raciones que cambian con la actividad real, el peso y la edad del perro, no con una tabla genérica para todos.</p></div>
+    <div class="cell"><h3>Consultas con datos</h3><p>El veterinario ve qué ha pasado de verdad las últimas semanas, y la consulta empieza por los datos en vez de por las dudas.</p></div>
+    <div class="cell"><h3>La puerta de entrada, gratis</h3><p>Las guías, la calculadora y el mapa de sitios pet friendly sirven ya a cualquier dueño, tenga o no el collar, y son el primer contacto con la marca.</p></div>
+  </div>
 </section>
 
 <section aria-labelledby="estado">
-  <div class="head"><span class="num">07</span><h2 id="estado">Estado y siguiente paso</h2></div>
+  <div class="head"><span class="num">09</span><h2 id="estado">Estado y siguiente paso</h2></div>
   <div class="grid2 estado"><div class="cell"><small>Hoy</small><p>Web pública con guías y herramientas para dueños. El dispositivo está en diseño y todavía no se vende.</p></div><div class="cell"><small>Siguiente paso</small><p>El prototipo funcional del collar y probarlo con perros reales.</p></div></div>
 </section>
 
@@ -80,5 +104,6 @@
 </footer>
 </main>
 <script src="../../assets/scrollbar.js" defer></script>
+<script src="../videos.js" defer></script>
 </body>
 </html>
