@@ -59,6 +59,11 @@ p strong{color:var(--ink);font-weight:500}
 .box.no h3{color:var(--no)}.box.ok h3{color:var(--ok)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .chips span{font-size:.72rem;padding:4px 10px;border:1px solid var(--faint);border-radius:3px;color:var(--muted)}
+.siguiente{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding:9vh 0 6vh;text-decoration:none;border-bottom:1px solid var(--faint)}
+.siguiente small{display:block;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.siguiente strong{font-family:var(--display);font-size:clamp(2.2rem,7vw,5.5rem);line-height:.9;letter-spacing:-.03em;transition:color .3s}
+.siguiente:hover strong,.siguiente:focus-visible strong{color:var(--accent)}
+.siguiente .flecha{font-size:clamp(2rem,5vw,4rem);color:var(--accent)}
 footer{padding:8vh 0 10vh;color:var(--muted);font-size:.85rem}
 footer a{color:var(--accent)}
 @media (max-width:760px){
@@ -71,7 +76,7 @@ footer a{color:var(--accent)}
 </head>
 <body>
 <main>
-<a class="back" href="../../index.html#projects">← Volver al portfolio</a>
+<a class="back" href="../../index.html#stack">← Volver al portfolio</a>
 
 <header>
   <span class="tag">Automatización · IA aplicada</span>
@@ -90,7 +95,7 @@ footer a{color:var(--accent)}
   <div class="stats">
     <div class="stat"><b>226</b><span>ofertas analizadas en una sola pasada, 118 descartadas con su motivo</span></div>
     <div class="stat"><b>39</b><span>bolsas de empleo y portales que revisa cada día</span></div>
-    <div class="stat"><b>96</b><span>tests automáticos</span></div>
+    <div class="stat"><b>112</b><span>tests automáticos</span></div>
   </div>
   <p class="src">Medido en octubre de 2026 sobre búsquedas reales. De las 118 descartadas, 69 eran puestos sénior y 21 pedían 5 años o más.</p>
 </section>
@@ -100,8 +105,8 @@ footer a{color:var(--accent)}
   <ol class="flow">
     <li><div><h3>Busca</h3><p>Lee portales de empresa y bolsas de empleo remotas y de España, solo en modo lectura. Filtra por título y ubicación antes de gastar nada.</p></div></li>
     <li><div><h3>Criba gratis, en local</h3><p>Un modelo de IA que corre en mi propio ordenador descarta lo que no encaja: nivel, años pedidos, ventas, idioma, ubicación. Las dudosas pasan a un segundo modelo más grande.</p></div></li>
-    <li><div><h3>Evalúa a fondo</h3><p>Solo las que sobreviven pasan a una evaluación completa con Claude: encaje con mi perfil, carencias, legitimidad de la oferta y qué haría para destacar.</p></div></li>
-    <li><div><h3>Prepara</h3><p>Si una oferta supera el umbral, genera el CV adaptado y el borrador de la candidatura.</p></div></li>
+    <li><div><h3>Evalúa a fondo</h3><p>Las que sobreviven pasan a una evaluación completa con un modelo más grande, también local y gratis: encaje con mi perfil, carencias, legitimidad y si es realista aplicar (años, nivel, idioma, tecnología).</p></div></li>
+    <li><div><h3>Prepara</h3><p>Si es realista y supera el umbral, genera el CV adaptado y el borrador. El CV solo reordena datos verificados: si el modelo añade una cifra que no está en mi CV, se descarta.</p></div></li>
     <li class="gate"><div><h3>Yo decido</h3><p>Me llega un resumen diario por Telegram con botones. <strong>Ningún envío sale sin mi aprobación</strong>, y en los portales el botón final lo pulso yo.</p></div></li>
   </ol>
 </section>
@@ -127,15 +132,17 @@ footer a{color:var(--accent)}
 <section aria-labelledby="aprendido">
   <div class="head"><span class="num">05</span><h2 id="aprendido">Lo que aprendí</h2></div>
   <p><strong>Cada error se convierte en un test.</strong> Cuando el filtro clasificaba mal una oferta real, esa oferta pasaba a ser un caso de prueba. Así el sistema no repite fallos.</p>
-  <p><strong>Lo barato primero.</strong> El modelo local descarta la mayoría sin coste; la IA de pago solo ve las pocas que merecen la pena.</p>
+  <p><strong>Gratis y en local.</strong> Un modelo pequeño descarta la mayoría y uno más grande evalúa las que quedan, los dos en mi ordenador. La IA de pago queda solo como reserva manual.</p>
   <p><strong>Automatizar no es enviar sin mirar.</strong> El sistema hace el trabajo pesado, pero la decisión sigue siendo mía.</p>
   <p>Lo construí con Python y asistentes de programación con IA, que dirijo y reviso.</p>
-  <div class="chips"><span>Python</span><span>Ollama (IA local)</span><span>Claude</span><span>Telegram</span><span>Node.js</span><span>Tareas programadas</span></div>
+  <div class="chips"><span>Python</span><span>Ollama (IA local)</span><span>Telegram</span><span>Node.js</span><span>Tareas programadas</span></div>
 </section>
+
 
 <footer>
   <p>El código no es público: es una herramienta personal. Si quieres verlo funcionar, <a href="../../index.html#contact">escríbeme</a> y te lo enseño en directo.</p>
 </footer>
 </main>
+<script src="../../assets/scrollbar.js" defer></script>
 </body>
 </html>

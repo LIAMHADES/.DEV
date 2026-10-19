@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>V_DOWNLOADER — Liam Garcia</title>
+<meta name="description" content="Descarga, transcribe y traduce vídeos con IA, con un editor de subtítulos con línea de tiempo."/>
+<link rel="icon" type="image/png" href="../../LOGONEGTIVO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../caso.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+<style>@font-face{font-family:'VDisplay';src:url('../../projects/V_DownLoadSUB/static/fonts/d9ba559e4ba4.woff2') format('woff2');font-display:swap}</style>
+</head>
+<body style="--accent:#e8323f;--bg:#12100e;--display:'VDisplay',serif;--h1:clamp(2.4rem,11vw,9rem)">
+<main>
+<div class="top"><a class="back" href="../../index.html#projects">← Volver al portfolio</a></div>
+
+<header>
+  <span class="tag">Vídeo + IA · En desarrollo</span>
+  <h1>V_DOWNLOADER</h1>
+  <p class="lead">Herramienta para <strong>descargar, transcribir y traducir vídeos</strong> con IA, con un editor de subtítulos con línea de tiempo, estilos y exportación.</p>
+  <div class="ctas"><a class="btn main" href="../../projects/V_DownLoadSUB/">Ver la interfaz <span aria-hidden="true">→</span></a><a class="btn ghost" href="../../index.html#contact">Hablemos</a></div>
+  <p class="nota">La web publicada es la interfaz. El procesado corre en local y no está publicado.</p>
+</header>
+
+<section aria-labelledby="problema">
+  <div class="head"><span class="num">01</span><h2 id="problema">El problema</h2></div>
+  <p>Para sacar subtítulos o traducir un vídeo había que encadenar varias herramientas: una para descargar, otra para transcribir y otra para editar.</p>
+  <p>Cada una tenía su formato, su cuenta y su límite, y el resultado casi nunca salía con el estilo de subtítulo que quería.</p>
+  <p>Quería todo en <strong>una sola pantalla</strong>, y que el procesado se hiciera en mi equipo.</p>
+</section>
+
+<section aria-labelledby="para">
+  <div class="head"><span class="num">02</span><h2 id="para">Para quién y qué resuelve</h2></div>
+  <div class="grid2"><div class="cell"><h3>Para quién</h3><ul class="lista"><li>Creadores de contenido que subtitulan o traducen sus vídeos para redes</li><li>Quien necesita el texto de una charla, una clase o un tutorial</li></ul></div><div class="cell"><h3>Qué resuelve</h3><ul class="lista"><li>Todo el proceso en una sola pantalla: descargar, transcribir, traducir, editar y exportar</li><li>Traducción a 16 idiomas y lectura del texto que aparece en pantalla</li><li>Subtítulos con estilo propio, sin pasar por un editor de vídeo</li><li>El procesado corre en local: sin subir tus vídeos a ningún servicio</li></ul></div></div>
+</section>
+
+<section aria-labelledby="como">
+  <div class="head"><span class="num">03</span><h2 id="como">Cómo funciona</h2></div>
+  <ol class="flow">
+    <li><div><h3>Entra el vídeo</h3><p>Pegas un enlace o arrastras un archivo (MP4, MOV, WebM, MKV, MP3, WAV u OGG) y eliges la calidad.</p></div></li>
+    <li><div><h3>Lo procesa</h3><p>Transcribe el audio con Whisper, puede leer el texto que sale en pantalla (OCR) y traduce a 16 idiomas.</p></div></li>
+    <li><div><h3>Lo editas</h3><p>Ajustas los subtítulos en una línea de tiempo con fuente, color, contorno, posición y resaltado palabra a palabra.</p></div></li>
+    <li><div><h3>Lo exportas</h3><p>Descargas el archivo SRT o renderizas el vídeo con los subtítulos ya puestos.</p></div></li>
+  </ol>
+</section>
+
+<section aria-labelledby="ver">
+  <div class="head"><span class="num">04</span><h2 id="ver">Así se ve</h2></div>
+  <div class="galeria"><figure class="grande"><img src="img/vdl-app.webp" alt="Interfaz de V_DOWNLOADER" width="1200" height="750" loading="lazy" decoding="async"><figcaption>La interfaz: pegas un enlace o arrastras un archivo.</figcaption></figure><figure class="movil"><img src="img/vdl-movil.webp" alt="V_DOWNLOADER en el móvil" width="390" height="844" loading="lazy" decoding="async"><figcaption>La misma interfaz, adaptada al móvil.</figcaption></figure></div>
+</section>
+
+<section aria-labelledby="hecho">
+  <div class="head"><span class="num">05</span><h2 id="hecho">Cómo está hecho</h2></div>
+  <div class="grid2">
+    <div class="cell"><h3>Editor</h3><p>Deshacer y rehacer, zoom en la línea de tiempo y vista previa del estilo.</p></div>
+    <div class="cell"><h3>Formatos</h3><p>Vídeo y audio en los formatos más habituales, y descarga de listas completas como colección.</p></div>
+    <div class="cell"><h3>Fuentes</h3><p>Enlaces de YouTube, Vimeo, Twitch y otras plataformas, en calidad de 360p a 1080p. Para vídeos que piden sesión, usa las cookies de tu navegador (Chrome, Firefox o Edge).</p></div>
+    <div class="cell"><h3>Estilos de subtítulo</h3><p>Cinco familias de letra, tamaño, color, negrita, cursiva, contorno, fondo con opacidad, posición, alineación y resaltado palabra a palabra.</p></div>
+  </div>
+  <div class="chips" style="margin-top:28px"><span>Python</span><span>Flask</span><span>yt-dlp</span><span>FFmpeg</span><span>Whisper</span><span>JavaScript</span></div>
+</section>
+
+<section aria-labelledby="papel">
+  <div class="head"><span class="num">06</span><h2 id="papel">Mi papel</h2></div>
+  <p>El producto entero, probado con mis propios vídeos:</p>
+  <ul class="lista papel"><li>El diseño de la interfaz y de la marca.</li><li>El flujo completo, de la descarga a la exportación, en una sola pantalla.</li><li>El editor de subtítulos y sus estilos.</li><li>El procesado en local, construido dirigiendo asistentes de IA.</li></ul>
+</section>
+
+<section aria-labelledby="estado">
+  <div class="head"><span class="num">07</span><h2 id="estado">Estado y siguiente paso</h2></div>
+  <div class="grid2 estado"><div class="cell"><small>Hoy</small><p>Interfaz publicada. El procesado funciona en local y no está publicado.</p></div><div class="cell"><small>Siguiente paso</small><p>Pulir el editor de subtítulos y decidir cómo ofrecer el procesado fuera de mi equipo.</p></div></div>
+</section>
+
+<nav class="pj-nav" aria-label="Otros proyectos"><a class="ant" href="../ares/"><small>← Anterior</small><strong class="f-ares">ARES GPS</strong></a><a class="sig" href="../vtotxforia/"><small>Siguiente →</small><strong class="f-vtotx">VtoTXforIA</strong></a></nav>
+
+<footer>
+  <p>¿Quieres verlo en directo o saber más? <a href="../../index.html#contact">Escríbeme</a>.</p>
+</footer>
+</main>
+<script src="../../assets/scrollbar.js" defer></script>
+</body>
+</html>

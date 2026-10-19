@@ -1,8 +1,8 @@
-# ONIX — Stands NFC para Negocios
+# ONIX — Expositores NFC para Negocios
 
 ➡️ **[Abrir web ONIX](https://liamhades.github.io/.DEV/projects/onix/)** ⬅️
 
-Páginas publicadas: [Producto](https://liamhades.github.io/.DEV/projects/onix/producto.html) · [Suscripciones](https://liamhades.github.io/.DEV/projects/onix/suscripciones.html) · [Agentes](https://liamhades.github.io/.DEV/projects/onix/agentes.html) · [Campañas](https://liamhades.github.io/.DEV/projects/onix/campanas.html) · [Presupuesto web](https://liamhades.github.io/.DEV/projects/onix/presupuesto-web.html) · [Referidos](https://liamhades.github.io/.DEV/projects/onix/referidos.html)
+Páginas publicadas: [Producto](https://liamhades.github.io/.DEV/projects/onix/producto.html) · [Suscripciones](https://liamhades.github.io/.DEV/projects/onix/suscripciones.html) · [Agentes](https://liamhades.github.io/.DEV/projects/onix/agentes.html) · [Campañas](https://liamhades.github.io/.DEV/projects/onix/campanas.html) · [Presupuesto web](https://liamhades.github.io/.DEV/projects/onix/presupuesto-web.html)
 
 Demo NFC: [animación](https://liamhades.github.io/.DEV/projects/onix/tracking/preview.html) · [animación y redirección](https://liamhades.github.io/.DEV/projects/onix/tracking/preview-redirect.html)
 

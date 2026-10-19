@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ARES GPS — Liam Garcia</title>
+<meta name="description" content="Localizador GPS para perros con conexión propia: dónde está tu perro y cómo está cada día."/>
+<link rel="icon" type="image/png" href="../../LOGONEGTIVO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../caso.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+</head>
+<body style="--accent:#86BBD8;--bg:#151d25;--display:'Bruno Ace SC',sans-serif;--h1:clamp(2.2rem,10vw,8.4rem)">
+<main>
+<div class="top"><a class="back" href="../../index.html#projects">← Volver al portfolio</a></div>
+
+<header>
+  <span class="tag">IoT y hardware · En desarrollo</span>
+  <h1>ARES GPS</h1>
+  <p class="lead">Localizador GPS para perros con <strong>conexión propia</strong>: te dice dónde está tu perro y cómo está cada día (actividad y descanso). Estoy diseñando el producto entero: dispositivo, aplicación y web.</p>
+  <div class="ctas"><a class="btn main" href="../../projects/ares/">Ver la web <span aria-hidden="true">→</span></a><a class="btn ghost" href="../../index.html#contact">Hablemos</a></div>
+  <p class="nota">La web es pública. El dispositivo está en desarrollo y todavía no se vende.</p>
+</header>
+
+<section aria-labelledby="problema">
+  <div class="head"><span class="num">01</span><h2 id="problema">El problema</h2></div>
+  <p>Dos miedos de cualquier dueño: que el perro se pierda y no saber si está bien. La mayoría de localizadores dependen del móvil y se quedan sin señal en el monte.</p>
+  <p>Y lo segundo se nota tarde: cuando un perro duerme peor o se mueve menos, normalmente lleva días así antes de que el dueño se dé cuenta.</p>
+  <p>ARES junta las dos cosas en un solo aparato en el collar: <strong>saber dónde está y saber cómo está</strong>.</p>
+</section>
+
+<section aria-labelledby="para">
+  <div class="head"><span class="num">02</span><h2 id="para">Para quién y qué resuelve</h2></div>
+  <div class="grid2"><div class="cell"><h3>Para quién</h3><ul class="lista"><li>Dueños de perros que salen al monte, a fincas o a zonas con poca cobertura</li><li>Quien quiere saber no solo dónde está su perro, sino cómo está cada día</li></ul></div><div class="cell"><h3>Qué resuelve</h3><ul class="lista"><li>Localizar al perro sin depender del móvil del dueño</li><li>Avisar cuando se acerca al borde de la zona segura, no cuando ya está lejos</li><li>Seguir su actividad y su descanso: un cambio suele llegar antes que un síntoma</li><li>Dar al veterinario información real en vez de recuerdos</li></ul></div></div>
+</section>
+
+<section aria-labelledby="como">
+  <div class="head"><span class="num">03</span><h2 id="como">Cómo funciona</h2></div>
+  <ol class="flow">
+    <li><div><h3>Localiza</h3><p>El collar lleva su propia SIM y conexión 4G, así que no depende de tu móvil: puedes verlo desde la oficina o desde otro país.</p></div></li>
+    <li><div><h3>Sin cobertura, por Bluetooth</h3><p>Si ninguno de los dos tiene internet, el collar se conecta a tu teléfono por Bluetooth y la app te guía hacia él, en modo frío o caliente.</p></div></li>
+    <li><div><h3>Entiende el movimiento</h3><p>Combina el GPS con el sensor de movimiento para distinguir si ha corrido él o iba en el coche, y avisa si se cae o se queda quieto de golpe.</p></div></li>
+    <li><div><h3>Te avisa a tiempo</h3><p>Dibujas una zona segura en el mapa y ARES te avisa cuando se acerca al borde, no cuando ya está lejos. También te frena si hace demasiado calor para pasear.</p></div></li>
+    <li><div><h3>Ahorra batería solo</h3><p>Se duerme cuando el perro está quieto o reconoce el WiFi de casa, y se despierta en cuanto se mueve.</p></div></li>
+  </ol>
+</section>
+
+<section aria-labelledby="ver">
+  <div class="head"><span class="num">04</span><h2 id="ver">Así se ve</h2></div>
+  <div class="galeria"><figure class="grande"><img src="img/ares-portada.webp" alt="Portada de la web de ARES GPS" width="1200" height="750" loading="lazy" decoding="async"><figcaption>La web pública de ARES.</figcaption></figure><figure class="movil"><img src="img/ares-movil.webp" alt="La web de ARES en el móvil" width="390" height="844" loading="lazy" decoding="async"><figcaption>Pensada primero para el móvil.</figcaption></figure><figure class=""><img src="img/ares-geocerca.webp" alt="Guía de geocerca para perros" width="1200" height="750" loading="lazy" decoding="async"><figcaption>Guías que explican cada función, como la zona segura.</figcaption></figure><figure class=""><img src="img/ares-mapa.webp" alt="Buscador de sitios pet friendly" width="1200" height="750" loading="lazy" decoding="async"><figcaption>Buscador de sitios pet friendly por ciudad, con mapa.</figcaption></figure></div>
+</section>
+
+<section aria-labelledby="hecho">
+  <div class="head"><span class="num">05</span><h2 id="hecho">Cómo está hecho</h2></div>
+  <div class="grid2">
+    <div class="cell"><h3>Dispositivo</h3><p>Basado en ESP32-S3, con GPS de varios sistemas de satélites, sellado IP68 e IK10 sin puertos, carga magnética y unos 64 g de peso.</p></div>
+    <div class="cell"><h3>Luces</h3><p>Doce luces de color visibles a más de 50 metros, con tres modos: paseo, búsqueda y aviso de estado.</p></div>
+    <div class="cell"><h3>Web pública</h3><p>Modelo 3D animado, guías de actividad, descanso, nutrición y alimentos tóxicos, calculadora de peso ideal y mapa de sitios pet friendly por ciudad.</p></div>
+    <div class="cell"><h3>Bienestar</h3><p>Actividad real, calorías y horas de descanso. Con Premium, cruza la comida con la actividad para proponer una dieta para ese perro.</p></div>
+  </div>
+  <div class="chips" style="margin-top:28px"><span>ESP32-S3</span><span>C/C++</span><span>FastAPI</span><span>React</span><span>PostgreSQL</span><span>Three.js</span><span>GSAP</span><span>Leaflet</span><span>SEO</span></div>
+</section>
+
+<section aria-labelledby="papel">
+  <div class="head"><span class="num">06</span><h2 id="papel">Mi papel</h2></div>
+  <p>Diseño el producto entero:</p>
+  <ul class="lista papel"><li>Qué lleva el dispositivo y por qué: conexión propia, Bluetooth de respaldo, sensores, batería y sellado.</li><li>Cómo y cuándo avisa la aplicación: zona segura, calor, caídas y cambios en el descanso.</li><li>La marca, los textos y la web, construida dirigiendo asistentes de IA.</li><li>Las herramientas gratuitas para dueños: calculadora, guías y mapa de sitios pet friendly.</li></ul>
+</section>
+
+<section aria-labelledby="estado">
+  <div class="head"><span class="num">07</span><h2 id="estado">Estado y siguiente paso</h2></div>
+  <div class="grid2 estado"><div class="cell"><small>Hoy</small><p>Web pública con guías y herramientas para dueños. El dispositivo está en diseño y todavía no se vende.</p></div><div class="cell"><small>Siguiente paso</small><p>El prototipo funcional del collar y probarlo con perros reales.</p></div></div>
+</section>
+
+<nav class="pj-nav" aria-label="Otros proyectos"><a class="ant" href="../onix/"><small>← Anterior</small><strong class="f-onix">ONIX</strong></a><a class="sig" href="../v-downloader/"><small>Siguiente →</small><strong class="f-vdl">V_DOWNLOADER</strong></a></nav>
+
+<footer>
+  <p>¿Quieres verlo en directo o saber más? <a href="../../index.html#contact">Escríbeme</a>.</p>
+</footer>
+</main>
+<script src="../../assets/scrollbar.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>VtoTXforIA — Liam Garcia</title>
+<meta name="description" content="Dictado por voz que transcribe en tu propio ordenador con Whisper. El audio nunca sale de tu equipo."/>
+<link rel="icon" type="image/png" href="../../LOGONEGTIVO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../caso.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+<style>@font-face{font-family:'PressStart';src:url('../../projects/vtotxforia/fonts/press-start-2p.ttf') format('truetype');font-display:swap}</style>
+</head>
+<body style="--accent:#4A90D9;--bg:#000000;--display:'PressStart',monospace;--h1:clamp(1.7rem,7.4vw,6.4rem)">
+<main>
+<div class="top"><a class="back" href="../../index.html#projects">← Volver al portfolio</a></div>
+
+<header>
+  <span class="tag">Voice AI · Dictado en local</span>
+  <h1>VtoTXforIA</h1>
+  <p class="lead">Dictado por voz que <strong>transcribe en tu propio ordenador</strong>. La versión web corre en el navegador con Whisper compilado a WebAssembly: el audio nunca sale de tu equipo.</p>
+  <div class="ctas"><a class="btn main" href="../../projects/vtotxforia/">Ver la web <span aria-hidden="true">→</span></a><a class="btn ghost" href="../../index.html#contact">Hablemos</a></div>
+  <p class="nota">La demo web funciona en el navegador. La primera vez descarga el modelo, así que tarda un poco más.</p>
+</header>
+
+<section aria-labelledby="problema">
+  <div class="head"><span class="num">01</span><h2 id="problema">El problema</h2></div>
+  <p>Los dictados habituales mandan tu voz a un servidor para transcribirla. Para notas privadas, prompts para la IA o textos de trabajo, no quería que mi voz saliera de mi ordenador.</p>
+  <p>Además, para escribir prompts largos hablar es mucho más rápido que teclear, y quería poder hacerlo en cualquier aplicación, no solo en una web.</p>
+  <p>Quería algo que funcionara sin conexión, sin cuentas y sin coste por minuto.</p>
+</section>
+
+<section aria-labelledby="para">
+  <div class="head"><span class="num">02</span><h2 id="para">Para quién y qué resuelve</h2></div>
+  <div class="grid2"><div class="cell"><h3>Para quién</h3><ul class="lista"><li>Quien escribe mucho (prompts para la IA, notas, correos) y prefiere hacerlo hablando</li><li>Quien no quiere que su voz pase por un servidor ajeno</li></ul></div><div class="cell"><h3>Qué resuelve</h3><ul class="lista"><li>Dictado privado: el audio no sale de tu equipo</li><li>Gratis y sin cuenta, sin coste por minuto</li><li>Funciona sin conexión una vez descargado el modelo</li><li>En escritorio, el texto se escribe directamente donde tengas el cursor</li></ul></div></div>
+</section>
+
+<section aria-labelledby="como">
+  <div class="head"><span class="num">03</span><h2 id="como">Cómo funciona</h2></div>
+  <ol class="flow">
+    <li><div><h3>Grabas</h3><p>Pulsas el botón (o la tecla F8 en la app de escritorio) y hablas con normalidad.</p></div></li>
+    <li><div><h3>Carga el modelo</h3><p>La primera vez descarga un modelo pequeño de Whisper (tiny o base). Por eso la primera transcripción tarda un poco más.</p></div></li>
+    <li><div><h3>Transcribe en local</h3><p>Whisper convierte la voz en texto en tu propio equipo: en el navegador con WebAssembly y en la app de escritorio con faster-whisper.</p></div></li>
+    <li><div><h3>Usas el texto</h3><p>Lo copias, lo guardas en el historial de la sesión o, en la app de escritorio, se escribe directamente en la aplicación que tengas abierta.</p></div></li>
+  </ol>
+</section>
+
+<section aria-labelledby="ver">
+  <div class="head"><span class="num">04</span><h2 id="ver">Así se ve</h2></div>
+  <div class="galeria"><figure class="grande"><img src="img/vtotx-app.webp" alt="La demo web de VtoTXforIA" width="1200" height="750" loading="lazy" decoding="async"><figcaption>La demo web: graba, transcribe y copia, todo en el navegador.</figcaption></figure><figure class="movil"><img src="img/vtotx-movil.webp" alt="VtoTXforIA en el móvil" width="390" height="844" loading="lazy" decoding="async"><figcaption>También funciona en el móvil.</figcaption></figure></div>
+</section>
+
+<section aria-labelledby="hecho">
+  <div class="head"><span class="num">05</span><h2 id="hecho">Cómo está hecho</h2></div>
+  <div class="grid2">
+    <div class="cell"><h3>Sin servidor</h3><p>La transcripción no necesita backend: todo el trabajo lo hace tu navegador.</p></div>
+    <div class="cell"><h3>App de escritorio</h3><p>Tecla global F8, indicador flotante de grabación, historial y bandeja del sistema. Se descarga desde la web.</p></div>
+    <div class="cell"><h3>Modelos</h3><p>En el navegador, Whisper tiny o base. En escritorio, faster-whisper small en el procesador, sin necesitar tarjeta gráfica.</p></div>
+    <div class="cell"><h3>Privacidad</h3><p>Sin cuentas. El historial se guarda solo en tu navegador y se borra si limpias los datos del sitio.</p></div>
+  </div>
+  <div class="chips" style="margin-top:28px"><span>Whisper</span><span>WebAssembly</span><span>JavaScript</span><span>Python</span><span>faster-whisper</span></div>
+</section>
+
+<section aria-labelledby="papel">
+  <div class="head"><span class="num">06</span><h2 id="papel">Mi papel</h2></div>
+  <p>De la idea al uso diario:</p>
+  <ul class="lista papel"><li>La idea, a partir de un problema mío: dictar prompts sin enviar mi voz fuera de mi ordenador.</li><li>La interfaz con estética retro y la marca.</li><li>La web y la app de escritorio, construidas dirigiendo asistentes de IA.</li><li>Lo uso cada día para dictar prompts, y de ese uso salen las mejoras.</li></ul>
+</section>
+
+<section aria-labelledby="estado">
+  <div class="head"><span class="num">07</span><h2 id="estado">Estado y siguiente paso</h2></div>
+  <div class="grid2 estado"><div class="cell"><small>Hoy</small><p>Demo web publicada y app de escritorio descargable desde la propia web.</p></div><div class="cell"><small>Siguiente paso</small><p>Instalador más sencillo para la app de escritorio y elegir el modelo según la potencia del equipo.</p></div></div>
+</section>
+
+<nav class="pj-nav" aria-label="Otros proyectos"><a class="ant" href="../v-downloader/"><small>← Anterior</small><strong class="f-vdl">V_DOWNLOADER</strong></a><a class="sig" href="../onix/"><small>Siguiente →</small><strong class="f-onix">ONIX</strong></a></nav>
+
+<footer>
+  <p>¿Quieres verlo en directo o saber más? <a href="../../index.html#contact">Escríbeme</a>.</p>
+</footer>
+</main>
+<script src="../../assets/scrollbar.js" defer></script>
+</body>
+</html>
