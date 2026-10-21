@@ -56,27 +56,37 @@ section{padding:0 max(20px,2.23vw);max-width:1600px;margin:0 auto;position:relat
 .header-logo:hover{filter:brightness(1.2)}
 .header-logo:hover{filter:brightness(1.2)}
 header{position:fixed;top:0;right:0;z-index:100;padding:26px max(20px,2.23vw) 26px 0;font-family:'Space Grotesk',sans-serif;letter-spacing:0.04em}
-header::before{content:'';position:absolute;inset:0;z-index:-1;background:rgba(10,10,18,0.55);backdrop-filter:blur(18px) saturate(1.5);-webkit-backdrop-filter:blur(18px) saturate(1.5);border-bottom:1px solid rgba(255,255,255,0.08);clip-path:polygon(0 0,100% 0,calc(100% - 40px) 100%,40px 100%);opacity:0;transition:opacity 0.5s ease,background 0.4s ease;pointer-events:none}
-body.over-light header::before{background:rgba(245,245,245,0.62);border-bottom-color:rgba(0,0,0,0.08)}
+header::before{content:'';position:absolute;inset:0;z-index:-1;background:rgba(10,10,18,0.96);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid rgba(255,255,255,0.08);clip-path:polygon(0 0,100% 0,calc(100% - 40px) 100%,40px 100%);opacity:0;transition:opacity 0.5s ease,background 0.4s ease;pointer-events:none}
+body.over-light header::before{background:rgba(245,245,245,0.96);border-bottom-color:rgba(0,0,0,0.08)}
 .top-blur{display:none;position:fixed;top:0;left:0;right:0;height:76px;z-index:99;pointer-events:none;transform:translateY(-100%);background:rgba(10,10,18,0.5);backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);border-bottom:1px solid rgba(255,255,255,0.06);opacity:0;transition:opacity 0.4s ease,background 0.4s ease}
 body.scrolled .top-blur{opacity:1;transform:none}
-.top-blur{transition:none;border-bottom:0;background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-body.over-light .top-blur{background:rgba(245,245,245,0.68)}
+.top-blur{transition:none;border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(10,10,18,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+body.over-light .top-blur{background:rgba(245,245,245,0.96);border-bottom-color:rgba(0,0,0,0.08)}
 body.scrolled header{right:auto;left:50%;transform:translateX(-50%);padding:24px 76px;animation:menuBaja 0.55s cubic-bezier(0.22,1,0.36,1) backwards}
 @keyframes menuBaja{from{transform:translate(-50%,-115%)}to{transform:translate(-50%,0)}}
 body:not(.scrolled) header{animation:menuVuelve 0.4s ease backwards}
 @keyframes menuVuelve{from{transform:translateY(-110%)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){body.scrolled header,body:not(.scrolled) header{animation:none}}
-header::before,body.scrolled header::before{opacity:1;background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:0;transition:none}
-body.over-light header::before{background:rgba(245,245,245,0.68)}
-header nav a{mix-blend-mode:normal}
+header::before,body.scrolled header::before{opacity:1;background:rgba(10,10,18,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08);transition:none}
+body.over-light header::before{background:rgba(245,245,245,0.96);border-bottom-color:rgba(0,0,0,0.08)}
 .top-blur{opacity:1;transform:none}
 header nav{display:flex;gap:clamp(18px,2.2vw,34px);font-weight:500}
 header nav a{font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;padding-bottom:3px;position:relative;mix-blend-mode:difference;color:#fff;transition:color 0.3s}
 header nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease}
 header nav a:hover::after,header nav a:focus-visible::after{transform:scaleX(1)}
-body.scrolled header nav a{color:#fff;mix-blend-mode:normal;transition:color 0s}
-body.scrolled.over-light header nav a{color:#000}
+/* ═══ BARRA DEL MENÚ — tinta según el fondo real, sin saltos ═══
+   La barra se pinta con --bar-bg: un degradado con la "costura" exacta entre
+   zona clara y oscura (la calcula el JS según la posición real de las secciones).
+   El texto del menú va siempre en mix-blend-mode:difference (como el cursor y el
+   logo), así que se invierte píxel a píxel al cruzar esa costura, en vez de
+   cambiar de color de golpe. */
+:root{--bar-bg:linear-gradient(to bottom,rgba(10,10,18,0.96),rgba(10,10,18,0.96))}
+header::before,body.scrolled header::before,body.over-light header::before,
+.top-blur,body.over-light .top-blur{
+  background:transparent;
+  background-image:var(--bar-bg);
+}
+header nav a{color:#fff;mix-blend-mode:difference}
 
 /* ═══ MENÚ MÓVIL ═══ */
 .menu-btn{display:none;position:fixed;top:14px;right:max(16px,2.23vw);z-index:120;width:48px;height:48px;border:0;background:transparent;mix-blend-mode:difference;align-items:center;justify-content:center}
@@ -250,8 +260,8 @@ body.menu-open{overflow:hidden}
 .pj-onix .project-visual-inner{background:linear-gradient(135deg,#8C3A0F,#B85420 55%,#F5C96A)}
 
 .pj-ares h2{font-family:'Bruno Ace SC',sans-serif;font-weight:400;letter-spacing:0.01em;font-size:clamp(2.2rem,8.5vw,8.6rem)!important}
-.pj-ares:hover h2,.pj-ares.is-hovered h2,.pj-ares:hover .tag,.pj-ares.is-hovered .tag,.pj-ares:hover .desc,.pj-ares.is-hovered .desc{color:#F26419}
-.pj-ares .project-visual-inner{background:linear-gradient(135deg,#151d25,#2F4858 45%,#F26419 80%,#F6AE2D)}
+.pj-ares:hover h2,.pj-ares.is-hovered h2,.pj-ares:hover .tag,.pj-ares.is-hovered .tag,.pj-ares:hover .desc,.pj-ares.is-hovered .desc{color:#86BBD8}
+.pj-ares .project-visual-inner{background:linear-gradient(135deg,#151d25,#2F4858 45%,#33658A 80%,#86BBD8)}
 
 .pj-vdownloader h2{font-family:'VDisplay','Playfair Display',serif;font-weight:400}
 .pj-vdownloader:hover h2,.pj-vdownloader.is-hovered h2,.pj-vdownloader:hover .tag,.pj-vdownloader.is-hovered .tag,.pj-vdownloader:hover .desc,.pj-vdownloader.is-hovered .desc{color:#c8102e}
@@ -375,11 +385,12 @@ footer a{color:#111}
   <div class="ed-side"><span class="section-num">01</span><h2 id="t-about">Sobre mí</h2></div>
   <div class="ed-body">
     <div class="ed-caja">
-      <p class="ed-lead">Me adapto rápido al puesto, al equipo y al problema que toque resolver.</p>
-      <p class="ed-text">Empecé en ventas, y ahí descubrí que soy <strong>proactivo</strong> sin proponérmelo: buscar clientes a mano me comía el día, así que busqué herramientas para encontrar leads y automatizar el primer contacto. Nadie me lo pidió. Funcionó, y me enganché a la IA.</p>
-      <p class="ed-text">De vender seguros pasé a construir con IA, y casi nunca lo mismo: un localizador para perros, expositores NFC para negocios, un editor de subtítulos, un dictado por voz. Esa mezcla me ha hecho <strong>versátil</strong> y me obliga a <strong>aprender rápido</strong>, con buenos profesores, un máster en IA y muchas horas de práctica por mi cuenta. Por eso me <strong>adapto</strong> bien a puestos distintos: automatización, consultoría o desarrollo con IA.</p>
-      <p class="ed-text">Soy <strong>sociable</strong> y me gusta trabajar en equipo. El mostrador, los eventos y los clientes me enseñaron a explicar la tecnología sin jerga y a entender qué necesita alguien antes de construir nada. Y soy <strong>productivo</strong> de verdad: lo que construyo lo uso cada día, como el buscador que me trae ofertas de empleo cada mañana.</p>
-      <p class="ed-text">Fuera de la pantalla, <strong>los perros</strong>. Me encantan, tanto que uno de mis proyectos más grandes, ARES, nació para cuidarlos mejor. También me tira <strong>el deporte en la montaña</strong>, y sigo de cerca los mercados: <strong>invierto en índices y empresas</strong> y me gusta entender por qué suben o bajan.</p>
+      <p class="ed-lead">Vengo de <strong>marketing y ventas</strong> y llevo desde 2023 construyendo con IA, casi siempre para resolverme problemas míos.</p>
+      <p class="ed-text">Empecé en la calle y en el mostrador: eventos, puntos de venta, clientes que te dicen que no tres veces antes de decirte que sí. De ahí me quedó escuchar antes de proponer, <strong>facilitar la comprensión</strong> y no dar nada por cerrado hasta que la otra persona lo ha entendido.</p>
+      <p class="ed-text">El salto a la IA no fue una decisión de despacho: empecé a automatizar por mi cuenta, sin que nadie me lo pidiera, porque buscar clientes a mano me comía el día. Funcionó y ya no paré. Hoy <strong>me multiplico</strong> en el sentido literal: no hago una cosa detrás de otra, tengo varias corriendo a la vez.</p>
+      <p class="ed-text">Lo que de verdad sé hacer es <strong>coordinar agentes</strong>. Reparto el trabajo entre varios, cada uno con su tarea y sus herramientas, y respondo de lo que devuelven: reviso, corrijo y vuelvo a lanzarlos. Están conectados a una <strong>memoria común</strong> donde apuntan lo que deciden y lo que falla, así no repiten el mismo error ni pisan lo que está haciendo otro. Cuando vuelvo a algo que dejé a medias, está hecho y con lo que ha fallado apuntado. Es el mismo trabajo que hacía con equipos de personas: repartir, supervisar y responder del resultado. Y cuando algo se rompe, <strong>lo levanto y sigo</strong>: casi todo lo que he construido ha salido de rehacerlo más de una vez.</p>
+      <p class="ed-text">Y eso no se queda en un departamento: puedo entrar en ventas y montar el seguimiento comercial que hoy se hace a mano, en marketing y llevar las campañas y el contenido, en atención al cliente y automatizar las respuestas, en operaciones y quitarme de encima los informes que se piden cada mes, o en datos y construir el buscador que responde con la documentación de la empresa en vez de con inventos. Son ejemplos: <strong>lo que sé hacer llega bastante más allá de esta lista</strong>. Con una regla que no negocio: <strong>lo que escribe a un cliente pasa antes por una persona</strong>.</p>
+      <p class="ed-text">Fuera del trabajo, lo que me mueve son los perros —uno de mis proyectos más grandes, ARES, nació para cuidarlos mejor—, el deporte en la montaña y los mercados, que sigo casi a diario.</p>
     </div>
     <div class="ed-datos">
       <div class="ed-dato"><b>+4.500 h</b><span>trabajando con IA cada día, desde 2023</span></div>
@@ -464,7 +475,7 @@ footer a{color:#111}
       <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div></div>
     </a>
 
-  <a class="project-card pj-ares" href="./casos/ares/" data-pj="ARES GPS" data-font="Bruno Ace SC" data-color="#F26419">
+  <a class="project-card pj-ares" href="./casos/ares/" data-pj="ARES GPS" data-font="Bruno Ace SC" data-color="#86BBD8">
       <div class="project-info">
         <span class="num">03</span><span class="tag">IoT &amp; Hardware · En desarrollo</span><h2>ARES GPS</h2>
         <p class="desc">Localizador GPS para perros con conexión propia: te dice dónde está y cómo está cada día. Diseño el producto entero: dispositivo, aplicación y web.</p>
@@ -616,19 +627,33 @@ document.addEventListener('mouseenter',function(){if(init)c.style.opacity='1'});
 
 // ═══ HEADER SCROLL ═══
 var header=document.getElementById('header');
+var BAR_DARK='rgba(10,10,18,0.96)',BAR_LIGHT='rgba(245,245,245,0.96)';
+// Degradado de la barra: donde cae la costura claro/oscuro, la tinta del menú
+// se invierte sola (mix-blend-mode:difference). Sin costura -> un solo color.
+function barBg(seam,lightAbove,overLight){
+  if(seam===null)return 'linear-gradient(to bottom,'+(overLight?BAR_LIGHT:BAR_DARK)+','+(overLight?BAR_LIGHT:BAR_DARK)+')';
+  var y=Math.round(seam*10)/10;
+  var arriba=lightAbove?BAR_LIGHT:BAR_DARK,abajo=lightAbove?BAR_DARK:BAR_LIGHT;
+  return 'linear-gradient(to bottom,'+arriba+' 0,'+arriba+' '+y+'px,'+abajo+' '+y+'px,'+abajo+' 100%)';
+}
 function updateHeader(){
-  var isScrolled=window.scrollY>40;
-  document.body.classList.toggle('scrolled',isScrolled);
-  var y=(header.offsetParent?header.getBoundingClientRect().bottom:76)/2;
-  var overLight=false;
+  document.body.classList.toggle('scrolled',window.scrollY>40);
+  var banda=Math.max(header.offsetHeight||0,80);
+  var seam=null,lightAbove=false,overLight=false;
   document.querySelectorAll('.wrap-light').forEach(function(s){
     var r=s.getBoundingClientRect();
-    if(y>r.top&&y<r.bottom)overLight=true;
+    if(r.top>-1&&r.top<banda){seam=r.top;lightAbove=false}          // entra la zona clara por arriba
+    else if(r.bottom>0&&r.bottom<banda){seam=r.bottom;lightAbove=true} // vuelve lo oscuro por abajo
+    if(r.top<banda/2&&r.bottom>banda/2)overLight=true;
   });
+  document.documentElement.style.setProperty('--bar-bg',barBg(seam,lightAbove,overLight));
   document.body.classList.toggle('over-light',overLight);
 }
 var headerPend=false;
 window.addEventListener('scroll',function(){if(!headerPend){headerPend=true;requestAnimationFrame(function(){headerPend=false;updateHeader()})}},{passive:true});
+window.addEventListener('resize',updateHeader);
+window.addEventListener('load',updateHeader);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(updateHeader);
 updateHeader();
 
 // ═══ HERO PHOTO: hover en ordenador; en táctil, color mientras se hace scroll y gris al parar ═══
