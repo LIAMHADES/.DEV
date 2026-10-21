@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  body{background:#0a0a0a;font-family:'Inter',sans-serif;position:relative}
+  .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.10) 1px,transparent 1px);background-size:26px 26px;opacity:.5}
+  .photo{position:absolute;right:0;top:0;width:560px;height:630px;overflow:hidden}
+  .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(100%) brightness(.82);transform:scale(1.18);transform-origin:50% 20%}
+  .fade{position:absolute;right:0;top:0;width:620px;height:630px;background:linear-gradient(to right,#0a0a0a 0%,#0a0a0a 18%,rgba(10,10,10,.86) 38%,rgba(10,10,10,.25) 62%,rgba(10,10,10,0) 82%)}
+  .txt{position:absolute;left:64px;bottom:64px;width:700px;z-index:3}
+  .kicker{font-family:'Space Grotesk',sans-serif;font-size:14px;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:16px}
+  h1{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:112px;line-height:.88;letter-spacing:.015em;color:#fff}
+  .sub{font-size:22px;font-weight:300;color:rgba(255,255,255,.9);margin-top:20px}
+  .logo{position:absolute;left:64px;top:56px;width:64px;height:64px;z-index:3}
+  .rule{position:absolute;left:64px;bottom:44px;width:120px;height:1px;background:rgba(255,255,255,.35)}
+</style>
+</head>
+<body>
+  <div class="dots"></div>
+  <img class="logo" src="logo-neg.svg" alt="">
+  <div class="photo"><img src="hero-silueta.webp" alt=""></div>
+  <div class="fade"></div>
+  <div class="txt">
+    <div class="kicker">Girona · Portfolio</div>
+    <h1>Liam Garcia<br>Soldevila</h1>
+    <div class="sub">IA, automatización y agentes</div>
+  </div>
+</body>
+</html>
+
