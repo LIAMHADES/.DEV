@@ -1,6 +1,9 @@
 // V_DOWNLOADER v3 — Stage-based workflow
 var CapStyle = window.CaptionStyle;
 var lastTranscriptText = "";
+var activeDownloadJobId = null;
+var downloadPollTimer = null;
+var downloadPollWarningShown = false;
 var STAGE_IDS = ['stage-upload', 'stage-config', 'stage-studio'];
 
 function showStage(stageId) {
@@ -248,6 +251,7 @@ function fmtDate(d) {
 async function startDownload() {
   var url = document.getElementById("urlInput").value.trim();
   if (!url) { alert("Introduce una URL."); return; }
+  if (activeDownloadJobId) return;
   var progressCard = document.getElementById("progressCard");
   var transcriptCard = document.getElementById("transcriptCard");
   progressCard.classList.remove("hidden");
@@ -259,7 +263,7 @@ async function startDownload() {
   var dlBtn = document.getElementById("downloadBtn");
   dlBtn.disabled = true;
   var isPlaylist = document.getElementById("playlistCheck").checked;
-  dlBtn.textContent = isPlaylist ? "PROCESANDO COLECCION..." : "DESCARGANDO...";
+  dlBtn.textContent = "INICIANDO...";
   var transcribeCheck = document.getElementById("transcribeCheck");
   var ocrCheck = document.getElementById("ocrCheck");
   var autoTranslateCheck = document.getElementById("autoTranslateCheck");
@@ -267,49 +271,137 @@ async function startDownload() {
     url: url,
     quality: getSelected("quality") || "best",
     format: getSelected("format") || "mp4",
-    subtitles: document.getElementById("subCheck").checked,
-    embed_subs: document.getElementById("embedSubCheck").checked,
+    subtitles: !!(document.getElementById("subCheck") || {}).checked,
+    embed_subs: !!(document.getElementById("embedSubCheck") || {}).checked,
     cookies: getSelected("cookies") || "none",
-    auto_transcribe: transcribeCheck && transcribeCheck.checked,
+    auto_transcribe: !!(transcribeCheck && transcribeCheck.checked),
     whisper_model: "base",
     separate_audio: false,
-    auto_ocr: ocrCheck && ocrCheck.checked,
-    auto_translate: autoTranslateCheck && autoTranslateCheck.checked,
+    auto_ocr: !!(ocrCheck && ocrCheck.checked),
+    auto_translate: !!(autoTranslateCheck && autoTranslateCheck.checked),
     is_playlist: isPlaylist
   };
   try {
-    var controller = new AbortController();
-    var warnTimer = setTimeout(function () { addLogLine("warn", "La descarga esta tardando mas de lo normal..."); }, 60000);
-    var abortTimer = setTimeout(function () { controller.abort(); }, 600000);
     var resp = await fetch(API_URL + "/api/download", {
       method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload), signal: controller.signal
+      body: JSON.stringify(payload)
     });
-    clearTimeout(warnTimer); clearTimeout(abortTimer);
     var data = await resp.json();
-    if (data.status === "ok" && data.files) {
-      document.getElementById("progressBar").style.width = "100%";
-      document.getElementById("progressPct").textContent = "100%";
-      document.getElementById("progressLabel").textContent = "✓ " + data.count + " video(s) procesados";
-      data.files.forEach(function (f) { addLogLine("success", "✓ " + f.filename); });
-    } else if (data.status === "ok") {
-      document.getElementById("progressBar").style.width = "100%";
-      document.getElementById("progressPct").textContent = "100%";
-      document.getElementById("progressLabel").textContent = "✓ DESCARGA COMPLETADA";
-      addLogLine("success", "✓ Guardado: " + data.filename);
-      if (data.edited_file) addLogLine("success", "Video con subtitulos: " + data.edited_file);
-    } else {
-      document.getElementById("progressLabel").textContent = "ERROR";
-      addLogLine("error", "✗ Error: " + (data.error || "Descarga fallida"));
+    if (!resp.ok || !data.job_id) {
+      throw new Error(data.error || "No se pudo iniciar la descarga.");
+    }
+    activeDownloadJobId = data.job_id;
+    dlBtn.textContent = isPlaylist ? "PROCESANDO COLECCIÓN..." : "DESCARGANDO...";
+    pollDownloadJob(activeDownloadJobId);
+  } catch (e) {
+    document.getElementById("progressLabel").textContent = "ERROR AL INICIAR";
+    document.getElementById("progressBar").style.background = "var(--terracotta)";
+    addLogLine("error", "Error: " + e.message);
+    dlBtn.disabled = false;
+    dlBtn.textContent = "⬇ DESCARGAR";
+  }
+}
+
+function renderDownloadJob(job) {
+  var pct = Number(job.percent);
+  var bar = document.getElementById("progressBar");
+  var label = document.getElementById("progressLabel");
+  var pctLabel = document.getElementById("progressPct");
+  var hint = document.getElementById("downloadStageHint");
+  var pauseBtn = document.getElementById("pauseDownloadBtn");
+  var resumeBtn = document.getElementById("resumeDownloadBtn");
+  var dlBtn = document.getElementById("downloadBtn");
+  if (Number.isFinite(pct)) bar.style.width = Math.max(0, Math.min(100, pct)) + "%";
+  pctLabel.textContent = job.total_bytes ? Math.round(pct || 0) + "%" : "";
+  label.textContent = job.message || "Procesando…";
+  if (job.state === "processing") {
+    hint.textContent = "Descarga terminada; transcripción/OCR/render en curso. La pausa solo controla la descarga.";
+  } else if (job.state === "pausing") {
+    hint.textContent = "Pausando en el siguiente fragmento…";
+  } else if (job.state === "paused") {
+    hint.textContent = "Descarga pausada. Pulsa Reanudar para continuar.";
+  } else if (job.state === "downloading") {
+    var details = [];
+    if (job.speed) details.push(formatDownloadSize(job.speed) + "/s");
+    if (job.eta !== null && job.eta !== undefined && Number.isFinite(Number(job.eta))) details.push("quedan " + formatDownloadEta(Number(job.eta)));
+    hint.textContent = details.join(" · ");
+  } else {
+    hint.textContent = "";
+  }
+  pauseBtn.hidden = job.state !== "downloading";
+  resumeBtn.hidden = !["pausing", "paused"].includes(job.state);
+  resumeBtn.disabled = job.state === "pausing";
+  resumeBtn.textContent = job.state === "pausing" ? "Pausando…" : "▶ Reanudar";
+  dlBtn.disabled = !["completed", "error"].includes(job.state);
+  dlBtn.textContent = job.state === "completed" || job.state === "error" ? "⬇ DESCARGAR" : "PROCESANDO...";
+}
+
+async function pollDownloadJob(jobId) {
+  if (activeDownloadJobId !== jobId) return;
+  try {
+    var response = await fetch(API_URL + "/api/download/" + encodeURIComponent(jobId), {
+      signal: AbortSignal.timeout(8000)
+    });
+    var job = await response.json();
+    if (!response.ok) throw new Error(job.error || "No se pudo consultar el progreso.");
+    downloadPollWarningShown = false;
+    renderDownloadJob(job);
+    if (job.state === "completed") {
+      activeDownloadJobId = null;
+      loadDownloads();
+      var result = job.result || {};
+      var files = result.files || [];
+      var folder = result.folder || (files.length === 1 ? files[0].folder : null);
+      if (folder) setTimeout(function () { openStudio(folder); }, 350);
+      else if (files.length > 1) addLogLine("success", files.length + " vídeos listos. Elige una carpeta para abrir el Studio.");
+      return;
+    }
+    if (job.state === "error") {
+      activeDownloadJobId = null;
+      addLogLine("error", "✗ " + (job.error || job.message || "Descarga fallida."));
+      return;
     }
   } catch (e) {
-    document.getElementById("progressLabel").textContent = "ERROR DE CONEXION";
-    document.getElementById("progressBar").style.background = "var(--terracotta)";
-    addLogLine("error", "Error: " + (e.name === "AbortError" ? "La descarga no respondio a tiempo" : e.message));
+    if (activeDownloadJobId === jobId && !downloadPollWarningShown) {
+      downloadPollWarningShown = true;
+      addLogLine("warn", "Sin actualización de progreso; sigo comprobando el trabajo…");
+    }
   }
-  dlBtn.disabled = false; dlBtn.textContent = "⬇ DESCARGAR";
-  loadDownloads();
+  if (activeDownloadJobId === jobId) downloadPollTimer = setTimeout(function () { pollDownloadJob(jobId); }, 1000);
 }
+
+function formatDownloadSize(bytes) {
+  var units = ["B", "KB", "MB", "GB"];
+  var value = Math.max(0, Number(bytes) || 0), unit = 0;
+  while (value >= 1024 && unit < units.length - 1) { value /= 1024; unit++; }
+  return value.toFixed(unit ? 1 : 0) + " " + units[unit];
+}
+
+function formatDownloadEta(seconds) {
+  var value = Math.max(0, Math.round(seconds));
+  if (value < 60) return value + " s";
+  var minutes = Math.floor(value / 60), rest = value % 60;
+  return minutes + " min" + (rest ? " " + rest + " s" : "");
+}
+
+async function controlDownload(action) {
+  if (!activeDownloadJobId) return;
+  var button = document.getElementById(action === "pause" ? "pauseDownloadBtn" : "resumeDownloadBtn");
+  button.disabled = true;
+  try {
+    var response = await fetch(API_URL + "/api/download/" + encodeURIComponent(activeDownloadJobId) + "/" + action, { method: "POST" });
+    var job = await response.json();
+    if (!response.ok) throw new Error(job.error || "No se pudo cambiar el estado de la descarga.");
+    renderDownloadJob(job);
+  } catch (e) {
+    addLogLine("error", e.message);
+  } finally {
+    if (button.isConnected) button.disabled = false;
+  }
+}
+
+function pauseActiveDownload() { return controlDownload("pause"); }
+function resumeActiveDownload() { return controlDownload("resume"); }
 
 function addLogLine(type, msg) {
   var area = document.getElementById("logArea");

@@ -188,6 +188,13 @@
       <span id="progressLabel">INICIANDO DESCARGA...</span>
       <span id="progressPct">0%</span>
     </div>
+    <div class="download-job-controls" id="downloadJobControls">
+      <span id="downloadStageHint"></span>
+      <div>
+        <button class="btn btn-icon-only" id="pauseDownloadBtn" type="button" onclick="pauseActiveDownload()" hidden>Pausar</button>
+        <button class="btn btn-icon-only" id="resumeDownloadBtn" type="button" onclick="resumeActiveDownload()" hidden>Reanudar</button>
+      </div>
+    </div>
     <div class="log-area" id="logArea"></div>
   </div>
 

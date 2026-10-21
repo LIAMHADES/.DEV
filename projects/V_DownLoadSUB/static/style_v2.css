@@ -293,6 +293,11 @@ html.dark .radio-pill { background:rgba(255,255,255,0.04); }
 .progress-track { height:6px; background:var(--bg-input); border-radius:6px; overflow:hidden; margin:12px 0; }
 .progress-bar { height:100%; background:var(--terracotta); width:0%; border-radius:6px; transition:width 0.3s; }
 .progress-footer { display:flex; justify-content:space-between; font-size:0.68rem; color:var(--text-faint); font-family:var(--font-ui); }
+.download-job-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;min-height:32px}
+.download-job-controls>span{font-size:.68rem;color:var(--text-faint);line-height:1.4}
+.download-job-controls>div{display:flex;gap:6px;flex-shrink:0}
+.download-job-controls [hidden]{display:none!important}
+.download-job-controls .btn{font-size:.72rem}
 .log-area { max-height:200px; overflow-y:auto; margin-top:10px; font-family:var(--font-mono); font-size:0.65rem; padding:10px; background:var(--bg-input); border-radius:var(--radius-sm); border:1px solid var(--border); line-height:1.6; }
 
 .transcript-box { margin-top:14px; padding:14px; background:var(--bg-input); border-radius:var(--radius-sm); border:1px solid var(--border); font-size:0.8rem; white-space:pre-wrap; max-height:300px; overflow-y:auto; }
