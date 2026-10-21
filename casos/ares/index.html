@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>ARES GPS — Liam Garcia</title>
-<meta name="description" content="Localizador GPS para perros con conexión propia: dónde está tu perro y cómo está cada día."
+<meta name="description" content="ARES nació de una experiencia real con mi perro. Diseño un collar conectado para localizarlo y conocer mejor su actividad y bienestar.">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Liam Garcia">
-<meta property="og:title" content="ARES GPS — localizador para perros con conexión propia">
-<meta property="og:description" content="Localizador GPS para perros con conexión propia: dónde está tu perro y cómo está cada día.">
+<meta property="og:title" content="ARES GPS — un proyecto nacido de mi perro">
+<meta property="og:description" content="De una experiencia real con Ares a diseñar un collar conectado y una plataforma de bienestar canino.">
 <meta property="og:url" content="https://liamhades.github.io/.DEV/casos/ares/">
-<meta property="og:image" content="https://liamhades.github.io/.DEV/casos/ares/ares/img/ares-inicio-poster.webp">
+<meta property="og:image" content="https://liamhades.github.io/.DEV/casos/ares/img/ares-inicio-poster.webp">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="800">
-<meta name="twitter:card" content="summary_large_image">/>
+<meta property="og:image:alt" content="ARES GPS, proyecto de localización y bienestar para mi perro">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="48x48" href="../../assets/favicon-48.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,27 +29,27 @@
 <header>
   <span class="tag">IoT y hardware · En desarrollo</span>
   <h1>ARES GPS</h1>
-  <p class="lead">Diseño de producto IoT que combina <strong>ubicación GPS, conectividad propia y señales de actividad</strong>. El trabajo abarca definición del producto, arquitectura propuesta y una experiencia web pública.</p>
+  <p class="lead">ARES nació de una experiencia real con mi perro. Desde ahí empecé a diseñar un sistema para <strong>saber dónde está cuando salimos de excursión y conocer mejor su actividad y bienestar</strong>.</p>
   <div class="ctas"><a class="btn main" href="../../projects/ares/">Ver la experiencia web <span aria-hidden="true">→</span></a><a class="btn ghost" href="../../index.html#contact">Hablar del proyecto</a></div>
-  <p class="nota">Estado: web pública; el collar físico sigue en diseño y aún no está validado como producto.</p>
+  <p class="nota">Estado: web y herramientas digitales disponibles; componentes seleccionados y diseño de placa trabajado. Faltan el firmware, el dispositivo funcional y la carcasa final.</p>
 </header>
 
 <section class="ficha" aria-label="Resumen del proyecto">
-  <div><small>Qué es</small><strong>Concepto de collar conectado y plataforma de bienestar</strong></div>
-  <div><small>Qué hice</small><strong>Definición de producto, arquitectura y experiencia web</strong></div>
-  <div><small>Arquitectura propuesta</small><strong>ESP32-S3 · GNSS · 4G · Bluetooth</strong></div>
-  <div><small>Estado</small><strong>Web pública; hardware aún en diseño</strong></div>
+  <div><small>Qué es</small><strong>Un collar conectado y herramientas de bienestar para perros</strong></div>
+  <div><small>Qué hice</small><strong>Producto, componentes, diseño de placa y experiencia web</strong></div>
+  <div><small>Qué busca resolver</small><strong>Localización, actividad, descanso y alimentación</strong></div>
+  <div><small>Estado</small><strong>Diseño técnico avanzado; firmware y producto físico pendientes</strong></div>
 </section>
 
 <section aria-labelledby="reto">
-  <div class="head"><span class="num">01</span><h2 id="reto">El reto de producto</h2></div>
-  <p>El punto de partida era unir dos necesidades que suelen resolverse por separado: localizar al perro fuera de casa y entender cambios en su actividad y descanso.</p>
-  <p>El reto fue traducir esa idea en un sistema coherente: qué debía hacer el collar, cómo se comunicaría y qué información tendría sentido mostrar en la experiencia digital.</p>
+  <div class="head"><span class="num">01</span><h2 id="reto">De dónde nació ARES</h2></div>
+  <p>ARES nació de un susto con mi perro. Durante un paseo, Ares siguió un rastro y lo perdí de vista en la oscuridad. Lo encontré a tiempo, pero me quedó una necesidad muy concreta: poder localizarlo cuando salimos de excursión, incluso si no lo tengo a la vista.</p>
+  <p>También quería seguir su actividad y entender mejor cómo está. Por eso empecé a diseñar algo que no fuera solo un localizador, sino un proyecto que conectara ubicación y bienestar.</p>
 </section>
 
 <section aria-labelledby="decisiones">
-  <div class="head"><span class="num">02</span><h2 id="decisiones">Decisiones de diseño</h2></div>
-  <div class="grid2"><div class="cell"><h3>Conectividad independiente</h3><p>La propuesta no depende del teléfono para obtener ubicación: contempla conectividad móvil propia y Bluetooth como alternativa de proximidad cuando no hay red.</p></div><div class="cell"><h3>Señales útiles, no solo coordenadas</h3><p>La experiencia se plantea alrededor de ubicación, actividad y descanso. El objetivo de diseño es convertir esas señales en contexto comprensible, sin presentarlas como diagnóstico veterinario.</p></div></div>
+  <div class="head"><span class="num">02</span><h2 id="decisiones">Dos necesidades, una propuesta</h2></div>
+  <div class="grid2"><div class="cell"><h3>Localizarlo fuera de casa</h3><p>El diseño contempla conexión propia para consultar su ubicación sin depender de que el móvil esté junto al collar, y Bluetooth para encontrarlo a corta distancia.</p></div><div class="cell"><h3>Conocer mejor su bienestar</h3><p>La propuesta une ubicación, actividad y descanso con herramientas de peso y alimentación. La información sirve de orientación; no pretende diagnosticar ni sustituir al veterinario.</p></div></div>
 </section>
 
 <section aria-labelledby="arquitectura">
@@ -67,44 +68,44 @@
 </section>
 
 <section aria-labelledby="herramientas">
-  <div class="head"><span class="num">05</span><h2 id="herramientas">Herramientas digitales</h2></div>
-  <p>La web pública permite desarrollar la experiencia digital antes de que exista el hardware y demostrar cómo se organizan contenidos y herramientas alrededor del producto.</p>
+  <div class="head"><span class="num">05</span><h2 id="herramientas">Herramientas para el día a día</h2></div>
+  <p>Mientras trabajo en el collar, desarrollé una parte digital que responde a preguntas habituales de quien cuida un perro: cómo interpretar su peso y actividad, y qué alimentos pueden ser peligrosos.</p>
   <ol class="flow">
-    <li><div><h3>Calculadoras</h3><p>Flujos para estimar peso ideal y actividad, reutilizando datos del perfil para reducir preguntas repetidas.</p></div></li>
-    <li><div><h3>Contenido estructurado</h3><p>Guías de alimentación y bienestar organizadas para que la información práctica pueda encontrarse y entenderse sin recorrer una página comercial.</p></div></li>
-    <li><div><h3>Integración futura</h3><p>La relación entre datos del collar y herramientas de nutrición está planteada como siguiente fase; depende de construir y validar el dispositivo.</p></div></li>
+    <li><div><h3>Peso y actividad</h3><p>Calculadoras y guías ayudan a consultar referencias del perro y a entender mejor su rutina, en vez de limitar la experiencia a ver un punto en el mapa.</p></div></li>
+    <li><div><h3>Alimentación y alimentos tóxicos</h3><p>La web organiza información sobre alimentos seguros, alimentos que conviene evitar y posibles riesgos. El objetivo es orientar y ayudar a consultar; no ofrecer una prescripción veterinaria.</p></div></li>
+    <li><div><h3>Una experiencia conectada</h3><p>La visión es que el perfil del perro y los datos del collar puedan dar contexto a estas herramientas. Esa integración depende de completar y validar el dispositivo.</p></div></li>
   </ol>
   <p class="nota">Los cálculos son orientativos y no sustituyen una evaluación profesional veterinaria.</p>
 </section>
 
 <section aria-labelledby="implementacion">
-  <div class="head"><span class="num">06</span><h2 id="implementacion">Implementación y prototipado</h2></div>
+  <div class="head"><span class="num">06</span><h2 id="implementacion">Diseño e implementación</h2></div>
   <div class="grid2">
-    <div class="cell"><h3>Web pública</h3><p>Construí una experiencia de producto con páginas de contenido, navegación, interacción y herramientas digitales. El sitio es la parte implementada y disponible hoy.</p></div>
-    <div class="cell"><h3>Hardware en diseño</h3><p>ESP32-S3, GNSS, 4G, BLE y sensores son componentes de la arquitectura propuesta; no describen un collar terminado ni prestaciones medidas en un prototipo.</p></div>
-    <div class="cell"><h3>Experiencia interactiva</h3><p>La web combina JavaScript con animación y visualización para explicar el producto. Las funciones físicas siguen pendientes de prototipado.</p></div>
-    <div class="cell"><h3>Herramientas</h3><p>Calculadoras, guías y páginas temáticas muestran cómo estructuré la capa digital mientras el hardware continúa en diseño.</p></div>
+    <div class="cell"><h3>Diseño de hardware</h3><p>Seleccioné los componentes y trabajé el diseño de la placa y la arquitectura del collar. El diseño contempla ubicación, conexión móvil, Bluetooth y lectura de actividad.</p></div>
+    <div class="cell"><h3>Firmware pendiente</h3><p>El código que hará funcionar el dispositivo todavía no está desarrollado. Por eso la arquitectura describe el diseño, no resultados medidos de un collar terminado.</p></div>
+    <div class="cell"><h3>Web pública</h3><p>Construí una experiencia navegable con páginas de producto, contenido de bienestar y herramientas digitales. Es la parte que ya se puede consultar.</p></div>
+    <div class="cell"><h3>Diseño de experiencia</h3><p>La web combina JavaScript, animación y visualización para explicar cómo podría usarse el sistema. La carcasa final y el dispositivo físico siguen pendientes.</p></div>
   </div>
   <div class="chips" style="margin-top:28px"><span>JavaScript</span><span>GSAP</span><span>Three.js</span><span>IoT product design</span><span>UX</span></div>
 </section>
 
 <section aria-labelledby="papel">
   <div class="head"><span class="num">07</span><h2 id="papel">Mi papel</h2></div>
-  <p>Me encargué de convertir la idea en un concepto de producto y en una experiencia digital que se puede recorrer hoy.</p>
-  <ul class="lista papel"><li>Definición del alcance del producto y de sus estados principales.</li><li>Arquitectura propuesta para conectividad, sensores y flujo de datos.</li><li>Estructura y construcción de la web pública, con navegación, contenido y componentes interactivos.</li><li>Diseño de herramientas digitales de cálculo y contenido temático.</li><li>Prototipado asistido por IA, con revisión y dirección del resultado.</li></ul>
+  <p>Partí de una necesidad mía y la convertí en un proyecto que abarca producto físico, hardware y experiencia digital.</p>
+  <ul class="lista papel"><li>Definí qué debía resolver ARES y cómo se relacionan la localización y el bienestar.</li><li>Seleccioné los componentes y trabajé la arquitectura y el diseño de la placa.</li><li>Diseñé y construí la web pública, sus contenidos y sus herramientas.</li><li>Dirigí y revisé prototipos digitales con ayuda de IA.</li></ul>
 </section>
 
 <section aria-labelledby="aprendizajes">
-  <div class="head"><span class="num">08</span><h2 id="aprendizajes">Qué demuestra el proyecto</h2></div>
+  <div class="head"><span class="num">08</span><h2 id="aprendizajes">Qué me aportó</h2></div>
   <div class="grid2">
-    <div class="cell"><h3>Producto de varias capas</h3><p>Conecté hardware, conectividad, software y una experiencia web en una propuesta que puede evaluarse por partes.</p></div>
-    <div class="cell"><h3>Progreso visible</h3><p>Separé lo que está publicado de lo que sigue en diseño, para que el estado del proyecto no se confunda con una promesa de producto terminado.</p></div>
+    <div class="cell"><h3>Pensar el producto completo</h3><p>Aprendí a trabajar un producto físico y su parte digital como un mismo sistema: los componentes, la conexión, los datos y la experiencia tienen que responder a la misma necesidad.</p></div>
+    <div class="cell"><h3>De una necesidad a decisiones concretas</h3><p>La historia con Ares me llevó a definir funciones, seleccionar piezas y diseñar una placa. También aprendí a separar lo que ya está diseñado de lo que todavía requiere código y pruebas.</p></div>
   </div>
 </section>
 
 <section aria-labelledby="estado">
   <div class="head"><span class="num">09</span><h2 id="estado">Estado y siguiente paso</h2></div>
-  <div class="grid2 estado"><div class="cell"><small>Hoy</small><p>Web pública con guías y herramientas para dueños. El dispositivo está en diseño y todavía no se vende.</p></div><div class="cell"><small>Siguiente paso</small><p>El prototipo funcional del collar y probarlo con perros reales.</p></div></div>
+  <div class="grid2 estado"><div class="cell"><small>Hoy</small><p>Web y herramientas digitales disponibles; componentes seleccionados y diseño de placa trabajado. Aún no hay firmware ni un collar funcional, y la carcasa final está pendiente.</p></div><div class="cell"><small>Siguiente paso</small><p>Desarrollar el código, cerrar el diseño de la carcasa, montar el dispositivo y validar su funcionamiento en paseos reales.</p></div></div>
 </section>
 
 <nav class="pj-nav" aria-label="Otros proyectos"><a class="ant" href="../onix/"><small>← Anterior</small><strong class="f-onix">ONIX</strong></a><a class="sig" href="../v-downloader/"><small>Siguiente →</small><strong class="f-vdl">V_DOWNLOADER</strong></a></nav>
