@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>V_DOWNLOADER — Liam Garcia</title>
-<meta name="description" content="Descarga, transcribe y traduce vídeos con IA, con un editor de subtítulos con línea de tiempo."/>
+<meta name="description" content="Descarga, transcribe y traduce vídeos con IA, con un editor de subtítulos con línea de tiempo."
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Liam Garcia">
+<meta property="og:title" content="V_DOWNLOADER — descargar, transcribir y traducir vídeos con IA">
+<meta property="og:description" content="Descarga, transcribe y traduce vídeos con IA, con un editor de subtítulos con línea de tiempo.">
+<meta property="og:url" content="https://liamhades.github.io/.DEV/casos/v-downloader/">
+<meta property="og:image" content="https://liamhades.github.io/.DEV/casos/v-downloader/v-downloader/img/vdl-inicio-poster.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="800">
+<meta name="twitter:card" content="summary_large_image">/>
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="48x48" href="../../assets/favicon-48.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bruno+Ace+SC&display=swap" rel="stylesheet">
 <style>@font-face{font-family:'VDisplay';src:url('../../projects/V_DownLoadSUB/static/fonts/d9ba559e4ba4.woff2') format('woff2');font-display:swap}</style>
 </head>
-<body style="--accent:#c8102e;--accent2:#5b8c3e;--accent3:#c8102e;--bg:#faf7f2;--surface:#ffffff;--ink:#1a1512;--muted:#6b6158;--faint:#e6dfd4;--on-accent:#fff;--display:'VDisplay',serif;--h1:clamp(2.4rem,11vw,9rem)">
+<body style="--accent:#c8102e;--accent2:#5b8c3e;--accent3:#c8102e;--bg:#faf7f2;--surface:#ffffff;--ink:#1a1512;--muted:#6b6158;--faint:#e6dfd4;--on-accent:#fff;--display:'VDisplay',serif;--title:'VDisplay',serif;--h1:clamp(2.4rem,11vw,9rem)">
 <main>
 <div class="top"><a class="back" href="../../index.html#projects">← Volver al portfolio</a></div>
 
@@ -23,6 +32,13 @@
   <div class="ctas"><a class="btn main" href="../../projects/V_DownLoadSUB/">Ver la interfaz <span aria-hidden="true">→</span></a><a class="btn ghost" href="../../index.html#contact">Hablemos</a></div>
   <p class="nota">La web publicada es la interfaz. El procesado corre en local y no está publicado.</p>
 </header>
+
+<section class="ficha" aria-label="Resumen del proyecto">
+  <div><small>Qué es</small><strong>Descargar, transcribir y traducir vídeo en una pantalla</strong></div>
+  <div><small>Qué hice</small><strong>Interfaz, editor de subtítulos y procesado local</strong></div>
+  <div><small>Con</small><strong>Python · Flask · Whisper · Ollama</strong></div>
+  <div><small>Estado</small><strong>Interfaz publicada; el procesado solo corre en local</strong></div>
+</section>
 
 <section aria-labelledby="problema">
   <div class="head"><span class="num">01</span><h2 id="problema">El problema</h2></div>
@@ -48,7 +64,7 @@
 
 <section aria-labelledby="ver">
   <div class="head"><span class="num">04</span><h2 id="ver">Así se ve</h2></div>
-  <div class="galeria"><figure class="ancha"><a class="ir-web" href="../../projects/V_DownLoadSUB/" target="_blank" rel="noopener" aria-label="La web de V_DOWNLOADER: abrir la web"><video data-src="img/vdl-inicio.mp4" poster="img/vdl-inicio-poster.webp" width="1280" height="800" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ir-web-txt">Abrir la web <b aria-hidden="true">↗</b></span></a><figcaption>Un recorrido por la página principal. Púlsalo para abrir la web.</figcaption></figure></div>
+  <div class="galeria"><figure class="ancha"><a class="ir-web" href="../../projects/V_DownLoadSUB/" target="_blank" rel="noopener" aria-label="La web de V_DOWNLOADER: abrir la web"><img src="img/vdl-inicio-poster.webp" alt="Interfaz principal de V_DOWNLOADER" width="1280" height="800" loading="lazy" decoding="async"><span class="ir-web-txt">Abrir la web <b aria-hidden="true">↗</b></span></a><figcaption>Vista de la página principal. Púlsala para abrir la web.</figcaption></figure></div>
 </section>
 
 <section aria-labelledby="hecho">

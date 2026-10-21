@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>VtoTXforIA — Liam Garcia</title>
-<meta name="description" content="Dictado por voz que transcribe en tu propio ordenador con Whisper. El audio nunca sale de tu equipo."/>
+<meta name="description" content="Dictado por voz que transcribe en tu propio ordenador con Whisper. El audio nunca sale de tu equipo."
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Liam Garcia">
+<meta property="og:title" content="VtoTXforIA — dictado por voz que transcribe en tu equipo">
+<meta property="og:description" content="Dictado por voz que transcribe en tu propio ordenador con Whisper. El audio nunca sale de tu equipo.">
+<meta property="og:url" content="https://liamhades.github.io/.DEV/casos/vtotxforia/">
+<meta property="og:image" content="https://liamhades.github.io/.DEV/casos/vtotxforia/vtotxforia/img/vtotx-inicio-poster.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="800">
+<meta name="twitter:card" content="summary_large_image">/>
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="48x48" href="../../assets/favicon-48.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +32,13 @@
   <div class="ctas"><a class="btn main" href="../../projects/vtotxforia/">Ver la web <span aria-hidden="true">→</span></a><a class="btn ghost" href="../../index.html#contact">Hablemos</a></div>
   <p class="nota">Funciona en la web para cualquiera: la primera vez descarga el modelo y luego transcribe en tu navegador. Si tienes la app de escritorio abierta, la web la usa.</p>
 </header>
+
+<section class="ficha" aria-label="Resumen del proyecto">
+  <div><small>Qué es</small><strong>Dictado por voz que transcribe en tu ordenador</strong></div>
+  <div><small>Qué hice</small><strong>Web, app de escritorio y entrega por correo</strong></div>
+  <div><small>Con</small><strong>Whisper · WebAssembly · Python</strong></div>
+  <div><small>Estado</small><strong>Demo pública; la app se pide por correo</strong></div>
+</section>
 
 <section aria-labelledby="problema">
   <div class="head"><span class="num">01</span><h2 id="problema">El problema</h2></div>
@@ -48,14 +64,14 @@
 
 <section aria-labelledby="ver">
   <div class="head"><span class="num">04</span><h2 id="ver">Así se ve</h2></div>
-  <div class="galeria"><figure class="ancha"><a class="ir-web" href="../../projects/vtotxforia/" target="_blank" rel="noopener" aria-label="La web de VtoTXforIA: abrir la web"><video data-src="img/vtotx-inicio.mp4" poster="img/vtotx-inicio-poster.webp" width="1280" height="800" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ir-web-txt">Abrir la web <b aria-hidden="true">↗</b></span></a><figcaption>Un recorrido por la página principal. Púlsalo para abrir la web.</figcaption></figure></div>
+  <div class="galeria"><figure class="ancha video-demo"><a class="ir-web" href="../../projects/vtotxforia/" target="_blank" rel="noopener" aria-label="La web de VtoTXforIA: abrir la web"><video data-src="img/vtotx-inicio.mp4" poster="img/vtotx-inicio-poster.webp" width="1280" height="800" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ir-web-txt">Abrir la web <b aria-hidden="true">↗</b></span></a><figcaption>Un recorrido por la página principal. Púlsalo para abrir la web.</figcaption></figure></div>
 </section>
 
 <section aria-labelledby="hecho">
   <div class="head"><span class="num">05</span><h2 id="hecho">Cómo está hecho</h2></div>
   <div class="grid2">
     <div class="cell"><h3>Sin servidor externo</h3><p>En la web, el modelo corre en tu navegador. La app incluye su propio servidor, que solo escucha en tu ordenador.</p></div>
-    <div class="cell"><h3>App de escritorio</h3><p>Tecla global F8, indicador flotante de grabación, historial y bandeja del sistema. Se descarga desde la web.</p></div>
+    <div class="cell"><h3>App de escritorio</h3><p>Tecla global F8, indicador flotante de grabación, historial y bandeja del sistema. Se pide desde la web y el enlace llega por correo.</p></div>
     <div class="cell"><h3>Modelos</h3><p>En la web, Whisper base. En la app, faster-whisper small en el procesador, sin necesitar tarjeta gráfica.</p></div>
     <div class="cell"><h3>Privacidad</h3><p>Sin cuentas. El historial se guarda solo en tu navegador y se borra si limpias los datos del sitio.</p></div>
   </div>
@@ -70,7 +86,7 @@
 
 <section aria-labelledby="estado">
   <div class="head"><span class="num">07</span><h2 id="estado">Estado y siguiente paso</h2></div>
-  <div class="grid2 estado"><div class="cell"><small>Hoy</small><p>La web transcribe para cualquiera en su navegador, y la app de escritorio se descarga desde ella.</p></div><div class="cell"><small>Siguiente paso</small><p>Instalador más sencillo para la app y elegir el modelo según la potencia del equipo.</p></div></div>
+  <div class="grid2 estado"><div class="cell"><small>Hoy</small><p>La web transcribe para cualquiera en su navegador, y la app de escritorio se pide desde ella: el enlace llega por correo.</p></div><div class="cell"><small>Siguiente paso</small><p>Instalador más sencillo para la app y elegir el modelo según la potencia del equipo.</p></div></div>
 </section>
 
 <nav class="pj-nav" aria-label="Otros proyectos"><a class="ant" href="../v-downloader/"><small>← Anterior</small><strong class="f-vdl">V_DOWNLOADER</strong></a><a class="sig" href="../onix/"><small>Siguiente →</small><strong class="f-onix">ONIX</strong></a></nav>
