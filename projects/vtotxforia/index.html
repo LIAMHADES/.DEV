@@ -183,14 +183,36 @@
     padding:16px 20px; font-size:0.95rem; color:var(--text-muted); line-height:1.7; margin-bottom:28px; font-family:var(--font-elegant);
   }
   .notice strong{ color:var(--text); font-weight:600; font-family:var(--font-elegant); }
-  .download-row{ margin-top:14px; text-align:center; }
+  .download-row{ margin-top:14px; }
+  .download-form{ text-align:center; }
+  .download-label{
+    display:block; margin-bottom:10px; color:var(--text);
+    font-family:var(--font-elegant); font-size:0.95rem; font-weight:600;
+  }
+  .download-fields{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; align-items:stretch; }
+  .download-input{
+    flex:1 1 240px; min-width:0; max-width:320px; padding:12px 14px;
+    border:1px solid var(--border); border-radius:8px;
+    background:var(--bg); color:var(--text);
+    font-family:var(--font-body); font-size:0.9rem;
+  }
+  .download-input::placeholder{ color:var(--text-muted); opacity:0.7; }
+  .download-input:focus-visible{ outline:2px solid var(--c-bright); outline-offset:2px; border-color:var(--c-bright); }
+  .download-input[aria-invalid="true"]{ border-color:#ff8a8a; }
   .download-btn{
-    display:inline-block; padding:12px 24px; border-radius:8px;
+    display:inline-block; padding:12px 24px; border-radius:8px; border:0; cursor:pointer;
     background:var(--c-mid); color:var(--bg); text-decoration:none;
     font-family:var(--font-display); font-size:0.72rem; letter-spacing:0.04em;
     transition:filter 0.2s ease, transform 0.15s ease;
   }
   .download-btn:hover{ filter:brightness(1.15); transform:scale(1.03); }
+  .download-btn:focus-visible{ outline:2px solid var(--c-bright); outline-offset:3px; }
+  .download-btn[disabled]{ opacity:0.6; cursor:progress; transform:none; filter:none; }
+  .download-help{ margin-top:10px; font-size:0.8rem; color:var(--text-muted); line-height:1.6; }
+  .download-status{ margin-top:10px; min-height:1.3em; font-size:0.85rem; line-height:1.5; }
+  .download-status.ok{ color:var(--c-bright); }
+  .download-status.error{ color:#ff8a8a; }
+  .hp-field{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
 
   /* distorted-link: linea bajo el texto que se contrae al hover, color pasa a --c-glow (patron tomado de synchronized_studio) */
   .distorted-link{
@@ -393,6 +415,7 @@
 </style>
 </head>
 <body class="splash-active">
+<h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0;margin:-1px">VtoTXforIA — dictado por voz que transcribe en tu ordenador</h1>
 
 <div id="splashOverlay"></div>
 
@@ -423,9 +446,21 @@
   La <strong>app de escritorio</strong> hace algo que un navegador no puede: con un <strong>Botón del teclado</strong> configurable
   y pega el texto automáticamente donde estabas escribiendo.
   <div class="download-row">
-    <a class="download-btn" href="https://github.com/LIAMHADES/.DEV/releases/download/v2.0.0/VtoTXforIA.zip" target="_blank" rel="noopener">
-      ⬇ DESCARGAR APP DE ESCRITORIO
-    </a>
+    <form class="download-form" id="downloadForm" novalidate>
+      <label class="download-label" for="downloadEmail">Te envío el enlace de descarga por correo</label>
+      <div class="download-fields">
+        <input class="download-input" id="downloadEmail" name="email" type="email" inputmode="email"
+               autocomplete="email" spellcheck="false" required placeholder="tu@correo.com"
+               aria-describedby="downloadHelp downloadStatus" aria-invalid="false">
+        <button class="download-btn" id="downloadSubmit" type="submit">ENVIAR ENLACE</button>
+      </div>
+      <div class="hp-field" aria-hidden="true">
+        <label for="downloadWebsite">No rellenar</label>
+        <input id="downloadWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <p class="download-help" id="downloadHelp">Usamos tu correo solo para enviarte este enlace. No te suscribimos a nada y lo borramos a los 90 días.</p>
+      <p class="download-status" id="downloadStatus" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </div>
 
@@ -1196,6 +1231,84 @@ clearBtn.addEventListener('click', () => { transcriptBox.value=''; updateCharCou
 renderHistory();
 updateCharCount();
 checkServer();
+
+/* ===================== DESCARGA POR CORREO =====================
+   El ZIP no se enlaza directamente: se pide a un webhook que registra
+   el correo, genera un enlace temporal y lo envía. Sin endpoint
+   configurado el formulario cae a email manual, nunca falla en silencio. */
+(function(){
+  const form = document.getElementById('downloadForm');
+  if(!form) return;
+  const email = document.getElementById('downloadEmail');
+  const submit = document.getElementById('downloadSubmit');
+  const status = document.getElementById('downloadStatus');
+  const honey = document.getElementById('downloadWebsite');
+
+  // Configura aquí el webhook público de n8n cuando esté desplegado.
+  const ENDPOINT = window.VTOTX_DOWNLOAD_ENDPOINT || '';
+  const CONTACT = 'soldevilaliam@gmail.com';
+  const LABEL = submit.textContent;
+
+  function setStatus(text, kind){
+    status.textContent = text;
+    status.className = 'download-status' + (kind ? ' ' + kind : '');
+  }
+
+  function invalid(message){
+    email.setAttribute('aria-invalid','true');
+    setStatus(message, 'error');
+    email.focus();
+  }
+
+  email.addEventListener('input', () => {
+    if(email.getAttribute('aria-invalid') === 'true'){
+      email.setAttribute('aria-invalid','false');
+      setStatus('');
+    }
+  });
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if(honey && honey.value) return; // bots
+
+    const value = email.value.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(value) && email.checkValidity();
+    if(!valid){ invalid('Revisa el correo: parece incompleto.'); return; }
+
+    if(!ENDPOINT){
+      setStatus('El envío automático aún no está activo. Escríbeme y te paso el enlace hoy mismo.', 'error');
+      window.location.href = 'mailto:' + CONTACT +
+        '?subject=' + encodeURIComponent('Enlace de descarga de VtoTXforIA') +
+        '&body=' + encodeURIComponent('Hola, quiero el enlace de descarga de la app de escritorio.');
+      return;
+    }
+
+    submit.disabled = true;
+    submit.textContent = 'ENVIANDO…';
+    setStatus('Enviando el enlace…');
+
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 12000);
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: value, source: 'vtotxforia-web', language: document.documentElement.lang || 'es' }),
+        signal: controller.signal
+      });
+      if(!response.ok){ throw new Error('HTTP ' + response.status); }
+      form.reset();
+      email.setAttribute('aria-invalid','false');
+      setStatus('Hecho. Revisa tu correo: el enlace caduca en 30 minutos.', 'ok');
+    } catch (error) {
+      setStatus('No se pudo enviar ahora. Vuelve a intentarlo en un minuto.', 'error');
+    } finally {
+      clearTimeout(timer);
+      submit.disabled = false;
+      submit.textContent = LABEL;
+    }
+  });
+})();
 </script>
 
 </body>
