@@ -83,8 +83,41 @@ function initTabs() {
   });
 }
 
-// Modo demo: en la web publicada no hay servidor; el procesado funciona en local.
-var SIN_SERVIDOR = /github\.io$/.test(location.hostname);
+// La página prueba primero el mismo origen y luego el motor local de Liam (5555).
+var API_CANDIDATOS = (function () {
+  var lista = [];
+  var motor = new URLSearchParams(location.search).get("motor");
+  if (motor) lista.push(motor.replace(/\/+$/, ""));
+  if (location.protocol !== "file:" && !/github\.io$/.test(location.hostname)) lista.push(location.origin);
+  lista.push("http://127.0.0.1:5555", "http://localhost:5555");
+  return lista;
+})();
+var API_URL = API_CANDIDATOS[0];
+var SIN_SERVIDOR = true;
+
+function fijarControles(activos) {
+  var urlInput = document.getElementById("urlInput");
+  var fetchBtn = document.getElementById("fetchBtn");
+  var fileInput = document.getElementById("fileInput");
+  var dropZone = document.getElementById("dropZone");
+  if (urlInput) {
+    urlInput.disabled = !activos;
+    urlInput.placeholder = activos ? "Pega aquí la URL del vídeo..." : "Conecta el motor local para analizar enlaces";
+    if (activos) urlInput.removeAttribute("aria-describedby");
+    else urlInput.setAttribute("aria-describedby", "avisoDemo");
+  }
+  if (fetchBtn) {
+    fetchBtn.disabled = !activos;
+    fetchBtn.classList.toggle("demo-only", !activos);
+    fetchBtn.textContent = activos ? "Analizar" : "Demo visual";
+    fetchBtn.title = activos ? "" : "El procesamiento no está disponible en esta página pública";
+  }
+  if (fileInput) fileInput.disabled = !activos;
+  if (dropZone) {
+    dropZone.classList.toggle("demo-disabled", !activos);
+    dropZone.setAttribute("aria-disabled", activos ? "false" : "true");
+  }
+}
 function avisoDemo(resaltar) {
   var aviso = document.getElementById("avisoDemo");
   if (!aviso) {
@@ -92,14 +125,18 @@ function avisoDemo(resaltar) {
     aviso.id = "avisoDemo";
     aviso.className = "aviso-demo";
     aviso.setAttribute("role", "status");
-    aviso.innerHTML = "<strong>Esto es la interfaz.</strong> La descarga, la transcripción y la traducción se ejecutan en local, en mi ordenador, así que aquí no se procesa ningún vídeo. <a href=\"../../casos/v-downloader/\">Ver cómo funciona →</a>";
+     aviso.innerHTML = "<strong>Motor local no conectado.</strong> Analizar enlaces y procesar archivos necesita el motor de V_DOWNLOADER (Flask + yt-dlp + FFmpeg) en tu equipo. Arranca <code>launch.bat</code> y vuelve a intentarlo." +
+      "<div class=\"aviso-acciones\"><button type=\"button\" class=\"aviso-btn\" id=\"reintentarMotor\">Reintentar conexión</button><a href=\"../../index.html#contact\">Pedir una demo funcional →</a></div>";
     var wrap = document.getElementById("urlWrap");
     if (wrap && wrap.parentNode) wrap.parentNode.insertBefore(aviso, wrap.nextSibling);
+    var btn = document.getElementById("reintentarMotor");
+    if (btn) btn.addEventListener("click", function () { btn.disabled = true; btn.textContent = "Conectando..."; checkStatus(); });
   }
   if (resaltar) { aviso.classList.remove("pulso"); void aviso.offsetWidth; aviso.classList.add("pulso"); }
 }
 function marcarSinServidor() {
   SIN_SERVIDOR = true;
+  fijarControles(false);
   ["badge-ytdlp","badge-ffmpeg","badge-whisper"].forEach(function(id){
     document.querySelectorAll("#" + id).forEach(function(el){
       el.classList.add("local");
@@ -109,17 +146,34 @@ function marcarSinServidor() {
   avisoDemo(false);
 }
 
-async function checkStatus() {
-  if (SIN_SERVIDOR) { marcarSinServidor(); return; }
-  try {
-    var r = await fetch(API_URL + "/api/status", { signal: AbortSignal.timeout(5000) });
-    var s = await r.json();
-    setBadge("badge-ytdlp", s.yt_dlp);
-    setBadge("badge-ffmpeg", s.ffmpeg);
-    setBadge("badge-whisper", s.whisper);
-  } catch (e) {
-    marcarSinServidor();
+function marcarConMotor(status) {
+  SIN_SERVIDOR = false;
+  fijarControles(true);
+  var aviso = document.getElementById("avisoDemo");
+  if (aviso) aviso.remove();
+  ["badge-ytdlp","badge-ffmpeg","badge-whisper"].forEach(function(id){
+    document.querySelectorAll("#" + id).forEach(function(el){ el.classList.remove("local"); });
+  });
+  if (status) {
+    setBadge("badge-ytdlp", status.yt_dlp);
+    setBadge("badge-ffmpeg", status.ffmpeg);
+    setBadge("badge-whisper", status.whisper);
   }
+}
+
+async function checkStatus() {
+  for (var i = 0; i < API_CANDIDATOS.length; i++) {
+    try {
+      var r = await fetch(API_CANDIDATOS[i] + "/api/status", { signal: AbortSignal.timeout(2500) });
+      if (!r.ok) continue;
+      var s = await r.json();
+      API_URL = API_CANDIDATOS[i];
+      marcarConMotor(s);
+      loadDownloads();
+      return;
+    } catch (e) { /* siguiente candidato */ }
+  }
+  marcarSinServidor();
 }
 
 function setBadge(id, ok) {

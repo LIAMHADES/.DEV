@@ -86,13 +86,14 @@ footer a{color:var(--accent)}
 .f-onix{--destino:#B85420;font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,7vw,5.6rem)}
 .f-ares{--destino:#86BBD8;font-family:'Bruno Ace SC',sans-serif;font-size:clamp(1.3rem,3.6vw,3rem)}
 .f-vdl{--destino:#c8102e;font-family:'VDisplay',serif;font-size:clamp(1.6rem,4.4vw,3.8rem)}
+.f-job{--destino:#f2b84b;font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.02em;font-size:clamp(2rem,5vw,3.6rem)}
 .pj-nav strong{white-space:nowrap;overflow-wrap:normal}
 @media (max-width:640px){
   .pj-nav{grid-template-columns:minmax(0,1fr)}
   .pj-nav a{padding:5vh 0}
   .pj-nav .sig{border-left:0;border-top:1px solid var(--faint);padding-left:0}
   .pj-nav .ant{padding-right:0}
-  .f-vtotx{font-size:1.25rem}.f-onix{font-size:3.4rem}.f-ares{font-size:1.9rem}.f-vdl{font-size:2.2rem}
+  .f-vtotx{font-size:1.25rem}.f-onix{font-size:3.4rem}.f-ares{font-size:1.9rem}.f-vdl{font-size:2.2rem}.f-job{font-size:2rem}
 }
 
 /* Fase B: para quién, galería, mi papel y estado */

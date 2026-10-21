@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>JobMatch — Liam Garcia</title>
-<meta name="description" content="Sistema propio de búsqueda de empleo: busca ofertas cada día, descarta las que no encajan o son trampa, evalúa las buenas y avisa por Telegram. Nada se envía sin aprobación."/>
+<meta name="description" content="JobMatch ayuda a organizar la búsqueda de empleo y filtrar oportunidades según el perfil, los intereses y las prioridades de cada persona."/>
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="48x48" href="../../assets/favicon-48.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +49,10 @@ p strong{color:var(--ink);font-weight:500}
 .flow li::before{content:"0" counter(paso);font-family:var(--display);font-size:1.6rem;color:var(--accent);line-height:1.2}
 .flow h3{font-family:var(--display);font-weight:500;font-size:1.25rem;margin-bottom:6px}
 .flow p{margin:0;font-size:.95rem}
-.gate{border-left:2px solid var(--accent);padding-left:18px}
+.gate>div{border-left:2px solid var(--accent);padding-left:18px}
+.demo-cta{display:inline-flex;align-items:center;margin-top:24px;padding:12px 16px;background:var(--accent);color:#111;text-decoration:none;font-weight:600;transition:transform .2s,background .2s}
+.demo-cta:hover{background:#ffd074;transform:translateY(-2px)}
+.demo-cta:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 
 /* filtro */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:28px}
@@ -69,6 +72,13 @@ p strong{color:var(--ink);font-weight:500}
 .siguiente strong{font-family:var(--display);font-size:clamp(2.2rem,7vw,5.5rem);line-height:.9;letter-spacing:-.03em;transition:color .3s}
 .siguiente:hover strong,.siguiente:focus-visible strong{color:var(--accent)}
 .siguiente .flecha{font-size:clamp(2rem,5vw,4rem);color:var(--accent)}
+.pjn{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--faint);border-top:1px solid var(--faint);border-bottom:1px solid var(--faint);margin-top:9vh}
+.pjn a{display:flex;flex-direction:column;gap:10px;padding:5vh 24px;background:var(--bg);text-decoration:none;min-width:0}
+.pjn a:hover strong,.pjn a:focus-visible strong{color:var(--accent)}
+.pjn .sig{align-items:flex-end;text-align:right}
+.pjn small{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.pjn strong{font-family:var(--display);font-weight:500;font-size:clamp(1.4rem,4vw,2.6rem);line-height:1.05;transition:color .3s;overflow-wrap:anywhere}
+@media(max-width:760px){.pjn{grid-template-columns:1fr}.pjn a{padding:4vh 20px}.pjn .sig{text-align:left;align-items:flex-start}}
 footer{padding:8vh 0 10vh;color:var(--muted);font-size:.85rem}
 footer a{color:var(--accent)}
 @media (max-width:760px){
@@ -84,81 +94,67 @@ footer a{color:var(--accent)}
 <a class="back" href="../../index.html#projects">← Volver al portfolio</a>
 
 <header>
-  <span class="tag">Automatización · IA aplicada</span>
+  <span class="tag">Búsqueda de empleo · Producto en desarrollo</span>
   <h1>JobMatch</h1>
-  <p class="lead">Mi propio sistema de búsqueda de empleo. Cada mañana <strong>busca ofertas, descarta las que no encajan o son trampa, evalúa a fondo las buenas y me avisa por Telegram</strong>. Nada se envía sin que yo lo apruebe.</p>
+  <p class="lead">JobMatch está pensado para <strong>organizar la búsqueda de empleo y mostrar oportunidades acordes al perfil, los intereses y las prioridades de cada persona</strong>. Cada usuario define qué busca y decide qué hacer con los resultados.</p>
 </header>
 
 <section aria-labelledby="problema">
-  <div class="head"><span class="num">01</span><h2 id="problema">El problema</h2></div>
-  <p>Buscando trabajo en IA vi que la mayoría de ofertas "junior" no lo eran: pedían cinco años de experiencia, eran puestos de ventas disfrazados o directamente no pagaban.</p>
-  <p>Mi primer buscador puntuaba por palabras en común con mi CV. Resultado: <strong>el 80% de lo que traía (89 de 111 ofertas) era inalcanzable</strong>. Puntuar encaje no sirve si el sistema no sabe decir "esta no".</p>
+  <div class="head"><span class="num">01</span><h2 id="problema">Una búsqueda distinta para cada persona</h2></div>
+  <p>Buscar empleo puede implicar revisar muchas ofertas que no encajan con lo que cada persona sabe hacer, busca o necesita.</p>
+  <p>JobMatch parte de una idea sencilla: <strong>la búsqueda debe adaptarse a quien busca</strong>, en lugar de obligar a todo el mundo a seguir los mismos criterios.</p>
 </section>
 
-<section aria-labelledby="cifras">
-  <div class="head"><span class="num">02</span><h2 id="cifras">En cifras</h2></div>
+<section aria-labelledby="capacidades">
+  <div class="head"><span class="num">02</span><h2 id="capacidades">Qué ofrece JobMatch</h2></div>
   <div class="stats">
-    <div class="stat"><b>226</b><span>ofertas analizadas en una sola pasada, 118 descartadas con su motivo</span></div>
-    <div class="stat"><b>39</b><span>bolsas de empleo y portales que revisa cada día</span></div>
-    <div class="stat"><b>112</b><span>tests automáticos</span></div>
+    <div class="stat"><b>150 s</b><span>por ronda: 91 empresas y 13 bolsas, con una media de 15.000 ofertas encontradas (6 rondas medidas)</span></div>
+    <div class="stat"><b>0,6%</b><span>llega a revisión: 84% se cae por título y 16% por ubicación antes de gastar IA</span></div>
+    <div class="stat"><b>8%</b><span>de las que llegan a la criba con IA pasa el corte (11 de 131 medidas)</span></div>
   </div>
-  <p class="src">Medido en octubre de 2026 sobre búsquedas reales. De las 118 descartadas, 69 eran puestos sénior y 21 pedían 5 años o más.</p>
+  <p class="src">Medición propia sobre 6 rondas reales (14.047–15.572 ofertas por ronda) y una ronda cronometrada en 150 s el 21 de octubre de 2026.</p>
+</section>
+
+<section aria-labelledby="capacidad">
+  <div class="head"><span class="num">03</span><h2 id="capacidad">Cuánto tardaría con 10.000 ofertas</h2></div>
+  <p>El rastreo no es el cuello de botella. A ~99 ofertas por segundo, <strong>10.000 ofertas tardan 1 minuto y 41 segundos</strong>. Lo caro es leerlas: puntuar cada una con los modelos locales medidos ronda las 2 ofertas cada 10 minutos.</p>
+  <div class="split">
+    <div class="box"><h3>Con el filtro delante</h3><ul><li>10.000 ofertas rastreadas: 1 min 41 s</li><li>Tras título y ubicación: ~58 candidatas</li><li>Criba con IA local: 4 h 48 min</li><li>De esas, pasan el corte unas 5</li></ul></div>
+    <div class="box"><h3>Sin filtrar nada</h3><ul><li>10.000 ofertas puntuadas una a una</li><li>A 2 cada 10 minutos: 833 horas</li><li>Casi 35 días de máquina encendida</li><li>De ahí que el filtro barato vaya primero</li></ul></div>
+  </div>
+  <p class="src">Estimación con los tiempos medidos en un equipo de 16 GB, sin GPU dedicada: 15.000 ofertas en 150 s para el rastreo y 2 ofertas cada 10 min para la criba con dos modelos.</p>
 </section>
 
 <section aria-labelledby="como">
-  <div class="head"><span class="num">03</span><h2 id="como">Cómo funciona</h2></div>
+  <div class="head"><span class="num">04</span><h2 id="como">Cómo apoya tu búsqueda</h2></div>
   <ol class="flow">
-    <li><div><h3>Busca</h3><p>Lee portales de empresa y bolsas de empleo remotas y de España, solo en modo lectura. Filtra por título y ubicación antes de gastar nada.</p></div></li>
-    <li><div><h3>Criba gratis, en local</h3><p>Un modelo de IA que corre en mi propio ordenador descarta lo que no encaja: nivel, años pedidos, ventas, idioma, ubicación. Las dudosas pasan a un segundo modelo más grande.</p></div></li>
-    <li><div><h3>Evalúa a fondo</h3><p>Las que sobreviven pasan a una evaluación completa con un modelo más grande, también local y gratis: encaje con mi perfil, carencias, legitimidad y si es realista aplicar (años, nivel, idioma, tecnología).</p></div></li>
-    <li><div><h3>Prepara</h3><p>Si es realista y supera el umbral, genera el CV adaptado y el borrador. El CV solo reordena datos verificados: si el modelo añade una cifra que no está en mi CV, se descarta.</p></div></li>
-    <li class="gate"><div><h3>Yo decido</h3><p>Me llega un resumen diario por Telegram con botones. <strong>Ningún envío sale sin mi aprobación</strong>, y en los portales el botón final lo pulso yo.</p></div></li>
+    <li><div><h3>Defines tus prioridades</h3><p>Indicas el tipo de oportunidades que buscas y los criterios que más te importan.</p></div></li>
+    <li><div><h3>Filtra oportunidades</h3><p>Reúne ofertas de fuentes compatibles y las organiza según tu perfil y preferencias.</p></div></li>
+    <li><div><h3>Ajusta tu CV</h3><p>Resalta las habilidades y la experiencia reales más relevantes para cada oferta, sin inventar datos.</p></div></li>
+    <li class="gate"><div><h3>Revisas y decides</h3><p>Compruebas el resultado y eliges por tu cuenta si quieres seguir adelante.</p></div></li>
   </ol>
 </section>
 
-<section aria-labelledby="ver">
-  <div class="head"><span class="num">04</span><h2 id="ver">Así se ve</h2></div>
-  <div class="ver">
-    <figure><img src="img/resumen-telegram.webp" alt="Resumen diario de JobMatch en Telegram, con ofertas que se quedan cerca, posibles trampas y descartes por motivo" width="630" height="961" loading="lazy" decoding="async"><figcaption>El resumen del 18 de octubre de 2026, recreado a partir del mensaje real: los nombres de las empresas están ocultos y algunas líneas, acortadas.</figcaption></figure>
-    <div>
-      <p>Cada mañana me llega un único mensaje con todo lo de la ronda. Así no tengo que revisar portales: <strong>leo el resumen y decido</strong>.</p>
-      <p><strong>Las que se quedan cerca</strong> llegan con su nota, el motivo principal y un consejo concreto, por ejemplo qué confirmar con la empresa antes de aplicar.</p>
-      <p><strong>Las trampas</strong> (trabajo sin pagar, certificaciones de pago, intermediarios) se señalan aparte, y <strong>los descartes</strong> se agrupan por motivo para ver de un vistazo qué está pidiendo el mercado.</p>
-      <p>Cuando una oferta es realista y supera la nota mínima, el CV adaptado me llega por separado para revisarlo. Ese día ninguna llegó, y el sistema no fuerza ninguna.</p>
-    </div>
-  </div>
-</section>
-
-<section aria-labelledby="filtro">
-  <div class="head"><span class="num">05</span><h2 id="filtro">Qué deja pasar y qué no</h2></div>
+<section aria-labelledby="demo">
+  <div class="head"><span class="num">05</span><h2 id="demo">Así se vería el ajuste</h2></div>
+  <p><strong>Ejemplo ilustrativo con una oferta ficticia:</strong> JobMatch identifica los requisitos relevantes y reorganiza las competencias y la experiencia que ya constan en el perfil.</p>
   <div class="split">
-    <div class="box no"><h3>Descarta</h3><ul>
-      <li>Puestos sénior o de gestión, y los que piden 5 años o más</li>
-      <li>Ventas o atención al cliente disfrazadas de "IA"</li>
-      <li>Trabajo no remunerado, solo comisión o pagar tu formación</li>
-      <li>Sueldos por debajo de 1.000 € al mes</li>
-    </ul></div>
-    <div class="box ok"><h3>Busca</h3><ul>
-      <li>Automatización con IA, agentes e integraciones</li>
-      <li>Consultoría e implantación de IA</li>
-      <li>Asistentes conversacionales, formación y soporte técnico de IA</li>
-      <li>Remoto o híbrido en Barcelona y Girona</li>
-    </ul></div>
+    <div class="box"><h3>Oferta de ejemplo</h3><ul><li>Automatización de procesos</li><li>Integración de herramientas</li><li>Experiencia aplicada al puesto</li></ul></div>
+    <div class="box"><h3>CV adaptado</h3><ul><li>Da prioridad a la experiencia relacionada</li><li>Destaca habilidades coincidentes</li><li>No añade competencias ni logros nuevos</li></ul></div>
   </div>
+  <a class="demo-cta" href="../../index.html#contact">¿Quieres ver una demo? Escríbeme</a>
 </section>
 
 <section aria-labelledby="aprendido">
-  <div class="head"><span class="num">06</span><h2 id="aprendido">Lo que aprendí</h2></div>
-  <p><strong>Cada error se convierte en un test.</strong> Cuando el filtro clasificaba mal una oferta real, esa oferta pasaba a ser un caso de prueba. Así el sistema no repite fallos.</p>
-  <p><strong>Gratis y en local.</strong> Un modelo pequeño descarta la mayoría y uno más grande evalúa las que quedan, los dos en mi ordenador. La IA de pago queda solo como reserva manual.</p>
-  <p><strong>Automatizar no es enviar sin mirar.</strong> El sistema hace el trabajo pesado, pero la decisión sigue siendo mía.</p>
-  <p>Lo construí con Python y asistentes de programación con IA, que dirijo y reviso.</p>
-  <div class="chips"><span>Python</span><span>Ollama (IA local)</span><span>Telegram</span><span>Node.js</span><span>Tareas programadas</span></div>
+  <div class="head"><span class="num">06</span><h2 id="aprendido">Estado del proyecto</h2></div>
+  <p>JobMatch sigue en desarrollo. Esta página presenta la dirección del producto: una búsqueda configurable para perfiles y prioridades distintos.</p>
+  <div class="chips"><span>Búsqueda configurable</span><span>Filtrado por preferencias</span><span>IA aplicada</span></div>
 </section>
 
+<nav class="pjn" aria-label="Otros proyectos"><a class="ant" href="../../casos/onix/"><small>← Anterior</small><strong>ONIX</strong></a><a class="sig" href="../../casos/ares/"><small>Siguiente →</small><strong>ARES GPS</strong></a></nav>
 
 <footer>
-  <p>El código no es público: es una herramienta personal. Si quieres verlo funcionar, <a href="../../index.html#contact">escríbeme</a> y te lo enseño en directo.</p>
+  <p>¿Quieres hablar del proyecto? <a href="../../index.html#contact">Escríbeme</a>.</p>
 </footer>
 </main>
 <script src="../../assets/scrollbar.js" defer></script>

@@ -58,7 +58,7 @@ window.StudioV2 = (function () {
     isOpen = true;
     ui.studioCard.scrollIntoView({ behavior: "smooth" });
     if (history) history.reset();
-    renderTimeline && renderTimeline();
+    if (timeline) timeline.renderTimeline();
     if (segEditor) { segEditor.renderSegments(); segEditor.renderTabs(); }
     CapStyle.renderPresets();
   }
