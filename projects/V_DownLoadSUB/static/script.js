@@ -299,6 +299,8 @@ async function startDownload() {
     addLogLine("error", "Error: " + e.message);
     dlBtn.disabled = false;
     dlBtn.textContent = "⬇ DESCARGAR";
+    document.getElementById("pauseDownloadBtn").hidden = true;
+    document.getElementById("resumeDownloadBtn").hidden = true;
   }
 }
 
@@ -332,8 +334,17 @@ function renderDownloadJob(job) {
   resumeBtn.hidden = !["pausing", "paused"].includes(job.state);
   resumeBtn.disabled = job.state === "pausing";
   resumeBtn.textContent = job.state === "pausing" ? "Pausando…" : "▶ Reanudar";
-  dlBtn.disabled = !["completed", "error"].includes(job.state);
-  dlBtn.textContent = job.state === "completed" || job.state === "error" ? "⬇ DESCARGAR" : "PROCESANDO...";
+  var terminado = ["completed", "error"].includes(job.state);
+  dlBtn.disabled = !terminado;
+  if (terminado) {
+    dlBtn.textContent = "⬇ DESCARGAR";
+  } else if (job.state === "paused") {
+    dlBtn.textContent = "PAUSADO";
+  } else if (job.state === "processing") {
+    dlBtn.textContent = "PROCESANDO…";
+  } else {
+    dlBtn.textContent = "DESCARGANDO…";
+  }
 }
 
 async function pollDownloadJob(jobId) {
