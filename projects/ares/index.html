@@ -339,7 +339,7 @@ body.menu-open > section,body.menu-open > footer{display:none!important}
 .cs-card .cs-idx{position:absolute;top:0.7rem;right:1rem;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.06em;background:rgba(0,0,0,0.25);color:rgba(255,255,255,0.4);padding:0.15rem 0.5rem;clip-path:polygon(4px 0,100% 0,100% calc(100% - 4px),calc(100% - 4px) 100%,0 100%,0 4px)}
 .cs-ctrls{display:flex;align-items:center;gap:1rem;margin-top:1rem}
 .cs-hint{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;opacity:0.5;color:var(--wtext2)}
-  .dp-logo{position:absolute;left:calc(100% + 240px);top:30%;width:565px;z-index:1;pointer-events:none;will-change:transform}
+  .dp-logo{position:absolute;left:calc(100% + 240px);top:30%;width:565px;z-index:1;pointer-events:none}
  .dp-logo canvas{width:100%;height:auto;display:block}
  #showcase-3d{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
  #showcase-3d.is-dragging{cursor:grabbing}
@@ -353,7 +353,7 @@ body.menu-open > section,body.menu-open > footer{display:none!important}
 /* Sin will-change: promocionar esta capa fuerza un raster unico de ~1120x5200px
    (medido: 107 ms de long task al entrar en la seccion). Sin promocion el
    navegador la tesela y el tirón desaparece; el transform de GSAP sigue igual. */
-#vscroll .bg-img img{display:block;width:auto;height:140%;max-width:none;opacity:0.2;will-change:transform;backface-visibility:hidden}
+#vscroll .bg-img img{display:block;width:auto;height:140%;max-width:none;opacity:0.2}
 #vscroll .bg-img::after{content:'';position:absolute;left:0;width:100%;height:calc(100% + 280px);top:-140px;background:linear-gradient(180deg,rgba(21,29,37,0.9) 0%,rgba(21,29,37,0.3) 20%,rgba(21,29,37,0.3) 80%,rgba(21,29,37,0.9) 100%);pointer-events:none}
 .vscroll-inner{position:relative;z-index:1}
 .scroll-panels{position:relative;z-index:2}
@@ -1267,17 +1267,21 @@ function initGLTFModel(){
    var setRendering=function(visible){
      inViewport=visible;
      var shouldRender=visible&&!document.hidden;
-     if(shouldRender&&!rendering){rendering=true;anim3d();}
+     if(shouldRender&&!rendering){lastFrame3d=0;rendering=true;anim3d();}
      if(!shouldRender&&rendering){rendering=false;cancelAnimationFrame(renderId);}
    };
    var allowSpin=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
    var spinSpeed=window.matchMedia('(max-width:768px)').matches?0.0018:0.0027;
+   var lastFrame3d=0;
    function anim3d(){
       if(!rendering)return;
+      var now=performance.now();
+      if(lastFrame3d&&now-lastFrame3d<33){renderId=requestAnimationFrame(anim3d);return;}
+      var dt=lastFrame3d?now-lastFrame3d:16.667; lastFrame3d=now;
       renderId=requestAnimationFrame(anim3d);
-      if(modelG&&allowSpin)modelG.rotation.y+=spinSpeed;
+      if(modelG&&allowSpin)modelG.rotation.y+=spinSpeed*(dt/16.667);
       rend3d.render(scene3d,camera3d);
-  }
+   }
   if(rendering)anim3d();
   if('IntersectionObserver' in window){
     var observer=new IntersectionObserver(function(entries){
