@@ -6,6 +6,18 @@
 <title>Cuántas horas duerme un perro | ARES GPS</title>
 <!-- SEO contract: primary=cuantas horas duerme un perro; support=cuanto duerme un perro al dia; age sub-intent=cuanto duerme un cachorro de 2 meses. Other questions are editorial and pending measurement, not separate targets. See docs/validacion/ARES_SEO_GUARDRAILS.md. -->
 <meta name="description" content="Descubre cuántas horas duerme un perro al día según su edad y cómo distinguir el descanso habitual de un cambio en su rutina.">
+<link rel="canonical" href="https://liamhades.github.io/.DEV/projects/ares/contenido/descanso.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ARES GPS">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Cuántas horas duerme un perro | ARES GPS">
+<meta property="og:description" content="Descubre cuántas horas duerme un perro al día según su edad y cómo distinguir el descanso habitual de un cambio en su rutina.">
+<meta property="og:url" content="https://liamhades.github.io/.DEV/projects/ares/contenido/descanso.html">
+<meta property="og:image" content="https://liamhades.github.io/.DEV/projects/ares/assets/img/og/og-descanso.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cuántas horas duerme un perro, guía de ARES GPS">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -28,7 +40,7 @@
 /* === VÍDEO — full-width sticky (patrón index.html) === */
 .vid-sec{position:relative}
 .vid-sec>.vid-band{position:sticky;top:0;height:100vh;z-index:1;overflow:hidden;background:var(--bg);padding:0;clip-path:polygon(0 var(--section-cut,40px),100% 0,100% calc(100% - var(--section-cut,40px)),0 100%)}
-.vid-sec>.vid-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:var(--bg)}
+.vid-sec>.vid-band picture,.vid-sec>.vid-band picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:var(--bg)}
 .vid-cap{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,242,245,0.65);background:radial-gradient(ellipse at center,rgba(12,17,22,0.15) 0%,rgba(12,17,22,0.55) 100%);pointer-events:none}
 .vid-cap strong{font-family:'Bruno Ace SC',sans-serif;font-size:1.1rem;letter-spacing:0.06em;color:var(--hl);display:block;margin-bottom:0.4rem}
 .vid-sec>section:not(.vid-band){position:relative;z-index:2}
@@ -45,7 +57,7 @@
     aspect-ratio:16 / 9;
     clip-path:polygon(0 20px,100% 0,100% calc(100% - 20px),0 100%);
   }
-  .vid-sec>.vid-band video{position:absolute;width:100%;height:100%;object-fit:cover}
+  .vid-sec>.vid-band picture,.vid-sec>.vid-band picture img{position:absolute;width:100%;height:100%;object-fit:cover}
   #hero,
   #como-funciona,
   #dia-tipico,
@@ -453,8 +465,11 @@ footer{position:relative;z-index:2;background:#101820;clip-path:polygon(0 var(--
 <!-- VÍDEO — full-width sticky: se queda quieto y #honestidad sube y lo tapa con su angulo -->
 <div class="vid-sec">
 <section class="vid-band" aria-label="Vídeo: el dispositivo ARES">
-  <video src="../assets/video/paso1.mp4" poster="../assets/video/paso1-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
-  <div class="vid-cap"><div><strong>Vídeo placeholder</strong>deja aquí el vídeo del dispositivo</div></div>
+  <picture aria-hidden="true">
+    <source media="(max-width: 768px)" srcset="../assets/img/mobile/descanso-mobile.webp" type="image/webp">
+    <img src="../assets/img/responsive/descanso-desktop.webp" width="1920" height="1080" alt="" loading="lazy" decoding="async">
+  </picture>
+  <div class="vid-cap" style="inset:auto auto .9rem .9rem;display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;background:rgba(12,17,22,.62);padding:.42rem .62rem;font-size:8.5px;letter-spacing:.14em;text-shadow:none"><strong style="font-size:.6rem;margin-bottom:.1rem">FOTO TEMPORAL</strong>v&iacute;deo pendiente</div>
 </section>
 
 <!-- 4. HONESTIDAD -->

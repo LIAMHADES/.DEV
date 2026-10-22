@@ -2,19 +2,18 @@
    ARES GPS — Componente de captura de lead (email + GDPR)
    Reutilizado en calculadora.html, pet-friendly.html y proximamente.html
    ============================================
-   CONECTAR API REAL AQUI:
-   Sustituir la funcion `submitLead()` de abajo por una llamada real a la
-   plataforma de email marketing elegida (Mailchimp / Brevo / ConvertKit).
-   Hoy: placeholder que guarda en localStorage + console.log, sin dependencias
-   externas, para poder probar el flujo visual sin backend.
+   El receptor remoto se configura explicitamente con window.ARES_LEAD_ENDPOINT
+   cuando el backend Render/Neon este desplegado. Hasta entonces, el flujo usa
+   el fallback local para no enviar datos a un receptor no verificado.
    ============================================ */
 
 (function () {
    const STORAGE_KEY = "ares_leads_v1";
    const QUALIFICATION_STORAGE_ID = "ares_pending_qualification_v1";
-   // Set this on the published site once the central receiver is deployed.
-   const isGithubPages = /\.github\.io$/i.test(location.hostname);
-   const LEAD_ENDPOINT = window.ARES_LEAD_ENDPOINT || (location.protocol === "file:" || isGithubPages ? "" : "/v1/leads");
+     const isGithubPages = /\.github\.io$/i.test(location.hostname);
+     const LEAD_ENDPOINT = window.ARES_LEAD_ENDPOINT || (isGithubPages || location.protocol === "file:"
+       ? ""
+       : "/v1/leads");
    const BREED_SUGGESTIONS_STORAGE_ID = "ares_breed_suggestions_v1";
 
   function readLeads() {
@@ -66,18 +65,7 @@
     console.log("[ARES lead-capture] Nueva sugerencia de raza no listada (placeholder, sin backend real):", trimmed);
   }
 
-  /**
-   * Punto unico de envio de leads.
-   * TODO(integracion real): reemplazar el bloque de abajo por, por ejemplo:
-   *
-   *   return fetch('https://<tu-endpoint-mailchimp-o-brevo>', {
-   *     method: 'POST',
-   *     headers: { 'Content-Type': 'application/json' },
-   *     body: JSON.stringify(lead)
-   *   }).then(r => r.ok);
-   *
-   * de momento resolvemos siempre como si hubiese ido bien (placeholder).
-   */
+   /** Punto unico de envio de leads, con fallback local para desarrollo. */
   function submitLead(lead) {
      let qualification = null;
      try {
@@ -106,11 +94,13 @@
     if (!form || form.dataset.leadBound === "1") return;
     form.dataset.leadBound = "1";
 
-    const emailInput = form.querySelector('[data-lead="email"]');
-    const gdprInput = form.querySelector('[data-lead="gdpr"]');
-    const submitBtn = form.querySelector('[data-lead="submit"]');
-    const feedback = form.querySelector('[data-lead="feedback"]');
-    const extraFields = form.querySelectorAll("[data-lead-extra]");
+     const emailInput = form.querySelector('[data-lead="email"]');
+     const gdprInput = form.querySelector('[data-lead="gdpr"]');
+     const honeypotInput = form.querySelector('[data-lead="honeypot"]');
+     const submitBtn = form.querySelector('[data-lead="submit"]');
+     const feedback = form.querySelector('[data-lead="feedback"]');
+     const extraFields = form.querySelectorAll("[data-lead-extra]");
+     const formStartedAt = new Date().toISOString();
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -141,11 +131,13 @@
 
       const lead = {
         email,
-        gdprConsent: gdprInput ? gdprInput.checked : true,
-        source: form.dataset.leadSource || "desconocido",
-        extra,
-        createdAt: new Date().toISOString(),
-      };
+       gdprConsent: gdprInput ? gdprInput.checked : true,
+       source: form.dataset.leadSource || "desconocido",
+       extra,
+       createdAt: new Date().toISOString(),
+       website: honeypotInput ? honeypotInput.value : "",
+       formStartedAt,
+     };
 
       if (submitBtn) submitBtn.disabled = true;
 

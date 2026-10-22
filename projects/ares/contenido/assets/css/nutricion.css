@@ -208,6 +208,7 @@
 .nutri-method{width:100vw;max-width:none;margin:0 calc(50% - 50vw) 2rem;padding:1.6rem max(1.25rem,calc((100vw - 1080px) / 2)) 8rem;background:#20303d;color:var(--t);border-top:1px solid rgba(240,242,245,.12);clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)}
 .nutri-method h2{color:var(--t)}
 .nutri-method p,.nutri-method li{color:rgba(240,242,245,.74)}
+
 .nutri-method .nutri-disclaimer{color:rgba(240,242,245,.72)!important;border-top-color:rgba(240,242,245,.22)}
 @media(max-width:760px){
   .nutri-nutrients{padding-bottom:1.2rem;clip-path:polygon(0 24px,100% 0,100% 100%,0 100%)}
@@ -218,7 +219,7 @@
   .nutri-section-head h2,
   .nutri-intro h2,
   .nutri-method h2,
-  .nutri-faq h2{font-size:clamp(1.8rem,8vw,2.6rem);line-height:1.15}
+  .nutri-faq h2{font-size:clamp(1.6rem,7vw,2.4rem);line-height:1.15}
   #toxicos{padding-top:0;padding-bottom:0;margin-bottom:0}
   .nutri-section#buenas-opciones{margin-top:-24px;margin-bottom:0}
 }

@@ -11,6 +11,12 @@
    mantiene para no tocar las páginas cuando llegue ese momento.
    ============================================ */
  (function () {
+  // ID de cliente OAuth de Google (público, no es un secreto). Vacío = solo email.
+  // Se crea en Google Cloud > Credenciales > ID de cliente OAuth > Aplicación web,
+  // con los orígenes autorizados donde se publica la web.
+  var GOOGLE_CLIENT_ID = window.ARES_GOOGLE_CLIENT_ID || "31333995896-hksjagjsod2djakv816mirilitkuk5c1.apps.googleusercontent.com";
+  var GSI_SRC = "https://accounts.google.com/gsi/client";
+
   var ACCOUNTS_KEY = "ares_accounts_v1";
   var SESSION_KEY = "ares_session_v1";
   var PROFILES_KEY = "ares_saved_profiles_v1";
@@ -51,8 +57,8 @@
         '<button type="button" class="account-modal-close" data-account-close aria-label="Cerrar">&times;</button>' +
         '<div class="account-modal-title">Inicia sesión para continuar</div>' +
         '<div class="account-modal-sub">Guardaremos los datos de tu perro y te llevaremos al siguiente paso sin que tengas que volver a introducirlos.</div>' +
-        '<button type="button" class="account-google" id="account-google"><span class="ag-g">G</span> Continuar con Google</button>' +
-        '<div class="account-or"><span>o con tu email</span></div>' +
+        '<div class="account-google-slot" id="account-google-slot" hidden></div>' +
+        '<div class="account-or" id="account-or" hidden><span>o con tu email</span></div>' +
         '<form id="account-form" class="account-form" novalidate>' +
           '<input type="email" id="account-email" placeholder="tu@email.com" autocomplete="email" required>' +
           '<button type="submit" id="account-submit">Continuar</button>' +
@@ -122,7 +128,7 @@
     writeSession({ email: email, loggedInAt: new Date().toISOString() });
   }
 
-  function signInWithEmail(email) {
+  function signInWithEmail(email, extra) {
     email = normalizeEmail(email);
     if (!validEmail(email)) throw new Error("invalid email");
     var accounts = readJSON(ACCOUNTS_KEY, {});
@@ -130,6 +136,7 @@
     if (isNew) {
       accounts[email] = { email: email, createdAt: new Date().toISOString() };
     }
+    if (extra) Object.assign(accounts[email], extra);
     accounts[email].lastLoginAt = new Date().toISOString();
     writeJSON(ACCOUNTS_KEY, accounts);
     setSession(email);
@@ -207,19 +214,7 @@
       el.addEventListener("click", closeModal);
     });
 
-    var google = m.querySelector("#account-google");
-    if (google) {
-      google.addEventListener("click", function () {
-        var authRequest = new CustomEvent("ares:auth-request", {
-          cancelable: true,
-          detail: { provider: "google" }
-        });
-        document.dispatchEvent(authRequest);
-        if (!authRequest.defaultPrevented) {
-          setFeedback(m, "Google queda preparado como punto de conexión. Mientras no haya OAuth configurado, usa tu email de prueba.", true);
-        }
-      });
-    }
+    setupGoogle(m);
 
     var form = m.querySelector("#account-form");
     if (form) {
@@ -234,13 +229,72 @@
         }
         var btn = m.querySelector("#account-submit");
         if (btn) btn.disabled = true;
-        var r;
-        try { r = signInWithEmail(email); }
-        catch (err) {
+        if (!finishSignIn(m, email)) {
           setFeedback(m, "Introduce un email válido.", true);
           if (btn) btn.disabled = false;
-          return;
         }
+      });
+    }
+  }
+
+  // Lee los datos de la credencial de Google (JWT). La firma la valida Google al
+  // emitirla; cuando haya backend, el token se enviará al servidor para verificarlo.
+  function decodeCredential(jwt) {
+    try {
+      var part = jwt.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+      var json = decodeURIComponent(atob(part).split("").map(function (c) {
+        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(""));
+      return JSON.parse(json);
+    } catch (e) { return null; }
+  }
+
+  function loadGsi() {
+    if (window.google && window.google.accounts && window.google.accounts.id) return Promise.resolve();
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = GSI_SRC; s.async = true; s.defer = true;
+      s.onload = function () { resolve(); };
+      s.onerror = function () { reject(new Error("gsi")); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function setupGoogle(m) {
+    var slot = m.querySelector("#account-google-slot");
+    var or = m.querySelector("#account-or");
+    if (!slot || !GOOGLE_CLIENT_ID) return;
+    loadGsi().then(function () {
+      window.google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID,
+        ux_mode: "popup",
+        callback: function (resp) {
+          var data = resp && resp.credential ? decodeCredential(resp.credential) : null;
+          if (!data || !data.email || data.email_verified === false) {
+            setFeedback(m, "No hemos podido leer tu cuenta de Google. Prueba con tu email.", true);
+            return;
+          }
+          finishSignIn(m, data.email, { name: data.name || "", provider: "google" });
+        }
+      });
+      window.google.accounts.id.renderButton(slot, {
+        type: "standard", theme: "filled_black", size: "large", shape: "rectangular",
+        text: "continue_with", locale: "es", width: Math.min(360, slot.clientWidth || 320)
+      });
+      slot.style.cssText = "display:flex;justify-content:center;min-height:44px;margin:18px 0 4px";
+      slot.hidden = false;
+      if (or) or.hidden = false;
+    }).catch(function () {
+      slot.hidden = true;
+      if (or) or.hidden = true;
+    });
+  }
+
+  // Alta o entrada (email o Google), recuperación del perfil y vuelta al paso pendiente.
+  function finishSignIn(m, email, extra) {
+        var r;
+        try { r = signInWithEmail(email, extra); }
+        catch (err) { return false; }
          // Keep new page data, or restore the saved profile when this is a
          // returning user who started from a clean browser/session.
          var existingProfile = savedProfile(r.email);
@@ -270,8 +324,7 @@
              try { continuation(); } catch (e) {}
            }
          }, 1400);
-      });
-    }
+         return true;
   }
 
    function init() {

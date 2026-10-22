@@ -3,9 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARES GPS — Próximamente</title>
+<title>Reserva anticipada del GPS para perros | ARES GPS</title>
 <meta name="robots" content="noindex,follow">
 <meta name="description" content="ARES GPS está en camino: localización, salud y nutrición para tu perro. Cuéntanos cómo es tu perro y sé el primero en reservar.">
+<link rel="canonical" href="https://liamhades.github.io/.DEV/projects/ares/contenido/proximamente.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ARES GPS">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Reserva anticipada del GPS para perros | ARES GPS">
+<meta property="og:description" content="ARES GPS está en camino: localización, salud y nutrición para tu perro. Cuéntanos cómo es tu perro y sé el primero en reservar.">
+<meta property="og:url" content="https://liamhades.github.io/.DEV/projects/ares/contenido/proximamente.html">
+<meta property="og:image" content="https://liamhades.github.io/.DEV/projects/ares/assets/img/og/og-proximamente.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Reserva anticipada de ARES GPS">
+<meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" type="image/svg+xml" href="../assets/img/logo-simple-blanco.svg">
 <link rel="stylesheet" href="assets/css/base.css">
@@ -159,6 +171,24 @@ section:first-of-type{clip-path:none}
  #preventa{background:var(--bg);clip-path:polygon(0 var(--section-cut,40px),100% 0,100% 100%,0 100%)}
 </style>
 <script src="../assets/js/analytics.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"¿ARES ya está disponible?","acceptedAnswer":{"@type":"Answer","text":"Todavía no. Estamos en fase de validación y preparación de las primeras pruebas. Puedes dejar tu email para recibir el aviso cuando abramos las reservas."}},
+        {"@type":"Question","name":"¿Apuntarme significa que tengo que comprarlo?","acceptedAnswer":{"@type":"Answer","text":"No. El cuestionario y el aviso de lanzamiento no te comprometen a comprar. Solo nos permiten entender si ARES resuelve una necesidad real."}},
+        {"@type":"Question","name":"¿Qué recibiré si dejo mi email?","acceptedAnswer":{"@type":"Answer","text":"El aviso cuando ARES esté listo para reservar y la información necesaria para decidir con calma. Podrás darte de baja cuando quieras."}},
+        {"@type":"Question","name":"¿Qué quiere mejorar ARES en el día a día?","acceptedAnswer":{"@type":"Answer","text":"ARES quiere reducir la incertidumbre sobre el bienestar de tu perro: ayudarte a saber dónde está, cómo se mueve, cómo descansa y qué hábitos pueden mejorar su calidad de vida. La aplicación orienta y reúne la información; no sustituye al veterinario."}},
+        {"@type":"Question","name":"¿ARES también tendrá en cuenta la alimentación?","acceptedAnswer":{"@type":"Answer","text":"Sí. La alimentación forma parte del enfoque de bienestar de ARES: podrás consultar pautas y señales útiles para cuidar mejor sus hábitos, siempre como orientación general y sin sustituir una recomendación veterinaria."}},
+        {"@type":"Question","name":"¿Cómo puede ayudar ARES a mejorar su calidad de vida?","acceptedAnswer":{"@type":"Answer","text":"Relacionando lo que ocurre durante el día: actividad, descanso, rutinas y contexto. El objetivo es que tengas una visión más clara para detectar cambios, mantener buenos hábitos y cuidar mejor de tu perro."}}
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -357,6 +387,9 @@ section:first-of-type{clip-path:none}
         <div class="lf-row">
           <input type="email" placeholder="tu@email.com" data-lead="email" required>
           <button type="submit" data-lead="submit">Apuntarme</button>
+        </div>
+        <div class="lead-honeypot" aria-hidden="true">
+          <label>Website <input type="text" data-lead="honeypot" tabindex="-1" autocomplete="off"></label>
         </div>
         <div class="lf-gdpr">
           <input type="checkbox" id="gdpr-prox" data-lead="gdpr" required>

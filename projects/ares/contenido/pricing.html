@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GPS para perros: precios y planes | ARES GPS</title>
 <meta name="description" content="Consulta el precio de ARES GPS para perros: dispositivo Medium o Large, planes de conectividad y el coste total de cada opción sin sorpresas.">
+<link rel="canonical" href="https://liamhades.github.io/.DEV/projects/ares/contenido/pricing.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ARES GPS">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="GPS para perros: precios y planes | ARES GPS">
+<meta property="og:description" content="Consulta el precio de ARES GPS para perros: dispositivo Medium o Large, planes de conectividad y el coste total de cada opción sin sorpresas.">
+<meta property="og:url" content="https://liamhades.github.io/.DEV/projects/ares/contenido/pricing.html">
+<meta property="og:image" content="https://liamhades.github.io/.DEV/projects/ares/assets/img/og/og-pricing.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Precios y planes de ARES GPS para perros">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -235,7 +247,8 @@ section:first-of-type{clip-path:none}
 /* === BLOQUES DE VIDEO (full-width, sticky: el video se queda quieto y la seccion siguiente sube por encima y lo tapa con su angulo) === */
 .vid-sec{position:relative}
 .vid-sec>.vid-band{position:sticky;top:0;height:100vh;z-index:1;overflow:hidden;background:#1C3A4D;clip-path:polygon(0 var(--section-cut,40px),100% 0,100% calc(100% - var(--section-cut,40px)),0 100%);padding:0}
-.vid-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vid-band picture,.vid-band picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:768px){.mobile-crop-paso1{object-position:68% center}.mobile-crop-paso2{object-position:95% center}}
 .vid-cap{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,242,245,0.65);background:none;text-shadow:0 1px 8px rgba(12,17,22,0.8);pointer-events:none}
 .vid-cap strong{font-family:'Bruno Ace SC',sans-serif;font-size:1.1rem;letter-spacing:0.06em;color:var(--hl);display:block;margin-bottom:0.4rem}
 .vid-sec>section:not(.vid-band){position:relative;z-index:2}
@@ -295,8 +308,11 @@ section:first-of-type{clip-path:none}
 <!-- VÍDEO 1 — full-width sticky: se queda quieto y #hardware sube por encima y lo tapa con su angulo -->
 <div class="vid-sec">
 <section class="vid-band" aria-label="Vídeo: el dispositivo ARES">
-  <video src="../assets/video/paso1.mp4" poster="../assets/video/paso1-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
-  <div class="vid-cap"><div><strong>Vídeo placeholder</strong>deja aquí el vídeo del dispositivo</div></div>
+  <picture aria-hidden="true">
+    <source media="(max-width: 768px)" srcset="../assets/img/mobile/paso1-mobile.webp" type="image/webp">
+    <img class="mobile-crop-paso1" src="../assets/img/responsive/paso1-desktop.webp" width="1920" height="1080" alt="" loading="lazy" decoding="async">
+  </picture>
+  <div class="vid-cap" style="inset:auto auto .9rem .9rem;display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;background:rgba(12,17,22,.62);padding:.42rem .62rem;font-size:8.5px;letter-spacing:.14em;text-shadow:none"><strong style="font-size:.6rem;margin-bottom:.1rem">FOTO TEMPORAL</strong>v&iacute;deo pendiente</div>
 </section>
 
 <!-- 2. SELECTOR DE HARDWARE -->
@@ -340,8 +356,11 @@ section:first-of-type{clip-path:none}
 <!-- VÍDEO 2 — full-width sticky: se queda quieto y #planes sube por encima y lo tapa con su angulo (arriba y abajo) -->
 <div class="vid-sec">
 <section class="vid-band" id="vidBand2" aria-label="Vídeo: la app y los planes ARES">
-  <video src="../assets/video/paso2.mp4" poster="../assets/video/paso2-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
-  <div class="vid-cap"><div><strong>Vídeo placeholder</strong>deja aquí el vídeo de la app / planes</div></div>
+  <picture aria-hidden="true">
+    <source media="(max-width: 768px)" srcset="../assets/img/mobile/paso2-mobile.webp" type="image/webp">
+    <img class="mobile-crop-paso2" src="../assets/img/responsive/paso2-desktop.webp" width="1920" height="1080" alt="" loading="lazy" decoding="async">
+  </picture>
+  <div class="vid-cap" style="inset:auto auto .9rem .9rem;display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;background:rgba(12,17,22,.62);padding:.42rem .62rem;font-size:8.5px;letter-spacing:.14em;text-shadow:none"><strong style="font-size:.6rem;margin-bottom:.1rem">FOTO TEMPORAL</strong>v&iacute;deo pendiente</div>
 </section>
 
 <!-- 3. TABLA COMPARATIVA DE SUSCRIPCION -->
