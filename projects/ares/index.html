@@ -288,7 +288,7 @@ body.menu-open > section,body.menu-open > footer{display:none!important}
 
 /* === PAS — SVGs flotantes de fondo + glass en texto === */
 #proposito .container{position:relative;z-index:1}
-.pas-floaters{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.pas-floaters{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;contain:layout paint style}
 .pas-float{position:absolute;top:0;left:0;opacity:0;will-change:transform;transition:opacity 1.2s ease}
 .pas-float img{width:100%;height:100%;object-fit:contain;display:block}
 .pas-float.on{opacity:1}
@@ -1151,17 +1151,21 @@ lenis.on('scroll',({scroll})=>{if(scroll>40)nav.classList.add('scrolled');else n
   /* === SUBRAYADOR AMARILLO — highlighter en scroll (se arma en initGSAP, tras el intro) === */
 
 
-   let renderId=0,inViewport=!('IntersectionObserver' in window),rendering=inViewport&&!document.hidden;
+   let renderId=0,inViewport=!('IntersectionObserver' in window),rendering=inViewport&&!document.hidden,lastFrameShow=0;
    const setRendering=visible=>{
      inViewport=visible;
      const shouldRender=visible&&!document.hidden;
-     if(shouldRender&&!rendering){rendering=true;render();}
+     if(shouldRender&&!rendering){lastFrameShow=0;rendering=true;render();}
      if(!shouldRender&&rendering){rendering=false;cancelAnimationFrame(renderId);}
    };
   function render(){
     if(!rendering)return;
-    rotX+=(targetX-rotX)*0.08;
-    rotY+=(targetY-rotY)*0.08;
+    var now=performance.now();
+    if(lastFrameShow&&now-lastFrameShow<33){renderId=requestAnimationFrame(render);return;}
+    var dt=lastFrameShow?now-lastFrameShow:16.667; lastFrameShow=now;
+    var k=Math.min(2,dt/16.667);
+    rotX+=(targetX-rotX)*Math.min(1,0.08*k);
+    rotY+=(targetY-rotY)*Math.min(1,0.08*k);
     group.rotation.x=rotX;
     group.rotation.y=rotY;
     group.position.y=Math.sin(Date.now()*0.002)*0.04;
