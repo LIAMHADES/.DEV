@@ -1001,7 +1001,7 @@ function loadModelBuffer(){
 if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined')gsap.registerPlugin(ScrollTrigger);
 const desktopSmoothScroll=window.matchMedia('(min-width:769px)').matches;
 const lenis=typeof Lenis!=='undefined'&&desktopSmoothScroll
-  ? new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),smoothWheel:true,prevent:node=>node.closest&&node.closest('[data-lenis-prevent]')})
+  ? new Lenis({duration:0.75,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),smoothWheel:true,wheelMultiplier:1.15,prevent:node=>node.closest&&node.closest('[data-lenis-prevent]')})
   : {on(){},raf(){},scrollTo(target,options={}){const el=typeof target==='string'?document.querySelector(target):target;if(!el)return;const offset=Number(options.offset)||0;const top=el.getBoundingClientRect().top+window.scrollY+offset;window.scrollTo({top,behavior:options.behavior||'smooth'})},start(){},stop(){}};
 
 // Scroll progress ticks: native scroll on mobile, Lenis events on desktop.
@@ -1524,7 +1524,7 @@ const cardStep=1/(total-1);
      ScrollTrigger.create({trigger:'#despiece',pin:true,pinSpacing:true,anticipatePin:1,start:pinStart,end:()=>{
       const step=matchMedia('(max-width:768px)').matches?Math.max(window.innerHeight*0.6,360):Math.max(window.innerHeight*0.58,420);
      return '+='+(total-1)*step;
-   },snap:{snapTo:cardStep,inertia:!coarsePointer,duration:{min:0.2,max:0.45},delay:0.06,ease:'power1.inOut'},invalidateOnRefresh:true,onUpdate:self=>{
+   },snap:{snapTo:cardStep,inertia:!coarsePointer,duration:{min:0.15,max:0.3},delay:0.06,ease:'power1.inOut'},invalidateOnRefresh:true,onUpdate:self=>{
       const p=self.progress;
        const mobile=window.matchMedia('(max-width:768px)').matches;
        gsap.set('#dpLogo',{yPercent:-50,x:mobile?0:-200*p,rotate:mobile?0:-45*p});
