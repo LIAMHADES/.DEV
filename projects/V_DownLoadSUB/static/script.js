@@ -4,6 +4,8 @@ var lastTranscriptText = "";
 var activeDownloadJobId = null;
 var downloadPollTimer = null;
 var downloadPollWarningShown = false;
+var localFile = null;
+var localFileUrl = "";
 var STAGE_IDS = ['stage-upload', 'stage-config', 'stage-studio'];
 
 function showStage(stageId) {
@@ -22,6 +24,10 @@ window.addEventListener("DOMContentLoaded", function () {
   // Theme toggle
   var themeBtn = document.getElementById("themeToggle");
   var saved = localStorage.getItem("vdownloader-theme");
+  if (!saved) {
+    // Sin preferencia guardada: seguir la del sistema operativo
+    saved = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
   if (saved === "dark") { document.documentElement.classList.add("dark"); }
   if (themeBtn) {
     themeBtn.addEventListener("click", function () {
@@ -29,6 +35,15 @@ window.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("vdownloader-theme", isDark ? "dark" : "light");
       if (typeof redraw === "function") redraw();
     });
+    // Si el usuario nunca eligió, seguir cambios de tema del SO en vivo
+    if (!localStorage.getItem("vdownloader-theme") && window.matchMedia) {
+      try {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+          document.documentElement.classList.toggle("dark", e.matches);
+          if (typeof redraw === "function") redraw();
+        });
+      } catch (err) { /* navegadores antiguos */ }
+    }
   }
   initDropUpload();
   try {
@@ -213,6 +228,11 @@ function getSelected(group) {
   return active ? active.dataset.val : null;
 }
 
+function isChecked(id) {
+  var input = document.getElementById(id);
+  return !!(input && input.checked);
+}
+
 async function fetchInfo() {
   var url = document.getElementById("urlInput").value.trim();
   if (!url) return;
@@ -250,7 +270,11 @@ function fmtDate(d) {
 
 async function startDownload() {
   var url = document.getElementById("urlInput").value.trim();
-  if (!url) { alert("Introduce una URL."); return; }
+  if (!url && !localFile) { alert("Introduce una URL o selecciona un archivo."); return; }
+  if (localFile && !url) {
+    downloadLocalFile();
+    return;
+  }
   if (activeDownloadJobId) return;
   var progressCard = document.getElementById("progressCard");
   var transcriptCard = document.getElementById("transcriptCard");
@@ -549,32 +573,53 @@ function initDropUpload() {
 
 function uploadFile(file) {
   if (SIN_SERVIDOR) { avisoDemo(true); return; }
+  if (localFileUrl) URL.revokeObjectURL(localFileUrl);
+  localFile = file;
+  localFileUrl = URL.createObjectURL(file);
   var zone = document.getElementById("dropZone");
   var text = zone && zone.querySelector(".drop-text");
   var hint = zone && zone.querySelector(".drop-hint");
-  if (text) text.textContent = "Subiendo " + file.name + "...";
-  if (hint) hint.textContent = "";
-  var fd = new FormData();
-  fd.append("file", file);
-  fetch(API_URL + "/api/upload", { method: "POST", body: fd })
-    .then(function (r) { return r.json(); })
-    .then(function (data) {
-      if (data.error) {
-        if (text) text.textContent = "Error: " + data.error;
-        if (hint) hint.textContent = "";
-        return;
-      }
-      if (text) text.textContent = "¡" + file.name + " subido!";
-      if (hint) hint.textContent = "Redirigiendo...";
-      loadDownloads();
-      setTimeout(function () { openStudio(data.folder); }, 500);
-    })
-    .catch(function (e) {
-      if (text) text.textContent = "Error: " + e.message;
-      if (hint) hint.textContent = "";
-      setTimeout(function () {
-        if (text) text.textContent = "O arrastra tu vídeo o audio aquí";
-        if (hint) hint.textContent = "MP4, MOV, WebM, MKV, MP3, WAV, OGG";
-      }, 3000);
-     });
+  if (text) text.textContent = "¡" + file.name + " listo en tu dispositivo!";
+  if (hint) hint.textContent = "No se ha subido ningún archivo al servidor.";
+
+  var media = document.createElement(file.type.indexOf("audio/") === 0 ? "audio" : "video");
+  media.preload = "metadata";
+  media.src = localFileUrl;
+  media.onloadedmetadata = function () {
+    document.getElementById("thumbnail").removeAttribute("src");
+    document.getElementById("videoTitle").textContent = file.name;
+    document.getElementById("metaChannel").textContent = "Archivo local";
+    document.getElementById("metaDuration").textContent = formatDuration(media.duration);
+    document.getElementById("metaViews").textContent = formatBytes(file.size);
+    document.getElementById("metaDate").textContent = "";
+    document.getElementById("metaPlatform").textContent = "Procesamiento local";
+    showStage("stage-config");
+  };
+}
+
+function downloadLocalFile() {
+  var a = document.createElement("a");
+  a.href = localFileUrl;
+  a.download = localFile.name;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  var card = document.getElementById("progressCard");
+  if (card) card.classList.remove("hidden");
+  document.getElementById("progressBar").style.width = "100%";
+  document.getElementById("progressPct").textContent = "100%";
+  document.getElementById("progressLabel").textContent = "✓ ARCHIVO DESCARGADO LOCALMENTE";
+  addLogLine("success", "✓ El archivo nunca salió de tu dispositivo.");
+}
+
+function formatDuration(seconds) {
+  if (!Number.isFinite(seconds)) return "Duración desconocida";
+  var mins = Math.floor(seconds / 60);
+  var secs = Math.floor(seconds % 60).toString().padStart(2, "0");
+  return mins + ":" + secs;
+}
+
+function formatBytes(bytes) {
+  if (!bytes) return "";
+  return (bytes / 1024 / 1024).toFixed(1) + " MB";
 }
