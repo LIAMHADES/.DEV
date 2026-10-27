@@ -56,6 +56,9 @@ window.addEventListener("DOMContentLoaded", function () {
   } catch (e) {
     console.error("Init error:", e);
   }
+  ["badge-ytdlp","badge-ffmpeg","badge-whisper"].forEach(function(id){
+    setBadge(id, "cargando");
+  });
   showStage("stage-upload");
   document.getElementById("urlInput").addEventListener("keydown", function (e) {
     if (e.key === "Enter") fetchInfo();
@@ -112,6 +115,8 @@ var API_CANDIDATOS = (function () {
 })();
 var API_URL = API_CANDIDATOS[0];
 var SIN_SERVIDOR = true;
+var REINTENTO_MS = 8000;
+var reintentoTimer = null;
 
 function fijarControles(activos) {
   var urlInput = document.getElementById("urlInput");
@@ -127,7 +132,7 @@ function fijarControles(activos) {
   if (fetchBtn) {
     fetchBtn.disabled = !activos;
     fetchBtn.classList.toggle("demo-only", !activos);
-    fetchBtn.textContent = activos ? "Analizar" : "Demo visual";
+    fetchBtn.textContent = activos ? "Analizar" : "Siguiente paso";
     fetchBtn.title = activos ? "" : "El procesamiento no está disponible en esta página pública";
   }
   if (fileInput) fileInput.disabled = !activos;
@@ -143,7 +148,7 @@ function avisoDemo(resaltar) {
     aviso.id = "avisoDemo";
     aviso.className = "aviso-demo";
     aviso.setAttribute("role", "status");
-     aviso.innerHTML = "<strong>Motor local no conectado.</strong> Analizar enlaces y procesar archivos necesita el motor de V_DOWNLOADER (Flask + yt-dlp + FFmpeg) en tu equipo. Arranca <code>launch.bat</code> y vuelve a intentarlo." +
+     aviso.innerHTML = "<strong>Motor local no conectado.</strong> Analizar enlaces y procesar archivos necesita el motor de V_DOWNLOADER (Flask + yt-dlp + FFmpeg) en tu equipo. Hace falta el motor de V_DOWNLOADER en tu equipo. Lo intento de nuevo automáticamente cada 8 s; también puedes reintentar ahora:" +
       "<div class=\"aviso-acciones\"><button type=\"button\" class=\"aviso-btn\" id=\"reintentarMotor\">Reintentar conexión</button><a href=\"../../index.html#contact\">Pedir una demo funcional →</a></div>";
     var wrap = document.getElementById("urlWrap");
     if (wrap && wrap.parentNode) wrap.parentNode.insertBefore(aviso, wrap.nextSibling);
@@ -156,12 +161,15 @@ function marcarSinServidor() {
   SIN_SERVIDOR = true;
   fijarControles(false);
   ["badge-ytdlp","badge-ffmpeg","badge-whisper"].forEach(function(id){
-    document.querySelectorAll("#" + id).forEach(function(el){
-      el.classList.add("local");
-      el.title = "Funciona en local, en mi ordenador";
-    });
+    setBadge(id, "fail");
   });
   avisoDemo(false);
+  if (!reintentoTimer) {
+    reintentoTimer = setInterval(function () {
+      if (!SIN_SERVIDOR) { clearInterval(reintentoTimer); reintentoTimer = null; return; }
+      checkStatus();
+    }, REINTENTO_MS);
+  }
 }
 
 function marcarConMotor(status) {
@@ -180,6 +188,10 @@ function marcarConMotor(status) {
 }
 
 async function checkStatus() {
+  ["badge-ytdlp","badge-ffmpeg","badge-whisper"].forEach(function(id){
+    setBadge(id, "cargando");
+  });
+  var conectado = false;
   for (var i = 0; i < API_CANDIDATOS.length; i++) {
     try {
       var r = await fetch(API_CANDIDATOS[i] + "/api/status", { signal: AbortSignal.timeout(2500) });
@@ -187,19 +199,31 @@ async function checkStatus() {
       var s = await r.json();
       API_URL = API_CANDIDATOS[i];
       marcarConMotor(s);
+      conectado = true;
       loadDownloads();
       return;
     } catch (e) { /* siguiente candidato */ }
   }
-  marcarSinServidor();
+  if (!conectado) marcarSinServidor();
 }
 
-function setBadge(id, ok) {
+function setBadge(id, estado) {
+  // estado: "cargando" | "ok" | "fail"
   var els = document.querySelectorAll("#" + id);
   els.forEach(function (el) {
-    el.classList.toggle("ok", ok);
-    el.classList.toggle("fail", !ok);
-    el.textContent = id.replace("badge-", "") + (ok ? " ✓" : " ✗");
+    el.classList.remove("cargando", "ok", "fail");
+    el.classList.add(estado);
+    var base = id.replace("badge-", "");
+    if (estado === "cargando") {
+      el.innerHTML = '<span class="badge-spin"></span>' + base;
+      el.title = "Verificando…";
+    } else if (estado === "ok") {
+      el.textContent = base + " ✓";
+      el.title = "Disponible";
+    } else {
+      el.textContent = base + " ✗";
+      el.title = "No disponible";
+    }
   });
 }
 

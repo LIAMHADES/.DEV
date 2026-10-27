@@ -141,6 +141,10 @@ html.dark * { scrollbar-color:rgba(139,195,74,0.45) transparent; }
 }
 html.dark .badge { background:rgba(255,255,255,0.06); }
 .badge.ok { color:var(--green); border-color:var(--green); }
+.badge.fail { color:#d9442a; border-color:#d9442a; }
+.badge.cargando { color:var(--text-faint); border-color:var(--border); }
+.badge-spin { display:inline-block; width:9px; height:9px; border:2px solid currentColor; border-radius:50%; border-top-color:transparent; margin-right:6px; animation:badgeSpin .8s linear infinite; vertical-align:-1px; }
+@keyframes badgeSpin { to { transform: rotate(360deg); } }
 
 /* ── Hero / Stage 1 ────────────────────────────────────────────────────── */
 .hero-title {
