@@ -143,6 +143,42 @@ html.dark .badge { background:rgba(255,255,255,0.06); }
 .badge.ok { color:var(--green); border-color:var(--green); }
 .badge.fail { color:#d9442a; border-color:#d9442a; }
 .badge.cargando { color:var(--text-faint); border-color:var(--border); }
+
+/* ── Aviso: servicio dado de baja ─────────────────────────────────────── */
+.aviso-baja {
+  position:relative; z-index:50;
+  padding:24px 20px;
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  margin:0 auto 30px;
+  max-width:700px;
+  text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,0.06);
+}
+html.dark .aviso-baja { background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.08); }
+.aviso-baja-contenido { display:flex; align-items:flex-start; gap:16px; }
+.aviso-icono {
+  width:32px; height:32px;
+  color:#d9442a;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.aviso-baja-contenido > div { flex:1; text-align:left; }
+.aviso-baja-contenido strong { display:block; color:var(--text); font-size:1.1rem; margin-bottom:6px; }
+.aviso-baja-contenido p { color:var(--text-dim); font-size:0.9rem; line-height:1.5; margin:0 0 10px 0; }
+.aviso-baja-estado { color:var(--terracotta); font-size:0.85rem; font-weight:600; margin-top:4px; }
+.aviso-baja-btn {
+  display:inline-block; margin-top:14px;
+  padding:10px 20px; border-radius:var(--radius-sm);
+  background:var(--terracotta); color:#fff;
+  font:600 0.9rem var(--font-ui); text-decoration:none;
+  transition:background 0.2s;
+}
+.aviso-baja-btn:hover { background:var(--terracotta-h); }
+
+.drop-disabled { opacity:0.5; pointer-events:none; }
+/* Fin aviso baja */
 .badge-spin { display:inline-block; width:9px; height:9px; border:2px solid currentColor; border-radius:50%; border-top-color:transparent; margin-right:6px; animation:badgeSpin .8s linear infinite; vertical-align:-1px; }
 @keyframes badgeSpin { to { transform: rotate(360deg); } }
 

@@ -46,8 +46,8 @@ window.addEventListener("DOMContentLoaded", function () {
     }
   }
   initDropUpload();
+  // Servicio dado de baja: no se conecta al motor local.
   try {
-    checkStatus();
     loadDownloads();
     initRadioPills();
     initTabs();
@@ -56,9 +56,6 @@ window.addEventListener("DOMContentLoaded", function () {
   } catch (e) {
     console.error("Init error:", e);
   }
-  ["badge-ytdlp","badge-ffmpeg","badge-whisper"].forEach(function(id){
-    setBadge(id, "cargando");
-  });
   showStage("stage-upload");
   document.getElementById("urlInput").addEventListener("keydown", function (e) {
     if (e.key === "Enter") fetchInfo();
@@ -187,24 +184,9 @@ function marcarConMotor(status) {
   }
 }
 
-async function checkStatus() {
-  ["badge-ytdlp","badge-ffmpeg","badge-whisper"].forEach(function(id){
-    setBadge(id, "cargando");
-  });
-  var conectado = false;
-  for (var i = 0; i < API_CANDIDATOS.length; i++) {
-    try {
-      var r = await fetch(API_CANDIDATOS[i] + "/api/status", { signal: AbortSignal.timeout(2500) });
-      if (!r.ok) continue;
-      var s = await r.json();
-      API_URL = API_CANDIDATOS[i];
-      marcarConMotor(s);
-      conectado = true;
-      loadDownloads();
-      return;
-    } catch (e) { /* siguiente candidato */ }
-  }
-  if (!conectado) marcarSinServidor();
+function checkStatus() {
+  // Servicio dado de baja: no se intenta conectar al servidor.
+  marcarSinServidor();
 }
 
 function setBadge(id, estado) {
@@ -258,9 +240,8 @@ function isChecked(id) {
 }
 
 async function fetchInfo() {
-  var url = document.getElementById("urlInput").value.trim();
-  if (!url) return;
-  if (SIN_SERVIDOR) { avisoDemo(true); return; }
+  // Servicio dado de baja: no hay procesamiento disponible.
+  return;
   var btn = document.getElementById("fetchBtn");
   btn.textContent = "..."; btn.disabled = true;
   try {
