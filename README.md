@@ -8,7 +8,8 @@ Descarga, transcribe y traduce vídeos con IA. yt-dlp + Whisper + FFmpeg.
 
 | Página | Link |
 |--------|------|
-| App v2 (Warm Tech) | [V_DOWNLOADER](https://LIAMHADES.github.io/.DEV/projects/V_DownLoadSUB/index.html) |
+| App v2 (Warm Tech) | [V_DOWNLOADER](https://LIAMHADES.github.io/.DEV/projects/V_DownLoadSUB/) |
+| Página de presentación (CV) | [V_DOWNLOADER caso](https://LIAMHADES.github.io/.DEV/casos/v-downloader/index.html) |
 
 ## VtoTXforIA
 
