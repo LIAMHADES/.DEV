@@ -1,5 +1,9 @@
 # .DEV — Portfolio de proyectos
 
+**Portfolio profesional de Liam García Soldevila** — IA, automatización, agentes y proyectos propios.
+
+👉 **[Abrir el portfolio](https://liamhades.github.io/.DEV/)**
+
 Requiere activar GitHub Pages en Settings → Pages → Source: `Deploy from branch` → `main` `/ (root)`.
 
 ## V_DOWNLOADER
