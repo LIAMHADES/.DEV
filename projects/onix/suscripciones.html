@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="view-transition" content="same-origin">
 <script>(function(){try{if(sessionStorage.getItem('onix-nav-transition')==='1'){document.documentElement.classList.add('onix-nav-transition');sessionStorage.removeItem('onix-nav-transition')}}catch(e){}})();</script>
-<title>ONIX — Suscripciones Basic, Pro y Premium</title>
-<meta name="description" content="Planes Basic, Pro y Premium para mejorar tu expositor ONIX, mantenerlo actualizado y convertir más visitas en clientes.">
+<title>ONIX Fideliza — Básico, Crece y Pro</title>
+<meta name="description" content="Planes ONIX Fideliza para contactos con consentimiento, Wallet, puntos, recompensas y campañas revisadas por tu negocio.">
 <link rel="canonical" href="https://liamhades.github.io/.DEV/projects/onix/suscripciones.html">
-<meta property="og:title" content="ONIX — Suscripciones Basic, Pro y Premium">
-<meta property="og:description" content="Elige el plan ONIX que mejor encaja con tu negocio y mantén tu expositor funcionando cada mes.">
+<meta property="og:title" content="ONIX Fideliza — Básico, Crece y Pro">
+<meta property="og:description" content="Elige el plan ONIX que mejor encaja con tu negocio y mantén tu stand funcionando cada mes.">
 <meta property="og:image" content="https://liamhades.github.io/.DEV/projects/onix/img/optimized/onix-negativo.webp">
 <meta property="og:url" content="https://liamhades.github.io/.DEV/projects/onix/suscripciones.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ONIX — Suscripciones Basic, Pro y Premium">
-<meta name="twitter:description" content="Planes mensuales para mantener y hacer crecer tu presencia ONIX.">
+<meta name="twitter:title" content="ONIX Fideliza — Básico, Crece y Pro">
+<meta name="twitter:description" content="Contactos, Wallet, puntos y campañas con límites claros.">
 <meta name="twitter:image" content="https://liamhades.github.io/.DEV/projects/onix/img/optimized/onix-negativo.webp">
 <meta name="theme-color" content="#080705">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,7 +46,7 @@ body{
     radial-gradient(ellipse 900px 600px at 15% -5%, rgba(184,84,32,.12), transparent 60%),
     radial-gradient(ellipse 700px 500px at 100% 30%, rgba(184,84,32,.07), transparent 55%),
     radial-gradient(ellipse 800px 500px at 0% 75%, rgba(184,84,32,.06), transparent 55%);
-  background-attachment:fixed;
+   background-attachment:scroll;
   color:var(--text);font-family:var(--font-body),-apple-system,sans-serif;
   font-size:16px;font-weight:300;line-height:1.6;
   -webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden
@@ -78,12 +78,12 @@ body::before{
 }
 body::after{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;
-  background-image:url("img/logos/logo%20negativo.png");
+  background-image:url("img/optimized/onix-negativo.webp");
   background-size:60%;background-position:center;background-repeat:no-repeat;
-  background-attachment:fixed;
-  opacity:.25;filter:blur(4px)
+   background-attachment:scroll;
+   opacity:.25;filter:none
 }
-@media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:blur(6px)}}
+@media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:none}}
 :focus-visible{outline:2px solid var(--copper-warm);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
 strong.em,.em{font-family:var(--font-body);font-style:normal;font-weight:600;color:var(--text);font-size:1em;letter-spacing:normal;-webkit-text-fill-color:var(--text)}
@@ -113,7 +113,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   .nav-links{display:none!important}
   .nav-links.open{display:flex!important;position:fixed!important;inset:0!important;z-index:100;background:#080705!important;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:max(110px,calc(env(safe-area-inset-top) + 70px)) 5% max(90px,env(safe-area-inset-bottom));animation:menuFade .3s ease both}
   .nav-links.open::before{content:'';position:absolute;top:0;left:0;right:0;height:45%;background:radial-gradient(ellipse 100% 100% at 50% 0%,rgba(184,84,32,.12),transparent);pointer-events:none}
-  .nav-links.open::after{content:'';position:absolute;top:max(55px,calc(env(safe-area-inset-top) + 35px));left:0;right:0;margin:0 auto;width:clamp(112px,32vw,192px);height:clamp(112px,32vw,192px);background-image:url("img/logos/logo.webp");background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 2px 12px rgba(184,84,32,.25));animation:slideUp .4s cubic-bezier(.16,1,.3,1) .02s both}
+  .nav-links.open::after{content:'';position:absolute;top:max(55px,calc(env(safe-area-inset-top) + 35px));left:0;right:0;margin:0 auto;width:clamp(112px,32vw,192px);height:clamp(112px,32vw,192px);background-image:url("img/optimized/logo.webp");background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 2px 12px rgba(184,84,32,.25));animation:slideUp .4s cubic-bezier(.16,1,.3,1) .02s both}
   .nav-links.open a{animation:slideUp .5s cubic-bezier(.16,1,.3,1) both;font-family:var(--font-h1);font-size:clamp(44px,10vw,72px);line-height:1.02;padding:11px 0;color:var(--text2);text-decoration:none;font-weight:400;letter-spacing:.05em;text-transform:uppercase;position:relative;transition:color .25s cubic-bezier(.16,1,.3,1)}
   .nav-links.open a:hover,
   .nav-links.open a.active,
@@ -215,11 +215,25 @@ table.compare thead th:first-child{color:var(--muted);font-family:var(--font-bod
 table.compare tbody th{font-family:var(--font-body);font-weight:400;font-size:13.5px;color:var(--text2);white-space:normal;overflow-wrap:anywhere}
 table.compare td{font-family:var(--font-body);font-size:13px;color:var(--muted);text-align:center}
 table.compare td.yes{color:var(--copper-light);font-weight:700}
-table.compare td.val{text-align:left;color:var(--copper-warm);font-weight:600}
+table.compare td.val{text-align:center;color:var(--copper-warm);font-weight:600}
+table.compare tbody th{vertical-align:top}
+.compare-info{display:block}
+.compare-info summary{cursor:pointer;list-style:none;position:relative;padding-right:22px;color:var(--text2)}
+.compare-info summary::-webkit-details-marker{display:none}
+.compare-info summary::after{content:'+';position:absolute;right:0;top:0;color:var(--copper-warm);font-size:18px;line-height:1;font-weight:400}
+.compare-info[open] summary::after{content:'−'}
+.compare-info summary:focus-visible{outline:2px solid var(--copper-warm);outline-offset:3px;border-radius:3px}
+.compare-info p{margin-top:8px;padding:10px 12px;background:var(--surface3);border-left:2px solid var(--copper);border-radius:0 var(--r-sm) var(--r-sm) 0;font-size:12px;line-height:1.6;font-weight:300;color:var(--muted)}
+@media(min-width:681px){
+  .compare-info summary{transition:color .18s var(--ease-std),background .18s var(--ease-std),padding-left .18s var(--ease-std)}
+  .compare-info summary:hover{color:var(--copper-light);padding-left:7px;background:rgba(184,84,32,.08)}
+  .compare-info summary::after{transition:transform .18s var(--ease-std)}
+  .compare-info summary:hover::after{transform:scale(1.2) translateX(-2px)}
+}
 table.compare tbody tr{opacity:0;transform:translateY(10px);transition:opacity .4s var(--ease-std),transform .4s var(--ease-std);transition-delay:calc(var(--i,0)*.05s)}
 table.compare tbody tr.vis{opacity:1}
 table.compare tbody tr:last-child th,table.compare tbody tr:last-child td{border-bottom:none}
-table.compare tbody tr:hover{background:rgba(184,84,32,.04)}
+table.compare tbody tr:hover{background:rgba(184,84,32,.09)}
 .col-pro{background:rgba(184,84,32,.03)}
 
 .compare-mobile{display:none}
@@ -236,6 +250,45 @@ table.compare tbody tr:hover{background:rgba(184,84,32,.04)}
 .compare-plan-mobile ul{display:flex;flex-direction:column;gap:9px;list-style:none}
 .compare-plan-mobile li{position:relative;padding-left:18px;font-size:13px;color:var(--text2);line-height:1.5}
 .compare-plan-mobile li::before{content:'+';position:absolute;left:0;color:var(--copper-warm);font-weight:700}
+.compare-mobile-detail{margin-top:14px;border-top:1px solid var(--border);padding-top:12px}
+.compare-mobile-detail summary{cursor:pointer;color:var(--copper-warm);font-size:12px;font-weight:600;list-style:none}
+.compare-mobile-detail summary::-webkit-details-marker{display:none}
+.compare-mobile-detail summary::after{content:' +';font-size:16px;font-weight:400}
+.compare-mobile-detail[open] summary::after{content:' −'}
+.compare-mobile-detail p{margin:8px 0 0;font-size:12px;color:var(--muted);line-height:1.65}
+.compare-plan-mobile li .compare-mobile-detail{margin:0;padding:0;border:0}
+.compare-plan-mobile li .compare-mobile-detail summary{font-size:13px;font-weight:400;color:var(--text2);line-height:1.5}
+.compare-plan-mobile li .compare-mobile-detail p{margin:4px 0 0;font-size:11.5px;line-height:1.45}
+.compare-mobile-explain{display:block;font-size:13px;color:var(--text2);line-height:1.5}
+.compare-mobile-explain strong{color:inherit;font-weight:400}
+.compare-mobile-explain small{display:block;margin-top:3px;font-size:11.5px;color:var(--muted);line-height:1.45}
+.compare-mobile-note{margin-top:16px;padding:12px 14px;border-left:2px solid var(--copper);background:var(--surface2);color:var(--muted);font-size:11.5px;line-height:1.55}
+.compare-mobile-note strong{color:inherit;font-weight:400}
+
+/* ─── EXTRAS Y AMPLIACIONES DE FIDELIZA ─────────────────────── */
+.fideliza-extras{padding-top:48px}
+.fideliza-extras .section-sub{max-width:720px}
+.extras-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+.extra-card{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r-sm);padding:20px;min-height:178px}
+.extra-card h3{font-family:var(--font-h2);font-size:18px;font-weight:700;margin-bottom:8px}
+.extra-card p{font-size:13px;color:var(--muted);line-height:1.65}
+.extra-card .extra-note{display:block;margin-top:12px;color:var(--text2);font-size:11.5px;line-height:1.5}
+.cross-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.cross-links a{display:inline-flex;align-items:center;gap:8px;color:var(--copper-warm);font-size:13px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(232,160,68,.35);padding-bottom:3px;transition:color .18s ease,border-color .18s ease}
+.cross-links a:hover{color:var(--copper-light);border-color:var(--copper-light)}
+.setup-callout{margin:28px auto 0;max-width:1100px;padding:30px 5%;background:linear-gradient(135deg,rgba(184,84,32,.14),rgba(24,20,16,.96) 58%);border-top:1px solid rgba(232,160,68,.45);border-bottom:1px solid var(--border2)}
+.setup-callout-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(230px,.6fr);gap:32px;align-items:center}
+.setup-callout .section-tag{margin-bottom:8px}
+.setup-callout h2{font-family:var(--font-h2);font-size:clamp(24px,3vw,36px);line-height:1.1;margin-bottom:10px}
+.setup-callout p{max-width:680px;color:var(--text2);font-size:14px;line-height:1.7}
+.setup-list{display:flex;flex-wrap:wrap;gap:7px 18px;margin-top:16px;list-style:none;color:var(--muted);font-size:12px}
+.setup-list li::before{content:'✓';margin-right:7px;color:var(--copper-warm)}
+.setup-price{padding:20px;background:rgba(8,7,5,.35);border:1px solid rgba(232,160,68,.3);border-radius:var(--r-sm);text-align:center}
+.setup-price-label{display:block;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.setup-price strong{display:block;margin:8px 0 6px;font-family:var(--font-h2);font-size:28px;line-height:1.05;font-weight:700;color:var(--copper-light)}
+.setup-price small{display:block;color:var(--muted);font-size:11px;line-height:1.45}
+.setup-cta{display:inline-flex;margin-top:15px;padding:11px 16px;border:1px solid rgba(232,160,68,.45);border-radius:var(--r-sm);color:var(--copper-warm);font-size:12px;font-weight:600;text-decoration:none;transition:background .18s ease,color .18s ease,border-color .18s ease}
+.setup-cta:hover{background:var(--copper-warm);border-color:var(--copper-warm);color:#100b07}
 
 @media(max-width:860px){
   .plan-tabs-row{flex-direction:column;gap:8px;align-items:stretch}
@@ -263,9 +316,11 @@ table.compare tbody tr:hover{background:rgba(184,84,32,.04)}
 }
 
 @media(max-width:680px){
-  .plan-tabs-row{margin-top:26px}
-  .ptab{width:100%;margin-right:0}
+  .plan-tabs-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:26px}
+  .ptab{width:auto;margin-right:0;border:1px solid var(--border2);border-radius:var(--r-sm);padding:12px 6px!important;text-align:center}
+  .ptab.active{background:rgba(184,84,32,.18);border-color:var(--copper-warm);box-shadow:0 0 0 1px rgba(232,160,68,.2),0 8px 18px rgba(0,0,0,.2);color:var(--copper-light);text-shadow:none}
   .billing-toggle{width:100%;margin-left:0}
+  .billing-toggle{grid-column:1/-1}
   .ptab,
   .bt-btn{
     min-height:56px;
@@ -277,7 +332,6 @@ table.compare tbody tr:hover{background:rgba(184,84,32,.04)}
     letter-spacing:.04em;
     color:var(--text);
   }
-  .ptab.active,
   .bt-btn.active{color:#fff;text-shadow:0 0 12px rgba(245,201,106,.18)}
   .bt-btn{flex:1}
   .bt-badge{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:0}
@@ -287,6 +341,11 @@ table.compare tbody tr:hover{background:rgba(184,84,32,.04)}
   .pd-jstep::after{display:none}
   .compare-wrap{display:none}
   .compare-mobile{display:grid;gap:12px;margin-top:32px}
+  .extras-grid{grid-template-columns:1fr;gap:10px}
+  .extra-card{min-height:0;padding:18px}
+  .cross-links{flex-direction:column;align-items:flex-start}
+  .setup-callout{padding:28px 5%}
+  .setup-callout-inner{grid-template-columns:1fr;gap:20px}
 }
 
 /* ─── CTA FINAL ──────────────────────────────────────────────── */
@@ -330,9 +389,8 @@ footer a:hover{color:var(--copper-light)}
   </a>
   <div class="nav-links">
     <a href="index.html">Inicio</a>
-    <a href="producto.html">Producto</a>
-    <a href="suscripciones.html" class="current">Suscripciones</a>
-    <a href="agentes.html">Agentes</a>
+    <a href="producto.html">Expositor</a>
+    <a href="suscripciones.html" class="current">Fideliza</a>
     <a href="campanas.html">Campañas</a>
     <a href="presupuesto-web.html">Web</a>
     <a href="index.html#contactar">Contacto</a>
@@ -341,23 +399,51 @@ footer a:hover{color:var(--copper-light)}
   <button class="nav-hamburger" id="menu-toggle" aria-label="Menú" aria-expanded="false">
     <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="mh-line1" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"/><path d="M7 16 27 16"/></svg>
   </button>
+<!-- MAIN CONTENT -->
 </nav>
+<main id="main-content">
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-tag reveal-el">Cada mes, no solo el primer día</div>
-  <h1 class="hero-title reveal-title onix-typewriter-title"><span class="onix-tw-line">Tu expositor NFC</span><br><span class="onix-tw-line hl">te cuenta qué funciona</span></h1>
-  <p class="hero-sub reveal-el">Sabemos quién toca tu expositor, cuándo y desde qué móvil. Cada mes te lo contamos y te proponemos qué hacer con eso. <strong class="em">Tú no tienes que pensarlo</strong> — solo decidir si sí o si no.</p>
+  <div class="hero-tag reveal-el">La relación continúa después del expositor</div>
+  <h1 class="hero-title reveal-title onix-typewriter-title"><span class="onix-tw-line">ONIX Fideliza</span><br><span class="onix-tw-line hl">haz que vuelvan</span></h1>
+  <p class="hero-sub reveal-el">Contactos con consentimiento, tarjeta Apple Wallet y Google Wallet, puntos, recompensas y campañas que el negocio revisa antes de enviar. El NFC identifica el negocio; la tarjeta identifica la membresía cuando se valida una visita.</p>
 </section><!-- SELECTOR + DETALLE + JOURNEY INTEGRADO -->
+
+<!-- MONTAJE INICIAL -->
+<section class="setup-callout" id="montaje">
+  <div class="setup-callout-inner">
+    <div>
+      <div class="section-tag">Antes de la mensualidad</div>
+      <h2>Primero dejamos Fideliza preparado</h2>
+      <p>La cuota mensual mantiene el programa funcionando. Antes hay un montaje inicial para adaptar el alta, la tarjeta y las reglas a tu negocio. El alcance y el precio se confirman por escrito antes de empezar.</p>
+      <ul class="setup-list">
+        <li>PWA y flujo de registro</li>
+        <li>Apple Wallet y Google Wallet</li>
+        <li>Consentimiento y bajas</li>
+        <li>Puntos, recompensas y campañas</li>
+        <li>Pruebas y entrega</li>
+      </ul>
+    </div>
+    <div class="setup-price">
+      <span class="setup-price-label">Montaje inicial</span>
+      <strong>A concretar</strong>
+      <small>Te enviamos el alcance y el presupuesto por escrito.<br>La mensualidad se contrata aparte.</small>
+      <a class="setup-cta" href="https://wa.me/34631879550?text=Hola%2C%20quiero%20saber%20qu%C3%A9%20incluye%20el%20montaje%20inicial%20de%20ONIX%20Fideliza%20y%20recibir%20un%20presupuesto%20por%20escrito.">Pedir presupuesto de montaje →</a>
+      <a class="setup-cta" href="#comparativa">Ver planes mensuales →</a>
+    </div>
+  </div>
+</section>
+
 <section class="section fi">
   <div class="section-tag reveal-el">Elige tu plan</div>
-  <h2 class="section-title reveal-title">Uno para cada momento del negocio</h2>
-  <p class="section-sub reveal-el">Sin permanencia. Se factura por mes completo por adelantado y puedes cancelar cuando quieras. <strong style="color:var(--copper-warm)">Paga un año y ahórrate un mes.</strong></p>
+  <h2 class="section-title reveal-title">Tres niveles según contactos y trabajo</h2>
+  <p class="section-sub reveal-el">Sin permanencia. La mensualidad empieza después del montaje inicial. Los mensajes tienen límites propios: almacenar contactos no equivale a enviar mensajes ilimitados.</p>
 
   <div class="plan-tabs-row">
-    <button class="ptab active" data-plan="basic">Basic</button>
-    <button class="ptab" data-plan="pro">Pro</button>
-    <button class="ptab" data-plan="premium">Premium</button>
+    <button class="ptab active" data-plan="basic">Básico</button>
+    <button class="ptab" data-plan="pro">Crece</button>
+    <button class="ptab" data-plan="premium">Pro</button>
     <div class="billing-toggle">
       <button class="bt-btn active" data-period="monthly">Mensual</button>
       <button class="bt-btn" data-period="yearly">Anual <span class="bt-badge">-1 mes</span></button>
@@ -368,55 +454,55 @@ footer a:hover{color:var(--copper-light)}
   <div class="plan-detail active" id="detail-basic">
     <div class="pd-hero-block">
       <div class="pd-hero-left">
-        <div class="pd-name">Basic</div>
+        <div class="pd-name">Fideliza Básico</div>
         <div class="pd-price-row">
           <span class="pd-price-big" data-m="49.90" data-y="499">49.90€</span><span class="pd-price-sub" data-m="/mes" data-y="/año">/mes</span>
-          <span class="pd-save-badge">Ahorras ~100€/año</span>
+          <span class="pd-save-badge">Ahorras ~50€/año</span>
         </div>
-        <p class="pd-hero-desc"><strong class="em">El plan para empezar sin pensar.</strong> Tu expositor captura quién lo toca, cuándo y desde qué dispositivo. ONIX te propone mejoras sin que tengas que hacer nada. Ideal si quieres que funcione solo mientras te concentras en tu negocio.</p>
-        <a href="empezar.html?origen=suscripciones-basic" class="pd-hero-cta" data-plan="basic">Quiero Basic →</a>
+        <p class="pd-hero-desc"><strong class="em">El plan para empezar con una base propia.</strong> Hasta 500 contactos, tarjeta Wallet y una recomendación mensual adaptada a tu negocio. Las difusiones se calculan por la bolsa de mensajes y el negocio revisa antes de enviar.</p>
+        <a href="empezar.html?origen=fideliza-basico" class="pd-hero-cta" data-plan="basic">Quiero Fideliza Básico →</a>
       </div>
       <div class="pd-hero-right">
         <div class="pd-highlights">
-          <div class="pd-hl-item"><div class="pd-hl-num">300</div><div class="pd-hl-label">leads guardados</div></div>
-          <div class="pd-hl-item"><div class="pd-hl-num">1</div><div class="pd-hl-label">rediseño al mes</div></div>
-          <div class="pd-hl-item"><div class="pd-hl-num">1</div><div class="pd-hl-label">propuesta campaña/mes</div></div>
+          <div class="pd-hl-item"><div class="pd-hl-num">500</div><div class="pd-hl-label">contactos incluidos</div></div>
+          <div class="pd-hl-item"><div class="pd-hl-num">3</div><div class="pd-hl-label">campañas guardadas</div></div>
+          <div class="pd-hl-item"><div class="pd-hl-num">150–400</div><div class="pd-hl-label">mensajes contratados · bienvenida incluida</div></div>
         </div>
       </div>
     </div>
     <div class="pd-journey">
-      <h3>Qué incluye Basic y qué puedes hacer con ello</h3>
+      <h3>Qué incluye Fideliza Básico y qué puedes hacer con ello</h3>
       <div class="pd-jline">
         <div class="pd-jstep">
-          <div class="pd-jday">Dashboard</div>
+            <div class="pd-jday">Registro</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>Tu expositor te habla: qui&eacute;n lo toca, cu&aacute;ndo y c&oacute;mo</h4>
-            <p>Cada vez que un cliente acerca el m&oacute;vil, lo sabes. No qui&eacute;n es, sino que alguien ha interactuado con tu negocio. <strong class="em">Saber qu&eacute; d&iacute;as y a qu&eacute; horas hay m&aacute;s actividad te permite decidir mejor</strong>: si abrir m&aacute;s tarde los jueves porque hay picos a las 19h, o si lanzar una promoci&oacute;n justo cuando m&aacute;s gente pasa por tu local. Sin apps, sin contrase&ntilde;as. Un link que se actualiza solo.</p>
+            <h4>El cliente se registra y recibe la bienvenida</h4>
+            <p>Deja sus datos con permiso para campañas, confirma su teléfono y recibe la información de la campaña activa. La tarjeta digital queda preparada para Apple Wallet y Google Wallet cuando las credenciales estén activadas.</p>
           </div>
         </div>
         <div class="pd-jstep">
-          <div class="pd-jday">Leads</div>
+            <div class="pd-jday">Contactos</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>Hasta 300 clientes distintos almacenados sin pedir nada</h4>
-            <p>El expositor detecta cu&aacute;ndo un mismo dispositivo vuelve, y cuenta las visitas. <strong class="em">Sin formularios, sin pedir el n&uacute;mero, sin que el cliente haga nada raro.</strong> Simplemente se acumulan. Cuando quieras hacer una campa&ntilde;a de marketing, ya tienes a qui&eacute;n dirigirte. Si tu negocio crece y necesitas m&aacute;s capacidad, puedes ampliarla sin cambiar de plan.</p>
+            <h4>Hasta 500 contactos con consentimiento</h4>
+            <p>La base pertenece al programa Fideliza y se gestiona con consentimiento y bajas. Un toque NFC anónimo no identifica a una persona: la visita se registra cuando el cliente se identifica mediante su tarjeta o el flujo que definamos.</p>
           </div>
         </div>
         <div class="pd-jstep">
           <div class="pd-jday">Propuestas</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>Cada mes te llega una recomendaci&oacute;n basada en tus datos reales</h4>
-            <p>Analizamos el tr&aacute;fico de tu expositor, lo comparamos con la estacionalidad de tu sector y te proponemos algo concreto. <em>"En octubre la gente busca m&aacute;s tu negocio los viernes. &iquest;Probamos un redise&ntilde;o del expositor con un mensaje de fin de semana?"</em>. <strong class="em">T&uacute; solo decides si te interesa o no.</strong> Si dices s&iacute;, lo implementamos. Si no, seguimos igual. Sin compromiso.</p>
+            <h4>Una recomendación de campaña cada dos meses</h4>
+            <p>ONIX propone una acción según la estación y el tipo de negocio. El responsable la revisa, la ajusta si quiere y decide si se envía. La bienvenida cuenta dentro de la bolsa contratada de 150–400 mensajes.</p>
           </div>
         </div>
         <div class="pd-jstep">
           <div class="pd-jday">Adaptabilidad</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>El mismo expositor, distintos objetivos seg&uacute;n te convenga</h4>
-            <p>Imagina que durante meses has estado acumulando rese&ntilde;as de Google y ya tienes una buena reputaci&oacute;n online. <strong class="em">Ahora te interesa m&aacute;s que los clientes te escriban directamente para encargar o reservar.</strong> Puedes cambiar el destino del expositor sin cambiar el dise&ntilde;o ni el mueble: donde antes iban a dejar rese&ntilde;a, ahora van a tu canal de contacto. O al rev&eacute;s. Una vez al mes, sin coste extra, y desde donde est&eacute;s. Si tienes un evento puntual, una oferta especial o una temporada distinta, adaptas el expositor a lo que necesites en ese momento, no a lo que necesitabas cuando lo compraste.</p>
+            <h4>Comunicación general sin automatización total</h4>
+            <p>El plan permite preparar difusiones generales dentro de la bolsa contratada. Puede haber más de una al mes si el consumo lo permite. Las reservas y consultas iniciadas por el cliente se registran para que el negocio responda; no se confunden con una campaña de marketing.</p>
           </div>
         </div>
       </div>
@@ -428,55 +514,55 @@ footer a:hover{color:var(--copper-light)}
     <div class="pd-hero-block">
       <div class="pd-hero-left">
         <span class="plan-badge">El m&aacute;s equilibrado</span>
-        <div class="pd-name">Pro</div>
+        <div class="pd-name">Fideliza Crece</div>
         <div class="pd-price-row">
-          <span class="pd-price-big" data-m="95" data-y="950">95€</span><span class="pd-price-sub" data-m="/mes" data-y="/a&ntilde;o">/mes</span>
-          <span class="pd-save-badge">Ahorras 190€/a&ntilde;o</span>
+          <span class="pd-price-big" data-m="149.90" data-y="1499">149.90€</span><span class="pd-price-sub" data-m="/mes" data-y="/a&ntilde;o">/mes</span>
+          <span class="pd-save-badge">Ahorras ~150€/a&ntilde;o</span>
         </div>
-        <p class="pd-hero-desc"><strong class="em">El plan para entender de verdad a tus clientes.</strong> Triple de leads, informe mensual con gr&aacute;ficos y una campa&ntilde;a ejecutada cada 2 meses. Datos reales, no intuiciones &mdash; sin que tengas que analizar nada t&uacute;.</p>
-        <a href="empezar.html?origen=suscripciones-pro" class="pd-hero-cta" data-plan="pro">Quiero Pro &rarr;</a>
+        <p class="pd-hero-desc"><strong class="em">El plan para trabajar campañas cada mes.</strong> Hasta 2.000 contactos, segmentación básica, tandas de envío, reactivación y hasta 5 campañas propias guardadas. El negocio sigue aprobando antes de enviar.</p>
+        <a href="empezar.html?origen=fideliza-crece" class="pd-hero-cta" data-plan="pro">Quiero Fideliza Crece &rarr;</a>
       </div>
       <div class="pd-hero-right">
         <div class="pd-highlights">
-          <div class="pd-hl-item"><div class="pd-hl-num">1.000</div><div class="pd-hl-label">leads guardados</div></div>
-          <div class="pd-hl-item"><div class="pd-hl-num">1</div><div class="pd-hl-label">informe PDF al mes</div></div>
-          <div class="pd-hl-item hl-accent"><div class="pd-hl-num">1</div><div class="pd-hl-label">campa&ntilde;a gratis c/2 meses</div></div>
+          <div class="pd-hl-item"><div class="pd-hl-num">2.000</div><div class="pd-hl-label">contactos incluidos</div></div>
+          <div class="pd-hl-item"><div class="pd-hl-num">5</div><div class="pd-hl-label">campañas guardadas</div></div>
+          <div class="pd-hl-item hl-accent"><div class="pd-hl-num">550–1.500</div><div class="pd-hl-label">mensajes contratados · bienvenida incluida</div></div>
         </div>
       </div>
     </div>
     <div class="pd-journey">
-      <h3>Qu&eacute; incluye Pro y qu&eacute; puedes hacer con ello</h3>
+      <h3>Qué incluye Fideliza Crece y qué puedes hacer con ello</h3>
       <div class="pd-jline">
         <div class="pd-jstep">
           <div class="pd-jday">Informe</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>Un an&aacute;lisis mensual que te llega sin pedirlo</h4>
-            <p>Cada fin de mes recibes un PDF con gr&aacute;ficos claros: toques totales, desglose por d&iacute;a de la semana, horas punta, tipo de dispositivo y comparativa con el mes anterior. <strong class="em">No tienes que entrar a ning&uacute;n sitio ni acordarte de pedirlo.</strong> Es como la factura de la luz: te llega, lo miras si quieres, y sigues. Pero cuando necesitas tomar una decisi&oacute;n &mdash;contratar a alguien, ampliar horario, lanzar un servicio nuevo&mdash; tienes datos reales en la mano, no intuiciones.</p>
+            <h4>Una campaña mensual con segmentación básica</h4>
+            <p>Se puede trabajar con clientes nuevos, recurrentes o inactivos y enviar por tandas. ONIX prepara una campaña mensual; el responsable revisa el mensaje, el segmento y el momento antes de aprobarlo. Las bienvenidas cuentan dentro de la bolsa contratada de 550–1.500 mensajes.</p>
           </div>
         </div>
         <div class="pd-jstep">
           <div class="pd-jday">Capacidad</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>Hasta 1.000 clientes distintos. Sin l&iacute;mite de tiempo.</h4>
-            <p>Un restaurante con 12 mesas puede ver pasar 200 personas en un solo d&iacute;a. Una peluquer&iacute;a con 3 empleados, 30. <strong class="em">Con 1.000 leads no te preocupas por el espacio durante meses.</strong> Y si alg&uacute;n d&iacute;a necesitas m&aacute;s, la capacidad se ampl&iacute;a sin cambiar de plan. Los datos se acumulan solos, sin formularios, sin pedir nada a nadie.</p>
+            <h4>Hasta 5 campañas propias guardadas</h4>
+            <p>El negocio puede añadir sus propias ofertas al catálogo y difundirlas cuando quiera, dentro de los límites de contactos y mensajes. No depende únicamente de las propuestas de ONIX.</p>
           </div>
         </div>
         <div class="pd-jstep">
           <div class="pd-jday">Campa&ntilde;as</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>Cada 2 meses, ejecutamos una campa&ntilde;a real sobre tus clientes</h4>
-            <p>Analizamos tu base de datos, elegimos el mejor momento seg&uacute;n tus gr&aacute;ficos de tr&aacute;fico y la estacionalidad de tu sector, redactamos el mensaje y te lo presentamos. <strong class="em">T&uacute; solo decides si te gusta, si quieres cambiar algo o si prefieres esperar.</strong> Si apruebas, lo lanzamos. Es una campa&ntilde;a Simple completa (valorada en 100€) incluida sin coste extra. &iquest;El objetivo? Que tus clientes sepan que existes, vuelvan m&aacute;s a menudo y te recomienden.</p>
+            <h4>Reactivación incluida, sin prometer identificación automática</h4>
+            <p>Puede orientarse a contactos inactivos o a respuestas registradas. La reactivación basada en visitas reales requiere que el cliente se identifique mediante Wallet, escaneo u otro flujo validado.</p>
           </div>
         </div>
         <div class="pd-jstep">
           <div class="pd-jday">Dise&ntilde;o</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>Tu expositor cambia de aspecto cuando t&uacute; quieras</h4>
-            <p>Llega el verano y quieres que el dise&ntilde;o refleje la terraza. O llega Navidad y necesitas un mensaje de &quot;reserva tu cena de empresa&quot;. <strong class="em">Nos pides el cambio, preparamos el nuevo dise&ntilde;o y te lo enviamos para que lo veas.</strong> Cuando das el OK, actualizamos la imagen del expositor sin que tengas que tocarlo. Conservas el mismo metacrilato, el mismo chip, la misma ubicaci&oacute;n &mdash; solo cambia lo que se ve. Una vez al mes, incluido en tu plan.</p>
+            <h4>Tandas y mensajes más personalizados</h4>
+            <p>Crece permite separar grupos y programar tandas dentro del límite del plan. Los mensajes de proveedor y las reservas iniciadas por clientes se contabilizan por separado del trabajo de planificación.</p>
           </div>
         </div>
       </div>
@@ -484,59 +570,52 @@ footer a:hover{color:var(--copper-light)}
   </div>
 
   <!-- PREMIUM -->
+  <a id="agente" aria-hidden="true"></a>
   <div class="plan-detail" id="detail-premium">
     <div class="pd-hero-block">
       <div class="pd-hero-left">
         <span class="plan-badge">El m&aacute;s completo</span>
-        <div class="pd-name">Premium</div>
+        <div class="pd-name">Fideliza Pro</div>
         <div class="pd-price-row">
-          <span class="pd-price-big" data-m="169.90" data-y="1699">169.90€</span><span class="pd-price-sub" data-m="/mes" data-y="/a&ntilde;o">/mes</span>
-          <span class="pd-save-badge">Ahorras ~340€/a&ntilde;o</span>
+          <span class="pd-price-big" data-m="220.00" data-y="2420">220.00€</span><span class="pd-price-sub" data-m="/mes" data-y="/a&ntilde;o">/mes</span>
+          <span class="pd-save-badge">Ahorras ~220€/a&ntilde;o</span>
         </div>
-        <p class="pd-hero-desc"><strong class="em">El plan para crecer sin l&iacute;mites.</strong> ONIX propone campa&ntilde;as cada mes, t&uacute; solo apruebas o ajustas. 5.000 leads, cr&eacute;dito mensual para campa&ntilde;as, 20% de descuento en todos los productos y mantenimiento web incluido. Para quien quiere que el marketing se haga solo.</p>
-        <a href="empezar.html?origen=suscripciones-premium" class="pd-hero-cta" data-plan="premium">Quiero Premium &rarr;</a>
+        <p class="pd-hero-desc"><strong class="em">El plan para personalizar y aprender más del cliente.</strong> Hasta 5.000 contactos, campañas avanzadas, guardado ilimitado y ONIX Voz del Cliente con límites de uso definidos.</p>
+        <a href="empezar.html?origen=fideliza-pro" class="pd-hero-cta" data-plan="premium">Quiero Fideliza Pro &rarr;</a>
       </div>
       <div class="pd-hero-right">
         <div class="pd-highlights">
-          <div class="pd-hl-item"><div class="pd-hl-num">5.000</div><div class="pd-hl-label">leads guardados</div></div>
-          <div class="pd-hl-item hl-accent"><div class="pd-hl-num">100€</div><div class="pd-hl-label">cr&eacute;dito campa&ntilde;as/mes</div></div>
-          <div class="pd-hl-item hl-accent"><div class="pd-hl-num">-20%</div><div class="pd-hl-label">en todos los productos</div></div>
+          <div class="pd-hl-item"><div class="pd-hl-num">5.000</div><div class="pd-hl-label">contactos incluidos</div></div>
+          <div class="pd-hl-item hl-accent"><div class="pd-hl-num">∞</div><div class="pd-hl-label">campañas guardadas</div></div>
+          <div class="pd-hl-item hl-accent"><div class="pd-hl-num">750–2.000</div><div class="pd-hl-label">mensajes contratados · bienvenida incluida</div></div>
         </div>
       </div>
     </div>
     <div class="pd-journey">
-      <h3>Qu&eacute; incluye Premium y qu&eacute; puedes hacer con ello</h3>
+      <h3>Qué incluye Fideliza Pro y qué puedes hacer con ello</h3>
       <div class="pd-jline">
         <div class="pd-jstep">
           <div class="pd-jday">Proactivo</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>No esperamos a que preguntes. Cada mes te proponemos algo.</h4>
-            <p>Analizamos tus leads acumulados, el tr&aacute;fico reciente de tu expositor y el calendario estacional de tu sector. Con eso, preparamos una propuesta concreta: <em>&quot;Tienes 47 leads nuevos este mes que a&uacute;n no han dejado rese&ntilde;a. Hemos preparado un mensaje para pedirles opini&oacute;n. &iquest;Lo lanzamos?&quot;</em>. <strong class="em">T&uacute; solo apruebas, ajustas el texto si quieres, o dices &quot;este mes no&quot;.</strong> El trabajo de pensar qu&eacute; hacer ya est&aacute; hecho.</p>
-          </div>
-        </div>
-        <div class="pd-jstep">
-          <div class="pd-jday">Flexibilidad</div>
-          <div class="pd-jdot"></div>
-          <div class="pd-jcontent">
-            <h4>100€ de cr&eacute;dito mensual. &Uacute;salo como quieras.</h4>
-            <p>Cada mes recibes 100€ de cr&eacute;dito para campa&ntilde;as, acumulable hasta 300€. Con el 20% de descuento Premium, una campa&ntilde;a Simple de 150€ queda en 120€: puedes usar 100€ de cr&eacute;dito y abonar los 20€ restantes. Para una campa&ntilde;a de mayor alcance, concretamos primero qu&eacute; incluye y aplicamos el cr&eacute;dito disponible. <strong class="em">T&uacute; eliges cu&aacute;ndo usarlo.</strong></p>
+            <h4>Campañas avanzadas y recomendaciones por comportamiento</h4>
+            <p>ONIX puede proponer acciones por segmentos, respuestas y actividad registrada. El negocio sigue teniendo la última palabra: propuesta, revisión, aprobación, envío y medición.</p>
           </div>
         </div>
         <div class="pd-jstep">
           <div class="pd-jday">Ahorro</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>20% de descuento en absolutamente todo + mantenimiento web gratis</h4>
-            <p>Contratas un agente que responde por ti: 50€ &rarr; 40€. Una campa&ntilde;a Simple de 150€ queda en 120€ con el descuento Premium. Necesitas una landing page web nueva: 450€ &rarr; 360€. Compras packs de expositores para otro local: tambi&eacute;n con descuento. <strong class="em">Y si tienes una web con ONIX, el mantenimiento mensual (27€/mes) est&aacute; incluido sin coste.</strong></p>
+            <h4>ONIX Voz del Cliente</h4>
+            <p>Pregunta qué le ha gustado, qué mejoraría y qué le gustaría encontrar. Proporciona un resumen periódico de preferencias, objeciones e ideas de campaña. Su volumen y frecuencia se limitan para proteger la rentabilidad.</p>
           </div>
         </div>
         <div class="pd-jstep">
           <div class="pd-jday">Resultados</div>
           <div class="pd-jdot"></div>
           <div class="pd-jcontent">
-            <h4>Cada campa&ntilde;a deja huella. Y la mides.</h4>
-            <p>Tu informe mensual ahora incluye el impacto de cada campa&ntilde;a ejecutada: cu&aacute;ntos clientes la recibieron, cu&aacute;ntos respondieron, qu&eacute; mensaje funcion&oacute; mejor y cu&aacute;ntos leads nuevos se captaron. <strong class="em">No son suposiciones: son n&uacute;meros.</strong> Y como cada mes tienes datos frescos, el ciclo es continuo: ONIX propone, t&uacute; apruebas, se ejecuta, se mide, y el mes siguiente la propuesta es mejor porque tiene en cuenta lo que funcion&oacute; del mes anterior.</p>
+            <h4>Más aprendizaje sin automatizar a ciegas</h4>
+            <p>El ciclo mide entregas, respuestas, reservas y canjes cuando están disponibles. Las visitas físicas solo se atribuyen si existe un método de identificación confirmado; el NFC fijo del negocio no basta.</p>
           </div>
         </div>
       </div>
@@ -555,26 +634,26 @@ footer a:hover{color:var(--copper-light)}
       <thead>
         <tr>
           <th>Incluye</th>
-          <th>Basic — 49.90€</th>
-          <th class="col-pro">Pro — 95€</th>
-          <th>Premium — 169.90€</th>
+          <th>Básico — 49,90€</th>
+          <th class="col-pro">Crece — 149,90€</th>
+          <th>Pro — 220,00€</th>
         </tr>
       </thead>
       <tbody>
-        <tr><th>Dashboard de toques (hoy/semana/mes)</th><td class="yes" data-plan="Basic">✓</td><td class="yes col-pro" data-plan="Pro">✓</td><td class="yes" data-plan="Premium">✓</td></tr>
+        <tr><th>Panel de contactos, campañas y actividad</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
         <tr><th>Datos sin fricción (dispositivo, canal, franja horaria, recurrencia)</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
-        <tr><th>1 rediseño del expositor al mes</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
-        <tr><th>1 propuesta de campaña al mes</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
-        <tr><th>1 cambio de destino del enlace al mes</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
+        <tr><th>Difusión general mensual</th><td class="yes">✓</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
+        <tr><th>Recomendación de campaña</th><td class="val">Cada 2 meses</td><td class="yes col-pro">Mensual</td><td class="yes">Mensual avanzada</td></tr>
+        <tr><th>Campañas propias guardadas</th><td class="val">Hasta 3</td><td class="val col-pro">Hasta 5</td><td class="val">Ilimitadas</td></tr>
         <tr><th>Dashboard avanzado (gráfico por día, horas punta, dispositivo)</th><td>—</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
         <tr><th>Informe PDF mensual con análisis</th><td>—</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
         <tr><th>Comparativa con el mes anterior</th><td>—</td><td class="yes col-pro">✓</td><td class="yes">✓</td></tr>
-        <tr><th>1 campaña Simple gratis cada 2 meses</th><td>—</td><td class="yes col-pro">✓</td><td>—</td></tr>
-        <tr><th>20% descuento en todos los productos ONIX</th><td>—</td><td class="col-pro">—</td><td class="yes">✓</td></tr>
-        <tr><th>ONIX propone la campaña, no espera a que preguntes</th><td>—</td><td class="col-pro">—</td><td class="yes">✓</td></tr>
-        <tr><th>Crédito mensual para campañas (máx. 300€ acumulables)</th><td>—</td><td class="col-pro">—</td><td class="val">100€/mes</td></tr>
-        <tr><th>Mantenimiento web (si tienes una web con nosotros)</th><td>—</td><td class="col-pro">—</td><td class="val">Incluido gratis</td></tr>
-        <tr><th>Leads guardados en tu base de datos</th><td class="val">Hasta 300</td><td class="val col-pro">Hasta 1.000</td><td class="val">Hasta 5.000</td></tr>
+        <tr><th>Segmentación y tandas</th><td>—</td><td class="yes col-pro">Básica</td><td class="yes">Avanzada</td></tr>
+        <tr><th>Reactivación</th><td>—</td><td class="yes col-pro">Incluida</td><td class="yes">Avanzada</td></tr>
+        <tr><th>ONIX Voz del Cliente</th><td>—</td><td class="col-pro">—</td><td class="yes">Incluido con límites</td></tr>
+        <tr><th>Contactos incluidos</th><td class="val">Hasta 500</td><td class="val col-pro">Hasta 2.000</td><td class="val">Hasta 5.000</td></tr>
+        <tr><th>Bolsa de mensajes contratada</th><td class="val">150–400</td><td class="val col-pro">550–1.500</td><td class="val">750–2.000</td></tr>
+        <tr><th>Franquicia Service de Meta</th><td class="val">Hasta 1.000 por número</td><td class="val col-pro">Hasta 1.000 por número</td><td class="val">Hasta 1.000 por número</td></tr>
         <tr><th>Permanencia mínima</th><td class="val">Ninguna</td><td class="val col-pro">Ninguna</td><td class="val">Ninguna</td></tr>
       </tbody>
     </table>
@@ -582,62 +661,91 @@ footer a:hover{color:var(--copper-light)}
 
   <div class="compare-mobile" aria-label="Comparativa acumulativa de planes">
     <article class="compare-plan-mobile">
-      <h3>Basic</h3>
-      <p>La base para empezar a medir y mantener tu expositor actualizado.</p>
+      <h3>Básico</h3>
+      <p>La base para guardar contactos con permiso y comunicar una novedad.</p>
       <ul>
-        <li>Dashboard de toques y datos sin fricción</li>
-        <li>1 rediseño del expositor al mes</li>
-        <li>1 propuesta de campaña al mes</li>
-        <li>1 cambio de destino del enlace al mes</li>
-        <li>Hasta 300 leads guardados</li>
+        <li>Hasta 500 contactos</li>
+        <li><span class="compare-mobile-explain"><strong>Bolsa: 150–400 mensajes</strong><small>Incluye bienvenidas y campañas.</small></span></li>
+        <li><span class="compare-mobile-explain"><strong>Recomendación cada 2 meses</strong><small>ONIX propone una acción; tú la revisas y decides.</small></span></li>
+        <li><span class="compare-mobile-explain"><strong>Hasta 3 campañas guardadas</strong><small>Guarda ofertas para usarlas más adelante.</small></span></li>
         <li>Sin permanencia mínima</li>
       </ul>
     </article>
     <article class="compare-plan-mobile">
-      <h3>Pro</h3>
-      <p>Todo lo de Basic, más análisis mensual y una campaña ejecutada cada dos meses.</p>
+      <h3>Crece</h3>
+      <p>Campañas mensuales, segmentación básica y reactivación dentro de los límites del plan.</p>
       <ul>
-        <li>Todo lo incluido en Basic</li>
-        <li>Dashboard avanzado e informe PDF mensual</li>
-        <li>Comparativa con el mes anterior</li>
-        <li>1 campaña Simple gratis cada 2 meses</li>
-        <li>Hasta 1.000 leads guardados</li>
+        <li>Hasta 2.000 contactos</li>
+        <li><span class="compare-mobile-explain"><strong>Bolsa: 550–1.500 mensajes</strong><small>Incluye bienvenidas y campañas.</small></span></li>
+        <li><span class="compare-mobile-explain"><strong>Hasta 5 campañas guardadas</strong><small>Guarda ofertas para usarlas más adelante.</small></span></li>
+        <li><span class="compare-mobile-explain"><strong>Segmentación y tandas</strong><small>Separa grupos y envía por partes.</small></span></li>
+        <li><span class="compare-mobile-explain"><strong>Reactivación incluida</strong><small>Contacta de nuevo a clientes inactivos.</small></span></li>
+        <li><span class="compare-mobile-explain"><strong>Una campaña mensual</strong><small>ONIX la prepara; tú la apruebas antes del envío.</small></span></li>
       </ul>
     </article>
     <article class="compare-plan-mobile">
-      <h3>Premium</h3>
-      <p>Todo lo de Pro, con marketing proactivo, crédito y mantenimiento web.</p>
+      <h3>Pro</h3>
+      <p>Campañas avanzadas y Voz del Cliente con límites definidos.</p>
       <ul>
-        <li>Todo lo incluido en Pro</li>
-        <li>20% de descuento en todos los productos ONIX</li>
-        <li>ONIX propone la campaña cada mes</li>
-        <li>100€ de crédito mensual para campañas</li>
-        <li>Mantenimiento web incluido</li>
-        <li>Hasta 5.000 leads guardados</li>
+        <li>Hasta 5.000 contactos</li>
+        <li><span class="compare-mobile-explain"><strong>Bolsa: 750–2.000 mensajes</strong><small>Incluye bienvenidas y campañas.</small></span></li>
+        <li><span class="compare-mobile-explain"><strong>Campañas guardadas ilimitadas</strong><small>Puedes guardarlas todas; los envíos siguen limitados por bolsa.</small></span></li>
+        <li><span class="compare-mobile-explain"><strong>Segmentación avanzada y reactivación</strong><small>Grupos más precisos y acciones para clientes inactivos.</small></span></li>
+        <li><span class="compare-mobile-explain"><strong>ONIX Voz del Cliente</strong><small>Pregunta qué gustó y qué mejorar. Agrupa las respuestas para decidir próximas acciones.</small></span></li>
       </ul>
     </article>
+  </div>
+  <p class="compare-mobile-note"><strong>Mensajes y respuestas:</strong> la bolsa cubre campañas y bienvenidas. Las respuestas del cliente usan Service de Meta, hasta 1.000 por número; no es una bolsa de marketing.</p>
+</section>
+
+<!-- EXTRAS Y AMPLIACIONES -->
+<section class="section fi fideliza-extras" id="extras">
+  <div class="section-tag reveal-el">Si necesitas ampliar</div>
+  <h2 class="section-title reveal-title">Extras de Fideliza</h2>
+  <p class="section-sub reveal-el">Puedes ampliar el uso sin cambiar automáticamente de plan. Revisamos el volumen y te confirmamos el coste antes de activarlo.</p>
+  <div class="extras-grid">
+    <article class="extra-card reveal-card">
+      <h3>Más contactos</h3>
+      <p>Si tu base crece, ampliamos el límite de contactos del plan.</p>
+      <span class="extra-note">Se calcula según el volumen que necesites.</span>
+    </article>
+    <article class="extra-card reveal-card">
+      <h3>Más mensajes</h3>
+      <p>Amplía la bolsa para campañas y bienvenidas sin cambiar de plan.</p>
+      <span class="extra-note">El consumo de Meta o BSP se revisa aparte antes del envío.</span>
+    </article>
+    <article class="extra-card reveal-card">
+      <h3>Campaña adicional</h3>
+      <p>Solicita una campaña fuera de la frecuencia incluida en tu plan.</p>
+      <span class="extra-note">El precio depende de contactos, mensajes y segmentación.</span>
+    </article>
+  </div>
+  <div class="cross-links">
+    <a href="campanas.html">Ver ejemplos de campañas →</a>
+    <a href="presupuesto-web.html">Ver web y servicios digitales →</a>
   </div>
 </section>
 
 <!-- CTA FINAL -->
 <div class="cta-section fi" id="contactar">
   <h2 class="reveal-title">¿Cuál encaja <span class="hl">con tu negocio</span>?</h2>
-  <p class="reveal-el">Empieza con Basic y sube cuando lo necesites — el cambio de plan no tiene coste.</p>
-  <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20el%20plan%20Basic%20de%20ONIX.%20%C2%BFQu%C3%A9%20necesit%C3%A1is%20de%20m%C3%AD%20para%20activarlo%3F" id="cta-final-whatsapp" class="btn-primary reveal-el">Hablar por WhatsApp →</a>
+  <p class="reveal-el">Empieza con Fideliza Básico y sube cuando el volumen o la personalización lo justifique.</p>
+  <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20informaci%C3%B3n%20sobre%20ONIX%20Fideliza%20B%C3%A1sico." id="cta-final-whatsapp" class="btn-primary reveal-el">Hablar por WhatsApp →</a>
 </div>
 
+</main>
 <footer>
   <div class="footer-logo">
     <img src="img/optimized/logotodo.webp" alt="ONIX" width="960" height="320" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
     <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
   </div>
-  <span>© 2025 ONIX — Expositores NFC para Negocios · Girona</span>
+  <span>© 2025 ONIX — Stands NFC para Negocios · Girona</span>
   <span style="display:flex;gap:14px;flex-wrap:wrap">
     <a href="legal.html">Aviso Legal</a>
     <a href="legal.html">Privacidad</a>
     <a href="legal.html">Cookies</a>
   </span>
-  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contactar con ONIX por WhatsApp">Contáctanos</a>
+  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contáctanos por WhatsApp">Contáctanos</a>
 </footer>
 
 <script>
@@ -649,7 +757,7 @@ document.querySelectorAll('.ptab').forEach(tab => {
     tab.classList.add('active');
     document.getElementById('detail-' + tab.dataset.plan).classList.add('active');
     // Actualizar CTA
-    var names = {basic:'Basic',pro:'Pro',premium:'Premium'};
+    var names = {basic:'Fideliza Básico',pro:'Fideliza Crece',premium:'Fideliza Pro'};
     var plan = names[tab.dataset.plan];
     var msg = encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan ' + plan + ' de ONIX. ¿Qué necesitáis de mí para activarlo?');
     var cta = document.getElementById('cta-final-whatsapp');
@@ -688,15 +796,44 @@ document.querySelectorAll('.bt-btn').forEach(btn => {
 // ── CTA desktop & final
 var ctaFinal = document.getElementById('cta-final-whatsapp');
 if(ctaFinal){
-  ctaFinal.href = 'https://wa.me/34631879550?text=' + encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan Basic de ONIX. ¿Qué necesitáis de mí para activarlo?');
+  ctaFinal.href = 'https://wa.me/34631879550?text=' + encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero información sobre ONIX Fideliza Básico.');
 }
 
 // Cada CTA de plan debe ser válido incluso si no se cambia la pestaña activa.
 document.querySelectorAll('.pd-hero-cta[data-plan]').forEach(function(btn){
-  var plan = {basic:'Basic',pro:'Pro',premium:'Premium'}[btn.dataset.plan];
+  var plan = {basic:'Fideliza Básico',pro:'Fideliza Crece',premium:'Fideliza Pro'}[btn.dataset.plan];
   if (!plan) return;
   btn.href = 'https://wa.me/34631879550?text=' + encodeURIComponent('Hola, soy [nombre] de [negocio]. Quiero el plan ' + plan + ' de ONIX.');
 });
+
+// Las filas complejas se explican bajo demanda, también en escritorio.
+(function(){
+  var help = {
+    'Datos sin fricción (dispositivo, canal, franja horaria, recurrencia)': 'Muestra patrones de uso agregados, como desde qué dispositivo llega la gente, por qué canal y en qué franjas. No identifica a una persona por sí solo.',
+    'Difusión general mensual': 'Permite preparar un mensaje para un grupo amplio dentro de la bolsa contratada. La bienvenida y las campañas consumen mensajes y el negocio aprueba antes de enviar.',
+    'Dashboard avanzado (gráfico por día, horas punta, dispositivo)': 'Es un panel de lectura de actividad para detectar cuándo y cómo se usa el canal. No equivale a atribuir automáticamente una visita física a una persona.',
+    'Informe PDF mensual con análisis': 'Resume los datos disponibles del periodo y señala patrones, respuestas y oportunidades. Se basa en eventos registrados, no en ventas que ONIX no pueda observar.',
+    'Comparativa con el mes anterior': 'Pone el periodo actual junto al anterior para ver cambios en entregas, respuestas y actividad registrada.',
+    'Segmentación y tandas': 'Permite separar contactos por criterios disponibles y enviar en grupos, en lugar de tratar a toda la base como si fuera igual.',
+    'Reactivación': 'Consiste en preparar una acción para contactos inactivos o sin respuesta. Solo puede basarse en visitas reales si existe una identificación válida.',
+    'ONIX Voz del Cliente': 'Pregunta qué gustó, qué mejoraría y qué le gustaría encontrar. Después agrupa las respuestas en temas, objeciones e ideas para campañas; tiene límites de volumen y frecuencia.',
+    'Bolsa de mensajes contratada': 'Es el número de mensajes de campaña y bienvenida disponible en el plan. Guardar contactos no significa poder enviar mensajes ilimitados.',
+    'Franquicia Service de Meta': 'Es el margen de conversaciones iniciadas por clientes que Meta clasifica como Service. No es una bolsa para campañas de marketing ni sustituye el coste real de Meta.'
+  };
+  document.querySelectorAll('table.compare tbody th').forEach(function(th){
+    var label=th.textContent.trim();
+    if(!help[label]) return;
+    var details=document.createElement('details');
+    details.className='compare-info';
+    var summary=document.createElement('summary');
+    summary.textContent=label;
+    var p=document.createElement('p');
+    p.textContent=help[label];
+    details.append(summary,p);
+    th.textContent='';
+    th.appendChild(details);
+  });
+})();
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });

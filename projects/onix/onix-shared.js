@@ -296,14 +296,6 @@
     var pageStarted = false;
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (!document.documentElement.classList.contains('onix-nav-transition')) {
-      preloader.style.display = 'none';
-      preloader.style.opacity = '0';
-      preloader.style.visibility = 'hidden';
-      onReady();
-      return;
-    }
-
     preloader.style.display = 'flex';
     preloader.style.opacity = '1';
     preloader.style.visibility = 'visible';
@@ -351,8 +343,8 @@
         finishIfReady();
       }
     });
-    timeline.fromTo(top, { x: -560 }, { x: 0, duration: 1.6, ease: 'power4.out' }, 0);
-    timeline.fromTo(bottom, { x: 560 }, { x: 0, duration: 1.6, ease: 'power4.out' }, 0);
+    timeline.fromTo(top, { x: -220 }, { x: 0, duration: 0.55, ease: 'power3.out' }, 0);
+    timeline.fromTo(bottom, { x: 220 }, { x: 0, duration: 0.55, ease: 'power3.out' }, 0);
 
     // Protect against a blocked remote GSAP request or a stalled animation.
     window.setTimeout(function () {
@@ -360,7 +352,7 @@
       finishHeadlines();
       preloaderReady = true;
       finishIfReady();
-    }, 3000);
+    }, 1500);
   }
 
   function startMotionSequence() {

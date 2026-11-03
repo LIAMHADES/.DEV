@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ONIX — Campañas de Marketing para Negocios Locales</title>
-<meta name="description" content="Campañas para negocios locales: una acción Simple desde 150€ o una campaña Completa desde 500€. Definimos objetivo y alcance contigo.">
-<meta property="og:title" content="ONIX — Campañas de Marketing">
-<meta property="og:description" content="Dos formatos provisionales: campaña Simple desde 150€ o campaña Completa desde 500€.">
+<title>ONIX Fideliza — Campañas para clientes recurrentes</title>
+<meta name="description" content="Campañas de ONIX Fideliza: fidelización, novedades, reactivación y temporadas con revisión del negocio antes del envío.">
+<meta property="og:title" content="ONIX Fideliza — Campañas para clientes recurrentes">
+<meta property="og:description" content="Fidelización, novedades, reactivación y temporadas dentro de ONIX Fideliza, siempre con revisión del negocio.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://liamhades.github.io/.DEV/projects/onix/campanas.html">
 <meta property="og:image" content="https://liamhades.github.io/.DEV/projects/onix/img/optimized/onix-negativo.webp">
 <meta property="og:url" content="https://liamhades.github.io/.DEV/projects/onix/campanas.html">
 <meta property="og:type" content="website">
-<meta name="twitter:title" content="ONIX — Campañas de Marketing para Negocios Locales">
-<meta name="twitter:description" content="Campañas de WhatsApp y email diseñadas, segmentadas y enviadas por ONIX.">
+<meta name="twitter:title" content="ONIX Fideliza — Campañas para clientes recurrentes">
+<meta name="twitter:description" content="Campañas revisadas por el negocio para fidelizar, activar y recuperar clientes.">
 <meta name="twitter:image" content="https://liamhades.github.io/.DEV/projects/onix/img/optimized/onix-negativo.webp">
 <meta name="theme-color" content="#080705">
 <meta name="view-transition" content="same-origin">
@@ -58,7 +58,7 @@ body{
     radial-gradient(ellipse 900px 600px at 15% -5%, rgba(184,84,32,.12), transparent 60%),
     radial-gradient(ellipse 700px 500px at 100% 30%, rgba(184,84,32,.07), transparent 55%),
     radial-gradient(ellipse 800px 500px at 0% 75%, rgba(184,84,32,.06), transparent 55%);
-  background-attachment:fixed;
+  background-attachment:scroll;
   color:var(--text);font-family:var(--font-body),-apple-system,sans-serif;
   font-size:16px;font-weight:300;line-height:1.75;
   -webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;
@@ -90,12 +90,12 @@ body::before{
 /* Logo marca de agua fondo */
 body::after{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;
-  background-image:url("img/logos/logo%20negativo.png");
+  background-image:url("img/optimized/onix-negativo.webp");
   background-size:60%;background-position:center;background-repeat:no-repeat;
-  background-attachment:fixed;
-  opacity:.25;filter:blur(4px)
+  background-attachment:scroll;
+  opacity:.25;filter:none
 }
-@media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:blur(6px)}}
+@media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:none}}
 :focus-visible{outline:2px solid var(--copper-warm);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
 
@@ -135,7 +135,7 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
   .nav-links{display:none!important}
   .nav-links.open{display:flex!important;position:fixed!important;inset:0!important;z-index:100;background:#080705!important;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:max(110px,calc(env(safe-area-inset-top) + 70px)) 5% max(90px,env(safe-area-inset-bottom));animation:menuFade .3s ease both}
   .nav-links.open::before{content:'';position:absolute;top:0;left:0;right:0;height:45%;background:radial-gradient(ellipse 100% 100% at 50% 0%,rgba(184,84,32,.12),transparent);pointer-events:none}
-  .nav-links.open::after{content:'';position:absolute;top:max(55px,calc(env(safe-area-inset-top) + 35px));left:0;right:0;margin:0 auto;width:clamp(112px,32vw,192px);height:clamp(112px,32vw,192px);background-image:url("img/logos/logo.webp");background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 2px 12px rgba(184,84,32,.25));animation:slideUp .4s cubic-bezier(.16,1,.3,1) .02s both}
+  .nav-links.open::after{content:'';position:absolute;top:max(55px,calc(env(safe-area-inset-top) + 35px));left:0;right:0;margin:0 auto;width:clamp(112px,32vw,192px);height:clamp(112px,32vw,192px);background-image:url("img/optimized/logo.webp");background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 2px 12px rgba(184,84,32,.25));animation:slideUp .4s cubic-bezier(.16,1,.3,1) .02s both}
   .nav-links.open a{animation:slideUp .5s cubic-bezier(.16,1,.3,1) both;font-family:var(--font-h1);font-size:clamp(44px,10vw,72px);line-height:1.02;padding:11px 0;color:var(--text2);text-decoration:none;font-weight:400;letter-spacing:.05em;text-transform:uppercase;position:relative;transition:color .25s cubic-bezier(.16,1,.3,1)}
   .nav-links.open a:hover,
   .nav-links.open a.active,
@@ -319,130 +319,155 @@ footer a:hover{color:var(--copper-light)}
   </button>
   <div class="nav-links" role="navigation" aria-label="Secciones">
     <a href="index.html">Inicio</a>
-    <a href="producto.html">Producto</a>
-    <a href="suscripciones.html">Suscripciones</a>
-    <a href="agentes.html">Agentes</a>
+    <a href="producto.html">Expositor</a>
+    <a href="suscripciones.html">Fideliza</a>
     <a href="campanas.html" class="current">Campañas</a>
     <a href="presupuesto-web.html">Web</a>
     <a href="index.html#contactar">Contacto</a>
   </div>
   <a class="nav-cta" href="empezar.html?origen=campanas" aria-label="Pedir diseño gratis">Pedir diseño gratis</a>
+<!-- MAIN CONTENT -->
 </nav>
+<main id="main-content">
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-tag reveal-el">Campañas para negocios locales</div>
-  <h1 class="hero-title reveal-title"><span class="campaign-title-line">Campañas para</span><span class="campaign-title-line">negocios locales</span><span class="hl campaign-title-line">con un objetivo claro</span></h1>
-  <p class="hero-sub reveal-el">Partimos de lo que quieres conseguir, los canales que tienes y los datos que puedes usar con permiso. Puede ser una acción Simple o una campaña Completa; concretamos el alcance contigo antes de empezar.</p>
+  <div class="hero-tag reveal-el">Campañas dentro de ONIX Fideliza</div>
+  <h1 class="hero-title reveal-title"><span class="campaign-title-line">Una campaña no es</span><span class="campaign-title-line">solo un mensaje</span><span class="hl campaign-title-line">es una acción revisada</span></h1>
+  <p class="hero-sub reveal-el">El negocio puede guardar sus propias ofertas y usar las propuestas de ONIX según el plan. Se prepara la acción, se revisa con el responsable, se aprueba y después se envía dentro de los límites contratados.</p>
+  <div class="cross-links">
+    <a href="suscripciones.html#comparativa">Elegir plan Fideliza →</a>
+    <a href="suscripciones.html#montaje">Ver qué se paga al empezar →</a>
+  </div>
 </section>
 
 <!-- ESCALERA DE NIVELES -->
 <div class="fw fi">
   <div class="fw-inner">
-    <div class="section-tag">Dos formatos provisionales</div>
-    <h2 class="section-title">Simple o Completa: elegimos según el trabajo necesario</h2>
-    <p class="section-sub">El precio final depende del trabajo acordado. Definimos objetivo, piezas, canales y forma de valorar la respuesta antes de contratar.</p>
+    <div class="section-tag">Qué puede hacer el negocio</div>
+    <h2 class="section-title">Cuatro familias de campañas</h2>
+    <p class="section-sub">No se trata de enviar por enviar. Cada campaña tiene un objetivo, un público y una acción que el cliente puede completar.</p>
     <div class="ladder">
       <div class="ladder-rail"></div>
       <div class="ladder-row">
         <div class="rung lvl1" style="--i:0">
           <div class="rung-head"><div class="rung-dot"></div><div class="rung-step">Ejecutar</div></div>
           <div class="rung-body">
-            <div class="rung-name">Simple</div>
-            <div class="rung-price">Desde 150€</div>
-            <p class="rung-desc">Una comunicación puntual con un objetivo claro, como anunciar un servicio o invitar a volver a clientes que ya conoces.</p>
+            <div class="rung-name">Fidelización</div>
+            <div class="rung-price">Desde Fideliza Básico</div>
+            <p class="rung-desc">Mantener visible el progreso y dar un motivo concreto para volver.</p>
             <ul class="rung-incl">
-              <li>Definir el objetivo y preparar el mensaje</li>
-              <li>Revisarlo contigo antes de enviarlo</li>
-              <li>Acordar canal, destinatarios y ejecución</li>
+              <li>Visitas, puntos y recompensas</li>
+              <li>Cumpleaños y trae a un amigo</li>
+              <li>Campaña activa visible en Wallet</li>
             </ul>
-            <p class="rung-limit">Requiere una lista utilizable y permisos para contactar. Si aún no tienes contactos, primero valoramos una acción de captación.</p>
+            <p class="rung-limit">La identificación de una visita requiere tarjeta, escaneo o confirmación del cliente; el NFC fijo no identifica personas.</p>
           </div>
         </div>
         <div class="rung lvl2" style="--i:1">
           <div class="rung-head"><div class="rung-dot"></div><div class="rung-step">Estrategia y ejecución</div></div>
           <div class="rung-body">
-            <div class="rung-name">Completa</div>
-            <div class="rung-price">Desde 500€</div>
-            <p class="rung-desc">Para una acción que necesita preparar varias piezas; por ejemplo, conectar el expositor con una página o formulario de captación.</p>
+            <div class="rung-name">Activación y recuperación</div>
+            <div class="rung-price">Desde Fideliza Crece</div>
+            <p class="rung-desc">Hablar con clientes nuevos, inactivos o interesados en una oferta concreta.</p>
             <ul class="rung-incl">
-              <li>Acordar el objetivo y las piezas necesarias</li>
-              <li>Preparar la acción y revisarla contigo</li>
-              <li>Definir cómo recoger o valorar la respuesta</li>
+              <li>Novedades, menú o servicio nuevo</li>
+              <li>Reactivación y días de menor actividad</li>
+              <li>Segmentación básica y tandas</li>
             </ul>
-            <p class="rung-limit">Página, envíos, diseño y seguimiento se especifican en cada propuesta; no se dan por incluidos automáticamente.</p>
+            <p class="rung-limit">Crece incluye más trabajo operativo, pero los mensajes y consumos de proveedor mantienen un límite propio.</p>
           </div>
         </div>
       </div>
     </div>
 
     <div class="value-note fi">
-      <h3>Primero, el objetivo</h3>
-      <p>No todos los negocios necesitan captar contactos ni enviar mensajes. Antes de proponer una campaña, vemos qué quieres conseguir, qué canales tienes y qué datos puedes usar con permiso. Así acordamos una acción y una forma razonable de valorar su respuesta.</p>
+      <h3>El negocio siempre conserva el control</h3>
+      <p>ONIX prepara una propuesta y la presenta con su público, mensaje y objetivo. El responsable la revisa, decide los cambios y confirma si se envía. Después se registran las respuestas para mejorar la siguiente acción.</p>
     </div>
   </div>
 </div>
 
 <!-- CALENDARIO -->
 <section class="section fi" id="ejemplos-campanas">
-  <div class="section-tag">Ejemplos orientativos por formato</div>
-  <h2 class="section-title">Qué podríamos probar y qué medir</h2>
-  <p class="section-sub">Tres ideas por formato. Los indicadores sirven para evaluar la respuesta; no son resultados prometidos ni paquetes cerrados. El alcance se concreta en cada propuesta.</p>
+    <div class="section-tag">Ejemplos claros</div>
+    <h2 class="section-title">Qué campaña encaja con cada momento</h2>
+    <p class="section-sub">Los ejemplos son mecánicas, no promesas de ventas. La recomendación depende del sector, la base disponible y el consentimiento.</p>
 
   <div class="cal-examples">
     <div class="cal-card">
-      <div class="cal-month">Simple · desde 150€</div>
-      <h4>Reactivar clientes</h4>
-      <p><strong>Acción:</strong> mensaje puntual a clientes que ya conocen el negocio. <strong>Medir:</strong> respuestas, reservas o compras atribuibles durante el periodo acordado.</p>
+      <div class="cal-month">Básico · recomendación estacional</div>
+      <h4>Una novedad para todos</h4>
+      <p><strong>Acción:</strong> comunicar un nuevo horario, menú o producto a la base completa. <strong>Medir:</strong> respuestas y reservas iniciadas desde el mensaje.</p>
     </div>
     <div class="cal-card">
-      <div class="cal-month">Simple · desde 150€</div>
-      <h4>Anunciar un servicio nuevo</h4>
-      <p><strong>Acción:</strong> comunicación a una lista existente con una llamada a reservar o pedir información. <strong>Medir:</strong> consultas y reservas relacionadas con el mensaje.</p>
+      <div class="cal-month">Básico · cada dos meses</div>
+      <h4>Recompensa por visitas</h4>
+      <p><strong>Acción:</strong> recordar el progreso y la recompensa disponible. <strong>Medir:</strong> validaciones y canjes registrados.</p>
     </div>
     <div class="cal-card">
-      <div class="cal-month">Simple · desde 150€</div>
-      <h4>Ocupar huecos disponibles</h4>
-      <p><strong>Acción:</strong> avisar de disponibilidad concreta a clientes adecuados. <strong>Medir:</strong> citas ocupadas y valor asociado, descontando el coste de la oferta si la hay.</p>
+      <div class="cal-month">Crece · mensual</div>
+      <h4>Reactivar inactivos</h4>
+      <p><strong>Acción:</strong> enviar una propuesta a contactos que no han respondido o vuelto. <strong>Medir:</strong> respuestas, reservas o solicitudes.</p>
     </div>
     <div class="cal-card">
-      <div class="cal-month">Completa · desde 500€</div>
-      <h4>Captación voluntaria desde el expositor</h4>
-      <p><strong>Acción:</strong> conectar una invitación en el expositor con una página o formulario, si el alcance lo justifica. <strong>Medir:</strong> visitas, registros con consentimiento y uso posterior del incentivo.</p>
+      <div class="cal-month">Crece · mensual</div>
+      <h4>Campaña por tandas</h4>
+      <p><strong>Acción:</strong> enviar mensajes distintos a clientes nuevos, recurrentes o inactivos. <strong>Medir:</strong> respuesta por grupo, sin mezclar resultados.</p>
     </div>
     <div class="cal-card">
-      <div class="cal-month">Completa · desde 500€</div>
-      <h4>Promoción de temporada</h4>
-      <p><strong>Acción:</strong> combinar las piezas acordadas para explicar una oferta y facilitar la reserva. <strong>Medir:</strong> consultas, reservas y margen generado frente al descuento aplicado.</p>
+      <div class="cal-month">Pro · avanzado</div>
+      <h4>Voz del Cliente</h4>
+      <p><strong>Acción:</strong> preguntar qué gustó, qué mejoraría y qué le gustaría encontrar. <strong>Medir:</strong> temas repetidos, preferencias e ideas de campaña.</p>
     </div>
-    <div class="cal-card">
-      <div class="cal-month">Completa · desde 500€</div>
-      <h4>Lanzamiento con seguimiento</h4>
-      <p><strong>Acción:</strong> preparar una secuencia de piezas definida en la propuesta para presentar una novedad. <strong>Medir:</strong> interés, contactos cualificados y conversiones observables por canal.</p>
-    </div>
+      <div class="cal-card">
+        <div class="cal-month">Pro · avanzado</div>
+        <h4>Recomendación personalizada</h4>
+        <p><strong>Acción:</strong> combinar respuestas, actividad registrada y preferencias para proponer una campaña. <strong>Medir:</strong> entregas, respuestas, reservas y canjes observables.</p>
+      </div>
+      <div class="cal-card">
+        <div class="cal-month">Ejemplo sectorial · Navidad</div>
+        <h4>Reservas de Navidad para restaurante</h4>
+        <p><strong>Adaptación:</strong> menú especial y reservas para grupos. <strong>Acción:</strong> comunicar a clientes recurrentes y antiguos comensales con permiso. <strong>Medir:</strong> consultas y reservas recibidas.</p>
+      </div>
+      <div class="cal-card">
+        <div class="cal-month">Ejemplo sectorial · San Valentín</div>
+        <h4>Experiencia para parejas en estética</h4>
+        <p><strong>Adaptación:</strong> bono o tratamiento para dos. <strong>Acción:</strong> segmentar clientes que ya han probado servicios relacionados. <strong>Medir:</strong> respuestas, reservas y canjes.</p>
+      </div>
+      <div class="cal-card">
+        <div class="cal-month">Ejemplo sectorial · Verano</div>
+        <h4>Carta de terraza para cafetería</h4>
+        <p><strong>Adaptación:</strong> horario, producto frío o promoción de tarde. <strong>Acción:</strong> difundir a contactos activos y mostrar la oferta en Wallet. <strong>Medir:</strong> consultas y uso de la recompensa.</p>
+      </div>
   </div>
-  <p class="section-sub" style="margin-top:28px;max-width:100%">Si todavía no tienes una lista de clientes con permiso para recibir mensajes, podemos estudiar una acción de captación voluntaria desde el expositor. No todas las campañas necesitan una página y ninguna garantiza ventas futuras.</p>
+  <p class="section-sub" style="margin-top:28px;max-width:100%">Las reservas y consultas iniciadas por el cliente se registran para que el negocio responda. La reactivación basada en una visita real solo se activa cuando existe una identificación válida.</p>
+  <div class="cross-links">
+    <a href="suscripciones.html#comparativa">Comparar planes Fideliza →</a>
+    <a href="suscripciones.html#extras">Ver extras y ampliaciones →</a>
+  </div>
 </section>
 
 <!-- CTA FINAL -->
 <div class="cta-section fi">
   <h2>¿Empezamos con tu <span class="hl">primera campaña</span>?</h2>
-  <p>Con la suscripción Pro o Premium, tu primera campaña ya está incluida.</p>
-  <a href="index.html#suscripciones" class="btn-primary">Ver suscripciones →</a>
+  <p>Fideliza Básico, Crece y Pro cambian la frecuencia, segmentación y personalización.</p>
+  <a href="suscripciones.html" class="btn-primary">Ver ONIX Fideliza →</a>
 </div>
 
+</main>
 <footer>
   <div class="footer-logo">
     <img src="img/optimized/logotodo.webp" alt="ONIX" width="960" height="320" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
     <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
   </div>
-  <span>© 2025 ONIX — Expositores NFC para Negocios</span>
+  <span>© 2025 ONIX — Stands NFC para Negocios</span>
   <span style="display:flex;gap:14px;flex-wrap:wrap">
     <a href="legal.html">Aviso Legal</a>
     <a href="legal.html">Privacidad</a>
     <a href="legal.html">Cookies</a>
   </span>
-  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contactar con ONIX por WhatsApp">Contáctanos</a>
+  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contáctanos por WhatsApp">Contáctanos</a>
 </footer>
 
 <script>

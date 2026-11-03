@@ -6,7 +6,7 @@
 <meta name="view-transition" content="same-origin">
 <script>(function(){try{if(sessionStorage.getItem('onix-nav-transition')==='1'){document.documentElement.classList.add('onix-nav-transition');sessionStorage.removeItem('onix-nav-transition')}}catch(e){}})();</script>
 <title>Aviso Legal, Privacidad y Cookies — ONIX</title>
-<meta name="description" content="Aviso legal, política de privacidad y cookies de ONIX — expositores NFC para negocios locales en Girona.">
+<meta name="description" content="Aviso legal, política de privacidad y cookies de ONIX — stands NFC para negocios locales en Girona.">
 <meta name="robots" content="noindex,follow">
 <meta name="theme-color" content="#080705">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,7 +77,7 @@ body::before{
 /* Logo marca de agua fondo */
  body::after{
    content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;
-  background-image:url("img/logos/logo%20negativo.png");
+  background-image:url("img/optimized/onix-negativo.webp");
   background-size:60%;background-position:center;background-repeat:no-repeat;
   background-attachment:fixed;
    opacity:.05;filter:blur(4px)
@@ -133,9 +133,9 @@ footer .footer-logo img{display:block;width:auto;height:100%!important;min-heigh
   </a>
   <div class="nav-links">
     <a href="index.html">Inicio</a>
-    <a href="producto.html">Producto</a>
-    <a href="suscripciones.html">Suscripciones</a>
-    <a href="agentes.html">Agentes</a>
+    <a href="producto.html">Expositor</a>
+    <a href="suscripciones.html">Fideliza</a>
+    <a href="suscripciones.html#extras">Extras de Fideliza</a>
     <a href="campanas.html">Campañas</a>
     <a href="presupuesto-web.html">Web</a>
     <a href="index.html#contactar">Contacto</a>
@@ -143,7 +143,9 @@ footer .footer-logo img{display:block;width:auto;height:100%!important;min-heigh
   <button class="nav-hamburger" id="menu-toggle" aria-label="Menú" aria-expanded="false">
     <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="mh-line1" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"/><path d="M7 16 27 16"/></svg>
   </button>
+<!-- MAIN CONTENT -->
 </nav>
+<main id="main-content">
 
 <style>
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 5%;background:rgba(8,7,5,.4);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);transition:background .35s ease}
@@ -166,7 +168,7 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
   .nav-links{display:none!important}
   .nav-links.open{display:flex!important;position:fixed!important;inset:0!important;z-index:100;background:#080705!important;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:110px 5% 90px;animation:menuFade .3s ease both}
   .nav-links.open::before{content:'';position:absolute;top:0;left:0;right:0;height:45%;background:radial-gradient(ellipse 100% 100% at 50% 0%,rgba(184,84,32,.12),transparent);pointer-events:none}
-  .nav-links.open::after{content:'';position:absolute;top:max(55px,calc(env(safe-area-inset-top) + 35px));left:0;right:0;margin:0 auto;width:clamp(112px,32vw,192px);height:clamp(112px,32vw,192px);background-image:url("img/logos/logo.webp");background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 2px 12px rgba(184,84,32,.25));animation:slideUp .4s cubic-bezier(.16,1,.3,1) .02s both}
+    .nav-links.open::after{content:'';position:absolute;top:max(55px,calc(env(safe-area-inset-top) + 35px));left:0;right:0;margin:0 auto;width:clamp(112px,32vw,192px);height:clamp(112px,32vw,192px);background-image:url("img/optimized/logo.webp");background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 2px 12px rgba(184,84,32,.25));animation:slideUp .4s cubic-bezier(.16,1,.3,1) .02s both}
   .nav-links.open a{animation:slideUp .5s cubic-bezier(.16,1,.3,1) both;font-family:var(--font-h1);font-size:clamp(44px,10vw,72px);line-height:1.02;padding:11px 0;color:var(--text2);text-decoration:none;font-weight:400;letter-spacing:.05em;text-transform:uppercase;position:relative;transition:color .25s cubic-bezier(.16,1,.3,1)}
   .nav-links.open a:hover,
   .nav-links.open a.active,
@@ -203,7 +205,7 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
 </div>
 
 <h2 class="fi reveal-el">Aviso Legal</h2>
-<p class="fi reveal-el"><strong>Titular del sitio web:</strong> ONIX — proyecto de expositores NFC para negocios locales, en fase de constitución legal (pendiente de alta como autónomo o sociedad).</p>
+<p class="fi reveal-el"><strong>Titular del sitio web:</strong> ONIX — proyecto de stands NFC para negocios locales, en fase de constitución legal (pendiente de alta como autónomo o sociedad).</p>
 <p class="fi reveal-el"><strong>Contacto:</strong> <a href="https://wa.me/34631879550">WhatsApp +34 631 879 550</a> · <a href="mailto:nfconix@gmail.com">nfconix@gmail.com</a></p>
 <p class="fi reveal-el"><strong>Actividad:</strong> venta e instalación de expositores con tecnología NFC/QR para negocios locales (barberías, restaurantes, hoteles, tiendas, etc.), incluyendo diseño personalizado y servicios digitales adicionales (landing web, automatización de mensajería).</p>
 <p class="fi reveal-el">Esta web tiene finalidad meramente comercial e informativa. El uso del formulario de contacto implica la aceptación de las condiciones descritas en esta página.</p>
@@ -223,16 +225,17 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
 <p class="fi reveal-el">Sí se realiza una conexión externa a <strong>Google Fonts</strong> (fonts.googleapis.com y fonts.gstatic.com) para cargar las tipografías del sitio. Esta conexión puede implicar que Google reciba tu dirección IP conforme a su propia política de privacidad. No se instala ninguna cookie de seguimiento por este motivo.</p>
 <p class="fi reveal-el">Si en el futuro se incorporan herramientas de analítica o marketing, esta política se actualizará y se solicitará el consentimiento correspondiente mediante un banner de cookies.</p>
 
+</main>
 <footer style="background:var(--surface);border-top:1px solid var(--border2);padding:28px 5%;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-body);font-size:13px;font-weight:300;color:var(--muted);flex-wrap:wrap;gap:14px;margin-top:60px;margin-left:calc(-1 * max(5%, (100% - 820px) / 2));margin-right:calc(-1 * max(5%, (100% - 820px) / 2))">
   <div class="footer-logo">
     <img src="img/optimized/logotodo.webp" alt="ONIX" width="960" height="320" style="height:50px;mix-blend-mode:screen">
   </div>
-  <span>&copy; 2025 ONIX &mdash; Expositores NFC para Negocios &middot; Girona</span>
+  <span>&copy; 2025 ONIX &mdash; Stands NFC para Negocios &middot; Girona</span>
   <span style="display:flex;gap:14px;flex-wrap:wrap">
     <a href="index.html" style="color:var(--copper-warm);text-decoration:none">Inicio</a>
-    <a href="suscripciones.html" style="color:var(--copper-warm);text-decoration:none">Suscripciones</a>
+    <a href="suscripciones.html" style="color:var(--copper-warm);text-decoration:none">Fideliza</a>
   </span>
-  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contactar con ONIX por WhatsApp" style="color:var(--copper-warm);text-decoration:none">Contáctanos</a>
+  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contáctanos por WhatsApp" style="color:var(--copper-warm);text-decoration:none">Contáctanos</a>
 </footer>
 
 <script>

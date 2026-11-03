@@ -64,7 +64,7 @@ body{
     radial-gradient(ellipse 900px 600px at 15% -5%, rgba(184,84,32,.12), transparent 60%),
     radial-gradient(ellipse 700px 500px at 100% 30%, rgba(184,84,32,.07), transparent 55%),
     radial-gradient(ellipse 800px 500px at 0% 75%, rgba(184,84,32,.06), transparent 55%);
-  background-attachment:fixed;
+  background-attachment:scroll;
   color:var(--text);
   font-family:var(--font-body),-apple-system,sans-serif;
   font-size:16px;
@@ -104,12 +104,12 @@ body::before{
 }
 body::after{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;
-  background-image:url("img/logos/logo%20negativo.png");
+  background-image:url("img/optimized/onix-negativo.webp");
   background-size:60%;background-position:center;background-repeat:no-repeat;
-  background-attachment:fixed;
-  opacity:.25;filter:blur(4px)
+  background-attachment:scroll;
+  opacity:.25;filter:none
 }
-@media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:blur(6px)}}
+@media(max-width:900px){body::after{background-size:cover;background-position:center;opacity:.15;filter:none}}
 :focus-visible{outline:2px solid var(--copper-warm);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
 strong.em,.em{font-family:var(--font-body);font-style:normal;font-weight:600;color:var(--text);font-size:1em;letter-spacing:normal;-webkit-text-fill-color:var(--text)}
@@ -143,7 +143,7 @@ html.scrolling nav{background:rgba(8,7,5,.75)}
   .nav-links{display:none!important}
   .nav-links.open{display:flex!important;position:fixed!important;inset:0!important;z-index:100;background:#080705!important;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:max(110px,calc(env(safe-area-inset-top) + 70px)) 5% max(90px,env(safe-area-inset-bottom));animation:menuFade .3s ease both}
   .nav-links.open::before{content:'';position:absolute;top:0;left:0;right:0;height:45%;background:radial-gradient(ellipse 100% 100% at 50% 0%,rgba(184,84,32,.12),transparent);pointer-events:none}
-  .nav-links.open::after{content:'';position:absolute;top:max(55px,calc(env(safe-area-inset-top) + 35px));left:0;right:0;margin:0 auto;width:clamp(112px,32vw,192px);height:clamp(112px,32vw,192px);background-image:url("img/logos/logo.webp");background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 2px 12px rgba(184,84,32,.25));animation:slideUp .4s cubic-bezier(.16,1,.3,1) .02s both}
+  .nav-links.open::after{content:'';position:absolute;top:max(55px,calc(env(safe-area-inset-top) + 35px));left:0;right:0;margin:0 auto;width:clamp(112px,32vw,192px);height:clamp(112px,32vw,192px);background-image:url("img/optimized/logo.webp");background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 2px 12px rgba(184,84,32,.25));animation:slideUp .4s cubic-bezier(.16,1,.3,1) .02s both}
   .nav-links.open a{animation:slideUp .5s cubic-bezier(.16,1,.3,1) both;font-family:var(--font-h1);font-size:clamp(44px,10vw,72px);line-height:1.02;padding:11px 0;color:var(--text2);text-decoration:none;font-weight:400;letter-spacing:.05em;text-transform:uppercase;position:relative;transition:color .25s cubic-bezier(.16,1,.3,1)}
   .nav-links.open a:hover,
   .nav-links.open a.active,
@@ -187,7 +187,10 @@ h1 .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill
 .hero-sub strong{color:var(--text);font-weight:600}
 
 /* ─── SECTION HEADS ──────────────────────────────────────────── */
-.section{padding:56px 0}
+.section{padding:32px 0}
+.wrap{display:flex;flex-direction:column}
+#calculadora{order:1}
+#ejemplos{order:2}
 .section-head{margin-bottom:32px}
 .section-eyebrow{font-family:var(--font-h2);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--copper-warm);margin-bottom:8px}
 .section-title{font-family:var(--font-h2);font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:.005em;text-wrap:balance}
@@ -197,11 +200,11 @@ h1 .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill
 .examples-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
 .example-card{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;transition:.25s var(--ease-std)}
 .example-card:hover{transform:translateY(-4px);border-color:rgba(184,84,32,.3);box-shadow:0 12px 32px rgba(0,0,0,.3)}
-.example-preview{aspect-ratio:4/3;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
+.example-preview{display:none}
 .ex-restaurante{background:linear-gradient(160deg,#241a10,#0f0d0a 70%)}
 .ex-hotel{background:linear-gradient(160deg,#1a1f18,#0f0d0a 70%)}
 .ex-simple{background:linear-gradient(160deg,#1a1410,#0f0d0a 70%)}
-.example-preview::before{content:'';position:absolute;inset:0;opacity:.5;background-image:radial-gradient(circle at 30% 20%, rgba(232,160,68,.15), transparent 55%)}
+.example-preview::before{display:none}
 .ex-tag{position:relative;font-family:var(--font-h2);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--copper-light);margin-bottom:6px}
 .ex-headline{position:relative;font-family:var(--font-body);font-style:normal;font-size:22px;font-weight:700;color:var(--text);line-height:1.2;margin:0}
 .example-body{padding:20px}
@@ -215,7 +218,7 @@ h1 .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill
 .example-total .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .example-total .price{font-family:var(--font-h1);font-size:26px;color:var(--copper-warm);font-variant-numeric:tabular-nums}
 .example-cta{display:block;text-align:center;margin-top:14px;padding:10px;border-radius:var(--r-sm);border:1px solid rgba(232,160,68,.35);color:var(--copper-light);font-size:13px;font-weight:600;text-decoration:none;transition:.2s ease}
-.example-cta:hover{background:rgba(232,160,68,.08);border-color:rgba(232,160,68,.6);color:var(--copper-warm)}
+.example-cta:hover{background:rgba(32,26,19,.94);border-color:rgba(232,160,68,.6);color:var(--copper-light)}
 
 /* ─── CALCULADORA ────────────────────────────────────────────── */
 .calc-box{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:32px;display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:start}
@@ -224,7 +227,7 @@ h1 .hl{background:var(--g-copper);-webkit-background-clip:text;-webkit-text-fill
 .calc-item:hover{border-color:rgba(232,160,68,.3)}
 .calc-item.base{cursor:pointer}
 .calc-item.base:hover{border-color:rgba(232,160,68,.3)}
-.calc-item.active{border-color:var(--copper-warm);background:rgba(232,160,68,.06)}
+.calc-item.active{border-color:var(--copper-warm);background:rgba(184,84,32,.16)}
 .calc-item.is-disabled{opacity:.42;cursor:not-allowed;pointer-events:none}
 .calc-item-label{display:flex;align-items:center;gap:12px;font-size:14px}
 .calc-check{width:20px;height:20px;border-radius:5px;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s ease}
@@ -323,9 +326,8 @@ footer a:hover{color:var(--copper-light)}
   </a>
   <div class="nav-links">
     <a href="index.html">Inicio</a>
-    <a href="producto.html">Producto</a>
-    <a href="suscripciones.html">Suscripciones</a>
-    <a href="agentes.html">Agentes</a>
+    <a href="producto.html">Expositor</a>
+    <a href="suscripciones.html">Fideliza</a>
     <a href="campanas.html">Campañas</a>
     <a href="presupuesto-web.html" class="current">Web</a>
     <a href="index.html#contactar">Contacto</a>
@@ -334,14 +336,16 @@ footer a:hover{color:var(--copper-light)}
   <button class="nav-hamburger" id="menu-toggle" aria-label="Menú" aria-expanded="false">
     <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="mh-line1" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"/><path d="M7 16 27 16"/></svg>
   </button>
+<!-- MAIN CONTENT -->
 </nav>
+<main id="main-content">
 
 <div class="wrap">
 
   <section class="hero">
     <div class="eyebrow reveal-el">Presupuesto de página web</div>
     <h1 class="reveal-title onix-typewriter-title"><span class="onix-tw-line">Tu página web</span><br><span class="onix-tw-line hl">a tu medida</span></h1>
-    <p class="hero-sub reveal-el"><strong class="em">Ninguna web ONIX es una plantilla.</strong> Se cotiza según lo que necesites: <strong>desde 350€</strong> la entrada, y cada pieza que añadas suma un precio fijo y transparente — sin sorpresas. Aquí tienes 3 ejemplos reales según el tipo de negocio, y una calculadora para que veas tu presupuesto exacto en el momento.</p>
+    <p class="hero-sub reveal-el"><strong class="em">Ninguna web ONIX es una plantilla.</strong> Puedes empezar con una landing de enlaces desde <strong>350€</strong> o contratar una página de negocio más completa desde 650€. El selector aparece primero para que veas qué necesitas antes de comparar ejemplos.</p>
   </section>
 
   <section class="section fi" id="ejemplos">
@@ -359,13 +363,13 @@ footer a:hover{color:var(--copper-light)}
           <h3 class="ex-headline">Siempre al día, sin imprimir nada</h3>
         </div>
         <div class="example-body">
-          <h4>Página simple — 1 sola página</h4>
-          <p>El cliente toca el expositor y ve la información actualizada al momento, <strong class="em">sin reimprimir nada</strong> cada vez que algo cambia. La misma base sirve para casos muy distintos según tu sector: la carta de un restaurante, el listado de servicios y precios de una barbería/estética, las promociones activas de una tienda, o un enlace directo para reservar la siguiente cita.</p>
+          <h4>Landing de enlaces — 1 página</h4>
+          <p>Una página ligera pensada para enlazar desde el NFC, WhatsApp o redes. Reúne botones hacia Instagram, Google, WhatsApp, reservas, carta o tienda. No es una web corporativa completa: funciona como una puerta de entrada clara para llevar al usuario a los canales del negocio.</p>
           <ul class="example-pieces">
-            <li><span>Página de entrada</span><span class="amt">650€</span></li>
+            <li><span>Landing de enlaces</span><span class="amt">350€</span></li>
           </ul>
-          <div class="example-total"><span class="label">Desde</span><span class="price">650€</span></div>
-          <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20la%20web%20tipo%20%22P%C3%A1gina%20simple%22%20(1%20p%C3%A1gina%2C%20650%E2%82%AC).%20%C2%BFCu%C3%A1ndo%20podemos%20empezar%3F" class="example-cta">Pedir esta web →</a>
+          <div class="example-total"><span class="label">Desde</span><span class="price">350€</span></div>
+          <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20la%20landing%20de%20enlaces%20de%20350%E2%82%AC.%20%C2%BFCu%C3%A1ndo%20podemos%20empezar%3F" class="example-cta">Pedir esta landing →</a>
         </div>
       </div>
 
@@ -375,11 +379,11 @@ footer a:hover{color:var(--copper-light)}
           <h3 class="ex-headline">Presentación, servicios, contacto</h3>
         </div>
         <div class="example-body">
-          <h4>2-3 páginas — el caso más habitual</h4>
-          <p><strong class="em">El caso más habitual</strong>: logo, servicios y un enlace directo a WhatsApp o reservas, con alguna página extra según lo que necesites. Ejemplos: una clínica con "Servicios" + "Sobre nosotros"; un gimnasio con "Horarios" + "Tarifas"; una tienda con "Catálogo" + "Contacto".</p>
+          <h4>Página web de negocio — desde 650€</h4>
+          <p><strong class="em">El siguiente nivel</strong>: estructura propia, copy, servicios, información del negocio y conexión con WhatsApp o reservas. Puede crecer con páginas de servicios, horarios, tarifas, catálogo o contacto.</p>
           <ul class="example-pieces">
-            <li><span>Página de entrada</span><span class="amt">650€</span></li>
-            <li><span>1 página adicional (ej. "Sobre nosotros")</span><span class="amt">+150€</span></li>
+            <li><span>Página web de negocio</span><span class="amt">650€</span></li>
+            <li><span>Secciones adicionales</span><span class="amt">+150€</span></li>
           </ul>
           <div class="example-total"><span class="label">Total</span><span class="price">800€</span></div>
           <a href="https://wa.me/34631879550?text=Hola%2C%20soy%20%5Bnombre%5D%20de%20%5Bnegocio%5D.%20Quiero%20la%20web%20tipo%20%22Web%20simple%20de%20negocio%22%20(2-3%20p%C3%A1ginas%2C%20800%E2%82%AC).%20%C2%BFCu%C3%A1ndo%20podemos%20empezar%3F" class="example-cta">Pedir esta web →</a>
@@ -398,7 +402,7 @@ footer a:hover{color:var(--copper-light)}
             <li><span>Página de entrada</span><span class="amt">650€</span></li>
             <li><span>Galería de habitaciones/espacios</span><span class="amt">+150€</span></li>
             <li><span>Formulario de reserva directa</span><span class="amt">+100€</span></li>
-            <li><span>SEO local básico</span><span class="amt">+100€</span></li>
+            <li><span>SEO</span><span class="amt">+100€</span></li>
             <li><span>Mantenimiento + hosting (mensual, aparte)</span><span class="amt">27€/mes</span></li>
           </ul>
           <div class="example-total"><span class="label">Total entrada</span><span class="price">1000€</span></div>
@@ -419,23 +423,23 @@ footer a:hover{color:var(--copper-light)}
     <div class="calc-box">
       <div class="calc-options">
 
-        <div class="calc-item base active" data-base="pagina" data-price="650" data-label="Página web a medida">
+        <div class="calc-item base active" data-base="pagina" data-price="650" data-label="Página web de negocio">
           <div class="calc-item-label">
             <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div>
-               <span class="calc-item-name">Página web a medida</span>
-              <span class="calc-item-desc">Copy y diseño a medida — logo, servicios, enlace a WhatsApp. Siempre incluida.</span>
+               <span class="calc-item-name">Página web de negocio</span>
+              <span class="calc-item-desc">Estructura y copy a medida — logo, servicios, información y conexión con WhatsApp o reservas.</span>
             </div>
           </div>
            <div class="calc-item-price">650€</div>
         </div>
 
-        <div class="calc-item base" data-base="landing" data-price="350" data-label="Landing page">
+        <div class="calc-item base" data-base="landing" data-price="350" data-label="Landing de enlaces">
           <div class="calc-item-label">
             <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div>
-              <span class="calc-item-name">Landing page</span>
-              <span class="calc-item-desc">Una página enfocada a presentar tu negocio y conseguir contactos.</span>
+              <span class="calc-item-name">Landing de enlaces</span>
+              <span class="calc-item-desc">Una página simple para reunir enlaces a WhatsApp, redes, Google, reservas, carta o tienda.</span>
             </div>
           </div>
           <div class="calc-item-price">350€</div>
@@ -460,7 +464,7 @@ footer a:hover{color:var(--copper-light)}
           <div class="calc-item-label">
             <div class="calc-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div>
-              <span class="calc-item-name">SEO básico</span>
+               <span class="calc-item-name">SEO</span>
               <span class="calc-item-desc">Meta tags, sitemap, velocidad de carga</span>
             </div>
           </div>
@@ -531,7 +535,7 @@ footer a:hover{color:var(--copper-light)}
       <div class="calc-summary">
         <h4>Tu presupuesto</h4>
         <div id="calc-lines">
-          <div class="calc-line"><span>Página web a medida</span><span class="n">650€</span></div>
+          <div class="calc-line"><span>Página web de negocio</span><span class="n">650€</span></div>
           <div class="calc-line empty" id="calc-empty">Marca lo que necesites →</div>
         </div>
         <div class="calc-total-row">
@@ -550,18 +554,19 @@ footer a:hover{color:var(--copper-light)}
 
 </div>
 
+</main>
 <footer>
   <div class="footer-logo">
     <img src="img/optimized/logotodo.webp" alt="ONIX" width="960" height="320" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
     <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;color:var(--copper-warm)">ONIX</span>
   </div>
-  <span>© 2025 ONIX — Expositores NFC para Negocios · Girona</span>
+  <span>© 2025 ONIX — Stands NFC para Negocios · Girona</span>
   <span style="display:flex;gap:14px;flex-wrap:wrap">
     <a href="legal.html">Aviso Legal</a>
     <a href="legal.html">Privacidad</a>
     <a href="legal.html">Cookies</a>
   </span>
-  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contactar con ONIX por WhatsApp">Contáctanos</a>
+  <a class="footer-contact" href="https://wa.me/34631879550" aria-label="Contáctanos por WhatsApp">Contáctanos</a>
 </footer>
 
 <script src="vendor/gsap.min.js"></script>
@@ -576,7 +581,7 @@ footer a:hover{color:var(--copper-light)}
 
 <script>
 (function(){
-  var base = { key: 'pagina', label: 'Página web a medida', price: 650 };
+  var base = { key: 'pagina', label: 'Página web de negocio', price: 650 };
   var items = {};
 
   document.querySelectorAll('.calc-item[data-base]').forEach(function(el){

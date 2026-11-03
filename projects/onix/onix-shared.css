@@ -37,18 +37,8 @@ nav .nav-cta {
 }
 
 #preloader {
-  animation: onixPreloaderFailsafe 3.1s ease forwards;
-}
-
-/* The split-logo transition is navigation feedback, not a page-load tax. */
-html:not(.onix-nav-transition) #preloader {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
-
-html:not(.onix-nav-transition) body {
-  animation: none !important;
+  animation: onixPreloaderFailsafe 1.6s ease forwards;
+  contain: layout paint;
 }
 
 /* Sections already inside the first viewport must wait for the shared intro. */
@@ -87,6 +77,12 @@ html.onix-nav-transition:not(.onix-page-ready) body > *:not(#preloader) {
   height: auto;
   max-width: 100%;
   object-fit: contain;
+}
+
+#preloader .pl-half {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .diff-img picture,
@@ -424,6 +420,49 @@ footer a:hover {
   color: var(--copper-light) !important;
 }
 
+/* Context links keep related ONIX pages connected. */
+.cross-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.cross-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--copper-warm);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(232, 160, 68, .35);
+  padding-bottom: 3px;
+  transition: color .18s ease, border-color .18s ease;
+}
+
+.cross-links a:hover {
+  color: var(--copper-light);
+  border-color: var(--copper-light);
+}
+
+/* Page changes stay light and compositor-friendly: no blur/scale snapshot. */
+@view-transition { navigation: auto; }
+::view-transition-old(root) {
+  animation: onix-page-out .2s ease-out both !important;
+}
+::view-transition-new(root) {
+  animation: onix-page-in .26s ease-out both !important;
+}
+@keyframes onix-page-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes onix-page-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* CTAs stay direct: no glow, lift, or delayed text swap on hover. */
 .btn-primary,
 .btn-ghost,
@@ -445,6 +484,11 @@ footer a:hover {
 }
 
 @media (max-width: 900px) {
+  /* En móvil todas las páginas usan el mismo logo negativo legible. */
+  body::after {
+    background-image: url("img/logos/logo negativo.png") !important;
+  }
+
   #hero,
   .hero {
     width: 100vw !important;
