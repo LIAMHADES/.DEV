@@ -29,6 +29,7 @@ html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 @media (hover:hover) and (pointer:fine){*,*::before,*::after,html{cursor:none!important}}
 @media (hover:none),(pointer:coarse){.custom-cursor{display:none!important}}
 body{background:#0a0a0a;color:#e8e8e8;font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.5;min-height:100vh;overflow-x:hidden}
+html.menu-lock,html.menu-lock body{overflow:hidden;overscroll-behavior:none}
 body.loading{overflow:hidden}
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
@@ -107,12 +108,12 @@ header nav a{color:#fff;mix-blend-mode:difference}
 body.menu-open .menu-btn span{background:transparent}
 body.menu-open .menu-btn span::before{transform:translateY(8px) rotate(45deg)}
 body.menu-open .menu-btn span::after{transform:translateY(-8px) rotate(-45deg)}
-.mobile-menu{position:fixed;inset:0;z-index:110;background:#07070d;display:flex;flex-direction:column;padding:18px max(24px,7vw) 36px;opacity:0;visibility:hidden;transition:opacity 0.35s ease,visibility 0s linear 0.35s;overflow-y:auto}
+.mobile-menu{position:fixed;inset:0;z-index:110;background:#07070d;display:flex;flex-direction:column;padding:18px max(24px,7vw) 36px;opacity:0;visibility:hidden;pointer-events:none;transform:translate3d(0,-8px,0);transition:opacity .2s ease,transform .2s ease,visibility 0s linear .2s;overflow-y:auto;overscroll-behavior:contain}
 .mobile-menu .menu-logo{display:block;width:48px;height:48px;margin-bottom:clamp(36px,9vh,80px);padding:0;border:0}
 .mobile-menu .menu-logo::after{content:none}
 .mobile-menu .menu-logo img{width:48px;height:48px}
 .mobile-menu .menu-lista{display:flex;flex-direction:column;gap:6px}
-body.menu-open .mobile-menu{opacity:1;visibility:visible;transition:opacity 0.35s ease}
+body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translate3d(0,0,0);transition:opacity .2s ease,transform .2s ease}
 body.menu-open{overflow:hidden}
 .mobile-menu .menu-lista a{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:6px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.7rem,7.6vw,2.6rem);text-transform:uppercase;letter-spacing:-0.02em;line-height:1;color:#fff}
 .mobile-menu .menu-lista a:first-child{border-top:1px solid rgba(255,255,255,0.1)}
@@ -252,10 +253,11 @@ body.menu-open{overflow:hidden}
 .project-card .card-tags span{padding:3px 8px;border-radius:4px;font-size:0.58rem;font-weight:500;color:#fff;border:1px solid rgba(255,255,255,0.12)}
 .project-card:hover .card-tags span,.project-card.is-hovered .card-tags span{border-color:rgba(255,255,255,0.3)}
 
-.project-visual{position:absolute;right:-5%;top:50%;width:min(520px,42vw);aspect-ratio:4/3;z-index:1;pointer-events:none;opacity:0;transform:translateY(-50%) translateX(60px) scale(0.95);transition:all 0.6s cubic-bezier(0.16,1,0.3,1);box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);border-radius:8px;overflow:hidden}
-.project-card:hover .project-visual,.project-card.is-hovered .project-visual{opacity:1;transform:translateY(-50%) translateX(0) scale(1)}
+.project-visual{position:absolute;right:-5%;top:50%;width:min(520px,42vw);aspect-ratio:4/3;z-index:1;pointer-events:none;opacity:0;transform:translate3d(60px,-50%,0) scale(.95);transition:opacity .35s ease,transform .45s cubic-bezier(.16,1,.3,1);box-shadow:0 25px 50px -12px rgba(0,0,0,.5);border-radius:8px;overflow:hidden;background:#111}
+.project-card:hover .project-visual,.project-card.is-hovered .project-visual,.project-card.is-visible .project-visual{opacity:1;transform:translate3d(0,-50%,0) scale(1)}
 .project-visual-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 .project-visual svg{opacity:0.9;width:min(90px,28%)}
+.project-visual img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9)}
 
 /* Project typography: los colores y tipografías son los de la web de cada proyecto */
 .pj-jobmatch h2{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.02em}
@@ -339,8 +341,8 @@ footer a{color:#111}
   .section-head h2{font-size:clamp(1.8rem,9vw,2.8rem)}
   .project-card{flex-direction:column;align-items:flex-start;padding:40px 0}
   .project-card h2{font-size:clamp(1.8rem,8.5vw,3.2rem);word-break:break-word}
-  .project-card .project-visual{position:static;transform:none;opacity:1;width:100%;aspect-ratio:3/1;margin-top:8px;pointer-events:auto}
-  .project-card:hover .project-visual{transform:none}
+.project-card .project-visual{position:static;transform:none;opacity:1;width:100%;aspect-ratio:3/1;margin-top:8px;pointer-events:auto}
+  .project-card:hover .project-visual,.project-card.is-visible .project-visual{transform:none}
   .soon-list{grid-template-columns:1fr}
   .soon-item.wide{grid-column:auto}
   .soon-item{min-height:0}
@@ -397,11 +399,9 @@ footer a{color:#111}
   <div class="ed-body">
     <div class="ed-caja">
       <p class="ed-lead">Vengo de <strong>marketing y ventas</strong> y construyo con IA.</p>
-      <p class="ed-text">Empecé en la calle y en el mostrador: eventos, puntos de venta, clientes que te dicen que no tres veces antes de decirte que sí. De ahí me quedó escuchar antes de proponer, <strong>facilitar la comprensión</strong> y no dar nada por cerrado hasta que la otra persona lo ha entendido.</p>
-      <p class="ed-text">El salto a la IA no fue una decisión de despacho: empecé a automatizar por mi cuenta, sin que nadie me lo pidiera, porque buscar clientes a mano me comía el día. Funcionó y ya no paré. Hoy <strong>me multiplico</strong> en el sentido literal: no hago una cosa detrás de otra, tengo varias corriendo a la vez.</p>
-      <p class="ed-text">Lo que de verdad sé hacer es <strong>coordinar agentes</strong>. Reparto el trabajo entre varios, cada uno con su tarea y sus herramientas, y respondo de lo que devuelven: reviso, corrijo y vuelvo a lanzarlos. Están conectados a una <strong>memoria común</strong> donde apuntan lo que deciden y lo que falla, así no repiten el mismo error ni pisan lo que está haciendo otro. Cuando vuelvo a algo que dejé a medias, está hecho y con lo que ha fallado apuntado. Es el mismo trabajo que hacía con equipos de personas: repartir, supervisar y responder del resultado. Y cuando algo se rompe, <strong>lo levanto y sigo</strong>: casi todo lo que he construido ha salido de rehacerlo más de una vez.</p>
-      <p class="ed-text">Y eso no se queda en un departamento: puedo entrar en ventas y montar el seguimiento comercial que hoy se hace a mano, en marketing y llevar las campañas y el contenido, en atención al cliente y automatizar las respuestas, en operaciones y quitarme de encima los informes que se piden cada mes, o en datos y construir el buscador que responde con la documentación de la empresa en vez de con inventos. Son ejemplos: <strong>lo que sé hacer llega bastante más allá de esta lista</strong>. Con una regla que no negocio: <strong>lo que escribe a un cliente pasa antes por una persona</strong>.</p>
-      <p class="ed-text">Fuera del trabajo, lo que me mueve son los perros —uno de mis proyectos más grandes, ARES, nació para cuidarlos mejor—, el deporte en la montaña y los mercados, que sigo casi a diario.</p>
+      <p class="ed-text">Desde 2023 desarrollo <strong>agentes, automatizaciones, webs y herramientas</strong> para convertir problemas concretos en sistemas que se puedan entender, supervisar y mejorar.</p>
+      <p class="ed-text">Mi forma de trabajar combina la visión de negocio con la parte técnica: entender primero qué necesita una persona o un equipo y después construir la solución adecuada.</p>
+      <p class="ed-text">En los proyectos de este portfolio explico qué problema resuelve cada sistema, cómo funciona y qué he aprendido al desarrollarlo.</p>
     </div>
     <div class="ed-datos">
       <div class="ed-dato"><b>+4.500 h</b><span>trabajando con IA cada día, desde 2023</span></div>
@@ -475,7 +475,7 @@ footer a{color:#111}
         <div class="card-tags"><span>Whisper</span><span>WebAssembly</span><span>JavaScript</span><span>Python</span></div>
 
       </div>
-      <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div></div>
+      <div class="project-visual"><img src="./projects/vtotxforia/logo_glow.webp" alt="Portada de pj-vtotx" loading="lazy" width="900" height="600"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div></div>
     </a><a class="project-card pj-onix" href="./casos/onix/" data-pj="ONIX" data-font="Bebas Neue" data-color="#B85420">
       <div class="project-info">
         <span class="num">02</span><span class="tag">Web + NFC · Negocio local</span><h2>ONIX</h2>
@@ -483,7 +483,7 @@ footer a{color:#111}
         <div class="card-tags"><span>Web</span><span>NFC</span><span>Diseño</span></div>
 
       </div>
-      <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div></div>
+      <div class="project-visual"><img src="./projects/onix/img/optimized/hero-stand.webp" alt="Portada de pj-onix" loading="lazy" width="900" height="600"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div></div>
     </a>
 
   <a class="project-card pj-ares" href="./casos/ares/" data-pj="ARES GPS" data-font="Bruno Ace SC" data-color="#86BBD8">
@@ -493,7 +493,7 @@ footer a{color:#111}
         <div class="card-tags"><span>ESP32-S3</span><span>C/C++</span><span>FastAPI</span><span>React</span><span>PostgreSQL</span></div>
 
       </div>
-      <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0d12" stroke-width="1"><path d="M4 20h16"/><path d="M6 16l6-12 6 12"/><path d="M8 12h8"/></svg></div></div>
+      <div class="project-visual"><img src="./projects/ares/assets/img/ares-device.png" alt="Portada de pj-ares" loading="lazy" width="900" height="600"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0d12" stroke-width="1"><path d="M4 20h16"/><path d="M6 16l6-12 6 12"/><path d="M8 12h8"/></svg></div></div>
     </a><a class="project-card pj-vdownloader" href="./casos/v-downloader/" data-pj="V_DOWNLOADER" data-font="Outfit" data-color="#7cb342">
       <div class="project-info">
         <span class="num">04</span><span class="tag">Vídeo + IA · En desarrollo</span><h2>V_DOWNLOADER</h2>
@@ -501,7 +501,7 @@ footer a{color:#111}
         <div class="card-tags"><span>Python</span><span>Flask</span><span>Whisper</span><span>yt-dlp</span><span>FFmpeg</span></div>
 
       </div>
-      <div class="project-visual"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/></svg></div></div>
+      <div class="project-visual"><img src="./projects/V_DownLoadSUB/static/bg-dark.png" alt="Portada de pj-vdownloader" loading="lazy" width="900" height="600"><div class="project-visual-inner"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/></svg></div></div>
     </a><a class="project-card pj-jobmatch" href="./projects/jobmatch/" data-pj="JobMatch" data-font="Space Grotesk" data-color="#f2b84b">
       <div class="project-info">
         <span class="num">05</span><span class="tag">Búsqueda de empleo · En desarrollo</span><h2>JobMatch</h2>
@@ -688,11 +688,26 @@ var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeou
 // ═══ MENÚ MÓVIL ═══
 (function(){
 var btn=document.getElementById('menuBtn'),menu=document.getElementById('mobileMenu');
-function abrir(si){document.body.classList.toggle('menu-open',si);btn.setAttribute('aria-expanded',si?'true':'false');btn.setAttribute('aria-label',si?'Cerrar menú':'Abrir menú');if(si){var a=menu.querySelector('a');if(a)a.focus()}}
-btn.addEventListener('click',function(){abrir(!document.body.classList.contains('menu-open'))});
-menu.addEventListener('click',function(e){if(e.target.closest('a')||e.target===menu)abrir(false)});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open')){abrir(false);btn.focus()}});
-matchMedia('(min-width:961px)').addEventListener('change',function(m){if(m.matches)abrir(false)});
+function abrir(si){
+  document.body.classList.toggle('menu-open',si);
+  btn.setAttribute('aria-expanded',si?'true':'false');
+  btn.setAttribute('aria-label',si?'Cerrar menú':'Abrir menú');
+  document.documentElement.classList.toggle('menu-lock',si);
+  if(si){var a=menu.querySelector('.menu-lista a');if(a)setTimeout(function(){a.focus()},50)}else{btn.focus()}
+}
+function cerrar(){if(document.body.classList.contains('menu-open'))abrir(false)}
+btn.addEventListener('click',function(e){e.preventDefault();abrir(!document.body.classList.contains('menu-open'))});
+menu.addEventListener('click',function(e){if(e.target.closest('a'))cerrar()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar()});
+window.addEventListener('resize',function(){if(window.innerWidth>960)cerrar()},{passive:true});
+})();
+
+// Project reveals: one intersection observer instead of scroll-driven layout work.
+(function(){
+  var cards=document.querySelectorAll('.project-card');
+  if(!('IntersectionObserver' in window)){cards.forEach(function(c){c.classList.add('is-visible')});return}
+  var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}})},{rootMargin:'0px 0px -12% 0px',threshold:.08});
+  cards.forEach(function(card){observer.observe(card)});
 })();
 
 // ═══ PROJECT TITLE SIZE (según longitud) ═══
@@ -708,3 +723,4 @@ document.querySelectorAll('.project-card h2').forEach(function(h2){
 <script src="./assets/scrollbar.js" defer></script>
 </body>
 </html>
+

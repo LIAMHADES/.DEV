@@ -48,7 +48,13 @@
   }, { passive: true });
   addEventListener('resize', medir);
   addEventListener('load', medir);
-  if ('ResizeObserver' in window) new ResizeObserver(medir).observe(document.body);
+  if ('ResizeObserver' in window) {
+    var ultimaAltura = 0;
+    new ResizeObserver(function () {
+      var altura = document.documentElement.scrollHeight;
+      if (Math.abs(altura - ultimaAltura) > 8) { ultimaAltura = altura; medir(); }
+    }).observe(document.body);
+  }
   if (tactil) barra.classList.add('oculta');
 
   var inicioY = 0, inicioScroll = 0;
